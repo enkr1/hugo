@@ -124,6 +124,15 @@ weight = 4
 [menu.main.params]
 icon = 'user'
 
+[[menu.main]]
+identifier = 'platforms'
+name = 'Platforms'
+url = 'https://enkr1.github.io/platforms/'
+weight = 5
+[menu.main.params]
+icon = 'link'
+newTab = true
+
 # Related posts
 [related]
 includeNewer = true

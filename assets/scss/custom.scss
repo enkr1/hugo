@@ -1,7 +1,11 @@
 /*
- * Modern Editorial Theme
- * Inherits Hexo NexT structural patterns with refined bronze accent
- * Soft, rounded, generous spacing - sophisticated but approachable
+ * 金渊映日 2.0 - Ba Zi Energy Color System
+ * 「金-水」为体，「转化火」为用
+ * 
+ * Primary (内蕴金): #8B7355 - Metal/Earth - hovers, selections, CTAs
+ * Secondary (智慧海): #1E4B8C - Water - links, tags, code
+ * Dynamic (流年曦): #D97706 - Fire→Metal - click flash
+ * Base: #0A0F1C (渊墨黑) / #F8FAFC (月影白)
  */
 
 /* ===========================================
@@ -9,31 +13,9 @@
    =========================================== */
 
 :root {
-    // TYPE SCALE (SSOT) - 1rem = 10px, 1.25 ratio
-    --font-size-xs: 1.1rem;
-    --font-size-sm: 1.35rem;
-    --font-size-base: 1.7rem;
-    --font-size-md: 2.1rem;
-    --font-size-lg: 2.65rem;
-    --font-size-xl: 3.3rem;
-    --font-size-2xl: 4.15rem;
-    --font-size-3xl: 5.2rem;
-    --font-size-code: 0.85em;
-
-    // Line Heights
-    --line-height-tight: 1.3;
-    --line-height-snug: 1.4;
-    --line-height-normal: 1.6;
-    --line-height-relaxed: 1.9;
-
-    // Font Weights
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-
-    // FONT FAMILIES (SSOT) - Synced with Hexo
-    --font-display: 'Lora', 'Georgia', serif;
-    --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    // FONT FAMILIES
+    --font-display: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
 
     // Override theme's font variables
@@ -41,168 +23,234 @@
     --article-font-family: var(--font-body);
     --code-font-family: var(--font-mono);
 
-    // ===========================================
+    // TYPE SCALE (1.7×)
+    --font-size-xs: 1.275rem;
+    --font-size-sm: 1.49rem;
+    --font-size-base: 1.7rem;
+    --font-size-md: 2.125rem;
+    --font-size-lg: 2.55rem;
+    --font-size-xl: 3.19rem;
+    --font-size-2xl: 4.25rem;
+
+    // LINE HEIGHTS
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.4;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+
+    // FONT WEIGHTS
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
     // TIMING
-    // ===========================================
-    --transition-fast: 150ms ease-in-out;
-    --transition-base: 200ms ease-in-out;
+    --transition-fast: 75ms ease;
+    --transition-base: 150ms ease;
+    --transition-slow: 300ms ease;
 
-    // ===========================================
-    // BORDER RADIUS
-    // ===========================================
-    --radius-lg: 1.4rem;
-    --radius-md: 1rem;
-    --radius-sm: 0.5rem;
-    --radius-xs: 3px;
+    // BORDER RADIUS - Minimal
+    --radius-xs: 2px;
 
-    // ===========================================
-    // SHADOWS
-    // ===========================================
-    --shadow-sm: 0.2rem 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0.3rem 0.3rem 0.8rem 0 rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
-
-    // ===========================================
     // SPACING
-    // ===========================================
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
+
+    // ===========================================
+    // BA ZI ENERGY COLORS (SSOT)
+    // ===========================================
+    
+    // 内蕴金 (Primary) - Metal/Earth - Nobility & Stability
+    --gold: #8B7355;
+    --gold-dark: #6B5A45;
+    --gold-light: #A68B6A;
+    
+    // 智慧海 (Secondary) - Water - Depth & Flow
+    --water: #1E4B8C;
+    --water-dark: #153A6B;
+    --water-light: #2A5FA8;
+    
+    // 流年曦 (Dynamic) - Fire→Metal transformation
+    --fire: #D97706;
+    --fire-glow: rgba(217, 119, 6, 0.3);
 }
 
 /* ===========================================
-   LIGHT MODE
+   LIGHT MODE - 月影白
    =========================================== */
 
 :root, :root[data-scheme="light"] {
-    // Backgrounds (from Hexo: #f5f7f9 blue-gray tint)
-    --body-background: #f5f7f9;
-    --card-background: #FFFFFF;
-    --card-background-selected: #f0f2f5;
+    // Backgrounds - Metal clarity
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --body-background: var(--bg);
+    --card-background: var(--surface);
+    --card-background-selected: #F1F5F9;
 
-    // Text (from Hexo: #555 primary, #999 secondary)
-    --card-text-color-main: #333333;
-    --card-text-color-secondary: #555555;
-    --card-text-color-tertiary: #999999;
-    --body-text-color: #555555;
+    // Text
+    --text: #1A1A1A;
+    --text-secondary: #4A5568;
+    --text-tertiary: #718096;
+    --card-text-color-main: var(--text);
+    --card-text-color-secondary: var(--text-secondary);
+    --card-text-color-tertiary: var(--text-tertiary);
+    --body-text-color: var(--text);
 
-    // Accent - Muted Bronze (refined gold from Ba Zi)
-    --accent-color: #8B7355;
-    --accent-color-darker: #6B5A45;
+    // Primary Accent - 内蕴金 (Metal)
+    --accent: var(--gold);
+    --accent-hover: var(--gold-dark);
+    --accent-subtle: rgba(139, 115, 85, 0.08);
+    --accent-color: var(--accent);
+    --accent-color-darker: var(--accent-hover);
     --accent-color-text: #FFFFFF;
-    --accent-subtle: rgba(139, 115, 85, 0.1);
 
-    // Borders (from Hexo: #ddd light)
-    --card-separator-color: #e5e5e5;
-    --border-color: #ddd;
+    // Secondary Accent - 智慧海 (Water)
+    --secondary: var(--water);
+    --secondary-hover: var(--water-dark);
+    --secondary-subtle: rgba(30, 75, 140, 0.08);
+
+    // Dynamic - 流年曦 (Fire transformation)
+    --dynamic: var(--fire);
+    --dynamic-glow: var(--fire-glow);
+
+    // Borders
+    --border: rgba(0, 0, 0, 0.08);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --card-separator-color: var(--border);
 
     // Scrollbar
-    --scrollbar-thumb: #ccc;
-    --scrollbar-track: #f5f7f9;
+    --scrollbar-thumb: #CBD5E0;
+    --scrollbar-track: var(--bg);
 
-    // Code
-    --code-background-color: #f5f5f5;
-    --code-text-color: #333333;
-    --pre-background-color: #2d2d2d;
-    --pre-text-color: #f5f5f5;
-
-    // Blockquote
-    --blockquote-background-color: transparent;
+    // Code - Water element border
+    --code-background-color: var(--secondary-subtle);
+    --code-text-color: var(--text);
+    --code-border-color: rgba(30, 75, 140, 0.2);
+    --pre-background-color: var(--water-dark);
+    --pre-text-color: #F8FAFC;
 
     // Table
-    --table-border-color: #ddd;
-    --tr-even-background-color: #f9f9f9;
+    --table-border-color: var(--border);
+    --tr-even-background-color: #F8FAFC;
 
-    // Links
-    --link-background-color: 139, 115, 85;
-    --link-background-opacity: 0;
-    --link-background-opacity-hover: 0.08;
+    // Links - Water element
+    --link-color: var(--water);
+    --link-hover-color: var(--water-dark);
 }
 
 /* ===========================================
-   DARK MODE
+   DARK MODE - 渊墨黑
    =========================================== */
 
 :root[data-scheme="dark"] {
-    // Backgrounds
-    --body-background: #121212;
-    --card-background: #1e1e1e;
-    --card-background-selected: #2a2a2a;
+    // Backgrounds - Water depth
+    --bg: #0A0F1C;
+    --surface: #131A2B;
+    --body-background: var(--bg);
+    --card-background: var(--surface);
+    --card-background-selected: #1C2538;
 
     // Text
-    --card-text-color-main: #e5e5e5;
-    --card-text-color-secondary: #b0b0b0;
-    --card-text-color-tertiary: #777777;
-    --body-text-color: #b0b0b0;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-tertiary: #64748B;
+    --card-text-color-main: var(--text);
+    --card-text-color-secondary: var(--text-secondary);
+    --card-text-color-tertiary: var(--text-tertiary);
+    --body-text-color: var(--text);
 
-    // Accent - Lighter Bronze for dark mode
-    --accent-color: #C9A882;
-    --accent-color-darker: #D4BA96;
-    --accent-color-text: #121212;
+    // Primary Accent - 内蕴金 (brighter for dark mode)
+    --accent: #C9A882;
+    --accent-hover: #D4BA96;
     --accent-subtle: rgba(201, 168, 130, 0.12);
+    --accent-color: var(--accent);
+    --accent-color-darker: var(--accent-hover);
+    --accent-color-text: #0A0F1C;
+
+    // Secondary Accent - 智慧海 (brighter for dark mode)
+    --secondary: #5B8FD9;
+    --secondary-hover: #7BA6E6;
+    --secondary-subtle: rgba(91, 143, 217, 0.12);
+
+    // Dynamic - 流年曦
+    --dynamic: #F59E0B;
+    --dynamic-glow: rgba(245, 158, 11, 0.25);
 
     // Borders
-    --card-separator-color: #333333;
-    --border-color: #404040;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --card-separator-color: var(--border);
 
     // Scrollbar
-    --scrollbar-thumb: #444444;
-    --scrollbar-track: #121212;
+    --scrollbar-thumb: #334155;
+    --scrollbar-track: var(--bg);
 
     // Code
-    --code-background-color: #2a2a2a;
-    --code-text-color: #e5e5e5;
-    --pre-background-color: #0a0a0a;
-    --pre-text-color: #e5e5e5;
-
-    // Blockquote
-    --blockquote-background-color: transparent;
+    --code-background-color: var(--secondary-subtle);
+    --code-text-color: var(--text);
+    --code-border-color: rgba(91, 143, 217, 0.25);
+    --pre-background-color: #050810;
+    --pre-text-color: var(--text);
 
     // Table
-    --table-border-color: #404040;
-    --tr-even-background-color: #1a1a1a;
+    --table-border-color: var(--border);
+    --tr-even-background-color: #0F1525;
 
     // Links
-    --link-background-color: 201, 168, 130;
-    --link-background-opacity: 0;
-    --link-background-opacity-hover: 0.1;
+    --link-color: var(--secondary);
+    --link-hover-color: var(--secondary-hover);
 }
 
 /* ===========================================
-   TYPOGRAPHY
+   TYPOGRAPHY - Weight-Driven Hierarchy
    =========================================== */
 
-// Headlines - Elegant Serif
 .article-content,
 .article-title,
 .section-title {
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-display);
-        font-weight: var(--font-weight-semibold);
-        letter-spacing: -0.01em;
-        color: var(--card-text-color-main);
+        color: var(--text);
         margin: var(--spacing-lg) 0 var(--spacing-sm);
 
-        // Remove decorative elements
         &::before {
             display: none !important;
         }
     }
 
-    h1 { font-size: var(--font-size-3xl); line-height: var(--line-height-tight); }
-    h2 { font-size: var(--font-size-2xl); line-height: var(--line-height-tight); }
-    h3 { font-size: var(--font-size-lg); line-height: var(--line-height-snug); font-weight: var(--font-weight-medium); }
-    h4 { font-size: var(--font-size-md); line-height: var(--line-height-normal); font-weight: var(--font-weight-medium); }
+    h1 {
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--line-height-tight);
+    }
+
+    h2 {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--line-height-tight);
+    }
+
+    h3 {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-snug);
+    }
+
+    h4 {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-normal);
+    }
 }
 
-// Body text (generous line-height from Hexo)
 .article-content {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
     line-height: var(--line-height-relaxed);
-    color: var(--body-text-color);
+    color: var(--text);
 
     p {
         margin-bottom: 1.5em;
@@ -210,137 +258,148 @@
 }
 
 /* ===========================================
-   LINKS
+   LINKS - 智慧海 (Water) with underline reveal
    =========================================== */
 
 .article-content a {
-    color: var(--accent-color);
+    color: var(--link-color);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent-subtle);
-    transition: border-color var(--transition-fast), color var(--transition-fast);
+    border-bottom: 1px solid transparent;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
 
     &:hover {
-        color: var(--accent-color-darker);
-        border-bottom-color: var(--accent-color);
+        color: var(--link-hover-color);
+        border-bottom-color: var(--link-hover-color);
     }
 }
 
-// Navigation links
+// Navigation links - Gold on hover
 .menu a,
 .sidebar a {
-    color: var(--card-text-color-secondary);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 
     &:hover,
     &.current {
-        color: var(--accent-color);
+        color: var(--accent);
     }
 }
 
 /* ===========================================
-   TAGS & CATEGORIES - Glassmorphism Style
+   TAGS & CATEGORIES - 智慧海 (Water) borders
    =========================================== */
 
 .article-category a,
 .article-tags a,
 .tagCloud .tagCloud-tags a {
-    background: rgba(0, 0, 0, 0.04) !important;
-    border: 0.5px solid rgba(0, 0, 0, 0.08) !important;
-    color: var(--card-text-color-secondary) !important;
-    border-radius: var(--radius-md);
-    padding: 0.3rem 0.9rem;
-    font-size: var(--font-size-xs);
+    background: transparent !important;
+    border: 1px solid var(--secondary-subtle) !important;
+    border-radius: var(--radius-xs);
+    color: var(--secondary) !important;
     font-family: var(--font-body);
-    font-weight: var(--font-weight-medium);
-    transition: all var(--transition-fast);
-    backdrop-filter: blur(4px);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
 
     &:hover {
-        background: var(--accent-subtle) !important;
-        border-color: var(--accent-color) !important;
-        color: var(--accent-color) !important;
-    }
-}
-
-[data-scheme="dark"] {
-    .article-category a,
-    .article-tags a,
-    .tagCloud .tagCloud-tags a {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--secondary) !important;
+        color: var(--secondary-hover) !important;
+        background: var(--secondary-subtle) !important;
     }
 }
 
 /* ===========================================
-   IMAGES - Rounded with Soft Shadow
+   IMAGES - Sharp, Clean
    =========================================== */
 
 .article-content img {
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--transition-base);
-
-    &:hover {
-        box-shadow: var(--shadow-md);
-    }
+    border-radius: 0;
 }
 
 /* ===========================================
-   CARDS - Rounded with Soft Shadow
+   CARDS - 内蕴金 top border accent
+   金（边框）稳固，水（微光）流动
    =========================================== */
 
 .article-list article {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--transition-base);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--accent);
+    border-radius: 0;
+    transition: border-color var(--transition-base), border-top-width var(--transition-fast);
     overflow: hidden;
+    position: relative;
+
+    // Water shimmer on hover (left sweep)
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--secondary-subtle), transparent);
+        transition: width var(--transition-slow);
+        pointer-events: none;
+    }
 
     &:hover {
-        box-shadow: var(--shadow-md);
+        border-top-width: 2px;
+        border-color: var(--accent);
+
+        &::before {
+            width: 30%;
+        }
     }
 
     .article-title {
         font-family: var(--font-display);
         font-weight: var(--font-weight-semibold);
-        color: var(--card-text-color-main);
-        transition: color var(--transition-fast);
+        color: var(--text);
 
-        a:hover {
-            color: var(--accent-color);
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: none;
+
+            &:hover {
+                color: var(--accent);
+            }
         }
     }
 
     .article-subtitle,
     .article-time {
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
         font-size: var(--font-size-sm);
     }
 
-    // Image in card
     .article-image img {
         border-radius: 0;
-        box-shadow: none;
     }
 }
 
 // Widget cards
 .widget {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--accent);
+    border-radius: 0;
     overflow: hidden;
 }
 
 /* ===========================================
-   BLOCKQUOTES
+   BLOCKQUOTES - 内蕴金 accent border
    =========================================== */
 
 .article-content blockquote {
-    border-left: 4px solid var(--border-color);
+    border-left: 2px solid var(--accent);
     background: transparent;
     padding: 0 var(--spacing-md);
     margin: var(--spacing-md) 0;
-    color: var(--card-text-color-secondary);
+    color: var(--text-secondary);
     font-style: italic;
     font-family: var(--font-display);
     font-size: var(--font-size-md);
@@ -348,22 +407,22 @@
 }
 
 /* ===========================================
-   CODE
+   CODE - 智慧海 (Water) styling
    =========================================== */
 
 .article-content code {
     font-family: var(--font-mono);
-    font-size: var(--font-size-code);
+    font-size: 0.875em;
     background: var(--code-background-color);
     color: var(--code-text-color);
-    padding: 0.2em 0.5em;
+    padding: 0.15em 0.4em;
     border-radius: var(--radius-xs);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--code-border-color);
 }
 
 .article-content pre {
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-xs);
+    border-left: 2px solid var(--secondary);
 
     code {
         background: transparent;
@@ -381,11 +440,11 @@
         font-family: var(--font-display);
         font-weight: var(--font-weight-semibold);
         font-size: var(--font-size-xl);
-        color: var(--card-text-color-main);
+        color: var(--text);
     }
 
     .site-description {
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
         font-size: var(--font-size-sm);
         line-height: var(--line-height-normal);
     }
@@ -394,114 +453,102 @@
 .menu {
     a {
         font-family: var(--font-body);
-        font-weight: var(--font-weight-medium);
+        font-weight: var(--font-weight-normal);
         padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: var(--radius-sm);
-        transition: all var(--transition-fast);
+        transition: color var(--transition-fast), font-weight var(--transition-fast);
 
         &:hover {
-            background: var(--accent-subtle);
+            color: var(--accent);
+            font-weight: var(--font-weight-medium);
         }
     }
 
     .menu-bottom-section .social-menu a {
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
         transition: color var(--transition-fast);
 
         &:hover {
-            color: var(--accent-color);
+            color: var(--secondary);
         }
     }
 }
 
 /* ===========================================
-   TABLE OF CONTENTS
+   TABLE OF CONTENTS - Dual accent
    =========================================== */
 
 .widget--toc {
     .widget-title {
         font-family: var(--font-display);
         font-weight: var(--font-weight-semibold);
-        color: var(--card-text-color-main);
+        color: var(--text);
     }
 
     #TableOfContents a {
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
         border-left: 2px solid transparent;
         padding-left: var(--spacing-sm);
-        transition: all var(--transition-fast);
+        transition: color var(--transition-fast), border-color var(--transition-fast);
 
         &:hover {
-            color: var(--card-text-color-main);
-            background: var(--accent-subtle);
+            color: var(--secondary);
         }
 
         &.active {
-            color: var(--accent-color);
-            border-left-color: var(--accent-color);
+            color: var(--accent);
+            border-left-color: var(--accent);
             font-weight: var(--font-weight-medium);
         }
     }
 }
 
 /* ===========================================
-   SEARCH
+   SEARCH - Water focus state
    =========================================== */
 
 .search-form input {
-    background: var(--card-background);
-    color: var(--card-text-color-main);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast);
 
     &:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 3px var(--accent-subtle);
+        border-color: var(--secondary);
         outline: none;
     }
 
     &::placeholder {
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
     }
 }
 
 /* ===========================================
-   PAGINATION
+   PAGINATION - Gold active state
    =========================================== */
 
 .pagination .page-link {
-    color: var(--card-text-color-tertiary);
+    color: var(--text-tertiary);
     padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast);
 
     &:hover {
-        color: var(--card-text-color-main);
-        background: var(--accent-subtle);
+        color: var(--secondary);
     }
 
     &.active {
-        color: var(--accent-color-text);
-        background: var(--accent-color);
+        color: var(--accent);
         font-weight: var(--font-weight-semibold);
     }
 }
 
 /* ===========================================
-   FOOTER - Minimal Elegant
+   FOOTER
    =========================================== */
 
 .site-footer.site-footer--minimal {
-    width: 100%;
-    max-width: 100%;
     padding: var(--spacing-xl) 0 var(--spacing-lg);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
 
     .footer-divider {
@@ -510,11 +557,11 @@
         background: linear-gradient(
             90deg,
             transparent,
-            var(--card-text-color-tertiary),
+            var(--accent),
             transparent
         );
         margin: 0 auto var(--spacing-lg);
-        opacity: 0.4;
+        opacity: 0.6;
     }
 
     .copyright {
@@ -525,10 +572,9 @@
         font-size: var(--font-size-xs);
         font-family: var(--font-body);
         font-weight: var(--font-weight-normal);
-        color: var(--card-text-color-tertiary);
+        color: var(--text-tertiary);
         letter-spacing: 0.03em;
         text-transform: uppercase;
-        width: 100%;
     }
 
     .copyright-symbol {
@@ -541,20 +587,20 @@
 
     .copyright-name {
         font-weight: var(--font-weight-medium);
-        color: var(--card-text-color-secondary);
+        color: var(--text-secondary);
     }
 }
 
 .footer, footer.site-footer:not(.site-footer--minimal) {
-    color: var(--card-text-color-tertiary);
+    color: var(--text-tertiary);
     font-size: var(--font-size-sm);
 
     a {
-        color: var(--card-text-color-secondary);
+        color: var(--text-secondary);
         transition: color var(--transition-fast);
 
         &:hover {
-            color: var(--accent-color);
+            color: var(--accent);
         }
     }
 }
@@ -567,60 +613,77 @@
     .widget-title {
         font-family: var(--font-display);
         font-weight: var(--font-weight-semibold);
-        color: var(--card-text-color-main);
+        color: var(--text);
         font-size: var(--font-size-md);
     }
 }
 
 .archives-year a span.year {
-    color: var(--accent-color);
+    color: var(--accent);
     font-weight: var(--font-weight-semibold);
 }
 
 /* ===========================================
-   JOURNAL SECTION
+   JOURNAL SECTION - Gold left accent
    =========================================== */
 
 .section-journals .article-list article {
-    border-left: 3px solid transparent;
-    transition: border-left-color var(--transition-fast), box-shadow var(--transition-base);
+    border-left: 2px solid transparent;
+    transition: border-color var(--transition-base);
 
     &:hover {
-        border-left-color: var(--accent-color);
+        border-left-color: var(--accent);
     }
 }
 
 /* ===========================================
-   BUTTONS - Glassmorphism Style
+   BUTTONS - Gold hover, Fire click flash
    =========================================== */
 
 button,
 .btn,
 input[type="submit"] {
-    background: rgba(0, 0, 0, 0.05);
-    border: 0.5px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
     padding: 0.4rem 1.2rem;
     font-family: var(--font-body);
-    font-weight: var(--font-weight-medium);
-    color: var(--card-text-color-secondary);
-    backdrop-filter: blur(4px);
-    transition: all var(--transition-fast);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-secondary);
+    transition: border-color var(--transition-fast), color var(--transition-fast), font-weight var(--transition-fast);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 
     &:hover {
-        background: var(--accent-color);
-        border-color: var(--accent-color);
-        color: var(--accent-color-text);
+        border-color: var(--accent);
+        color: var(--accent);
+        font-weight: var(--font-weight-medium);
+    }
+
+    // Fire flash on click (流年曦)
+    &:active {
+        box-shadow: inset 0 0 20px var(--dynamic-glow);
     }
 }
 
-[data-scheme="dark"] {
-    button,
-    .btn,
-    input[type="submit"] {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.12);
+// Primary CTA - ONLY filled button (key conversion point)
+.btn-primary,
+.btn--primary,
+button[type="submit"].primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-color-text);
+    font-weight: var(--font-weight-medium);
+
+    &:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+        color: var(--accent-color-text);
+    }
+
+    &:active {
+        box-shadow: inset 0 0 30px var(--dynamic-glow);
     }
 }
 
@@ -629,13 +692,16 @@ input[type="submit"] {
    =========================================== */
 
 .article-content table {
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
 
     th, td {
-        border-color: var(--table-border-color);
+        border-color: var(--border);
         padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    th {
+        border-bottom: 1px solid var(--accent);
     }
 
     tr:nth-child(even) {
@@ -643,12 +709,12 @@ input[type="submit"] {
     }
 
     tr:hover {
-        background: var(--accent-subtle);
+        background: var(--secondary-subtle);
     }
 }
 
 /* ===========================================
-   READING PROGRESS BAR
+   READING PROGRESS BAR - Gold energy
    =========================================== */
 
 .reading-progress {
@@ -656,8 +722,8 @@ input[type="submit"] {
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
-    background: var(--accent-color);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
     z-index: 9999;
     transition: width 0.1s ease;
     pointer-events: none;
@@ -678,18 +744,46 @@ input[type="submit"] {
 
 ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
-    border-radius: 4px;
 
     &:hover {
-        background: var(--accent-color);
+        background: var(--accent);
     }
 }
 
 /* ===========================================
-   SELECTION
+   SELECTION - Gold highlight
    =========================================== */
 
 ::selection {
     background: var(--accent-subtle);
-    color: var(--card-text-color-main);
+    color: var(--text);
+}
+
+/* ===========================================
+   2026 丙午 SPECIAL - Fire transformation indicator
+   Optional: Add class "bingwu-year" to elements
+   =========================================== */
+
+.bingwu-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    color: var(--dynamic);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    
+    &::before {
+        content: '丙午';
+        font-size: 0.8em;
+    }
+}
+
+// Fire glow animation for special occasions
+@keyframes fire-transform {
+    0%, 100% { box-shadow: none; }
+    50% { box-shadow: 0 0 20px var(--dynamic-glow); }
+}
+
+.fire-blessing {
+    animation: fire-transform 2s ease-in-out;
 }
