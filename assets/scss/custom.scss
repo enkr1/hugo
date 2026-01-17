@@ -513,6 +513,15 @@
         padding-right: 1rem;
         user-select: none;
     }
+
+    // Copy button - always visible, no hover effect
+    .copyCodeButton {
+        opacity: 1;
+    }
+
+    &:hover {
+        // No visual changes on hover
+    }
 }
 
 /* ===========================================
