@@ -119,17 +119,6 @@
                         (function() {
                             const toggle = document.getElementById('dark-mode-toggle');
                             if (!toggle) return;
-
-                            toggle.addEventListener('click', function(e) {
-                                // Add transitioning class immediately
-                                this.classList.add('theme-toggle--transitioning');
-
-                                // Remove after animation completes
-                                setTimeout(() => {
-                                    this.classList.remove('theme-toggle--transitioning');
-                                }, 600);
-                            });
-
                             // Keyboard accessibility
                             toggle.addEventListener('keydown', function(e) {
                                 if (e.key === 'Enter' || e.key === ' ') {
