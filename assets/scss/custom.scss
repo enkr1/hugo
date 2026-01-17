@@ -23,14 +23,14 @@
     --article-font-family: var(--font-body);
     --code-font-family: var(--font-mono);
 
-    // TYPE SCALE (1.7×)
-    --font-size-xs: 1.275rem;
-    --font-size-sm: 1.49rem;
-    --font-size-base: 1.7rem;
-    --font-size-md: 2.125rem;
-    --font-size-lg: 2.55rem;
-    --font-size-xl: 3.19rem;
-    --font-size-2xl: 4.25rem;
+    // TYPE SCALE (1.4×)
+    --font-size-xs: 1.05rem;
+    --font-size-sm: 1.23rem;
+    --font-size-base: 1.4rem;
+    --font-size-md: 1.75rem;
+    --font-size-lg: 2.1rem;
+    --font-size-xl: 2.63rem;
+    --font-size-2xl: 3.5rem;
 
     // LINE HEIGHTS
     --line-height-tight: 1.2;
@@ -211,7 +211,6 @@
 .article-title,
 .section-title {
     h1, h2, h3, h4, h5, h6 {
-        font-family: var(--font-display);
         color: var(--text);
         margin: var(--spacing-lg) 0 var(--spacing-sm);
 
@@ -221,9 +220,14 @@
     }
 
     h1 {
+        font-family: var(--font-display);
         font-size: var(--font-size-2xl);
         font-weight: var(--font-weight-semibold);
         line-height: var(--line-height-tight);
+    }
+
+    h2, h3, h4, h5, h6 {
+        font-family: var(--font-body);
     }
 
     h2 {
@@ -382,7 +386,7 @@
     }
 
     .article-title {
-        font-family: var(--font-display);
+        font-family: var(--font-body);
         font-weight: var(--font-weight-semibold);
         color: var(--text);
 
@@ -400,10 +404,20 @@
         }
     }
 
-    .article-subtitle,
+    .article-subtitle {
+        color: var(--text-secondary);
+        font-size: var(--font-size-sm) !important;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
     .article-time {
         color: var(--text-tertiary);
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        opacity: 0.8;
     }
 
     // Ensure header content is above shimmer but below stretched link
@@ -414,6 +428,10 @@
 
     .article-details {
         position: relative;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     .article-image img {
@@ -440,7 +458,7 @@
     margin: var(--spacing-md) 0;
     color: var(--text-secondary);
     font-style: italic;
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: var(--font-size-md);
     line-height: var(--line-height-relaxed);
 }
@@ -518,7 +536,7 @@
 
 .widget--toc {
     .widget-title {
-        font-family: var(--font-display);
+        font-family: var(--font-body);
         font-weight: var(--font-weight-semibold);
         color: var(--text);
     }
@@ -650,7 +668,7 @@
 
 .widget {
     .widget-title {
-        font-family: var(--font-display);
+        font-family: var(--font-body);
         font-weight: var(--font-weight-semibold);
         color: var(--text);
         font-size: var(--font-size-md);
@@ -825,4 +843,208 @@ button[type="submit"].primary {
 
 .fire-blessing {
     animation: fire-transform 2s ease-in-out;
+}
+
+/* ===========================================
+   ADVANCED THEME TOGGLE - 日月交替
+   Sun (金) ↔ Moon (水) with Fire transition
+   =========================================== */
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--menu-icon-separation, 10px);
+    cursor: pointer;
+    padding: var(--spacing-xs) 0;
+    user-select: none;
+
+    // Remove default list styling from parent
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible .theme-toggle__track {
+        box-shadow: 0 0 0 2px var(--secondary);
+    }
+}
+
+.theme-toggle__track {
+    position: relative;
+    width: 52px;
+    height: 26px;
+    background: var(--border);
+    border-radius: 13px;
+    transition: background var(--transition-slow), box-shadow var(--transition-slow);
+    overflow: hidden;
+    flex-shrink: 0;
+
+    // Subtle inner shadow for depth
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity var(--transition-slow);
+        // Fire glow on transition
+        background: radial-gradient(circle at center, var(--dynamic-glow), transparent 70%);
+        pointer-events: none;
+    }
+}
+
+.theme-toggle__icons {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    pointer-events: none;
+}
+
+.theme-toggle__sun,
+.theme-toggle__moon {
+    width: 16px;
+    height: 16px;
+    transition: opacity var(--transition-slow), transform var(--transition-slow), color var(--transition-slow);
+}
+
+.theme-toggle__sun {
+    color: var(--gold);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.theme-toggle__moon {
+    color: var(--secondary);
+    opacity: 0.4;
+    transform: scale(0.8) rotate(-30deg);
+}
+
+.theme-toggle__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: var(--surface);
+    border-radius: 50%;
+    transition: transform var(--transition-slow) cubic-bezier(0.34, 1.56, 0.64, 1),
+                background var(--transition-slow),
+                box-shadow var(--transition-slow);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.theme-toggle__label {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm, 1.4rem);
+    transition: color var(--transition-fast);
+}
+
+// Hover states
+.theme-toggle:hover {
+    .theme-toggle__track {
+        background: var(--accent-subtle);
+
+        &::before {
+            opacity: 0.3;
+        }
+    }
+
+    .theme-toggle__thumb {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .theme-toggle__label {
+        color: var(--accent);
+    }
+}
+
+// Active/click state - Fire flash
+.theme-toggle:active {
+    .theme-toggle__track::before {
+        opacity: 0.6;
+    }
+
+    .theme-toggle__thumb {
+        transform: translateX(0) scale(0.95);
+        box-shadow: 0 0 10px var(--dynamic-glow);
+    }
+}
+
+// Dark mode state
+[data-scheme="dark"] {
+    .theme-toggle__track {
+        background: var(--secondary-subtle);
+    }
+
+    .theme-toggle__sun {
+        opacity: 0.4;
+        transform: scale(0.8) rotate(30deg);
+        color: var(--gold-light);
+    }
+
+    .theme-toggle__moon {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        color: var(--secondary);
+    }
+
+    .theme-toggle__thumb {
+        transform: translateX(26px);
+        background: var(--card-background);
+        box-shadow: 0 0 8px var(--secondary-subtle), 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-toggle__label {
+        color: var(--accent);
+        font-weight: var(--font-weight-medium);
+    }
+
+    .theme-toggle:hover .theme-toggle__track {
+        background: rgba(91, 143, 217, 0.2);
+    }
+
+    .theme-toggle:active .theme-toggle__thumb {
+        transform: translateX(26px) scale(0.95);
+    }
+}
+
+// Animation for mode transition
+@keyframes thumb-bounce {
+    0%, 100% { transform: translateX(var(--thumb-x, 0)) scale(1); }
+    50% { transform: translateX(var(--thumb-x, 0)) scale(1.1); }
+}
+
+@keyframes icon-pulse {
+    0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+    50% { filter: drop-shadow(0 0 4px currentColor); }
+}
+
+// Transitioning animation class (added via JS during transition)
+.theme-toggle--transitioning {
+    .theme-toggle__track::before {
+        opacity: 0.8 !important;
+        animation: fire-transform 0.4s ease-out;
+    }
+
+    .theme-toggle__thumb {
+        animation: thumb-bounce 0.4s ease-out;
+    }
+
+    .theme-toggle__sun,
+    .theme-toggle__moon {
+        animation: icon-pulse 0.4s ease-out;
+    }
+}
+
+// Hide the old toggle icons (from theme)
+#dark-mode-toggle {
+    .icon-tabler-toggle-left,
+    .icon-tabler-toggle-right {
+        display: none !important;
+    }
 }
