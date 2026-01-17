@@ -8,8 +8,11 @@ tags:
 - "inspirational"
 - "motivation"
 categories:
-- ["Personal Development", "Life Lessons"]
-- ["Career Development", "Project Management", "Leadership Skills"]
+- "Personal Development"
+- "Life Lessons"
+- "Career Development"
+- "Project Management"
+- "Leadership Skills"
 subtitle: "Guidance from a Grocery Giant: Key Lessons from Lim Hock Chee"
 description: "Explore the life and leadership philosophy of Lim Hock Chee, the CEO of Sheng Siong, one of Singapore's leading supermarket chains. This post delves into the business strategies, cultural insights, and personal principles that have shaped his journey and the success of Sheng Siong. Discover actionable lessons in entrepreneurship, leadership, and personal development that can inspire and guide your own career and life choices."
 keywords:

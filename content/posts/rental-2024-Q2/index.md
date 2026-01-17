@@ -9,7 +9,8 @@ tags:
   - "accommodation"
   - "housing"
 categories:
-  - ["_Other", "Rentals"]
+  - "_Other"
+  - "Rentals"
 subtitle: "Looking for a Room for Two Siblings in Singapore by July 2024 / 寻找2024年7月前在新加坡适合两兄妹的租房"
 description: "Searching for a room to rent in Singapore for two siblings by July 2024. Budget around 1,100 SGD per month. Full-time employees and permanent residents. Contact via WhatsApp for more details. / 寻找 2024 年 7 月前在新加坡的租房，适合两兄妹居住。预算约为每月 1,100 新币。我们是全职员工和永久居民。请通过 WhatsApp 联系获取更多信息。"
 keywords:

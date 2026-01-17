@@ -4,8 +4,10 @@ date: 2023-12-13 14:53:15
 tags:
   - "programming"
 categories:
-  - ["Software Engineering", "Programming Languages", "Elixir"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Elixir"
+  - "Notebooks"
 subtitle: "Unlocking the Power of Elixir: Functional Programming for Scalable Applications"
 description: "Explore the world of Elixir, the dynamic, functional language designed for building scalable and maintainable applications. This post delves into the core features of Elixir, including its concurrency model, fault tolerance, and functional programming paradigms. Whether you're a beginner eager to learn Elixir or an experienced developer looking to expand your toolkit, find comprehensive insights and practical examples to harness the full potential of this powerful language."
 keywords:

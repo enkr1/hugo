@@ -3,7 +3,9 @@ title: "My Journey in Elixir Phoenix"
 date: 2024-05-19 19:07:45
 tags:
 categories:
-  - ["Software Engineering", "Frameworks", "Phoenix"]
+  - "Software Engineering"
+  - "Frameworks"
+  - "Phoenix"
 
 ---
 

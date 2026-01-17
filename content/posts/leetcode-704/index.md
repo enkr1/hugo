@@ -9,7 +9,8 @@ tags:
   - "javascript"
   - "binary-search"
 categories:
-  - ["Software Engineering", "Coding Problems"]
+  - "Software Engineering"
+  - "Coding Problems"
 subtitle: "Quick Guide to Solving LeetCode Problem 704: Binary Search"
 description: "A concise guide to solving LeetCode 704 using Binary Search. Understand the key steps and implementation in a simplified manner."
 keywords:

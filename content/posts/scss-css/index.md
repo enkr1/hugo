@@ -6,8 +6,10 @@ tags:
   - "frontend"
   - "ui-ux-design"
 categories:
-  - ["Software Engineering", "Web Development", "Front-end"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Web Development"
+  - "Front-end"
+  - "Notebooks"
 subtitle: "Enhancing Web Aesthetics and Efficiency with SCSS/CSS"
 description: "Unlock the potential of SCSS and CSS with this essential guide filled with tips and tricks to streamline your web design process. Learn how to harness the power of these styling languages to create responsive, visually appealing, and efficient websites. Whether you're a beginner or a seasoned front-end developer, discover innovative techniques and best practices that can elevate your web development skills."
 keywords:

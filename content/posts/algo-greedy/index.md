@@ -5,7 +5,8 @@ tags:
   - "algorithm"
   - "greedy-algorithm"
 categories:
-  - ["Software Engineering", "Data Structures & Algorithms"]
+  - "Software Engineering"
+  - "Data Structures & Algorithms"
 subtitle: "Solving Problems with Greedy Techniques for Optimal Efficiency"
 description: "A comprehensive guide to understanding greedy algorithms and how they provide efficient, optimal solutions by making locally optimal choices. Explore key concepts, implementation examples, and applications in real-world problem-solving scenarios."
 keywords:

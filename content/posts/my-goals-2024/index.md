@@ -10,7 +10,8 @@ tags:
   - "career-development"
   - "professional-growth"
 categories:
-  - ["About Me", "Goals"]
+  - "About Me"
+  - "Goals"
 subtitle: "A personal roadmap for achieving big wins in 2024!"
 description: "In 2024, I am aiming to grow both professionally and personally. From pursuing a Computer Science degree and levelling up at ByteDance to rekindling old hobbies like beatboxing and investing in financial growth. Here's my plan."
 keywords:

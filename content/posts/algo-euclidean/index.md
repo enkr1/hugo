@@ -8,7 +8,8 @@ tags:
   - "gcd"
   - "greatest-common-divisor"
 categories:
-  - ["Software Engineering", "Data Structures & Algorithms"]
+  - "Software Engineering"
+  - "Data Structures & Algorithms"
 subtitle: "Efficiently Determine the Greatest Common Divisor (GCD)"
 description: "Discover the Euclidean Algorithm, an efficient method for finding the greatest common divisor (GCD) of two numbers. This guide includes a step-by-step explanation and Java implementation, perfect for software engineers and algorithm enthusiasts."
 keywords:

@@ -8,7 +8,9 @@ tags:
   - "software-engineering"
   - "interview-preparation"
 categories:
-  - ["Career Development", "Interviews", "Technical Coding Interviews"]
+  - "Career Development"
+  - "Interviews"
+  - "Technical Coding Interviews"
 subtitle: "Navigating the Coding Interview Landscape to Land a Dream Tech Job"
 description: "Embark on my personal odyssey as I navigate the challenging world of coding interviews through LeetCode. Uncover the strategies that propelled me to secure a coveted position at ByteDance, learn from my journey's ups and downs, and gather actionable tips to boost your own performance in coding interviews."
 keywords:

@@ -6,9 +6,12 @@ tags:
   - "data-science"
   - "machine-learning"
 categories:
-  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
-  - ["Software Engineering", "Machine Learning & AI"]
-  - ["Notebooks"]
+  - "Personal Development"
+  - "Online Courses"
+  - "MIT & IDSS - AI & ML"
+  - "Software Engineering"
+  - "Machine Learning & AI"
+  - "Notebooks"
 subtitle: "Exploring Advanced Techniques in Data Science to Tackle Unstructured Data"
 description: "wip ..."
 keywords:

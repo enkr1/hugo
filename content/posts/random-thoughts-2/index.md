@@ -8,7 +8,8 @@ tags:
   - reflection
   - emo
 categories:
-  - ["About Me", "Random Thoughts"]
+  - "About Me"
+  - "Random Thoughts"
 subtitle:
 description:
 keywords:

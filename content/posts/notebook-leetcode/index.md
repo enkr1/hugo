@@ -5,8 +5,9 @@ tags:
   - "programming"
   - "leetcode"
 categories:
-  - ["Software Engineering", "Programming Languages"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Notebooks"
 ---
 
 

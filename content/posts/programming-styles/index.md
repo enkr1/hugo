@@ -6,7 +6,8 @@ tags:
 - "software-development"
 - "coding-styles"
 categories:
-- ["Software Engineering", "Programming Styles"]
+- "Software Engineering"
+- "Programming Styles"
 subtitle: "Decoding the Differences: Declarative vs. Imperative Programming"
 description: "Dive into the core differences between declarative and imperative programming styles in this comprehensive guide. Understand the unique benefits and challenges of each approach to enhance your coding techniques and optimize your software development process. Whether you're a novice coder or an experienced developer, this article will provide valuable insights into choosing the right programming style for your projects."
 keywords:

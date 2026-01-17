@@ -4,7 +4,8 @@ date: 2024-04-20 04:46:38
 tags:
 - "interesting"
 categories:
-- ["_Other", "Social Science Insights"]
+- "_Other"
+- "Social Science Insights"
 subtitle: "Exploring the Science Behind Our Social Circles"
 description: "Uncover the fascinating concept of Dunbar's Number and its implications on our social interactions and networks. This post dives into the psychological and anthropological research behind why we can maintain only a limited number of stable social relationships, typically around 150. Learn how this theory applies to personal connections, social media, and professional networks, offering insights into managing our social lives more effectively."
 keywords:

@@ -4,8 +4,10 @@ date: 2023-12-12 23:13:57
 tags:
   - "programming"
 categories:
-  - ["Personal Development", "Online Courses", "CS50"]
-  - ["Notebooks"]
+  - "Personal Development"
+  - "Online Courses"
+  - "CS50"
+  - "Notebooks"
 subtitle: "A Marathon of Learning: Insights from Harvard's CS50"
 description: "Join me on a 24-hour deep dive into Harvard's CS50 course, taught by the charismatic David Malan. This post captures the intense and enlightening experience of completing this renowned introductory computer science course in just one day. Discover key takeaways, challenging concepts, and valuable resources that can help anyone looking to start or enhance their journey in computer science."
 keywords:

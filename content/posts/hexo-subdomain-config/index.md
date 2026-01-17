@@ -7,8 +7,11 @@ tags:
   - "github-pages"
   - "hexo"
 categories:
-  - ["Software Engineering", "Configurations", "DNS"]
-  - ["Software Engineering", "Frameworks", "Hexo"]
+  - "Software Engineering"
+  - "Configurations"
+  - "DNS"
+  - "Frameworks"
+  - "Hexo"
 subtitle: "A Step-by-Step Guide to Configuring a Subdomain and Fixing Common CNAME Issues"
 description: "Learn how to configure a subdomain on GitHub Pages, troubleshoot CNAME issues, and ensure smooth deployment with Hexo. This guide simplifies the process to get your site up and running with a custom domain."
 keywords:

@@ -9,9 +9,12 @@ tags:
   - "ai"
   - "data-science"
 categories:
-  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
-  - ["Software Engineering", "Machine Learning & AI"]
-  - ["Notebooks"]
+  - "Personal Development"
+  - "Online Courses"
+  - "MIT & IDSS - AI & ML"
+  - "Software Engineering"
+  - "Machine Learning & AI"
+  - "Notebooks"
 ---
 
 ## WIP?

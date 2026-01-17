@@ -7,7 +7,10 @@ tags:
   - css
   - html5
 categories:
-  - ["Software Engineering", "Web Development", "Front-end", "UI/UX"]
+  - "Software Engineering"
+  - "Web Development"
+  - "Front-end"
+  - "UI/UX"
 subtitle: "Learn to develop a seamless progress bar that accurately tracks every resource on your website."
 description: "Learn how to build a robust and interactive loading progress bar that tracks images, API calls, and other assets to deliver a seamless user experience."
 ---

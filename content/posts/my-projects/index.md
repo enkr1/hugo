@@ -17,7 +17,8 @@ tags:
   - "creative-technology"
   - "full-stack-development"
 categories:
-  - ["Software Engineering", "Projects"]
+  - "Software Engineering"
+  - "Projects"
 comments: false
 subtitle: "Unveiling My Expertise in Personal and Professional Projects"
 description: "Explore my portfolio of cutting-edge software and technology projects. From mobile apps to web platforms, discover how I solve real-world challenges with innovative and effective solutions."

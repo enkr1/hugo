@@ -8,7 +8,9 @@ tags:
   - "beatboxing"
   - "deep-thoughts"
 categories:
-  - ["About Me", "Hobbies", "Beatboxing"]
+  - "About Me"
+  - "Hobbies"
+  - "Beatboxing"
 subtitle: "Rediscovering My Passion for Beatboxing: A Personal Reflection"
 description: "After a deep conversation with Malaysian beatbox legend Artsy, I am reflecting on why beatboxing has been such a big part of my life. This is my journey to rediscovering the roots of my passion and reconnecting with what made me love beatboxing in the first place."
 keywords:

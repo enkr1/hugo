@@ -5,7 +5,8 @@ date: 2025-01-01 20:42:35
 tags:
   - "reflections"
 categories:
-  - ["About Me", "Reflections"]
+  - "About Me"
+  - "Reflections"
 subtitle: "2024: A year of challenges, triumphs, and personal transformation that redefined what's possible."
 description: "2024 was a year that tested my limits, brought unexpected milestones, and transformed my perspective. From completing the MIT IDSS programme and thriving in my role at ByteDance to judging beatbox battles and embarking on solo adventures, this year has been a whirlwind of growth, resilience, and unforgettable experiences. Here's a look back at my personal journey."
 keywords:

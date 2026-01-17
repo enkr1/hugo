@@ -10,7 +10,8 @@ tags:
   - "interview-preparation"
   - "top-interview-150"
 categories:
-  - ["Software Engineering", "Coding Problems"]
+  - "Software Engineering"
+  - "Coding Problems"
 subtitle: "Comprehensive Guide to Solving LeetCode Problem 139: Word Break Using Dynamic Programming"
 description: "An in-depth guide to solving LeetCode 139 with Dynamic Programming. Understand the problem, approach, and implementation step by step with detailed explanations and examples."
 keywords:

@@ -8,8 +8,10 @@ tags:
   - "golang"
   - "notes"
 categories:
-  - ["Software Engineering", "Programming Languages", "Go"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Go"
+  - "Notebooks"
 subtitle: "A JavaScript Developer's Journey into Go: Building High-Performance Tools for Big Data Challenges"
 description: "Follow my hands-on Go learning journey through LeetCode solutions and real-world comparisons with JavaScript. Discover how Go's concurrency and memory efficiency solve problems where JS hits limits."
 keywords:

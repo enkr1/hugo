@@ -6,7 +6,9 @@ tags:
   - "beatbox-crew"
   - "learning"
 categories:
-  - ["About Me", "Hobbies", "Beatboxing"]
+  - "About Me"
+  - "Hobbies"
+  - "Beatboxing"
 subtitle: "Personal Insights and Professional Growth"
 description: "Join ENKR (Jing Hui PANG) as he shares his experience at the new MINI Cooper launch event, reflecting on personal growth, teamwork, and valuable lessons learnt from industry experts."
 keywords:

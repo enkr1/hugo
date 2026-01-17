@@ -6,7 +6,9 @@ tags:
   - "hexo"
   - "github-pages"
 categories:
-  - ["Software Engineering", "Configurations", "DNS"]
+  - "Software Engineering"
+  - "Configurations"
+  - "DNS"
 comments: false
 subtitle: "Setting Up a Custom Domain with Dynadot for GitHub Pages"
 description: "A detailed guide on how to configure a custom domain from Dynadot with GitHub Pages. Learn how to manage DNS settings and integrate your domain with Hexo for seamless website hosting."

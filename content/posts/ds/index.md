@@ -5,8 +5,9 @@ tags:
   - "programming"
   - "data-structures"
 categories:
-  - ["Software Engineering", "Data Structures & Algorithms"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Data Structures & Algorithms"
+  - "Notebooks"
 subtitle: "Mastering Data Structures: A Comprehensive Guide"
 description: "Delve into the core concepts, practical implementations, and advanced techniques of essential data structures. This notebook covers topics like Union-Find, path compression, union by rank, and more, providing developers with the knowledge to tackle complex algorithmic challenges. Ideal for those looking to deepen their understanding of data structures and their applications in solving diverse problems."
 keywords:

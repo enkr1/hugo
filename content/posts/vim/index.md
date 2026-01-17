@@ -9,8 +9,10 @@ tags:
   - "development-tools"
   - "coding-productivity"
 categories:
-  - ["Software Engineering", "Development Tools", "Editors"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Development Tools"
+  - "Editors"
+  - "Notebooks"
 subtitle: "Personal Tips to Boost Your Efficiency with Vim"
 description: "Explore a personal collection of Vim commands and tricks that I've found useful in enhancing my text editing efficiency. Whether you're a DevOps engineer, a frontend developer, or a backend coder, these notes will guide you through mastering Vim."
 keywords:

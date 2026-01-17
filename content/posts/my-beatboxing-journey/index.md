@@ -6,7 +6,9 @@ tags:
 - "beatbox"
 - "stage-performance"
 categories:
-- ["About Me", "Hobbies", "Beatboxing"]
+- "About Me"
+- "Hobbies"
+- "Beatboxing"
 sticky: 1000
 subtitle: "Discover How Beatboxing Transformed My Life and Took Me to the Stage"
 description: "Discover beatbox journey of Jing Hui PANG (ENKR) from solitude to stage performance. Learn about the personal growth, technical skills, and inspiring moments that defined this musical transformation. Share your own musical journey and join the discussion!"

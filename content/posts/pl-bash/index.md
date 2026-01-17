@@ -9,8 +9,10 @@ tags:
   - "linux"
   - "scripting"
 categories:
-  - ["Software Engineering", "Programming Languages", "Bash"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Bash"
+  - "Notebooks"
 # photos:
 # - /images/terminal.png
 subtitle: "Unlock Your Full Potential with Advanced Bash Scripts"

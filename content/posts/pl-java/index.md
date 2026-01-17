@@ -7,8 +7,10 @@ tags:
   - "notes"
   - "programming-languages"
 categories:
-  - ["Software Engineering", "Programming Languages", "Java"]
-  - ["Notebooks"]
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Java"
+  - "Notebooks"
 subtitle: "A collection of notes and resources for Java programming language  "
 description: "A collection of notes and resources for Java programming language"
 keywords:

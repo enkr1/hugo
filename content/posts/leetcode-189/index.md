@@ -9,7 +9,8 @@ tags:
   - "javascript"
   - "array-manipulation"
 categories:
-  - ["Software Engineering", "Coding Problems"]
+  - "Software Engineering"
+  - "Coding Problems"
 subtitle: "Efficient Techniques to Solve LeetCode 189: Rotate Array"
 description: "Learn how to solve LeetCode 189 using an efficient in-place array manipulation approach. This solution explores array rotation with optimal time complexity using the reverse method."
 keywords:
