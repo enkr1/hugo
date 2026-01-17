@@ -723,6 +723,10 @@
         font-size: var(--font-size-base);
         line-height: 1.5;
 
+        // Preserve scrollspy functionality
+        max-height: 75vh;
+        overflow-y: auto;
+
         // Remove all list styling
         ul, ol {
             list-style: none !important;
@@ -1309,9 +1313,9 @@ button[type="submit"].primary {
     }
 }
 
-// Hide pagination when infinite scroll active
-.infinite-scroll-active .pagination {
-    display: none;
+// Hide pagination completely on pages with article list (no flash, no fallback)
+body:has(.article-list:not(.article-list--sticky)) .pagination {
+    display: none !important;
 }
 
 // Sentinel element (invisible trigger point)
@@ -1339,7 +1343,7 @@ button[type="submit"].primary {
 
     span {
         font-family: var(--font-display);
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-lg);
         color: var(--text-tertiary);
         font-weight: 300;
         letter-spacing: 0.1em;
