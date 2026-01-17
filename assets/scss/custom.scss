@@ -59,6 +59,7 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
+    --section-separation: 2rem;
 
     // ===========================================
     // BA ZI ENERGY COLORS (SSOT)
@@ -447,17 +448,72 @@
    Entire card is clickable via stretched link
    =========================================== */
 
+// Border trace animation - each edge separately
+@keyframes trace-top {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes trace-right {
+    from { height: 0; }
+    to { height: 100%; }
+}
+
+@keyframes trace-bottom {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes trace-left {
+    from { height: 0; }
+    to { height: 100%; }
+}
+
 .article-list article,
 .article-list .article-card {
     border: 1px solid var(--border);
-    border-top: 1px solid var(--accent);
     border-radius: 0;
-    transition: border-color var(--transition-base);
     overflow: hidden;
     position: relative;
     cursor: pointer;
 
-    // Stretched link covers entire card
+    // Top edge - traces left to right
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--accent);
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    // Right edge - traces top to bottom
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 0;
+        background: var(--accent);
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    &:hover {
+        &::before {
+            animation: trace-top 0.18s ease-out forwards;
+        }
+
+        &::after {
+            animation: trace-right 0.18s ease-out 0.18s forwards;
+        }
+    }
+
+    // Stretched link covers entire card - also used for bottom & left borders
     .article-card__link {
         position: absolute;
         top: 0;
@@ -465,28 +521,41 @@
         right: 0;
         bottom: 0;
         z-index: 1;
-        // No visual styling - invisible overlay
-    }
 
-    // Water shimmer on hover (left sweep)
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: linear-gradient(90deg, var(--secondary-subtle), transparent);
-        transition: width var(--transition-slow);
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    &:hover {
-        border-color: var(--accent);
-
+        // Bottom edge - traces right to left
         &::before {
-            width: 30%;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        // Left edge - traces bottom to top
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 1px;
+            height: 0;
+            background: var(--accent);
+            z-index: 3;
+            pointer-events: none;
+        }
+    }
+
+    &:hover .article-card__link {
+        &::before {
+            animation: trace-bottom 0.18s ease-out 0.36s forwards;
+        }
+
+        &::after {
+            animation: trace-left 0.18s ease-out 0.54s forwards;
         }
     }
 
@@ -958,21 +1027,117 @@
 }
 
 /* ===========================================
-   PAGINATION - Gold active state
+   PAGINATION - Ba Zi styled (金水相生)
+   Clean inline design with gold accents
    =========================================== */
 
-.pagination .page-link {
-    color: var(--text-tertiary);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    transition: color var(--transition-fast);
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: var(--spacing-xl) 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
 
-    &:hover {
-        color: var(--secondary);
-    }
+    .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 var(--spacing-sm);
+        margin: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+        text-decoration: none;
+        transition: color var(--transition-fast), background var(--transition-fast);
+        position: relative;
 
-    &.active {
-        color: var(--accent);
-        font-weight: var(--font-weight-semibold);
+        // Separator dots between items
+        &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 16px;
+            background: var(--border);
+        }
+
+        // Arrow buttons (first/last)
+        &:first-child,
+        &:last-child {
+            flex: 0 0 auto;
+            padding: 0 var(--spacing-xs);
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &:hover:not(.current):not(.disabled) {
+            color: var(--secondary);
+            background: var(--secondary-subtle);
+        }
+
+        // Current page - gold accent
+        &.current {
+            color: var(--accent);
+            font-weight: var(--font-weight-semibold);
+            background: var(--accent-subtle);
+            cursor: default;
+
+            // Gold underline indicator
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 16px;
+                height: 2px;
+                background: var(--accent);
+                border-radius: 1px;
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+
+        // Disabled state (prev/next when at bounds)
+        &.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: var(--text-tertiary);
+        }
+
+        // Ellipsis styling
+        &.pagination-link {
+            cursor: default;
+            color: var(--text-tertiary);
+
+            &:hover {
+                background: transparent;
+                color: var(--text-tertiary);
+            }
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
     }
 }
 
