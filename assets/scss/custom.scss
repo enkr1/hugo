@@ -21,16 +21,18 @@
     // Override theme's font variables
     --base-font-family: var(--font-body);
     --article-font-family: var(--font-body);
+    --article-font-size: var(--font-size-base);
     --code-font-family: var(--font-mono);
 
-    // TYPE SCALE (1.7×)
-    --font-size-xs: 1.275rem;
-    --font-size-sm: 1.49rem;
-    --font-size-base: 1.7rem;
-    --font-size-md: 2.125rem;
-    --font-size-lg: 2.55rem;
-    --font-size-xl: 3.19rem;
-    --font-size-2xl: 4.25rem;
+    // TYPE SCALE (1.6×)
+    --font-size-xs: 1.2rem;
+    --font-size-sm: 1.4rem;
+    --font-size-code: 1.5rem;
+    --font-size-base: 1.6rem;
+    --font-size-md: 2rem;
+    --font-size-lg: 2.4rem;
+    --font-size-xl: 3rem;
+    --font-size-2xl: 4rem;
 
     // LINE HEIGHTS
     --line-height-tight: 1.2;
@@ -577,7 +579,7 @@
     color: var(--text-secondary);
     font-style: italic;
     font-family: var(--font-body);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-base);
     line-height: var(--line-height-relaxed);
 }
 
@@ -587,7 +589,7 @@
 
 .article-content code {
     font-family: var(--font-mono);
-    font-size: 0.85em;
+    font-size: var(--font-size-code);
     background: var(--code-background-color);
     color: var(--code-text-color);
     padding: 0.2em 0.4em;
@@ -600,7 +602,7 @@
         background: transparent;
         padding: 0;
         border: none;
-        font-size: 0.9em;
+        font-size: var(--font-size-code);
     }
 }
 
@@ -1242,4 +1244,30 @@ button[type="submit"].primary {
 .infinite-scroll-sentinel {
     height: 1px;
     visibility: hidden;
+}
+
+// Error state with retry button
+.infinite-scroll-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+
+    .infinite-scroll-retry {
+        padding: 0.5rem 1rem;
+        background: var(--accent);
+        color: var(--card-background);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: var(--font-size-sm);
+        transition: background var(--transition-fast);
+
+        &:hover {
+            background: var(--accent-hover, var(--accent));
+        }
+    }
 }
