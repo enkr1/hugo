@@ -124,12 +124,11 @@
     --scrollbar-thumb: #CBD5E0;
     --scrollbar-track: var(--bg);
 
-    // Code - Water element border
-    --code-background-color: var(--secondary-subtle);
+    // Code - Clean, minimal
+    --code-background-color: rgba(0, 0, 0, 0.05);
     --code-text-color: var(--text);
-    --code-border-color: rgba(30, 75, 140, 0.2);
-    --pre-background-color: var(--water-dark);
-    --pre-text-color: #F8FAFC;
+    --pre-background-color: #F8F9FA;
+    --pre-text-color: #24292f;
 
     // Table
     --table-border-color: var(--border);
@@ -187,12 +186,11 @@
     --scrollbar-thumb: #334155;
     --scrollbar-track: var(--bg);
 
-    // Code
-    --code-background-color: var(--secondary-subtle);
+    // Code - Clean, minimal
+    --code-background-color: rgba(255, 255, 255, 0.05);
     --code-text-color: var(--text);
-    --code-border-color: rgba(91, 143, 217, 0.25);
-    --pre-background-color: #050810;
-    --pre-text-color: var(--text);
+    --pre-background-color: #0d1117;
+    --pre-text-color: #e6edf3;
 
     // Table
     --table-border-color: var(--border);
@@ -259,6 +257,14 @@
     p {
         margin-bottom: 1.5em;
     }
+}
+
+// Global article subtitle override (applies to single posts too)
+.article-subtitle {
+    font-size: var(--font-size-base) !important;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* ===========================================
@@ -464,33 +470,49 @@
 }
 
 /* ===========================================
-   CODE - 智慧海 (Water) styling
+   CODE - Clean Minimal Style
    =========================================== */
 
 .article-content code {
     font-family: var(--font-mono);
-    font-size: 0.875em;
+    font-size: 0.85em;
     background: var(--code-background-color);
     color: var(--code-text-color);
-    padding: 0.15em 0.4em;
-    border-radius: var(--radius-xs);
-    border: 1px solid var(--code-border-color);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    border: none;
 }
 
 .article-content pre {
-    border-radius: var(--radius-xs);
-    border-left: 2px solid var(--secondary);
-
     code {
         background: transparent;
         padding: 0;
         border: none;
+        font-size: 0.9em;
     }
 }
 
 .article-content .highlight {
+    background: var(--pre-background-color);
+    border-radius: 6px;
+    border-left: 3px solid var(--secondary);
+    padding: 1rem;
+    margin: 1.5rem 0;
     overflow-x: auto;
     max-width: 100%;
+
+    pre {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    // Line numbers - muted
+    .lnt, .ln {
+        color: var(--text-tertiary);
+        padding-right: 1rem;
+        user-select: none;
+    }
 }
 
 /* ===========================================
@@ -855,6 +877,10 @@ button[type="submit"].primary {
    Sun (金) ↔ Moon (水) with Fire transition
    =========================================== */
 
+// Custom timing for toggle (slower, more dramatic)
+$toggle-duration: 500ms;
+$toggle-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -863,7 +889,6 @@ button[type="submit"].primary {
     padding: var(--spacing-xs) 0;
     user-select: none;
 
-    // Remove default list styling from parent
     &:focus {
         outline: none;
     }
@@ -875,27 +900,31 @@ button[type="submit"].primary {
 
 .theme-toggle__track {
     position: relative;
-    width: 52px;
-    height: 26px;
-    background: var(--border);
-    border-radius: 13px;
-    transition: background var(--transition-slow), box-shadow var(--transition-slow);
-    overflow: hidden;
+    width: 56px;
+    height: 28px;
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(139, 115, 85, 0.25));
+    border: 1px solid rgba(139, 115, 85, 0.3);
+    border-radius: 14px;
+    transition: all $toggle-duration $toggle-easing;
+    overflow: visible;
     flex-shrink: 0;
 
-    // Subtle inner shadow for depth
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    // Inner glow
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 0 0 transparent;
 
+    // Fire burst overlay
     &::before {
         content: '';
         position: absolute;
-        inset: 0;
-        border-radius: inherit;
+        inset: -4px;
+        border-radius: 18px;
         opacity: 0;
-        transition: opacity var(--transition-slow);
-        // Fire glow on transition
-        background: radial-gradient(circle at center, var(--dynamic-glow), transparent 70%);
+        transition: opacity 300ms ease;
+        background: radial-gradient(circle at center, var(--fire), transparent 60%);
         pointer-events: none;
+        z-index: -1;
     }
 }
 
@@ -905,7 +934,7 @@ button[type="submit"].primary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 0 6px;
     pointer-events: none;
 }
 
@@ -913,54 +942,64 @@ button[type="submit"].primary {
 .theme-toggle__moon {
     width: 16px;
     height: 16px;
-    transition: opacity var(--transition-slow), transform var(--transition-slow), color var(--transition-slow);
+    transition:
+        opacity $toggle-duration ease,
+        transform $toggle-duration $toggle-easing,
+        filter $toggle-duration ease;
 }
 
 .theme-toggle__sun {
     color: var(--gold);
     opacity: 1;
     transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 3px var(--gold));
 }
 
 .theme-toggle__moon {
-    color: var(--secondary);
-    opacity: 0.4;
-    transform: scale(0.8) rotate(-30deg);
+    color: var(--water);
+    opacity: 0.3;
+    transform: scale(0.6) rotate(-45deg);
+    filter: none;
 }
 
 .theme-toggle__thumb {
     position: absolute;
     top: 3px;
     left: 3px;
-    width: 20px;
-    height: 20px;
-    background: var(--surface);
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(145deg, #fff, #f0f0f0);
     border-radius: 50%;
-    transition: transform var(--transition-slow) cubic-bezier(0.34, 1.56, 0.64, 1),
-                background var(--transition-slow),
-                box-shadow var(--transition-slow);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition:
+        transform $toggle-duration $toggle-easing,
+        background $toggle-duration ease,
+        box-shadow $toggle-duration ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 0 0 0 transparent;
     z-index: 1;
 }
 
 .theme-toggle__label {
     color: var(--text-secondary);
     font-size: var(--font-size-sm, 1.4rem);
-    transition: color var(--transition-fast);
+    transition: color 200ms ease;
 }
 
 // Hover states
 .theme-toggle:hover {
     .theme-toggle__track {
-        background: var(--accent-subtle);
-
-        &::before {
-            opacity: 0.3;
-        }
+        border-color: var(--gold);
+        box-shadow:
+            inset 0 2px 4px rgba(0, 0, 0, 0.1),
+            0 0 12px rgba(139, 115, 85, 0.3);
     }
 
     .theme-toggle__thumb {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.25),
+            0 0 8px rgba(139, 115, 85, 0.3);
+        transform: scale(1.05);
     }
 
     .theme-toggle__label {
@@ -971,37 +1010,49 @@ button[type="submit"].primary {
 // Active/click state - Fire flash
 .theme-toggle:active {
     .theme-toggle__track::before {
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     .theme-toggle__thumb {
-        transform: translateX(0) scale(0.95);
-        box-shadow: 0 0 10px var(--dynamic-glow);
+        transform: scale(0.9);
+        box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.2),
+            0 0 20px var(--fire);
     }
 }
 
-// Dark mode state
+// ========================================
+// DARK MODE STATE
+// ========================================
 [data-scheme="dark"] {
     .theme-toggle__track {
-        background: var(--secondary-subtle);
+        background: linear-gradient(135deg, rgba(91, 143, 217, 0.15), rgba(91, 143, 217, 0.25));
+        border-color: rgba(91, 143, 217, 0.4);
+        box-shadow:
+            inset 0 2px 4px rgba(0, 0, 0, 0.2),
+            0 0 0 0 transparent;
     }
 
     .theme-toggle__sun {
-        opacity: 0.4;
-        transform: scale(0.8) rotate(30deg);
-        color: var(--gold-light);
+        opacity: 0.3;
+        transform: scale(0.6) rotate(45deg);
+        filter: none;
     }
 
     .theme-toggle__moon {
         opacity: 1;
         transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 4px var(--secondary));
         color: var(--secondary);
     }
 
     .theme-toggle__thumb {
-        transform: translateX(26px);
-        background: var(--card-background);
-        box-shadow: 0 0 8px var(--secondary-subtle), 0 1px 3px rgba(0, 0, 0, 0.3);
+        transform: translateX(28px);
+        background: linear-gradient(145deg, #2a3a5a, #1e2d4a);
+        box-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.3),
+            0 0 8px rgba(91, 143, 217, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .theme-toggle__label {
@@ -1009,40 +1060,109 @@ button[type="submit"].primary {
         font-weight: var(--font-weight-medium);
     }
 
-    .theme-toggle:hover .theme-toggle__track {
-        background: rgba(91, 143, 217, 0.2);
+    .theme-toggle:hover {
+        .theme-toggle__track {
+            border-color: var(--secondary);
+            box-shadow:
+                inset 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(91, 143, 217, 0.4);
+        }
+
+        .theme-toggle__thumb {
+            transform: translateX(28px) scale(1.05);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 0 12px rgba(91, 143, 217, 0.5);
+        }
     }
 
     .theme-toggle:active .theme-toggle__thumb {
-        transform: translateX(26px) scale(0.95);
+        transform: translateX(28px) scale(0.9);
     }
 }
 
-// Animation for mode transition
-@keyframes thumb-bounce {
-    0%, 100% { transform: translateX(var(--thumb-x, 0)) scale(1); }
-    50% { transform: translateX(var(--thumb-x, 0)) scale(1.1); }
+// ========================================
+// TRANSITION ANIMATIONS
+// ========================================
+@keyframes toggle-fire-burst {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
 }
 
-@keyframes icon-pulse {
-    0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-    50% { filter: drop-shadow(0 0 4px currentColor); }
+@keyframes thumb-squish {
+    0% { transform: var(--thumb-start) scale(1); }
+    30% { transform: var(--thumb-start) scale(0.85, 1.15); }
+    50% { transform: var(--thumb-mid) scale(1.1, 0.9); }
+    70% { transform: var(--thumb-end) scale(0.95, 1.05); }
+    100% { transform: var(--thumb-end) scale(1); }
 }
 
-// Transitioning animation class (added via JS during transition)
+@keyframes sun-exit {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0.5) rotate(90deg); opacity: 0.3; }
+}
+
+@keyframes moon-enter {
+    0% { transform: scale(0.5) rotate(-90deg); opacity: 0.3; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes sun-enter {
+    0% { transform: scale(0.5) rotate(-90deg); opacity: 0.3; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes moon-exit {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0.5) rotate(90deg); opacity: 0.3; }
+}
+
+// Transitioning class - triggers dramatic animations
 .theme-toggle--transitioning {
     .theme-toggle__track::before {
-        opacity: 0.8 !important;
-        animation: fire-transform 0.4s ease-out;
+        animation: toggle-fire-burst 600ms ease-out forwards;
     }
 
     .theme-toggle__thumb {
-        animation: thumb-bounce 0.4s ease-out;
+        --thumb-start: translateX(0);
+        --thumb-mid: translateX(14px);
+        --thumb-end: translateX(28px);
+        animation: thumb-squish 500ms $toggle-easing forwards;
     }
 
-    .theme-toggle__sun,
+    .theme-toggle__sun {
+        animation: sun-exit 400ms ease-out forwards;
+    }
+
     .theme-toggle__moon {
-        animation: icon-pulse 0.4s ease-out;
+        animation: moon-enter 400ms ease-out 100ms forwards;
+    }
+}
+
+// Reverse animation for dark → light
+[data-scheme="dark"] .theme-toggle--transitioning {
+    .theme-toggle__thumb {
+        --thumb-start: translateX(28px);
+        --thumb-mid: translateX(14px);
+        --thumb-end: translateX(0);
+    }
+
+    .theme-toggle__sun {
+        animation: sun-enter 400ms ease-out 100ms forwards;
+    }
+
+    .theme-toggle__moon {
+        animation: moon-exit 400ms ease-out forwards;
     }
 }
 
