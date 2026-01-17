@@ -67,9 +67,9 @@ shortname = 'https-enkr1-github-io-blog'
 type = 'search'
 
 [[params.widgets.homepage]]
-type = 'archives'
+type = 'tag-cloud'
 [params.widgets.homepage.params]
-limit = 5
+limit = 15
 
 [[params.widgets.homepage]]
 type = 'categories'
@@ -77,9 +77,9 @@ type = 'categories'
 limit = 10
 
 [[params.widgets.homepage]]
-type = 'tag-cloud'
+type = 'archives'
 [params.widgets.homepage.params]
-limit = 15
+limit = 5
 
 [[params.widgets.page]]
 type = 'toc'
