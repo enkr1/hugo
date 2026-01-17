@@ -260,6 +260,35 @@
     p {
         margin-bottom: 1.5em;
     }
+
+    // Lists - Clean dash style
+    ul, ol {
+        margin: 0 0 1.5em 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 1.7rem;
+            margin-bottom: 0.5em;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: calc(1em * var(--line-height-relaxed) / 2);
+                transform: translateY(-50%);
+                width: 1rem;
+                height: 2px;
+                background: var(--accent);
+            }
+        }
+
+        // Nested lists
+        ul, ol {
+            margin: 0.5em 0 0.5em 0;
+        }
+    }
 }
 
 // Global article subtitle override (applies to single posts too)
@@ -670,6 +699,8 @@
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     line-height: var(--line-height-relaxed);
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 /* ===========================================
