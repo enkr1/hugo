@@ -1,16 +1,34 @@
 {{/* Reading Progress Bar */}}
 <div class="reading-progress" id="reading-progress"></div>
 
+{{/* Scroll to Top Button */}}
+<button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
 <script>
 (function() {
+    // Reading Progress
     const progressBar = document.getElementById('reading-progress');
-    if (!progressBar) return;
+
+    // Scroll to Top
+    const scrollBtn = document.getElementById('scroll-to-top');
+    const scrollThreshold = 300;
 
     function updateProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = progress + '%';
+
+        if (progressBar) {
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }
+
+        if (scrollBtn) {
+            scrollBtn.classList.toggle('visible', scrollTop > scrollThreshold);
+        }
     }
 
     // Throttle scroll event for performance
@@ -24,6 +42,13 @@
             ticking = true;
         }
     });
+
+    // Scroll to top on click
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Initial update
     updateProgress();

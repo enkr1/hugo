@@ -289,6 +289,15 @@
             margin: 0.5em 0 0.5em 0;
         }
     }
+
+    // Horizontal rule - minimal accent line
+    hr {
+        border: none;
+        height: 2px;
+        background: var(--accent);
+        margin: var(--spacing-xl) 0;
+        opacity: 0.3;
+    }
 }
 
 // Global article subtitle override (applies to single posts too)
@@ -1426,6 +1435,56 @@ button[type="submit"].primary {
     // Hide on pages with infinite scroll
     .infinite-scroll-active & {
         display: none;
+    }
+}
+
+/* ===========================================
+   SCROLL TO TOP BUTTON
+   =========================================== */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--card-background);
+    color: var(--accent);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity var(--transition-base),
+                visibility var(--transition-base),
+                transform var(--transition-base),
+                background var(--transition-fast),
+                color var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &:hover {
+        background: var(--accent);
+        color: var(--card-background);
+    }
+
+    &:active {
+        transform: translateY(-2px);
     }
 }
 
