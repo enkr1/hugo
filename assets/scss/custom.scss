@@ -9,15 +9,15 @@
    =========================================== */
 
 :root {
-    // TYPE SCALE (SSOT)
-    --font-size-xs: 1.05rem;
-    --font-size-sm: 1.2rem;
-    --font-size-base: 1.4rem;
-    --font-size-md: 1.55rem;
-    --font-size-lg: 1.9rem;
-    --font-size-xl: 2.1rem;
-    --font-size-2xl: 2.45rem;
-    --font-size-3xl: 3.15rem;
+    // TYPE SCALE (SSOT) - 1rem = 10px, 1.25 ratio
+    --font-size-xs: 1.1rem;
+    --font-size-sm: 1.35rem;
+    --font-size-base: 1.7rem;
+    --font-size-md: 2.1rem;
+    --font-size-lg: 2.65rem;
+    --font-size-xl: 3.3rem;
+    --font-size-2xl: 4.15rem;
+    --font-size-3xl: 5.2rem;
     --font-size-code: 0.85em;
 
     // Line Heights
@@ -31,12 +31,15 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
 
-    // ===========================================
-    // FONT FAMILIES
-    // ===========================================
-    --font-display: 'Cormorant Garamond', 'Georgia', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    // FONT FAMILIES (SSOT) - Synced with Hexo
+    --font-display: 'Lora', 'Georgia', serif;
+    --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+
+    // Override theme's font variables
+    --base-font-family: var(--font-body);
+    --article-font-family: var(--font-body);
+    --code-font-family: var(--font-mono);
 
     // ===========================================
     // TIMING
@@ -487,10 +490,62 @@
 }
 
 /* ===========================================
-   FOOTER
+   FOOTER - Minimal Elegant
    =========================================== */
 
-.footer, footer.site-footer {
+.site-footer.site-footer--minimal {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .footer-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--card-text-color-tertiary),
+            transparent
+        );
+        margin: 0 auto var(--spacing-lg);
+        opacity: 0.4;
+    }
+
+    .copyright {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4em;
+        font-size: var(--font-size-xs);
+        font-family: var(--font-body);
+        font-weight: var(--font-weight-normal);
+        color: var(--card-text-color-tertiary);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .copyright-symbol {
+        font-size: 0.9em;
+    }
+
+    .copyright-dot {
+        opacity: 0.5;
+    }
+
+    .copyright-name {
+        font-weight: var(--font-weight-medium);
+        color: var(--card-text-color-secondary);
+    }
+}
+
+.footer, footer.site-footer:not(.site-footer--minimal) {
     color: var(--card-text-color-tertiary);
     font-size: var(--font-size-sm);
 

@@ -1,0 +1,15 @@
+<footer class="site-footer site-footer--minimal">
+    <div class="footer-divider"></div>
+    <section class="copyright">
+        <span class="copyright-symbol">&copy;</span>
+        <span class="copyright-years">
+            {{- if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) -}}
+                {{ .Site.Params.footer.since }}&thinsp;&ndash;&thinsp;{{ now.Format "2006" }}
+            {{- else -}}
+                {{ now.Format "2006" }}
+            {{- end -}}
+        </span>
+        <span class="copyright-dot">&middot;</span>
+        <span class="copyright-name">{{ default .Site.Title .Site.Copyright }}</span>
+    </section>
+</footer>
