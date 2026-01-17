@@ -1,0 +1,133 @@
+{{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "search") -}}
+{{- if $query -}}
+    {{- $searchPage := index $query 0 -}}
+    <div class="search-widget-container">
+        <form action="{{ $searchPage.RelPermalink }}" class="search-form widget" data-json="{{ $searchPage.RelPermalink }}index.json">
+            <input
+                name="keyword"
+                placeholder="{{ T `search.placeholder` }}"
+                autocomplete="off"
+                class="search-input"
+            />
+        </form>
+        <div class="search-dropdown" style="display: none;">
+            <ul class="search-results"></ul>
+        </div>
+    </div>
+    <script>
+    (function() {
+        let searchData = null;
+        let searchTimeout = null;
+        const container = document.querySelector('.search-widget-container');
+        const input = container.querySelector('.search-input');
+        const dropdown = container.querySelector('.search-dropdown');
+        const resultsList = container.querySelector('.search-results');
+        const jsonUrl = '{{ $searchPage.RelPermalink }}index.json';
+
+        // Fetch search data
+        async function fetchSearchData() {
+            if (searchData) return searchData;
+            try {
+                const res = await fetch(jsonUrl);
+                const text = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                searchData = JSON.parse(doc.body.innerText);
+                return searchData;
+            } catch (e) {
+                console.error('Failed to fetch search data:', e);
+                return [];
+            }
+        }
+
+        // Search function
+        async function search(query) {
+            if (!query || query.length < 2) {
+                dropdown.style.display = 'none';
+                return;
+            }
+
+            const data = await fetchSearchData();
+            const results = data.filter(item => {
+                const title = (item.title || '').toLowerCase();
+                const content = (item.content || '').toLowerCase();
+                const q = query.toLowerCase();
+                return title.includes(q) || content.includes(q);
+            }).slice(0, 6); // Limit to 6 results
+
+            if (results.length === 0) {
+                dropdown.style.display = 'none';
+                return;
+            }
+
+            resultsList.innerHTML = results.map(item => {
+                // Get preview with context around match
+                const content = item.content || '';
+                const q = query.toLowerCase();
+                const idx = content.toLowerCase().indexOf(q);
+                let preview = '';
+                if (idx >= 0) {
+                    const start = Math.max(0, idx - 30);
+                    const end = Math.min(content.length, idx + query.length + 50);
+                    preview = (start > 0 ? '...' : '') +
+                              content.slice(start, end).replace(
+                                  new RegExp(`(${query})`, 'gi'),
+                                  '<mark>$1</mark>'
+                              ) +
+                              (end < content.length ? '...' : '');
+                } else {
+                    preview = content.slice(0, 80) + (content.length > 80 ? '...' : '');
+                }
+
+                // Highlight title too
+                const title = item.title.replace(
+                    new RegExp(`(${query})`, 'gi'),
+                    '<mark>$1</mark>'
+                );
+
+                return `
+                <li class="search-result-item">
+                    <a href="${item.permalink}">
+                        <span class="search-result-title">${title}</span>
+                        <span class="search-result-preview">${preview}</span>
+                    </a>
+                </li>
+            `}).join('');
+
+            dropdown.style.display = 'block';
+        }
+
+        // Debounced input handler
+        input.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => search(e.target.value), 200);
+        });
+
+        // Hide dropdown on click outside
+        document.addEventListener('click', (e) => {
+            if (!container.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Hide dropdown on escape
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                dropdown.style.display = 'none';
+                input.blur();
+            }
+        });
+
+        // Prevent form submit, navigate to first result or search page
+        container.querySelector('form').addEventListener('submit', (e) => {
+            const firstResult = resultsList.querySelector('a');
+            if (firstResult && input.value.length >= 2) {
+                e.preventDefault();
+                window.location.href = firstResult.href;
+            }
+        });
+    })();
+    </script>
+{{- else -}}
+    {{- warnf "Search page not found. Create a page with layout: search." -}}
+{{- end -}}
