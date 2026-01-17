@@ -1,0 +1,36 @@
+{{ define "main" }}
+    <header class="section-journals">
+        <h3 class="section-title">
+            {{ T "list.section" }}
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}
+                    <h2 class="section-description">{{ . }}</h2>
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{- $pages := .Pages -}}
+
+    {{ $paginator := .Paginate $pages }}
+    <section class="article-list--compact section-journals">
+        {{ range $paginator.Pages }}
+            <article class="journal-entry">
+                {{ partial "article-list/compact" . }}
+            </article>
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

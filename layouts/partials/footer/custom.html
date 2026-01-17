@@ -1,0 +1,31 @@
+{{/* Reading Progress Bar */}}
+<div class="reading-progress" id="reading-progress"></div>
+
+<script>
+(function() {
+    const progressBar = document.getElementById('reading-progress');
+    if (!progressBar) return;
+
+    function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    }
+
+    // Throttle scroll event for performance
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Initial update
+    updateProgress();
+})();
+</script>

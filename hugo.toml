@@ -1,0 +1,177 @@
+baseURL = 'https://blog.enkr1.com/'
+languageCode = 'en-us'
+title = "ENKR's Blog"
+theme = 'stack'
+copyright = 'ENKR'
+timeout = '300s'  # 5 minutes for image-heavy pages
+
+# Theme i18n support
+DefaultContentLanguage = 'en'
+hasCJKLanguage = false
+
+# Pagination
+[pagination]
+pagerSize = 10
+
+# Permalinks
+[permalinks]
+posts = '/:slug/'
+journals = '/journals/:slug/'
+page = '/:slug/'
+
+# Main params
+[params]
+mainSections = ['posts', 'journals']
+featuredImageField = 'image'
+rssFullContent = true
+
+[params.footer]
+since = 2023
+
+[params.dateFormat]
+published = 'Jan 02, 2006'
+lastUpdated = 'Jan 02, 2006 15:04 MST'
+
+[params.sidebar]
+emoji = ''
+subtitle = 'Software Engineer | Beatboxer | Lifelong Learner'
+[params.sidebar.avatar]
+enabled = true
+local = true
+src = 'img/avatar.png'
+
+[params.article]
+math = true
+toc = true
+readingTime = true
+[params.article.license]
+enabled = false
+
+[params.comments]
+enabled = true
+provider = 'disqus'
+
+[params.comments.disqusjs]
+shortname = 'https-enkr1-github-io-blog'
+
+# Widgets
+[params.widgets]
+[[params.widgets.homepage]]
+type = 'search'
+
+[[params.widgets.homepage]]
+type = 'archives'
+[params.widgets.homepage.params]
+limit = 5
+
+[[params.widgets.homepage]]
+type = 'categories'
+[params.widgets.homepage.params]
+limit = 10
+
+[[params.widgets.homepage]]
+type = 'tag-cloud'
+[params.widgets.homepage.params]
+limit = 15
+
+[[params.widgets.page]]
+type = 'toc'
+
+# Color scheme - dark mode enabled
+[params.colorScheme]
+toggle = true
+default = 'auto'
+
+# Image processing
+[params.imageProcessing]
+[params.imageProcessing.cover]
+enabled = true
+[params.imageProcessing.content]
+enabled = true
+
+# Menu
+[menu]
+[[menu.main]]
+identifier = 'home'
+name = 'Home'
+url = '/'
+weight = 1
+[menu.main.params]
+icon = 'home'
+
+[[menu.main]]
+identifier = 'posts'
+name = 'Posts'
+url = '/posts/'
+weight = 2
+[menu.main.params]
+icon = 'archives'
+
+[[menu.main]]
+identifier = 'journals'
+name = 'Journals'
+url = '/journals/'
+weight = 3
+[menu.main.params]
+icon = 'date'
+
+[[menu.main]]
+identifier = 'about'
+name = 'About'
+url = '/about/'
+weight = 4
+[menu.main.params]
+icon = 'user'
+
+[[menu.social]]
+identifier = 'github'
+name = 'GitHub'
+url = 'https://github.com/enkr1'
+[menu.social.params]
+icon = 'brand-github'
+
+[[menu.social]]
+identifier = 'linkedin'
+name = 'LinkedIn'
+url = 'https://linkedin.com/in/jingkai1997'
+[menu.social.params]
+icon = 'brand-linkedin'
+
+# Related posts
+[related]
+includeNewer = true
+threshold = 60
+toLower = false
+
+[[related.indices]]
+name = 'tags'
+weight = 100
+
+[[related.indices]]
+name = 'categories'
+weight = 200
+
+# Markup settings
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+endLevel = 4
+ordered = false
+startLevel = 2
+
+[markup.highlight]
+noClasses = false
+codeFences = true
+guessSyntax = true
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+tabWidth = 4
+
+# Google Analytics
+[services]
+[services.googleAnalytics]
+ID = 'G-4N4L18VB12'
