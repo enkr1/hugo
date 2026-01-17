@@ -700,30 +700,110 @@
 }
 
 /* ===========================================
-   TABLE OF CONTENTS - Dual accent
+   TABLE OF CONTENTS - Lark-inspired minimal
    =========================================== */
 
 .widget--toc {
+    // Transparent background - no card appearance
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+
     .widget-title {
         font-family: var(--font-body);
         font-weight: var(--font-weight-semibold);
-        color: var(--text);
+        font-size: var(--font-size-xs);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+        margin-bottom: var(--spacing-sm);
     }
 
-    #TableOfContents a {
-        color: var(--text-tertiary);
-        border-left: 2px solid transparent;
-        padding-left: var(--spacing-sm);
-        transition: color var(--transition-fast), border-color var(--transition-fast);
+    #TableOfContents {
+        font-size: var(--font-size-base);
+        line-height: 1.5;
 
-        &:hover {
-            color: var(--secondary);
+        // Remove all list styling
+        ul, ol {
+            list-style: none !important;
+            margin: 0;
+            padding: 0;
         }
 
-        &.active {
-            color: var(--accent);
-            border-left-color: var(--accent);
-            font-weight: var(--font-weight-medium);
+        // Remove theme's counter-based numbering
+        ol li a::before {
+            content: none !important;
+        }
+
+        // Level 1 (H2): Primary items
+        & > ul > li {
+            margin: 0 0 var(--spacing-xs) 0;
+            padding: 0;
+
+            > a {
+                display: block;
+                padding: var(--spacing-xs) 0;
+                padding-left: var(--spacing-sm);
+                color: var(--text-secondary);
+                font-weight: var(--font-weight-medium);
+                border-left: 2px solid transparent;
+                transition: all var(--transition-fast);
+
+                &:hover {
+                    color: var(--text);
+                }
+            }
+        }
+
+        // Level 2 (H3): Secondary items
+        & > ul > li > ul > li {
+            margin: 0;
+            padding: 0;
+
+            > a {
+                display: block;
+                padding: calc(var(--spacing-xs) * 0.5) 0;
+                padding-left: calc(var(--spacing-sm) + var(--spacing-md));
+                color: var(--text-tertiary);
+                font-size: var(--font-size-sm);
+                font-weight: var(--font-weight-regular);
+                border-left: 2px solid transparent;
+                transition: all var(--transition-fast);
+
+                &:hover {
+                    color: var(--text-secondary);
+                }
+            }
+        }
+
+        // Level 3+ (H4+): Tertiary items - even more subtle
+        & > ul > li > ul > li > ul > li {
+            margin: 0;
+            padding: 0;
+
+            > a {
+                display: block;
+                padding: calc(var(--spacing-xs) * 0.5) 0;
+                padding-left: calc(var(--spacing-sm) + var(--spacing-lg));
+                color: var(--text-tertiary);
+                font-size: var(--font-size-xs);
+                opacity: 0.8;
+                border-left: 2px solid transparent;
+                transition: all var(--transition-fast);
+
+                &:hover {
+                    opacity: 1;
+                    color: var(--text-secondary);
+                }
+            }
+        }
+
+        // Active state - subtle line indicator
+        li.active-class > a {
+            color: var(--accent) !important;
+            border-left-color: var(--accent) !important;
+            font-weight: var(--font-weight-medium) !important;
+            opacity: 1 !important;
         }
     }
 }
@@ -1006,6 +1086,11 @@ button[type="submit"].primary {
     z-index: 9999;
     transition: width 0.1s ease;
     pointer-events: none;
+
+    // Hide on pages with infinite scroll
+    .infinite-scroll-active & {
+        display: none;
+    }
 }
 
 /* ===========================================
@@ -1068,17 +1153,21 @@ button[type="submit"].primary {
 }
 
 /* ===========================================
-   ADVANCED THEME TOGGLE - 日月交替
-   Sun (金) ↔ Moon (水) - Smooth transitions
+   THEME TOGGLE - 日月交替
+   Fixed top-right position
    =========================================== */
 
-.theme-toggle {
+#dark-mode-toggle.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    gap: var(--menu-icon-separation, 10px);
     cursor: pointer;
-    padding: var(--spacing-xs) 0;
+    padding: 0;
     user-select: none;
+    margin: 0;
 
     &:focus {
         outline: none;
@@ -1091,11 +1180,11 @@ button[type="submit"].primary {
 
 .theme-toggle__track {
     position: relative;
-    width: 52px;
-    height: 26px;
+    width: 64px;
+    height: 32px;
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.12), rgba(139, 115, 85, 0.2));
     border: 1px solid rgba(139, 115, 85, 0.25);
-    border-radius: 13px;
+    border-radius: 16px;
     transition: all 400ms ease;
     flex-shrink: 0;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -1107,14 +1196,14 @@ button[type="submit"].primary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6px;
+    padding: 0 8px;
     pointer-events: none;
 }
 
 .theme-toggle__sun,
 .theme-toggle__moon {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     transition: opacity 400ms ease, transform 400ms ease;
 }
 
@@ -1134,8 +1223,8 @@ button[type="submit"].primary {
     position: absolute;
     top: 3px;
     left: 3px;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     background: #fff;
     border-radius: 50%;
     transition: transform 400ms ease, background 400ms ease, box-shadow 400ms ease;
@@ -1143,21 +1232,11 @@ button[type="submit"].primary {
     z-index: 1;
 }
 
-.theme-toggle__label {
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm, 1.4rem);
-    transition: color 200ms ease;
-}
-
 // Hover
 .theme-toggle:hover {
     .theme-toggle__track {
         border-color: var(--gold);
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 8px rgba(139, 115, 85, 0.2);
-    }
-
-    .theme-toggle__label {
-        color: var(--accent);
     }
 }
 
@@ -1182,14 +1261,9 @@ button[type="submit"].primary {
     }
 
     .theme-toggle__thumb {
-        transform: translateX(26px);
+        transform: translateX(32px);
         background: #1e2d4a;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 6px rgba(91, 143, 217, 0.2);
-    }
-
-    .theme-toggle__label {
-        color: var(--accent);
-        font-weight: var(--font-weight-medium);
     }
 
     .theme-toggle:hover .theme-toggle__track {
@@ -1244,6 +1318,32 @@ button[type="submit"].primary {
 .infinite-scroll-sentinel {
     height: 1px;
     visibility: hidden;
+}
+
+// Zen end message with decorative lines
+.infinite-scroll-end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+
+    &::before,
+    &::after {
+        content: '';
+        height: 1px;
+        width: 60px;
+        background: var(--text-tertiary);
+        opacity: 0.4;
+    }
+
+    span {
+        font-family: var(--font-display);
+        font-size: var(--font-size-xl);
+        color: var(--text-tertiary);
+        font-weight: 300;
+        letter-spacing: 0.1em;
+    }
 }
 
 // Error state with retry button
