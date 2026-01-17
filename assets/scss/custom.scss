@@ -323,15 +323,29 @@
 /* ===========================================
    CARDS - 内蕴金 top border accent
    金（边框）稳固，水（微光）流动
+   Entire card is clickable via stretched link
    =========================================== */
 
-.article-list article {
+.article-list article,
+.article-list .article-card {
     border: 1px solid var(--border);
     border-top: 1px solid var(--accent);
     border-radius: 0;
     transition: border-color var(--transition-base), border-top-width var(--transition-fast);
     overflow: hidden;
     position: relative;
+    cursor: pointer;
+
+    // Stretched link covers entire card
+    .article-card__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        // No visual styling - invisible overlay
+    }
 
     // Water shimmer on hover (left sweep)
     &::before {
@@ -344,6 +358,7 @@
         background: linear-gradient(90deg, var(--secondary-subtle), transparent);
         transition: width var(--transition-slow);
         pointer-events: none;
+        z-index: 0;
     }
 
     &:hover {
@@ -352,6 +367,17 @@
 
         &::before {
             width: 30%;
+        }
+    }
+
+    // Category links sit above stretched link
+    .article-category {
+        position: relative;
+        z-index: 2;
+
+        a {
+            position: relative;
+            z-index: 2;
         }
     }
 
@@ -364,6 +390,9 @@
             color: inherit;
             text-decoration: none;
             border-bottom: none;
+            // Title link is redundant now, but keep for accessibility
+            position: relative;
+            z-index: 0; // Below stretched link
 
             &:hover {
                 color: var(--accent);
@@ -375,6 +404,16 @@
     .article-time {
         color: var(--text-tertiary);
         font-size: var(--font-size-sm);
+    }
+
+    // Ensure header content is above shimmer but below stretched link
+    .article-header {
+        position: relative;
+        z-index: 0;
+    }
+
+    .article-details {
+        position: relative;
     }
 
     .article-image img {

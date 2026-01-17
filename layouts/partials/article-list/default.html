@@ -1,0 +1,7 @@
+{{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
+<article class="article-card {{ if $image.exists }}has-image{{ end }}">
+    {{- /* Stretched link covers entire card */ -}}
+    <a href="{{ .RelPermalink }}" class="article-card__link" aria-label="{{ .Title }}"></a>
+
+    {{ partial "article/components/header" . }}
+</article>
