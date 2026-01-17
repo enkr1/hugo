@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A personal blog built with Hugo, hosted at `https://blog.enkr1.com/`. Features dual content types: regular blog posts and weekly journal entries. Recently migrated from Hexo. Uses a forked theme (hugo-theme-enkr) with extensive Ba Zi (八字) philosophical styling.
+A personal blog built with Hugo, hosted at `https://blog.enkr1.com/`. Features dual content types: regular blog posts and weekly journal entries. Migrated from Hexo. Uses a forked theme (hugo-theme-enkr) with extensive Ba Zi (八字) philosophical styling.
 
 ## Commands
 
@@ -33,14 +33,22 @@ hugo/
 │   ├── journals/           # Weekly journals (50+): journal-YYMMDD/ page bundles
 │   └── page/               # Static pages: about, archives, search
 ├── layouts/
-│   └── journals/           # Custom templates for journal section
-│       ├── list.html       # Journal listing with pagination
-│       └── single.html     # Individual journal view
+│   ├── _default/           # Base template overrides
+│   ├── journals/           # Custom journal section templates
+│   │   ├── list.html       # Journal listing with pagination
+│   │   └── single.html     # Individual journal view
+│   ├── partials/           # Template component overrides
+│   │   ├── article/        # Article rendering
+│   │   ├── article-list/   # List item styling
+│   │   ├── footer/         # Footer components
+│   │   ├── head/           # Head meta/links
+│   │   ├── sidebar/        # Sidebar components
+│   │   └── widget/         # Widget overrides
+│   └── index.html          # Homepage template
 ├── assets/scss/
-│   └── custom.scss         # Ba Zi theme overrides (700+ lines)
+│   └── custom.scss         # Ba Zi theme (~1000 lines) - design tokens + overrides
 ├── themes/stack/           # Forked theme (git submodule → enkr1/hugo-theme-enkr)
-├── hugo.toml               # Main configuration
-└── migrate.sh              # Hexo → Hugo migration script
+└── hugo.toml               # Main configuration
 ```
 
 ## Content Model
@@ -62,11 +70,26 @@ comments: false
 
 ## Custom Styling: Ba Zi Theme
 
-The `assets/scss/custom.scss` implements a philosophical design system based on Chinese five-element theory:
+The `assets/scss/custom.scss` implements a design system based on Chinese five-element theory (金-水-火).
 
-- **Light mode:** "金明秋水" (Metal generates Water) - glacier silver/wisdom blue
-- **Dark mode:** "星渊藏金" (Water nurtures Metal) - abyss black/molten gold
-- **2026 Fire year:** Optional enhancement via `data-year-fire="true"` attribute
+### Design Tokens (SSOT)
+
+All colors, typography, and spacing are defined as CSS custom properties:
+
+```scss
+// Primary palette - use these, don't hardcode hex values
+--gold: #8B7355;      // 内蕴金 - Metal/Earth - hovers, selections, CTAs
+--water: #1E4B8C;     // 智慧海 - Water - links, tags, code
+--fire: #D97706;      // 流年曦 - Fire - click flash, accent
+
+// Typography
+--font-display: 'Cormorant Garamond'  // Headings
+--font-body: 'Inter'                   // Body text
+--font-mono: 'JetBrains Mono'         // Code
+
+// Scale
+--font-size-base: 1.6rem              // Base size (16px)
+```
 
 **Before changing colors**, read the philosophy comments in custom.scss to maintain thematic coherence.
 
@@ -75,8 +98,10 @@ The `assets/scss/custom.scss` implements a philosophical design system based on 
 The theme is a git submodule pointing to the fork. To customize:
 
 1. **Styling:** Override in `assets/scss/custom.scss` (preferred)
-2. **Templates:** Add to `layouts/` to override theme templates
+2. **Templates:** Add to `layouts/` to override theme templates (Hugo looks here first)
 3. **Theme changes:** Modify the submodule repo directly (rare)
+
+**Template lookup order:** `layouts/` → `themes/stack/layouts/`
 
 ## Deployment
 
@@ -90,3 +115,4 @@ Workflow: `.github/workflows/hugo.yml`
 - Unsafe HTML: Enabled for flexibility
 - Build timeout: 300s (image-heavy pages)
 - Related posts: Enabled, weighted by tags/categories (threshold: 60)
+- Syntax highlighting: Line numbers enabled, uses CSS classes (not inline styles)
