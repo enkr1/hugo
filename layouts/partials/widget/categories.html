@@ -1,0 +1,19 @@
+{{- $context := .Context -}}
+{{- $limit := default 10 .Params.limit -}}
+<section class="widget categories-tree">
+    <div class="widget-icon">
+        {{ partial "helper/icon" "categories" }}
+    </div>
+    <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
+
+    <ul class="categories-list">
+        {{ range first $limit $context.Site.Taxonomies.categories.ByCount }}
+            <li>
+                <a href="{{ .Page.RelPermalink }}">
+                    <span class="category-name">{{ .Page.Title }}</span>
+                    <span class="category-count">{{ .Count }}</span>
+                </a>
+            </li>
+        {{ end }}
+    </ul>
+</section>
