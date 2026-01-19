@@ -1,0 +1,233 @@
+{{- $query := first 1 (where .Site.Pages "Layout" "==" "search") -}}
+{{- if $query -}}
+{{- $searchPage := index $query 0 -}}
+
+<!-- Search modal (at body level for proper z-index) -->
+<div class="search-modal" aria-hidden="true" data-search-modal>
+    <div class="search-modal-backdrop" data-search-close></div>
+    <div class="search-modal-container">
+        <div class="search-modal-content">
+            <form action="{{ $searchPage.RelPermalink }}" class="search-modal-form" data-json="{{ $searchPage.RelPermalink }}index.json">
+                <input
+                    type="text"
+                    name="keyword"
+                    placeholder="Search posts..."
+                    autocomplete="off"
+                    class="search-modal-input"
+                    data-search-input
+                />
+                <kbd class="search-modal-esc">ESC</kbd>
+            </form>
+            <ul class="search-modal-results" data-search-results></ul>
+            <div class="search-modal-empty" data-search-empty>
+                No results found
+            </div>
+            <div class="search-modal-footer">
+                <span><kbd>↑↓</kbd> Navigate</span>
+                <span><kbd>↵</kbd> Open</span>
+                <span><kbd>ESC</kbd> Close</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    let searchData = null;
+    let searchTimeout = null;
+    let selectedIndex = -1;
+
+    const modal = document.querySelector('[data-search-modal]');
+    const input = document.querySelector('[data-search-input]');
+    const resultsList = document.querySelector('[data-search-results]');
+    const emptyState = document.querySelector('[data-search-empty]');
+    const form = modal.querySelector('.search-modal-form');
+    const jsonUrl = '{{ $searchPage.RelPermalink }}index.json';
+
+    // Open modal
+    function openModal() {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => input.focus(), 50);
+    }
+
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        input.value = '';
+        resultsList.innerHTML = '';
+        emptyState.style.display = 'none';
+        selectedIndex = -1;
+    }
+
+    // Fetch search data
+    async function fetchSearchData() {
+        if (searchData) return searchData;
+        try {
+            const res = await fetch(jsonUrl);
+            const text = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            searchData = JSON.parse(doc.body.innerText);
+            return searchData;
+        } catch (e) {
+            console.error('Failed to fetch search data:', e);
+            return [];
+        }
+    }
+
+    // Escape regex special chars
+    function escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // Search function
+    async function search(query) {
+        if (!query || query.length < 2) {
+            resultsList.innerHTML = '';
+            emptyState.style.display = 'none';
+            selectedIndex = -1;
+            return;
+        }
+
+        const data = await fetchSearchData();
+        const results = data.filter(item => {
+            const title = (item.title || '').toLowerCase();
+            const content = (item.content || '').toLowerCase();
+            const q = query.toLowerCase();
+            return title.includes(q) || content.includes(q);
+        }).slice(0, 8);
+
+        selectedIndex = -1;
+
+        if (results.length === 0) {
+            resultsList.innerHTML = '';
+            emptyState.style.display = 'block';
+            return;
+        }
+
+        emptyState.style.display = 'none';
+        const escaped = escapeRegex(query);
+
+        resultsList.innerHTML = results.map((item, idx) => {
+            const content = item.content || '';
+            const q = query.toLowerCase();
+            const matchIdx = content.toLowerCase().indexOf(q);
+            let preview = '';
+
+            if (matchIdx >= 0) {
+                const start = Math.max(0, matchIdx - 60);
+                const end = Math.min(content.length, matchIdx + query.length + 120);
+                preview = (start > 0 ? '...' : '') +
+                          content.slice(start, end).replace(
+                              new RegExp(`(${escaped})`, 'gi'),
+                              '<mark>$1</mark>'
+                          ) +
+                          (end < content.length ? '...' : '');
+            } else {
+                preview = content.slice(0, 180) + (content.length > 180 ? '...' : '');
+            }
+
+            const title = item.title.replace(
+                new RegExp(`(${escaped})`, 'gi'),
+                '<mark>$1</mark>'
+            );
+
+            return `
+            <li class="search-modal-result" data-index="${idx}">
+                <a href="${item.permalink}">
+                    <span class="search-modal-result-title">${title}</span>
+                    <span class="search-modal-result-preview">${preview}</span>
+                </a>
+            </li>
+        `}).join('');
+    }
+
+    // Update selection highlight
+    function updateSelection() {
+        const items = resultsList.querySelectorAll('.search-modal-result');
+        items.forEach((item, idx) => {
+            item.classList.toggle('is-selected', idx === selectedIndex);
+        });
+
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+            items[selectedIndex].scrollIntoView({ block: 'nearest' });
+        }
+    }
+
+    // Event: Click trigger (delegated)
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('[data-search-trigger]')) {
+            openModal();
+        }
+        if (e.target.closest('[data-search-close]')) {
+            closeModal();
+        }
+    });
+
+    // Event: Input
+    input.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => search(e.target.value), 150);
+    });
+
+    // Event: Keyboard navigation
+    input.addEventListener('keydown', (e) => {
+        const items = resultsList.querySelectorAll('.search-modal-result');
+        const count = items.length;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIndex = count > 0 ? (selectedIndex + 1) % count : -1;
+            updateSelection();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectedIndex = count > 0 ? (selectedIndex - 1 + count) % count : -1;
+            updateSelection();
+        } else if (e.key === 'Enter') {
+            if (selectedIndex >= 0 && items[selectedIndex]) {
+                e.preventDefault();
+                const link = items[selectedIndex].querySelector('a');
+                if (link) window.location.href = link.href;
+            } else if (items[0]) {
+                e.preventDefault();
+                const link = items[0].querySelector('a');
+                if (link) window.location.href = link.href;
+            }
+        } else if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Event: Global keyboard shortcut (Cmd+K / Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            if (modal.classList.contains('is-open')) {
+                closeModal();
+            } else {
+                openModal();
+            }
+        }
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
+    // Event: Click on result item
+    resultsList.addEventListener('click', (e) => {
+        const item = e.target.closest('.search-modal-result');
+        if (item) {
+            const link = item.querySelector('a');
+            if (link) {
+                e.preventDefault();
+                window.location.href = link.href;
+            }
+        }
+    });
+})();
+</script>
+{{- end -}}
