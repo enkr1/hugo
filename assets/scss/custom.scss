@@ -90,6 +90,7 @@
     --surface: #FFFFFF;
     --body-background: var(--bg);
     --card-background: var(--surface);
+    --card-background-rgb: 255, 255, 255;
     --card-background-selected: #F1F5F9;
 
     // Text
@@ -152,6 +153,7 @@
     --surface: #131A2B;
     --body-background: var(--bg);
     --card-background: var(--surface);
+    --card-background-rgb: 19, 26, 43;
     --card-background-selected: #1C2538;
 
     // Text
@@ -1764,5 +1766,238 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         &:hover {
             background: var(--accent-hover, var(--accent));
         }
+    }
+}
+
+/* ===========================================
+   MOBILE BOTTOM NAVIGATION
+   =========================================== */
+
+.mobile-nav {
+    display: none;
+}
+
+/* ===========================================
+   MOBILE RESPONSIVENESS - 768px and below
+   =========================================== */
+
+@media (max-width: 768px) {
+    // Mobile bottom navigation - show with frosted glass
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(var(--card-background-rgb), 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
+        z-index: 1000;
+        // Safe area + minimum 8px baseline (use Max to pass through to CSS)
+        padding: 0 Max(8px, env(safe-area-inset-right)) Max(8px, env(safe-area-inset-bottom)) Max(8px, env(safe-area-inset-left));
+    }
+
+    .mobile-nav__item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 8px 4px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: 500;
+        transition: color var(--transition-fast);
+
+        svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.5;
+        }
+
+        &:hover,
+        &.active {
+            color: var(--accent);
+        }
+
+        &.active svg {
+            stroke-width: 2;
+        }
+    }
+
+    // Hide sidebar hamburger on mobile
+    .hamburger {
+        display: none !important;
+    }
+
+    // Hide left sidebar menu on mobile (keep header visible)
+    .left-sidebar .menu {
+        display: none;
+    }
+
+    // Theme toggle - reposition for mobile nav
+    #dark-mode-toggle.theme-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .theme-toggle__track {
+        width: 52px;
+        height: 26px;
+    }
+
+    .theme-toggle__thumb {
+        width: 20px;
+        height: 20px;
+    }
+
+    [data-scheme="dark"] .theme-toggle__thumb {
+        transform: translateX(26px);
+    }
+
+    // Scroll to top - account for bottom nav
+    .scroll-to-top {
+        bottom: calc(64px + 1rem);
+    }
+
+    // Add bottom padding to body for mobile nav
+    body {
+        padding-bottom: 64px;
+    }
+
+    // Search dropdown - prevent horizontal overflow
+    .search-dropdown {
+        left: 0;
+        right: 0;
+    }
+
+    // Typography scaling
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    // Spacing adjustments
+    .infinite-scroll-end {
+        padding: 2rem 1rem;
+        gap: 1rem;
+
+        &::before,
+        &::after {
+            width: 40px;
+        }
+    }
+}
+
+/* ===========================================
+   MOBILE RESPONSIVENESS - 640px and below
+   =========================================== */
+
+@media (max-width: 640px) {
+    // Mobile nav - smaller height
+    .mobile-nav {
+        height: 56px;
+    }
+
+    .mobile-nav__item {
+        font-size: 9px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    // Theme toggle - smaller
+    .theme-toggle__track {
+        width: 44px;
+        height: 22px;
+    }
+
+    .theme-toggle__thumb {
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: 2px;
+    }
+
+    [data-scheme="dark"] .theme-toggle__thumb {
+        transform: translateX(22px);
+    }
+
+    .theme-toggle__sun,
+    .theme-toggle__moon {
+        width: 12px;
+        height: 12px;
+    }
+
+    // Scroll to top - account for smaller nav
+    .scroll-to-top {
+        bottom: calc(56px + 1rem);
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    // Update body padding for smaller nav
+    body {
+        padding-bottom: 56px;
+    }
+
+    // Typography scaling
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    // Search input - prevent iOS zoom
+    .search-form input {
+        font-size: 16px;
+    }
+
+    // Pagination - smaller touch targets
+    .pagination .page-link {
+        min-width: 36px;
+        height: 36px;
+        font-size: var(--font-size-sm);
+    }
+
+    // TOC - limit height on mobile
+    #TableOfContents {
+        max-height: 50vh;
+    }
+
+    // Article details - tighter padding
+    .article-details {
+        padding: 1rem;
+    }
+
+    // Infinite scroll
+    .infinite-scroll-loader {
+        padding: 1.5rem;
+    }
+
+    .infinite-scroll-end span {
+        font-size: var(--font-size-base);
     }
 }

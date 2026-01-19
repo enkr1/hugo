@@ -1,6 +1,21 @@
 {{/* Reading Progress Bar */}}
 <div class="reading-progress" id="reading-progress"></div>
 
+{{/* Mobile Bottom Navigation */}}
+<nav class="mobile-nav" id="mobile-nav">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+    {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+    <a href="{{ .URL }}" class="mobile-nav__item{{ if $active }} active{{ end }}"{{ if eq .Params.newTab true }} target="_blank"{{ end }}>
+        {{ $icon := default .Pre .Params.Icon }}
+        {{ with $icon }}
+            {{ partial "helper/icon" . }}
+        {{ end }}
+        <span>{{ .Name }}</span>
+    </a>
+    {{ end }}
+</nav>
+
 {{/* Scroll to Top Button */}}
 <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
