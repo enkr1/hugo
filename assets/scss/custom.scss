@@ -2017,11 +2017,17 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     background: var(--gold);
 
     .article-details {
-        justify-content: center; // Center text without image
+        background: linear-gradient(to top,
+            white 0%,
+            white 25%,
+            rgba(255,255,255,0.8) 40%,
+            rgba(255,255,255,0.5) 55%,
+            rgba(255,255,255,0.2) 70%,
+            transparent 90%
+        );
     }
 
     .article-title {
         color: var(--bg-primary);
-        text-align: center;
     }
 }

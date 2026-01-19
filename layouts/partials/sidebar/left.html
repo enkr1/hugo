@@ -49,6 +49,10 @@
             </a>
         </li>
         {{ end }}
+        <li>
+            {{/* Search bar */}}
+            {{ partial "widget/search.html" (dict "Context" .) }}
+        </li>
         <li class="menu-bottom-section">
             <ol class="menu">
                 {{- $currentLanguageCode := .Language.Lang -}}
