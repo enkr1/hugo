@@ -2110,16 +2110,16 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 
     .article-details {
         background: linear-gradient(to top,
-            white 0%,
-            white 25%,
-            rgba(255,255,255,0.8) 40%,
-            rgba(255,255,255,0.5) 55%,
-            rgba(255,255,255,0.2) 70%,
+            var(--surface) 0%,
+            var(--surface) 25%,
+            rgba(var(--card-background-rgb), 0.8) 40%,
+            rgba(var(--card-background-rgb), 0.5) 55%,
+            rgba(var(--card-background-rgb), 0.2) 70%,
             transparent 90%
         );
     }
 
     .article-title {
-        color: var(--bg-primary);
+        color: var(--text);
     }
 }
