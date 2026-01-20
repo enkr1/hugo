@@ -46,17 +46,21 @@
 
     // Open modal
     function openModal() {
+        // Compensate for scrollbar width to prevent layout shift
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = scrollbarWidth + 'px';
+        document.body.style.overflow = 'hidden';
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
         setTimeout(() => input.focus(), 50);
     }
 
     // Close modal
     function closeModal() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
         input.value = '';
         resultsList.innerHTML = '';
         emptyState.style.display = 'none';
