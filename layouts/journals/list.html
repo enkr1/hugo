@@ -1,32 +1,30 @@
 {{ define "main" }}
-    <header class="section-journals">
-        <h3 class="section-title">
-            {{ T "list.section" }}
-        </h3>
-
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
-                <h1 class="section-term">{{ .Title }}</h1>
-                {{ with .Params.description }}
-                    <h2 class="section-description">{{ . }}</h2>
-                {{ end }}
-            </div>
-        </div>
+    <header class="section-header section-journals">
+        <h1 class="section-title">{{ .Title }} · {{ len .Pages }}</h1>
     </header>
 
-    {{- $pages := .Pages -}}
-
-    {{ $paginator := .Paginate $pages }}
-    <section class="article-list--compact section-journals">
-        {{ range $paginator.Pages }}
-            <article class="journal-entry">
-                {{ partial "article-list/compact" . }}
-            </article>
+    <section class="journal-list">
+        {{ range .Pages.GroupByDate "2006" }}
+            <div class="journal-year-group">
+                <h2 class="journal-year">{{ .Key }}</h2>
+                {{ range .Pages.GroupByDate "January" }}
+                    <div class="journal-month-group">
+                        <h3 class="journal-month">{{ .Key }}</h3>
+                        <div class="journal-month-entries">
+                            {{ range .Pages }}
+                                <a href="{{ .RelPermalink }}" class="journal-row">
+                                    <time>{{ .Date | time.Format "02" }}</time>
+                                    <span class="separator">—</span>
+                                    <span class="title">{{ .Title }}</span>
+                                    <span class="preview">{{ .Plain | htmlUnescape | replaceRE "^[^\\n]+\\n" "" | truncate 80 "…" }}</span>
+                                </a>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
         {{ end }}
     </section>
-
-    {{- partial "pagination.html" . -}}
 
     {{ partialCached "footer/footer" . }}
 {{ end }}
