@@ -98,12 +98,29 @@
         }
 
         const data = await fetchSearchData();
-        const results = data.filter(item => {
+        const q = query.toLowerCase();
+
+        // Bucket sort: O(n) ranking with granular title matching
+        const titleEquals = [];   // "python" === title
+        const titleStarts = [];   // "python tutorial"
+        const titleContains = []; // "learning python"
+        const contentOnly = [];   // only in body
+
+        for (const item of data) {
             const title = (item.title || '').toLowerCase();
             const content = (item.content || '').toLowerCase();
-            const q = query.toLowerCase();
-            return title.includes(q) || content.includes(q);
-        }).slice(0, 8);
+            const inTitle = title.includes(q);
+            const inContent = content.includes(q);
+
+            if (!inTitle && !inContent) continue;
+
+            if (title === q) titleEquals.push(item);
+            else if (title.startsWith(q)) titleStarts.push(item);
+            else if (inTitle) titleContains.push(item);
+            else contentOnly.push(item);
+        }
+
+        const results = [...titleEquals, ...titleStarts, ...titleContains, ...contentOnly].slice(0, 7);
 
         selectedIndex = -1;
 
