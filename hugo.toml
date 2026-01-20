@@ -125,7 +125,7 @@ name = 'Journals'
 url = '/journals/'
 weight = 4
 [menu.main.params]
-icon = 'date'
+icon = 'journal'
 
 [[menu.main]]
 identifier = 'platforms'
