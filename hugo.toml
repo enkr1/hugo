@@ -104,10 +104,18 @@ weight = 1
 icon = 'home'
 
 [[menu.main]]
+identifier = 'about'
+name = 'About'
+url = '/about/'
+weight = 2
+[menu.main.params]
+icon = 'user'
+
+[[menu.main]]
 identifier = 'posts'
 name = 'Posts'
 url = '/posts/'
-weight = 2
+weight = 3
 [menu.main.params]
 icon = 'archives'
 
@@ -115,17 +123,9 @@ icon = 'archives'
 identifier = 'journals'
 name = 'Journals'
 url = '/journals/'
-weight = 3
-[menu.main.params]
-icon = 'date'
-
-[[menu.main]]
-identifier = 'about'
-name = 'About'
-url = '/about/'
 weight = 4
 [menu.main.params]
-icon = 'user'
+icon = 'date'
 
 [[menu.main]]
 identifier = 'platforms'
