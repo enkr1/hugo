@@ -31,5 +31,4 @@ on the reading front, i'm still deep into **The Diary of a CEO**, and i stumbled
 ![](IMG_4523.jpeg)
 ![](IMG_4547.jpeg)
 ![](IMG_4548.heic.jpeg)
-![](IMG_4550.jpeg)
 ![](IMG_4554.jpeg)
