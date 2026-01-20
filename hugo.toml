@@ -112,12 +112,12 @@ weight = 2
 icon = 'user'
 
 [[menu.main]]
-identifier = 'posts'
-name = 'Posts'
-url = '/posts/'
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
 weight = 3
 [menu.main.params]
-icon = 'archives'
+icon = 'categories'
 
 [[menu.main]]
 identifier = 'journals'
