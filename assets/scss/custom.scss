@@ -487,9 +487,14 @@
     }
 
     .category-item {
-        a {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        > a {
             display: flex;
             align-items: center;
+            flex: 1;
             color: var(--text-secondary);
             text-decoration: none;
             border-left: 2px solid transparent;
@@ -569,13 +574,44 @@
             }
         }
 
-        // Nested children - no extra styling needed, depth classes handle it
+        // Nested children - full width for proper wrapping
         .category-children {
-            // Already reset by ul rule above
+            width: 100%;
+        }
+
+        // Expandable toggle button - left side
+        .category-toggle {
+            background: none;
+            border: none;
+            padding: 0.2rem 0.4rem;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+
+            &:hover {
+                color: var(--accent);
+            }
+
+            .icon-chevron {
+                transition: transform var(--transition-fast);
+            }
+        }
+
+        // Collapsed state - hide children
+        &.collapsed > .category-children {
+            display: none;
+        }
+
+        // Rotate chevron when expanded
+        &:not(.collapsed) > .category-toggle .icon-chevron {
+            transform: rotate(90deg);
         }
     }
 
-    // Full page variant - no height limit, more spacious
+    // Full page variant - no height limit, more spacious, always expanded
     &--page {
         .categories-list {
             max-height: none;

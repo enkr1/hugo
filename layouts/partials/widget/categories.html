@@ -1,19 +1,93 @@
 {{- $context := .Context -}}
-{{- $limit := default 10 .Params.limit -}}
+
+{{- /* Build category tree from frontmatter paths */ -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "nodes" dict -}}
+{{- $scratch.Set "roots" slice -}}
+
+{{- /* Process all pages to extract category hierarchies */ -}}
+{{- range $context.Site.RegularPages -}}
+    {{- range .Params.categories -}}
+        {{- if reflect.IsSlice . -}}
+            {{- $path := . -}}
+            {{- $pathLen := len $path -}}
+
+            {{- /* Process each level in the path */ -}}
+            {{- range $i, $name := $path -}}
+                {{- $nodeKey := $name -}}
+                {{- $nodes := $scratch.Get "nodes" -}}
+
+                {{- /* Create node if it doesn't exist */ -}}
+                {{- if not (index $nodes $nodeKey) -}}
+                    {{- $slug := $name | urlize -}}
+                    {{- $url := printf "/categories/%s/" $slug -}}
+                    {{- $newNode := dict "name" $name "url" $url "children" slice "count" 0 -}}
+                    {{- $scratch.SetInMap "nodes" $nodeKey $newNode -}}
+                {{- end -}}
+
+                {{- /* Increment count for this node */ -}}
+                {{- $nodes = $scratch.Get "nodes" -}}
+                {{- $node := index $nodes $nodeKey -}}
+                {{- $newCount := add (index $node "count") 1 -}}
+                {{- $updatedNode := merge $node (dict "count" $newCount) -}}
+                {{- $scratch.SetInMap "nodes" $nodeKey $updatedNode -}}
+
+                {{- /* Track parent-child relationships */ -}}
+                {{- if eq $i 0 -}}
+                    {{- /* This is a root node */ -}}
+                    {{- $roots := $scratch.Get "roots" -}}
+                    {{- if not (in $roots $nodeKey) -}}
+                        {{- $scratch.Set "roots" ($roots | append $nodeKey) -}}
+                    {{- end -}}
+                {{- else -}}
+                    {{- /* Add as child of previous node */ -}}
+                    {{- $parentIndex := sub $i 1 -}}
+                    {{- $parentName := index $path $parentIndex -}}
+                    {{- $nodes = $scratch.Get "nodes" -}}
+                    {{- $parentNode := index $nodes $parentName -}}
+                    {{- $children := index $parentNode "children" -}}
+                    {{- if not (in $children $nodeKey) -}}
+                        {{- $newChildren := $children | append $nodeKey -}}
+                        {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
+                        {{- $scratch.SetInMap "nodes" $parentName $updatedParent -}}
+                    {{- end -}}
+
+                    {{- /* Remove from roots if it was added there */ -}}
+                    {{- $roots := $scratch.Get "roots" -}}
+                    {{- $newRoots := slice -}}
+                    {{- range $roots -}}
+                        {{- if ne . $nodeKey -}}
+                            {{- $newRoots = $newRoots | append . -}}
+                        {{- end -}}
+                    {{- end -}}
+                    {{- $scratch.Set "roots" $newRoots -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
 <section class="widget categories-tree">
     <div class="widget-icon">
         {{ partial "helper/icon" "categories" }}
     </div>
     <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
 
+    {{- $nodes := $scratch.Get "nodes" -}}
+    {{- $roots := $scratch.Get "roots" -}}
+
     <ul class="categories-list">
-        {{ range first $limit $context.Site.Taxonomies.categories.ByCount }}
-            <li>
-                <a href="{{ .Page.RelPermalink }}">
-                    <span class="category-name">{{ .Page.Title }}</span>
-                    <span class="category-count">{{ .Count }}</span>
-                </a>
-            </li>
-        {{ end }}
+        {{- range $roots -}}
+            {{- $node := index $nodes . -}}
+            {{- partial "widget/category-node.html" (dict "node" $node "nodes" $nodes "depth" 0 "expandable" true) -}}
+        {{- end -}}
     </ul>
+
+    <script>
+        document.querySelectorAll('.categories-tree:not(.categories-tree--page) .category-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.category-item').classList.toggle('collapsed');
+            });
+        });
+    </script>
 </section>

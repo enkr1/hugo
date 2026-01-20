@@ -1,0 +1,29 @@
+{{- $node := .node -}}
+{{- $nodes := .nodes -}}
+{{- $depth := .depth -}}
+{{- $expandable := default false .expandable -}}
+{{- $hasChildren := gt (len (index $node "children")) 0 -}}
+
+<li class="category-item depth-{{ $depth }}{{ if $hasChildren }} has-children{{ end }}{{ if and $expandable $hasChildren }} collapsed{{ end }}">
+    {{- if and $expandable $hasChildren -}}
+        <button class="category-toggle" aria-label="Toggle {{ index $node "name" }}">
+            <svg class="icon-chevron" viewBox="0 0 24 24" width="12" height="12">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    {{- end -}}
+    <a href="{{ index $node "url" }}">
+        <span class="category-name">{{ index $node "name" }}</span>
+        <span class="category-line"></span>
+        <span class="category-count">{{ index $node "count" }}</span>
+    </a>
+
+    {{- if $hasChildren -}}
+        <ul class="category-children">
+            {{- range index $node "children" -}}
+                {{- $childNode := index $nodes . -}}
+                {{- partial "widget/category-node.html" (dict "node" $childNode "nodes" $nodes "depth" (add $depth 1) "expandable" $expandable) -}}
+            {{- end -}}
+        </ul>
+    {{- end -}}
+</li>
