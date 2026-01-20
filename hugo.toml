@@ -26,7 +26,7 @@ page = '/:slug/'
 mainSections = ['posts', 'journals']
 featuredImageField = 'image'
 rssFullContent = true
-description = "Words for my future self—a space for insights and creativity. Along the way, I'll be journaling my journey, diving into programming tips, beatboxing stories and sharing insights on fitness, music, and more to inspire anyone chasing their own path."
+description = "Personal blog by Jing Hui PANG—journaling my journey in programming, beatboxing, and personal growth. Tech tips, music stories, and life insights."
 [params.author]
 name = "Jing Hui PANG | 彭竞辉 | ENKR"
 email = ""
