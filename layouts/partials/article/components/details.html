@@ -1,29 +1,46 @@
+{{/* Handle both direct page context and dict context with isMainArticle flag */}}
+{{ $page := . }}
+{{ $isMainArticle := false }}
+{{ if reflect.IsMap . }}
+    {{ $page = .Page }}
+    {{ $isMainArticle = .isMainArticle | default false }}
+{{ end }}
+
 <div class="article-details">
     <div class="article-title-wrapper">
+        {{/* SEO: Main article on single page gets h1; lists/related get h2 */}}
+        {{ if $isMainArticle }}
+        <h1 class="article-title">
+            <a href="{{ $page.RelPermalink }}">
+                {{- $page.Title -}}
+            </a>
+        </h1>
+        {{ else }}
         <h2 class="article-title">
-            <a href="{{ .RelPermalink }}">
-                {{- .Title -}}
+            <a href="{{ $page.RelPermalink }}">
+                {{- $page.Title -}}
             </a>
         </h2>
+        {{ end }}
 
-        {{ with .Params.description }}
+        {{ with $page.Params.description }}
         <h3 class="article-subtitle">
             {{ . }}
         </h3>
         {{ end }}
     </div>
 
-    {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
-    {{ $showDate := not .Date.IsZero }}
-    {{ $showTags := .Params.tags }}
+    {{ $showReadingTime := $page.Params.readingTime | default ($page.Site.Params.article.readingTime) }}
+    {{ $showDate := not $page.Date.IsZero }}
+    {{ $showTags := $page.Params.tags }}
     {{ $showFooter := or $showDate $showReadingTime $showTags }}
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
             <div>
                 {{ partial "helper/icon" "date" }}
-                <time class="article-time--published" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                <time class="article-time--published" datetime='{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                    {{- $page.Date | time.Format (or $page.Site.Params.dateFormat.published "Jan 02, 2006") -}}
                 </time>
             </div>
         {{ end }}
@@ -32,24 +49,24 @@
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
+                    {{ T "article.readingTime" $page.ReadingTime }}
                 </time>
             </div>
         {{ end }}
 
         {{ if $showTags }}
             <div class="article-tags">
-                {{ range (.GetTerms "tags") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                {{ range ($page.GetTerms "tags") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
             </div>
         {{ end }}
     </footer>
     {{ end }}
 
-    {{ if .IsTranslated }}
+    {{ if $page.IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}
             <div>
-                {{ range .Translations }}
+                {{ range $page.Translations }}
                     <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
                 {{ end }}
             </div>
