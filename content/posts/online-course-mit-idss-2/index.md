@@ -35,7 +35,7 @@ Inferential statistics provide the backbone for making predictions and decisions
 
 - Inferential statistics involve using sample data to make generalisations and predictions about a larger population.
 
-![]("desc-vs-inf-stats.png")
+![](desc-vs-inf-stats.png)
 
 
 ### Key Concepts in Inferential Statistics:

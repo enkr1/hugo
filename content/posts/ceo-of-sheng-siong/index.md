@@ -26,7 +26,7 @@ keywords:
 
 On a serene evening on 19 April 2024, I found myself amongst a keen audience in a local auditorium, all of us buzzing with anticipation for a talk by Lim Hock Chee, the visionary CEO of Sheng Siong. Thanks to a kind invite from my friend, personal wealth manager, [Troy Lai](https://sg.linkedin.com/in/troy-lai-990108198), this wasn't just another evening. It was a doorway to invaluable insights from one of Singapore's top business leaders. Speaking eloquently in Mandarin, Mr. Lim shared his wisdom on personal ethics and business acumen with a candour that was both enlightening and refreshing.
 
-![Lim Hock Chee speaking at the event]("photo_2024-04-20_17-52-05.jpg")
+![Lim Hock Chee speaking at the event](photo_2024-04-20_17-52-05.jpg)
 
 <!-- more -->
 
@@ -66,8 +66,8 @@ Lim Hock Chee's insights extend beyond mere business tactics; they are profound 
 These lessons transcend boundaries, offering universal insights. As I integrate these into my daily life, I'm inspired by the transformative power of integrity and proactive leadership.
 
 **Scenes from an unforgettable evening:**
-![Engaging with ideas]("photo_2024-04-20_17-52-17.jpg")
-![Capturing moments]("photo_2024-04-20_17-52-22.jpg")
-![Picture with him!]("photo_2024-04-20_17-52-19.jpg")
+![Engaging with ideas](photo_2024-04-20_17-52-17.jpg)
+![Capturing moments](photo_2024-04-20_17-52-22.jpg)
+![Picture with him!](photo_2024-04-20_17-52-19.jpg)
 
 ---

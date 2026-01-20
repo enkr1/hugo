@@ -56,22 +56,22 @@ Encouragement came from an unexpected source—my best friend, Ryan Ling. He saw
 
 I poured my heart and soul into preparing for the talent show. The hours spent mastering my routines paid off spectacularly—I won! That victory marked a profound transformation, not merely a triumph but a metamorphosis. In the applause of the crowd, I found not just acceptance but a new self-assurance that echoed louder than any beat I could produce. Performing on stage redefined how I saw myself and how others saw me. I went from the kid who beatboxed in solitude to a school celebrity.
 
-![My first ever victory for beatboxing]("sec-sch-first-vic.jpg")
+![My first ever victory for beatboxing](sec-sch-first-vic.jpg)
 
 
 ### A New Chapter
 The following year, I pushed my creative boundaries further by integrating beatboxing with another passion of mine, the Diabolo (Chinese Yo-Yo). I crafted a performance with my crew to combine beatboxing as background music with choreographed Diabolo routines. This innovative fusion not only entertained but *also won me accolades for the second consecutive year.*
-![A solo section of me in the performance]("sec-sch-perf-onstage.jpg")
-![My second trophy, but this time is for the team. 😭]("sec-sch-post-win-2-w-team.jpg")
-![A picture with the second trophy before leaving it at the Diabolo club house. 🥹]("sec-sch-win-2.jpg")
+![A solo section of me in the performance](sec-sch-perf-onstage.jpg)
+![My second trophy, but this time is for the team. 😭](sec-sch-post-win-2-w-team.jpg)
+![A picture with the second trophy before leaving it at the Diabolo club house. 🥹](sec-sch-win-2.jpg)
 
 Stepping onto that stage altered my life. I shed the skin of an introverted kid, emerging as someone new. **Beatboxing taught me to carry myself with confidence, engage with others eye-to-eye, and walk with a newfound assurance** like never before ...
 
 #### Some memorable moments
-![Short performance in Diabolo camp event]("sec-sch-mc-1.jpg")
-![Emcee for the event]("sec-sch-mc-2.jpg")
-![My Diabolo coach, Jin Ng.]("sec-sch-my-coach.jpg")
-![Captured by my brother, before we left the event ... 🥺]("sec-sch-my-back.jpg")
+![Short performance in Diabolo camp event](sec-sch-mc-1.jpg)
+![Emcee for the event](sec-sch-mc-2.jpg)
+![My Diabolo coach, Jin Ng.](sec-sch-perf-my-coach.jpg)
+![Captured by my brother, before we left the event ... 🥺](sec-sch-perf-my-back.jpg)
 
 
 
@@ -128,8 +128,8 @@ Claiming my first titles in both the solo and tag team categories at the Clement
 This battle not only marked my entry into an incredible beatbox family but also catalysed a profound learning journey unlike any other. During the competition and in the days that followed, I actively sought advice and tips from everyone, inquiring about techniques that had eluded me for years. The community was eager to share, allowing me to grasp nuances and sounds on the spot—a stark contrast to the solitary hours spent deciphering techniques from YouTube videos back home. This vibrant, supportive community has grown stronger over time, and our connections extend far beyond mere beatboxing. We are more than friends who share a passion; we are a family united by rhythm and mutual respect, continually inspiring each other to new heights, We are rising 555.
 
 #### Some moments from CCC 2018
-![Picture with Pira!]("pic-w-pira.jpg")
-![Picture with YK!]("pic-w-yk.jpg")
+![Picture with Pira!](pic-w-pira.jpg)
+![Picture with YK!](pic-w-yk.jpg)
 
 
 
@@ -151,8 +151,8 @@ This period was both brief and seemingly endless, filled with memorable moments 
 ### Radiance Beatbox Jam 2019, Singapore
 This event was among the first organised by the 555 Beatbox Initiative. We dedicated immense effort to ensure its success, and it was a resounding hit within the community.
 
-![Poster of Radiance Beatbox Jam 1]("rbj1-19-poster.png")
-![Picture with the crew while waiting for traffic light to get to the venue]("rbj1-19-traffic.jpg")
+![Poster of Radiance Beatbox Jam 1](rbj1-19-poster.png)
+![Picture with the crew while waiting for traffic light to get to the venue](rbj1-19-traffic.jpg)
 
 
 
@@ -169,9 +169,9 @@ The finals posed a formidable challenge against **KK**, one of the most musicall
 Additionally, the competition was a double triumph for me. Alongside Luke Chong (HandFx), under our tag team name **Vonderie**, we clinched victory in the tag team category as well. Winning both the solo and tag team competitions was an exhilarating affirmation of our hard work and synergy.
 
 #### Unforgettable moments
-![Von Appeti group picture 🥺❤️]("abc-19-w-group.jpg")
-![SPVT group picture! ❤️❤️❤️]("abc-19-w-spvt.jpg")
-![Trophies of solo and tag team 🥹]("2-trophies.jpg")
+![Von Appeti group picture 🥺❤️](abc-19-w-group.jpg)
+![SPVT group picture! ❤️❤️❤️](abc-19-w-spvt.jpg)
+![Trophies of solo and tag team 🥹](2-trophies.jpg)
 
 
 
@@ -187,13 +187,13 @@ This competition was undoubtedly a pinnacle of my beatboxing year. The judging p
 The finals presented not merely a battle, but an extraordinary confrontation with **Varen**, who was more than just a rival; he was one of my dearest friends and a trusted crewmate from Obelisk. Our friendship, built on mutual respect and shared experiences, only amplified the intensity of the competition. Each performance was not just about showcasing our skills but also about honouring our shared journey in beatboxing. The atmosphere was electric, filled with the energy of fierce competition intertwined with the warmth of brotherly respect. It was a display of high-caliber beatboxing where each drop and beat resonated more profoundly because of our personal connections. This battle pushed both of us to the limits of our creativity and technical skills, turning the event into an unforgettable spectacle of artistry and friendship.
 
 #### Unforgettable moments
-![Picture with my idol, YK! can u believe? 🥺]("cbb-19-w-yk.jpg")
-![Picture with Zhang Ze! 😭🔥]("cbb-19-w-zhangze.jpg")
-![Picture with the judges! Left to right: YK, EnKr (Me), Zhang Ze and Cai Fa]("cbb-19-w-judges.jpg")
-![Picture with HandFx, my tag team partner ❤️]("cbb-19-w-handfx.jpg")
-![Picture with Varen 🔥]("cbb-19-w-varen.jpg")
-![Top 3! LTR: Khai, HandFx, EnKr (Me) and Varen]("cbb-19-w-top3.jpg")
-![Picture with the participants!]("cbb-19-w-top8.jpg")
+![Picture with my idol, YK! can u believe? 🥺](cbb-19-w-yk.jpg)
+![Picture with Zhang Ze! 😭🔥](cbb-19-w-zhangze.jpg)
+![Picture with the judges! Left to right: YK, EnKr (Me), Zhang Ze and Cai Fa](cbb-19-w-judges.jpg)
+![Picture with HandFx, my tag team partner ❤️](cbb-19-w-handfx.jpg)
+![Picture with Varen 🔥](cbb-19-w-varen.jpg)
+![Top 3! LTR: Khai, HandFx, EnKr (Me) and Varen](cbb-19-w-top3.jpg)
+![Picture with the participants!](cbb-19-w-top8.jpg)
 
 
 
@@ -315,32 +315,32 @@ The Werewolf Beatbox Championship 2019 will always be a cherished memory, markin
 ![](IMG20191202155432.jpg)
 ![](IMG20191202161255.jpg)
 ![](IMG20191202233614.jpg)
-![](1052..jpg)
-![](1055..jpg)
-![](1058..jpg)
-![](1060..jpg)
-![](1062..jpg)
-![](1065..jpg)
-![](1067..jpg)
-![](1068..jpg)
-![](1079..jpg)
-![](1089..jpg)
-![](1102..jpg)
-![](1109..jpg)
-![](1115..jpg)
-![](1122..jpg)
-![](1130..jpg)
-![](1134..jpg)
-![](1139..jpg)
-![](1144..jpg)
-![](1147..jpg)
+![](1052.jpeg)
+![](1055.jpeg)
+![](1058.jpeg)
+![](1060.jpeg)
+![](1062.jpeg)
+![](1065.jpeg)
+![](1067.jpeg)
+![](1068.jpeg)
+![](1079.jpeg)
+![](1089.jpeg)
+![](1102.jpeg)
+![](1109.jpeg)
+![](1115.jpeg)
+![](1122.jpeg)
+![](1130.jpeg)
+![](1134.jpeg)
+![](1139.jpeg)
+![](1144.jpeg)
+![](1147.jpeg)
 ![](1575289871875.jpg)
 ![](1575289877929.jpg)
 ![](1575289887276.jpg)
 ![](1575289894740.jpg)
 ![](1575289900004.jpg)
-![](647..jpg)
-![](652..jpg)
+![](647.jpeg)
+![](652.jpeg)
 ![](mmexport1576293836313.jpg)
 
 

@@ -42,14 +42,14 @@ After six months of consistent grinding on [LeetCode](https://leetcode.com/) and
 ### Daily Goals
 I made it my mantra to crack *at least one or two problems daily*. On turbo-charged days, when I felt like it, I would amp it up to three, juggling between easy, medium, and hard to stay sharp and resilient. Picture this: **it's like keeping your brain in a gym session, where every problem solved is a muscle flexed.**
 
-![LeetCode stats - i was job hunting from late Apr to mid Oct, and yes streak ended just like that 😩]("leetcode-stats.png")
+![LeetCode stats - i was job hunting from late Apr to mid Oct, and yes streak ended just like that 😩](leetcode-stats.png)
 
 ### Timed Sessions
 **What's a fight without a timer?** I practised with the clock ticking, mirroring those nail-biting interview settings. (also LeetCode has a timer feature now!) Starting with 10 minutes for easy peasy ones, 30 for the tricky guys, and an hour for the brain-busters. As time went on, I got faster, nailing easies in 5 and hards in 30. You get this weird sixth sense for timing, and bro, does it make you feel like a coding ninja!
 
 Also, remember that it's totally okay to tap out on a hard question and learn from the best answers online. The real trick is to *revisit a similar question later on, ensuring you can solve it the next time around*. Just promise yourself that if you peek at the answer once, you must solve it on your own the next time you encounter it. Once you nail the concept, lock it away in your mental solution bank for future challenges!
 
-![The counter on LeetCode]("leetcode-counter.png")
+![The counter on LeetCode](leetcode-counter.png)
 
 ### Review and Reflect
 After each practice session, I would hold a little debrief, asking myself: What went well? What tripped me up? It felt like reviewing game tape—*always revealing*. Post-interview, I would revisit the questions, diving into similar ones, making my notes, to make sure the lessons really stuck.
@@ -63,7 +63,7 @@ I took the plunge into the areas that scared me the most, tackling my weaknesses
 
 I must give a massive shout-out to [NeetCode's](https://neetcode.io/) roadmap—it **was a game-changer** during my job search. Following their structured approach really helped; it lays out what you need to grasp fundamentally before moving on to more challenging topics like **2D Dynamic Programming** and **Advanced Graphs**. Understanding the essentials first, then progressively tackling more complex areas, is truly the way to go. **Remember, there's no shortcut to real mastery.**
 
-![NeetCode's Roadmap]("neetcode-roadmap.png")
+![NeetCode's Roadmap](neetcode-roadmap.png)
 
 
 
