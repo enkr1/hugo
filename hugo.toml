@@ -86,7 +86,7 @@ type = 'toc'
 toggle = true
 default = 'auto'
 
-# Image processing
+# Theme image processing
 [params.imageProcessing]
 [params.imageProcessing.cover]
 enabled = true
