@@ -1437,35 +1437,36 @@
 }
 
 /* ===========================================
-   JOURNAL SECTION - Minimal rows
+   GROUPED LIST - Year/Month hierarchy (SSOT)
+   Used by: journals, posts
    =========================================== */
 
-// Journal page header
-.section-header.section-journals {
+// Page header for grouped lists
+.section-header--grouped {
     margin-bottom: 2.5rem;
 
     .section-title {
         font-family: var(--font-display);
-        font-size: var(--font-size-2xl); // 4rem - page header size
+        font-size: var(--font-size-2xl);
         font-weight: var(--font-weight-semibold);
         color: var(--card-text-color-main);
     }
 }
 
-// Journal list - grouped by year
-.journal-list {
+// Grouped list container
+.grouped-list {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-.journal-year-group {
+.grouped-list__year {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.journal-year {
+.grouped-list__year-title {
     font-family: var(--font-display);
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-semibold);
@@ -1473,13 +1474,13 @@
     margin: 0;
 }
 
-.journal-month-group {
+.grouped-list__month {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.journal-month {
+.grouped-list__month-title {
     font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
@@ -1489,13 +1490,13 @@
     border-bottom: 1px solid var(--border);
 }
 
-.journal-month-entries {
+.grouped-list__entries {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.journal-row {
+.grouped-list__row {
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
@@ -1509,7 +1510,7 @@
         color: var(--card-text-color-secondary);
         font-size: var(--font-size-sm);
         font-family: var(--font-body);
-        flex: 0 0 2rem; // Day number only
+        flex: 0 0 2rem;
         white-space: nowrap;
     }
 
@@ -1527,7 +1528,7 @@
         color: var(--card-text-color-tertiary);
         font-size: var(--font-size-sm);
         line-height: var(--line-height-normal);
-        padding-left: 3rem; // Align with title (day width + gap)
+        padding-left: 3rem;
     }
 
     &:hover {

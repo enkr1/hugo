@@ -16,7 +16,7 @@
                                     <time>{{ .Date | time.Format "02" }}</time>
                                     <span class="separator">—</span>
                                     <span class="title">{{ .Title }}</span>
-                                    <span class="preview">{{ .Plain | htmlUnescape | replaceRE "^[^\\n]+\\n" "" | truncate 80 "…" }}</span>
+                                    <span class="preview">{{ .Plain | htmlUnescape | truncate 80 "…" }}</span>
                                 </a>
                             {{ end }}
                         </div>
