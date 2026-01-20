@@ -79,15 +79,13 @@
     <ul class="categories-list">
         {{- range $roots -}}
             {{- $node := index $nodes . -}}
-            {{- partial "widget/category-node.html" (dict "node" $node "nodes" $nodes "depth" 0 "expandable" true) -}}
+            <li class="category-item depth-0">
+                <a href="{{ index $node "url" }}">
+                    <span class="category-name">{{ index $node "name" }}</span>
+                    <span class="category-line"></span>
+                    <span class="category-count">{{ index $node "count" }}</span>
+                </a>
+            </li>
         {{- end -}}
     </ul>
-
-    <script>
-        document.querySelectorAll('.categories-tree:not(.categories-tree--page) .category-toggle').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.closest('.category-item').classList.toggle('collapsed');
-            });
-        });
-    </script>
 </section>
