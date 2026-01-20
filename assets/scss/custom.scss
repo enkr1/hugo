@@ -23,6 +23,7 @@
     --article-font-family: var(--font-body);
     --article-font-size: var(--font-size-base);
     --code-font-family: var(--font-mono);
+    --heading-border-size: 2px;
 
     // TYPE SCALE (1.6×)
     --font-size-xs: 1.2rem;
@@ -309,6 +310,28 @@
     color: var(--text-secondary);
     font-weight: 400;
     line-height: 1.5;
+}
+
+// Headings - override theme px-based padding with rem
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    padding-inline-start: 1rem;
+    padding-block: 0.2rem; // Extends left border line vertically
+}
+
+// Override theme's px-based gap with rem
+.article-time > div,
+.article-translations > div {
+    gap: 0.7rem;
+}
+
+// Single page article title - larger than body h2 (3rem)
+.article-header .article-title {
+    font-size: 3.2rem;
 }
 
 /* ===========================================
@@ -614,6 +637,7 @@
     .article-title {
         font-family: var(--font-body);
         font-weight: var(--font-weight-semibold);
+        font-size: 1.8rem; // List view - smaller than single page
         color: var(--text);
 
         a {
@@ -637,7 +661,8 @@
         line-height: 1.5;
     }
 
-    .article-time {
+    .article-time,
+    .article-translations {
         color: var(--text-tertiary);
         font-size: var(--font-size-xs);
         display: flex;
@@ -648,7 +673,7 @@
         > div {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.7rem;
         }
 
         .article-tags {
@@ -695,6 +720,12 @@
     border-radius: 0;
     padding: 0;
     margin-bottom: var(--spacing-lg);
+}
+
+// Main article - line border design (static, no hover animation)
+.article-page .main-article {
+    border-radius: 0;
+    border: 1px solid var(--accent);
 }
 
 /* ===========================================
@@ -1884,15 +1915,17 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         bottom: 0;
         left: 0;
         right: 0;
-        height: 72px;
+        // min-height so safe-area padding extends the nav (bg fills into home indicator area)
+        min-height: 72px;
         background: rgba(var(--card-background-rgb), 0.2);
         backdrop-filter: blur(0.7rem);
         -webkit-backdrop-filter: blur(0.7rem);
         border-top: 1px solid rgba(0, 0, 0, 0.06);
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
         z-index: 1000;
-        // Safe area + minimum padding (use Max to pass through to CSS)
-        padding: 8px Max(8px, env(safe-area-inset-right)) Max(8px, env(safe-area-inset-bottom)) Max(8px, env(safe-area-inset-left));
+        // Safe area padding - bottom extends into home indicator zone on notched devices
+        // Bottom: 0.5rem base + safe-area for content breathing room
+        padding: 0.5rem Max(0.5rem, env(safe-area-inset-right)) calc(0.5rem + env(safe-area-inset-bottom, 0)) Max(0.5rem, env(safe-area-inset-left));
     }
 
     .mobile-nav__item {
@@ -1919,9 +1952,13 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
             stroke-width: 1.5;
         }
 
-        &:hover,
+        &:hover {
+            color: var(--accent);
+        }
+
         &.active {
             color: var(--accent);
+            font-weight: 700;
         }
 
         &.active svg {
@@ -1970,18 +2007,19 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     }
 
     // Search modal - mobile adjustments
+    // Use svh/svw (small viewport) to account for mobile browser chrome
     .search-modal {
-        padding-top: 5vh;
+        padding-top: 5svh;
     }
 
     .search-modal-container {
-        width: 90vw;
+        width: 90svw;
         max-width: none;
         margin: 0;
     }
 
     .search-modal-results {
-        max-height: 90vh;
+        max-height: 90svh;
     }
 
     .search-modal-footer {
@@ -2016,7 +2054,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 @media (max-width: 640px) {
     // Mobile nav - smaller height
     .mobile-nav {
-        height: 64px;
+        min-height: 64px;
     }
 
     .mobile-nav__item {
@@ -2081,9 +2119,9 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         font-size: var(--font-size-sm);
     }
 
-    // TOC - limit height on mobile
+    // TOC - limit height on mobile (svh for browser chrome)
     #TableOfContents {
-        max-height: 50vh;
+        max-height: 50svh;
     }
 
     // Article details - tighter padding
