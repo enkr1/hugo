@@ -1,0 +1,38 @@
+{{ define "body-class" }}template-archives{{ end }}
+{{ define "main" }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $filtered := where $pages "Params.hidden" "!=" true }}
+
+    <header class="section-header--grouped">
+        <h1 class="section-title">{{ .Title }} · {{ len $filtered }}</h1>
+    </header>
+
+    <section class="grouped-list">
+        {{ range $filtered.GroupByDate "2006" }}
+            <div class="grouped-list__year">
+                <h2 class="grouped-list__year-title">{{ .Key }}</h2>
+                {{ range .Pages.GroupByDate "January" }}
+                    <div class="grouped-list__month">
+                        <h3 class="grouped-list__month-title">{{ .Key }}</h3>
+                        <div class="grouped-list__entries">
+                            {{ range .Pages }}
+                                <a href="{{ .RelPermalink }}" class="grouped-list__row">
+                                    <time>{{ .Date | time.Format "02" }}</time>
+                                    <span class="separator">—</span>
+                                    <span class="title">{{ .Title }}</span>
+                                    <span class="preview">{{ .Plain | htmlUnescape | truncate 80 "…" }}</span>
+                                </a>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        {{ end }}
+    </section>
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

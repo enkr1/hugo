@@ -450,49 +450,151 @@
     }
 }
 
-/* Sidebar categories widget - tree list */
+/* Sidebar categories widget - TOC-style tree */
 .categories-tree {
     .categories-list {
         list-style: none;
         padding: 0;
         margin: 0;
+        max-height: 400px;
+        overflow-y: auto;
+        font-size: var(--font-size-base);
+        line-height: 1.5;
 
-        li {
-            border-bottom: 1px solid var(--secondary-subtle);
+        // Thin scrollbar
+        scrollbar-width: thin;
+        scrollbar-color: var(--secondary-subtle) transparent;
 
-            &:last-child {
-                border-bottom: none;
-            }
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
 
-            a {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.6rem 0;
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--secondary-subtle);
+            border-radius: 2px;
+        }
+
+        // Reset nested lists
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .category-item {
+        a {
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            transition: all var(--transition-fast);
+
+            &:hover {
                 color: var(--text);
-                text-decoration: none;
-                transition: color var(--transition-fast);
 
-                &:hover {
-                    color: var(--accent);
+                .category-line {
+                    opacity: 1;
+                }
 
-                    .category-count {
-                        color: var(--accent);
-                    }
+                .category-count {
+                    color: var(--text-secondary);
                 }
             }
+        }
 
-            .category-name {
-                font-family: var(--font-body);
-                font-size: var(--font-size-sm);
-                font-weight: var(--font-weight-normal);
+        .category-name {
+            font-family: var(--font-body);
+            flex-shrink: 0;
+        }
+
+        // Line connector between name and count
+        .category-line {
+            flex: 1;
+            height: 1px;
+            margin: 0 0.75rem;
+            background: var(--text-tertiary);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .category-count {
+            font-family: var(--font-body);
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+            flex-shrink: 0;
+            transition: color var(--transition-fast);
+        }
+
+        // Level 0 (root)
+        &.depth-0 > a {
+            padding: 0.4rem 0 0.4rem 1rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--text-secondary);
+
+            &:hover {
+                color: var(--text);
+                border-left-color: var(--accent);
+            }
+        }
+
+        // Level 1
+        &.depth-1 > a {
+            padding: 0.25rem 0 0.25rem 2rem;
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+
+            &:hover {
+                color: var(--text-secondary);
+                border-left-color: var(--accent);
+            }
+        }
+
+        // Level 2+
+        &.depth-2 > a {
+            padding: 0.2rem 0 0.2rem 3rem;
+            font-size: var(--font-size-xs);
+            color: var(--text-tertiary);
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+                color: var(--text-secondary);
+                border-left-color: var(--accent);
+            }
+        }
+
+        // Nested children - no extra styling needed, depth classes handle it
+        .category-children {
+            // Already reset by ul rule above
+        }
+    }
+
+    // Full page variant - no height limit, more spacious
+    &--page {
+        .categories-list {
+            max-height: none;
+            overflow: visible;
+        }
+
+        .category-item {
+            &.depth-0 > a {
+                padding: 0.6rem 0 0.6rem 1.5rem;
+                font-size: var(--font-size-base);
             }
 
-            .category-count {
-                font-family: var(--font-body);
-                font-size: var(--font-size-xs);
-                color: var(--secondary);
-                transition: color var(--transition-fast);
+            &.depth-1 > a {
+                padding: 0.4rem 0 0.4rem 2.5rem;
+                font-size: var(--font-size-sm);
+            }
+
+            &.depth-2 > a {
+                padding: 0.3rem 0 0.3rem 3.5rem;
             }
         }
     }
@@ -726,6 +828,62 @@
 .article-page .main-article {
     border-radius: 0;
     border: 1px solid var(--accent);
+}
+
+// Breadcrumb navigation - single article pages
+.article-breadcrumb {
+    margin-bottom: 1rem;
+
+    ol {
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0;
+        list-style: none !important;
+        list-style-type: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    li {
+        display: inline-flex !important;
+        align-items: center;
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        padding: 0 !important;
+        margin: 0 !important;
+
+        &::before {
+            content: none !important;
+            display: none !important;
+        }
+
+        &::marker {
+            content: none !important;
+            display: none !important;
+        }
+
+        &:not(:last-child)::after {
+            content: "/";
+            margin: 0 0.6rem;
+            color: var(--text-tertiary);
+        }
+
+        a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+
+            &:hover {
+                color: var(--accent);
+            }
+        }
+
+        &:last-child a {
+            color: var(--text);
+        }
+    }
 }
 
 /* ===========================================

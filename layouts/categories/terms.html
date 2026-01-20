@@ -1,0 +1,86 @@
+{{ define "main" }}
+    {{- /* Build category tree from frontmatter paths */ -}}
+    {{- $scratch := newScratch -}}
+    {{- $scratch.Set "nodes" dict -}}
+    {{- $scratch.Set "roots" slice -}}
+
+    {{- /* Process all pages to extract category hierarchies */ -}}
+    {{- range .Site.RegularPages -}}
+        {{- range .Params.categories -}}
+            {{- if reflect.IsSlice . -}}
+                {{- $path := . -}}
+
+                {{- /* Process each level in the path */ -}}
+                {{- range $i, $name := $path -}}
+                    {{- $nodeKey := $name -}}
+                    {{- $nodes := $scratch.Get "nodes" -}}
+
+                    {{- /* Create node if it doesn't exist */ -}}
+                    {{- if not (index $nodes $nodeKey) -}}
+                        {{- $slug := $name | urlize -}}
+                        {{- $url := printf "/categories/%s/" $slug -}}
+                        {{- $newNode := dict "name" $name "url" $url "children" slice "count" 0 -}}
+                        {{- $scratch.SetInMap "nodes" $nodeKey $newNode -}}
+                    {{- end -}}
+
+                    {{- /* Increment count for this node */ -}}
+                    {{- $nodes = $scratch.Get "nodes" -}}
+                    {{- $node := index $nodes $nodeKey -}}
+                    {{- $newCount := add (index $node "count") 1 -}}
+                    {{- $updatedNode := merge $node (dict "count" $newCount) -}}
+                    {{- $scratch.SetInMap "nodes" $nodeKey $updatedNode -}}
+
+                    {{- /* Track parent-child relationships */ -}}
+                    {{- if eq $i 0 -}}
+                        {{- $roots := $scratch.Get "roots" -}}
+                        {{- if not (in $roots $nodeKey) -}}
+                            {{- $scratch.Set "roots" ($roots | append $nodeKey) -}}
+                        {{- end -}}
+                    {{- else -}}
+                        {{- $parentIndex := sub $i 1 -}}
+                        {{- $parentName := index $path $parentIndex -}}
+                        {{- $nodes = $scratch.Get "nodes" -}}
+                        {{- $parentNode := index $nodes $parentName -}}
+                        {{- $children := index $parentNode "children" -}}
+                        {{- if not (in $children $nodeKey) -}}
+                            {{- $newChildren := $children | append $nodeKey -}}
+                            {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
+                            {{- $scratch.SetInMap "nodes" $parentName $updatedParent -}}
+                        {{- end -}}
+
+                        {{- $roots := $scratch.Get "roots" -}}
+                        {{- $newRoots := slice -}}
+                        {{- range $roots -}}
+                            {{- if ne . $nodeKey -}}
+                                {{- $newRoots = $newRoots | append . -}}
+                            {{- end -}}
+                        {{- end -}}
+                        {{- $scratch.Set "roots" $newRoots -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $nodes := $scratch.Get "nodes" -}}
+    {{- $roots := $scratch.Get "roots" -}}
+
+    <header class="section-header--grouped">
+        <h1 class="section-title">{{ .Title }} · {{ len $nodes }}</h1>
+    </header>
+
+    <section class="categories-tree categories-tree--page">
+        <ul class="categories-list">
+            {{- range $roots -}}
+                {{- $node := index $nodes . -}}
+                {{- partial "widget/category-node.html" (dict "node" $node "nodes" $nodes "depth" 0) -}}
+            {{- end -}}
+        </ul>
+    </section>
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
