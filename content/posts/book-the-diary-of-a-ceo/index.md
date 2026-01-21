@@ -6,12 +6,8 @@ tags:
   - "ebook"
   - "reading"
 categories:
-  - "Personal Development"
-  - "Collections"
-  - "Reading"
-  - "Book"
-  - "Steven Bartlett"
-  - "Notebooks"
+  - ["Personal Development", "Collections", "Reading", "Book", "Steven Bartlett"]
+  - ["Notebooks"]
 subtitle:
 description:
 keywords:

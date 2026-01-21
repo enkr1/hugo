@@ -8,9 +8,8 @@ keywords:
 tags:
   - "system-design"
 categories:
-  - "Software Engineering"
-  - "System Design"
-  - "Notebooks"
+  - ["Software Engineering", "System Design"]
+  - ["Notebooks"]
 ---
 
 ## System Design Framework

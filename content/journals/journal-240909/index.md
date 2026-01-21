@@ -3,8 +3,7 @@ title: "Journal: Week 7"
 tags:
   - journal
 categories:
-  - "About Me"
-  - "Journals"
+  - ["About Me", "Journals"]
 comments: false
 date: 2024-09-09 01:02:02
 ---

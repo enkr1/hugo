@@ -1,0 +1,148 @@
+{{- define "main" -}}
+    {{- $categoryPath := .Params.categoryPath -}}
+    {{- $scratch := newScratch -}}
+
+    {{/* Breadcrumb navigation */}}
+    <nav class="breadcrumb" aria-label="Category path">
+        <a href="/categories/">Categories</a>
+        {{- range $i, $name := $categoryPath -}}
+            <span class="separator">/</span>
+            {{- $slugs := slice -}}
+            {{- range $j, $n := $categoryPath -}}
+                {{- if le $j $i -}}
+                    {{- $slugs = $slugs | append (replace $n "/" "-" | urlize) -}}
+                {{- end -}}
+            {{- end -}}
+            {{- $url := printf "/categories/%s/" (delimit $slugs "/") -}}
+            {{- if eq $i (sub (len $categoryPath) 1) -}}
+                <span class="current">{{ $name }}</span>
+            {{- else -}}
+                <a href="{{ $url }}">{{ $name }}</a>
+            {{- end -}}
+        {{- end -}}
+    </nav>
+
+    {{/* Find posts matching this exact category path using string comparison */}}
+    {{- $targetKey := delimit $categoryPath "|" -}}
+    {{- $scratch.Set "matchingPages" slice -}}
+
+    {{- range $page := .Site.RegularPages -}}
+        {{- range $cat := $page.Params.categories -}}
+            {{- if reflect.IsSlice $cat -}}
+                {{- $catKey := delimit $cat "|" -}}
+                {{- if eq $catKey $targetKey -}}
+                    {{- $current := $scratch.Get "matchingPages" -}}
+                    {{- $scratch.Set "matchingPages" ($current | append $page) -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $matchingPages := ($scratch.Get "matchingPages") | uniq -}}
+
+    <header class="section-header--grouped">
+        <h1 class="section-title">{{ .Title }} · {{ len $matchingPages }}</h1>
+        <div class="section-divider"></div>
+    </header>
+
+    {{/* Build subcategory tree - find all descendants */}}
+    {{- $scratch.Set "subNodes" dict -}}
+    {{- $scratch.Set "subRoots" slice -}}
+    {{- $currentDepth := len $categoryPath -}}
+
+    {{- range $section := .Site.Pages -}}
+        {{- if and $section.Params.categoryPath $section.Params._generated -}}
+            {{- $childPath := $section.Params.categoryPath -}}
+            {{- $childDepth := len $childPath -}}
+
+            {{/* Must be a descendant (longer path, same prefix) */}}
+            {{- if gt $childDepth $currentDepth -}}
+                {{- $parentKey := delimit (first $currentDepth $childPath) "|" -}}
+                {{- if eq $parentKey $targetKey -}}
+                    {{/* Build node key from path relative to current */}}
+                    {{- $nodeKey := delimit (after $currentDepth $childPath) "/" -}}
+                    {{- $nodeName := index $childPath (sub $childDepth 1) -}}
+
+                    {{/* Count posts for this category AND all descendants (prefix match) */}}
+                    {{- $postCount := 0 -}}
+                    {{- $childKey := delimit $childPath "|" -}}
+                    {{- range $page := $.Site.RegularPages -}}
+                        {{- range $cat := $page.Params.categories -}}
+                            {{- if reflect.IsSlice $cat -}}
+                                {{- $catKey := delimit $cat "|" -}}
+                                {{/* Match if exact OR starts with this path (is a descendant) */}}
+                                {{- if or (eq $catKey $childKey) (hasPrefix $catKey (printf "%s|" $childKey)) -}}
+                                    {{- $postCount = add $postCount 1 -}}
+                                {{- end -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+
+                    {{- $newNode := dict "name" $nodeName "url" $section.RelPermalink "children" slice "count" $postCount "depth" (sub $childDepth $currentDepth 1) -}}
+                    {{- $scratch.SetInMap "subNodes" $nodeKey $newNode -}}
+
+                    {{/* Track parent-child relationships */}}
+                    {{- $relativeDepth := sub $childDepth $currentDepth -}}
+                    {{- if eq $relativeDepth 1 -}}
+                        {{/* Direct child - add to roots */}}
+                        {{- $roots := $scratch.Get "subRoots" -}}
+                        {{- if not (in $roots $nodeKey) -}}
+                            {{- $scratch.Set "subRoots" ($roots | append $nodeKey) -}}
+                        {{- end -}}
+                    {{- else -}}
+                        {{/* Nested child - add to parent */}}
+                        {{- $parentRelPath := after $currentDepth (first (sub $childDepth 1) $childPath) -}}
+                        {{- $parentNodeKey := delimit $parentRelPath "/" -}}
+                        {{- $subNodes := $scratch.Get "subNodes" -}}
+                        {{- $parentNode := index $subNodes $parentNodeKey -}}
+                        {{- if $parentNode -}}
+                            {{- $children := index $parentNode "children" -}}
+                            {{- if not (in $children $nodeKey) -}}
+                                {{- $newChildren := $children | append $nodeKey -}}
+                                {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
+                                {{- $scratch.SetInMap "subNodes" $parentNodeKey $updatedParent -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $subNodes := $scratch.Get "subNodes" -}}
+    {{- $subRoots := $scratch.Get "subRoots" -}}
+
+    {{- if gt (len $subRoots) 0 -}}
+        <section class="subcategories-tree">
+            <ul class="categories-list">
+                {{- range $subRoots -}}
+                    {{- $node := index $subNodes . -}}
+                    {{- partial "widget/category-node.html" (dict "node" $node "nodes" $subNodes "depth" 0) -}}
+                {{- end -}}
+            </ul>
+            <div class="tree-divider"></div>
+        </section>
+    {{- end -}}
+
+    {{/* List posts - only show if there are posts directly in this category */}}
+    {{- if gt (len $matchingPages) 0 -}}
+        <section class="grouped-list">
+            <div class="grouped-list__entries">
+                {{- range $matchingPages -}}
+                    <a href="{{ .RelPermalink }}" class="grouped-list__row">
+                        <time>{{ .Date | time.Format "2006-01-02" }}</time>
+                        <span class="separator">—</span>
+                        <span class="title">{{ .Title }}</span>
+                        <span class="preview">{{ .Plain | htmlUnescape | truncate 80 "…" }}</span>
+                    </a>
+                {{- end -}}
+            </div>
+        </section>
+    {{- end -}}
+
+    {{ partialCached "footer/footer" . }}
+{{- end -}}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

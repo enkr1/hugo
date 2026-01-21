@@ -9,12 +9,9 @@ tags:
   - "ai"
   - "data-science"
 categories:
-  - "Personal Development"
-  - "Online Courses"
-  - "MIT & IDSS - AI & ML"
-  - "Software Engineering"
-  - "Machine Learning & AI"
-  - "Notebooks"
+  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
+  - ["Software Engineering", "Machine Learning & AI"]
+  - ["Notebooks"]
 subtitle: "Unraveling the Intricacies of Inferential Statistics in Data Science"
 description: "Dive deep into the statistical methods that power data science with a focus on inferential statistics. This post explores core concepts, distribution types, and the application of statistics in making informed decisions based on data."
 keywords:

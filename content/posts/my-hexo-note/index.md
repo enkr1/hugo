@@ -4,10 +4,8 @@ date: 2024-04-28 22:43:18
 tags:
   - "hexo"
 categories:
-  - "Software Engineering"
-  - "Frameworks"
-  - "Hexo"
-  - "Notebooks"
+  - ["Software Engineering", "Frameworks", "Hexo"]
+  - ["Notebooks"]
 subtitle: "Navigating the World of Static Blogging with Hexo"
 description: "Join me as I delve into the intricacies of using Hexo for blogging. This post covers everything from the initial setup to customizing themes and optimizing performance. Whether you're a blogger looking to switch to a static site generator or a developer interested in Hexo's capabilities, find detailed insights and practical tips that can help you build a faster, more secure website."
 keywords:

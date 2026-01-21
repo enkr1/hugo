@@ -4,8 +4,7 @@ date: 2024-05-09 00:53:14
 tags:
   - "algorithm"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
+  - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "Efficient String Processing with Manacher's Algorithm"
 description: "Unlock the secrets of Manacher's Algorithm in this detailed exploration. Learn how this ingenious method enables rapid identification of the longest palindromic substrings, drastically reducing computational complexity and enhancing algorithmic efficiency. Perfect for both budding and seasoned computer scientists."
 keywords:

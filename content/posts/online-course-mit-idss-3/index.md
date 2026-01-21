@@ -9,12 +9,9 @@ tags:
   - "clustering"
   - "dimensionality-reduction"
 categories:
-  - "Personal Development"
-  - "Online Courses"
-  - "MIT & IDSS - AI & ML"
-  - "Software Engineering"
-  - "Machine Learning & AI"
-  - "Notebooks"
+  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
+  - ["Software Engineering", "Machine Learning & AI"]
+  - ["Notebooks"]
 subtitle: "Exploring Advanced Techniques in Data Science to Tackle Unstructured Data"
 description: "Unpack the complexities of unstructured data using unsupervised learning methods like clustering and dimensionality reduction to reveal hidden patterns and insights."
 keywords:

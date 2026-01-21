@@ -5,8 +5,7 @@ tags:
   - 胡思乱写
   - thoughts
 categories:
-  - "About Me"
-  - "Random Thoughts"
+  - ["About Me", "Random Thoughts"]
 subtitle:
 description:
 keywords:

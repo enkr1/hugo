@@ -11,9 +11,7 @@ tags:
   - "job-interview"
   - "memories 🥺"
 categories:
-  - "Career Development"
-  - "Interviews"
-  - "Technical Coding Interviews"
+  - ["Career Development", "Interviews", "Technical Coding Interviews"]
 subtitle: "A Personal Journey Through My First Software Engineer Interview at Google in 2023"
 description: "Explore my personal experience interviewing for a Site Reliability Engineer (SRE) role at Google, my first ever job interview. Follow my journey from the initial HR call to the technical interview rounds, including valuable insights, challenges, and key takeaways."
 keywords:

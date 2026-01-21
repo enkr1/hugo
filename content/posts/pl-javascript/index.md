@@ -4,10 +4,8 @@ date: 2024-04-11 01:31:56
 tags:
   - "programming"
 categories:
-  - "Software Engineering"
-  - "Programming Languages"
-  - "JavaScript"
-  - "Notebooks"
+  - ["Software Engineering", "Programming Languages", "JavaScript"]
+  - ["Notebooks"]
 subtitle: "Mastering JavaScript: A Comprehensive Guide for Developers"
 description: "Delve into the world of JavaScript with this extensive guide designed for programmers at all levels. From basic syntax to advanced functionalities, this post explores the core concepts and latest features of JavaScript, providing practical examples and expert tips to enhance your coding skills. Whether you're a beginner looking to understand the basics or an experienced developer aiming to refine your JavaScript techniques, find valuable insights and resources here."
 keywords:

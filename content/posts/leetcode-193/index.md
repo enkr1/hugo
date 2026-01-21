@@ -7,8 +7,7 @@ tags:
   - "interview-preparation"
   - "bash"
 categories:
-  - "Software Engineering"
-  - "Coding Problems"
+  - ["Software Engineering", "Coding Problems"]
 subtitle: "Solution and Explanation for LeetCode Problem 193: Valid Phone Numbers"
 description: "A comprehensive solution and detailed explanation for solving LeetCode Problem 193: Valid Phone Numbers. This guide includes the problem statement, approach, and code implementation."
 keywords:

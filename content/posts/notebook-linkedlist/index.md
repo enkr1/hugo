@@ -7,9 +7,8 @@ tags:
   - "programming"
   - "data-structures"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
-  - "Notebooks"
+  - ["Software Engineering", "Data Structures & Algorithms"]
+  - ["Notebooks"]
 keywords:
   - "reverse singly linked list"
   - "linked list algorithm"

@@ -4,9 +4,8 @@ date: 2024-05-01 23:11:21
 tags:
   - "backend"
 categories:
-  - "Software Engineering"
-  - "Computer Networking"
-  - "Notebooks"
+  - ["Software Engineering", "Computer Networking"]
+  - ["Notebooks"]
 subtitle: "Essential Insights and Techniques in Computer Networking"
 description: "Dive into the intricacies of computer networking with this detailed notebook. From basic concepts to advanced networking techniques, this post offers a thorough exploration of network design, protocols, and security measures. Ideal for students and professionals alike, learn how to effectively manage and optimize network infrastructure for better performance and reliability."
 keywords:

@@ -1,0 +1,29 @@
+{{- /* Breadcrumb navigation from hierarchical categories */ -}}
+{{- $page := . -}}
+
+{{- /* Find the first hierarchical category (array format) */ -}}
+{{- $categoryPath := slice -}}
+{{- range $page.Params.categories -}}
+    {{- if and (reflect.IsSlice .) (eq (len $categoryPath) 0) -}}
+        {{- $categoryPath = . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Only render if we have a category path */ -}}
+{{- if gt (len $categoryPath) 0 -}}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    {{- range $i, $name := $categoryPath -}}
+        <span class="separator">/</span>
+        {{- /* Build nested URL path */ -}}
+        {{- $slugs := slice -}}
+        {{- range $j, $n := $categoryPath -}}
+            {{- if le $j $i -}}
+                {{- $slugs = $slugs | append (replace $n "/" "-" | urlize) -}}
+            {{- end -}}
+        {{- end -}}
+        {{- $url := printf "/categories/%s/" (delimit $slugs "/") -}}
+        <a href="{{ $url }}">{{ $name }}</a>
+    {{- end -}}
+</nav>
+{{- end -}}

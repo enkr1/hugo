@@ -5,8 +5,7 @@ tags:
   - "algorithm"
   - "dynamic programming"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
+  - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "A Comprehensive Guide to Understanding Floyd-Warshall Algorithm"
 description: "Explore the Floyd-Warshall algorithm for finding shortest paths between all pairs of vertices in a weighted graph. Learn about its applications, benefits, and limitations in handling both positive and negative edge weights."
 keywords:

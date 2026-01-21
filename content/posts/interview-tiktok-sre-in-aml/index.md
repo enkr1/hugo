@@ -10,9 +10,7 @@ tags:
   - "coding-interview"
   - "job-interview"
 categories:
-  - "Career Development"
-  - "Interviews"
-  - "Technical Coding Interviews"
+  - ["Career Development", "Interviews", "Technical Coding Interviews"]
 subtitle: "A Candid Account of My Interview Process for a Site Reliability Engineer Position at TikTok in 2023"
 description: "Read about my experience interviewing for a Site Reliability Engineer role at TikTok. Learn from my mistakes, discover key insights, and get valuable tips for your own job search."
 keywords:

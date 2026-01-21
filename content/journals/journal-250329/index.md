@@ -5,8 +5,7 @@ tags:
   - "journal"
   - "motivation"
 categories:
-  - "About Me"
-  - "Journals"
+  - ["About Me", "Journals"]
 comments: false
 ---
 

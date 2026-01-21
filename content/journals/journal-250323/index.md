@@ -6,8 +6,7 @@ tags:
   - "姐姐"
   - "ikigai"
 categories:
-  - "About Me"
-  - "Journals"
+  - ["About Me", "Journals"]
 comments: false
 layout: journal-post # but it will be overwritten by the layout of the parent folder
 ---

@@ -9,8 +9,7 @@ tags:
   - "graph-algorithms"
   - "leetcode"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
+  - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "Understanding Dijkstra's Algorithm for Optimal Pathfinding"
 description: "Dive into Dijkstra's Algorithm, a fundamental graph algorithm for finding the shortest paths between nodes with non-negative weights. Learn how it works, its use cases, and how it compares to other shortest path algorithms."
 keywords:

@@ -7,8 +7,7 @@ tags:
   - "interview-preparation"
   - "bash"
 categories:
-  - "Software Engineering"
-  - "Coding Problems"
+  - ["Software Engineering", "Coding Problems"]
 subtitle: "Solution and Explanation for LeetCode Problem 194: Transpose File"
 description: "A comprehensive solution and detailed explanation for solving LeetCode Problem 194: Transpose File. This guide includes the problem statement, approach, and code implementation."
 keywords:

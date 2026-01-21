@@ -7,6 +7,11 @@
 {{ end }}
 
 <div class="article-details">
+    {{/* Breadcrumb navigation - only on main article single pages */}}
+    {{ if $isMainArticle }}
+        {{ partial "article/components/breadcrumb" $page }}
+    {{ end }}
+
     <div class="article-title-wrapper">
         {{/* SEO: Main article on single page gets h1; lists/related get h2 */}}
         {{ if $isMainArticle }}

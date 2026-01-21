@@ -5,8 +5,7 @@ tags:
   - "algorithm"
   - "two-pointer"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
+  - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "Efficient Cycle Detection in Linked Lists and Arrays"
 description: "Explore Floyd's Tortoise and Hare Algorithm for detecting cycles in linked lists and arrays. This efficient algorithm, named after Robert W. Floyd, uses two pointers moving at different speeds to identify cycles with linear time complexity and minimal space usage."
 keywords:

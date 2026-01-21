@@ -7,8 +7,7 @@ tags:
   - thoughts
   - 爱
 categories:
-  - "About Me"
-  - "Random Thoughts"
+  - ["About Me", "Random Thoughts"]
 subtitle:
 description:
 keywords:

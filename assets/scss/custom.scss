@@ -82,6 +82,10 @@
     --fire-glow: rgba(217, 119, 6, 0.3);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* ===========================================
    LIGHT MODE - 月影白
    =========================================== */
@@ -450,8 +454,9 @@
     }
 }
 
-/* Sidebar categories widget - TOC-style tree */
-.categories-tree {
+/* Categories tree - TOC-style (sidebar widget + subcategories) */
+.categories-tree,
+.subcategories-tree {
     .categories-list {
         list-style: none;
         padding: 0;
@@ -560,12 +565,28 @@
             }
         }
 
-        // Level 2+
+        // Level 2
         &.depth-2 > a {
             padding: 0.2rem 0 0.2rem 3rem;
             font-size: var(--font-size-xs);
             color: var(--text-tertiary);
             opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+                color: var(--text-secondary);
+                border-left-color: var(--accent);
+            }
+        }
+
+        // Level 3+ (deeper nesting)
+        &.depth-3 > a,
+        &.depth-4 > a,
+        &.depth-5 > a {
+            padding: 0.2rem 0 0.2rem 4rem;
+            font-size: var(--font-size-xs);
+            color: var(--text-tertiary);
+            opacity: 0.7;
 
             &:hover {
                 opacity: 1;
@@ -866,59 +887,36 @@
     border: 1px solid var(--accent);
 }
 
-// Breadcrumb navigation - single article pages
-.article-breadcrumb {
+// Breadcrumb navigation - unified for articles & category pages
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
     margin-bottom: 1rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
 
-    ol {
-        display: flex !important;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0;
-        list-style: none !important;
-        list-style-type: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
+    a {
+        color: var(--water);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+
+        &:hover {
+            color: var(--gold);
+        }
     }
 
-    li {
-        display: inline-flex !important;
-        align-items: center;
-        font-family: var(--font-body);
-        font-size: var(--font-size-base);
-        color: var(--text-secondary);
-        padding: 0 !important;
-        margin: 0 !important;
+    .separator {
+        color: var(--text-muted);
+        opacity: 0.5;
+        margin: 0 0.25rem;
+    }
 
-        &::before {
-            content: none !important;
-            display: none !important;
-        }
-
-        &::marker {
-            content: none !important;
-            display: none !important;
-        }
-
-        &:not(:last-child)::after {
-            content: "/";
-            margin: 0 0.6rem;
-            color: var(--text-tertiary);
-        }
-
-        a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-
-            &:hover {
-                color: var(--accent);
-            }
-        }
-
-        &:last-child a {
-            color: var(--text);
-        }
+    .current {
+        color: var(--text);
+        font-weight: 500;
     }
 }
 
@@ -1507,18 +1505,25 @@
 .site-footer.site-footer--minimal {
     padding: var(--spacing-xl) 0 var(--spacing-lg);
     text-align: center;
+    position: relative;
 
-    .footer-divider {
-        width: 60px;
+    &::before {
+        content: '';
+        display: block;
+        width: 200px;
         height: 1px;
         background: linear-gradient(
             90deg,
             transparent,
-            var(--accent),
+            var(--gold),
             transparent
         );
         margin: 0 auto var(--spacing-lg);
         opacity: 0.6;
+    }
+
+    .footer-divider {
+        display: none;  // Hide the div, use ::before instead
     }
 
     .copyright {
@@ -2447,4 +2452,31 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     .article-title {
         color: var(--text);
     }
+}
+
+/* ===========================================
+   NESTED CATEGORY PAGE - Subcategories tree
+   =========================================== */
+
+.subcategories-tree {
+    margin-bottom: 2rem;
+
+    .categories-list {
+        padding-left: 0;
+    }
+
+    .tree-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--gold);
+        margin-top: 1.5rem;
+    }
+}
+
+/* Section divider - gold accent line */
+.section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 1rem;
 }

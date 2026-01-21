@@ -6,8 +6,7 @@ tags:
   - "motivation"
   - "quote"
 categories:
-  - "Personal Development"
-  - "Inspirational Insights"
+  - ["Personal Development", "Inspirational Insights"]
 subtitle: "Empowering Words to Live By: How Mottos Shape Our Paths"
 description: "Explore the powerful mottos and sayings that have shaped my outlook and driven my decisions throughout life. This collection of inspirational mottos is not just phrases to read but lessons to live by, each with a story and a profound impact on personal development. Join me as we delve into these empowering words, and maybe find a motto that resonates with your journey."
 keywords:

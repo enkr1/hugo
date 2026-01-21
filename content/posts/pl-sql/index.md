@@ -6,10 +6,8 @@ tags:
   - "mysql"
   - "postgresql"
 categories:
-  - "Software Engineering"
-  - "Programming Languages"
-  - "SQL"
-  - "Notebooks"
+  - ["Software Engineering", "Programming Languages", "SQL"]
+  - ["Notebooks"]
 subtitle: "A Personal Collection of SQL Notes and Tips"
 description: "A personal collection of SQL notes, including basic commands, useful tips, and best practices for working with databases. This notebook covers practical examples and insights from using MySQL and PostgreSQL, aimed at helping you keep track of essential SQL concepts and techniques."
 keywords:

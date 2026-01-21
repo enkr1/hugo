@@ -11,8 +11,7 @@ tags:
   - "priority-queue"
   - "dynamic-programming"
 categories:
-  - "Software Engineering"
-  - "Coding Problems"
+  - ["Software Engineering", "Coding Problems"]
 subtitle: "Efficient Approach to Solve LeetCode 1642: Furthest Building You Can Reach"
 description: "A detailed guide to solving LeetCode 1642 using a min-heap for optimal resource management. Learn how to reach the furthest building with given bricks and ladders."
 keywords:

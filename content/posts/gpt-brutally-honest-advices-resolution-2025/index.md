@@ -8,8 +8,7 @@ tags:
   - "resolutions"
   - "gpt"
 categories:
-  - "About Me"
-  - "Personal Growth"
+  - ["About Me", "Personal Growth"]
 subtitle: "How Two ChatGPT Models Shaped My Goals for 2025"
 description: "I asked two AI models, 'What should my resolutions be for the new year? Be brutally honest.' Their responses were eye-opening. This post explores the candid insights and how I'm putting them into action."
 keywords:

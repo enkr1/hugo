@@ -4,9 +4,7 @@ date: 2024-04-26 00:03:30
 tags:
   - "hexo"
 categories:
-  - "Software Engineering"
-  - "Frameworks"
-  - "Hexo"
+  - ["Software Engineering", "Frameworks", "Hexo"]
 subtitle: "Celebrating Excellence: Top Hexo Blogs to Follow"
 description: "Dive into the vibrant world of Hexo-powered blogs as we spotlight some of the most stellar and inspiring examples out there. This post showcases a variety of Hexo blogs, highlighting their unique designs, innovative features, and the creative minds behind them. Whether you're looking for inspiration for your own blog or simply want to explore what's possible with Hexo, these outstanding blogs are a testament to the flexibility and power of this static site generator."
 keywords:

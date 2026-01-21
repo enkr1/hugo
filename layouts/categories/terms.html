@@ -1,5 +1,5 @@
 {{ define "main" }}
-    {{- /* Build category tree from frontmatter paths */ -}}
+    {{- /* Build category tree from frontmatter paths with NESTED URLs */ -}}
     {{- $scratch := newScratch -}}
     {{- $scratch.Set "nodes" dict -}}
     {{- $scratch.Set "roots" slice -}}
@@ -12,18 +12,25 @@
 
                 {{- /* Process each level in the path */ -}}
                 {{- range $i, $name := $path -}}
-                    {{- $nodeKey := $name -}}
+                    {{- /* Build the full slug path up to this level */ -}}
+                    {{- $slugPath := slice -}}
+                    {{- range $j, $n := $path -}}
+                        {{- if le $j $i -}}
+                            {{- $slugPath = $slugPath | append (replace $n "/" "-" | urlize) -}}
+                        {{- end -}}
+                    {{- end -}}
+                    {{- $nodeKey := delimit $slugPath "/" -}}
+                    {{- $url := printf "/categories/%s/" $nodeKey -}}
+
                     {{- $nodes := $scratch.Get "nodes" -}}
 
                     {{- /* Create node if it doesn't exist */ -}}
                     {{- if not (index $nodes $nodeKey) -}}
-                        {{- $slug := $name | urlize -}}
-                        {{- $url := printf "/categories/%s/" $slug -}}
-                        {{- $newNode := dict "name" $name "url" $url "children" slice "count" 0 -}}
+                        {{- $newNode := dict "name" $name "url" $url "slugPath" $nodeKey "children" slice "count" 0 "depth" $i -}}
                         {{- $scratch.SetInMap "nodes" $nodeKey $newNode -}}
                     {{- end -}}
 
-                    {{- /* Increment count for this node */ -}}
+                    {{- /* Increment count for ALL levels (parent sums children) */ -}}
                     {{- $nodes = $scratch.Get "nodes" -}}
                     {{- $node := index $nodes $nodeKey -}}
                     {{- $newCount := add (index $node "count") 1 -}}
@@ -32,22 +39,34 @@
 
                     {{- /* Track parent-child relationships */ -}}
                     {{- if eq $i 0 -}}
+                        {{- /* This is a root node */ -}}
                         {{- $roots := $scratch.Get "roots" -}}
                         {{- if not (in $roots $nodeKey) -}}
                             {{- $scratch.Set "roots" ($roots | append $nodeKey) -}}
                         {{- end -}}
                     {{- else -}}
-                        {{- $parentIndex := sub $i 1 -}}
-                        {{- $parentName := index $path $parentIndex -}}
+                        {{- /* Build parent's slug path */ -}}
+                        {{- $parentSlugPath := slice -}}
+                        {{- range $j, $n := $path -}}
+                            {{- if lt $j $i -}}
+                                {{- $parentSlugPath = $parentSlugPath | append (replace $n "/" "-" | urlize) -}}
+                            {{- end -}}
+                        {{- end -}}
+                        {{- $parentKey := delimit $parentSlugPath "/" -}}
+
+                        {{- /* Add as child of parent */ -}}
                         {{- $nodes = $scratch.Get "nodes" -}}
-                        {{- $parentNode := index $nodes $parentName -}}
-                        {{- $children := index $parentNode "children" -}}
-                        {{- if not (in $children $nodeKey) -}}
-                            {{- $newChildren := $children | append $nodeKey -}}
-                            {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
-                            {{- $scratch.SetInMap "nodes" $parentName $updatedParent -}}
+                        {{- $parentNode := index $nodes $parentKey -}}
+                        {{- if $parentNode -}}
+                            {{- $children := index $parentNode "children" -}}
+                            {{- if not (in $children $nodeKey) -}}
+                                {{- $newChildren := $children | append $nodeKey -}}
+                                {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
+                                {{- $scratch.SetInMap "nodes" $parentKey $updatedParent -}}
+                            {{- end -}}
                         {{- end -}}
 
+                        {{- /* Remove from roots if it was added there */ -}}
                         {{- $roots := $scratch.Get "roots" -}}
                         {{- $newRoots := slice -}}
                         {{- range $roots -}}

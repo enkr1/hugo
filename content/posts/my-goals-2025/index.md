@@ -9,8 +9,7 @@ tags:
   - "career-development"
   - "professional-growth"
 categories:
-  - "About Me"
-  - "Goals"
+  - ["About Me", "Goals"]
 subtitle: "Reflecting, Refining, and Rising: Continuing Last Year's Journey While Embracing New Challenges for 2025"
 description: "Reflecting on 2024's achievements while aiming higher—i am humbly sharing my progress, hoping others find a spark of inspiration or glean insights for their own journey."
 keywords:

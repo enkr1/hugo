@@ -4,8 +4,7 @@ date: 2024-11-29 00:38:24
 tags:
   - "journal"
 categories:
-  - "About Me"
-  - "Journals"
+  - ["About Me", "Journals"]
 comments: false
 ---
 

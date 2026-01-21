@@ -7,10 +7,8 @@ tags:
   - "reading"
   - "resources"
 categories:
-  - "Personal Development"
-  - "Collections"
-  - "Reading"
-  - "Notebooks"
+  - ["Personal Development", "Collections", "Reading"]
+  - ["Notebooks"]
 subtitle: "An Ever-Growing Collection of Knowledge and Inspiration"
 description: "Explore my personal collection of ebooks and resources on topics ranging from technology and coding to self-development. This list evolves as I discover new reads and valuable insights."
 keywords:

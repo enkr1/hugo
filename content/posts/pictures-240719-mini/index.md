@@ -6,8 +6,7 @@ tags:
   - "photography"
   - "event"
 categories:
-  - "About Me"
-  - "Photography"
+  - ["About Me", "Photography"]
 subtitle: "Captured Moments from the New MINI Launch"
 description: "Explore the captured moments from the new MINI launch event. Photos taken by the Mini photography team, featuring highlights of the launch and behind-the-scenes glimpses."
 keywords:

@@ -5,12 +5,9 @@ tags:
   - "algorithm"
   - "technical-interview-prep"
 categories:
-  - "Software Engineering"
-  - "Software Engineering Best Practices"
-  - "Career Development"
-  - "Interviews"
-  - "Interview Preparation"
-  - "Notebooks"
+  - ["Software Engineering", "Software Engineering Best Practices"]
+  - ["Career Development", "Interviews", "Interview Preparation"]
+  - ["Notebooks"]
 subtitle: "Delving Into Big-O Notation: Personal Insights and Learnings"
 description: "Join me as I explore Big-O Notation through my personal notes. This blog is a space where I document my understanding of algorithm efficiency, offering insights into how I approach time and space optimisation in coding."
 keywords:

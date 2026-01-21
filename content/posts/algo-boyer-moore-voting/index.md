@@ -9,8 +9,7 @@ tags:
   - "boyer-moore"
   - "voting-algorithm"
 categories:
-  - "Software Engineering"
-  - "Data Structures & Algorithms"
+  - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "Efficient Majority Element Detection using Boyer-Moore Voting Algorithm"
 description: "Discover the Boyer-Moore Voting Algorithm, an efficient method to find the majority element in a linear time and constant space solution. This guide includes a step-by-step explanation and JavaScript implementation."
 keywords:

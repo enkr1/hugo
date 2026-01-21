@@ -9,12 +9,9 @@ tags:
   - "ai"
   - "data-science"
 categories:
-  - "Personal Development"
-  - "Online Courses"
-  - "MIT & IDSS - AI & ML"
-  - "Software Engineering"
-  - "Machine Learning & AI"
-  - "Notebooks"
+  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
+  - ["Software Engineering", "Machine Learning & AI"]
+  - ["Notebooks"]
 subtitle: "Navigating the Complex World of Data Science and AI: A Beginner's Guide"
 description: "Step into the realm of Data Science and AI with this introductory guide, designed for those new to the field. Covering fundamental concepts, practical applications, and insights into the future of technology, this post aims to demystify the complexities of AI and data science, making it accessible to aspiring technologists and curious minds alike."
 keywords:

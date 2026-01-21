@@ -9,11 +9,8 @@ tags:
   - "ai"
   - "data-science"
 categories:
-  - "Personal Development"
-  - "Online Courses"
-  - "MIT & IDSS - AI & ML"
-  - "Software Engineering"
-  - "Machine Learning & AI"
+  - ["Personal Development", "Online Courses", "MIT & IDSS - AI & ML"]
+  - ["Software Engineering", "Machine Learning & AI"]
 subtitle: "Embarking on a Path to AI Mastery: My Experience with MIT IDSS & Great Learning"
 description: "Join me as I dive into the fascinating world of Machine Learning and AI through courses offered by MIT IDSS and Great Learning. This post details my initial experiences, the challenges I've faced, and the milestones I've achieved in understanding the complex yet intriguing domains of AI and ML. Discover the tools, resources, and insights that are shaping my journey towards becoming proficient in these cutting-edge technologies."
 keywords:

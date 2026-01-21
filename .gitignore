@@ -14,3 +14,6 @@ Thumbs.db
 *.swo
 .idea/
 .vscode/
+
+# Node.js (for nested category script)
+node_modules/

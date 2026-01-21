@@ -9,8 +9,7 @@ tags:
   - "javascript"
   - "interview-preparation"
 categories:
-  - "Software Engineering"
-  - "Coding Problems"
+  - ["Software Engineering", "Coding Problems"]
 subtitle: "A Deep Dive into Solving LeetCode Problem 97: Interleaving String Using Dynamic Programming"
 description: "An in-depth guide to solving LeetCode 97 with 2D Dynamic Programming. Understand the key concepts, step-by-step implementation, and analogies to master the problem."
 keywords:

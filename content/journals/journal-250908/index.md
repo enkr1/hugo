@@ -4,8 +4,7 @@ date: 2025-09-08 17:32:46
 tags:
   - "journal"
 categories:
-  - "About Me"
-  - "Journals"
+  - ["About Me", "Journals"]
 comments: false
 hide: true
 ---

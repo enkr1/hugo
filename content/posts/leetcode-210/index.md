@@ -13,8 +13,7 @@ tags:
   - "indegree"
   - "top-interview-150"
 categories:
-  - "Software Engineering"
-  - "Coding Problems"
+  - ["Software Engineering", "Coding Problems"]
 subtitle: "Solution and Explanation for LeetCode Problem 210: Course Schedule II"
 description: "My notes on solving LeetCode Problem 210: Course Schedule II using Topological Sort. This guide includes the problem statement, approach, and code implementation."
 keywords:

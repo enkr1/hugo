@@ -5,10 +5,8 @@ tags:
   - "hexo"
   - "programming"
 categories:
-  - "Software Engineering"
-  - "Frameworks"
-  - "Hexo"
-  - "Notebooks"
+  - ["Software Engineering", "Frameworks", "Hexo"]
+  - ["Notebooks"]
 subtitle: "A Developer's Diary: Creating a Blog with Hexo"
 description: "Embark on my personal journey as I build a blog from the ground up using Hexo, the popular static site generator. This post details the step-by-step process, from choosing Hexo and setting it up to designing a unique theme and optimizing the blog for search engines. Discover the challenges I faced, the solutions I crafted, and the satisfaction of building a fully functional blog tailored to my needs."
 keywords:

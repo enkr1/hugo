@@ -9,7 +9,7 @@
 
     <section class="grouped-list">
         {{ range $filtered.GroupByDate "2006" }}
-            <div class="grouped-list__year">
+            <div class="grouped-list__year" id="{{ .Key }}">
                 <h2 class="grouped-list__year-title">{{ .Key }}</h2>
                 {{ range .Pages.GroupByDate "January" }}
                     <div class="grouped-list__month">

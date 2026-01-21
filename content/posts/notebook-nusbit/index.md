@@ -6,10 +6,8 @@ tags:
   - "notebook"
   - "nus-bit"
 categories:
-  - "Notebooks"
-  - "Career Development"
-  - "Bachelor"
-  - ", "
+  - ["Notebooks"]
+  - ["Career Development", "Bachelor's Degree", "Bachelor of Information Technology"]
 subtitle:
 description:
 keywords:

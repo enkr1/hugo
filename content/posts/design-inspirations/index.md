@@ -7,11 +7,8 @@ tags:
   - design
   - web-design
 categories:
-  - "Software Engineering"
-  - "Web Development"
-  - "Front-end"
-  - "Design"
-  - "Notebooks"
+  - ["Software Engineering", "Web Development", "Front-end", "Design"]
+  - ["Notebooks"]
 subtitle: "A Collection of Beautiful and Inspiring Websites"
 description: "A personal stash of websites with jaw-dropping animations, smooth UX, and creative design ideas to inspire your next project."
 keywords:

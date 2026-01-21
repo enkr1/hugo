@@ -6,12 +6,8 @@ tags:
   - "ebook"
   - "reading"
 categories:
-  - "Personal Development"
-  - "Collections"
-  - "Reading"
-  - "Book"
-  - "Christopher Voss"
-  - "Notebooks"
+  - ["Personal Development", "Collections", "Reading", "Book", "Christopher Voss"]
+  - ["Notebooks"]
 subtitle:
 description:
 keywords:
