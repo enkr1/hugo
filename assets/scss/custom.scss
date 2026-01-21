@@ -339,6 +339,30 @@ html {
 }
 
 /* ===========================================
+   LAYOUT - Optimal Reading Width
+   Max 72ch (~720px) for comfortable reading
+   Research: 50-75 chars/line is optimal for readability
+   =========================================== */
+
+// Article content - cap width for optimal reading
+.article-content {
+    max-width: 72ch;
+}
+
+// Article header (title, meta) - match content width
+.article-header {
+    max-width: 72ch;
+}
+
+// Wider sidebars on large screens (redistribute freed space)
+.container.extended {
+    @media (min-width: 1280px) {
+        --left-sidebar-max-width: 18%;
+        --right-sidebar-max-width: 30%;
+    }
+}
+
+/* ===========================================
    LINKS - 智慧海 (Water) with underline reveal
    =========================================== */
 
@@ -658,11 +682,69 @@ html {
 }
 
 /* ===========================================
-   IMAGES - Sharp, Clean
+   IMAGES - Prevent layout shift on gallery transform
    =========================================== */
 
-.article-content img {
-    border-radius: 0;
+.article-content {
+    img {
+        border-radius: 0;
+        cursor: pointer;
+        max-width: 100%;
+        height: auto;
+    }
+
+    // Override theme's figure bleed (negative margins)
+    figure.gallery-image {
+        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: auto;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        // Hover - bottom line
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width var(--transition-base);
+        }
+
+        &:hover::after {
+            width: 70%;
+        }
+    }
+
+    // Override theme's gallery bleed
+    .gallery {
+        margin-left: 0;
+        margin-right: 0;
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    // Hide empty paragraphs after JS extracts images
+    p.no-text:not(:has(img)) {
+        display: none;
+    }
+}
+
+// PhotoSwipe lightbox caption - centered (override CDN's text-align: left)
+.pswp .pswp__caption .pswp__caption__center {
+    text-align: center !important;
+    max-width: 100% !important;
 }
 
 /* ===========================================

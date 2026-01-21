@@ -75,8 +75,6 @@ class StackGallery {
                 paragraph.classList.add('no-text');
             }
 
-            let isNewLineImage = paragraph.classList.contains('no-text');
-            if (!isNewLineImage) continue;
 
             const hasLink = img.parentElement.tagName == 'A';
 
