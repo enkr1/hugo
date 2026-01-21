@@ -1,0 +1,25 @@
+{{ define "main" }}
+    <header class="section-header--grouped">
+        <h1 class="section-title">{{ .Title }}</h1>
+    </header>
+
+    <section class="categories-tree categories-tree--page">
+        <ul class="categories-list">
+            {{- range .Data.Terms.ByCount -}}
+                <li class="category-item depth-0">
+                    <a href="{{ .Page.Permalink }}">
+                        <span class="category-name">#{{ .Page.Title | lower }}</span>
+                        <span class="category-line"></span>
+                        <span class="category-count">{{ .Count }}</span>
+                    </a>
+                </li>
+            {{- end -}}
+        </ul>
+    </section>
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

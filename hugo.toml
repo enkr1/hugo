@@ -67,7 +67,7 @@ shortname = 'https-enkr1-github-io-blog'
 [[params.widgets.homepage]]
 type = 'tag-cloud'
 [params.widgets.homepage.params]
-limit = 15
+limit = 7
 
 [[params.widgets.homepage]]
 type = 'categories'
