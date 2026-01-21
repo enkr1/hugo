@@ -347,27 +347,9 @@ html {
 
 /* ===========================================
    LAYOUT - Optimal Reading Width
-   Max 72ch (~720px) for comfortable reading
+   Card constrained to 77ch + padding, content fills card
    Research: 50-75 chars/line is optimal for readability
    =========================================== */
-
-// Article content - cap width for optimal reading
-.article-content {
-    max-width: 72ch;
-}
-
-// Article header (title, meta) - match content width
-.article-header {
-    max-width: 72ch;
-}
-
-// Wider sidebars on large screens (redistribute freed space)
-.container.extended {
-    @media (min-width: 1280px) {
-        --left-sidebar-max-width: 18%;
-        --right-sidebar-max-width: 30%;
-    }
-}
 
 /* ===========================================
    LINKS - 智慧海 (Water) with underline reveal
@@ -928,10 +910,17 @@ html {
     margin-bottom: var(--spacing-lg);
 }
 
-// Main article - line border design (static, no hover animation)
+// Main area - center children
+.article-page main.main {
+    align-items: center;
+}
+
+// Main article - line border design, constrained to content width
 .article-page .main-article {
     border-radius: 0;
     border: 1px solid var(--accent);
+    max-width: calc(77ch + 4rem);  // 77ch content + padding
+    width: 100%;
 }
 
 // Breadcrumb navigation - unified for articles & category pages

@@ -353,7 +353,7 @@
 
         // Fixed height only for 3+ images
         &:has(figure:nth-child(3)) figure.gallery-image img {
-            height: 12.5rem;
+            height: 17rem;
             object-fit: cover;
         }
     }
