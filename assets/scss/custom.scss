@@ -1,7 +1,7 @@
 /*
  * 金渊映日 2.0 - Ba Zi Energy Color System
  * 「金-水」为体，「转化火」为用
- * 
+ *
  * Primary (内蕴金): #8B7355 - Metal/Earth - hovers, selections, CTAs
  * Secondary (智慧海): #1E4B8C - Water - links, tags, code
  * Dynamic (流年曦): #D97706 - Fire→Metal - click flash
@@ -66,17 +66,17 @@
     // ===========================================
     // BA ZI ENERGY COLORS (SSOT)
     // ===========================================
-    
+
     // 内蕴金 (Primary) - Metal/Earth - Nobility & Stability
     --gold: #8B7355;
     --gold-dark: #6B5A45;
     --gold-light: #A68B6A;
-    
+
     // 智慧海 (Secondary) - Water - Depth & Flow
     --water: #1E4B8C;
     --water-dark: #153A6B;
     --water-light: #2A5FA8;
-    
+
     // 流年曦 (Dynamic) - Fire→Metal transformation
     --fire: #D97706;
     --fire-glow: rgba(217, 119, 6, 0.3);
@@ -329,8 +329,15 @@ html {
 
 // Override theme's px-based gap with rem
 .article-time > div,
-.article-translations > div {
+.article-translations > div,
+.article-views {
     gap: 0.7rem;
+}
+
+// View count styling - matches other metadata items
+.article-views {
+    display: flex;
+    align-items: center;
 }
 
 // Single page article title - larger than body h2 (3rem)
@@ -691,48 +698,6 @@ html {
         cursor: pointer;
         max-width: 100%;
         height: auto;
-    }
-
-    // Override theme's figure bleed (negative margins)
-    figure.gallery-image {
-        margin: 0;
-        margin-left: 0;
-        margin-right: 0;
-        width: auto;
-        display: inline-block;
-        text-align: center;
-        position: relative;
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
-        // Hover - bottom line
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width var(--transition-base);
-        }
-
-        &:hover::after {
-            width: 70%;
-        }
-    }
-
-    // Override theme's gallery bleed
-    .gallery {
-        margin-left: 0;
-        margin-right: 0;
-        width: auto;
-        justify-content: flex-start;
     }
 
     // Hide empty paragraphs after JS extracts images
@@ -2013,7 +1978,7 @@ button[type="submit"].primary {
     color: var(--dynamic);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    
+
     &::before {
         content: '丙午';
         font-size: 0.8em;

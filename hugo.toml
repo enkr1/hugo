@@ -39,7 +39,7 @@ since = 2023
 
 [params.dateFormat]
 published = 'Jan 02, 2006'
-lastUpdated = 'Jan 02, 2006 15:04 MST'
+lastUpdated = '2 Jan 2006 · 3:04 PM'
 
 [params.sidebar]
 emoji = ''
@@ -82,6 +82,9 @@ limit = 5
 
 [[params.widgets.page]]
 type = 'toc'
+
+[[params.widgets.page]]
+type = 'tag-cloud'
 
 # Color scheme - dark mode enabled
 [params.colorScheme]

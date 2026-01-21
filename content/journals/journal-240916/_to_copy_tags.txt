@@ -1,9 +1,0 @@
-## 🥰 Memories
-
-{% asset_img "" IMG_4523.jpeg "" %}
-{% asset_img "" IMG_4547.jpeg "" %}
-{% asset_img "" IMG_4548.heic.jpeg "" %}
-{% asset_img "" IMG_4554.jpeg "" %}
-
-## Videos
-

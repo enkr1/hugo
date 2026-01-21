@@ -24,6 +24,8 @@ keywords:
 
 Hello everyone! Here are the photos taken by the Mini photography team during the event. You can also check out my previous blog post about our performance at the launch event [here](/my-crew-beatbox-performance-a-memorable-experience-at-the-new-mini-family-launch).
 
+
+## Memories
 ![MINI-86.JPG](MINI-86.JPG)
 ![MINI-85.JPG](MINI-85.JPG)
 ![MINI-84.JPG](MINI-84.JPG)

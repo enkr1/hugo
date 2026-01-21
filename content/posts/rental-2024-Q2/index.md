@@ -109,7 +109,7 @@ Thank you very much for your help and consideration! / 非常感谢您的帮助�
 
 
 ## WhatsApp QR Code / WhatsApp 二维码
-{% asset_img "Find me on WhatsApp" "qr-code-whatsapp.png" %}
+![Find me on WhatsApp](qr-code-whatsapp.png)
 Or click [here](https://wa.me/81287402).
 
 <br>

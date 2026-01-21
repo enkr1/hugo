@@ -104,7 +104,7 @@ some other insights from **Jewish Wisdom**:
 ![and back home w my fam home made 金瓜焖饭？超级好吃啊啊啊啊啊 太幸福了我](IMG_7286.jpeg)
 ![AFMA has theseeeeee wHAT!!!](IMG_7292.jpeg)
 ![weight been droppin since then... 🥺](IMG_7293.jpg)
-{% asset_img "" IMG_7297.jpeg "妈咪的糖水 ❤️%}
+![妈咪的糖水 ❤️](IMG_7297.jpeg)
 ![omg we found our childhood lullaby my dad used to play otw back grandpa house 🥺](IMG_7300.jpeg)
 ![蒜米炸鸡](IMG_7302.jpeg)
 ![豆腐豆腐](IMG_7303.jpeg)

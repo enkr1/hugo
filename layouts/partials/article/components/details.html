@@ -59,6 +59,11 @@
             </div>
         {{ end }}
 
+        <div class="article-views">
+            {{ partial "helper/icon" "eye" }}
+            <span class="firestore-visitors-count" data-post-title="{{ $page.Title }}">...</span>
+        </div>
+
         {{ if $showTags }}
             <div class="article-tags">
                 {{ range ($page.GetTerms "tags") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}

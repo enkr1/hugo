@@ -295,15 +295,66 @@
     }
 
     .gallery {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
         margin: 1.5em 0;
-        gap: 10px;
 
-        figure {
+        // Dynamic columns based on image count
+        &:has(figure:nth-child(2)) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &:has(figure:nth-child(3)) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            &:has(figure:nth-child(2)),
+            &:has(figure:nth-child(3)) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            &:has(figure:nth-child(1):last-child) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            grid-template-columns: 1fr;
+        }
+
+        figure.gallery-image {
+            display: block;
             margin: 0;
+            overflow: hidden;
+            position: relative;
+            max-width: 100%;
+
+            img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                display: block;
+                transition: transform 0.3s ease;
+            }
+
+            &:hover img {
+                transform: scale(1.02);
+            }
+
+            figcaption {
+                padding: 0.5rem;
+                font-size: var(--font-size-sm);
+                text-align: center;
+                color: var(--card-text-color-secondary);
+            }
+        }
+
+        // Fixed height only for 3+ images
+        &:has(figure:nth-child(3)) figure.gallery-image img {
+            height: 12.5rem;
+            object-fit: cover;
         }
     }
 
@@ -427,20 +478,6 @@
             margin-right: calc((var(--card-padding)) * -1) !important;
             padding: 0 var(--card-padding) !important;
         }
-    }
-
-    /// Negative margins
-    blockquote,
-    figure,
-    .highlight,
-    pre,
-    .gallery,
-    .video-wrapper,
-    .table-wrapper,
-    .s_video_simple {
-        margin-left: calc((var(--card-padding)) * -1);
-        margin-right: calc((var(--card-padding)) * -1);
-        width: calc(100% + var(--card-padding) * 2);
     }
 
     /// Make long KaTeX equations scrollable in the x-axis

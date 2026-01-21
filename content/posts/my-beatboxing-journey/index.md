@@ -85,7 +85,7 @@ In 2018, after graduating from secondary school, I embarked on a new chapter by 
 
 Before this move, I had attempted to organise beatboxing gatherings back in Malaysia. Although I managed to connect with only one fellow beatboxer, Ah Yao, who was from the same state, Johor Bahru, we quickly became not just practice partners but hangout buddies, often chilling and discussing life beyond beatboxing. Despite our efforts, the vast distances between beatboxers often transformed these gatherings from hopeful plans into logistical challenges, it was really tough to see each other in person.
 
-{% asset_img "large" "sg-1.jpg" "A view from the place of my aunt, not the place I was staying-it was place with full of memories though..."%}
+![A view from the place of my aunt, not the place I was staying-it was place with full of memories though...](sg-1.jpg)
 
 
 ### Finding New Ground

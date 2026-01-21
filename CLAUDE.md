@@ -95,11 +95,14 @@ All colors, typography, and spacing are defined as CSS custom properties:
 
 ## Theme Customization
 
-The theme is a git submodule pointing to the fork. To customize:
+The theme is a **forked repo** (`enkr1/hugo-theme-enkr`) — we own it. Modify the theme directly.
 
-1. **Styling:** Override in `assets/scss/custom.scss` (preferred)
-2. **Templates:** Add to `layouts/` to override theme templates (Hugo looks here first)
-3. **Theme changes:** Modify the submodule repo directly (rare)
+### Preferred approach (since we own the fork):
+1. **Styling:** Edit `themes/stack/assets/scss/` directly — no `!important` overrides needed
+2. **Templates:** Edit `themes/stack/layouts/` directly, or override in `layouts/` if testing
+
+### Migration note:
+`assets/scss/custom.scss` has legacy overrides from before we forked. Gradually migrate styles to the theme and remove `!important` hacks from custom.scss. Goal: custom.scss for design tokens (colors, fonts) only, theme handles all component styles.
 
 **Template lookup order:** `layouts/` → `themes/stack/layouts/`
 
