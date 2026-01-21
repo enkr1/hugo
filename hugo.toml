@@ -6,6 +6,7 @@ copyright = 'ENKR'
 timeZone = 'Asia/Singapore'
 disqusShortname = 'https-enkr1-github-io-blog'
 timeout = '300s'  # 5 minutes for image-heavy pages
+enableGitInfo = true  # Use git commit date for .Lastmod
 
 # Theme i18n support
 DefaultContentLanguage = 'en'
