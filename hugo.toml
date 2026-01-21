@@ -27,6 +27,7 @@ mainSections = ['posts', 'journals']
 featuredImageField = 'image'
 rssFullContent = true
 description = "Personal blog by Jing Hui PANG—journaling my journey in programming, beatboxing, and personal growth. Tech tips, music stories, and life insights."
+favicon = "/favicon.svg"
 [params.author]
 name = "Jing Hui PANG | 彭竞辉 | ENKR"
 email = ""
