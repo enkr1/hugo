@@ -55,6 +55,77 @@ a ^ b     # ➜ {1, 4}
 - ✅ Interviewer-friendly (they love when you know this)
 
 
+### `sorted()` vs `.sort()` — Memory Tricks
+
+**Problem:** Always forgetting which one returns a new list vs modifies in-place!
+
+**Solution 1: "ED = nEw Data" Mnemonic**
+```py
+sorted(nums)    # sort-ED → has "ED" → returns nEw Data (new list)
+nums.sort()     # no "ED" → modifies in-place, returns None
+```
+
+**Solution 2: Function vs Method Pattern**
+```py
+sorted(x)  # Sounds like a FUNCTION → creates NEW thing (like print(), len())
+x.sort()   # Sounds like a METHOD → modifies EXISTING thing (like .append(), .pop())
+```
+
+**When to use which:**
+- **Keep original?** → Use `sorted()` to get a new sorted list
+- **Save memory?** → Use `.sort()` to sort in-place (no extra list created)
+
+```py
+# Example
+nums = [3, 1, 4, 1, 5]
+
+new_list = sorted(nums)    # nums unchanged, new_list = [1, 1, 3, 4, 5]
+nums.sort()                # nums is now [1, 1, 3, 4, 5], returns None
+
+# Common mistake:
+result = nums.sort()       # ❌ result is None, not the sorted list!
+```
+
+**Quick test:** Which one would you use to keep the original list unchanged? → `sorted()` ✅
+
+
+### Tuple Unpacking with `*` — The "Explode" Operator
+
+**Concept:** Think of `*` as "exploding" a tuple/list — it spreads elements out.
+
+```py
+# Without unpacking (nested)
+rank = 1
+country_data = ('CountryA', 2, 3, 4)
+output = (rank, country_data)
+print(output)  # (1, ('CountryA', 2, 3, 4)) ← nested!
+
+# With unpacking (flattened)
+output = (rank, *country_data)
+print(output)  # (1, 'CountryA', 2, 3, 4) ← flat! 💥
+```
+
+**Use cases:**
+```py
+# 1. Flattening tuples
+nums = (1, 2, 3)
+result = (0, *nums)      # (0, 1, 2, 3)
+
+# 2. Combining lists
+a = [1, 2]
+b = [3, 4]
+combined = [*a, *b]      # [1, 2, 3, 4]
+
+# 3. Function arguments
+def my_func(a, b, c):
+    return a + b + c
+
+args = (1, 2, 3)
+my_func(*args)           # Same as my_func(1, 2, 3)
+```
+
+**Memory trick:** `*` = bomb emoji 💣 → explodes the container!
+
 
 ### extended slicing
 ```py
