@@ -34,6 +34,12 @@
                 <time class="article-time--published" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
                     {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
                 </time>
+                {{- if ne .Lastmod .Date -}}
+                    <span style="margin: 0 8px;">·</span>
+                    <time class="article-time--updated" datetime='{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}'>
+                        {{ T "article.lastUpdatedOn" }} {{ .Lastmod | time.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
+                    </time>
+                {{- end -}}
             </div>
         {{ end }}
 
