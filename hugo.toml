@@ -85,6 +85,8 @@ type = 'toc'
 
 [[params.widgets.page]]
 type = 'tag-cloud'
+[params.widgets.page.params]
+limit = 7
 
 # Color scheme - dark mode enabled
 [params.colorScheme]

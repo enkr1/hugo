@@ -13,6 +13,13 @@ description: "How I built a skill to automatically capture learnings from Claude
 comments: true
 ---
 
+
+
+## TL;DR
+
+I built a Claude Code skill to capture learnings as blog posts instantly, so nothing gets lost as I work.
+
+
 ## The Problem
 
 I've been using Claude Code since October last year, and my brain was like *wow* - I'm learning so much every day from different AIs.
@@ -67,9 +74,5 @@ With system:    Learn → Capture → Reference → Build
 No more weekend backlog. No more "next time". The capture happens in the moment, when the learning is fresh!
 
 And the best part? I can visit my blog anytime, anywhere - everything's online and searchable. So convenient!
-
-## TL;DR
-
-Built a Claude Code skill to capture learnings as blog posts instantly. Say "blog this" → get a Hugo post.
 
 This second brain isn't just for me - it's public for anyone (or any AI) that might find it useful. 🚀
