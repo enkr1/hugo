@@ -418,7 +418,7 @@ html {
         // Level 0 (root)
         &.depth-0 > a {
             padding: 0.4rem 0 0.4rem 1rem;
-            font-size: var(--font-size-md);
+            font-size: var(--font-size-base);
             font-weight: var(--font-weight-medium);
             color: var(--text-secondary);
 
@@ -431,7 +431,7 @@ html {
         // Level 1
         &.depth-1 > a {
             padding: 0.25rem 0 0.25rem 2rem;
-            font-size: var(--font-size-base);
+            font-size: var(--font-size-sm);
             color: var(--text-tertiary);
 
             &:hover {
@@ -443,7 +443,7 @@ html {
         // Level 2
         &.depth-2 > a {
             padding: 0.2rem 0 0.2rem 3rem;
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-xs);
             color: var(--text-tertiary);
             opacity: 0.8;
 
@@ -517,16 +517,17 @@ html {
         .category-item {
             &.depth-0 > a {
                 padding: 0.6rem 0 0.6rem 1.5rem;
-                font-size: var(--font-size-base);
+                font-size: var(--font-size-md);
             }
 
             &.depth-1 > a {
                 padding: 0.4rem 0 0.4rem 2.5rem;
-                font-size: var(--font-size-sm);
+                font-size: var(--font-size-base);
             }
 
             &.depth-2 > a {
                 padding: 0.3rem 0 0.3rem 3.5rem;
+                font-size: var(--font-size-sm);
             }
         }
     }
@@ -1545,7 +1546,7 @@ html {
 
     .section-title {
         font-family: var(--font-display);
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
         font-weight: var(--font-weight-semibold);
         color: var(--card-text-color-main);
     }
