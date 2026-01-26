@@ -51,7 +51,33 @@
     --transition-base: 150ms ease;
     --transition-slow: 300ms ease;
 
-    // BORDER RADIUS - Minimal
+    // BORDER RADIUS - SSOT Control
+    // Cards & Major Containers
+    --radius-card: 0;              // Main article cards, blog list cards
+    --radius-card-hover: 0;        // Cards on hover (can be different)
+    --radius-widget: 0;            // Sidebar widgets
+
+    // Content Elements
+    --radius-code-inline: 4px;     // Inline code snippets
+    --radius-code-block: 6px;      // Code blocks
+    --radius-image: 0;             // Images in content
+
+    // Interactive Elements
+    --radius-button: 2px;          // Regular buttons
+    --radius-button-circle: 50%;   // Circular buttons (scroll-to-top, etc)
+    --radius-input: 4px;           // Form inputs
+
+    // Small UI Elements
+    --radius-tag: 2px;             // Tags (if we add background)
+    --radius-badge: 2px;           // Badges, indicators
+    --radius-scrollbar: 2px;       // Scrollbar thumb
+
+    // Special Components
+    --radius-search: 0;            // Search modal
+    --radius-related: 0;           // Related content tiles (matches main cards)
+    --radius-toggle: calc(var(--toggle-height) / 2); // Theme toggle pill
+
+    // Deprecated (kept for compatibility)
     --radius-xs: 2px;
 
     // SPACING
@@ -233,16 +259,10 @@ html {
 .sidebar a {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color var(--transition-fast), background var(--transition-fast);
+    transition: color var(--transition-fast);
 
     &:hover {
         color: var(--accent);
-    }
-
-    &.current {
-        color: var(--accent);
-        background: var(--accent-subtle);
-        font-weight: var(--font-weight-medium);
     }
 }
 
@@ -359,7 +379,7 @@ html {
 
         &::-webkit-scrollbar-thumb {
             background: var(--secondary-subtle);
-            border-radius: 2px;
+            border-radius: var(--radius-scrollbar);
         }
 
         // Reset nested lists
@@ -544,7 +564,7 @@ html {
 
 .article-content {
     img {
-        border-radius: 0;
+        border-radius: var(--radius-image);
         cursor: pointer;
         max-width: 100%;
         height: auto;
@@ -592,7 +612,7 @@ html {
 .article-list article,
 .article-list .article-card {
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: var(--radius-card);
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -764,7 +784,7 @@ html {
     }
 
     .article-image img {
-        border-radius: 0;
+        border-radius: var(--radius-image);
     }
 }
 
@@ -773,7 +793,7 @@ html {
     background: transparent;
     border: none;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: var(--radius-widget);
     padding: 0;
     margin-bottom: var(--spacing-lg);
 }
@@ -785,7 +805,7 @@ html {
 
 // Main article - line border design, constrained to content width
 .article-page .main-article {
-    border-radius: 0;
+    border-radius: var(--radius-card);
     border: 1px solid var(--accent);
     max-width: calc(77ch + 4rem);  // 77ch content + padding
     width: 100%;
@@ -800,20 +820,20 @@ html {
     margin-bottom: 1rem;
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
-    color: var(--text-muted);
+    color: var(--text-tertiary);
 
     a {
-        color: var(--water);
+        color: var(--secondary);
         text-decoration: none;
         transition: color var(--transition-fast);
 
         &:hover {
-            color: var(--gold);
+            color: var(--accent);
         }
     }
 
     .separator {
-        color: var(--text-muted);
+        color: var(--text-tertiary);
         opacity: 0.5;
         margin: 0 0.25rem;
     }
@@ -852,7 +872,7 @@ html {
     background: var(--code-background-color);
     color: var(--code-text-color);
     padding: 0.2em 0.4em;
-    border-radius: 4px;
+    border-radius: var(--radius-code-inline);
     border: none;
 }
 
@@ -867,7 +887,7 @@ html {
 
 .article-content .highlight {
     background: var(--pre-background-color);
-    border-radius: 6px;
+    border-radius: var(--radius-code-block);
     border-left: 3px solid var(--secondary);
     padding: 1rem;
     margin: 1.5rem 0;
@@ -940,12 +960,18 @@ html {
         font-family: var(--font-body);
         font-weight: var(--font-weight-normal);
         padding: var(--spacing-xs) var(--spacing-sm);
-        transition: color var(--transition-fast), font-weight var(--transition-fast);
+        transition: color var(--transition-fast), font-weight var(--transition-fast), background var(--transition-fast);
 
         &:hover {
             color: var(--accent);
             font-weight: var(--font-weight-medium);
         }
+    }
+
+    li.current > a {
+        color: var(--accent);
+        background: var(--accent-subtle);
+        font-weight: var(--font-weight-medium);
     }
 
     .menu-bottom-section .social-menu a {
@@ -966,17 +992,9 @@ html {
     // Transparent background - no card appearance
     background: transparent;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: var(--radius-widget);
 
-    .widget-title {
-        font-family: var(--font-body);
-        font-weight: var(--font-weight-semibold);
-        font-size: var(--font-size-xs);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text-tertiary);
-        margin-bottom: var(--spacing-sm);
-    }
+    // Inherits from main .widget styling now
 
     #TableOfContents {
         font-size: var(--font-size-base);
@@ -1302,7 +1320,7 @@ html {
     padding: 0;
     background: transparent;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: 0; // Inline component, no rounding
 
     .page-link {
         display: flex;
@@ -1368,7 +1386,7 @@ html {
                 width: 16px;
                 height: 2px;
                 background: var(--accent);
-                border-radius: 1px;
+                border-radius: var(--radius-badge);
             }
 
             &::after {
@@ -1488,11 +1506,11 @@ html {
 
     .widget-title {
         font-family: var(--font-body);
+        font-size: var(--font-size-xs);
         font-weight: var(--font-weight-semibold);
-        color: var(--text);
-        font-size: var(--font-size-sm);
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
+        color: var(--text-tertiary);
         padding-bottom: var(--spacing-sm);
         margin-bottom: var(--spacing-sm);
         border-bottom: 1px solid var(--border);
@@ -1509,7 +1527,7 @@ html {
     .widget-archive--list {
         box-shadow: none;
         background: transparent;
-        border-radius: 0;
+        border-radius: var(--radius-widget);
     }
 
     .archives-year {
@@ -1655,7 +1673,7 @@ button,
 input[type="submit"] {
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: var(--radius-xs);
+    border-radius: var(--radius-button);
     padding: 0.4rem 1.2rem;
     font-family: var(--font-body);
     font-weight: var(--font-weight-normal);
@@ -1702,7 +1720,7 @@ button[type="submit"].primary {
    =========================================== */
 
 .article-content table:not(.lntable) {
-    border-radius: 0;
+    border-radius: 0; // Tables stay sharp
     overflow: hidden;
 
     th, td {
@@ -1755,7 +1773,7 @@ button[type="submit"].primary {
     width: 44px;
     height: 44px;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-button-circle);
     background: var(--card-background);
     color: var(--accent);
     cursor: pointer;
@@ -1904,7 +1922,7 @@ button[type="submit"].primary {
     height: var(--toggle-height);
     background: linear-gradient(135deg, rgba(139, 115, 85, 0.12), rgba(139, 115, 85, 0.2));
     border: 1px solid rgba(139, 115, 85, 0.25);
-    border-radius: calc(var(--toggle-height) / 2);
+    border-radius: var(--radius-toggle);
     transition: all 400ms ease;
     flex-shrink: 0;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -1946,7 +1964,7 @@ button[type="submit"].primary {
     width: var(--toggle-thumb-size);
     height: var(--toggle-thumb-size);
     background: #fff;
-    border-radius: 50%;
+    border-radius: var(--radius-button-circle);
     transition: transform 400ms ease, background 400ms ease, box-shadow 400ms ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     z-index: 1;
@@ -2018,7 +2036,7 @@ button[type="submit"].primary {
         height: 20px;
         border: 2px solid var(--border);
         border-top-color: var(--accent);
-        border-radius: 50%;
+        border-radius: var(--radius-button-circle);
         animation: infinite-scroll-spin 0.7s linear infinite;
     }
 }
@@ -2081,7 +2099,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         background: var(--accent);
         color: var(--card-background);
         border: none;
-        border-radius: 4px;
+        border-radius: var(--radius-button);
         cursor: pointer;
         font-size: var(--font-size-sm);
         transition: background var(--transition-fast);
@@ -2337,25 +2355,142 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 }
 
 /* ===========================================
-   RELATED POSTS TILES - No-image fallback
+   RELATED CONTENT - Modern card grid
    =========================================== */
 
-.article-list--tile article:not(.has-image) {
-    background: var(--gold);
+.related-content--wrapper {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: 100%;
 
-    .article-details {
-        background: linear-gradient(to top,
-            var(--surface) 0%,
-            var(--surface) 25%,
-            rgba(var(--card-background-rgb), 0.8) 40%,
-            rgba(var(--card-background-rgb), 0.5) 55%,
-            rgba(var(--card-background-rgb), 0.2) 70%,
-            transparent 90%
-        );
+    .section-title {
+        font-family: var(--font-body);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-tertiary);
+        margin-bottom: 1.5rem;
     }
+}
 
-    .article-title {
-        color: var(--text);
+.related-content {
+    width: 100%;
+}
+
+.article-list--tile {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+    article {
+        position: relative;
+        border-radius: var(--radius-related);
+        overflow: hidden;
+        background: var(--card-background);
+        border: 1px solid var(--border);
+        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        height: 150px;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        a {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        // Articles with images
+        &.has-image {
+            .article-image {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .article-details {
+                position: relative;
+                z-index: 1;
+                margin-top: auto;
+                padding: 1rem;
+                background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.8) 0%,
+                    rgba(0, 0, 0, 0.5) 60%,
+                    transparent 100%
+                );
+
+                .article-title {
+                    color: #fff;
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+
+        // Articles without images - subtle gradient background
+        &:not(.has-image) {
+            background: linear-gradient(135deg,
+                var(--card-background) 0%,
+                var(--accent-subtle) 100%
+            );
+
+            .article-details {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding: 1rem;
+
+                .article-title {
+                    color: var(--text);
+                }
+            }
+        }
+
+        .article-title {
+            font-family: var(--font-body);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            line-height: 1.3;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+}
+
+/* Mobile adjustments for related content */
+@media (max-width: 768px) {
+    .article-list--tile {
+        grid-template-columns: repeat(2, 1fr);
+
+        article {
+            height: 120px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .article-list--tile {
+        grid-template-columns: 1fr;
+
+        article {
+            height: 100px;
+        }
     }
 }
 

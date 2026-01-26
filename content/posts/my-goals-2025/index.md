@@ -1,6 +1,5 @@
 ---
 title: "Goals 2025"
-# sticky: 1001
 date: 2024-12-31 05:29:49
 tags:
   - "goals"

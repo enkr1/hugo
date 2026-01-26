@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_episodic-memory_episodic-memory__search",
+      "Bash(hugo server:*)",
+      "Bash(hugo:*)",
+      "Bash(grep:*)",
+      "Skill(conventional-commit)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(chmod:*)",
+      "Bash(python3 -c \"\nimport sys\nsys.path.insert\\(0, ''scripts''\\)\nfrom pathlib import Path\n\n# Read test file\ntest_file = Path\\(''/tmp/test-categories.md''\\)\ncontent = test_file.read_text\\(\\)\n\n# Import and run conversion\nfrom importlib.util import spec_from_loader, module_from_spec\nspec = spec_from_loader\\(''fix_categories'', loader=None\\)\nexec\\(open\\(''scripts/fix-categories.py''\\).read\\(\\)\\)\n\n# Convert\nresult = convert_nested_categories\\(content\\)\nresult = deduplicate_categories\\(result\\)\n\nprint\\(''=== CONVERTED ===''\\)\nprint\\(result[:800]\\)\n\")",
+      "Bash(python3:*)",
+      "Bash(for f in /Users/enkr/Personal/journal-app/hugo/content/posts/*/index.md)",
+      "Bash(do awk '/^---$/{p++}p==1' \"$f\")",
+      "WebSearch",
+      "WebFetch(domain:www.larksuite.com)",
+      "Bash(pkill:*)",
+      "Bash(head:*)",
+      "Bash(./journal.sh)",
+      "Bash(xxd:*)",
+      "mcp__plugin_episodic-memory_episodic-memory__read",
+      "Bash(/tmp/check_images.sh:*)",
+      "Bash(npm install)",
+      "Bash(node:*)",
+      "Bash(git -C /Users/enkr/Personal/journal-app/hugo commit -m \"$\\(cat <<''EOF''\n✨ feat\\(site\\): add favicon\n\nEOF\n\\)\")",
+      "Bash(git -C /Users/enkr/Personal/journal-app/hugo commit -m \"$\\(cat <<''EOF''\n🐛 fix\\(categories\\): correct post counts in category pages\n\n- remove confusing node count from /categories/ header\n- fix nested-category header to sum all descendants, not just direct posts\nEOF\n\\)\")",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "Bash(lsof:*)",
+      "Bash(file:*)",
+      "Bash(identify:*)",
+      "Bash(xargs cat:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Read(//Users/enkr/Personal/**)",
+      "Read(//Users/enkr/**)",
+      "Bash(rsync:*)",
+      "Bash(git init:*)",
+      "Bash(git clone:*)"
+    ]
+  }
+}
