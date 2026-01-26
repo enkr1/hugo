@@ -233,11 +233,16 @@ html {
 .sidebar a {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: color var(--transition-fast), background var(--transition-fast);
 
-    &:hover,
+    &:hover {
+        color: var(--accent);
+    }
+
     &.current {
         color: var(--accent);
+        background: var(--accent-subtle);
+        font-weight: var(--font-weight-medium);
     }
 }
 
