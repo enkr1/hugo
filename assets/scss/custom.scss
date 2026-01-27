@@ -2362,8 +2362,10 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border);
+    max-width: calc(77ch + 4rem);  // Match main article width
     width: 100%;
-    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 
     .section-title {
         font-family: var(--font-body);
@@ -2382,8 +2384,8 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 
 .article-list--tile {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;  // Consistent spacing
 
     article {
         position: relative;
@@ -2391,12 +2393,12 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         overflow: hidden;
         background: var(--card-background);
         border: 1px solid var(--border);
-        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
         height: 150px;
 
         &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            // No position shift, just border and shadow
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border-color: var(--accent);
         }
 
@@ -2492,6 +2494,20 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
             height: 100px;
         }
     }
+}
+
+/* ===========================================
+   DISQUS CONTAINER - SSOT Width Control
+   =========================================== */
+
+.disqus-container {
+    // Match main article and related content width constraint
+    max-width: calc(77ch + 4rem);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    // Container already uses SSOT border radius via var(--card-border-radius)
+    // Other styling inherited from theme
 }
 
 /* ===========================================
