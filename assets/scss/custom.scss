@@ -2544,7 +2544,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 
 .menu {
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 10px; /* Add left padding for indicator space */
 
     /* Menu items container */
     li {
@@ -2569,7 +2569,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         &::before {
             content: '';
             position: absolute;
-            left: 0;
+            left: -8px;
             top: 50%;
             transform: translateY(-50%) scaleX(0);
             width: 3px;
