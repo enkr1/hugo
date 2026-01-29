@@ -7,7 +7,7 @@ categoryPath:
   - Elixir
 slug: elixir
 _generated: true
-_generatedAt: '2026-01-29T19:12:12.091Z'
+_generatedAt: '2026-01-29T19:30:27.923Z'
 parentPath:
   - Software Engineering
   - Programming Languages

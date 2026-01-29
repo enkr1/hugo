@@ -36,6 +36,10 @@ keywords = ['ENKR', 'Jing Hui PANG', 'Pang Jing Hui', '彭竞辉', 'Beatbox', 'B
 
 [params.footer]
 since = 2023
+[params.footer.visitorCount]
+enabled = true
+placeholder = "..."
+label = "visitors"
 
 [params.dateFormat]
 published = 'Jan 02, 2006 · 3:04 PM'
@@ -44,10 +48,16 @@ lastUpdated = '2 Jan 2006 · 3:04 PM'
 [params.sidebar]
 emoji = ''
 subtitle = "If you actually try your best, you can't lose. 🎯"
+
 [params.sidebar.avatar]
 enabled = true
 local = true
 src = 'img/avatar.png'
+
+[params.sidebar.visitorCount]
+enabled = true
+placeholder = "..."
+label = "visitors"
 
 [params.article]
 math = true

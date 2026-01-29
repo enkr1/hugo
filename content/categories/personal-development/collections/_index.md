@@ -6,7 +6,7 @@ categoryPath:
   - Collections
 slug: collections
 _generated: true
-_generatedAt: '2026-01-29T19:12:12.080Z'
+_generatedAt: '2026-01-29T19:30:27.916Z'
 parentPath:
   - Personal Development
 ---

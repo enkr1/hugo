@@ -7,7 +7,7 @@ categoryPath:
   - NUS | Bachelor of Information Technology
 slug: nus-bachelor-of-information-technology
 _generated: true
-_generatedAt: '2026-01-29T19:12:12.087Z'
+_generatedAt: '2026-01-29T19:30:27.920Z'
 parentPath:
   - Career Development
   - Bachelor's Degree
