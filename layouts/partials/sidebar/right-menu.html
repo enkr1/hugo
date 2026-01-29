@@ -1,0 +1,18 @@
+{{/* Right sidebar for article pages - just widgets (no menu, no TOC) */}}
+<aside class="sidebar right-sidebar sticky">
+    {{/* Include page widgets (tags, archives, etc - but not TOC) */}}
+    {{- $scope := "page" -}}
+    {{- with (index .Site.Params.widgets $scope) -}}
+        {{ range $widget := . }}
+            {{/* Skip TOC widget - it's on the left now */}}
+            {{ if ne .type "toc" }}
+                {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
+                    {{- $params := default dict .params -}}
+                    {{ partial (printf "widget/%s" .type) (dict "Context" $ "Params" $params) }}
+                {{ else }}
+                    {{ warnf "Widget %s not found" .type }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</aside>

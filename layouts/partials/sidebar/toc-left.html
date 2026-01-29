@@ -1,0 +1,13 @@
+{{/* TOC for left sidebar - optimized for article reading */}}
+<aside class="sidebar toc-left-sidebar sticky">
+    <section class="widget archives">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "hash" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+
+        <div class="widget--toc">
+            {{ .TableOfContents }}
+        </div>
+    </section>
+</aside>

@@ -1,0 +1,55 @@
+{{ define "body-class" }}
+    article-page article-page--toc-left
+    {{/*
+        Enable the sidebars:
+        - Left sidebar shows TOC (if available)
+        - Right sidebar shows menu + other widgets (not TOC)
+    */}}
+    {{- $HasWidgetNotTOC := false -}}
+    {{- $TOCWidgetEnabled := false -}}
+    {{- range .Site.Params.widgets.page -}}
+        {{- if ne .type "toc" -}}
+            {{ $HasWidgetNotTOC = true -}}
+        {{- else -}}
+            {{ $TOCWidgetEnabled = true -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $TOCManuallyDisabled := eq .Params.toc false -}}
+    {{- $TOCEnabled := and (not $TOCManuallyDisabled) $TOCWidgetEnabled -}}
+    {{- $hasTOC := gt (len .TableOfContents) 0 -}}
+    {{- .Scratch.Set "TOCEnabled" (and $TOCEnabled $hasTOC) -}}
+
+    {{- .Scratch.Set "hasWidget" (or $HasWidgetNotTOC (and $TOCEnabled $hasTOC)) -}}
+{{ end }}
+
+{{ define "main" }}
+    {{ partial "article/article.html" . }}
+
+    {{ if .Params.links }}
+        {{ partial "article/components/links" . }}
+    {{ end }}
+
+    {{ partial "article/components/related-content" . }}
+
+    {{ if not (eq .Params.comments false) }}
+        {{ partial "comments/include" . }}
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+
+    {{ partialCached "article/components/photoswipe" . }}
+    {{ partialCached "article/components/mermaid" . }}
+{{ end }}
+
+{{ define "left-sidebar" }}
+    {{/* Show TOC on left sidebar for article pages */}}
+    {{ if .Scratch.Get "TOCEnabled" }}
+        {{ partial "sidebar/toc-left.html" . }}
+    {{ end }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{/* Show menu + other widgets (excluding TOC) on right sidebar */}}
+    {{ partial "sidebar/right-menu.html" . }}
+{{ end }}
