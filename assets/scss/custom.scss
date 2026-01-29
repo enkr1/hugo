@@ -6,6 +6,34 @@
  * Secondary (智慧海): #1E4B8C - Water - links, tags, code
  * Dynamic (流年曦): #D97706 - Fire→Metal - click flash
  * Base: #0A0F1C (渊墨黑) / #F8FAFC (月影白)
+ *
+ * TODO: GRADUAL MIGRATION STRATEGY
+ * ================================
+ * Goal: Shrink this file to ~200 lines (design tokens only)
+ * We own the theme fork (hugo-theme-enkr), so migrate component styles there.
+ *
+ * Strategy: Migrate as we touch code, not as one big refactor.
+ * - When editing a component, move its styles from here → theme
+ * - Remove !important hacks (theme has priority now)
+ * - Keep ONLY: :root design tokens, color philosophy, global resets
+ *
+ * What stays here (SSOT):
+ * - CSS custom properties (--font-*, --gold, --spacing-*, etc)
+ * - Ba Zi color system philosophy comments
+ * - html/body global styles
+ *
+ * What moves to theme:
+ * - Typography (article-content h1-h6) → theme/layout/article.scss
+ * - Cards (border animations) → theme/layout/list.scss
+ * - Tags, categories, widgets → theme/partials/widgets.scss
+ * - TOC, pagination, footer → their respective theme files
+ * - Everything else that's component-specific
+ *
+ * Migration tracker (current: ~1970 lines):
+ * [x] Categories tree → theme/partials/widgets.scss (saved ~200 lines)
+ * [ ] Typography → theme/layout/article.scss (~150 lines)
+ * [ ] Cards → theme/layout/list.scss (~150 lines)
+ * [ ] ... (continue as we go)
  */
 
 /* ===========================================
@@ -365,210 +393,7 @@ html {
     }
 }
 
-/* Categories tree - TOC-style (sidebar widget + subcategories) */
-.categories-tree,
-.subcategories-tree {
-    .categories-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        max-height: 400px;
-        overflow-y: auto;
-        font-size: var(--font-size-base);
-        line-height: 1.5;
-
-        // Thin scrollbar
-        scrollbar-width: thin;
-        scrollbar-color: var(--secondary-subtle) transparent;
-
-        &::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: var(--secondary-subtle);
-            border-radius: var(--radius-scrollbar);
-        }
-
-        // Reset nested lists
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-    }
-
-    .category-item {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-
-        > a {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-left: 2px solid transparent;
-            transition: all var(--transition-fast);
-
-            &:hover {
-                color: var(--text);
-
-                .category-line {
-                    opacity: 1;
-                }
-
-                .category-count {
-                    color: var(--text-secondary);
-                }
-            }
-        }
-
-        .category-name {
-            font-family: var(--font-body);
-            flex-shrink: 0;
-        }
-
-        // Line connector between name and count
-        .category-line {
-            flex: 1;
-            height: 1px;
-            margin: 0 0.75rem;
-            background: var(--text-tertiary);
-            opacity: 0;
-            transition: opacity var(--transition-fast);
-        }
-
-        .category-count {
-            font-family: var(--font-body);
-            font-size: var(--font-size-base);
-            color: var(--text-tertiary);
-            flex-shrink: 0;
-            transition: color var(--transition-fast);
-        }
-
-        // Level 0 (root)
-        &.depth-0 > a {
-            padding: 0.4rem 0 0.4rem 1rem;
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-medium);
-            color: var(--text-secondary);
-
-            &:hover {
-                color: var(--text);
-                border-left-color: var(--accent);
-            }
-        }
-
-        // Level 1
-        &.depth-1 > a {
-            padding: 0.25rem 0 0.25rem 2rem;
-            font-size: var(--font-size-sm);
-            color: var(--text-tertiary);
-
-            &:hover {
-                color: var(--text-secondary);
-                border-left-color: var(--accent);
-            }
-        }
-
-        // Level 2
-        &.depth-2 > a {
-            padding: 0.2rem 0 0.2rem 3rem;
-            font-size: var(--font-size-xs);
-            color: var(--text-tertiary);
-            opacity: 0.8;
-
-            &:hover {
-                opacity: 1;
-                color: var(--text-secondary);
-                border-left-color: var(--accent);
-            }
-        }
-
-        // Level 3+ (deeper nesting)
-        &.depth-3 > a,
-        &.depth-4 > a,
-        &.depth-5 > a {
-            padding: 0.2rem 0 0.2rem 4rem;
-            font-size: var(--font-size-sm);
-            color: var(--text-tertiary);
-            opacity: 0.7;
-
-            &:hover {
-                opacity: 1;
-                color: var(--text-secondary);
-                border-left-color: var(--accent);
-            }
-        }
-
-        // Nested children - full width for proper wrapping
-        .category-children {
-            width: 100%;
-        }
-
-        // Expandable toggle button - left side
-        .category-toggle {
-            background: none;
-            border: none;
-            padding: 0.2rem 0.4rem;
-            cursor: pointer;
-            color: var(--text-tertiary);
-            transition: color var(--transition-fast);
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-
-            &:hover {
-                color: var(--accent);
-            }
-
-            .icon-chevron {
-                transition: transform var(--transition-fast);
-            }
-        }
-
-        // Collapsed state - hide children
-        &.collapsed > .category-children {
-            display: none;
-        }
-
-        // Rotate chevron when expanded
-        &:not(.collapsed) > .category-toggle .icon-chevron {
-            transform: rotate(90deg);
-        }
-    }
-
-    // Full page variant - no height limit, more spacious, always expanded
-    &--page {
-        .categories-list {
-            max-height: none;
-            overflow: visible;
-        }
-
-        .category-item {
-            &.depth-0 > a {
-                padding: 0.6rem 0 0.6rem 1.5rem;
-                font-size: var(--font-size-md);
-            }
-
-            &.depth-1 > a {
-                padding: 0.4rem 0 0.4rem 2.5rem;
-                font-size: var(--font-size-base);
-            }
-
-            &.depth-2 > a {
-                padding: 0.3rem 0 0.3rem 3.5rem;
-                font-size: var(--font-size-sm);
-            }
-        }
-    }
-}
+/* Categories tree styles moved to theme/partials/widgets.scss */
 
 /* ===========================================
    IMAGES - Prevent layout shift on gallery transform
