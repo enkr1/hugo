@@ -8,7 +8,7 @@ tags:
   - "learning"
   - "reflection"
 categories:
-  - ["Education", "Reflections"]
+  - ["Career Development", "Bachelor's Degree", "NUS | Bachelor of Information Technology"]
 subtitle: "Why solving problems in class feels different from real work"
 description: "After 4 years coding professionally, reflecting on why classroom problems feel disconnected from collaborative problem-solving."
 ---

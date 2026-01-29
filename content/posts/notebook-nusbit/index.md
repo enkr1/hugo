@@ -8,7 +8,7 @@ tags:
   - "notebook"
 categories:
   - ["Notebooks"]
-  - ["Career Development", "Bachelor's Degree", "Bachelor of Information Technology"]
+  - ["Career Development", "Bachelor's Degree", "NUS | Bachelor of Information Technology"]
 subtitle:
 description:
 keywords:

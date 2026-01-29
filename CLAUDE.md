@@ -25,6 +25,30 @@ hugo new content/journals/journal-YYMMDD/index.md  # New journal entry
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
 
+## Category Generation
+
+**CRITICAL:** Nested categories require manual generation of landing pages.
+
+```bash
+# Generate category pages after changing categories
+node themes/stack/scripts/generate-categories.js
+
+# Clean all generated category files first (optional)
+node themes/stack/scripts/generate-categories.js --clean
+```
+
+**When to run:**
+- After adding/changing categories in post frontmatter
+- After deleting posts with unique category paths
+- Before deploying (to ensure category pages are up-to-date)
+
+**What it does:**
+- Scans all posts for nested array categories like `["A", "B", "C"]`
+- Generates `_index.md` files at `content/categories/a/b/c/`
+- Creates browsable category tree at `https://blog.enkr1.com/categories/`
+
+**Important:** This is NOT automated. You must run it manually whenever categories change. The generated files are marked with `_generated: true` in frontmatter.
+
 ## Architecture
 
 ```
@@ -47,7 +71,7 @@ hugo/
 │   │   └── widget/         # Widget overrides
 │   └── index.html          # Homepage template
 ├── assets/scss/
-│   └── custom.scss         # Ba Zi theme (~1000 lines) - design tokens + overrides
+│   └── custom.scss         # Ba Zi theme - design tokens + component overrides (gradual migration to theme)
 ├── themes/stack/           # Forked theme (git submodule → enkr1/hugo-theme-enkr)
 └── hugo.toml               # Main configuration
 ```
@@ -128,7 +152,7 @@ Workflow: `.github/workflows/hugo.yml`
 When creating posts about NUS BIT coursework:
 
 - **Tags**: Module code (e.g. `TCX1002`, `TCX2101`), `NUS`, `NUS-BIT`
-- **Categories**: `["Education", "Reflections"]`
+- **Categories**: `["Career Development", "Bachelor's Degree", "NUS | Bachelor of Information Technology"]`
 - **Smart Notes workflow**: Extract atomic notes from sessions first (see global CLAUDE.md at `~/.claude/CLAUDE.md`)
 - **Link to context**: When relevant, link to session notes:
   ```markdown

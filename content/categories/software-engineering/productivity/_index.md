@@ -1,12 +1,12 @@
 ---
-title: Programming Languages
+title: Productivity
 type: nested-category
 categoryPath:
   - Software Engineering
-  - Programming Languages
-slug: programming-languages
+  - Productivity
+slug: productivity
 _generated: true
-_generatedAt: '2026-01-29T19:12:12.078Z'
+_generatedAt: '2026-01-29T19:12:12.093Z'
 parentPath:
   - Software Engineering
 ---
