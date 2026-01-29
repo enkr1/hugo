@@ -1,0 +1,17 @@
+{{- $id := .Get 0 -}}
+{{- $class := .Get "class" | default "video-wrapper" -}}
+{{- $title := .Get "title" | default "Vimeo video player" -}}
+{{- $autoplay := .Get "autoplay" | default "0" -}}
+{{- $byline := .Get "byline" | default "0" -}}
+{{- $portrait := .Get "portrait" | default "0" -}}
+
+<div class="{{ $class }}">
+    <iframe
+        src="https://player.vimeo.com/video/{{ $id }}?autoplay={{ $autoplay }}&byline={{ $byline }}&portrait={{ $portrait }}"
+        title="{{ $title }}"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+    ></iframe>
+</div>

@@ -3,8 +3,9 @@ title: "NUS-BIT Notebook"
 sticky: 0
 date: 2025-07-28 04:36:34
 tags:
+  - "NUS"
+  - "NUS-BIT"
   - "notebook"
-  - "nus-bit"
 categories:
   - ["Notebooks"]
   - ["Career Development", "Bachelor's Degree", "Bachelor of Information Technology"]

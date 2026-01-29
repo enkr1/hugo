@@ -1,0 +1,19 @@
+{{- $id := .Get 0 -}}
+{{- $class := .Get "class" | default "video-wrapper" -}}
+{{- $title := .Get "title" | default "YouTube video player" -}}
+{{- $autoplay := .Get "autoplay" | default "0" -}}
+{{- $controls := .Get "controls" | default "1" -}}
+{{- $modestbranding := .Get "modestbranding" | default "1" -}}
+{{- $rel := .Get "rel" | default "0" -}}
+
+<div class="{{ $class }}">
+    <iframe
+        src="https://www.youtube.com/embed/{{ $id }}?autoplay={{ $autoplay }}&controls={{ $controls }}&modestbranding={{ $modestbranding }}&rel={{ $rel }}"
+        title="{{ $title }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        loading="lazy"
+    ></iframe>
+</div>
