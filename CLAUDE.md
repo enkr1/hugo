@@ -20,6 +20,7 @@ hugo --gc --minify             # Production build (matches CI)
 # Content creation
 hugo new content/posts/my-post/index.md     # New blog post (page bundle)
 hugo new content/journals/journal-YYMMDD/index.md  # New journal entry
+./create_journal.sh                         # Quick journal creation for today
 ```
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
