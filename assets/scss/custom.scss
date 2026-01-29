@@ -95,6 +95,8 @@
 
 html {
     scroll-behavior: smooth;
+    // Force scrollbar to always be visible to prevent layout shifts
+    overflow-y: scroll;
 }
 
 /* Light/Dark mode colors now defined in theme/variables.scss */
@@ -905,6 +907,7 @@ html {
     margin: 1.5rem 0;
     overflow-x: auto;
     max-width: 100%;
+    line-height: var(--line-height-snug);  // 1.4 - compact spacing for code
 
     pre {
         margin: 0;
@@ -912,11 +915,13 @@ html {
         background: transparent;
         white-space: pre-wrap;
         word-break: break-word;
+        line-height: inherit;
     }
 
     code {
         white-space: pre-wrap;
         word-break: break-word;
+        line-height: inherit;
     }
 
     // Line numbers - muted
@@ -924,27 +929,6 @@ html {
         color: var(--text-tertiary);
         padding-right: 1rem;
         user-select: none;
-    }
-
-    // Copy button - minimal text only
-    .copyCodeButton {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        background: transparent;
-        border: none;
-        padding: 0;
-        color: var(--text-tertiary);
-        font-size: var(--font-size-xs);
-        font-family: var(--font-mono);
-        cursor: pointer;
-        opacity: 1;
-        transition: color var(--transition-fast);
-        box-shadow: none;
-
-        &:hover {
-            color: var(--secondary);
-        }
     }
 }
 
@@ -1167,9 +1151,11 @@ html {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     cursor: pointer;
-    // Note: backdrop-filter blur removed - doesn't transition smoothly
+    transition: backdrop-filter var(--transition-base);
 }
 
 .search-modal-container {

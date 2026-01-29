@@ -36,6 +36,7 @@
     let searchData = null;
     let searchTimeout = null;
     let selectedIndex = -1;
+    let scrollPosition = 0;
 
     const modal = document.querySelector('[data-search-modal]');
     const input = document.querySelector('[data-search-input]');
@@ -44,12 +45,67 @@
     const form = modal.querySelector('.search-modal-form');
     const jsonUrl = '{{ $searchPage.RelPermalink }}index.json';
 
+    // Scroll lock functions
+    function preventDefault(e) {
+        e.preventDefault();
+        return false;
+    }
+
+    function preventScroll(e) {
+        // Allow scrolling within the search results list
+        if (resultsList.contains(e.target)) {
+            return;
+        }
+        preventDefault(e);
+    }
+
+    function maintainScrollPosition() {
+        window.scrollTo(0, scrollPosition);
+    }
+
+    function preventArrowScroll(e) {
+        // Don't interfere with Cmd+K or Ctrl+K
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            return;
+        }
+
+        if (modal.classList.contains('is-open') &&
+            (e.key === 'ArrowDown' || e.key === 'ArrowUp' ||
+             e.key === 'PageDown' || e.key === 'PageUp' ||
+             e.key === 'Home' || e.key === 'End')) {
+            // Allow arrow keys in search input and results
+            if (e.target === input || resultsList.contains(e.target)) {
+                return;
+            }
+            e.preventDefault();
+        }
+    }
+
+    function lockScroll() {
+        // Store current scroll position
+        scrollPosition = window.pageYOffset;
+
+        // Add event listeners to prevent scrolling
+        window.addEventListener('wheel', preventScroll, { passive: false });
+        window.addEventListener('touchmove', preventScroll, { passive: false });
+        window.addEventListener('scroll', maintainScrollPosition);
+        // Use capture phase to not interfere with bubble phase listeners
+        window.addEventListener('keydown', preventArrowScroll, false);
+    }
+
+    function unlockScroll() {
+        // Remove all event listeners
+        window.removeEventListener('wheel', preventScroll, { passive: false });
+        window.removeEventListener('touchmove', preventScroll, { passive: false });
+        window.removeEventListener('scroll', maintainScrollPosition);
+        window.removeEventListener('keydown', preventArrowScroll, false);
+    }
+
     // Open modal
     function openModal() {
-        // Compensate for scrollbar width to prevent layout shift
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.paddingRight = scrollbarWidth + 'px';
-        document.body.style.overflow = 'hidden';
+        // Lock scroll position without changing any CSS properties
+        lockScroll();
+
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         setTimeout(() => input.focus(), 50);
@@ -57,8 +113,9 @@
 
     // Close modal
     function closeModal() {
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+        // Unlock scroll
+        unlockScroll();
+
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
         input.value = '';
