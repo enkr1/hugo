@@ -120,3 +120,19 @@ Workflow: `.github/workflows/hugo.yml`
 - Build timeout: 300s (image-heavy pages)
 - Related posts: Enabled, weighted by tags/categories (threshold: 60)
 - Syntax highlighting: Line numbers enabled, uses CSS classes (not inline styles)
+
+---
+
+## NUS-Related Content
+
+When creating posts about NUS BIT coursework:
+
+- **Tags**: Module code (e.g. `TCX1002`, `TCX2101`), `NUS`, `NUS-BIT`
+- **Categories**: `["Education", "Reflections"]`
+- **Smart Notes workflow**: Extract atomic notes from sessions first (see global CLAUDE.md at `~/.claude/CLAUDE.md`)
+- **Link to context**: When relevant, link to session notes:
+  ```markdown
+  **Context:** [Session notes (for myself)](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/YYYY-MM-DD/session-notes.md)
+  ```
+
+**Workflow:** Session notes → Atomic notes → Blog post emerges when notes cluster.
