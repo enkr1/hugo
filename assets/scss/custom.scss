@@ -924,11 +924,50 @@ html {
         line-height: inherit;
     }
 
-    // Line numbers - muted
-    .lnt, .ln {
-        color: var(--text-tertiary);
-        padding-right: 1rem;
-        user-select: none;
+    // Chroma syntax highlighter wrapper
+    .chroma {
+        line-height: inherit;
+
+        // Line numbers table - compact spacing
+        .lntable {
+            line-height: inherit;  // Inherit 1.4 from .highlight
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            tr {
+                line-height: inherit;
+            }
+
+            td {
+                line-height: inherit;
+                padding: 0;
+                margin: 0;
+                vertical-align: top;
+            }
+
+            // Line number spans - display:flex prevents vertical expansion
+            .lnt,
+            .hl {
+                display: flex;  // Key fix: prevents table cell expansion with indented code
+                color: var(--text-tertiary);
+                padding-right: 1rem;
+                user-select: none;
+                line-height: inherit;
+            }
+
+            // Code cell - full width
+            .lntd + .lntd {
+                width: 100%;
+            }
+        }
+
+        // Inline line numbers (when lineNumbersInTable = false)
+        .ln {
+            color: var(--text-tertiary);
+            padding-right: 1rem;
+            user-select: none;
+            line-height: inherit;
+        }
     }
 }
 
@@ -1151,11 +1190,8 @@ html {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.7);  // Darker backdrop (was 0.5)
     cursor: pointer;
-    transition: backdrop-filter var(--transition-base);
 }
 
 .search-modal-container {

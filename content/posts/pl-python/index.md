@@ -163,15 +163,15 @@ print(f"Trimmed:  '{trimmed_text}'")
 
 ## 🗺️ Roadmap Overview
 
-This roadmap is structured to build my proficiency in Python and strengthen my understanding of fundamental data structures and algorithms. It is divided into several phases, each focusing on specific topics and associated problems.
+This roadmap is structured to build my proficiency in Python and strengthen my understanding of fundamental data structures and algorithms. It is divided into several phases, each focusing on specific topics and associated problems.
 
 ### Phase 1: Python Fundamentals
 
 Before diving into problem-solving, ensure i'm comfortable with Python's syntax and core concepts:
 
-- **Data Types and Structures:** Lists, Tuples, Dictionaries, Sets
-- **Control Flow:** Loops, Conditional Statements
-- **Functions and Modules:** Defining functions, Importing modules
+- **Data Types and Structures:** Lists, Tuples, Dictionaries, Sets
+- **Control Flow:** Loops, Conditional Statements
+- **Functions and Modules:** Defining functions, Importing modules
 - **List Comprehensions and Lambda Functions**
 
 *Resources:*
@@ -181,7 +181,7 @@ Before diving into problem-solving, ensure i'm comfortable with Python's syntax 
 
 ### Phase 2: Arrays and Strings
 
-These are foundational topics that frequently appear in interviews.
+These are foundational topics that frequently appear in interviews.
 
 - **Two Sum:** [LeetCode Problem #1](https://leetcode.com/problems/two-sum/)
 - **Best Time to Buy and Sell Stock:** [LeetCode Problem #121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
@@ -191,7 +191,7 @@ These are foundational topics that frequently appear in interviews.
 
 ### Phase 3: Two Pointers and Sliding Window
 
-Techniques that optimize traversal of arrays and linked lists.
+Techniques that optimize traversal of arrays and linked lists.
 
 - **Valid Palindrome:** [LeetCode Problem #125](https://leetcode.com/problems/valid-palindrome/)
 - **Container With Most Water:** [LeetCode Problem #11](https://leetcode.com/problems/container-with-most-water/)
@@ -201,7 +201,7 @@ Techniques that optimize traversal of arrays and linked lists.
 
 ### Phase 4: Hashing and Hash Maps
 
-Efficient data retrieval and storage techniques.
+Efficient data retrieval and storage techniques.
 
 - **Two Sum:** [LeetCode Problem #1](https://leetcode.com/problems/two-sum/)
 - **Group Anagrams:** [LeetCode Problem #49](https://leetcode.com/problems/group-anagrams/)
@@ -211,7 +211,7 @@ Efficient data retrieval and storage techniques.
 
 ### Phase 5: Linked Lists
 
-Understanding linked lists is crucial for many algorithmic problems.
+Understanding linked lists is crucial for many algorithmic problems.
 
 - **Reverse Linked List:** [LeetCode Problem #206](https://leetcode.com/problems/reverse-linked-list/)
 - **Merge Two Sorted Lists:** [LeetCode Problem #21](https://leetcode.com/problems/merge-two-sorted-lists/)
@@ -221,7 +221,7 @@ Understanding linked lists is crucial for many algorithmic problems.
 
 ### Phase 6: Trees and Graphs
 
-Explore hierarchical data structures and their traversal algorithms.
+Explore hierarchical data structures and their traversal algorithms.
 
 - **Maximum Depth of Binary Tree:** [LeetCode Problem #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 - **Same Tree:** [LeetCode Problem #100](https://leetcode.com/problems/same-tree/)
@@ -231,7 +231,7 @@ Explore hierarchical data structures and their traversal algorithms.
 
 ### Phase 7: Dynamic Programming
 
-Techniques for solving complex problems by breaking them down into simpler subproblems.
+Techniques for solving complex problems by breaking them down into simpler subproblems.
 
 - **Climbing Stairs:** [LeetCode Problem #70](https://leetcode.com/problems/climbing-stairs/)
 - **Coin Change:** [LeetCode Problem #322](https://leetcode.com/problems/coin-change/)
@@ -241,7 +241,7 @@ Techniques for solving complex problems by breaking them down into simpler subpr
 
 ### Phase 8: Advanced Topics
 
-Delve into more complex data structures and algorithms.
+Delve into more complex data structures and algorithms.
 
 - **Implement Trie (Prefix Tree):** [LeetCode Problem #208](https://leetcode.com/problems/implement-trie-prefix-tree/)
 - **Design Add and Search Words Data Structure:** [LeetCode Problem #211](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
@@ -251,12 +251,9 @@ Delve into more complex data structures and algorithms.
 
 ## Additional Resources
 
-- **LeetCode 75 Study Plan:** A curated list of 75 essential problems for interview preparation. citeturn0search2
-- **Top Interview 150 Study Plan:** A comprehensive set of 150 classic interview questions. citeturn0search1
-- **NeetCode's Blind 75:** A popular list of algorithm practice problems with video
-
-
-
+- **LeetCode 75 Study Plan:** A curated list of 75 essential problems for interview preparation.
+- **Top Interview 150 Study Plan:** A comprehensive set of 150 classic interview questions.
+- **NeetCode's Blind 75:** A popular list of algorithm practice problems with video explanations
 ---
 
 
@@ -513,7 +510,10 @@ class Solution:
             pointer_placement -= 1
 
         nums1[: pointer_nums2 + 1] = nums2[: pointer_nums2 + 1]
+        qwe
 ```
+
+qwe
 
 **Python-Specific Learnings**
 1. **In-place Modification**
