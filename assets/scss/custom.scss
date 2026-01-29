@@ -926,47 +926,51 @@ html {
 
     // Chroma syntax highlighter wrapper
     .chroma {
-        line-height: inherit;
-
-        // Line numbers table - compact spacing
+        // Line numbers table - research-backed fix for vertical spacing
         .lntable {
-            line-height: inherit;  // Inherit 1.4 from .highlight
             border-spacing: 0;
-            border-collapse: collapse;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            width: auto;
+            overflow: auto;
+            display: block;  // Key: prevents table cell expansion
 
-            tr {
-                line-height: inherit;
-            }
-
-            td {
-                line-height: inherit;
+            // Table cells - no padding, top-aligned
+            .lntd {
+                vertical-align: top;
                 padding: 0;
                 margin: 0;
-                vertical-align: top;
+                border: 0;
             }
 
-            // Line number spans - display:flex prevents vertical expansion
-            .lnt,
-            .hl {
-                display: flex;  // Key fix: prevents table cell expansion with indented code
-                color: var(--text-tertiary);
-                padding-right: 1rem;
-                user-select: none;
-                line-height: inherit;
-            }
-
-            // Code cell - full width
+            // Code cell - full width, prevents overflow issues
             .lntd + .lntd {
                 width: 100%;
             }
+
+            // Line number elements - display:flex prevents height mismatch
+            .lnt,
+            .hl {
+                display: flex;
+                color: var(--text-tertiary);
+                padding-right: 1rem;
+                user-select: none;
+            }
+
+            // Code content inside table
+            pre {
+                margin: 0;
+                padding: 0;
+                line-height: var(--line-height-snug);  // 1.4 - compact
+            }
         }
 
-        // Inline line numbers (when lineNumbersInTable = false)
+        // Inline line numbers fallback (when lineNumbersInTable = false)
         .ln {
             color: var(--text-tertiary);
             padding-right: 1rem;
             user-select: none;
-            line-height: inherit;
         }
     }
 }

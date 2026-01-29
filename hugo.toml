@@ -174,7 +174,7 @@ codeFences = true
 guessSyntax = true
 lineNoStart = 1
 lineNos = true
-lineNumbersInTable = true
+lineNumbersInTable = false  # Inline for good spacing, JS handles copy
 tabWidth = 4
 
 # Google Analytics
