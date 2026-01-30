@@ -46,6 +46,7 @@
     --font-display: 'Cormorant Garamond', 'Georgia', serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    --font-chinese: 'LXGW WenKai TC', 'Noto Serif SC', 'Songti SC', serif;
 
     // Override theme's font variables
     --base-font-family: var(--font-body);
@@ -1426,10 +1427,10 @@ button[type="submit"].primary {
     right: 2rem;
     width: 44px;
     height: 44px;
-    border: none;
+    border: 1px solid var(--border);
     border-radius: var(--radius-button-circle);
     background: var(--card-background);
-    color: var(--accent);
+    color: var(--body-text-color);
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
@@ -1437,9 +1438,8 @@ button[type="submit"].primary {
     transition: opacity var(--transition-base),
                 visibility var(--transition-base),
                 transform var(--transition-base),
-                background var(--transition-fast),
-                color var(--transition-fast);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                border-color 200ms ease;
+    box-shadow: var(--shadow-l2);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -1448,21 +1448,34 @@ button[type="submit"].primary {
     svg {
         width: 20px;
         height: 20px;
+        stroke: var(--body-text-color);
+        transition: stroke 200ms ease;
     }
 
     &.visible {
-        opacity: 1;
+        opacity: 0.9;
         visibility: visible;
         transform: translateY(0);
     }
 
-    &:hover {
-        background: var(--accent);
-        color: var(--card-background);
+    // Active/tap state (matches TOC button)
+    &:active {
+        transform: scale(0.95);
+        opacity: 1;
+        border-color: var(--gold);
+
+        svg {
+            stroke: var(--gold);
+        }
     }
 
-    &:active {
-        transform: translateY(-2px);
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        border-color: var(--gold);
+        box-shadow: var(--shadow-l2), 0 0 0 2px rgba(139, 115, 85, 0.2);
     }
 }
 
