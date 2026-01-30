@@ -45,9 +45,9 @@
 :root {
     // FONT FAMILIES
     --font-display: 'Cormorant Garamond', 'Georgia', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'LXGW WenKai TC', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-    --font-chinese: 'LXGW WenKai TC', 'Noto Serif SC', 'Songti SC', serif;
+    --font-chinese: 'LXGW WenKai TC', 'Noto Serif SC', 'Songti SC', serif; // Kept for explicit Chinese-only use
 
     // Override theme's font variables
     --base-font-family: var(--font-body);
