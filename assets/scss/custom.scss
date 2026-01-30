@@ -1676,8 +1676,10 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         }
     }
 
-    // Hide sidebar hamburger on mobile
-    .hamburger {
+    // Sidebar hamburger - hidden via theme/partials/menu.scss
+
+    // Hide fullpage nav hamburger on mobile (bottom nav replaces it)
+    .nav-hamburger {
         display: none !important;
     }
 
