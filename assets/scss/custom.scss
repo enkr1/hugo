@@ -462,6 +462,36 @@ html {
    Entire card is clickable via stretched link
    =========================================== */
 
+// Pinned post badge - top-left indicator
+.article-pinned-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: var(--accent-color-text);
+    border-radius: var(--radius-button-circle);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+
+    svg {
+        width: 16px;
+        height: 16px;
+        stroke-width: 2.5;
+    }
+
+    // Subtle hover effect (when hovering near the badge)
+    article:hover & {
+        transform: translateY(-2px) rotate(15deg);
+        box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+    }
+}
+
 // Border trace animation - each edge separately
 @keyframes trace-top {
     from { width: 0; }
@@ -685,6 +715,11 @@ html {
     border: 1px solid var(--accent);
     max-width: calc(77ch + 4rem);  // 77ch content + padding
     width: 100%;
+}
+
+// Article pages with TOC on left - full-width content
+.article-page--toc-left .main-article {
+    max-width: 100%;
 }
 
 // Breadcrumb navigation - unified for articles & category pages
@@ -1965,15 +2000,16 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
    Modern minimal design with Ba Zi aesthetics
    =========================================== */
 
-// Hamburger button - fixed top-left
+// Hamburger button - top-left with scroll-based visibility
 .nav-hamburger {
     position: fixed;
     top: 2rem;
     left: 2rem;
     width: 44px;
     height: 44px;
-    background: transparent;
-    border: none;
+    background: var(--card-background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
     cursor: pointer;
     z-index: 9999;
     display: flex;
@@ -1982,10 +2018,32 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     justify-content: center;
     gap: 6px;
     padding: 0;
-    transition: opacity var(--transition-fast);
+    transition: opacity var(--transition-slow), transform var(--transition-slow), background var(--transition-fast), border-color var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    // On >= iPad: smaller size, positioned above sidebar content
+    @media (min-width: 769px) {
+        width: 36px;
+        height: 36px;
+        top: 1.5rem;
+        left: 1.5rem;
+        gap: 5px;
+
+        .hamburger-line {
+            width: 20px;
+        }
+    }
 
     &:hover {
-        opacity: 0.7;
+        background: var(--accent-subtle);
+        border-color: var(--accent);
+    }
+
+    // Hidden state when scrolling down
+    &.hidden {
+        opacity: 0;
+        transform: translateY(-1rem);
+        pointer-events: none;
     }
 
     // Three lines
