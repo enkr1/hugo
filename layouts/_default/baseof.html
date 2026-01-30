@@ -7,6 +7,12 @@
     <body class="{{ block `body-class` . }}{{ end }}">
         {{- partial "head/colorScheme" . -}}
 
+        {{/* Full-page navigation overlay */}}
+        {{ partial "navigation/fullpage-nav.html" . }}
+
+        {{/* Search modal overlay */}}
+        {{ partial "search-modal.html" . }}
+
         {{/* The container is wider when there's any activated widget */}}
         {{- $hasWidget := false -}}
         {{- range .Site.Params.widgets -}}
@@ -24,11 +30,5 @@
             </main>
         </div>
         {{ partial "footer/include.html" . }}
-
-        {{/* Search modal at body level for proper z-index */}}
-        {{ partial "search-modal.html" . }}
-
-        {{/* Waveform background animation */}}
-        {{- partial "waveform.html" . -}}
     </body>
 </html>

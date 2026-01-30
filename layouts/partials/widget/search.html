@@ -1,11 +1,7 @@
 {{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "search") -}}
 {{- if $query -}}
-    <a href="javascript:void(0)" class="search-trigger" data-search-trigger>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.3-4.3"></path>
-        </svg>
-        <span>Search</span>
-        <kbd>⌘K</kbd>
-    </a>
+    <button class="search-trigger" data-search-trigger>
+        <span class="search-trigger__text">Search</span>
+        <kbd class="search-trigger__kbd">⌘K</kbd>
+    </button>
 {{- end -}}
