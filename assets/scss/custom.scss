@@ -1618,6 +1618,17 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
    =========================================== */
 
 @media (max-width: 768px) {
+    // Left sidebar - fit content height on mobile/tablet (no scrollable categories)
+    .left-sidebar {
+        height: fit-content;
+        overflow: visible;
+    }
+
+    // Hide left sidebar categories widget on mobile/tablet (breadcrumb shows at top)
+    .left-sidebar .widget.categories-tree {
+        display: none;
+    }
+
     // Mobile bottom navigation - show with frosted glass
     .mobile-nav {
         display: flex;
