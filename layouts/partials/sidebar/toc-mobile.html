@@ -1,0 +1,85 @@
+{{/* Mobile TOC - Bottom-left floating button + bottom sheet */}}
+{{/* Only render if TOC exists */}}
+{{ if .TableOfContents }}
+
+{{/* Floating TOC button - bottom-left */}}
+<button class="toc-mobile-button" id="toc-mobile-toggle" aria-label="Table of Contents">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+</button>
+
+{{/* Bottom sheet overlay */}}
+<div class="toc-mobile-overlay" id="toc-mobile-overlay">
+    <div class="toc-mobile-backdrop" id="toc-mobile-backdrop"></div>
+    <div class="toc-mobile-sheet" id="toc-mobile-sheet">
+        {{/* Sheet header */}}
+        <div class="toc-mobile-header">
+            <h3>{{ T "article.tableOfContents" }}</h3>
+            <button class="toc-mobile-close" id="toc-mobile-close" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        {{/* TOC content */}}
+        <div class="toc-mobile-content">
+            {{ .TableOfContents }}
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const toggleBtn = document.getElementById('toc-mobile-toggle');
+    const closeBtn = document.getElementById('toc-mobile-close');
+    const backdrop = document.getElementById('toc-mobile-backdrop');
+    const overlay = document.getElementById('toc-mobile-overlay');
+    const sheet = document.getElementById('toc-mobile-sheet');
+
+    if (!toggleBtn || !overlay) return;
+
+    // Open sheet
+    function openSheet() {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+
+    // Close sheet
+    function closeSheet() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Toggle on button click
+    toggleBtn.addEventListener('click', openSheet);
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', closeSheet);
+
+    // Close on close button click
+    closeBtn.addEventListener('click', closeSheet);
+
+    // Close on TOC link click (after navigation)
+    const tocLinks = sheet.querySelectorAll('a');
+    tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Small delay to allow scroll to happen first
+            setTimeout(closeSheet, 100);
+        });
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeSheet();
+        }
+    });
+})();
+</script>
+
+{{ end }}
