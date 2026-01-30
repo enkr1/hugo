@@ -2251,7 +2251,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     margin-bottom: var(--spacing-lg);
     background: var(--card-background);
     border: 1px solid var(--border);
-    border-radius: var(--radius-input);
+    border-radius: 0;
     cursor: pointer;
     transition: all var(--transition-fast);
     font-family: var(--font-body);
@@ -2281,7 +2281,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         padding: 0.3rem 0.6rem;
         background: var(--bg);
         border: 1px solid var(--border);
-        border-radius: var(--radius-xs);
+        border-radius: 0;
         color: var(--text-tertiary);
         font-weight: var(--font-weight-normal);
     }
