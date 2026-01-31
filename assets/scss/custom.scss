@@ -398,16 +398,19 @@ html {
 
 /* Categories tree styles moved to theme/partials/widgets.scss */
 
-/* Left sidebar - flex layout to distribute space */
+/* TOC - back to original working setup */
+
+
+/* Left sidebar (regular) - keep existing behavior */
 .left-sidebar {
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    padding-bottom: 0 !important; // Remove bottom padding to maximize space
+    padding-bottom: 0 !important;
 
     header {
-        flex-shrink: 0; // Fixed height header
+        flex-shrink: 0;
     }
 }
 
@@ -717,9 +720,9 @@ html {
     width: 100%;
 }
 
-// Article pages with TOC on left - full-width content
+// Article pages with TOC on left - constrained for readability
 .article-page--toc-left .main-article {
-    max-width: 100%;
+    max-width: calc(85ch + 4rem);  // Comfortable reading width, balanced with TOC
 }
 
 // Breadcrumb navigation - unified for articles & category pages
@@ -903,8 +906,6 @@ html {
     box-shadow: none;
     border-radius: var(--radius-widget);
 
-    // Inherits from main .widget styling now
-
     #TableOfContents {
         font-size: var(--font-size-base);
         line-height: 1.5;
@@ -945,7 +946,10 @@ html {
             display: block;
             color: var(--text-secondary);
             border-left: 2px solid transparent;
-            transition: all var(--transition-fast);
+            transition: color var(--transition-base),
+                        border-left-color var(--transition-base),
+                        font-weight var(--transition-base),
+                        background var(--transition-base);
             text-decoration: none;
 
             &:hover {
@@ -983,12 +987,13 @@ html {
             }
         }
 
-        // Active state - subtle line indicator
+        // Active state - animated accent indicator
         li.active-class > a {
             color: var(--accent) !important;
             border-left-color: var(--accent) !important;
             font-weight: var(--font-weight-medium) !important;
             opacity: 1 !important;
+            background: var(--accent-subtle);
         }
     }
 }
@@ -2009,7 +2014,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     height: 44px;
     background: var(--card-background);
     border: 1px solid var(--border);
-    border-radius: var(--radius-button);
+    border-radius: 0;
     cursor: pointer;
     z-index: 9999;
     display: flex;
@@ -2019,7 +2024,6 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
     gap: 6px;
     padding: 0;
     transition: opacity var(--transition-slow), transform var(--transition-slow), background var(--transition-fast), border-color var(--transition-fast);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     // On >= iPad: smaller size, positioned above sidebar content
     @media (min-width: 769px) {
