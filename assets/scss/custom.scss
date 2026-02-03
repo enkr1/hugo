@@ -720,9 +720,9 @@ html {
     width: 100%;
 }
 
-// Article pages with TOC on left - constrained for readability
+// Article pages with TOC on left - wider for better space utilization
 .article-page--toc-left .main-article {
-    max-width: calc(85ch + 4rem);  // Comfortable reading width, balanced with TOC
+    max-width: calc(95ch + 4rem);  // Wider reading width, balanced with TOC on left
 }
 
 // Breadcrumb navigation - unified for articles & category pages
@@ -895,6 +895,11 @@ html {
 }
 
 // Menu styles moved to theme/partials/menu.scss
+
+/* ===========================================
+   TABLE OF CONTENTS
+   Styles moved to theme/partials/layout/article.scss
+   =========================================== */
 
 // Search modal styles moved to theme/partials/layout/search.scss
 
