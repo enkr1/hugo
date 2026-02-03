@@ -725,6 +725,12 @@ html {
     max-width: calc(95ch + 4rem);  // Wider reading width, balanced with TOC on left
 }
 
+// Article pages with TOC on left - wider related content and comments
+.article-page--toc-left .related-content--wrapper,
+.article-page--toc-left .disqus-container {
+    max-width: calc(95ch + 4rem);  // Match wider article width
+}
+
 // Breadcrumb navigation - unified for articles & category pages
 .breadcrumb {
     display: flex;
