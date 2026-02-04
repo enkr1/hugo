@@ -1,5 +1,6 @@
 ---
 title: "How to Take Smart Notes by Sönke Ahrens"
+slug: "book-how-to-take-smart-notes"
 date: 2026-01-30 03:28:29
 tags:
   - "ebook"
