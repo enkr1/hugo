@@ -11,7 +11,7 @@ categories:
   - ["Personal Development", "Collections", "Reading", "Book", "Sönke Ahrens"]
   - ["Notebooks"]
 subtitle: "The Zettelkasten method that changed how I learn"
-description: "Big thanks to Lionel for gifting me this ebook. A deep dive into Sönke Ahrens' systematization of the Zettelkasten method - from fleeting notes to permanent insights, and how I integrated it into my daily workflow."
+description: "How I stopped forgetting everything I learnt. A practical guide to the Zettelkasten method - the slip-box system that turns scattered notes into a networked second brain. Includes my daily workflow, setup, and real examples from my NUS BIT studies."
 keywords:
   - "How to Take Smart Notes"
   - "Zettelkasten method"
@@ -25,13 +25,13 @@ keywords:
 
 ## The Gift That Changed How I Think
 
-big thanks to my life teacher Lionel for this ebook. if you've read [my bash notebook](https://blog.enkr1.com/p/pl-bash/) or my [Google SRE interview story](https://blog.enkr1.com/p/interview-google-sre-poland/), you'd know Lionel was one of my mentors at Pixium Digital, where i started my career as an intern. he's been gifting me books since day one - always pushing me to learn, grow, and think differently.
+thanks to Lionel for sharing this ebook with me. if you've read [my bash notebook](https://blog.enkr1.com/p/pl-bash/) or my [Google SRE interview story](https://blog.enkr1.com/p/interview-google-sre-poland/), you'd know Lionel was one of my mentors at Pixium Digital, where i started my career as an intern. he's been gifting me books since day one - always pushing me to learn, grow, and think differently.
 
 <!-- more -->
 
-last year, sept 18, we had a solid catchup. talked about work, school, life - the usual. i shared how i do my "project management" (aka organized chaos in Notion), and he introduced me to this methodology + his Bear → Notion workflow. then he sent me this ebook: *How to Take Smart Notes* by Sönke Ahrens.
+last year, Sept 18, we had a solid catchup. talked about work, school, life - the usual. i shared how i do my "project management" (aka organised chaos in Notion), and he introduced me to this methodology + his Bear → Notion workflow. then he sent me this ebook: *How to Take Smart Notes* by Sönke Ahrens.
 
-i'm someone who **loves** learning. i go deep on anything that sparks my curiosity. but here's the problem: i was learning a ton... and forgetting most of it. highlighting, scribbling notes, telling myself "i'll organize this later" - classic trap.
+i'm someone who **loves** learning. i go deep on anything that sparks my curiosity. but here's the problem: i was learning a ton... and forgetting most of it. highlighting, scribbling notes, telling myself "i'll organise this later" - classic trap.
 
 this book changed that. completely.
 
@@ -64,7 +64,7 @@ let's be honest. most of us take notes like this:
 1. **Highlight everything** (because it all seems important in the moment)
 2. **Never revisit** (out of sight, out of mind)
 3. **No connections** (each note lives in isolation)
-4. **"I'll organize later"** (narrator: they never organized it)
+4. **"I'll organise later"** (narrator: they never organised it)
 
 i've been there. thousands of highlights across Notion, Apple Notes, markdown files on GitHub. some of it brilliant. most of it forgotten.
 
@@ -86,7 +86,7 @@ Zettelkasten = German for "slip-box"
 
 developed by Niklas Luhmann (1927-1998), a German sociologist who published **58 books** and **hundreds of articles** using this system. his secret? a physical box of index cards, each containing one idea, all linked together like a web.
 
-Sönke Ahrens systematized Luhmann's method in 2017, making it practical for modern knowledge workers.
+Sönke Ahrens systematised Luhmann's method in 2017, making it practical for modern knowledge workers.
 
 **The key insight:** a note is only as valuable as its **context** - its network of associations, relationships, and connections to other information.
 
@@ -147,7 +147,7 @@ File the permanent note in your system. link it to related notes. let it connect
 **My setup:**
 - `000_mods/notes/` - all permanent notes
 - Cross-linked with `[[note-name]]` syntax
-- Organized by context, not topic
+- Organised by context, not topic
 
 ### 6. Use for Writing / Output
 When you need to write something (blog post, essay, report), you **don't start from scratch**. you already have notes!
@@ -208,7 +208,7 @@ having diverse interests increases the chances of unexpected insights. connectio
 
 **how i apply it:** i'm juggling TCX1002 (programming), TCX2101 (calculus), TCX1004 (math logic). the cross-pollination is **wild**.
 
-### 8. Organize your notes by context, not by topic
+### 8. Organise your notes by context, not by topic
 
 don't file notes by subject. file them by **where and how they might be useful in the future**.
 
@@ -239,8 +239,8 @@ don't just collect information that confirms what you already believe. preserve 
 | Before | After (Smart Notes) |
 |--------|---------------------|
 | Session notes → forgotten | Session notes → Atomic notes → Blog posts |
-| Thousands of disorganized highlights | Networked thinking system |
-| "I'll organize later" (never did) | 10-15 min daily processing ritual |
+| Thousands of disorganised highlights | Networked thinking system |
+| "I'll organise later" (never did) | 10-15 min daily processing ritual |
 | Notes in silos | Notes that connect and compound |
 | Writing from scratch | Writing from existing notes |
 
@@ -276,7 +276,7 @@ every evening:
 - ideas stayed isolated
 - writing felt like pulling teeth
 
-**after this system:**
+**After this system:**
 - learned a ton → captured insights
 - ideas connect naturally
 - writing flows from existing notes
@@ -309,7 +309,7 @@ when 3+ notes cluster around a theme, a blog post wants to be written. don't for
 **6. Delete fleeting notes**
 sounds scary. but it forces you to actually process them. if it's important, it becomes a permanent note.
 
-**7. Organize by context, not topic**
+**7. Organise by context, not topic**
 ask: "when will i need this?" not "what category does this fit?"
 
 **8. Start simple**
@@ -330,7 +330,7 @@ you don't need fancy tools. markdown files + links = enough.
 | **Failing to link notes** | Forget to do it during creation | Make linking part of the creation process. not optional. |
 | **Mixing project drafts with permanent knowledge** | Convenience | Keep them separate. permanent notes = timeless. project notes = temporary. |
 | **Collecting without processing** | Feels productive | Collection ≠ learning. processing = learning. |
-| **Over-organizing** | Perfectionism | Simple folders. let links do the organizing. |
+| **Over-organising** | Perfectionism | Simple folders. let links do the organising. |
 
 
 
@@ -347,7 +347,7 @@ With system:    Learn → Capture → Connect → Build
 
 this isn't just about note-taking. it's about **thinking better**.
 
-the zettelkasten method:
+the Zettelkasten method:
 - forces you to **understand** (writing in own words)
 - helps you **connect** (linking related ideas)
 - enables you to **create** (assembling existing notes)
@@ -364,11 +364,11 @@ your notes become a **second brain** - a networked thinking partner that grows s
 
 ## Credits & Thanks
 
-**Sönke Ahrens** - for systematizing Niklas Luhmann's method and making it accessible. this book is a masterclass in knowledge work.
+**Sönke Ahrens** - for systematising Niklas Luhmann's method and making it accessible. this book is a masterclass in knowledge work.
 
-**Lionel** - for gifting me this ebook, for believing in me since my intern days, and for always pushing me to learn and grow. thank you for sharing your Bear → Notion workflow during our sept 18 catchup. this book changed how i think.
+**Lionel** - for sharing this ebook with me, for believing in me since my intern days, and for always pushing me to learn and grow. thank you for sharing your Bear → Notion workflow during our Sept 18 catchup. this book changed how i think.
 
-**Niklas Luhmann** - for developing the zettelkasten method and proving it works (58 books!).
+**Niklas Luhmann** - for developing the Zettelkasten method and proving it works (58 books!).
 
 **You** - for reading this far. if you're a student, knowledge worker, or anyone who learns for a living, i highly recommend this book. it's not about taking more notes. it's about thinking better.
 
@@ -385,7 +385,7 @@ things i want to dive deeper into (future blog posts?):
 - **Tools comparison:** Obsidian vs Roam vs Notion vs plain markdown
 - **Advanced linking strategies:** how to create "hub notes" that connect themes
 - **Research-heavy topics:** how to handle academic papers with this system
-- **Visual thinking:** diagrams, mind maps, concept maps in zettelkasten
+- **Visual thinking:** diagrams, mind maps, concept maps in Zettelkasten
 - **Team knowledge bases:** can this work for teams, or is it inherently personal?
 
 if any of these interest you, let me know! might write about them next.
