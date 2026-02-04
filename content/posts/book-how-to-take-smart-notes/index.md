@@ -25,7 +25,7 @@ keywords:
 
 ## The Gift That Changed How I Think
 
-thanks to Lionel for sharing this ebook with me. if you've read [my bash notebook](https://blog.enkr1.com/p/pl-bash/) or my [Google SRE interview story](https://blog.enkr1.com/p/interview-google-sre-poland/), you'd know Lionel was one of my mentors at Pixium Digital, where i started my career as an intern. he's been gifting me books since day one - always pushing me to learn, grow, and think differently.
+thanks to Lionel for sharing this ebook with me. if you've read [my bash notebook](/pl-bash/) or my [Google SRE interview story](/interview-google-sre-poland/), you'd know Lionel was one of my mentors at Pixium Digital, where i started my career as an intern. he's been gifting me books since day one - always pushing me to learn, grow, and think differently.
 
 <!-- more -->
 

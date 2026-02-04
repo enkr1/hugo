@@ -49,7 +49,7 @@ console.log('Ba Zi Theme loaded!');
 
 ## Link Test
 
-Check out [GitHub](https://github.com) or [my blog](https://blog.enkr1.com).
+Check out [GitHub](https://github.com) or [my blog](/).
 
 ## Heading Hierarchy
 
