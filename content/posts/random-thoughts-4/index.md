@@ -1,5 +1,6 @@
 ---
 title: "胡思乱写 4"
+slug: "random-thoughts-4"
 sticky: 0
 tags:
   - 胡思乱写

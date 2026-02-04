@@ -1,5 +1,6 @@
 ---
 title: "胡思乱写 1"
+slug: "random-thoughts-1"
 sticky: 0
 date: 2025-02-23 05:29:48
 tags:
