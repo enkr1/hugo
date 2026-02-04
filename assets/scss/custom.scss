@@ -1754,8 +1754,8 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 
 .article-list--tile {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;  // Consistent spacing
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;  // More breathing room on desktop
 
     article {
         position: relative;
