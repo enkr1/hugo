@@ -1,5 +1,5 @@
 ---
-title: "TCX2101 宝典 — Calculus Cheatsheet (Ch 1.1 - 3.4)"
+title: "TCX2101 | Calculus Cheatsheet (Ch 1.1 - 3.4)"
 date: 2026-02-05
 description: "Complete formula reference for NUS TCX2101 Calculus & Linear Algebra: Functions, Limits, Continuity, Differentiation, and Extreme Values"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
