@@ -335,9 +335,9 @@ $$\frac{d}{dx}[x^2 \cos x \cdot e^x] = 2x \cos x \cdot e^x + x^2(-\sin x) e^x + 
 
 ---
 
-### 3.3 Trig Derivatives
+#### Trig Derivatives
 
-#### The 6 Trig Derivatives
+##### The 6 Trig Derivatives
 
 | Function | Derivative | Memory |
 |----------|------------|--------|
@@ -348,7 +348,7 @@ $$\frac{d}{dx}[x^2 \cos x \cdot e^x] = 2x \cos x \cdot e^x + x^2(-\sin x) e^x + 
 | $\sec x$ | $\sec x \tan x$ | **Multiply family** |
 | $\csc x$ | $-\csc x \cot x$ | **Multiply family** (CO = negative) |
 
-#### Pattern Families
+##### Pattern Families
 
 **Squared Family:** tan and cot give squared derivatives
 $$\frac{d}{dx}[\tan x] = \sec^2 x \qquad \frac{d}{dx}[\cot x] = -\csc^2 x$$
@@ -358,7 +358,7 @@ $$\frac{d}{dx}[\sec x] = \sec x \tan x \qquad \frac{d}{dx}[\csc x] = -\csc x \co
 
 **CO = NEGATIVE:** cot and csc always have negative signs!
 
-#### With Chain Rule
+##### With Chain Rule
 
 $$\frac{d}{dx}[\sin(u)] = \cos(u) \cdot u' \qquad \frac{d}{dx}[\tan(u)] = \sec^2(u) \cdot u'$$
 
@@ -370,7 +370,7 @@ $$\frac{d}{dx}[\cos^2(x)] = 2\cos(x) \cdot (-\sin x) = -2\cos(x)\sin(x)$$
 
 ---
 
-### 3.4 Special Derivatives
+### 3.3 Inverse Functions & Special Derivatives
 
 #### Exponential
 
@@ -400,13 +400,13 @@ $$\frac{d}{dx}[\ln(\sin x)] = \frac{\cos x}{\sin x} = \cot x$$
 
 ---
 
-### 3.5 Implicit Differentiation
+#### Implicit Differentiation
 
-#### When to Use
+##### When to Use
 
 When you can't (or don't want to) solve for $y$ explicitly.
 
-#### Method
+##### Method
 
 1. Differentiate both sides with respect to $x$
 2. For any $y$ term, use chain rule: $\frac{d}{dx}[f(y)] = f'(y) \cdot \frac{dy}{dx}$
@@ -449,7 +449,7 @@ $$\frac{dy}{dx} = \frac{\cos(x)}{\sin(y)}$$
 
 ---
 
-### 3.6 Extreme Values
+### 3.4 Extreme Values
 
 #### Critical Points
 
