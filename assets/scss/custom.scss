@@ -249,6 +249,11 @@ html {
    IMAGES - Prevent layout shift on gallery transform
    =========================================== */
 
+// Scroll padding for anchor links - prevents headings from touching viewport top
+html {
+    scroll-padding-top: 2rem;
+}
+
 .article-content {
     img {
         border-radius: var(--radius-image);
