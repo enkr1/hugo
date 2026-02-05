@@ -561,7 +561,7 @@ Where concavity changes (f'' changes sign).
 
 ---
 
-# Quick Reference Card
+## Quick Reference Card
 
 ## All Derivatives in One Table
 
