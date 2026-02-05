@@ -1,5 +1,11 @@
 {{/* TOC for left sidebar - optimized for article reading */}}
 <aside class="sidebar toc-left-sidebar sticky">
+    {{/* Quick nav back to home */}}
+    <a href="{{ "/" | relURL }}" class="toc-home-link">
+        {{ partial "helper/icon" "chevron-left" }}
+        <span>{{ T "home" | default "Home" }}</span>
+    </a>
+
     <section class="widget archives">
         <div class="widget-icon">
             {{ partial "helper/icon" "hash" }}
