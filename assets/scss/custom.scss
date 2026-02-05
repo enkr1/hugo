@@ -228,14 +228,6 @@ html {
     }
 }
 
-// Global article subtitle override (applies to single posts too)
-.article-subtitle {
-    font-size: var(--font-size-base) !important;
-    color: var(--text-secondary);
-    font-weight: 400;
-    line-height: 1.5;
-}
-
 // Headings - override theme px-based padding with rem
 .article-content h1,
 .article-content h2,
@@ -308,98 +300,6 @@ html {
         color: var(--accent);
     }
 }
-
-/* ===========================================
-   TAGS - #hashtag style
-   =========================================== */
-
-.article-tags a,
-.tagCloud .tagCloud-tags a {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--accent) !important;
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-medium);
-    text-transform: lowercase;
-    letter-spacing: 0;
-    padding: 0;
-    transition: color var(--transition-fast);
-
-    &::before {
-        content: "#";
-        opacity: 0.6;
-        margin-right: 0.1rem;
-    }
-
-    &:hover {
-        color: var(--accent-hover, var(--accent)) !important;
-        background: transparent !important;
-        text-decoration: underline;
-    }
-}
-
-/* Sidebar tag cloud */
-.tagCloud .tagCloud-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-
-    a {
-        font-size: inherit;
-    }
-}
-
-/* Article footer tags */
-.article-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-
-    a {
-        font-size: var(--font-size-sm);
-    }
-}
-
-/* ===========================================
-   CATEGORIES - Tree list style
-   =========================================== */
-
-/* Card categories - subtle label */
-.article-category {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 0.5rem;
-
-    a {
-        background: transparent !important;
-        border: none !important;
-        color: var(--secondary) !important;
-        font-family: var(--font-body);
-        font-size: var(--font-size-xs);
-        font-weight: var(--font-weight-normal);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 0;
-        transition: color var(--transition-fast);
-
-        &:hover {
-            color: var(--accent) !important;
-        }
-
-        // Separator between multiple categories
-        &:not(:last-child)::after {
-            content: "/";
-            margin-left: 0.5rem;
-            opacity: 0.4;
-        }
-    }
-}
-
-/* Categories tree styles moved to theme/partials/widgets.scss */
-
-/* TOC - back to original working setup */
-
 
 /* Left sidebar (regular) - keep existing behavior */
 .left-sidebar {
@@ -636,13 +536,6 @@ html {
                 color: var(--accent);
             }
         }
-    }
-
-    .article-subtitle {
-        color: var(--text-secondary);
-        font-size: var(--font-size-base) !important;
-        font-weight: 400;
-        line-height: 1.5;
     }
 
     .article-time,
@@ -900,15 +793,6 @@ html {
         line-height: var(--line-height-normal);
     }
 }
-
-// Menu styles moved to theme/partials/menu.scss
-
-/* ===========================================
-   TABLE OF CONTENTS
-   Styles moved to theme/partials/layout/article.scss
-   =========================================== */
-
-// Search modal styles moved to theme/partials/layout/search.scss
 
 /* ===========================================
    PAGINATION - Ba Zi styled (金水相生)
@@ -1369,15 +1253,6 @@ button[type="submit"].primary {
 }
 
 /* ===========================================
-   SCROLL TO TOP BUTTON
-   Migrated to theme/partials/sidebar.scss
-   =========================================== */
-
-/* ===========================================
-   SCROLLBAR - Migrated to theme/partials/base.scss
-   =========================================== */
-
-/* ===========================================
    SELECTION - Gold highlight
    =========================================== */
 
@@ -1414,11 +1289,6 @@ button[type="submit"].primary {
 .fire-blessing {
     animation: fire-transform 2s ease-in-out;
 }
-
-/* ===========================================
-   THEME TOGGLE
-   Styles moved to theme/partials/sidebar.scss
-   =========================================== */
 
 // ========================================
 // INFINITE SCROLL
