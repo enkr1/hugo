@@ -26,11 +26,11 @@ draft: false
 
 ---
 
-# Chapter 1: Functions
+## Chapter 1: Functions
 
-## 1.1 Domain & Range
+### 1.1 Domain & Range
 
-### Domain Rules
+#### Domain Rules
 
 | Function Type | Domain Restriction | Example |
 |---------------|-------------------|---------|
@@ -40,7 +40,7 @@ draft: false
 | **√ in denominator** | Inside > 0 (strict!) | $f(x) = \frac{1}{\sqrt{x-3}}$ → $x > 3$ |
 | **Logarithm** | Inside > 0 | $f(x) = \ln(x-1)$ → $x > 1$ |
 
-### Multiple Restrictions
+#### Multiple Restrictions
 
 **Example:** $f(x) = \frac{\sqrt{x-3}}{x^2-4}$
 
@@ -50,7 +50,7 @@ draft: false
 
 **Domain:** $[3, \infty)$
 
-### Tricky Case: Multiple Regions
+#### Tricky Case: Multiple Regions
 
 **Example:** $f(x) = \sqrt{x^2 - 9}$
 
@@ -60,13 +60,13 @@ Need: $x^2 - 9 \geq 0$ → $x^2 \geq 9$ → $|x| \geq 3$
 
 ---
 
-## 1.2 Transformations
+### 1.2 Transformations
 
-### The Golden Rule
+#### The Golden Rule
 
 $$\text{Inside } f() = \text{Horizontal (opposite)} \quad | \quad \text{Outside } f() = \text{Vertical (same)}$$
 
-### Transformation Table
+#### Transformation Table
 
 | Transformation | Formula | Effect |
 |----------------|---------|--------|
@@ -81,7 +81,7 @@ $$\text{Inside } f() = \text{Horizontal (opposite)} \quad | \quad \text{Outside 
 | **Reflect over x-axis** | $-f(x)$ | Flip vertically |
 | **Reflect over y-axis** | $f(-x)$ | Flip horizontally |
 
-### Example
+#### Example
 
 $g(x) = 2f(x-3) + 1$
 
@@ -92,9 +92,9 @@ Reading order (inside out):
 
 ---
 
-## 1.3 Function Types
+### 1.3 Function Types
 
-### Classification
+#### Classification
 
 | Type | Definition | Examples |
 |------|------------|----------|
@@ -109,9 +109,9 @@ Reading order (inside out):
 
 ---
 
-## 1.4 Special Functions
+### 1.4 Special Functions
 
-### Inverse Functions
+#### Inverse Functions
 
 $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
@@ -125,7 +125,7 @@ $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
 ---
 
-## ⚠️ Ch1 Common Mistakes
+### ⚠️ Ch1 Common Mistakes
 
 | Mistake | Wrong | Correct |
 |---------|-------|---------|
@@ -136,11 +136,11 @@ $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
 ---
 
-# Chapter 2: Limits & Continuity
+## Chapter 2: Limits & Continuity
 
-## 2.1 Limit Laws
+### 2.1 Limit Laws
 
-### Basic Laws
+#### Basic Laws
 
 If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$, then:
 
@@ -153,7 +153,7 @@ If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$, then:
 | **Power** | $\lim[f^n] = L^n$ | — |
 | **Constant** | $\lim[c \cdot f] = c \cdot L$ | — |
 
-### Division Patterns
+#### Division Patterns
 
 | Form | Result | Intuition |
 |------|--------|-----------|
@@ -165,13 +165,13 @@ If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$, then:
 
 ---
 
-## 2.2 Indeterminate Forms
+### 2.2 Indeterminate Forms
 
-### The 7 Indeterminate Forms
+#### The 7 Indeterminate Forms
 
 $$\frac{0}{0}, \quad \frac{\infty}{\infty}, \quad 0 \cdot \infty, \quad \infty - \infty, \quad 0^0, \quad 1^\infty, \quad \infty^0$$
 
-### Solving $\frac{0}{0}$
+#### Solving $\frac{0}{0}$
 
 **Method 1: Factor and Cancel**
 
@@ -183,9 +183,9 @@ $$\lim_{x \to 0} \frac{\sqrt{x+4} - 2}{x} = \lim_{x \to 0} \frac{(\sqrt{x+4} - 2
 
 ---
 
-## 2.3 Limits at Infinity
+### 2.3 Limits at Infinity
 
-### Degree Rules for Rational Functions
+#### Degree Rules for Rational Functions
 
 $$\lim_{x \to \infty} \frac{a_nx^n + ...}{b_mx^m + ...}$$
 
@@ -195,21 +195,21 @@ $$\lim_{x \to \infty} \frac{a_nx^n + ...}{b_mx^m + ...}$$
 | $n = m$ (same degree) | $\frac{a_n}{b_m}$ | Leading coefficients |
 | $n > m$ (top bigger) | $\pm\infty$ | Top "wins" |
 
-### Example
+#### Example
 
 $$\lim_{x \to \infty} \frac{3x^2 + 1}{x^2 - 5} = \frac{3}{1} = 3 \quad \text{(same degree)}$$
 
 $$\lim_{x \to \infty} \frac{2x + 1}{x^3 - 1} = 0 \quad \text{(top smaller)}$$
 
-### Special Trig Limits
+#### Special Trig Limits
 
 $$\lim_{x \to 0} \frac{\sin x}{x} = 1 \qquad \lim_{x \to 0} \frac{1 - \cos x}{x} = 0$$
 
 ---
 
-## 2.4 Continuity
+### 2.4 Continuity
 
-### 3-Part Test for Continuity at $x = a$
+#### 3-Part Test for Continuity at $x = a$
 
 A function is continuous at $x = a$ if:
 
@@ -217,7 +217,7 @@ A function is continuous at $x = a$ if:
 2. $\lim_{x \to a} f(x)$ exists (limit exists)
 3. $\lim_{x \to a} f(x) = f(a)$ (they match)
 
-### 4 Types of Discontinuity
+#### 4 Types of Discontinuity
 
 | Type | Condition | Visual |
 |------|-----------|--------|
@@ -226,26 +226,26 @@ A function is continuous at $x = a$ if:
 | **Infinite** | $\lim_{x \to a} f = \pm\infty$ | Vertical asymptote |
 | **Oscillatory** | Limit doesn't exist (oscillates) | e.g., $\sin(1/x)$ at 0 |
 
-### Hole Detection
+#### Hole Detection
 
 1. **WHERE:** Check ORIGINAL function for where denominator = 0
 2. **WHAT VALUE:** Simplify, then substitute to find the y-coordinate of hole
 
 ---
 
-## 2.5 Intermediate Value Theorem (IVT)
+### 2.5 Intermediate Value Theorem (IVT)
 
-### Statement
+#### Statement
 
 If $f$ is **continuous** on $[a, b]$ and $N$ is between $f(a)$ and $f(b)$, then there exists $c \in (a, b)$ such that $f(c) = N$.
 
-### Root Finding Application
+#### Root Finding Application
 
 If $f$ is continuous on $[a, b]$ with $f(a) < 0$ and $f(b) > 0$ (or vice versa), then there exists a root in $(a, b)$.
 
 **Intuition:** "Can't teleport through floors" — continuous function must cross zero.
 
-### Example
+#### Example
 
 Show $f(x) = x^3 - x - 1$ has a root in $[1, 2]$.
 
@@ -256,7 +256,7 @@ Show $f(x) = x^3 - x - 1$ has a root in $[1, 2]$.
 
 ---
 
-## ⚠️ Ch2 Common Mistakes
+### ⚠️ Ch2 Common Mistakes
 
 | Mistake | Wrong | Correct |
 |---------|-------|---------|
@@ -268,18 +268,18 @@ Show $f(x) = x^3 - x - 1$ has a root in $[1, 2]$.
 
 ---
 
-# Chapter 3: Differentiation
+## Chapter 3: Differentiation
 
-## 3.1 Derivative Definition
+### 3.1 Derivative Definition
 
 $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
-### Interpretation
+#### Interpretation
 
 - **Geometric:** Slope of tangent line at $(x, f(x))$
 - **Physical:** Instantaneous rate of change
 
-### Tangent Line Equation
+#### Tangent Line Equation
 
 At point $(a, f(a))$:
 
@@ -287,9 +287,9 @@ $$y - f(a) = f'(a)(x - a)$$
 
 ---
 
-## 3.2 Basic Differentiation Rules
+### 3.2 Basic Differentiation Rules
 
-### Power Rule
+#### Power Rule
 
 $$\frac{d}{dx}[x^n] = nx^{n-1} \quad \text{for ALL } n \in \mathbb{R}$$
 
@@ -297,15 +297,15 @@ $$\frac{d}{dx}[x^n] = nx^{n-1} \quad \text{for ALL } n \in \mathbb{R}$$
 
 $$\frac{d}{dx}[x^5] = 5x^4 \qquad \frac{d}{dx}[x^{-2}] = -2x^{-3} \qquad \frac{d}{dx}[\sqrt{x}] = \frac{d}{dx}[x^{1/2}] = \frac{1}{2}x^{-1/2}$$
 
-### Constant Rule
+#### Constant Rule
 
 $$\frac{d}{dx}[c] = 0 \qquad \frac{d}{dx}[cf(x)] = c \cdot f'(x)$$
 
-### Sum/Difference Rule
+#### Sum/Difference Rule
 
 $$\frac{d}{dx}[f \pm g] = f' \pm g'$$
 
-### Product Rule
+#### Product Rule
 
 $$\frac{d}{dx}[f \cdot g] = f'g + fg'$$
 
@@ -313,7 +313,7 @@ $$\frac{d}{dx}[f \cdot g] = f'g + fg'$$
 
 $$\frac{d}{dx}[x^2 \sin x] = 2x \cdot \sin x + x^2 \cdot \cos x$$
 
-### Quotient Rule
+#### Quotient Rule
 
 $$\frac{d}{dx}\left[\frac{f}{g}\right] = \frac{f'g - fg'}{g^2}$$
 
@@ -323,7 +323,7 @@ $$\frac{d}{dx}\left[\frac{f}{g}\right] = \frac{f'g - fg'}{g^2}$$
 
 $$\frac{d}{dx}\left[\frac{x^2}{x+1}\right] = \frac{2x(x+1) - x^2(1)}{(x+1)^2} = \frac{2x^2 + 2x - x^2}{(x+1)^2} = \frac{x^2 + 2x}{(x+1)^2}$$
 
-### Chain Rule
+#### Chain Rule
 
 $$\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$
 
@@ -333,7 +333,7 @@ $$\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$$
 
 $$\frac{d}{dx}[\sin(x^2)] = \cos(x^2) \cdot 2x = 2x\cos(x^2)$$
 
-### Triple Product Rule
+#### Triple Product Rule
 
 $$\frac{d}{dx}[fgh] = f'gh + fg'h + fgh'$$
 
@@ -343,9 +343,9 @@ $$\frac{d}{dx}[x^2 \cos x \cdot e^x] = 2x \cos x \cdot e^x + x^2(-\sin x) e^x + 
 
 ---
 
-## 3.3 Trig Derivatives
+### 3.3 Trig Derivatives
 
-### The 6 Trig Derivatives
+#### The 6 Trig Derivatives
 
 | Function | Derivative | Memory |
 |----------|------------|--------|
@@ -356,7 +356,7 @@ $$\frac{d}{dx}[x^2 \cos x \cdot e^x] = 2x \cos x \cdot e^x + x^2(-\sin x) e^x + 
 | $\sec x$ | $\sec x \tan x$ | **Multiply family** |
 | $\csc x$ | $-\csc x \cot x$ | **Multiply family** (CO = negative) |
 
-### Pattern Families
+#### Pattern Families
 
 **Squared Family:** tan and cot give squared derivatives
 $$\frac{d}{dx}[\tan x] = \sec^2 x \qquad \frac{d}{dx}[\cot x] = -\csc^2 x$$
@@ -366,7 +366,7 @@ $$\frac{d}{dx}[\sec x] = \sec x \tan x \qquad \frac{d}{dx}[\csc x] = -\csc x \co
 
 **CO = NEGATIVE:** cot and csc always have negative signs!
 
-### With Chain Rule
+#### With Chain Rule
 
 $$\frac{d}{dx}[\sin(u)] = \cos(u) \cdot u' \qquad \frac{d}{dx}[\tan(u)] = \sec^2(u) \cdot u'$$
 
@@ -378,9 +378,9 @@ $$\frac{d}{dx}[\cos^2(x)] = 2\cos(x) \cdot (-\sin x) = -2\cos(x)\sin(x)$$
 
 ---
 
-## 3.4 Special Derivatives
+### 3.4 Special Derivatives
 
-### Exponential
+#### Exponential
 
 $$\frac{d}{dx}[e^x] = e^x \qquad \frac{d}{dx}[e^u] = e^u \cdot u'$$
 
@@ -392,7 +392,7 @@ $$\frac{d}{dx}[e^{3x}] = e^{3x} \cdot 3 = 3e^{3x}$$
 
 $$\frac{d}{dx}[e^{x^2}] = e^{x^2} \cdot 2x = 2xe^{x^2}$$
 
-### Logarithm
+#### Logarithm
 
 $$\frac{d}{dx}[\ln x] = \frac{1}{x} \qquad \frac{d}{dx}[\ln u] = \frac{u'}{u}$$
 
@@ -408,20 +408,20 @@ $$\frac{d}{dx}[\ln(\sin x)] = \frac{\cos x}{\sin x} = \cot x$$
 
 ---
 
-## 3.5 Implicit Differentiation
+### 3.5 Implicit Differentiation
 
-### When to Use
+#### When to Use
 
 When you can't (or don't want to) solve for $y$ explicitly.
 
-### Method
+#### Method
 
 1. Differentiate both sides with respect to $x$
 2. For any $y$ term, use chain rule: $\frac{d}{dx}[f(y)] = f'(y) \cdot \frac{dy}{dx}$
 3. Collect all $\frac{dy}{dx}$ terms on one side
 4. Solve for $\frac{dy}{dx}$
 
-### Example 1: Circle
+#### Example 1: Circle
 
 $$x^2 + y^2 = 25$$
 
@@ -431,7 +431,7 @@ $$2x + 2y\frac{dy}{dx} = 0$$
 Solve:
 $$\frac{dy}{dx} = -\frac{x}{y}$$
 
-### Example 2: Product with y
+#### Example 2: Product with y
 
 $$x^2 + xy + y^2 = 7$$
 
@@ -445,7 +445,7 @@ $$2x + y + x\frac{dy}{dx} + 2y\frac{dy}{dx} = 0$$
 $$\frac{dy}{dx}(x + 2y) = -2x - y$$
 $$\frac{dy}{dx} = \frac{-2x - y}{x + 2y}$$
 
-### Example 3: Trig
+#### Example 3: Trig
 
 $$\sin(x) + \cos(y) = 1$$
 
@@ -457,19 +457,19 @@ $$\frac{dy}{dx} = \frac{\cos(x)}{\sin(y)}$$
 
 ---
 
-## 3.6 Extreme Values
+### 3.6 Extreme Values
 
-### Critical Points
+#### Critical Points
 
 A critical point of $f$ is where:
 - $f'(c) = 0$, OR
 - $f'(c)$ does not exist (but $f(c)$ exists)
 
-### Extreme Value Theorem (EVT)
+#### Extreme Value Theorem (EVT)
 
 If $f$ is **continuous** on **closed bounded** interval $[a, b]$, then $f$ has both an absolute maximum and minimum on $[a, b]$.
 
-### Closed Interval Method
+#### Closed Interval Method
 
 To find absolute max/min of $f$ on $[a, b]$:
 
@@ -477,7 +477,7 @@ To find absolute max/min of $f$ on $[a, b]$:
 2. Evaluate $f$ at critical points AND endpoints $a, b$
 3. Largest value = absolute max, smallest = absolute min
 
-### Example
+#### Example
 
 Find absolute max/min of $f(x) = x^3 - 6x^2 + 9x + 2$ on $[-1, 4]$.
 
@@ -500,7 +500,7 @@ $$f'(x) = 0 \Rightarrow x = 1, 3$$
 
 ---
 
-### Increasing/Decreasing Intervals
+#### Increasing/Decreasing Intervals
 
 | $f'(x)$ | $f(x)$ is... |
 |---------|--------------|
@@ -508,14 +508,14 @@ $$f'(x) = 0 \Rightarrow x = 1, 3$$
 | $f'(x) < 0$ | Decreasing ↘ |
 | $f'(x) = 0$ | Potential local max/min |
 
-### First Derivative Test
+#### First Derivative Test
 
 At critical point $c$:
 - $f'$ changes from + to − → Local **maximum**
 - $f'$ changes from − to + → Local **minimum**
 - $f'$ doesn't change sign → Neither (inflection point)
 
-### Concavity (Second Derivative)
+#### Concavity (Second Derivative)
 
 | $f''(x)$ | $f(x)$ is... |
 |----------|--------------|
@@ -523,15 +523,15 @@ At critical point $c$:
 | $f''(x) < 0$ | Concave down ∩ |
 | $f''(x) = 0$ | Potential inflection point |
 
-### Inflection Points
+#### Inflection Points
 
 Where concavity changes (f'' changes sign).
 
 ---
 
-## ⚠️ Ch3 Common Mistakes
+### ⚠️ Ch3 Common Mistakes
 
-### My 11 Errors from Mixed Derivatives Hell!
+#### My 11 Errors from Mixed Derivatives Hell!
 
 | # | Error | Fix |
 |---|-------|-----|
@@ -547,7 +547,7 @@ Where concavity changes (f'' changes sign).
 | 26 | Read $\sin(x^2) \cdot \cos(x^2)$ as division | Read · vs / carefully! |
 | 28 | $\sqrt{\sin x}$: wrote $\frac{1}{2}\sin(x)\cos(x)$ | Power drops: $[\sin x]^{1/2} \to \frac{1}{2}[\sin x]^{-1/2}$ |
 
-### General Error Prevention Protocol
+#### General Error Prevention Protocol
 
 **Before each problem (10 seconds):**
 1. ✓ Read the problem **TWICE**
