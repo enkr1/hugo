@@ -31,7 +31,7 @@
  *
  * Migration tracker (current: ~1900 lines):
  * [x] Categories tree → theme/partials/widgets.scss (saved ~200 lines)
- * [x] Scrollbar → theme/partials/base.scss (saved ~20 lines)
+ * [x] Scrollbar → theme/partials/base.scss (saved ~20 lines, now with gutter fix)
  * [x] Scroll-to-top button → theme/partials/sidebar.scss (saved ~50 lines)
  * [ ] Typography → theme/layout/article.scss (~150 lines)
  * [ ] Cards → theme/layout/list.scss (~150 lines)
@@ -430,6 +430,7 @@ html {
         flex: 1; // Grow to fill remaining space
         overflow-y: auto;
         overflow-x: hidden;
+        scrollbar-gutter: stable; // Reserve space for scrollbar to prevent layout shifts
         min-height: 0; // Allow scrolling when content overflows
         padding-bottom: 1rem; // Small padding for breathing room at scroll end
     }
