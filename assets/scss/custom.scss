@@ -1103,9 +1103,10 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
 }
 
 .article-list--tile {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    display: grid !important;  // Override theme's display: flex
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100% !important;  // Override theme's width: max-content
 
     article {
         position: relative;
@@ -1114,6 +1115,7 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
         background: var(--card-background);
         border: 1px solid var(--border);
         transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        width: 100% !important;  // Override theme's fixed 250px
         height: 150px;
 
         &:hover {

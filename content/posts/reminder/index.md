@@ -15,7 +15,7 @@ comments: false
 
 
 
-<center>***"you can't control the wind but you can adjust your sail."***</center>
+<center><strong><em>"you can't control the wind but you can adjust your sail."</em></strong></center>
 <center>it's not about what happens to you,</center>
 <center>it's how you react.</center>
 <center>make a better choice.</center>
