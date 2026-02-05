@@ -563,7 +563,7 @@ Where concavity changes (f'' changes sign).
 
 ## Quick Reference Card
 
-## All Derivatives in One Table
+### All Derivatives in One Table
 
 | Function | Derivative |
 |----------|------------|
@@ -578,7 +578,7 @@ Where concavity changes (f'' changes sign).
 | $\sec x$ | $\sec x \tan x$ |
 | $\csc x$ | $-\csc x \cot x$ |
 
-## Rules
+### Rules
 
 | Rule | Formula |
 |------|---------|
@@ -587,7 +587,7 @@ Where concavity changes (f'' changes sign).
 | **Chain** | $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ |
 | **Triple** | $(fgh)' = f'gh + fg'h + fgh'$ |
 
-## Trig Identities (Simplify First!)
+### Trig Identities (Simplify First!)
 
 | Expression | Simplifies To |
 |------------|---------------|
@@ -598,7 +598,7 @@ Where concavity changes (f'' changes sign).
 | $\sin x \cos x$ | $\frac{1}{2}\sin(2x)$ |
 | $\sin^2 x + \cos^2 x$ | $1$ |
 
-## Limit Patterns
+### Limit Patterns
 
 | Form | Result |
 |------|--------|
