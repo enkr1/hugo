@@ -1,5 +1,6 @@
 ---
 title: "TCX2101 | Calculus Cheatsheet (Ch 1.1 - 3.4)"
+slug: "nus-bit-tcx2101-cheatsheet-1.1-3.4"
 date: 2026-02-05
 description: "Complete formula reference for NUS TCX2101 Calculus & Linear Algebra: Functions, Limits, Continuity, Differentiation, and Extreme Values"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
@@ -14,15 +15,6 @@ draft: false
 > **Test Scope:** Ch 1.1 → 3.4 (Functions, Limits, Continuity, Differentiation, Extreme Values)
 >
 > **Format:** Closed book — memorize this, don't bring it!
-
----
-
-## Table of Contents
-
-1. [Chapter 1: Functions](#chapter-1-functions)
-2. [Chapter 2: Limits & Continuity](#chapter-2-limits--continuity)
-3. [Chapter 3: Differentiation](#chapter-3-differentiation)
-4. [Quick Reference Card](#quick-reference-card)
 
 ---
 
