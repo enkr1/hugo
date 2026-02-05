@@ -1,5 +1,5 @@
 ---
-title: "TCX2101 | Calculus Cheatsheet (Ch 1.1 - 3.4)"
+title: "TCX2101 | Calculus Cheatsheet (Ch 1.1 - 3.4) - WIP"
 slug: "nus-bit-tcx2101-cheatsheet-1.1-3.4"
 date: 2026-02-05
 description: "Complete formula reference for NUS TCX2101 Calculus & Linear Algebra: Functions, Limits, Continuity, Differentiation, and Extreme Values"
@@ -600,11 +600,12 @@ Where concavity changes (f'' changes sign).
 
 ---
 
-*Created: 2026-02-05*
-*Coverage: TCX2101 Ch 1.1 - 3.4*
-*Purpose: 宝典 for Class Test 1 and beyond*
+- *Created: 2026-02-05*
+- *Coverage: TCX2101 Ch 1.1 - 3.4*
+- *Purpose: 宝典 for Class Test 1 and beyond*
 
 ---
 
 > **Source:** NUS TCX2101 Calculus and Linear Algebra, prepared during CT1 prep week
+>
 > **GitHub:** [Session notes](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/2026-02-05/session-notes.md)
