@@ -451,23 +451,69 @@ $$\frac{dy}{dx} = \frac{\cos(x)}{\sin(y)}$$
 
 ### 3.4 Extreme Values
 
+#### Intuition: The Hiking Analogy
+
+Imagine hiking from A to B — where are the highest/lowest points?
+
+```
+         peak 2
+          /\
+  peak 1 /  \      /
+    /\  /    \    /
+   /  \/      \  /
+  /   valley   \/
+ A              valley 2   B
+```
+
+Only 3 possible locations:
+1. **Endpoints** (A and B) — the edges of the trail
+2. **Peaks/valleys** — where slope is flat ($f'=0$)
+3. **Sharp corners** — where slope is undefined
+
+Between turning points, function is always rising or always falling — so max/min can **only** occur at these candidates!
+
+#### $f(x)$ vs $f'(x)$ — Don't Mix Up!
+
+| | $f(x)$ | $f'(x)$ |
+|---|--------|---------|
+| **Meaning** | Height of the mountain | Slope/steepness |
+| **Peaks/valleys** | Appear here | Equal zero here |
+| **Role** | The VALUES you compare | The TOOL to find candidates |
+
+$f'(x) = 0$ tells you "slope is flat here" — then check $f(x)$ for the actual height
+
+#### Solve vs Evaluate — Key Distinction!
+
+| Operation | What you do | Purpose |
+|-----------|-------------|---------|
+| **Solve** $f'(x) = 0$ | Find which $x$ makes $f'$ zero | Find CPs |
+| **Evaluate** $f(\text{candidate})$ | Plug candidate into **original** $f(x)$ | Get heights to compare |
+
+Only evaluate is needed is in Step 2, and it uses **$f(x)$** (not $f'$!)
+
 #### Critical Points
 
-A critical point of $f$ is where:
-- $f'(c) = 0$, OR
-- $f'(c)$ does not exist (but $f(c)$ exists)
+An **interior point** $c$ where:
+- $f'(c) = 0$ (flat slope — potential peak/valley), OR
+- $f'(c)$ does not exist (sharp corner — but $f(c)$ must exist)
+
+Can have **0, 1, 2, 3+** CPs — depends on how many solutions $f'(x) = 0$ has
 
 #### Extreme Value Theorem (EVT)
 
 If $f$ is **continuous** on **closed bounded** interval $[a, b]$, then $f$ has both an absolute maximum and minimum on $[a, b]$.
 
+**Why closed + bounded?** Open/unbounded intervals let values approach extremes without reaching them
+
 #### Closed Interval Method
 
 To find absolute max/min of $f$ on $[a, b]$:
 
-1. Find all critical points in $(a, b)$
-2. Evaluate $f$ at critical points AND endpoints $a, b$
-3. Largest value = absolute max, smallest = absolute min
+1. **Solve** $f'(x) = 0$ → find all critical points in $(a, b)$
+2. **Evaluate** $f$ at ALL candidates = critical points + endpoints $[a, b]$
+3. `max(values)` = absolute max, `min(values)` = absolute min
+
+**Total candidates** = (number of CPs) + 2 endpoints — usually 3-5 values to compare
 
 #### Example
 
