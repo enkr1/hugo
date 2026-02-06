@@ -538,6 +538,27 @@ $$f'(x) = 0 \Rightarrow x = 1, 3$$
 
 ---
 
+#### Local vs Absolute — Different Questions, Different Tools!
+
+```
+找到 CP (solve f'=0)
+        │
+   ┌────┴────┐
+   ▼         ▼
+ Local       Absolute
+ max/min?    max/min?
+   │         │
+   ▼         ▼
+ Derivative  Closed Interval
+ Test        Method
+ (f' 变号    (CP + endpoints
+  or f'')     比 f(x) 值)
+   │         │
+   ▼         ▼
+ NO          YES
+ endpoints!  endpoints!
+```
+
 #### Increasing/Decreasing Intervals
 
 | $f'(x)$ | $f(x)$ is... |
@@ -553,6 +574,17 @@ At critical point $c$:
 - $f'$ changes from − to + → Local **minimum**
 - $f'$ doesn't change sign → Neither (inflection point)
 
+#### Second Derivative Test (at CP where $f'(c) = 0$)
+
+| $f''(c)$ | Shape | Conclusion | Memory |
+|----------|-------|------------|--------|
+| $f''(c) > 0$ | ∪ 笑脸 (bowl) | Local **min** | 碗底 = lowest point |
+| $f''(c) < 0$ | ∩ 哭脸 (arch) | Local **max** | 拱顶 = highest point |
+| $f''(c) = 0$ | ??? | **Inconclusive** — use First Derivative Test instead! | |
+
+> ⚠️ **Counter-intuitive!** 笑脸 ∪ = min (not max!), 哭脸 ∩ = max (not min!).
+> Think: bowl ∪ holds water at the **bottom** (min). Arch ∩ peaks at the **top** (max).
+
 #### Concavity (Second Derivative)
 
 | $f''(x)$ | $f(x)$ is... |
@@ -564,6 +596,15 @@ At critical point $c$:
 #### Inflection Points
 
 Where concavity changes (f'' changes sign).
+
+#### CP ↔ Local Extrema: Direction Matters!
+
+$$\text{Local max/min} \Rightarrow \text{Critical Point (TRUE)}$$
+$$\text{Critical Point} \Rightarrow \text{Local max/min (FALSE!)}$$
+
+Every peak/valley is a CP, but not every CP is a peak/valley (e.g. $f(x) = x^3$ at $x = 0$).
+
+Think: "All dogs are animals" ≠ "All animals are dogs" (TCX1004 logic: $A \to B \neq B \to A$)
 
 ---
 
