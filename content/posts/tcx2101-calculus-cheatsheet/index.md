@@ -472,15 +472,16 @@ Only 3 possible locations:
 
 Between turning points, function is always rising or always falling — so max/min can **only** occur at these candidates!
 
-#### $f(x)$ vs $f'(x)$ — Don't Mix Up!
+#### $f(x)$ vs $f'(x)$ vs $f''(x)$ — The Hierarchy
 
-| | $f(x)$ | $f'(x)$ |
-|---|--------|---------|
-| **Meaning** | Height of the mountain | Slope/steepness |
-| **Peaks/valleys** | Appear here | Equal zero here |
-| **Role** | The VALUES you compare | The TOOL to find candidates |
+| | $f(x)$ | $f'(x)$ | $f''(x)$ |
+|---|--------|---------|----------|
+| **Meaning** | Height (高度) | Slope (斜率) | Slope's rate of change (斜率的变化率) |
+| **Analogy** | Where you are on the mountain | How steep the path is | Is the path getting steeper or flatter? |
+| **At peaks/valleys** | Has the value | Equals zero | Tells you which one (max/min) |
+| **Role** | The VALUES you compare | The TOOL to find CPs | The TOOL to classify CPs (SDT) |
 
-$f'(x) = 0$ tells you "slope is flat here" — then check $f(x)$ for the actual height
+**Key:** $f'(x) = 0$ → "slope is flat here" → then check $f(x)$ for actual height, or $f''(x)$ to classify
 
 #### Solve vs Evaluate — Key Distinction!
 
@@ -574,6 +575,17 @@ At critical point $c$:
 - $f'$ changes from − to + → Local **minimum**
 - $f'$ doesn't change sign → Neither (inflection point)
 
+**变号 (Sign Change):** The core of FDT — check if $f'$ flips between positive and negative around the CP.
+
+| Left of CP | Right of CP | 变号? | Result |
+|------------|-------------|-------|--------|
+| $f' > 0$ (+) | $f' < 0$ (−) | + → − ✅ | Local max |
+| $f' < 0$ (−) | $f' > 0$ (+) | − → + ✅ | Local min |
+| $f' > 0$ (+) | $f' > 0$ (+) | + → + ❌ | Neither (no sign change) |
+| $f' < 0$ (−) | $f' < 0$ (−) | − → − ❌ | Neither (no sign change) |
+
+**How to test:** Pick test points on each side of CP (e.g., CP at $x=2$ → test $x=1$ and $x=3$), plug into $f'(x)$, check the **sign** (+ or −), not the value.
+
 #### Second Derivative Test (at CP where $f'(c) = 0$)
 
 | $f''(c)$ | Shape | Conclusion | Memory |
@@ -584,6 +596,48 @@ At critical point $c$:
 
 > ⚠️ **Counter-intuitive!** 笑脸 ∪ = min (not max!), 哭脸 ∩ = max (not min!).
 > Think: bowl ∪ holds water at the **bottom** (min). Arch ∩ peaks at the **top** (max).
+
+#### When Do You Need $f''(x)$?
+
+Only **2 scenarios** — don't use it when you don't need it!
+
+| Scenario | Why $f''$ | Example |
+|----------|-----------|---------|
+| **Second Derivative Test** | Classify CP as max/min | $f''(c) > 0$ → local min |
+| **Concavity / Inflection** | Determine ∪ or ∩ shape | $f''(x) > 0$ → concave up |
+
+#### Which Method Needs What?
+
+| Method | Needs $f(x)$? | Needs $f'(x)$? | Needs $f''(x)$? |
+|--------|:---:|:---:|:---:|
+| **Closed Interval Method** | ✅ evaluate | ✅ find CPs | ❌ no! |
+| **First Derivative Test** | ❌ | ✅ sign change | ❌ no! |
+| **Second Derivative Test** | ❌ | ✅ find CPs | ✅ classify |
+
+> 💡 **CIM 不需要 $f''$!** Just find CPs with $f'$, evaluate $f$ at candidates, compare. Done.
+
+#### Exam Decision Flowchart: SDT First, FDT Backup
+
+```
+"Classify this CP as max or min"
+        │
+        ▼
+  Try SDT first (快!)
+  Compute f''(c)
+        │
+   ┌────┼────┐
+   ▼    ▼    ▼
+  >0   <0   =0
+  ∪    ∩    ???
+  min  max  Inconclusive!
+             │
+             ▼
+        Fall back to FDT (慢但稳)
+        Check f' sign change
+        around the CP
+```
+
+**Why SDT first?** One computation ($f''$ at one point). FDT needs test points on both sides — more work.
 
 #### Concavity (Second Derivative)
 
