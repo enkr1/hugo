@@ -45,6 +45,9 @@ label = "visitors"
 published = 'Jan 02, 2006 · 3:04 PM'
 lastUpdated = '2 Jan 2006 · 3:04 PM'
 
+[params.layout]
+floatingSidebars = true
+
 [params.sidebar]
 emoji = ''
 subtitle = "If you actually try your best, you can't lose. 🎯"

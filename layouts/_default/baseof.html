@@ -4,14 +4,21 @@
         {{- partial "head/head.html" . -}}
         {{- block "head" . -}}{{ end }}
     </head>
-    <body class="{{ block `body-class` . }}{{ end }}">
+    <body class="{{ block `body-class` . }}{{ end }}{{ if .Site.Params.layout.floatingSidebars }} floating-layout{{ end }}">
         {{- partial "head/colorScheme" . -}}
 
-        {{/* Full-page navigation overlay */}}
-        {{ partial "navigation/fullpage-nav.html" . }}
+        {{/* Full-page navigation overlay — hidden when floating sidebars handle nav */}}
+        {{ if not .Site.Params.layout.floatingSidebars }}
+            {{ partial "navigation/fullpage-nav.html" . }}
+        {{ end }}
 
         {{/* Search modal overlay */}}
         {{ partial "search-modal.html" . }}
+
+        {{/* Floating toolbar renders outside the main container */}}
+        {{ if .Site.Params.layout.floatingSidebars }}
+            {{ partial "sidebar/left-floating.html" . }}
+        {{ end }}
 
         {{/* The container is wider when there's any activated widget */}}
         {{- $hasWidget := false -}}
@@ -22,7 +29,9 @@
         {{- end -}}
         <div class="container main-container flex on-phone--column {{ if $hasWidget }}extended{{ else }}compact{{ end }}">
             {{- block "left-sidebar" . -}}
-                {{ partial "sidebar/left.html" . }}
+                {{ if not .Site.Params.layout.floatingSidebars }}
+                    {{ partial "sidebar/left.html" . }}
+                {{ end }}
             {{- end -}}
             {{- block "right-sidebar" . -}}{{ end }}
             <main class="main full-width">

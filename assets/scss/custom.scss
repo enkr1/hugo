@@ -85,16 +85,16 @@
     --transition-base: 150ms ease;
     --transition-slow: 300ms ease;
 
-    // BORDER RADIUS - SSOT Control
+    // BORDER RADIUS - SSOT Control (inherits from --radius-base in variables.scss)
     // Cards & Major Containers
-    --radius-card: 0;              // Main article cards, blog list cards
-    --radius-card-hover: 0;        // Cards on hover (can be different)
-    --radius-widget: 0;            // Sidebar widgets
+    --radius-card: var(--radius-base);
+    --radius-card-hover: var(--radius-base);
+    --radius-widget: var(--radius-base);
 
     // Content Elements
     --radius-code-inline: 4px;     // Inline code snippets
     --radius-code-block: 6px;      // Code blocks
-    --radius-image: 0;             // Images in content
+    --radius-image: calc(var(--radius-base) * 0.67);
 
     // Interactive Elements
     --radius-button: 2px;          // Regular buttons
@@ -107,8 +107,8 @@
     --radius-scrollbar: 2px;       // Scrollbar thumb
 
     // Special Components
-    --radius-search: 0;            // Search modal
-    --radius-related: 0;           // Related content tiles (matches main cards)
+    --radius-search: var(--radius-base);
+    --radius-related: var(--radius-base);
     --radius-toggle: calc(var(--toggle-height) / 2); // Theme toggle pill
 
     // Deprecated (kept for compatibility)

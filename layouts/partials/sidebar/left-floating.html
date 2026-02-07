@@ -1,0 +1,25 @@
+<nav class="floating-toolbar floating-toolbar--left" aria-label="Site navigation">
+    {{/* Navigation links */}}
+    {{ range .Site.Menus.main }}
+        {{ if not (eq .Params.newTab true) }}
+        <a href="{{ .URL }}" class="toolbar-icon" aria-label="{{ .Name }}">
+            {{ $icon := default .Pre .Params.Icon }}
+            {{ with $icon }}
+                {{ partial "helper/icon" . }}
+            {{ end }}
+        </a>
+        {{ end }}
+    {{ end }}
+
+    <div class="toolbar-separator"></div>
+
+    {{/* Tags */}}
+    <a href="{{ with .Site.GetPage `/tags` }}{{ .RelPermalink }}{{ else }}/tags/{{ end }}" class="toolbar-icon" aria-label="Tags">
+        {{ partial "helper/icon" "tag" }}
+    </a>
+
+    {{/* Search last */}}
+    <button class="toolbar-icon" data-search-trigger aria-label="Search">
+        {{ partial "helper/icon" "search" }}
+    </button>
+</nav>

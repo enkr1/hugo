@@ -1,0 +1,14 @@
+<nav class="floating-toolbar floating-toolbar--right" aria-label="Site tools">
+    <button class="toolbar-icon" data-search-trigger aria-label="Search">
+        {{ partial "helper/icon" "search" }}
+    </button>
+    <a href="{{ with .Site.GetPage `/tags` }}{{ .RelPermalink }}{{ else }}/tags/{{ end }}" class="toolbar-icon" aria-label="Tags">
+        {{ partial "helper/icon" "tag" }}
+    </a>
+    {{ $archivesPage := first 1 (where .Site.Pages "Layout" "==" "archives") }}
+    {{ with $archivesPage }}
+    <a href="{{ (index . 0).RelPermalink }}" class="toolbar-icon" aria-label="Archives">
+        {{ partial "helper/icon" "infinity" }}
+    </a>
+    {{ end }}
+</nav>
