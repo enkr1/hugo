@@ -75,6 +75,47 @@
 
     // Initial update
     updateProgress();
+
+    // ── Anchor flash (飞书-style) — flash heading after scroll arrives ──
+    document.querySelectorAll('.widget--toc a, .toc-mobile-content a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var hash = link.getAttribute('href');
+            if (!hash || hash.charAt(0) !== '#') return;
+
+            var target = document.getElementById(decodeURIComponent(hash.slice(1)));
+            if (!target) return;
+
+            e.preventDefault();
+            target.classList.remove('anchor-flash');
+            history.pushState(null, '', hash);
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Flash exactly once after scroll completes
+            var flashed = false;
+            function flash() {
+                if (flashed) return;
+                flashed = true;
+                void target.offsetWidth;
+                target.classList.add('anchor-flash');
+                target.addEventListener('animationend', function() {
+                    target.classList.remove('anchor-flash');
+                }, { once: true });
+            }
+
+            if ('onscrollend' in window) {
+                window.addEventListener('scrollend', flash, { once: true });
+                // Safety: if element already in view, no scroll → no scrollend
+                setTimeout(function() {
+                    window.removeEventListener('scrollend', flash);
+                    flash();
+                }, 2000);
+            } else {
+                var dist = Math.abs(target.getBoundingClientRect().top);
+                var delay = Math.min(Math.max(dist / 3, 200), 1200);
+                setTimeout(flash, delay);
+            }
+        });
+    });
 })();
 </script>
 
