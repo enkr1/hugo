@@ -8,6 +8,7 @@ categories: ["Education", "Mathematics"]
 toc: true
 math: true
 draft: false
+sticky: 2101
 ---
 
 > **CT1 Scope:** Ch 1.1 → 3.4 | **Format:** Closed book — memorize this!
@@ -45,6 +46,19 @@ $$\text{Inside } f() = \text{Horizontal (opposite)} \quad | \quad \text{Outside 
 | Reflect x-axis / y-axis | $-f(x)$ / $f(-x)$ | Flip vertical / horizontal |
 
 > 💡 Read inside-out: $2f(x-3)+1$ → right 3, stretch ×2, up 1
+
+#### Composition
+
+$$(f \circ g)(x) = f(g(x)) \qquad D_{f \circ g} = \{x \in D_g \mid g(x) \in D_f\}$$
+
+> ⚠️ $f \circ g \neq g \circ f$ — order matters!
+
+#### Modulus Transformations
+
+| Transform | Effect |
+|-----------|--------|
+| $\lvert f(x) \rvert$ | Negative $y$ flipped up (reflect below x-axis) |
+| $f(\lvert x \rvert)$ | Symmetric about y-axis (mirror left = right) |
 
 ---
 
@@ -110,6 +124,14 @@ $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
 ### 2.1–2.2 Limits & Indeterminate Forms
 
+#### One-Sided Limits
+
+$$\lim_{x \to a^-} f(x) = L \text{ (from left)} \qquad \lim_{x \to a^+} f(x) = L \text{ (from right)}$$
+
+$$\lim_{x \to a} f(x) = L \iff \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$$
+
+> 💡 Two-sided exists **only if** both one-sided exist **and are equal**. Left ≠ Right → Jump discontinuity!
+
 #### Limit Laws
 
 If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$:
@@ -120,6 +142,8 @@ If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$:
 | Product | $\lim[f \cdot g] = L \cdot M$ | Both finite |
 | Quotient | $\lim\frac{f}{g} = \frac{L}{M}$ | $M \neq 0$ |
 | Power | $\lim[f^n] = L^n$ | — |
+| Root | $\lim\sqrt[n]{f} = \sqrt[n]{L}$ | $L \geq 0$ if $n$ even |
+| Scalar | $\lim[k \cdot f] = kL$ | — |
 
 #### Division Patterns
 
@@ -154,6 +178,18 @@ $$\lim_{x \to \infty} \frac{a_nx^n + ...}{b_mx^m + ...}$$
 | $n > m$ (top bigger) | $\pm\infty$ | Top "wins" |
 
 **Example:** $\lim_{x \to \infty} \frac{3x^2 + 1}{x^2 - 5} = \frac{3}{1} = 3$
+
+#### Direct Substitution
+
+For any polynomial or rational function (where defined): $\lim_{x \to a} f(x) = f(a)$ — just plug in!
+
+> 💡 Only use when there's NO $\frac{0}{0}$. If $\frac{0}{0}$ → simplify first (factor/conjugate).
+
+#### Squeeze (Sandwich) Theorem
+
+If $g(x) \leq f(x) \leq h(x)$ near $c$, and $\lim_{x \to c} g(x) = \lim_{x \to c} h(x) = L$, then $\lim_{x \to c} f(x) = L$.
+
+> 💡 Classic pattern: $\lim_{x \to 0} x^2\sin(1/x) = 0$ — sin bounded in $[-1,1]$, multiplied by $x^2 \to 0$ → squeezed to 0 🥪
 
 #### Special Trig Limits
 
@@ -257,6 +293,11 @@ $$\text{Continuous at } c \Rightarrow \text{Differentiable at } c \quad \text{FA
 | Quotient | $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$ |
 | Chain | $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ |
 | Triple Product | $(fgh)' = f'gh + fg'h + fgh'$ |
+| Reciprocal | $\left(\frac{1}{f}\right)' = \frac{-f'}{f^2}$ |
+
+#### Higher-Order Derivatives
+
+$$f''(x) = \frac{d^2f}{dx^2}, \quad f'''(x) = \frac{d^3f}{dx^3}, \quad f^{(k)}(x) = \frac{d^k f}{dx^k}$$
 
 > 💡 Quotient: "Lo d-Hi **MINUS** Hi d-Lo, over Lo-Lo"
 > 💡 Chain: "Derivative of outside (keep inside) × derivative of inside"
