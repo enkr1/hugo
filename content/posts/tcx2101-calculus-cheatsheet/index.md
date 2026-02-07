@@ -1,8 +1,8 @@
 ---
-title: "TCX2101 | Calculus Cheatsheet (Ch 1–3.4)"
+title: "TCX2101 | Calculus Cheatsheet (Chapter 1.1 – 3.4)"
 slug: "nus-bit-tcx2101-cheatsheet-1.1-3.4"
 date: 2026-02-05
-description: "Clean formula reference for NUS TCX2101 CT1: Functions, Limits, Continuity, Differentiation, Extreme Values"
+description: "Clean formula reference for NUS TCX2101: Functions, Limits, Continuity, Differentiation, Extreme Values"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
 categories: ["Education", "Mathematics"]
 toc: true
@@ -11,11 +11,7 @@ draft: false
 sticky: 2101
 ---
 
-> **CT1 Scope:** Ch 1.1 → 3.4 | **Format:** Closed book — memorize this!
-
----
-
-## Ch 1: Functions
+## 1: Functions
 
 ### 1.1 Domain & Range
 
@@ -29,7 +25,7 @@ sticky: 2101
 
 > 💡 Multiple restrictions? Find each, then intersect.
 
-**Example:** $f(x) = \sqrt{x^2 - 9}$ → need $x^2 \geq 9$ → $|x| \geq 3$ → Domain: $(-\infty, -3] \cup [3, \infty)$ — TWO regions!
+**Example:** $f(x) = \sqrt{x^2 - 9}$ → need $x^2 \geq 9$ → $|x| \geq 3$ → Domain: $(-\infty, -3] \cup [3, \infty)$ — 2 regions!
 
 ---
 
@@ -120,7 +116,7 @@ $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
 ---
 
-## Ch 2: Limits & Continuity
+## 2: Limits & Continuity
 
 ### 2.1–2.2 Limits & Indeterminate Forms
 
@@ -130,7 +126,7 @@ $$\lim_{x \to a^-} f(x) = L \text{ (from left)} \qquad \lim_{x \to a^+} f(x) = L
 
 $$\lim_{x \to a} f(x) = L \iff \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$$
 
-> 💡 Two-sided exists **only if** both one-sided exist **and are equal**. Left ≠ Right → Jump discontinuity!
+> 💡 Two-sided exists **only if** both one-sided exist **and are equal**. Left ≠ Right → Jump! Left = Right ≠ f(a) → Hole!
 
 #### Limit Laws
 
@@ -189,7 +185,9 @@ For any polynomial or rational function (where defined): $\lim_{x \to a} f(x) = 
 
 If $g(x) \leq f(x) \leq h(x)$ near $c$, and $\lim_{x \to c} g(x) = \lim_{x \to c} h(x) = L$, then $\lim_{x \to c} f(x) = L$.
 
-> 💡 Classic pattern: $\lim_{x \to 0} x^2\sin(1/x) = 0$ — sin bounded in $[-1,1]$, multiplied by $x^2 \to 0$ → squeezed to 0 🥪
+> 💡 sin and cos both bounded in $[-1,1]$. Classic: $\lim_{x \to 0} x^2\sin(1/x) = 0$, $\lim_{x \to 0} x\cos(1/x) = 0$ — bounded × vanishing → squeezed to 0 🥪
+>
+> ⚠️ $\sin x \approx x$ only when $x \to 0$! Here $1/x \to \infty$, so can't use approximation.
 
 #### Special Trig Limits
 
@@ -250,7 +248,7 @@ If $f$ continuous on $[a, b]$ and $N$ between $f(a)$ and $f(b)$, then $\exists\,
 
 ---
 
-## Ch 3: Differentiation
+## 3: Differentiation
 
 ### 3.1 Definition & Tangent Line
 
@@ -293,7 +291,7 @@ $$\text{Continuous at } c \Rightarrow \text{Differentiable at } c \quad \text{FA
 | Quotient | $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$ |
 | Chain | $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ |
 | Triple Product | $(fgh)' = f'gh + fg'h + fgh'$ |
-| Reciprocal | $\left(\frac{1}{f}\right)' = \frac{-f'}{f^2}$ |
+| Reciprocal | $\left(\frac{1}{f}\right)' = \frac{-f'}{f^2}$ (= power+chain on $f^{-1}$) |
 
 #### Higher-Order Derivatives
 
@@ -547,11 +545,12 @@ $$\cos(2x) = \cos^2 x - \sin^2 x = 2\cos^2 x - 1 = 1 - 2\sin^2 x$$
 
 ---
 
-- *Coverage: TCX2101 Ch 1.1–3.4*
-- *Purpose: CT1 宝典*
+- *Coverage: TCX2101 Chapters 1.1–3.4*
+- *Purpose: Class Test 1*
+- *Class Test 1 Scope:* Chapters 1.1 → 3.4
+- *Format:* Closed book — memorise this!
 
 ---
 
-> **Source:** NUS TCX2101 Calculus and Linear Algebra, CT1 prep
->
-> **GitHub:** [Session notes](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/2026-02-05/session-notes.md)
+- **Source:** NUS TCX2101 Calculus and Linear Algebra, CT1 prep
+- **GitHub:** [Session notes](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/2026-02-05/session-notes.md)
