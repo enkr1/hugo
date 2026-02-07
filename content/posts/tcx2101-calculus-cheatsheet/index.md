@@ -577,12 +577,12 @@ At critical point $c$:
 
 **变号 (Sign Change):** The core of FDT — check if $f'$ flips between positive and negative around the CP.
 
-| Left of CP | Right of CP | 变号? | Result |
-|------------|-------------|-------|--------|
-| $f' > 0$ (+) | $f' < 0$ (−) | + → − ✅ | Local max |
-| $f' < 0$ (−) | $f' > 0$ (+) | − → + ✅ | Local min |
-| $f' > 0$ (+) | $f' > 0$ (+) | + → + ❌ | Neither (no sign change) |
-| $f' < 0$ (−) | $f' < 0$ (−) | − → − ❌ | Neither (no sign change) |
+| Left of CP | Right of CP | Shape | 变号? | Result |
+|------------|-------------|:-----:|-------|--------|
+| $f' > 0$ (+) | $f' < 0$ (−) | /\ | + → − ✅ | Local max |
+| $f' < 0$ (−) | $f' > 0$ (+) | \\/ | − → + ✅ | Local min |
+| $f' > 0$ (+) | $f' > 0$ (+) | / / | + → + ❌ | Neither |
+| $f' < 0$ (−) | $f' < 0$ (−) | \\ \\ | − → − ❌ | Neither |
 
 **How to test:** Pick test points on each side of CP (e.g., CP at $x=2$ → test $x=1$ and $x=3$), plug into $f'(x)$, check the **sign** (+ or −), not the value.
 
