@@ -105,14 +105,14 @@ $$f^{-1}(f(x)) = x \quad \text{and} \quad f(f^{-1}(x)) = x$$
 
 ---
 
-### ⚠️ Ch1 Mistakes
+### Ch1 Mistakes ⚠️
 
 | Mistake | Wrong | Correct |
 |---------|-------|---------|
-| √ in denominator | $x \geq 3$ | $x > 3$ (strict!) |
+| √ in **denominator** | $x \geq 3$ | $x > 3$ (strict!) |
 | Horizontal shift | $f(x-3)$ shifts left | $f(x-3)$ shifts RIGHT (opposite!) |
 | $\sqrt{x^2-9}$ domain | $x \geq 3$ only | $x \leq -3$ OR $x \geq 3$ (two regions!) |
-| Numerator = 0 | Not allowed | $\frac{0}{5} = 0$ is fine! |
+| Numerator = 0 | Not allowed | $\frac{0}{5} = 0$ is FINE |
 
 ---
 
@@ -126,7 +126,11 @@ $$\lim_{x \to a^-} f(x) = L \text{ (from left)} \qquad \lim_{x \to a^+} f(x) = L
 
 $$\lim_{x \to a} f(x) = L \iff \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$$
 
-> 💡 Two-sided exists **only if** both one-sided exist **and are equal**. Left ≠ Right → Jump! Left = Right ≠ f(a) → Hole!
+> 💡 Two-sided exists **only if** both one-sided exist **and are equal**.
+>
+> Left ≠ Right → Jump!
+>
+> Left = Right ≠ f(a) → Hole!
 
 #### Limit Laws
 
@@ -149,7 +153,7 @@ If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$:
 | $\frac{0}{5}$ | $0$ |
 | $\frac{0}{0}$ | **Indeterminate** 🤔 — must simplify! |
 
-#### The 7 Indeterminate Forms
+#### The 7 Indeterminate (不定式) Forms
 
 $$\frac{0}{0}, \quad \frac{\infty}{\infty}, \quad 0 \cdot \infty, \quad \infty - \infty, \quad 0^0, \quad 1^\infty, \quad \infty^0$$
 
@@ -207,7 +211,7 @@ $$\lim_{x \to 0} \frac{\sin x}{x} = 1 \qquad \lim_{x \to 0} \frac{1 - \cos x}{x}
 
 ---
 
-### 2.4 Continuity & IVT
+### 2.4 Continuity & Immediate Value Theorem (IVT)
 
 #### 3-Part Test at $x = a$
 
@@ -232,11 +236,15 @@ If $f$ continuous on $[a, b]$ and $N$ between $f(a)$ and $f(b)$, then $\exists\,
 
 > 💡 "Can't teleport through floors" — continuous function must cross zero.
 
-**Example:** $f(x) = x^3 - x - 1$ on $[1, 2]$: $f(1) = -1 < 0$, $f(2) = 5 > 0$ → root exists in $(1, 2)$ ✓
+**Example:**
+$f(x) = x^3 - x - 1$ on $[1, 2]$:
+$f(1) = -1 < 0$,
+$f(2) = 5 > 0$
+= root exists in $(1, 2)$ ✓
 
 ---
 
-### ⚠️ Ch2 Mistakes
+### Ch2 Mistakes ⚠️
 
 | Mistake | Wrong | Correct |
 |---------|-------|---------|
@@ -282,31 +290,39 @@ $$\text{Continuous at } c \Rightarrow \text{Differentiable at } c \quad \text{FA
 
 #### Core Rules
 
-| Rule | Formula |
-|------|---------|
-| Power | $\frac{d}{dx}[x^n] = nx^{n-1}$ |
-| Constant | $\frac{d}{dx}[c] = 0$, $\frac{d}{dx}[cf] = cf'$ |
-| Sum/Diff | $(f \pm g)' = f' \pm g'$ |
-| Product | $(fg)' = f'g + fg'$ |
-| Quotient | $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$ |
-| Chain | $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ |
-| Triple Product | $(fgh)' = f'gh + fg'h + fgh'$ |
-| Reciprocal | $\left(\frac{1}{f}\right)' = \frac{-f'}{f^2}$ (= power+chain on $f^{-1}$) |
+| Rule | Formula | Notes |
+|------|---------|-------|
+| Power | $\frac{d}{dx}[x^n] = nx^{n-1}$ | works for ALL real $n$ |
+| Constant | $\frac{d}{dx}[c] = 0$, $\frac{d}{dx}[cf] = cf'$ | |
+| Sum/Diff | $(u \pm v)' = u' \pm v'$ | Let $f,g = u,v$ |
+| Product | $(uv)' = u'v + uv'$ | |
+| Quotient | $\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$ | $u$ = nom, $v$ = denom. "u'v **MINUS** uv', over v²" |
+| Chain | $[f(g(x))]' = f'(g(x)) \cdot g'(x)$ | outside'(keep inside) × inside' |
+| Triple Product | $(uvw)' = u'vw + uv'w + uvw'$ | 每次只导一个 |
+| Reciprocal | $\left(\frac{1}{f}\right)' = \frac{-f'}{f^2}$ | = power+chain on $f^{-1}$ ⚠️ 别忘了 $f'$！ |
 
 #### Higher-Order Derivatives
 
 $$f''(x) = \frac{d^2f}{dx^2}, \quad f'''(x) = \frac{d^3f}{dx^3}, \quad f^{(k)}(x) = \frac{d^k f}{dx^k}$$
 
-> 💡 Quotient: "Lo d-Hi **MINUS** Hi d-Lo, over Lo-Lo"
-> 💡 Chain: "Derivative of outside (keep inside) × derivative of inside"
-
 **Examples:**
 
-$$\frac{d}{dx}[x^2 \sin x] = 2x\sin x + x^2\cos x$$
+$$\frac{d}{dx}[x^2 \sin x] = 2x\sin x + x^2\cos x \quad \text{← Product: } u'v + uv'$$
 
-$$\frac{d}{dx}\left[\frac{x^2}{x+1}\right] = \frac{2x(x+1) - x^2}{(x+1)^2} = \frac{x^2 + 2x}{(x+1)^2}$$
+$$\frac{d}{dx}\left[\frac{x^2}{x+1}\right] = \frac{2x(x+1) - x^2}{(x+1)^2} = \frac{x^2 + 2x}{(x+1)^2} \quad \text{← Quotient: } \frac{u'v - uv'}{v^2}$$
 
-$$\frac{d}{dx}[\sin(x^2)] = \cos(x^2) \cdot 2x$$
+$$\frac{d}{dx}[\sin(x^2)] = \cos(x^2) \cdot 2x \quad \text{← Chain: outside' × inside'}$$
+
+$$\frac{d}{dx}\left[\frac{e^{x^2}}{\cos x}\right] = \frac{2x \cdot e^{x^2} \cdot \cos x + e^{x^2} \cdot \sin x}{\cos^2 x} \quad \text{← Quotient + Chain + Trig}$$
+
+#### Trig Reciprocals
+
+| Expression | Simplifies To |
+|------------|---------------|
+| $\tan x$ | $\frac{\sin x}{\cos x}$ |
+| $\cot x$ | $\frac{\cos x}{\sin x}$ |
+| $\sec x$ | $1 / \cos x$ |
+| $\csc x$ | $1 / \sin x$ |
 
 #### Trig Derivatives
 
@@ -315,8 +331,8 @@ $$\frac{d}{dx}[\sin(x^2)] = \cos(x^2) \cdot 2x$$
 | $\sin x$ | $\cos x$ | — |
 | $\cos x$ | $-\sin x$ | — |
 | $\tan x$ | $\sec^2 x$ | **Squared family** |
-| $\cot x$ | $-\csc^2 x$ | **Squared** (CO = negative) |
 | $\sec x$ | $\sec x \tan x$ | **Multiply family** |
+| $\cot x$ | $-\csc^2 x$ | **Squared** (CO = negative) |
 | $\csc x$ | $-\csc x \cot x$ | **Multiply** (CO = negative) |
 
 > 💡 CO = NEGATIVE: cot and csc always have negative signs!
@@ -415,7 +431,7 @@ $f'(x) = 3(x-1)(x-3) = 0$ → CPs: $x = 1, 3$
 
 > ⚠️ Counter-intuitive! 笑脸 ∪ = min, 哭脸 ∩ = max. Bowl holds water at **bottom**.
 
-#### $f$ / $f'$ / $f''$ Hierarchy
+#### $f$ / $f'$ / $f''$ Hierarchy ⭐️
 
 | | $f(x)$ | $f'(x)$ | $f''(x)$ |
 |---|--------|---------|----------|
@@ -501,15 +517,6 @@ $f'(x) = 3(x-1)(x-3) = 0$ → CPs: $x = 1, 3$
 | Triple | $(fgh)' = f'gh + fg'h + fgh'$ |
 
 ### Trig Identities
-
-#### Reciprocals & Quotients
-
-| Expression | Simplifies To |
-|------------|---------------|
-| $\tan x$ | $\sin x / \cos x$ |
-| $\sec x$ | $1 / \cos x$ |
-| $\csc x$ | $1 / \sin x$ |
-| $\cot x$ | $\cos x / \sin x$ |
 
 #### Pythagorean (3 forms)
 
