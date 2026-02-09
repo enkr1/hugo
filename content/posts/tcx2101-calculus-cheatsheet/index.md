@@ -439,6 +439,16 @@ $f'(x) = 3(x-1)(x-3) = 0$ → CPs: $x = 1, 3$
 | **At peaks/valleys** | Has the value | $= 0$ | Tells which (max/min) |
 | **Role** | VALUES to compare | TOOL to find CPs | TOOL to classify (SDT) |
 
+#### Three Methods Comparison (三种方法对比)
+
+| 方法 | 找什么 | 怎么判 |
+|------|--------|--------|
+| **CIM** | Absolute max/min | 比 $f(x)$ 值大小（大=max，小=min） |
+| **FDT** | Local max/min | 看 $f'$ 变号：$+→-$ max，$-→+$ min |
+| **SDT** | Local max/min | $f''(c)>0$ min，$f''(c)<0$ max |
+
+> ⚠️ **不要混！** SDT "大于=min" 是弯曲方向。CIM 比大小就是小学数学：最大=max，最小=min。
+
 #### Which Tool When?
 
 ```
@@ -458,7 +468,26 @@ $f'(x) = 3(x-1)(x-3) = 0$ → CPs: $x = 1, 3$
        f' sign change
 ```
 
-**Concavity:** $f'' > 0$ → concave up ∪ | $f'' < 0$ → concave down ∩ | $f'' = 0$ → potential inflection point (where concavity changes sign)
+#### Concavity (凹凸 / Second Derivative)
+
+| $f''(x)$ | $f(x)$ is... | 记法 |
+|----------|--------------|------|
+| $f''(x) > 0$ | Concave up ∪ (凹上) | 能装水的杯子 cup |
+| $f''(x) < 0$ | Concave down ∩ (凹下) | 水会流走的帽子 cap |
+| $f''(x) = 0$ | Potential inflection point (拐点候选) | 必须验证变号！ |
+
+#### Inflection Points (拐点)
+
+The point where concavity **flips** (凹凸翻转: ∪ → ∩ or ∩ → ∪).
+
+**3-step process:**
+1. $f''(x) = 0$ → candidate points
+2. Sign chart: check $f''$ changes sign across candidate
+3. Sign change → IP ✓, no sign change → NOT IP ✗
+
+Get y-coordinate: sub $x$ back into $f(x)$ (not $f'$ or $f''$!)
+
+> ⚠️ $f''(x) = 0$ alone is NOT enough — must verify sign change!
 
 ---
 
