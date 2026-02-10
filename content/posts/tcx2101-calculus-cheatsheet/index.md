@@ -581,9 +581,34 @@ $$\cos(2x) = \cos^2 x - \sin^2 x = 2\cos^2 x - 1 = 1 - 2\sin^2 x$$
 
 ---
 
-- *Coverage: TCX2101 Chapters 1.1–3.4*
-- *Purpose: Class Test 1*
-- *Class Test 1 Scope:* Chapters 1.1 → 3.4
+### "There Exists $c$" — Which Theorem?
+
+```text
+"there exists c such that ___"
+               │
+        What fills the blank?
+               │
+    ┌──────────┼──────────┐
+    │          │          │
+ f(c) = k   f'(c) = 0   f'(c) = ratio
+    │          │          │
+   IVT      Rolle's      MVT
+```
+
+| You see... | Theorem | What it says |
+|-----------|---------|-------------|
+| $f(c) = k$ (function value) | **IVT** | No derivative involved. Continuous $f$ crosses any value between $f(a)$ and $f(b)$ |
+| $f'(c) = 0$ | **Rolle's** | $f(a) = f(b)$ + continuous + differentiable → flat point exists |
+| $f'(c) = \frac{f(b)-f(a)}{b-a}$ | **MVT** | Derivative = average rate of change somewhere in $(a,b)$ |
+
+> 💡 **Rule of thumb:** See "there exists $c$" + a derivative? → MVT. No derivative? → IVT.
+>
+> **Pattern recognition:** Look at the equation you need to prove. Match the **shape** to the theorem's conclusion. Work backwards from target → choose $f(x)$ and $[a,b]$.
+
+---
+
+- *Coverage: TCX2101 Chapters 1.1–3.4 + pattern cards*
+- *Purpose: Class Test reference*
 - *Format:* Closed book — memorise this!
 
 ---
