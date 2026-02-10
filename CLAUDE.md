@@ -126,8 +126,13 @@ The theme is a **forked repo** (`enkr1/hugo-theme-enkr`) — we own it. Modify t
 1. **Styling:** Edit `themes/stack/assets/scss/` directly — no `!important` overrides needed
 2. **Templates:** Edit `themes/stack/layouts/` directly, or override in `layouts/` if testing
 
-### Migration note:
-`assets/scss/custom.scss` has legacy overrides from before we forked. Gradually migrate styles to the theme and remove `!important` hacks from custom.scss. Goal: custom.scss for design tokens (colors, fonts) only, theme handles all component styles.
+### MANDATORY: Migrate custom.scss as you go
+When touching ANY component style in `custom.scss`, migrate it to the theme as part of that change. Do not add new styles to custom.scss — put them directly in the theme.
+
+**custom.scss keeps ONLY:** `@import "fonts"`, `:root` design tokens, `html` global resets
+**Everything else belongs in:** `themes/stack/assets/scss/` (component styles, responsive, widgets, etc.)
+
+This is not a one-time refactor — shrink custom.scss incrementally with every PR that touches styling. Current: ~1400 lines. Target: ~200 lines.
 
 **Template lookup order:** `layouts/` → `themes/stack/layouts/`
 
