@@ -1,3 +1,5 @@
+@import "fonts";
+
 /*
  * 金渊映日 2.0 - Ba Zi Energy Color System
  * 「金-水」为体，「转化火」为用
@@ -79,6 +81,7 @@
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 
     // TIMING
     --transition-fast: 75ms ease;
@@ -162,10 +165,6 @@ html {
     align-items: center;
 }
 
-// Single page article title - larger than body h2 (3rem)
-.article-header .article-title {
-    font-size: 3.7rem;
-}
 
 /* ===========================================
    LAYOUT - Optimal Reading Width
@@ -1208,17 +1207,6 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
             }
         }
 
-        .article-title {
-            font-family: var(--font-display);
-            font-size: var(--font-size-md);  // 2rem
-            font-weight: var(--font-weight-medium);
-            line-height: 1.3;
-            margin: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
     }
 }
 
