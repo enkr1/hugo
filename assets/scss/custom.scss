@@ -1156,53 +1156,40 @@ body:has(.article-list:not(.article-list--sticky)) .pagination {
             color: inherit;
         }
 
-        // Articles with images
-        &.has-image {
-            .article-image {
-                position: absolute;
-                inset: 0;
-                z-index: 0;
+        background: linear-gradient(135deg,
+            var(--card-background) 0%,
+            var(--accent-subtle) 100%
+        );
 
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
+        .article-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%;
+            padding: 1.2rem;
+            gap: 0.4rem;
+
+            .article-title {
+                color: var(--text);
             }
 
-            .article-details {
-                position: relative;
-                z-index: 1;
-                margin-top: auto;
-                padding: 1rem;
-                background: linear-gradient(to top,
-                    rgba(0, 0, 0, 0.8) 0%,
-                    rgba(0, 0, 0, 0.5) 60%,
-                    transparent 100%
-                );
-
-                .article-title {
-                    color: #fff;
-                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-                }
+            .article-time,
+            .article-tags {
+                margin-top: 0;
             }
-        }
 
-        // Articles without images - subtle gradient background
-        &:not(.has-image) {
-            background: linear-gradient(135deg,
-                var(--card-background) 0%,
-                var(--accent-subtle) 100%
-            );
+            .article-time {
+                font-size: var(--font-size-xs);
+                color: var(--card-text-color-tertiary);
+            }
 
-            .article-details {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                padding: 1.2rem;
+            .article-tags {
+                font-size: var(--font-size-xs);
 
-                .article-title {
-                    color: var(--text);
+                span {
+                    color: var(--accent);
+                    font-weight: var(--font-weight-medium);
+                    text-transform: lowercase;
                 }
             }
         }
