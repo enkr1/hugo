@@ -305,6 +305,24 @@ $$\lim_{x \to 0} \frac{\sin(x)}{x} = 1$$
 
 $$\lim_{x \to 0} \frac{\cos(x) - 1}{x} = 0$$
 
+#### Challenge: Sandwich Theorem in Action
+
+**Prove:** $\lim_{x \to 0} x \sin\left(\frac{1}{x}\right) = 0$
+
+$\sin\left(\frac{1}{x}\right)$ oscillates wildly between $-1$ and $+1$ as $x \to 0$, but it's multiplied by $x$ which shrinks toward 0. The oscillations get squeezed into a tighter band.
+
+**The bounds:** Since $-1 \leq \sin\left(\frac{1}{x}\right) \leq 1$ for all $x \neq 0$:
+
+$$-|x| \leq x\sin\left(\frac{1}{x}\right) \leq |x|$$
+
+Both $-|x| \to 0$ and $|x| \to 0$ as $x \to 0$.
+
+**By Sandwich Theorem:**
+
+$$\lim_{x \to 0}(-|x|) = 0 \quad \text{and} \quad \lim_{x \to 0}|x| = 0$$
+
+$$\therefore \lim_{x \to 0} x\sin\left(\frac{1}{x}\right) = 0$$
+
 #### When to Use Sandwich Theorem
 
 | Situation | Example |
@@ -334,6 +352,20 @@ All the same limit laws apply for $x \to \pm\infty$.
 | $n = m$ (tie) | $\frac{a_n}{b_m}$ | "Tie $\to$ ratio of leaders" |
 | $n > m$ (top wins) | $\pm\infty$ | "Top heavy $\to$ blows up" |
 | $n < m$ (bottom wins) | $0$ | "Bottom heavy $\to$ squashed to 0" |
+
+**Why each case works** (after dividing by $x^m$):
+
+- **$n = m$:** Numerator $\to a_n$, Denominator $\to b_m$ (all lower terms vanish). Result: $\frac{a_n}{b_m}$.
+- **$n > m$:** Numerator still has $x^{n-m} \to \infty$, Denominator $\to b_m$ (finite). Result: $\pm\infty$.
+- **$n < m$:** Numerator $\to 0$ (all terms have $x$ in denominator), Denominator $\to b_m$ (finite). Result: $0$.
+
+**Examples:**
+
+$$\lim_{x \to \infty} \frac{3x^2 + 5x}{2x^2 - 1} = \frac{3}{2} \quad (n = m)$$
+
+$$\lim_{x \to \infty} \frac{x^3 + 1}{x^2 + 1} = +\infty \quad (n > m)$$
+
+$$\lim_{x \to \infty} \frac{x + 1}{x^2 + 1} = 0 \quad (n < m)$$
 
 #### $f(x) \to \pm\infty$ as $x \to c$
 
@@ -488,14 +520,23 @@ $$\frac{d}{dx} \log_a(f(x)) = \frac{f'(x)}{f(x) \ln(a)}$$
 - **Absolute max** at $c$: $f(c) \geq f(x)$ for all $x \in D$
 - **Absolute min** at $c$: $f(c) \leq f(x)$ for all $x \in D$
 
-May not exist, may not be unique.
+**Remarks:** Extreme values might not exist, and might not be unique.
 
 #### Local Maximum and Minimum
 
-- **Local max** at $c$: $f(c) \geq f(x)$ for all $x$ in some open interval around $c$
-- **Local min** at $c$: $f(c) \leq f(x)$ for all $x$ in some open interval around $c$
+- **Local max** at $c$: $f(c) \geq f(x)$ for all $x$ in some open interval $I$ around $c$
+- **Local min** at $c$: $f(c) \leq f(x)$ for all $x$ in some open interval $I$ around $c$
 
-Absolute extrema are local extrema, but not vice versa.
+**Remarks:** Absolute extrema are local extrema, but functions can have local but not absolute extrema. Local extrema might not exist and might not be unique.
+
+#### Local Extrema at Endpoints
+
+Suppose the domain of $f$ is $[a, b]$.
+
+- $f$ has a **local max at endpoint $a$** if $f(a) \geq f(x)$ for all $x \in [a, a + \delta)$ for some $\delta > 0$.
+- $f$ has a **local max at endpoint $b$** if $f(b) \geq f(x)$ for all $x \in (b - \delta, b]$ for some $\delta > 0$.
+
+The inequality is reversed for local minimum values.
 
 #### Extreme Value Theorem
 
@@ -507,9 +548,17 @@ If $f$ has a local extreme value at an interior point $c$, and $f$ is differenti
 
 #### Critical Point
 
-An interior point where $f' = 0$ or $f'$ is undefined.
+An interior point of the domain where $f' = 0$ or $f'$ is undefined.
+
+**Remarks:**
+1. By the First Derivative Theorem, every local extremum at an interior point is a critical point.
+2. The converse is **false**: not every critical point is a local extremum (e.g., $f(x) = x^3$ at $x = 0$).
 
 > Every local extremum is a critical point, but NOT every critical point is a local extremum.
+
+#### Conceptual Question
+
+Will the Extreme Value Theorem hold if we replace "continuous" with "increasing or decreasing"? That is, must an increasing/decreasing function on $[a, b]$ attain an absolute max and min?
 
 #### Finding Absolute Extrema (Closed Interval Method)
 
