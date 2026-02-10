@@ -1,8 +1,8 @@
 ---
-title: "TCX2101 | Section Notes (Chapter 1.1 – 3.4)"
-slug: "nus-bit-tcx2101-section-notes-1.1-3.4"
+title: "TCX2101 | Notebook"
+slug: "nus-bit-tcx2101-notebook"
 date: 2026-02-10
-description: "Comprehensive section-by-section notes for NUS TCX2101: Functions, Limits, Continuity, Differentiation, Extreme Values"
+description: "Comprehensive section-by-section notes for NUS TCX2101: Calculus and Linear Algebra"
 tags: ["nus", "math", "calculus", "notes", "tcx2101"]
 categories: ["Education", "Mathematics"]
 toc: true
@@ -565,3 +565,416 @@ Will the Extreme Value Theorem hold if we replace "continuous" with "increasing 
 1. Find all critical points of $f$ on the interval
 2. Evaluate $f$ at all critical points and endpoints
 3. Take the largest and smallest values
+
+---
+
+## Section 3.5: Mean Value Theorem
+
+### Rolle's Theorem
+
+Try drawing a smooth curve starting from point a to point b, without lifting the pen. There must if the curve is a straight line, then the derivative every where is 0. Otherwise, there must be a maximum or a minimum point, and thus a point where the derivative is 0. This is the intuition behind Rolle's theorem.
+
+**Theorem:** Suppose $y = f(x)$ is **continuous** over the closed interval $[a, b]$ and **differentiable** at every point of its interior $(a, b)$. If $f(a) = f(b)$, then there is at least one number $c$ in $(a, b)$ at which $f'(c) = 0$.
+
+### Mean Value Theorem (MVT)
+
+Imagine travelling along a straight line for a certain distance. It is intuitively clear that there must be a point during the travel where the instantaneous speed is equal to the average speed. This is the result of the mean value theorem.
+
+**Theorem:** Suppose $f$ is a **continuous** function defined on a closed and bounded interval $[a, b]$ and **differentiable** in the interior $(a, b)$. Then there exists a point $c \in (a, b)$ such that:
+
+$$f'(c) = \frac{f(b) - f(a)}{b - a}$$
+
+### Corollary
+
+If $f'(x) = g'(x)$ for all $x \in (a, b)$, then there exists a constant $C \in \mathbb{R}$ such that:
+
+$$f(x) = g(x) + C \quad \forall x \in (a, b)$$
+
+---
+
+## Section 3.6: Derivative Test for Local Extrema
+
+### Monotone Functions
+
+**Theorem:** Suppose $f$ is **continuous** on $[a, b]$ and **differentiable** on $(a, b)$.
+
+- If $f'(x) > 0$ for all $x \in (a, b)$, then $f$ is **increasing** on $[a, b]$.
+- If $f'(x) < 0$ for all $x \in (a, b)$, then $f$ is **decreasing** on $[a, b]$.
+
+### First Derivative Test for Local Extrema
+
+**Theorem [First Derivative Test for Local Extrema]**
+
+Suppose
+
+- $c$ is a **critical point** of a **continuous** function $f$,
+- there is an open interval $I$ containing $c$ such that $f$ is **differentiable** on the punctured interval $I \setminus \{c\}$.
+
+Moving across $c$ from left to right,
+
+- if $f'$ changes from **negative to positive** at $c$, then $f$ has a **local minimum** at $c$;
+- if $f'$ changes from **positive to negative** at $c$, then $f$ has a **local maximum** at $c$;
+- if $f'$ **does not change sign** at $c$, then $c$ is **not a local extremum** of $f$.
+
+### Concavity
+
+**Definition:** The graph of a differentiable function $y = f(x)$ is
+
+- **concave up** on an open interval $I$ if $f'$ is **increasing** on $I$;
+- **concave down** on an open interval $I$ if $f'$ is **decreasing** on $I$.
+
+**Theorem [Second Derivative Test for Concavity]**
+
+Let $f(x)$ be a twice-differentiable function defined on an interval $I$.
+
+- If $f'' > 0$ on $I$, the graph of $f$ is **concave up** on $I$.
+- If $f'' < 0$ on $I$, the graph of $f$ is **concave down** on $I$.
+
+### Point of Inflection
+
+**Definition:** A point $(a, f(a))$ where the concavity of the graph of $f$ changes is a **point of inflection**.
+
+- A point of inflection is also called an **inflection point**.
+- The graph crosses its tangent line at the point of inflection.
+- At a point of inflection $(a, f(a))$, either $f''(a) = 0$ or $f''$ does not exist.
+
+### Second Derivative Test for Local Extrema
+
+**Theorem [Second Derivative Test for Local Extrema]**
+
+Suppose $f''$ is continuous on an open interval containing $c$.
+
+- $f'(c) = 0$ & $f''(c) < 0$ $\Rightarrow$ $f$ has a **local maximum** at $x = c$.
+- $f'(c) = 0$ & $f''(c) > 0$ $\Rightarrow$ $f$ has a **local minimum** at $x = c$.
+
+If $f'(c) = 0$ and $f''(c) = 0$, then the test fails. $c$ could be a local maximum value, a local minimum value, or neither.
+
+---
+
+## Section 3.7: L'Hôpital's Rule
+
+**Theorem [L'Hôpital's Rule]**
+
+Suppose that $f$ and $g$ are **differentiable** on an open interval $I$ containing a point $a$, $f(a) = g(a) = 0$, and $g'(x) \neq 0$ for all $x \in I \setminus \{a\}$. Then
+
+$$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)},$$
+
+assuming that the limit on the right side of the equation exists.
+
+The result holds in the case where $\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = \pm\infty$.
+
+### Question
+
+Find
+
+$$\lim_{x \to 0} \frac{1 - \cos^2(x)}{x + x^2}.$$
+
+Applying L'Hôpital's Rule rule twice,
+
+$$\lim_{x \to 0} \frac{1 - \cos^2(x)}{x + x^2} = \lim_{x \to 0} \frac{2\sin(x)\cos(x)}{1 + 2x} = \lim_{x \to 0} \frac{\sin(2x)}{1 + 2x} = \lim_{x \to 0} \frac{2\cos(2x)}{2} = 1.$$
+
+Is this correct?
+
+### Summary
+
+- Use L'Hôpital's rule (repeatedly) whenever finding $\lim_{x \to a} \frac{f(x)}{g(x)}$, where $a$ is either a finite number or $\pm\infty$, and as $x \to a$,
+
+$$\frac{f(x)}{g(x)} \to \frac{0}{0}, \quad \frac{\pm\infty}{\pm\infty}.$$
+
+  These expressions are known as indeterminate forms.
+
+- You may convert the expression of a function $F(x)$ to a form $F(x) = \frac{f(x)}{g(x)}$ such that the above conditions hold for us to use L'Hôpital's rule.
+- Stop using L'Hôpital's Rule and evaluate the limit directly if it is no longer of an indeterminate form.
+
+---
+
+## Section 3.8: Optimization
+
+**Optimization** is where all the ideas we have developed so far come together.
+
+Using derivatives, we can locate stationary points, determine where a function increases or decreases, and identify local and global maxima and minima.
+
+In this section, these tools are applied to practical problems, real situations are translated into mathematical functions, and calculus is used to determine the best possible outcome — whether that means maximizing or minimizing a given quantity — under the given constraints.
+
+### Algorithm
+
+- Read the problem. Understand the goal of the problem, and identify the hypothesis or assumptions given.
+- Draw a picture if necessary. Label the parts that are important to the problem, and include all the assumptions and hypotheses.
+- Introduce a variable for the quantity to be maximized or minimized. Write other unknown quantities in terms of this variable.
+- Write equations for the unknown variables. Translate the relationship between the given assumptions and the variables into mathematical equations, and make the unknown variables the subject of the formula.
+- Substitute to get one equation in one variable.
+- Test the critical points and endpoints in the domain of the unknown variable. Use all the tests introduced above to identify and classify the critical points. If the domain is closed and bounded (i.e. $[a, b]$), remember to check the endpoints.
+
+### Example 1
+
+A farmer has 2400 meters of fencing and wants to fence off a rectangular field that borders a straight river. Suppose he needs no fence along the river. What are the dimensions of the field that has the largest area?
+
+Let $x$ be the length of each side perpendicular to the river and $y$ the length of the side parallel to the river.
+
+Since no fence is needed along the river, the fencing constraint is
+
+$$2x + y = 2400, \quad x \geq 0, \quad y \geq 0.$$
+
+The area of the field is
+
+$$A = xy.$$
+
+and our aim is to maximise $A$.
+
+From the constraint,
+
+$$y = 2400 - 2x$$
+
+Substituting into the area formula,
+
+$$A(x) = x(2400 - 2x) = 2400x - 2x^2, \quad 0 \leq x \leq 1200.$$
+
+Differentiate,
+
+$$A'(x) = 2400 - 4x$$
+
+Setting $A'(x) = 0$,
+
+$$2400 - 4x = 0 \quad \Rightarrow \quad x = 600$$
+
+Evaluate $A$ at the critical point and endpoints:
+
+$$A(0) = 0, \quad A(1200) = 0, \quad A(600) = 720000.$$
+
+Hence the maximum area occurs when $x = 600$. Then
+
+$$y = 2400 - 2(600) = 1200.$$
+
+The field has maximum area $720000 \text{ m}^2$ when its dimensions are $600 \text{ m} \times 1200 \text{ m}$.
+
+### Example 2
+
+A cylindrical can is to be made to hold $1 \text{ m}^3$ of oil. Find the dimensions of the can that will minimize the cost of the metal to manufacture the can.
+
+Let $r$ be the radius and $h$ the height of the cylindrical can.
+
+The volume is fixed at
+
+$$V = \pi r^2 h = 1,$$
+
+and the surface area (cost of metal) is
+
+$$A = 2\pi r^2 + 2\pi r h.$$
+
+Our aim is to minimise $A$.
+
+From the volume constraint,
+
+$$h = \frac{1}{\pi r^2}, \quad r > 0$$
+
+Substitute into the surface area,
+
+$$A(r) = 2\pi r^2 + \frac{2}{r}, \quad r > 0.$$
+
+Differentiate,
+
+$$A'(r) = 4\pi r - \frac{2}{r^2}$$
+
+Setting $A'(r) = 0$,
+
+$$4\pi r^3 = 2 \quad \Rightarrow \quad r = \left(\frac{1}{2\pi}\right)^{1/3}$$
+
+The second derivative is,
+
+$$A''(r) = 4\pi + \frac{4}{r^3}$$
+
+$A''(r) > 0$ for all $r > 0$, so this critical point gives a minimum.
+
+Substituting back,
+
+$$h = \frac{1}{\pi r^2}$$
+
+The surface area is minimised when
+
+$$r = \left(\frac{1}{2\pi}\right)^{1/3}, \quad h = \left(\frac{4}{\pi}\right)^{1/3}$$
+
+### Example 3
+
+Find the point on $y^2 = 2x$ that is closest to the point $(1, 4)$.
+
+We want the point $(x, y)$ on the curve $y^2 = 2x$ that is closest to $(1, 4)$.
+
+The distance is
+
+$$D^2 = (x - 1)^2 + (y - 4)^2$$
+
+so it is equivalent to minimise
+
+$$D^2 = \left(\frac{y^2}{2} - 1\right)^2 + (y - 4)^2$$
+
+Using the constraint $y^2 = 2x$ we write $x = \frac{y^2}{2}$. Hence
+
+$$D^2 = \frac{y^4}{4} - y^2 + 1 + y^2 - 8y + 16 = \frac{y^4}{4} - 8y + 17$$
+
+Differentiate,
+
+$$\frac{d}{dy}(D^2(y)) = y^3 - 8$$
+
+Setting this equal to zero,
+
+$$y^3 - 8 = 0 \quad \Rightarrow \quad y = 2$$
+
+The second derivative is
+
+$$\frac{d^2}{dy^2}(D^2) = 3y^2$$
+
+so $\frac{d^2}{dy^2}(D^2)(2) = 12 > 0$, and $y = 2$ gives a minimum.
+
+Finally,
+
+The closest point on $y^2 = 2x$ is $(2, 2)$, since $x = \frac{4}{2} = 2$.
+
+### Example 4
+
+A man launches his boat from point A on a bank of a straight river, 3 km wide, and wants to reach point B, 8 km downstream on the opposite bank, as quick as possible. If he can row 6 km/h and run 8 km/h, where should he land?
+
+Let $C$ be the point on the opposite bank directly opposite $A$, and let $D$ be the point where the man lands.
+
+Let
+
+$$x = CD \text{ (km)},$$
+
+so that $DB = 8 - x$ with $0 \leq x \leq 8$.
+
+The man rows from $A$ to $D$. Since the river is 3 km wide,
+
+$$AD = \sqrt{9 + x^2}$$
+
+Rowing at 6 km/h, the rowing time is:
+
+$$\frac{\sqrt{9 + x^2}}{6}$$
+
+He then runs from $D$ to $B$, a distance $8 - x$ km, at 8 km/h, so the running time is:
+
+$$\frac{8 - x}{8}$$
+
+Hence the total time taken is
+
+$$T(x) = \frac{\sqrt{9 + x^2}}{6} + \frac{8 - x}{8}, \quad 0 \leq x \leq 8$$
+
+Our aim is to minimise $T$.
+
+Differentiate,
+
+$$T'(x) = \frac{x}{6\sqrt{9 + x^2}} - \frac{1}{8}$$
+
+Setting $T'(x) = 0$,
+
+$$\frac{x}{6\sqrt{9 + x^2}} = \frac{1}{8}$$
+
+Squaring,
+
+$$16x^2 = 9(9 + x^2) = 81 + 9x^2$$
+
+$$7x^2 = 81 \quad \Rightarrow \quad x = \frac{9}{\sqrt{7}}$$
+
+Evaluate $T$ at the critical point and endpoints:
+
+$$T(0) = \frac{3}{6} + \frac{8}{8} = \frac{3}{2}$$
+
+$$T(8) = \frac{\sqrt{73}}{6}$$
+
+$$T\left(\frac{9}{\sqrt{7}}\right) = 1 + \frac{\sqrt{7}}{8}$$
+
+and since $8 > \frac{9}{\sqrt{7}}$, the critical point is in the domain.
+
+Thus the minimum time occurs when $x = \frac{9}{\sqrt{7}}$.
+
+The man should land at a point $D$ such that
+
+$$CD = \frac{9}{\sqrt{7}} \text{ km},$$
+
+that is, $DB = 8 - \frac{9}{\sqrt{7}}$ km along the opposite bank.
+
+---
+
+## Section 4.1: Definite Integral
+
+### Definition
+
+Let $f(x)$ be a function defined on the interval $[a, b]$. Subdivide the interval into $n$ equal subintervals, each of width
+
+$$\Delta x = \frac{b - a}{n}, \qquad x_k = a + k\Delta x, \quad k = 0, \ldots, n.$$
+
+- The **lower sum** $L_n$ is formed by taking, in each subinterval, the **minimum value** of $f(x)$:
+
+$$L_n = \sum_{k=1}^{n} \left( \min_{x \in [x_{k-1}, x_k]} f(x) \right) \Delta x,$$
+
+- The **upper sum** $U_n$ is formed by taking, in each subinterval, the **maximum value** of $f(x)$:
+
+$$U_n = \sum_{k=1}^{n} \left( \max_{x \in [x_{k-1}, x_k]} f(x) \right) \Delta x.$$
+
+Since every minimum is at most every maximum,
+
+$$L_n \leq U_n \quad \text{for all n.}$$
+
+If, as $n \to \infty$, the lower and upper sums converge to the same limit,
+
+$$\lim_{n \to \infty} L_n = \lim_{n \to \infty} U_n = A, \quad \text{or} \quad \lim_{n \to \infty} (U_n - L_n) = 0$$
+
+then we say $f$ is **integrable** on $[a, b]$, and define the **definite integral** of $f$ to be
+
+$$\int_a^b f(x)\, dx = \lim_{n \to \infty} L_n = \lim_{n \to \infty} U_n.$$
+
+### Explaining the Notation
+
+$$\int_a^b f(x)\, dx$$
+
+- $\int$ is the integral sign.
+- $a$ is the **lower limit** of the integral.
+- $b$ is the **upper limit** of the integral.
+- The function $f(x)$ is called the **integrand**.
+- $x$ is a **dummy variable**, it is the variable of the integration. That is, the following definite integrals are equal,
+
+$$\int_a^b f(x)\, dx = \int_a^b f(t)\, dt = \int_a^b f(s)\, ds.$$
+
+- $dx$ is commonly known as the **infinitesimal subinterval width**.
+
+### Theorem
+
+If a function $f$ is **continuous** over the interval $[a, b]$, or if $f$ has **at most finitely many jump or removable discontinuity** there, then $f$ is integrable there and the definite integral
+
+$$\int_a^b f(x)\, dx$$
+
+exists.
+
+### Properties of Definite Integral
+
+- Let $f(x)$ be a function integrable over $[a, b]$.
+
+$$\text{Order of integration}: \quad \int_a^b f(x)\, dx = -\int_b^a f(x)\, dx.$$
+
+- Let $f(x)$ be a function integrable over $[a, b]$.
+
+$$\text{Zero width interval}: \quad \int_a^a f(x)\, dx = 0.$$
+
+- Let $f(x)$ be a function integrable over $[a, b]$.
+
+$$\text{Scalar multiple}: \quad \int_a^b kf(x)\, dx = k\int_a^b f(x)\, dx$$
+
+- Let $f(x)$ and $g(x)$ be a function integrable over $[a, b]$.
+
+$$\text{Sum and difference}: \quad \int_a^b (f(x) \pm g(x))\, dx = \int_a^b f(x)\, dx \pm \int_a^b g(x)\, dx$$
+
+- Let $f(x)$ be a function integrable over $[a, b]$.
+
+$$\text{Max-min inequality}: \quad \min_{x \in [a,b]} f(x)(b - a) \leq \int_a^b f(x)\, dx \leq \max_{x \in [a,b]} f(x)(b - a)$$
+
+- Let $f(x)$ and $g(x)$ be a function integrable over $[a, b]$ such that $f(x) \leq g(x)$ on $[a, b]$.
+
+$$\text{Domination}: \quad \int_a^b f(x)\, dx \leq \int_a^b g(x)\, dx$$
+
+  In particular, if $f(x) \geq 0$ on $[a, b]$, then $\int_a^b f(x)\, dx \geq 0$.
+
+- Let $f(x)$ be a function integrable over the relevant intervals.
+
+$$\text{Subinterval}: \quad \int_a^b f(x)\, dx = \int_a^c f(x)\, dx + \int_c^b f(x)\, dx.$$
+
+### Question
+
+In the subinterval property, do we need $c \in [a, b]$? Will the property still hold if, for example, $a < b < c$, or when $c < a < b$?
