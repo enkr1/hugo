@@ -21,11 +21,13 @@ keywords:
 
 hi future me,
 
-you weren't doing great back then. and yes, it sucked to admit that.
+it sucked to admit that you weren't doing so great in 2025.
 
 but here's the honest part:
 it's not because you're incapable. it's because you tried to hold too many goals at once and called it "ambition".
+
 that spreads focus wide, and then effort gets diluted into half-tries.
+
 so this year, i am trimming the list.
 
 fewer goals.
@@ -44,42 +46,41 @@ higher execution.
 
 #### 1. Ace NUS-BIT Entrance Examination & Bridging/Preparatory Courses
 
-achieved.
-
-got the offer letter, enrolled in july.
+> achieved. got the offer letter, enrolled in july.
 
 #### 2. Excel at Work
-this was too broad and too vague.
 
-it wasn't a goal, it was a vibe.
-
-effort was never the issue. direction and focus were.
+> this was too broad and too vague.
+>
+> it wasn't a goal, it was a vibe.
+>
+> effort was never the issue. direction and focus were.
 
 #### 3. Improve Communication Skills
-still true.
 
-communication is a daily skill: coworkers, gym friends, family, everyone.
-
-i'm keeping this as a lifelong track, not a checkbox.
-
+> still true.
+>
+> communication is a daily skill: coworkers, gym friends, family, everyone.
+>
+> i'm keeping this as a lifelong track, not a checkbox.
 
 
 ### Personal Goals
 #### 1. Bodybuilding
-progress is real.
-i am ~82kg now.
-strength and size are up.
 
-but the truth: the "dirty bulk" approach is a lazy shortcut i keep defending.
-
-i don't even like sweet stuff or oily food... but i do love fried food. that's not a plan, that's a weakness with seasoning.
-
-2026 needs more control, not more coping.
+> progress is real. i am ~82kg now. strength and size are up.
+>
+> but the truth: the "dirty bulk" approach is a lazy shortcut i keep defending.
+>
+> i don't even like sweet stuff or oily food... but i do love fried food. that's not a plan, that's a weakness with seasoning.
+>
+> 2026 needs more control, not more coping.
 
 #### 2. Music Production
-i like it, but it aint a priority right now.
 
-i'm parking it intentionally instead of pretending i'll "make time".
+> i like it, but it aint a priority right now.
+>
+> i'm parking it intentionally instead of pretending i'll "make time".
 
 
 
@@ -95,9 +96,9 @@ this year i'm allowing myself to be ambitious, but only on the *big rocks*.
 
 P0 goals only work if they stay P0 every week, not just on the title.
 
-but here's my long term P0 goals.
+but here's my long term P0 goals in 2026, for now.
 
-#### [P0] Launch 1 side product
+#### Launch 1 side product
 
 * a real product (go public)
 * a working v0 people can use
@@ -109,7 +110,7 @@ but here's my long term P0 goals.
 * weekly shipping: something must go live every week (even small)
 * no endless rebuilding. if it works, ship it. if it's ugly, ship it. (T-shaped engineer mindset)
 
-#### [P0] Maximise learning opportunity in NUS
+#### Maximise learning opportunity in NUS
 
 * attend and prepare for tutorials/lectures properly (no last-minute panic learning)
 * build at least 1 portfolio-grade artefact per term (project, write-up, or tool)
@@ -118,14 +119,14 @@ but here's my long term P0 goals.
 ---
 
 ### Personal Goals
-#### [P0] Gym
+#### Gain more recognisation in fitness industry
 goal is not "train hard". goal is "train well".
 
 * stay consistent all year (no mystery disappearances)
 * keep bulking, but clean it up: control the food environment
 * track key lifts + bodyweight trend so i'm not guessing
 
-#### [P2] Beatbox
+#### Win a beatbox battle again
 not dead. just not allowed to steal p0 energy.
 
 **Minimum maintenance:**
@@ -138,8 +139,7 @@ not dead. just not allowed to steal p0 energy.
 > you don't need motivation.
 >
 > you need a system.
-> fewer goals.
-> real metrics.
-> execution.
+>
+> fewer goals. real metrics. execution.
 >
 > go again, you've got this.
