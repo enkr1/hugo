@@ -346,24 +346,6 @@ html {
 }
 
 /* ===========================================
-   BLOCKQUOTES - 内蕴金 accent border
-   =========================================== */
-
-.article-content blockquote {
-    border-left: 2px solid var(--accent);
-    background: transparent;
-    padding: 0 var(--spacing-md);
-    margin: var(--spacing-md) 0;
-    color: var(--text-secondary);
-    font-style: italic;
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    max-width: 100%;
-    overflow-wrap: break-word;
-}
-
-/* ===========================================
    CODE - Clean Minimal Style
    =========================================== */
 
