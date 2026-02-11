@@ -185,11 +185,6 @@ html {
     background-position: 0 calc(100% - 2px);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    transition: background-size var(--transition-fast);
-
-    &:hover {
-        background-size: 100% 0;
-    }
 }
 
 // Navigation links - Gold on hover
