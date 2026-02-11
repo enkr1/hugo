@@ -59,6 +59,8 @@ currently juggling three modules (Semester 2, AY2025/26):
 
 **status:** confident. completed T1-T3, A1 done. permanent notes on regex patterns, dict behaviours, NumPy shapes.
 
+Use: [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
+
 ---
 
 ### TCX1004: mathematical techniques
