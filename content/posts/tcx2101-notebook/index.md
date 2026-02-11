@@ -11,6 +11,10 @@ draft: false
 sticky: 2101
 ---
 
+
+i also wrote some exam-ready cheatsheets that i found easy to absorb.
+1. [cheatsheet for class test 1 (1.1 ~ 3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}})
+
 ## Chapter 1: Functions
 
 ### 1.1 Single Variable Function and its Graph
