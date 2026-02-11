@@ -59,7 +59,7 @@ currently juggling three modules (Semester 2, AY2025/26):
 
 **status:** confident. completed T1-T3, A1 done. permanent notes on regex patterns, dict behaviours, NumPy shapes.
 
-Use: [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
+anything i found worth dropping while relearning python: [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
 
 ---
 
@@ -75,6 +75,8 @@ Use: [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
 - ➡️ MOVE FORWARD (modus ponens, universal instantiation)
 
 **status:** confident. tutorial 1 complete. mastered quantifiers (∀∃ ≠ ∃∀ was a huge "aha" moment).
+
+as i first touched discrete math, here's a dump of how i think programmatically & logically through formal proofs: [TCX1004 Notebook]({{< ref "tcx1004-notebook" >}})
 
 ---
 
@@ -92,6 +94,8 @@ Use: [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
 - **implicit differentiation:** zoom test (vertical line test locally) clicked everything
 
 **status:** confident. Ch1-Ch2 done, Ch3 implicit differentiation in progress.
+
+basically converted every word from canvas to a comprehensive notebook for myself to read better: [TCX2101 Notebook]({{< ref "tcx2101-notebook" >}})
 
 ---
 

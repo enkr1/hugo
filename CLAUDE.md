@@ -165,3 +165,12 @@ When creating posts about NUS BIT coursework:
   ```
 
 **Workflow:** Session notes → Atomic notes → Blog post emerges when notes cluster.
+
+---
+
+## Zettelkasten Linking
+
+Link posts with `[text]({{< ref "slug" >}})`. Backlinks are automatic.
+Link text must say **why to click**, not just "see also".
+When writing/editing posts, suggest related posts worth linking.
+Rule: link sentence = natural key takeaway or highlight that expresses what the reader gets.
