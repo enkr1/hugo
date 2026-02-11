@@ -2,6 +2,8 @@
     {{/* Pass isMainArticle flag for SEO h1/h2 logic */}}
     {{ partial "article/components/header" (dict "Page" . "isMainArticle" true) }}
 
+    {{ partial "article/components/backlinks" . }}
+
     {{ partial "article/components/content" . }}
 
     {{ partial "article/components/footer" . }}
