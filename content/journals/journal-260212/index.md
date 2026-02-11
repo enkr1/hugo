@@ -31,7 +31,7 @@ this whole thing reminded me why i write. it's not for views or clout. it's for 
 
 ## 📝 Little Lesson
 
-after the jeannie chat, i realised my blog posts are all islands -- ~100 posts with almost zero cross-links. so i did my first retroactive linking pass with claude code. added zettelkasten-style links to my NUS notebooks, starting from the NUS-BIT notebook as a structure note (MOC).
+after the jeannie chat, i realised my blog posts are all islands -- ~100 posts with almost zero cross-links. so i did my first retroactive linking pass with claude code. added zettelkasten-style links to my NUS notebooks, starting from the NUS-BIT notebook as a structure note (Map of Content).
 
 ugh, and i know that it wasn't efficient to refactor, so that's something to keep in mind for every convergence sesh i do next time.
 
