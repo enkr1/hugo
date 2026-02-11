@@ -27,7 +27,7 @@ all these thoughts just came flooding back again, and honestly, i'm really grate
 
 no books this week -- been fully locked in preparing for my TCX2101 and TCX1002 tests. most of my "reading" was just grinding through notes and practice problems.
 
-i did write up a [calculus cheatsheet](/p/nus-bit-tcx2101-cheatsheet-1.1-3.4/) covering chapters 1.1–3.4 which honestly helped a lot with organising everything in my head.
+i did write up a [calculus cheatsheet]({{< ref "tcx2101-calculus-cheatsheet" >}}) covering chapters 1.1–3.4 which honestly helped a lot with organising everything in my head.
 
 <br />
 

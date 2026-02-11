@@ -30,7 +30,7 @@ this is my living notebook for the NUS Bachelor of Information Technology progra
 
 ## study approach
 
-i use the [Zettelkasten method](/book-how-to-take-smart-notes/) - capture during lectures, process daily, drill at Day 2→5→9→16. validated with 15+ gaps resolved.
+i use the [Zettelkasten method]({{< ref "book-how-to-take-smart-notes" >}}) - capture during lectures, process daily, drill at Day 2→5→9→16. validated with 15+ gaps resolved.
 
 ---
 
@@ -129,7 +129,7 @@ markdown + git for all notes. progress tracker (440+ lines) logs every gap, dril
 
 ## resources
 
-- [smart notes workflow](/book-how-to-take-smart-notes/)
+- [smart notes workflow]({{< ref "book-how-to-take-smart-notes" >}})
 - study repo: private (tutorial solutions), but structure documented above
 - progress tracker template: might share if there's interest
 

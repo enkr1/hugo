@@ -21,7 +21,7 @@ keywords:
 
 hellu readers,
 
-i'm thrilled to map out my plans for 2025. i find that putting my ambitions into words not only keeps me accountable but also invites meaningful conversations with those following along. if you'd like to see how i did last year, feel free to check out [my previous year's goals](/goals-2024/).
+i'm thrilled to map out my plans for 2025. i find that putting my ambitions into words not only keeps me accountable but also invites meaningful conversations with those following along. if you'd like to see how i did last year, feel free to check out [my previous year's goals]({{< ref "my-goals-2024" >}}).
 
 ---
 
@@ -57,7 +57,7 @@ i'm thrilled to map out my plans for 2025. i find that putting my ambitions into
 
 **3. Beatbox Battle Comeback**
 
-> though i judged many local beatbox competitions in 2024, i didn't actually make my way to compete... sadly 🥺 that said, my passion for beatboxing isn't going anywhere! in 2025, i plan to get back onstage, sharpen my skills, and rediscover the thrill of live battles. if you're curious about why i love beatboxing, you can read more [here](/why-do-i-love-beatboxing/).
+> though i judged many local beatbox competitions in 2024, i didn't actually make my way to compete... sadly 🥺 that said, my passion for beatboxing isn't going anywhere! in 2025, i plan to get back onstage, sharpen my skills, and rediscover the thrill of live battles. if you're curious about why i love beatboxing, you can read more [here]({{< ref "why-do-i-love-beatboxing" >}}).
 
 ---
 

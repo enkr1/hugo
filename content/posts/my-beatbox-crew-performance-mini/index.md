@@ -81,7 +81,7 @@ In conclusion, performing at the MINI Cooper launch was a unique and enriching e
 
 This experience has reinforced the importance of teamwork, dedication, and learning from those around you. It's moments like these that remind me why I love what I do. The thrill of being part of something bigger, the joy of collaborating with talented individuals, and the satisfaction of achieving a shared goal are truly priceless.
 
-Being part of this event also reminded me of my previous blog post, ["My Beatbox Journey: From Solitude to the Stage"](/my-beatbox-journey-from-solitude-to-the-stage), where I shared how beatboxing transformed my life. This recent experience is another milestone in that journey, showing how far I've come and how much I've learnt.
+Being part of this event also reminded me of my previous blog post, ["My Beatbox Journey: From Solitude to the Stage"]({{< ref "my-beatboxing-journey" >}}), where I shared how beatboxing transformed my life. This recent experience is another milestone in that journey, showing how far I've come and how much I've learnt.
 
 
 

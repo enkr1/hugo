@@ -55,10 +55,10 @@ Including Google Leetcode Question, SWE's interview prep books, etc.
 
 ...
 
-### [The 7 Habits of Highly Effective People by Stephen Covey](/insights-and-reflections-on-the-7-habits-of-highly-effective-people-by-stephen-covey/)
+### [The 7 Habits of Highly Effective People by Stephen Covey]({{< ref "book-the-7-habits-of-highly-effective-people" >}})
 A classic read on **personal development**, offering timeless principles to help you live more effectively and achieve success in all areas of life.
 
-### [The Diary of a CEO by Steven Bartlett](/insights-and-reflections-on-the-diary-of-a-ceo-by-steven-bartlett/)
+### [The Diary of a CEO by Steven Bartlett]({{< ref "book-the-diary-of-a-ceo" >}})
 
 
 ### [Cues: Master the Secret Language of Charismatic Communication](/https://www.amazon.co.uk/Cues-Master-Language-Charismatic-Communication/dp/0241554934?&linkCode=sl1&tag=diaryofaceo0c-21&linkId=0484728d5a239add83d9ebd1de90e1c2&language=en_GB&ref_=as_li_ss_tl)

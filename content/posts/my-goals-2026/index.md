@@ -38,7 +38,7 @@ higher execution.
 
 
 
-## [Recap of 2025 goals](/goals-2025/)
+## [Recap of 2025 goals]({{< ref "my-goals-2025" >}})
 
 ### Professional Goals
 

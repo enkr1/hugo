@@ -22,7 +22,7 @@ keywords:
   - MINI event photos
 ---
 
-Hello everyone! Here are the photos taken by the Mini photography team during the event. You can also check out my previous blog post about our performance at the launch event [here](/my-crew-beatbox-performance-a-memorable-experience-at-the-new-mini-family-launch).
+Hello everyone! Here are the photos taken by the Mini photography team during the event. You can also check out my previous blog post about our performance at the launch event [here]({{< ref "my-beatbox-crew-performance-mini" >}}).
 
 
 ## Memories

@@ -116,7 +116,7 @@ Currently, I am reading *The 7 Habits of Highly Effective People* by Stephen Cov
   - **How to Win Friends & Influence People** by Dale Carnegie: Learn how to build better relationships and communicate effectively.
   - **Ghost in the Wires: My Adventures as the World's Most Wanted Hacker** - Kevin D. Mitnick, Steve Wozniak (Foreword), William L. Simon (Primary Contributor) - [here](https://www.goodreads.com/book/show/10256723-ghost-in-the-wires)
 
-  > [My Reading Collection](/my-reading-collection)
+  > [My Reading Collection]({{< ref "reading" >}})
 
 
 ### Competing in Beatbox Battle Once Again!

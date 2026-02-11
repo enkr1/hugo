@@ -28,7 +28,7 @@ it reminded me that even the smallest acts can mean so much to someone, so i'll 
 
 ## 📝 Reading Insights
 
-i have been revisiting the book *Never Split the Difference* by Christopher Voss, making notes on the key takeaways and strategies that resonate with me. you may check it out [here](/never-split-the-difference-by-chris-voss/).
+i have been revisiting the book *Never Split the Difference* by Christopher Voss, making notes on the key takeaways and strategies that resonate with me. you may check it out [here]({{< ref "book-never-split-the-difference" >}}).
 
 > when you visit, it might still be a work in progress draft, but i'm working on it! 📝
 
