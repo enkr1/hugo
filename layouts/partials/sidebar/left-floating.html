@@ -18,6 +18,11 @@
         {{ partial "helper/icon" "tag" }}
     </a>
 
+    {{/* Archives */}}
+    <a href="{{ with .Site.GetPage `/archives` }}{{ .RelPermalink }}{{ else }}/archives/{{ end }}" class="toolbar-icon" aria-label="Archives">
+        {{ partial "helper/icon" "archives" }}
+    </a>
+
     {{/* Search last */}}
     <button class="toolbar-icon" data-search-trigger aria-label="Search">
         {{ partial "helper/icon" "search" }}
