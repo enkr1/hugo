@@ -1,6 +1,6 @@
 ---
 title: "System Design Notebook"
-sticky: 999
+sticky: 500
 date: 2025-05-03 19:53:44
 subtitle: "System Design Notebook"
 description: "A notebook for system design"

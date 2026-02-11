@@ -1,6 +1,6 @@
 ---
 title: "Goals 2026"
-sticky: 1001
+sticky: 1000
 date: 2026-01-24 03:59:30
 tags:
   - "goals"
