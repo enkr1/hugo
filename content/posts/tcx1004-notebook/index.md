@@ -12,6 +12,8 @@ sticky: 1004
 ---
 
 > NUS TCX1004 study notebook. Prof's notes: [Mathematical Techniques](https://learn-compsci.github.io/mathematical-techniques/)
+>
+> i wrote about Big-O in detail before even taking this mod, which you can [read here]({{< ref "big-o-notation" >}}).
 
 ```
 TCX1004 | Discrete Math Notebook

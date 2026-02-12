@@ -157,6 +157,8 @@ When you need to write something (blog post, essay, report), you **don't start f
 
 **This blog post?** Direct result of the Smart Notes system i built using this method.
 
+so guess what, i'm not gonna wait — here's my action in writing up my [NUS notebook series]({{< ref "notebook-nusbit" >}})! school stuff in action.
+
 
 
 ---

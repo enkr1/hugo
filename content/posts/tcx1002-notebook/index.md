@@ -11,6 +11,8 @@ sticky: 1002
 ---
 
 > NUS TCX1002 exam-focused gotchas & patterns. For general Python notes, see my [Python Notebook]({{< ref "pl-python" >}}).
+>
+> even this mod is more of the fundamentals, but in case you wanna understand deeper about [complexity and Big-O notation, here you go]({{< ref "big-o-notation" >}}).
 
 ```
 TCX1002 | Python Notebook
