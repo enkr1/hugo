@@ -745,10 +745,51 @@ Since **private test cases are hidden**, always self-test:
 ## Source
 
 **Session:** [2026-02-12 session notes](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/2026-02-12/session-notes.md)
-**Practice files:** `000_mods/TCX1002/midterm_prep/p01-p12`
-**Tutorial reviews:** [T2 REVIEW.md](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/2/REVIEW.md)
+
 **Date learned:** 2026-02-12
+
 **Context:** Midterm prep — coverage matrix analysis, gap drilling, exam environment discovery
+
+### Tutorial Source Code (GitHub)
+
+| Pattern | Source | GitHub |
+|---------|--------|--------|
+| Dense ranking, lambda sorting | T2Q2 | [q2.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/2/q2.py) |
+| Two-pointer merge | T2Q4 | [q4.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/2/q4.py) |
+| Sliding window, SMA | T2Q8 | [q8.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/2/q8.py) |
+| Set operations, frozenset | T1Q6 | [q6.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/1/q6.py) |
+| Lift controller (state machine) | T1Q1 | [q1.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/1/q1.py) |
+| NumPy peaks (vectorized) | T1Q4 | [q4.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/1/q4.py) |
+| Car plate validation (regex) | T3Q1 | [q1.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/3/q1.py) |
+| Five-in-a-row (grouping) | T3Q2 | [q2.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/3/q2.py) |
+| NumPy distances (broadcasting) | T3Q4 | [q4.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/3/q4.py) |
+| Functional programming (map/filter) | T3Q5 | [q5.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/3/q5.py) |
+| Worker scheduling (greedy) | A1Q1 | [q1.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/assignments/1/q1.py) |
+| Attendance lookup (datetime) | A1Q2 | [q2.py](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/assignments/1/q2.py) |
+
+### Practice Files
+
+**Local:** `000_mods/TCX1002/midterm_prep/p01-p12`
+**GitHub:** [midterm_prep/](https://github.com/enkr1/nus_bit_priv/tree/main/000_mods/TCX1002/midterm_prep)
+
+### Reviews & References
+
+- [T2 REVIEW.md](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/2/REVIEW.md) — Patterns, bugs, memory tricks
+- [Practice Guide](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1002/tutorials/PRACTICE_GUIDE_INSTRUCTION.md) — 6-phase mastery framework
+- [Progress Tracker](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/progress-tracker.md) — TCX1002 section (gaps + mastered)
+
+## Connections
+
+- **Builds on:** [TCX1002 Python Notebook]({{< ref "tcx1002-notebook" >}}) (lecture notes → Hugo migration)
+- **Related:** [TCX2101 Calculus Cheatsheet]({{< ref "nus-bit-tcx2101-cheatsheet-1.1-3.4" >}}) (same cheatsheet approach)
+- **Extended by:** Post-midterm review (TBD)
+- **See also:** [Smart Notes methodology]({{< ref "book-how-to-take-smart-notes" >}})
+
+## Future Blog Posts
+
+**Potential topics:** "Python Exam Prep: What I Wish I Knew Before My First CS Midterm"
+**Sources from this note:** collections ban discovery, defaultdict replacement patterns, track-seen pattern
+**Related notes:** T2 REVIEW.md (bugs found), practice guide (6-phase framework)
 
 ---
 
