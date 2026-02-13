@@ -55,6 +55,8 @@ as we wrap up 2024, remember this: *you didn't just get through the year, you ev
 
 2025 is waiting for you, and i have no doubt it's gonna be bigger, crazier, and more fulfilling than ever. let's embrace whatever comes our way. 🔥
 
+and after that... let's talk about [goals for 2025]({{< ref "my-goals-2025" >}}).
+
 i promise to stay curious, stay resilient, and keep growing—no matter what challenges pop up. 🎯
 
 thank you, 2024—you were wild and sometimes brutal, but i'm grateful for every lesson.

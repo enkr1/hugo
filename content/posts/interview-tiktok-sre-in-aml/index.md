@@ -30,6 +30,8 @@ I only passed the first technical round and **failed at the second round of the 
 
 Quick introduction for those who don't know me: I am currently a software engineer at ByteDance. I have interviewed with several big tech companies, and while I haven't aced them all, I want to share my learning points, including dos and don'ts, in the hope that it helps others.
 
+oh dear, can y'all guess — my first ever SWE interview was with my dream company.. [Google]({{< ref "interview-google-sre-poland" >}}).......
+
 
 
 ## Stage 1: HR Call

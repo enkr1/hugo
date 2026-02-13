@@ -15,6 +15,8 @@ keywords:
   - "Computer Science Education"
 ---
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
 ## Note for myself
 - add special char just to partition them for expansion e.g. `#` → `#A#B#B#C#`
 - initialise ⇒ `maxRight=0, palindromLengths=[], center=0`

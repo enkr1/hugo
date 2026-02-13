@@ -19,6 +19,10 @@ keywords:
 ## What is Floyd's Tortoise and Hare Algorithm?
 Floyd's Tortoise and Hare Algorithm, also known as the *Floyd's cycle-finding algorithm* or the Tortoise and Hare Algorithm, is used to **detect cycles** in a linked list or an array. It was named after Robert W. Floyd, who first described the algorithm.
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
+deeper writeup about [linked list notes here]({{< ref "notebook-linkedlist" >}}).
+
 The algorithm works by using two pointers, one moving at a slower pace (tortoise) and the other moving at a faster pace (hare), and iterating through the linked list or array. If there is a cycle, the two pointers will eventually meet at the same node.
 
 ```plain

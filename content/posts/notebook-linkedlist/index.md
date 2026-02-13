@@ -19,6 +19,8 @@ keywords:
 
 ## WIP ...
 
+famous cycle detection algo — [Floyd's Tortoise and Hare here]({{< ref "algo-floyds-tortoise-and-hare" >}})!
+
 
 
 

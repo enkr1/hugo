@@ -20,6 +20,8 @@ keywords:
 
 A **greedy algorithm** is a type of algorithmic strategy where we make the best possible decision **at each step** without worrying about the future consequences. In other words, we **choose the locally optimal solution** at each stage with the hope that these local solutions will lead to the **global optimum** (the best overall solution).
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
 
 ### Greedy Algorithms as an Umbrella Term
 **Greedy** is an **umbrella term** used to describe a broad class of algorithms that follow a specific strategy: making the best possible choice (local optimal choice) at each step with the hope that this will lead to the best global solution. However, not all algorithms are greedy—only those that follow this decision-making process at every step. The **greedy approach** is a problem-solving paradigm, much like **dynamic programming** or **divide and conquer**. It is applied to a variety of algorithms across different domains, but only in scenarios where making local decisions (without considering future consequences) leads to a globally optimal solution.

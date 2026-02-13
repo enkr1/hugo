@@ -20,6 +20,8 @@ keywords:
 ## What is Floyd-Warshall Algorithm?
 The Floyd-Warshall algorithm is a **dynamic programming algorithm** used to find the shortest paths between **all pairs of vertices in a weighted graph**. It can **handle both positive and negative edge weights**, provided there are no negative weight cycles.
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
 ### Positive and Negative Edge Weights
 - **Positive Edge Weights:** Represent positive costs or distances (e.g., road lengths).
 - **Negative Edge Weights:** Represent scenarios where moving reduces the total cost (e.g., financial gains).
@@ -246,7 +248,7 @@ You can similarly run the function for the other graphs by replacing `graph1` wi
 
 ---
 
-## Side Knowledge: Floyd-Warshal Algorithm vs Dijkstra's Algorithm
+## Side Knowledge: Floyd-Warshal Algorithm vs [Dijkstra's Algorithm]({{< ref "algo-dijkstras" >}})
 
 | **Aspect**                   | **Floyd-Warshall Algorithm**                                                                                                                                                                    | **Dijkstra's Algorithm**                                                                                                                                                    |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

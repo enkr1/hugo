@@ -23,6 +23,8 @@ keywords:
 ## What is Boyer-Moore Voting Algorithm?
 The **Boyer-Moore Voting Algorithm** is a highly efficient way to find the majority element in an array in linear time $O(n)$ and constant space $O(1)$.
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
 
 
 ## Boyer-Moore Voting Algorithm (Simple analogy in my own word)

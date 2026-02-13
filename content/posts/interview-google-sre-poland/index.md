@@ -83,6 +83,8 @@ Throughout this journey, **I truly experienced the meaning of "time flies"**. I 
 
 This experience has only fueled my determination to improve and succeed in the future. **This experience planted the seed of my dream to get into Google even deeper**. That seed is now growing stronger every day, and I am more determined than ever to achieve my goal. I will continue to learn, grow, and push my limits. **This is just the start of my journey, and I will never give up**.
 
+and [LeetCoding]({{< ref "my-leetcode-journey" >}}) has just been integrated into my life — forcefully, naturally — and i kinda love solving them puzzles...
+
 And this is my first job interview.
 
 <!--

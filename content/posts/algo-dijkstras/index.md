@@ -23,6 +23,8 @@ keywords:
 ## What is Dijkstra's Algorithm?
 Dijkstra's Algorithm is a well-known algorithm used to **find the shortest path between nodes in a graph**. It was created by the computer scientist **Edsger Wybe Dijkstra**. This algorithm is one of the most efficient for finding the shortest path in a graph with **non-negative weights**, **especially for sparse graphs**. However, it is not always the fastest or most optimised algorithm for all shortest path problems. The choice of algorithm depends on the specific characteristics of the graph and the requirements of the problem.
 
+i have written a blog to talk deeper about [Big-O in my own words here]({{< ref "big-o-notation" >}}).
+
 ## Is Dijkstra's Algorithm the Fastest and Most Optimised?
 Dijkstra's Algorithm is highly efficient for its intended use case: **finding the shortest paths from a single source in graphs with non-negative edge weights**. However, other algorithms may be more suitable for different scenarios:
 
@@ -44,7 +46,7 @@ Dijkstra's Algorithm is highly efficient for its intended use case: **finding th
    - **Drawbacks**: More complex than Floyd-Warshall for dense graphs.
    - **Complexity**: $$O(V^2 \log V + VE)$$
 
-4. **Floyd-Warshall Algorithm:**
+4. **[Floyd-Warshall Algorithm]({{< ref "algo-floyd-warshall" >}}):**
    - **Use Case**: All-pairs shortest paths.
    - **Strengths**: Simple implementation, handles negative weights (no cycles).
    - **Drawbacks**: Not suitable for large graphs due to cubic time complexity.

@@ -30,6 +30,8 @@ sticky: 800
 ## Introduction to My LeetCode Strategy
 After six months of consistent grinding on [LeetCode](https://leetcode.com/) and navigating through about twenty-ish coding interviews, I have finally landed a job at **ByteDance**. Far from a coding wizard, I am an average coder who sticks with medium-level problems until I crack them. Over time, I have cobbled together a few strategies that have surprisingly helped me punch above my weight. Maybe they could work for you too! Stepping into the coding challenges felt like entering a big arena. LeetCode became my training ground, and like many, I often stumbled on the tough problems. But the key? Stick it out and find your rhythm. Here's how I kept my head in the game and punched through those coding challenges.
 
+i actually spent more than 6 months getting from brute-forcing solutions to actually understanding how to ace any coding interview — i'll write more about it, but here's [something i dropped previously]({{< ref "notebook-leetcode" >}}).
+
 
 
 ---
@@ -60,6 +62,8 @@ Personally, I discovered the best way to avoid simply memorising solutions like 
 I took the plunge into the areas that scared me the most, tackling my weaknesses head-on. It was uncomfortable, sure, but there's no growth found lounging in comfort zones, right?
 
 I must give a massive shout-out to [NeetCode's](https://neetcode.io/) roadmap—it **was a game-changer** during my job search. Following their structured approach really helped; it lays out what you need to grasp fundamentally before moving on to more challenging topics like **2D Dynamic Programming** and **Advanced Graphs**. Understanding the essentials first, then progressively tackling more complex areas, is truly the way to go. **Remember, there's no shortcut to real mastery.**
+
+to have a good understanding of [what Big-O is and why it's important]({{< ref "big-o-notation" >}}) really helps you not only think about what solution you can choose from, but what strategy and direction you should be thinking from.
 
 ![NeetCode's Roadmap](neetcode-roadmap.png)
 
