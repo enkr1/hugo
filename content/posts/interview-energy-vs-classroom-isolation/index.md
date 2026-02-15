@@ -36,6 +36,8 @@ But for this module, i am grateful that my professor is actually someone open; h
 
 Taking forward: Keep bringing interview energy. Externalise thinking even solo. Demand better specs when they're trash.
 
+<!-- TODO(human): Write a linking sentence to nus-bit-tcx1002-notebook. Ref syntax: [YOUR TEXT]({{< ref "tcx1002-notebook" >}}) -->
+
 ---
 
 **Context:** [Session notes here (for myself)](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/sessions/2026-01-29/session-notes.md) - 4h TCX1002 Tutorial 3.

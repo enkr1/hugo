@@ -131,3 +131,7 @@ i'm thrilled to map out my plans for 2025. i find that putting my ambitions into
 1. **learning foundations**: deepen my understanding of digital audio workstations (DAWs) and basic music theory (e.g., chord progressions, arrangement techniques).
 2. **creative projects**: work on mini-tracks or remixes, gradually building a personal portfolio i can be proud of.
 3. **collaboration opportunities**: collaborate with friends, fellow producers, or even beatboxers to keep the creative energy flowing and gain fresh perspectives.
+
+---
+
+update: [goals 2026 is out]({{< ref "my-goals-2026" >}}).

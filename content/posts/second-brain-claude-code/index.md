@@ -71,6 +71,8 @@ Without system: Learn → Forget → Relearn → Forget
 With system:    Learn → Capture → Reference → Build
 ```
 
+<!-- TODO(human): Write a linking sentence to book-how-to-take-smart-notes. Ref syntax: [YOUR TEXT]({{< ref "book-how-to-take-smart-notes" >}}) -->
+
 No more weekend backlog. No more "next time". The capture happens in the moment, when the learning is fresh!
 
 And the best part? I can visit my blog anytime, anywhere - everything's online and searchable. So convenient!
