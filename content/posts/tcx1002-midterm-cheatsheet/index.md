@@ -8,8 +8,9 @@ categories: ["Education", "Programming"]
 toc: true
 math: false
 draft: false
-sticky: 1002
 ---
+
+for the full notebook with deeper explanations, see my [TCX1002 Notebook]({{< ref "tcx1002-notebook" >}}).
 
 ---
 

@@ -10,7 +10,7 @@ math: false
 draft: false
 ---
 
-[Code on GitHub](https://github.com/enkr1/nus_bit_priv/tree/main/000_mods/TCX1002/midterm)
+[Code on GitHub](https://github.com/enkr1/nus_bit_priv/tree/main/000_mods/TCX1002/midterm) | [Midterm Cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}})
 
 ---
 
@@ -25,6 +25,10 @@ initially, i saw "points" and jumped into DFS. when it didn't work, i kept patch
 > 自信 -> 卡住 -> 慌 -> 越想越复杂 -> 更慌 -> 更加卡住 LOLL
 
 这真的... 让我重新理解了 这句话：**“越投入越不舍得放弃，越不放弃越陷越深。”**
+
+---
+
+i spent days building a [cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}}) -- but apart from regex, it was almost 0 help. the exam didn't test what i memorised. it tested how i think under pressure. and in fact, most of the errors weren't things i didn't know -- it was just me stressing myself out for no reason.
 
 ---
 
