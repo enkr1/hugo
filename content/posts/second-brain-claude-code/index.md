@@ -71,7 +71,7 @@ Without system: Learn → Forget → Relearn → Forget
 With system:    Learn → Capture → Reference → Build
 ```
 
-<!-- TODO(human): Write a linking sentence to book-how-to-take-smart-notes. Ref syntax: [YOUR TEXT]({{< ref "book-how-to-take-smart-notes" >}}) -->
+this workflow is heavily inspired by [How to Take Smart Notes]({{< ref "book-how-to-take-smart-notes" >}}) — the idea that capturing and connecting ideas matters more than memorising them.
 
 No more weekend backlog. No more "next time". The capture happens in the moment, when the learning is fresh!
 
