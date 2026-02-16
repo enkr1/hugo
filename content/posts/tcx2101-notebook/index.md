@@ -982,3 +982,85 @@ $$\text{Subinterval}: \quad \int_a^b f(x)\, dx = \int_a^c f(x)\, dx + \int_c^b f
 ### Question
 
 In the subinterval property, do we need $c \in [a, b]$? Will the property still hold if, for example, $a < b < c$, or when $c < a < b$?
+
+---
+
+## Section 4.2: Fundamental Theorem of Calculus and Indefinite Integral
+
+### Theorem [Fundamental Theorem of Calculus I]
+
+If $f$ is **continuous** on $[a, b]$, then
+
+$$F(x) = \int_a^x f(t)\, dt$$
+
+is **continuous** on $[a, b]$ and **differentiable** on $(a, b)$ with derivative $f(x)$,
+
+$$F'(x) = \frac{d}{dx} \int_a^x f(t)\, dt = f(x).$$
+
+### Definition (Antiderivative)
+
+A function $F$ is an **antiderivative** of $f$ on an interval $I$ if
+
+$$F'(x) = f(x)$$
+
+for all $x \in I$.
+
+- Antiderivatives are not unique. For example,
+
+$$\frac{d}{dx} x^2 = \frac{d}{dx} (x^2 + 3) = 2x.$$
+
+  That is, both $x^2 + 3$ and $x^2$ are antiderivatives of $2x$.
+
+- Any two antiderivatives differ by a constant. That is, if $F$ and $G$ are antiderivatives of $f$ on $I$, then
+
+$$G(x) = F(x) + C.$$
+
+- By the Fundamental Theorem of Calculus I,
+
+$$F(x) = \int_a^x f(t)\, dt$$
+
+  is an antiderivative of $f(x)$.
+
+### Theorem [Fundamental Theorem of Calculus II]
+
+If $f$ is **continuous** over $[a, b]$ and $F$ is **any antiderivative** of $f$ on $[a, b]$, then
+
+$$\int_a^b f(x)\, dx = F(b) - F(a).$$
+
+We will use the notation
+
+$$[F(x)]_a^b := F(b) - F(a).$$
+
+### Definition (Indefinite Integral)
+
+The collection of all antiderivatives of $f$ is called the **indefinite integral** of $f$, and is denoted by
+
+$$\int f(x)\, dx.$$
+
+For any antiderivative $F$ of $f$, let
+
+$$F(x) + C$$
+
+denote the set of all antiderivatives of $f$.
+
+Thus we may denote the set of all antiderivatives of $f$ by
+
+$$\int f(x)\, dx = F(x) + C$$
+
+for some antiderivative $F$ of $f$.
+
+- The expression $F(x) + C$ is a symbol representing the entire family of antiderivatives of $f$; here $C$ is not a particular number, but a placeholder indicating that any constant may be chosen. One may think of $C$ as a variable that can take any real value. Each choice of $C \in \mathbb{R}$ gives a different member of the antiderivative family.
+
+- The differential operator $\frac{d}{dx}$ takes a function and returns a single function.
+
+- The indefinite integral operator $\int dx$ takes a function and returns a set of functions (the set of all antiderivatives on an interval).
+
+- The definite integral $\int_a^b dx$ takes a function and returns a real number.
+
+$$f(x) \xrightarrow{\frac{d}{dx}} f'(x)$$
+
+$$\{F(x) + C \mid C \in \mathbb{R}\} \xleftarrow{\int dx} f(x)$$
+
+$$\int_a^b f(x)\, dx = F(b) - F(a) \xleftarrow{\int_a^b dx} f(x)$$
+
+- If an initial condition is given, then we solve for the constant $C$.
