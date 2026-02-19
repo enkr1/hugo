@@ -116,6 +116,8 @@ but here's my long term P0 goals in 2026, for now.
 * build at least 1 portfolio-grade artefact per term (project, write-up, or tool)
 * ask better questions (not more questions): show up with attempts + reasoning
 
+tracking all my module notes and progress in the [NUS-BIT notebook]({{< ref "notebook-nusbit" >}}).
+
 ---
 
 ### Personal Goals

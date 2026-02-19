@@ -10,6 +10,10 @@ math: true
 draft: false
 ---
 
+for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT2 formulas (Chapters 3.5–4.11), see the [CT2 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}).
+
+---
+
 ## 1: Functions
 
 ### 1.1 Domain & Range

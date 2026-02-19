@@ -1,6 +1,6 @@
 ---
-title: "TCX2101 | Calculus Cheatsheet CT2 (Chapter 3.6 – 4.11)"
-slug: "nus-bit-tcx2101-cheatsheet-3.6-4.11"
+title: "TCX2101 | Calculus Cheatsheet CT2 (Chapter 3.5 – 4.11)"
+slug: "nus-bit-tcx2101-cheatsheet-3.5-4.11"
 date: 2026-02-16
 description: "Formula reference for NUS TCX2101 CT2: Integration, Riemann Sums, FTC, Substitution, Area"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
@@ -8,6 +8,10 @@ categories: ["Education", "Mathematics"]
 toc: true
 math: true
 draft: false
+---
+
+for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT1 formulas (Chapters 1.1–3.4), see the [CT1 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet" >}}).
+
 ---
 
 ## 4: Integration
@@ -162,7 +166,7 @@ Step 1: What are the limits?
 
 ---
 
-- *Coverage: TCX2101 Chapters 3.6–4.11 (CT2 scope)*
+- *Coverage: TCX2101 Chapters 3.5–4.11 (CT2 scope)*
 - *Purpose: Class Test 2 reference (16 Mar)*
 - *Format:* Closed book — memorise this!
 
