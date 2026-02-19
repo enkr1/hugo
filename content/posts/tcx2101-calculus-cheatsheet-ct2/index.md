@@ -2,7 +2,7 @@
 title: "TCX2101 | Calculus Cheatsheet CT2 (Chapter 3.5 – 4.11)"
 slug: "nus-bit-tcx2101-cheatsheet-3.5-4.11"
 date: 2026-02-16
-description: "Formula reference for NUS TCX2101 CT2: Integration, Riemann Sums, FTC, Substitution, Area"
+description: "Formula reference for NUS TCX2101 CT2: MVT, Derivative Tests, L'Hôpital, Optimization, Integration, FTC, Area, Substitution"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
 categories: ["Education", "Mathematics"]
 toc: true
@@ -11,6 +11,128 @@ draft: false
 ---
 
 for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT1 formulas (Chapters 1.1–3.4), see the [CT1 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet" >}}).
+
+---
+
+## 3: Applications of Derivatives
+
+### 3.5 Mean Value Theorem
+
+#### Rolle's Theorem
+
+If $f$ is **continuous** on $[a,b]$, **differentiable** on $(a,b)$, and $f(a) = f(b)$:
+
+$$\exists\, c \in (a,b) \text{ such that } f'(c) = 0$$
+
+> Intuition: curve starts and ends at same height → must have a flat spot somewhere.
+
+#### Mean Value Theorem (MVT) ⭐️
+
+If $f$ is **continuous** on $[a,b]$ and **differentiable** on $(a,b)$:
+
+$$\exists\, c \in (a,b) \text{ such that } f'(c) = \frac{f(b) - f(a)}{b - a}$$
+
+> Intuition: instantaneous speed must equal average speed at some point.
+
+#### MVT Corollary
+
+$$f'(x) = g'(x) \;\forall\, x \in (a,b) \implies f(x) = g(x) + C$$
+
+Same derivative = same function (up to a constant).
+
+> ⚠️ **Conditions are the trap.** Must verify: (1) continuous on **closed** $[a,b]$, (2) differentiable on **open** $(a,b)$. Miss either → theorem doesn't apply.
+
+---
+
+### 3.6 Derivative Tests
+
+#### Monotonicity (First Derivative)
+
+| $f'(x)$ on $(a,b)$ | $f$ on $[a,b]$ |
+|---------------------|-----------------|
+| $f'(x) > 0$ | Increasing |
+| $f'(x) < 0$ | Decreasing |
+
+#### First Derivative Test for Local Extrema
+
+At critical point $c$ (where $f'(c) = 0$ or DNE), check sign change of $f'$:
+
+| $f'$ changes | Result at $c$ |
+|--------------|---------------|
+| $- \to +$ | Local **minimum** |
+| $+ \to -$ | Local **maximum** |
+| No sign change | **Not** an extremum |
+
+#### Concavity (Second Derivative)
+
+| $f''$ on $I$ | Graph shape | $f'$ is... |
+|--------------|-------------|------------|
+| $f'' > 0$ | Concave **up** (cup) | Increasing |
+| $f'' < 0$ | Concave **down** (cap) | Decreasing |
+
+**Inflection point:** where concavity changes. At $(a, f(a))$: either $f''(a) = 0$ or $f''$ DNE.
+
+#### Second Derivative Test for Local Extrema ⭐️
+
+At critical point $c$ where $f'(c) = 0$:
+
+| $f''(c)$ | Result |
+|----------|--------|
+| $f''(c) < 0$ | Local **maximum** (concave down = peak) |
+| $f''(c) > 0$ | Local **minimum** (concave up = valley) |
+| $f''(c) = 0$ | **Test fails** — use first derivative test |
+
+> ⚠️ **$f''(c) = 0$ does NOT mean inflection.** It means the test is inconclusive. Fall back to first derivative test.
+
+---
+
+### 3.7 L'Hôpital's Rule
+
+#### The Rule
+
+If $\frac{f(x)}{g(x)} \to \frac{0}{0}$ or $\frac{\pm\infty}{\pm\infty}$ as $x \to a$:
+
+$$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}$$
+
+(assuming the right-hand limit exists). Works for $a = \pm\infty$ too.
+
+#### When to Use
+
+| Form | Indeterminate? | Use L'Hôpital? |
+|------|---------------|----------------|
+| $\frac{0}{0}$ | Yes | Yes |
+| $\frac{\pm\infty}{\pm\infty}$ | Yes | Yes |
+| $\frac{0}{\infty}$, $\frac{\infty}{0}$, $\frac{5}{0}$ | No | **No** — evaluate directly |
+
+> ⚠️ **Three traps:**
+> 1. **Must be indeterminate** — check BEFORE differentiating
+> 2. **Stop** when the form is no longer indeterminate — don't keep differentiating
+> 3. **Differentiate top and bottom separately** — this is NOT the quotient rule
+
+---
+
+### 3.8 Optimization
+
+#### Algorithm
+
+1. **Read** — identify what to maximize/minimize
+2. **Draw** — label variables, note constraints
+3. **Write** — express objective as function of one variable (use constraint to eliminate)
+4. **Differentiate** — find critical points ($f'(x) = 0$)
+5. **Test** — check critical points AND endpoints (if closed interval)
+6. **Answer** — substitute back to get all requested values
+
+#### Endpoint Check
+
+| Domain | What to check |
+|--------|---------------|
+| Closed $[a,b]$ | Critical points **and** $f(a)$, $f(b)$ |
+| Open $(0, \infty)$ | Critical points + behavior as $x \to 0^+$, $x \to \infty$ |
+| All $\mathbb{R}$ | Critical points + behavior as $x \to \pm\infty$ |
+
+> ⚠️ **Don't forget endpoints.** A critical point can be a local extremum but NOT the global one if an endpoint beats it.
+
+> ⚠️ **"Minimize cost" → objective is cost, constraint is volume (or similar).** Read carefully which is which.
 
 ---
 
@@ -133,6 +255,69 @@ $$\int f(x)\,dx = F(x) + C \qquad \text{where } F'(x) = f(x)$$
 
 ---
 
+### 4.3 Area Under and Between Graphs
+
+#### Area Under a Curve
+
+$$\text{Area} = \int_a^b |f(x)|\,dx$$
+
+**Algorithm:**
+
+1. Find **zeros** of $f$ in $[a,b]$
+2. Determine **sign** of $f$ on each sub-interval
+3. Where $f < 0$, negate: $\int(-f)\,dx$
+4. Sum all pieces
+
+> ⚠️ **$\int_a^b f(x)\,dx$ is NOT always area.** If $f < 0$ on part of $[a,b]$, the integral gives *signed* area (negative parts cancel). Use $|f(x)|$ for actual area.
+
+#### Area Between Two Curves
+
+$$\text{Area} = \int_a^b |f(x) - g(x)|\,dx$$
+
+**Algorithm:**
+
+1. Find **intersections**: solve $f(x) = g(x)$ in $[a,b]$
+2. On each sub-interval, determine which function is **on top**
+3. Integrate (top $-$ bottom) on each piece
+4. Sum all pieces
+
+> ⚠️ **Always subtract in the right order.** If you get a negative area for a piece, you subtracted the wrong way — flip it.
+
+---
+
+### 4.4 Integration by Substitution
+
+#### $u$-Substitution (Indefinite)
+
+If you spot $f(u(x)) \cdot u'(x)$ in the integrand:
+
+$$\int f(u(x)) \cdot u'(x)\,dx = F(u(x)) + C$$
+
+**Steps:** Let $u = $ (inside function), $du = u'(x)\,dx$, rewrite, integrate, substitute back.
+
+#### $u$-Substitution (Definite) ⭐️
+
+$$\int_a^b f(u(x)) \cdot u'(x)\,dx = \int_{u(a)}^{u(b)} f(u)\,du$$
+
+> ⚠️ **Change the limits!** $x = a \to u = u(a)$, $x = b \to u = u(b)$. If you forget, you'll integrate with wrong bounds.
+
+#### Trigonometric Substitution
+
+| Expression | Substitution | Identity | Simplifies to |
+|-----------|-------------|----------|---------------|
+| $\sqrt{a^2 + x^2}$ | $x = a\tan\theta$ | $1 + \tan^2 = \sec^2$ | $a\sec\theta$ |
+| $\sqrt{a^2 - x^2}$ | $x = a\sin\theta$ | $1 - \sin^2 = \cos^2$ | $a\cos\theta$ |
+| $\sqrt{x^2 - a^2}$ | $x = a\sec\theta$ | $\sec^2 - 1 = \tan^2$ | $a\tan\theta$ |
+
+**Memory trick — right triangle:**
+- $a^2 + x^2$: $a$, $x$ are legs → hypotenuse = $\sqrt{a^2+x^2}$ → $\tan\theta$
+- $a^2 - x^2$: $a$ is hypotenuse → $\sin\theta$
+- $x^2 - a^2$: $x$ is hypotenuse → $\sec\theta$
+
+> ⚠️ **After trig sub, convert back.** Draw the right triangle to express $\theta$ in terms of $x$.
+
+---
+
 ### Ch4 Mistakes ⚠️
 
 | Mistake | Times | Fix |
@@ -162,6 +347,39 @@ Step 1: What are the limits?
   f(x)    f(g(x))·g'   -f(x)    f(b)·b' - f(a)·a'
            ↑                      ↑
       DON'T FORGET          UPPER MINUS LOWER
+```
+
+### Derivative Test Decision Tree
+
+```text
+Found critical point c (f'(c) = 0)?
+         │
+    Can you compute f''(c)?
+    ┌────┴────┐
+   Yes       No → use First Derivative Test
+    │
+  f''(c) = ?
+    ┌───┼───┐
+   <0   =0  >0
+    │   │    │
+  MAX  FAIL  MIN
+        │
+  Fall back to
+  First Deriv Test
+```
+
+### Trig Sub Cheat
+
+```text
+See √(___) ?
+         │
+    ┌────┴────┬──────────┐
+    │         │          │
+  a² + x²  a² - x²   x² - a²
+    │         │          │
+  x=a·tanθ x=a·sinθ  x=a·secθ
+    │         │          │
+  a·secθ   a·cosθ    a·tanθ
 ```
 
 ---
