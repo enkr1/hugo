@@ -34,7 +34,7 @@ It's not that i can't code. The format doesn't match how i actually solve proble
 
 But for this module, i am grateful that my professor is actually someone open; he took my advice to improve on the questions, to reply to my clarifications and provide direction on the portal very quickly.
 
-Taking forward: Keep bringing interview energy. Externalise thinking even solo. Demand better specs when they're trash.
+Taking forward: Keep bringing interview energy. Externalise thinking even solo. Demand better specs when they're trash. these reflections fed directly into [my 2026 goals]({{< ref "my-goals-2026" >}}) — especially the bit about asking better questions and showing up with attempts.
 
 in the meantime, i'm noting down everything from my learning journey in NUS [here]({{< ref "notebook-nusbit" >}}).
 

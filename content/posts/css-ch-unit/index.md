@@ -93,3 +93,5 @@ The `ch` unit shines specifically for **text content width** where character cou
 ## TL;DR
 
 Use `max-width: 72ch` for article content. It respects user font preferences while maintaining optimal readability - the typography-aware way to set width.
+
+this is one of those mid-session discoveries — captured on the fly using my [second brain workflow with Claude Code]({{< ref "second-brain-claude-code" >}}).
