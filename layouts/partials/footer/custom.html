@@ -271,6 +271,28 @@ async function trackUniqueVisitor(db) {
     console.log('[Cache] Visitor tracked and cached for session');
 }
 
+// ── Fetch counts for a set of elements ────────────────────────
+async function fetchViewCounts(db, elements, { increaseCount = false } = {}) {
+    const promises = [...elements].map(async (el) => {
+        const title = el.dataset.postTitle;
+        if (!title) return;
+
+        // Cache check first
+        const cached = getCachedCount(title);
+        if (cached !== null) {
+            console.log(`[Cache] Hit for "${title}" → ${cached}`);
+            el.textContent = cached;
+            return;
+        }
+        console.log(`[Cache] Miss for "${title}" — fetching from Firestore`);
+
+        const docRef = doc(db, 'articles', title);
+        const count = await getCount(db, docRef, increaseCount, title);
+        if (count !== null) el.textContent = count;
+    });
+    await Promise.all(promises);
+}
+
 // ── Main ──────────────────────────────────────────────────────
 waitForFirestore(async (db) => {
     // Track unique visitors (rate-limited per session)
@@ -307,25 +329,19 @@ waitForFirestore(async (db) => {
         const count = await getCount(db, docRef, increaseCount, title);
         if (count !== null) el.textContent = count;
     } else {
-        // List page — fetch counts with cache layer
-        const promises = [...countElements].map(async (el) => {
-            const title = el.dataset.postTitle;
-            if (!title) return;
+        // List page — fetch counts for initial elements
+        await fetchViewCounts(db, countElements);
 
-            // Cache check first
-            const cached = getCachedCount(title);
-            if (cached !== null) {
-                console.log(`[Cache] Hit for "${title}" → ${cached}`);
-                el.textContent = cached;
-                return;
+        // Listen for infinite scroll appending new articles
+        document.addEventListener('posts:loaded', (e) => {
+            const articles = e.detail?.articles;
+            if (!articles) return;
+            const newCounts = [];
+            for (const article of articles) {
+                newCounts.push(...article.querySelectorAll('.firestore-visitors-count'));
             }
-            console.log(`[Cache] Miss for "${title}" — fetching from Firestore`);
-
-            const docRef = doc(db, 'articles', title);
-            const count = await getCount(db, docRef, false, title);
-            if (count !== null) el.textContent = count;
+            if (newCounts.length) fetchViewCounts(db, newCounts);
         });
-        await Promise.all(promises);
     }
 });
 </script>

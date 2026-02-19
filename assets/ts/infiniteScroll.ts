@@ -103,9 +103,15 @@ class InfiniteScroll {
                 return;
             }
 
+            const added: Element[] = [];
             newArticles.forEach(article => {
-                this.container.appendChild(article.cloneNode(true));
+                const clone = article.cloneNode(true) as Element;
+                this.container.appendChild(clone);
+                added.push(clone);
             });
+
+            // Notify other modules (e.g. Firestore view counts) about new DOM
+            document.dispatchEvent(new CustomEvent('posts:loaded', { detail: { articles: added } }));
 
             // Reset error count on success
             this.errorCount = 0;
