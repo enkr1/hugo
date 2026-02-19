@@ -1064,3 +1064,176 @@ $$\{F(x) + C \mid C \in \mathbb{R}\} \xleftarrow{\int dx} f(x)$$
 $$\int_a^b f(x)\, dx = F(b) - F(a) \xleftarrow{\int_a^b dx} f(x)$$
 
 - If an initial condition is given, then we solve for the constant $C$.
+
+---
+
+## Section 4.3: Area Under and Between Graphs
+
+### Area Under Graph: Algorithm
+
+Suppose $f$ is **continuous** on $[a, b]$.
+
+1. Find the **zeros** of $f$:
+
+$$\{x_1, x_2, \ldots, x_n\}, \quad f(x_i) = 0 \quad \forall i = 1, \ldots, n.$$
+
+2. Determine the **sign** of $f$ on each interval:
+
+$$f(x) \geq 0 \quad \text{or} \quad f(x) \leq 0 \quad \text{on } [x_i, x_{i+1}].$$
+
+3. On the interval $[x_i, x_{i+1}]$, for $i = 1, \ldots, n-1$, define
+
+$$f_i(x) = \begin{cases} f(x), & \text{if } f(x) \geq 0, \\ -f(x), & \text{if } f(x) \leq 0. \end{cases}$$
+
+4. The **area** is the sum
+
+$$\text{Area} = \int_a^b |f(x)|\, dx = \sum_{i=1}^{n-1} \int_{x_i}^{x_{i+1}} f_i(x)\, dx.$$
+
+> 📝 Note: It is important that $f(x)$ is continuous on $[a, b]$.
+
+---
+
+### Area Between Graphs: Algorithm
+
+Suppose $f$ and $g$ are **continuous** on $[a, b]$.
+
+1. Find the **points of intersection** between $f(x)$ and $g(x)$ in $[a, b]$:
+
+$$\{x_0 = a, x_1, \ldots, x_n = b\}, \quad f(x_i) = g(x_i), \quad \forall i = 0, \ldots, n.$$
+
+2. Determine the sign of $f(x) - g(x)$ on each interval $[x_{i-1}, x_i]$.
+
+3. For $i = 1, \ldots, n$, let
+
+$$A_i = \begin{cases} \displaystyle\int_{x_{i-1}}^{x_i} (f(x) - g(x))\, dx, & \text{if } f(x) \geq g(x), \\[10pt] \displaystyle\int_{x_{i-1}}^{x_i} (g(x) - f(x))\, dx, & \text{if } g(x) \geq f(x). \end{cases}$$
+
+4. The area between the graphs of $f(x)$ and $g(x)$ is
+
+$$A = \int_a^b |f(x) - g(x)|\, dx = \sum_{i=1}^{n} A_i.$$
+
+> 📝 Note: The continuity of $f$ and $g$ is necessary for the algorithm.
+
+---
+
+## Section 4.4: Integration by Substitution
+
+### Integration by Substitution: Indefinite Integral
+
+#### Theorem
+
+If the integral is of the form
+
+$$\int f(u(x))\, u'(x)\, dx$$
+
+for some $u(x)$, then for **any** antiderivative $F$ of $f$,
+
+$$\int f(u(x))\, u'(x)\, dx = F(u(x)) + C.$$
+
+#### The $u$-substitution Technique
+
+Write $u'(x) = \frac{du}{dx}$; treat it as a fraction so $\frac{du}{dx}\, dx = du$. Then:
+
+$$\int f(u(x))\, \frac{du}{dx}\, dx = \int f(u)\, du = F(u) + C.$$
+
+#### Conditions
+
+- $u$ must be **differentiable** (on some interval).
+- $f$ must have an easily identified **antiderivative** and be **continuous** on the range of $u$.
+
+#### How to Apply
+
+1. **Identify** $u(x)$ by checking that the integrand contains the term $u'(x)$.
+2. **Identify** $f$ such that the integrand is $f(u(x))\, u'(x)$.
+3. **Find** an antiderivative $F$ of $f$.
+
+> 💡 **Memory trick:** Look for a function and its derivative sitting together in the integrand. The "inside" function is $u$, its derivative is the leftover factor.
+
+---
+
+### Integration by Substitution: Definite Integral
+
+#### Theorem
+
+If $u'$ is continuous on $[a, b]$ and $f$ is continuous on the range of $u$, then
+
+$$\int_a^b f(u(x))\, u'(x)\, dx = \int_{u(a)}^{u(b)} f(u)\, du.$$
+
+> ⚠️ **Warning:** When switching to $du$, the **limits change** from $x$-values to $u$-values! Evaluate $u(a)$ and $u(b)$ to get the new limits.
+
+---
+
+### Second Substitution
+
+Let $x = x(t)$ be a differentiable function of $t$. Then:
+
+$$\int f(x)\, dx = \int f(x(t)) \cdot \frac{dx}{dt}\, dt.$$
+
+> 📝 Note: This is the "reverse" direction — substituting $x$ in terms of a new variable $t$. Useful when the integrand has a form that simplifies under a specific substitution.
+
+---
+
+### Trigonometric Substitution
+
+For integrands involving square roots of quadratic expressions, use these substitutions:
+
+| Expression | Substitution | Identity Used | Simplification |
+|-----------|-------------|---------------|----------------|
+| $\sqrt{a^2 + x^2}$ | $x = a\tan\theta$ | $1 + \tan^2\theta = \sec^2\theta$ | $= a\sec\theta$ |
+| $\sqrt{a^2 - x^2}$ | $x = a\sin\theta$ | $1 - \sin^2\theta = \cos^2\theta$ | $= a\cos\theta$ |
+| $\sqrt{x^2 - a^2}$ | $x = a\sec\theta$ | $\sec^2\theta - 1 = \tan^2\theta$ | $= a\tan\theta$ |
+
+#### Right Triangle Diagrams
+
+**Case 1:** $\sqrt{a^2 + x^2}$ with $x = a\tan\theta$
+
+```
+        /|
+       / |
+  √(a²+x²) /  | x
+     /   |
+    /θ   |
+   /_____|
+      a
+```
+
+**Case 2:** $\sqrt{a^2 - x^2}$ with $x = a\sin\theta$
+
+```
+        /|
+       / |
+    a /  | x
+     /   |
+    /θ   |
+   /_____|
+    √(a²-x²)
+```
+
+**Case 3:** $\sqrt{x^2 - a^2}$ with $x = a\sec\theta$
+
+```
+        /|
+       / |
+    x /  | √(x²-a²)
+     /   |
+    /θ   |
+   /_____|
+      a
+```
+
+> 💡 **Memory trick:** Match the square root pattern to the triangle:
+> - $a^2 + x^2$: $a$ and $x$ are legs → hypotenuse = $\sqrt{a^2+x^2}$ → $x = a\tan\theta$
+> - $a^2 - x^2$: $a$ is hypotenuse, $x$ is leg → other leg = $\sqrt{a^2-x^2}$ → $x = a\sin\theta$
+> - $x^2 - a^2$: $x$ is hypotenuse, $a$ is leg → other leg = $\sqrt{x^2-a^2}$ → $x = a\sec\theta$
+
+---
+
+### Quick Reference
+
+| Technique | When to Use | Key Step |
+|-----------|-------------|----------|
+| $u$-sub (basic) | See $f(u(x)) \cdot u'(x)$ in integrand | Let $u = $ inside function, $du = u'(x)\,dx$ |
+| $u$-sub (definite) | Same, but with limits | Change limits: $a \to u(a)$, $b \to u(b)$ |
+| Second substitution | Need to introduce new variable | $x = x(t)$, $dx = \frac{dx}{dt}\,dt$ |
+| Trig sub: $\sqrt{a^2+x^2}$ | Sum under root | $x = a\tan\theta$ |
+| Trig sub: $\sqrt{a^2-x^2}$ | Difference (a first) under root | $x = a\sin\theta$ |
+| Trig sub: $\sqrt{x^2-a^2}$ | Difference (x first) under root | $x = a\sec\theta$ |
