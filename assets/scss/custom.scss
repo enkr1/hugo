@@ -31,7 +31,7 @@
  * - TOC, pagination, footer → their respective theme files
  * - Everything else that's component-specific
  *
- * Migration tracker (current: ~1051 lines, target: ~200):
+ * Migration tracker (current: ~802 lines, target: ~200):
  * [x] Categories tree → theme/partials/widgets.scss (saved ~200 lines)
  * [x] Scrollbar → theme/partials/base.scss (saved ~20 lines)
  * [x] Scroll-to-top button → theme/partials/sidebar.scss (saved ~50 lines)
@@ -44,6 +44,9 @@
  * [x] Fullpage nav → theme/partials/_fullpage-nav.scss (saved ~228 lines)
  * [x] Infinite scroll → theme/partials/_infinite-scroll.scss (saved ~91 lines)
  * [x] Right sidebar search → theme/partials/layout/search.scss (saved ~46 lines)
+ * [x] Grouped list → theme/partials/_grouped-list.scss (saved ~103 lines)
+ * [x] Code/syntax → theme/partials/_code.scss (saved ~97 lines)
+ * [x] Buttons → theme/partials/base.scss (saved ~49 lines)
  */
 
 /* ===========================================
@@ -338,104 +341,7 @@ html {
     }
 }
 
-/* ===========================================
-   CODE - Clean Minimal Style
-   =========================================== */
-
-.article-content code {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-code);
-    background: var(--code-background-color);
-    color: var(--code-text-color);
-    padding: 0.2em 0.4em;
-    border-radius: var(--radius-code-inline);
-    border: none;
-}
-
-.article-content pre {
-    code {
-        background: transparent;
-        padding: 0;
-        border: none;
-        font-size: var(--font-size-code);
-    }
-}
-
-.article-content .highlight {
-    background: var(--pre-background-color);
-    border-radius: var(--radius-code-block);
-    border-left: 3px solid var(--secondary);
-    padding: 1rem;
-    margin: 1.5rem 0;
-    overflow-x: auto;
-    max-width: 100%;
-    line-height: var(--line-height-snug);  // 1.4 - compact spacing for code
-
-    pre {
-        margin: 0;
-        padding: 0;
-        background: transparent;
-        white-space: pre-wrap;
-        word-break: break-word;
-        line-height: inherit;
-    }
-
-    code {
-        white-space: pre-wrap;
-        word-break: break-word;
-        line-height: inherit;
-    }
-
-    // Chroma syntax highlighter wrapper
-    .chroma {
-        // Line numbers table - research-backed fix for vertical spacing
-        .lntable {
-            border-spacing: 0;
-            padding: 0;
-            margin: 0;
-            border: 0;
-            width: auto;
-            overflow: auto;
-            display: block;  // Key: prevents table cell expansion
-
-            // Table cells - no padding, top-aligned
-            .lntd {
-                vertical-align: top;
-                padding: 0;
-                margin: 0;
-                border: 0;
-            }
-
-            // Code cell - full width, prevents overflow issues
-            .lntd + .lntd {
-                width: 100%;
-            }
-
-            // Line number elements - display:flex prevents height mismatch
-            .lnt,
-            .hl {
-                display: flex;
-                color: var(--text-tertiary);
-                padding-right: 1rem;
-                user-select: none;
-            }
-
-            // Code content inside table
-            pre {
-                margin: 0;
-                padding: 0;
-                line-height: var(--line-height-snug);  // 1.4 - compact
-            }
-        }
-
-        // Inline line numbers fallback (when lineNumbersInTable = false)
-        .ln {
-            color: var(--text-tertiary);
-            padding-right: 1rem;
-            user-select: none;
-        }
-    }
-}
+// Code/syntax highlighting → migrated to theme/partials/_code.scss
 
 /* ===========================================
    SIDEBAR
@@ -524,164 +430,9 @@ html {
     }
 }
 
-/* ===========================================
-   GROUPED LIST - Year/Month hierarchy (SSOT)
-   Used by: journals, posts
-   =========================================== */
+// Grouped list → migrated to theme/partials/_grouped-list.scss
 
-// Page header for grouped lists
-.section-header--grouped {
-    margin-bottom: 2.5rem;
-
-    .section-title {
-        font-family: var(--font-display);
-        font-size: var(--font-size-xl);
-        font-weight: var(--font-weight-semibold);
-        color: var(--card-text-color-main);
-    }
-}
-
-// Grouped list container
-.grouped-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-}
-
-.grouped-list__year {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.grouped-list__year-title {
-    font-family: var(--font-display);
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--card-text-color-main);
-    margin: 0;
-}
-
-.grouped-list__month {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.grouped-list__month-title {
-    font-family: var(--font-display);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--card-text-color-secondary);
-    margin: 1.2rem 0 0.5rem 0;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.grouped-list__entries {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.grouped-list__row {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    transition: color var(--transition-base);
-
-    time {
-        color: var(--card-text-color-secondary);
-        font-size: var(--font-size-sm);
-        font-family: var(--font-body);
-        flex: 0 0 2rem;
-        white-space: nowrap;
-    }
-
-    .separator {
-        color: var(--card-text-color-tertiary);
-    }
-
-    .title {
-        color: var(--card-text-color-main);
-        font-family: var(--font-display);
-        font-size: 2rem;
-        font-weight: var(--font-weight-medium);
-    }
-
-    .preview {
-        flex-basis: 100%;
-        color: var(--card-text-color-tertiary);
-        font-size: var(--font-size-sm);
-        line-height: var(--line-height-normal);
-        padding-left: 3rem;
-    }
-
-    &:hover {
-        .title {
-            color: var(--gold);
-        }
-
-        .preview {
-            color: var(--card-text-color-secondary);
-        }
-    }
-}
-
-/* ===========================================
-   BUTTONS - Gold hover, Fire click flash
-   =========================================== */
-
-button,
-.btn,
-input[type="submit"] {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-button);
-    padding: 0.4rem 1.2rem;
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-normal);
-    color: var(--text-secondary);
-    transition: border-color var(--transition-fast), color var(--transition-fast), font-weight var(--transition-fast);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-
-    &:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-        font-weight: var(--font-weight-medium);
-    }
-
-    // Fire flash on click (流年曦)
-    &:active {
-        box-shadow: inset 0 0 20px var(--dynamic-glow);
-    }
-}
-
-// Primary CTA - ONLY filled button (key conversion point)
-.btn-primary,
-.btn--primary,
-button[type="submit"].primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--accent-color-text);
-    font-weight: var(--font-weight-medium);
-
-    &:hover {
-        background: var(--accent-hover);
-        border-color: var(--accent-hover);
-        color: var(--accent-color-text);
-    }
-
-    &:active {
-        box-shadow: inset 0 0 30px var(--dynamic-glow);
-    }
-}
+// Buttons → migrated to theme/partials/base.scss
 
 /* ===========================================
    TABLES
