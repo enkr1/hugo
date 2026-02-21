@@ -8,16 +8,18 @@ tags:
   - "majority-element"
   - "boyer-moore"
   - "voting-algorithm"
+  - "counting"
 categories:
   - ["Software Engineering", "Data Structures & Algorithms"]
 subtitle: "Efficient Majority Element Detection using Boyer-Moore Voting Algorithm"
-description: "Discover the Boyer-Moore Voting Algorithm, an efficient method to find the majority element in a linear time and constant space solution. This guide includes a step-by-step explanation and JavaScript implementation."
+description: "Boyer-Moore Voting Algorithm explained with a simple analogy, JavaScript implementation, and step-by-step walkthroughs for finding the majority element in O(n) time and O(1) space."
 keywords:
   - "Boyer-Moore Voting Algorithm"
   - "Majority Element"
   - "Algorithm notes"
   - "JavaScript majority element"
   - "Efficient algorithms"
+  - "Boyer-Moore"
 ---
 
 ## What is Boyer-Moore Voting Algorithm?
@@ -140,6 +142,10 @@ Step 4: (nums[4] = 6)
 
 Final candidate: 6 (Majority element)
 ```
+
+## See Also
+
+- [Boyer-Moore String Search]({{< ref "algo-boyer-moore-string-search" >}}) — same inventors, different algorithm (substring matching instead of majority element)
 
 ## References
 - [LeetCode: 169. Majority Element](https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150)

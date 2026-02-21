@@ -472,7 +472,22 @@ for i in range(len(text)):
 
 ### 4.4 Boyer-Moore String Search (Bad Character Heuristic)
 
-Uses **adaptive jumps** to skip unnecessary comparisons (faster than brute force):
+> **Deep dive:** [Boyer-Moore String Search: Adaptive Substring Matching]({{< ref "algo-boyer-moore-string-search" >}})
+
+Uses **adaptive jumps** to skip unnecessary comparisons (faster than brute force).
+
+**Core idea:** Compare pattern **right-to-left** (from `pat[K-1]` down to `pat[0]`). On mismatch, use the bad character's position in the pattern to calculate how far to shift — skipping more than one position at a time.
+
+**Two indices to track:**
+
+| Variable | Meaning | Range |
+|----------|---------|-------|
+| `start` (or `i`) | Where pattern is aligned in text | `0` to `N - K` |
+| `j` | Which pattern character we're comparing | `K-1` down to `0` |
+
+Comparison: `text[start + j]` vs `pat[j]`
+
+#### Version 1: Iterative (while loops)
 
 ```python
 def boyer_moore(text: str, pat: str) -> int:
@@ -484,14 +499,14 @@ def boyer_moore(text: str, pat: str) -> int:
     # 2. Search with adaptive jumps
     i = 0
     while i <= len(text) - len(pat):
-        j = 0
-        while j < len(pat) and text[i + j] == pat[j]:
-            j += 1
+        j = len(pat) - 1  # Start from rightmost char
+        while j >= 0 and text[i + j] == pat[j]:
+            j -= 1
 
-        if j == len(pat):
+        if j < 0:
             return i  # Full match!
 
-        # Mismatch: compute shift
+        # Mismatch at pattern index j
         bad_char = text[i + j]
         idx = last.get(bad_char, -1)
         if idx == -1:
@@ -502,14 +517,59 @@ def boyer_moore(text: str, pat: str) -> int:
     return -1
 ```
 
+#### Version 2: Recursive (no loops — T04 Q8)
+
+```python
+def compute_shift(j: int, bad_char: str, last: dict) -> int:
+    """j = pattern index of mismatch, bad_char = text char at that position."""
+    idx = last.get(bad_char, -1)
+    if idx == -1:
+        return j + 1
+    shift = j - idx
+    if shift < 1:
+        shift = 1
+    return shift
+
+def find_jump(text: str, pat: str) -> int:
+    N, K = len(text), len(pat)
+
+    def build_last(i, m):
+        if i >= K: return m
+        m[pat[i]] = i
+        return build_last(i + 1, m)
+
+    last = build_last(0, {})
+
+    def find_pattern(start):
+        if start + K > N: return -1  # Pattern can't fit
+
+        def compare(j):
+            """Right-to-left comparison. Returns -1 if all match, else mismatch index."""
+            if j < 0: return -1
+            if text[start + j] != pat[j]: return j
+            return compare(j - 1)
+
+        diff = compare(K - 1)
+        if diff == -1:
+            return start  # Full match!
+
+        shift = compute_shift(diff, text[start + diff], last)
+        return find_pattern(start + shift)
+
+    return find_pattern(0)
+```
+
 **Why it's faster:**
 - Bad char not in pattern → jump entire pattern length
 - Bad char in pattern → align its last occurrence
 
 **Common mistakes:**
+- **One index for two things:** `j` is pattern index, text position is `start + j` — don't mix them
+- **Return value ambiguity:** `compare` returning `0` could mean "all matched" or "mismatch at index 0" — use `-1` for "all matched"
+- **Boundary check:** `start >= N` is not enough — need `start + K > N` (pattern tail overflows)
+- **compute_shift args:** First arg is `j` (pattern index), not text position. Second arg is `text[start + j]` (the actual mismatching character)
+- **Shift vs position:** `compute_shift` returns a shift amount, not an absolute position — next start = `start + shift`
 - Variable name collision: `for i, c in enumerate(pat)` overwrites outer `i`
-- Wrong parameter to shift: pass `j` (pattern index), not `i` (text position)
-- Wrong slice: `text[i:i+K]` for K-length slice, NOT `text[i:K+1]`
 
 > **Not a sliding window!** Boyer-Moore jumps vary in size — it's a two-pointer pattern.
 
