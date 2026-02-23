@@ -1237,3 +1237,166 @@ For integrands involving square roots of quadratic expressions, use these substi
 | Trig sub: $\sqrt{a^2+x^2}$ | Sum under root | $x = a\tan\theta$ |
 | Trig sub: $\sqrt{a^2-x^2}$ | Difference (a first) under root | $x = a\sin\theta$ |
 | Trig sub: $\sqrt{x^2-a^2}$ | Difference (x first) under root | $x = a\sec\theta$ |
+
+---
+
+## Section 4.5: The Natural Logarithm and Exponential Function
+
+> This section constructs $\ln x$ and $e^x$ rigorously from integration, avoiding circular definitions.
+
+### Motivation
+
+The natural logarithm $\ln x$ and the exponential function $e^x$ are usually introduced as inverse functions. With the **Fundamental Theorem of Calculus** and **Integration by Substitution**, we can now construct these functions from first principles using a definite integral.
+
+This approach:
+- Defines $\ln x$ as a definite integral (no circular reasoning)
+- Derives the constant $e$ intrinsically
+- Rigorously establishes that $e^x$ is the inverse of $\ln x$
+
+---
+
+### Definition of the Natural Logarithm
+
+#### Definition
+
+For $x > 0$, the **natural logarithm** is defined by:
+
+$$\ln(x) = \int_1^x \frac{1}{t} \, dt$$
+
+Since $\frac{1}{t}$ is continuous on $(0, \infty)$, the integral exists for all $x > 0$, so $\ln x$ is well-defined.
+
+#### Geometric Interpretation
+
+$\ln(x)$ represents the **signed area** under the curve $y = \frac{1}{t}$ from $t = 1$ to $t = x$:
+
+```
+    y
+    │
+  1 ┤─╲
+    │   ╲       y = 1/t
+    │    ╲╲
+    │     ╲╲╲╲╲╲╲╲
+  0 ┤──────┼────────── t
+    0      1    x
+           ├────┤
+           ln(x) = shaded area
+```
+
+- If $x > 1$: area is **positive** (integrating rightward from 1)
+- If $0 < x < 1$: area is **negative** (integrating leftward from 1)
+
+#### Special Value
+
+By the zero-width interval property:
+
+$$\ln(1) = \int_1^1 \frac{1}{t} \, dt = 0$$
+
+---
+
+### Derivative of the Natural Logarithm
+
+By the **Fundamental Theorem of Calculus** (FTC I):
+
+$$\frac{d}{dx} \ln(x) = \frac{d}{dx} \int_1^x \frac{1}{t} \, dt = \frac{1}{x}, \quad x > 0$$
+
+#### Extension to $|x|$
+
+Consider $u(x) = |x|$. For all $x \neq 0$, $u(x)$ is differentiable and:
+
+$$\frac{d}{dx} |x| = \frac{x}{|x|}$$
+
+Applying the chain rule:
+
+$$\frac{d}{dx} \ln|x| = \frac{d}{du} \ln(u) \cdot \frac{du}{dx} = \frac{1}{u} \cdot \frac{x}{|x|} = \frac{1}{|x|} \cdot \frac{x}{|x|} = \frac{1}{x}$$
+
+Hence:
+
+$$\boxed{\int \frac{1}{x} \, dx = \ln|x| + C}$$
+
+> 📝 **Note:** This is why $\int \frac{1}{x}\,dx$ uses $\ln|x|$ (with absolute value), not just $\ln x$ — it extends the antiderivative to $x < 0$.
+
+---
+
+### The Logarithmic Power Rule
+
+#### Theorem (Power Rule for the Natural Logarithm)
+
+For any real number $k$ and $x > 0$:
+
+$$\ln(x^k) = k \ln(x)$$
+
+#### Proof
+
+Starting from the definition:
+
+$$\ln(x^k) = \int_1^{x^k} \frac{1}{t} \, dt$$
+
+Let $t = u^k$. Then $dt = ku^{k-1} \, du$.
+
+When $t = 1$: $u = 1$. When $t = x^k$: $u = x$. Thus:
+
+$$\ln(x^k) = \int_1^x \frac{1}{u^k} \cdot ku^{k-1} \, du = k \int_1^x \frac{1}{u} \, du = k \ln(x)$$
+
+> ⚠️ **Warning:** This definition-based proof does **not** immediately imply the usual logarithmic laws (product rule, quotient rule). Those require separate derivation.
+
+---
+
+### Definition of the Number $e$
+
+#### Definition
+
+The **natural number** $e$ is defined to be the unique number satisfying:
+
+$$\ln(e) = \int_1^e \frac{1}{t} \, dt = 1$$
+
+Thus, $e$ is the number for which the area under $y = \frac{1}{t}$ from $t = 1$ to $t = e$ is **exactly one square unit**.
+
+```
+    y
+    │
+  1 ┤─╲
+    │  ╲╲╲  area = 1
+    │   ╲╲╲╲╲
+  0 ┤────┼──┼──── t
+    0    1  e≈2.718
+```
+
+---
+
+### The Exponential Function as the Inverse of $\ln(x)$
+
+Since $\frac{1}{t}$ is positive and continuous on $(0, \infty)$, the function:
+
+$$\ln(x) = \int_1^x \frac{1}{t} \, dt$$
+
+is **continuous and strictly increasing** on $(0, \infty)$. Its range is $(-\infty, \infty)$, so it is **injective** and possesses an inverse function, denoted $\ln^{-1}(x)$.
+
+#### Establishing $e^x = \ln^{-1}(x)$
+
+Using the power rule for the natural logarithm, for any real $x$:
+
+$$\ln(e^x) = x \ln(e) = x$$
+
+since $\ln(e) = 1$ by definition. Applying the inverse of $\ln$ to both sides gives:
+
+$$e^x = \ln^{-1}(x)$$
+
+Therefore, the exponential function $e^x$ is the **inverse** of the natural logarithm $\ln x$. By **uniqueness of inverse functions**, this also shows:
+
+$$\ln x = \log_e x$$
+
+---
+
+### Quick Reference
+
+| Result | Formula | Source |
+|--------|---------|--------|
+| Definition of $\ln x$ | $\ln(x) = \int_1^x \frac{1}{t}\,dt$ | Definite integral construction |
+| Derivative of $\ln x$ | $\frac{d}{dx}\ln(x) = \frac{1}{x}$ | FTC I applied to definition |
+| Derivative of $\ln\|x\|$ | $\frac{d}{dx}\ln\|x\| = \frac{1}{x}$ | Chain rule extension |
+| Antiderivative of $\frac{1}{x}$ | $\int \frac{1}{x}\,dx = \ln\|x\| + C$ | From derivative of $\ln\|x\|$ |
+| Logarithmic power rule | $\ln(x^k) = k\ln(x)$ | $u$-substitution proof |
+| Definition of $e$ | $\ln(e) = 1$ | Area under $1/t$ from 1 to $e$ |
+| Inverse relationship | $e^x = \ln^{-1}(x)$ | $\ln(e^x) = x$ |
+
+> 💡 **Memory trick:** "$e$ is the number whose $\ln$ is 1" — it's defined by the integral, not the other way around. This avoids circular reasoning.
