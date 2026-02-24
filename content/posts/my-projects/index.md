@@ -1,20 +1,10 @@
 ---
-title: "Innovative Portfolio: A Journey Through Software and Technology"
+title: "Project Portfolio"
 date: 2024-05-17 03:18:36
 tags:
-  - "project-portfolio"
+  - "portfolio"
   - "software-development"
-  - "technology-projects"
-  - "mobile-app-development"
   - "web-development"
-  - "ui-ux-design"
-  # - "react-projects"
-  # - "machine-learning"
-  # - "enterprise-software"
-  - "innovative-solutions"
-  - "tech-portfolio"
-  - "professional-projects"
-  - "creative-technology"
   - "full-stack-development"
 categories:
   - ["Software Engineering", "Projects"]

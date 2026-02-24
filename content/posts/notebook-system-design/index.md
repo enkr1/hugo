@@ -1,12 +1,15 @@
 ---
 title: "System Design Notebook"
-sticky: 500
 date: 2025-05-03 19:53:44
 subtitle: "System Design Notebook"
-description: "A notebook for system design"
+description: "A living notebook for system design interview preparation — frameworks, mental models, baseline numbers, and practice protocols."
 keywords:
+  - "system design interview"
+  - "system design framework"
 tags:
   - "system-design"
+  - "notebook"
+  - "interview"
 categories:
   - ["Software Engineering", "System Design"]
   - ["Notebooks"]

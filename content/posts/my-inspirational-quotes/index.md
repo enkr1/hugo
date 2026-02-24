@@ -16,7 +16,6 @@ keywords:
   - "personal growth"
   - "self-guidance"
   - "philosophy in daily life"
-sticky: 3
 ---
 
 

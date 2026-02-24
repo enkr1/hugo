@@ -1,6 +1,5 @@
 ---
 title: "Why Do I Love Beatboxing?"
-sticky: 1
 date: 2024-11-05 01:50:52
 tags:
   - "journal"

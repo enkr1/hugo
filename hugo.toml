@@ -133,20 +133,20 @@ weight = 2
 icon = 'user'
 
 [[menu.main]]
-identifier = 'categories'
-name = 'Categories'
-url = '/categories/'
-weight = 3
-[menu.main.params]
-icon = 'categories'
-
-[[menu.main]]
 identifier = 'journals'
 name = 'Journals'
 url = '/journals/'
-weight = 4
+weight = 3
 [menu.main.params]
 icon = 'journal'
+
+[[menu.main]]
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
+weight = 4
+[menu.main.params]
+icon = 'categories'
 
 [[menu.main]]
 identifier = 'platforms'
