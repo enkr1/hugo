@@ -158,6 +158,19 @@ Workflow: `.github/workflows/hugo.yml`
 
 ---
 
+## Email Subscription
+
+Subscribers enter email on article pages → stored in Google Sheets via Apps Script.
+
+- **Google Sheet**: https://docs.google.com/spreadsheets/d/1cwAGBYdaOfSHDkkBtr2PEZoP9GxIQVEB1aPNaT_73kg/edit
+- **Apps Script project**: Hugo Blog v1 (attached to the Sheet via Extensions → Apps Script)
+- **Form partial**: `layouts/partials/article/components/subscribe.html`
+- **Placement**: between related-content and comments (posts + journals)
+- **Anti-spam**: time-based bot detection (< 3s) + email validation + rate limit (60s) + dedup
+- **Updating Apps Script**: Deploy → Manage deployments → pencil icon → Version: New version → Deploy (keeps same URL)
+
+---
+
 ## NUS-Related Content
 
 When creating posts about NUS BIT coursework:
