@@ -1,0 +1,82 @@
+{{/* Email subscription form — between related content and comments */}}
+<div class="subscribe-form" id="subscribe-form">
+    <h2 class="subscribe-form__title">Stay in the loop</h2>
+    <p class="subscribe-form__desc">Join the mailing list. You'll hear from me when something worth reading goes live.</p>
+
+    <form class="subscribe-form__form" id="subscribe-form-el" autocomplete="off">
+        <div class="subscribe-form__fields">
+            <input
+                type="email"
+                name="email"
+                class="subscribe-form__input subscribe-form__input--email"
+                placeholder="your@email.com"
+                required
+                aria-label="Email address"
+            />
+            <input
+                type="text"
+                name="name"
+                class="subscribe-form__input subscribe-form__input--name"
+                placeholder="Name (optional)"
+                aria-label="Name"
+            />
+            <button type="submit" class="subscribe-form__btn" id="subscribe-btn">
+                <span class="subscribe-form__btn-text">Subscribe</span>
+                <span class="subscribe-form__btn-loading" hidden>Sending...</span>
+            </button>
+        </div>
+    </form>
+
+    <div class="subscribe-form__feedback" id="subscribe-feedback" hidden></div>
+</div>
+
+<script>
+(function() {
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwEzLvqwcJL5aWI0q8qqTH9Ozn9bJOEhAw72zIKe6fVxI7pRWGMf43N-2vSTnHC5jjOOA/exec';
+    var form = document.getElementById('subscribe-form-el');
+    var btn = document.getElementById('subscribe-btn');
+    var feedback = document.getElementById('subscribe-feedback');
+    var btnText = btn.querySelector('.subscribe-form__btn-text');
+    var btnLoading = btn.querySelector('.subscribe-form__btn-loading');
+    var loadTime = Date.now();
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Anti-bot: humans need at least 3 seconds to fill a form
+        var isBot = (Date.now() - loadTime) < 3000;
+
+        var email = form.email.value.trim();
+        var name = form.name.value.trim();
+        // Disable button, show loading
+        btn.disabled = true;
+        btnText.hidden = true;
+        btnLoading.hidden = false;
+        feedback.hidden = true;
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({ email: email, name: name, website: isBot ? 'bot' : '' })
+        })
+        .then(function() {
+            // no-cors: can't read response, show optimistic success
+            feedback.textContent = "You're in! Thanks for subscribing.";
+            feedback.className = 'subscribe-form__feedback subscribe-form__feedback--ok';
+            feedback.hidden = false;
+            form.hidden = true;
+        })
+        .catch(function() {
+            feedback.textContent = 'Something went wrong. Please try again.';
+            feedback.className = 'subscribe-form__feedback subscribe-form__feedback--error';
+            feedback.hidden = false;
+        })
+        .finally(function() {
+            btn.disabled = false;
+            btnText.hidden = false;
+            btnLoading.hidden = true;
+        });
+    });
+})();
+</script>
