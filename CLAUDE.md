@@ -142,6 +142,12 @@ Push to `main` → GitHub Actions builds with `hugo --gc --minify` → deploys t
 
 Workflow: `.github/workflows/hugo.yml`
 
+## Gotchas
+
+- **Future dates**: Hugo skips posts with `date` in the future. Always check `date` output before setting frontmatter date. Use a time earlier than current time, or run `hugo server --buildFuture`.
+- **Date correctness**: Always verify the creation date is accurate before writing. Run `date '+%Y-%m-%dT%H:%M:%S%z'` to get the correct timestamp. Never guess the date/time.
+- **enableGitInfo = true**: `.Lastmod` comes from git. New uncommitted files won't have a last-modified date.
+
 ## Key Configuration (hugo.toml)
 
 - Main sections: `['posts', 'journals']` (both on homepage)
