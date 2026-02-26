@@ -43,6 +43,8 @@
     {{/* Mobile TOC - bottom-left floating button + bottom sheet */}}
     {{ partial "sidebar/toc-mobile.html" . }}
 
+    {{ partial "subscribe-popup" . }}
+
     {{ partialCached "article/components/photoswipe" . }}
     {{ partialCached "article/components/mermaid" . }}
 {{ end }}
