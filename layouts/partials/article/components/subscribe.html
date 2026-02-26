@@ -92,6 +92,7 @@
         })
         .then(function() {
             // no-cors: can't read response, show optimistic success
+            localStorage.setItem('blog_subscribed', 'true');
             feedback.textContent = "You're in! Thanks for subscribing.";
             feedback.className = 'subscribe-form__feedback subscribe-form__feedback--ok';
             feedback.hidden = false;

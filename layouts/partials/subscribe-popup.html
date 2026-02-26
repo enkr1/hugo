@@ -32,3 +32,115 @@
 
     <div class="subscribe-popup__feedback" id="subscribe-popup-feedback" hidden></div>
 </div>
+
+<script>
+(function() {
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwEzLvqwcJL5aWI0q8qqTH9Ozn9bJOEhAw72zIKe6fVxI7pRWGMf43N-2vSTnHC5jjOOA/exec';
+    var DISMISS_DAYS = 7;
+    var SCROLL_THRESHOLD = 50;
+    var TIME_THRESHOLD = 120000; // 2 minutes
+    var BOT_THRESHOLD = 3000;
+
+    // ── Gate checks ──
+    if (localStorage.getItem('blog_subscribed')) return;
+
+    var dismissed = localStorage.getItem('subscribe_popup_dismissed');
+    if (dismissed && (Date.now() - Number(dismissed)) < DISMISS_DAYS * 24 * 60 * 60 * 1000) return;
+
+    // ── DOM refs ──
+    var popup = document.getElementById('subscribe-popup');
+    var closeBtn = document.getElementById('subscribe-popup-close');
+    var form = document.getElementById('subscribe-popup-form');
+    var feedback = document.getElementById('subscribe-popup-feedback');
+    if (!popup || !form) return;
+
+    var loadTime = Date.now();
+    var maxScroll = 0;
+    var shown = false;
+
+    // ── Engagement tracking ──
+    function checkEngagement() {
+        if (shown) return;
+        var timeOk = (Date.now() - loadTime) >= TIME_THRESHOLD;
+        if (timeOk && maxScroll >= SCROLL_THRESHOLD) {
+            shown = true;
+            popup.classList.add('subscribe-popup--visible');
+            window.removeEventListener('scroll', onScroll);
+        }
+    }
+
+    function onScroll() {
+        var scrolled = window.scrollY + window.innerHeight;
+        var total = document.documentElement.scrollHeight;
+        var pct = Math.round((scrolled / total) * 100);
+        if (pct > maxScroll) maxScroll = pct;
+        checkEngagement();
+    }
+
+    window.addEventListener('scroll', onScroll);
+    // Check time periodically (user may have scrolled past 50% already)
+    var timeCheck = setInterval(function() {
+        if (shown) { clearInterval(timeCheck); return; }
+        checkEngagement();
+    }, 5000);
+
+    // ── Hide popup ──
+    function hidePopup() {
+        popup.classList.remove('subscribe-popup--visible');
+    }
+
+    // ── Close button ──
+    closeBtn.addEventListener('click', function() {
+        localStorage.setItem('subscribe_popup_dismissed', String(Date.now()));
+        hidePopup();
+        clearInterval(timeCheck);
+    });
+
+    // ── Form submit ──
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var isBot = (Date.now() - loadTime) < BOT_THRESHOLD;
+        var email = form.email.value.trim();
+        var submitBtn = form.querySelector('.subscribe-popup__submit');
+
+        submitBtn.disabled = true;
+        feedback.hidden = true;
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({
+                email: email,
+                page_url: window.location.href,
+                page_title: document.title,
+                referrer: document.referrer || '(direct)',
+                device: 'desktop',
+                screen: window.innerWidth + 'x' + window.innerHeight,
+                time_on_page: Math.round((Date.now() - loadTime) / 1000),
+                locale: navigator.language || '',
+                scroll_depth: maxScroll,
+                source: 'popup',
+                website: isBot ? 'bot' : ''
+            })
+        })
+        .then(function() {
+            localStorage.setItem('blog_subscribed', 'true');
+            feedback.textContent = "You're in! Thanks for subscribing.";
+            feedback.className = 'subscribe-popup__feedback subscribe-popup__feedback--ok';
+            feedback.hidden = false;
+            form.hidden = true;
+            clearInterval(timeCheck);
+        })
+        .catch(function() {
+            feedback.textContent = 'Something went wrong. Please try again.';
+            feedback.className = 'subscribe-popup__feedback subscribe-popup__feedback--error';
+            feedback.hidden = false;
+        })
+        .finally(function() {
+            submitBtn.disabled = false;
+        });
+    });
+})();
+</script>
