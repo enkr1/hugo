@@ -13,14 +13,9 @@
                 required
                 aria-label="Email address"
             />
-            <input
-                type="text"
-                name="name"
-                class="subscribe-form__input subscribe-form__input--name"
-                placeholder="Name (optional)"
-                aria-label="Name"
-            />
         </div>
+        <input type="hidden" name="page_url" value="{{ .Permalink }}" />
+        <input type="hidden" name="page_title" value="{{ .Title }}" />
         <button type="submit" class="subscribe-form__btn" id="subscribe-btn">
             <span class="subscribe-form__btn-text">Subscribe</span>
             <span class="subscribe-form__btn-loading" hidden>Sending...</span>
@@ -40,6 +35,23 @@
     var btnLoading = btn.querySelector('.subscribe-form__btn-loading');
     var loadTime = Date.now();
 
+    // Track max scroll depth
+    var maxScroll = 0;
+    window.addEventListener('scroll', function() {
+        var scrolled = window.scrollY + window.innerHeight;
+        var total = document.documentElement.scrollHeight;
+        var pct = Math.round((scrolled / total) * 100);
+        if (pct > maxScroll) maxScroll = pct;
+    });
+
+    // Parse UTM params
+    var params = new URLSearchParams(window.location.search);
+    var utm = {
+        source: params.get('utm_source') || '',
+        medium: params.get('utm_medium') || '',
+        campaign: params.get('utm_campaign') || ''
+    };
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -47,7 +59,11 @@
         var isBot = (Date.now() - loadTime) < 3000;
 
         var email = form.email.value.trim();
-        var name = form.name.value.trim();
+        var pageUrl = form.page_url.value;
+        var pageTitle = form.page_title.value;
+        var timeOnPage = Math.round((Date.now() - loadTime) / 1000);
+        var isMobile = window.innerWidth <= 768;
+
         // Disable button, show loading
         btn.disabled = true;
         btnText.hidden = true;
@@ -58,7 +74,21 @@
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify({ email: email, name: name, website: isBot ? 'bot' : '' })
+            body: JSON.stringify({
+                email: email,
+                page_url: pageUrl,
+                page_title: pageTitle,
+                referrer: document.referrer || '(direct)',
+                device: isMobile ? 'mobile' : 'desktop',
+                screen: window.innerWidth + 'x' + window.innerHeight,
+                time_on_page: timeOnPage,
+                locale: navigator.language || '',
+                scroll_depth: maxScroll,
+                utm_source: utm.source,
+                utm_medium: utm.medium,
+                utm_campaign: utm.campaign,
+                website: isBot ? 'bot' : ''
+            })
         })
         .then(function() {
             // no-cors: can't read response, show optimistic success
