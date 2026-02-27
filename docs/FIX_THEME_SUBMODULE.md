@@ -19,7 +19,7 @@ git clone https://github.com/enkr1/hugo-theme-enkr.git
 
 ```bash
 # Copy modified files (check git diff for what changed)
-cp -r /Users/enkr/Personal/journal-app/hugo/themes/stack/* /Users/enkr/Personal/hugo-theme-enkr/
+cp -r /Users/enkr/Personal/_web/journal-app/hugo/themes/stack/* /Users/enkr/Personal/_web/hugo-theme-enkr/
 
 # Or selectively copy only changed files:
 # - assets/scss/grid.scss
@@ -31,7 +31,7 @@ cp -r /Users/enkr/Personal/journal-app/hugo/themes/stack/* /Users/enkr/Personal/
 ### 3. Commit and push changes to hugo-theme-enkr
 
 ```bash
-cd /Users/enkr/Personal/hugo-theme-enkr
+cd /Users/enkr/Personal/_web/hugo-theme-enkr
 git add .
 git commit -m "sync: merge customizations from blog repo"
 git push origin main
@@ -40,7 +40,7 @@ git push origin main
 ### 4. Remove broken submodule from main repo
 
 ```bash
-cd /Users/enkr/Personal/journal-app/hugo
+cd /Users/enkr/Personal/_web/journal-app/hugo
 
 # Remove submodule entry from .gitmodules
 git config -f .gitmodules --remove-section submodule.themes/stack
@@ -65,7 +65,7 @@ git commit -m "chore: remove broken theme submodule"
 ### 5. Re-add submodule with proper link
 
 ```bash
-cd /Users/enkr/Personal/journal-app/hugo
+cd /Users/enkr/Personal/_web/journal-app/hugo
 
 git submodule add https://github.com/enkr1/hugo-theme-enkr.git themes/stack
 git commit -m "chore: re-add theme as proper submodule"
@@ -90,13 +90,13 @@ After fixing, theme updates work like this:
 
 ```bash
 # Make changes in theme repo
-cd /Users/enkr/Personal/hugo-theme-enkr
+cd /Users/enkr/Personal/_web/hugo-theme-enkr
 # edit files...
 git add . && git commit -m "feat: add feature"
 git push
 
 # Update submodule in blog repo
-cd /Users/enkr/Personal/journal-app/hugo
+cd /Users/enkr/Personal/_web/journal-app/hugo
 git submodule update --remote themes/stack
 git add themes/stack
 git commit -m "chore: update theme submodule"
