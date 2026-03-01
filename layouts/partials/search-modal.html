@@ -90,12 +90,6 @@
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Decode HTML entities (e.g. &rsquo; → ', &mdash; → —)
-    const decodeEl = document.createElement('textarea');
-    function decodeEntities(str) {
-        decodeEl.innerHTML = str;
-        return decodeEl.value;
-    }
 
     // Search function
     async function search(query) {
@@ -166,17 +160,14 @@
                 '<mark>$1</mark>'
             );
 
-            // Build text fragment for scroll-to-match
-            const rawSnippet = matchIdx >= 0
-                ? content.slice(matchIdx, matchIdx + Math.min(query.length + 40, 80)).trim()
-                : '';
-            const fragment = rawSnippet
-                ? '#:~:text=' + encodeURIComponent(decodeEntities(rawSnippet))
+            // Build highlight param for scroll-to-match
+            const highlight = matchIdx >= 0
+                ? '?highlight=' + encodeURIComponent(query)
                 : '';
 
             return `
             <li class="search-modal-result" data-index="${idx}">
-                <a href="${item.permalink}${fragment}">
+                <a href="${item.permalink}${highlight}">
                     <span class="search-modal-result-title">${title}</span>
                     <span class="search-modal-result-preview">${preview}</span>
                 </a>

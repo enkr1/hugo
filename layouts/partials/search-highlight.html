@@ -1,0 +1,45 @@
+<script>
+(function() {
+    const param = new URLSearchParams(window.location.search).get('highlight');
+    if (!param) return;
+
+    // Clean URL without reload
+    history.replaceState(null, '', window.location.pathname + window.location.hash);
+
+    const query = param.toLowerCase();
+    const article = document.querySelector('.article-content');
+    if (!article) return;
+
+    // Walk text nodes and wrap matches in <mark>
+    const walker = document.createTreeWalker(article, NodeFilter.SHOW_TEXT);
+    const matches = [];
+
+    while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const idx = node.textContent.toLowerCase().indexOf(query);
+        if (idx >= 0) matches.push({ node, idx });
+    }
+
+    if (matches.length === 0) return;
+
+    // Highlight all matches
+    const marks = [];
+    for (const { node, idx } of matches) {
+        const range = document.createRange();
+        range.setStart(node, idx);
+        range.setEnd(node, idx + query.length);
+        const mark = document.createElement('mark');
+        mark.className = 'search-highlight';
+        range.surroundContents(mark);
+        marks.push(mark);
+    }
+
+    // Scroll to first match
+    marks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Fade out highlights after 3s
+    setTimeout(() => {
+        marks.forEach(m => m.classList.add('search-highlight--fade'));
+    }, 3000);
+})();
+</script>
