@@ -90,6 +90,13 @@
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    // Decode HTML entities (e.g. &rsquo; → ', &mdash; → —)
+    const decodeEl = document.createElement('textarea');
+    function decodeEntities(str) {
+        decodeEl.innerHTML = str;
+        return decodeEl.value;
+    }
+
     // Search function
     async function search(query) {
         if (!query || query.length < 2) {
@@ -160,11 +167,11 @@
             );
 
             // Build text fragment for scroll-to-match
-            const textSnippet = matchIdx >= 0
+            const rawSnippet = matchIdx >= 0
                 ? content.slice(matchIdx, matchIdx + Math.min(query.length + 40, 80)).trim()
                 : '';
-            const fragment = textSnippet
-                ? '#:~:text=' + encodeURIComponent(textSnippet)
+            const fragment = rawSnippet
+                ? '#:~:text=' + encodeURIComponent(decodeEntities(rawSnippet))
                 : '';
 
             return `
