@@ -90,6 +90,10 @@
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    // Escape HTML to prevent XSS when injecting into innerHTML
+    function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
     // Search function
     async function search(query) {
@@ -146,28 +150,26 @@
                 const start = Math.max(0, matchIdx - 60);
                 const end = Math.min(content.length, matchIdx + query.length + 120);
                 preview = (start > 0 ? '...' : '') +
-                          content.slice(start, end).replace(
+                          escapeHtml(content.slice(start, end)).replace(
                               new RegExp(`(${escaped})`, 'gi'),
                               '<mark>$1</mark>'
                           ) +
                           (end < content.length ? '...' : '');
             } else {
-                preview = content.slice(0, 180) + (content.length > 180 ? '...' : '');
+                preview = escapeHtml(content.slice(0, 180)) + (content.length > 180 ? '...' : '');
             }
 
-            const title = item.title.replace(
+            const title = escapeHtml(item.title).replace(
                 new RegExp(`(${escaped})`, 'gi'),
                 '<mark>$1</mark>'
             );
 
-            // Build highlight param for scroll-to-match
-            const highlight = matchIdx >= 0
-                ? '?highlight=' + encodeURIComponent(query)
-                : '';
+            const permalink = escapeHtml(item.permalink);
+            const highlight = '?highlight=' + encodeURIComponent(query);
 
             return `
             <li class="search-modal-result" data-index="${idx}">
-                <a href="${item.permalink}${highlight}">
+                <a href="${permalink}${highlight}">
                     <span class="search-modal-result-title">${title}</span>
                     <span class="search-modal-result-preview">${preview}</span>
                 </a>

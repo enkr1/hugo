@@ -25,13 +25,17 @@
     // Highlight all matches
     const marks = [];
     for (const { node, idx } of matches) {
-        const range = document.createRange();
-        range.setStart(node, idx);
-        range.setEnd(node, idx + query.length);
-        const mark = document.createElement('mark');
-        mark.className = 'search-highlight';
-        range.surroundContents(mark);
-        marks.push(mark);
+        try {
+            const range = document.createRange();
+            range.setStart(node, idx);
+            range.setEnd(node, idx + query.length);
+            const mark = document.createElement('mark');
+            mark.className = 'search-highlight';
+            range.surroundContents(mark);
+            marks.push(mark);
+        } catch (e) {
+            // surroundContents throws if range spans element boundaries — skip
+        }
     }
 
     // Scroll to first match
