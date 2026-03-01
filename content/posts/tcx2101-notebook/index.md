@@ -1400,3 +1400,288 @@ $$\ln x = \log_e x$$
 | Inverse relationship | $e^x = \ln^{-1}(x)$ | $\ln(e^x) = x$ |
 
 > 💡 **Memory trick:** "$e$ is the number whose $\ln$ is 1" — it's defined by the integral, not the other way around. This avoids circular reasoning.
+
+---
+
+## Section 4.6: Integration by Parts
+
+### Motivation: Reversing the Product Rule
+
+Recall the **product rule** for differentiation:
+
+$$\frac{d}{dx}\big[u(x)\,v(x)\big] = u'(x)\,v(x) + u(x)\,v'(x)$$
+
+Integrate both sides with respect to $x$:
+
+$$u(x)\,v(x) = \int u'(x)\,v(x)\,dx + \int u(x)\,v'(x)\,dx$$
+
+Rearranging to isolate the second integral:
+
+$$\int u(x)\,v'(x)\,dx = u(x)\,v(x) - \int v(x)\,u'(x)\,dx$$
+
+This is **Integration by Parts (IBP)** — it trades one integral for another (hopefully simpler) one.
+
+### Integration by Parts: Indefinite Integral
+
+Let $u = u(x)$ and $v = v(x)$ be functions that are differentiable on an interval $I$, and suppose that their derivatives are continuous on $I$. Then, for all $x \in I$,
+
+$$\int u(x)\,v'(x)\,dx = u(x)\,v(x) - \int v(x)\,u'(x)\,dx + C$$
+
+where $C$ is a constant of integration.
+
+### Integration by Parts: Definite Integral
+
+Let $u = u(x)$ and $v = v(x)$ be functions that are differentiable on an interval containing $[a, b]$, and suppose that their derivatives are continuous on $[a, b]$. Then
+
+$$\int_a^b u(x)\,v'(x)\,dx = \Big[u(x)\,v(x)\Big]_a^b - \int_a^b v(x)\,u'(x)\,dx$$
+
+### Choosing $u$ and $v'$: The LIATE Rule
+
+The key decision in IBP is **which factor to differentiate ($u$) and which to integrate ($v'$)**. The **LIATE** mnemonic gives the priority order — choose $u$ from the highest-priority type:
+
+| Priority | Type | Examples | Why it should be $u$ |
+|----------|------|---------|---------------------|
+| 1 | **L**ogarithmic | $\ln(x)$, $\log(x)$ | Differentiates to algebraic ($1/x$); hard to integrate |
+| 2 | **I**nverse trigonometric | $\arctan(x)$, $\arcsin(x)$ | Differentiates to algebraic; hard to integrate |
+| 3 | **A**lgebraic | $x$, $x^2$, $x^n$ | Differentiating reduces degree |
+| 4 | **T**rigonometric | $\sin(x)$, $\cos(x)$ | Differentiation doesn't simplify |
+| 5 | **E**xponential | $e^x$, $2^x$ | Differentiation doesn't change it |
+
+> 💡 **Memory trick:** **L**ate **I**n **A**fternoon, **T**ea and **E**ggs — or just remember: **Log and Inverse trig always go first as $u$** because they simplify when differentiated but are painful to integrate.
+
+### Quick Reference
+
+| Formula | Version |
+|---------|---------|
+| Indefinite | $\int u\,v'\,dx = u\,v - \int v\,u'\,dx + C$ |
+| Definite | $\int_a^b u\,v'\,dx = [u\,v]_a^b - \int_a^b v\,u'\,dx$ |
+| Shorthand | $\int u\,dv = u\,v - \int v\,du$ |
+
+> ⚠️ **Watch out:** IBP sign errors are the #1 mistake. When $v$ carries a negative sign (e.g., $v' = \sin x \Rightarrow v = -\cos x$), the formula's subtraction creates a double negative. Write every step explicitly — don't combine signs in your head.
+
+---
+
+## Section 4.7: Integration of Rational Functions by Partial Fractions
+
+### What is a Rational Function?
+
+A **rational function** is a ratio of two polynomials:
+
+$$f(x) = \frac{p(x)}{q(x)}$$
+
+where $p(x)$ and $q(x)$ are polynomials.
+
+> ⚠️ **PF applicability:** Partial fractions **only** work on rational functions — both numerator and denominator must be polynomials. If you see $\sqrt{\phantom{x}}$, $\sin$, $e^x$ in the denominator, it is **not** a rational function and PF cannot be used.
+
+### Step 1: Proper or Improper?
+
+Before decomposing, check the degrees:
+
+| Condition | Type | Action |
+|-----------|------|--------|
+| $\deg(p) < \deg(q)$ | **Proper** | Proceed to partial fractions |
+| $\deg(p) \geq \deg(q)$ | **Improper** | Perform polynomial long division first |
+
+If improper, write as:
+
+$$f(x) = \frac{p_1(x)}{q_1(x)} + r(x)$$
+
+where $\deg(p_1) < \deg(q_1)$, then decompose the proper fraction $p_1/q_1$.
+
+### Step 2: Factor the Denominator
+
+Factor $q(x)$ completely into **linear** and **irreducible quadratic** factors:
+
+$$q(x) = (x - d_1)^{r_1} \cdots (x - d_k)^{r_k} (a_1 x^2 + b_1 x + c_1)^{s_1} \cdots (a_l x^2 + b_l x + c_l)^{s_l}$$
+
+### Step 3: Set Up the Decomposition
+
+#### Case 1: Distinct Linear Factors
+
+$$\frac{1}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b}$$
+
+Each linear factor gets a **constant** numerator.
+
+#### Case 2: Repeated Linear Factors
+
+$$\frac{1}{(x - d)^r} = \frac{A_1}{(x - d)} + \frac{A_2}{(x - d)^2} + \cdots + \frac{A_r}{(x - d)^r}$$
+
+Power $r$ → $r$ terms, ascending from power 1 to $r$.
+
+> 💡 **Memory trick:** Think of it as floors in a building — $(x-1)^3$ is a 3-story building, each floor gets one term with its own constant.
+
+**Why all powers are needed:** With only $A/(x-d)$, the numerator after cross-multiplication is forced to be $A(x-d)^{r-1}$, which cannot represent an arbitrary polynomial of degree $< r$. Each additional power provides an independent degree of freedom.
+
+#### Case 3: Irreducible Quadratic Factors
+
+$$\frac{1}{(a_j x^2 + b_j x + c_j)^{s_j}} = \frac{B_1 x + C_1}{a_j x^2 + b_j x + c_j} + \frac{B_2 x + C_2}{(a_j x^2 + b_j x + c_j)^2} + \cdots + \frac{B_{s_j} x + C_{s_j}}{(a_j x^2 + b_j x + c_j)^{s_j}}$$
+
+Each quadratic factor gets a **linear** numerator ($Bx + C$), because dividing by a degree-2 polynomial leaves a remainder of degree $\leq 1$.
+
+### Step 4: Solve for the Constants
+
+Set up the equation by cross-multiplying, then use:
+
+- **Strategic substitution:** Plug in roots of denominator factors to eliminate terms
+- **Coefficient comparison:** Expand and match coefficients of like powers of $x$
+
+**Example:**
+
+$$\frac{5}{(x-1)(x+2)} = \frac{A}{x-1} + \frac{B}{x+2}$$
+
+Cross-multiply: $5 = A(x+2) + B(x-1)$
+
+- Set $x = 1$: $5 = 3A \Rightarrow A = \frac{5}{3}$
+- Set $x = -2$: $5 = -3B \Rightarrow B = -\frac{5}{3}$
+
+### Connection: IBP → Partial Fractions
+
+When applying integration by parts to integrals involving **inverse trigonometric functions**, the derivative produces a rational function:
+
+$$\frac{d}{dx}\tan^{-1}(x) = \frac{1}{1 + x^2}$$
+
+For example, after IBP on $\int x \tan^{-1}(x)\,dx$:
+
+$$= \frac{x^2}{2}\tan^{-1}(x) - \int \frac{x^2}{2(1+x^2)}\,dx$$
+
+The remaining integral is a **rational function** requiring algebraic simplification or partial fraction decomposition.
+
+### Quick Reference
+
+| Denominator Factor | Numerator Form | # Terms |
+|-------------------|----------------|---------|
+| $(x - d)$ | $A$ | 1 |
+| $(x - d)^r$ | $A_1, A_2, \ldots, A_r$ | $r$ |
+| $(ax^2 + bx + c)$ | $Bx + C$ | 1 |
+| $(ax^2 + bx + c)^s$ | $B_1x + C_1, \ldots, B_s x + C_s$ | $s$ |
+
+> 📝 **Note:** Always check: (1) Is it a rational function? (2) Is it proper? (3) Factor denominator. (4) Set up form. (5) Solve constants.
+
+---
+
+## Section 4.8: Improper Integrals
+
+### What Makes an Integral "Improper"?
+
+A definite integral $\int_a^b f(x)\,dx$ is **improper** if:
+
+1. **Infinite limit:** $a = -\infty$ or $b = \infty$ (or both)
+2. **Discontinuity:** $f(x)$ "blows up" (denominator = 0) at some point in $[a, b]$
+
+> 📝 **Key distinction:** A function approaching 0 does NOT mean its area is finite. $f(x) = 1/x \to 0$ as $x \to \infty$, but $\int_1^\infty \frac{1}{x}\,dx = \infty$ (divergent).
+
+### Convergent vs Divergent
+
+| Term | Meaning | Example |
+|------|---------|---------|
+| **Convergent** | Integral equals a **finite number** | $\int_1^\infty \frac{1}{x^2}\,dx = 1$ |
+| **Divergent** | Integral is $\infty$, $-\infty$, or DNE | $\int_1^\infty \frac{1}{x}\,dx = \infty$ |
+
+> 💡 **Money analogy:** Imagine receiving $\frac{1}{n}$ dollars on day $n$ — total grows forever (divergent, harmonic series). But receiving $\frac{1}{n^2}$ dollars — total converges to $\frac{\pi^2}{6}$ because payments shrink fast enough.
+
+### The p-Test
+
+For $\int_1^\infty \frac{1}{x^p}\,dx$:
+
+| Condition | Result | Why |
+|-----------|--------|-----|
+| $p > 1$ | **Convergent** | Function decreases fast enough |
+| $p \leq 1$ | **Divergent** | Function decreases too slowly |
+
+$$\int_1^\infty \frac{1}{x^p}\,dx = \begin{cases} \frac{1}{p-1} & \text{if } p > 1 \\\\ \infty & \text{if } p \leq 1 \end{cases}$$
+
+> ⚠️ **Warning:** Convergence is determined by **computation** (limits), not by "feeling" or intuition. The p-test is a **summary** of computed results.
+
+### Procedure: Evaluating Improper Integrals
+
+**Step 0 — Count the "problems":**
+
+| # Problems | Situation | Action |
+|-----------|-----------|--------|
+| 0 | No $\infty$ and no blowup in $[a,b]$ | Normal integral (not improper) |
+| 1 | One $\infty$ OR one blowup at endpoint | Direct: replace with variable, take limit |
+| 2 | Two $\infty$'s OR blowup inside interval | **Split** into two integrals at the problem point |
+
+**How to detect "problems":**
+- $\pm\infty$ in the limits → that's a problem
+- Check denominator: if $\text{denom} = 0$ for any $x \in [a, b]$ → that's a blowup (discontinuity)
+
+**Step 1 — Replace the "bad point" with a variable:**
+
+For $\int_1^\infty f(x)\,dx$: replace $\infty$ with $b$, compute $\int_1^b f(x)\,dx$, then take $\lim_{b \to \infty}$
+
+For $\int_0^1 \frac{1}{\sqrt{x}}\,dx$ (blowup at $x=0$): replace $0$ with $a$, compute $\int_a^1 \frac{1}{\sqrt{x}}\,dx$, then take $\lim_{a \to 0^+}$
+
+**Step 2 — Find antiderivative**
+
+**Step 3 — Evaluate the limit**
+
+If the limit is a finite number → **convergent**. Otherwise → **divergent**.
+
+### When to Split (2 Problems)
+
+If there is a discontinuity **inside** $[a, b]$ (not just at an endpoint), you **must split** the integral at that point.
+
+**Example:** $\int_0^2 \frac{1}{x-1}\,dx$
+
+The function blows up at $x = 1$, which is inside $[0, 2]$.
+
+```
+        y
+        │          ╱
+        │         ╱
+        │        ╱
+────────┼───┼────────── x
+        0   1    2
+        │ ╱
+        │╱        ← blows up at x = 1
+```
+
+**Split:** $\int_0^2 \frac{1}{x-1}\,dx = \int_0^1 \frac{1}{x-1}\,dx + \int_1^2 \frac{1}{x-1}\,dx$
+
+> ⚠️ **Both halves must converge** for the whole integral to converge. If either half diverges, the entire integral is **divergent**.
+
+> 📝 **Why split at discontinuity?** You can't integrate "through" a point where the function doesn't exist. The area calculation breaks at the blowup — you must handle each side separately with its own limit.
+
+### Key Antiderivatives for Improper Integrals
+
+| Integrand | Antiderivative | Notes |
+|-----------|---------------|-------|
+| $x^n$ ($n \neq -1$) | $\frac{x^{n+1}}{n+1}$ | Power rule — watch coefficient! |
+| $\frac{1}{x}$ | $\ln|x|$ | Special case of power rule |
+| $\frac{1}{1+x^2}$ | $\arctan(x)$ | Memorize: reverse of $\frac{d}{dx}\arctan(x) = \frac{1}{1+x^2}$ |
+| $\frac{1}{\sqrt{x}} = x^{-1/2}$ | $2\sqrt{x} = 2x^{1/2}$ | Divide by $\frac{1}{2}$ = multiply by 2! |
+
+> ⚠️ **Common coefficient error:** $\int x^{-1/2}\,dx = \frac{x^{1/2}}{1/2} = 2x^{1/2}$, **NOT** $\frac{1}{2}x^{1/2}$. Remember: dividing by a fraction means multiplying by its reciprocal.
+
+### Worked Example
+
+**Evaluate** $\int_1^\infty \frac{1}{x^2}\,dx$
+
+**Step 0:** One problem ($\infty$ in upper limit) → direct limit
+
+**Step 1:** Replace $\infty$ with $b$:
+
+$$\lim_{b \to \infty} \int_1^b \frac{1}{x^2}\,dx$$
+
+**Step 2:** Antiderivative of $x^{-2}$:
+
+$$\frac{x^{-1}}{-1} = -\frac{1}{x}$$
+
+**Step 3:** Evaluate:
+
+$$\lim_{b \to \infty} \left[-\frac{1}{x}\right]_1^b = \lim_{b \to \infty} \left(-\frac{1}{b} + \frac{1}{1}\right) = 0 + 1 = 1$$
+
+**Result:** Convergent, equals **1**.
+
+### Quick Reference
+
+| Scenario | # Problems | Action |
+|----------|-----------|--------|
+| No $\infty$, no blowup | 0 | Normal integral |
+| $\infty$ at one end | 1 | Replace with $b$, take limit |
+| Blowup at endpoint | 1 | Replace with $a$ or $b$, take limit |
+| $-\infty$ to $\infty$ | 2 | Split at any point (e.g., 0), two limits |
+| Blowup inside $[a,b]$ | 2 | Split at blowup point, two limits |
+
+> 📝 **Checklist:** (1) Count problems (0, 1, or 2). (2) If 2, split. (3) Replace bad point with variable. (4) Antiderivative. (5) Limit. (6) Both halves must converge.
