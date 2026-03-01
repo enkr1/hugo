@@ -159,9 +159,17 @@
                 '<mark>$1</mark>'
             );
 
+            // Build text fragment for scroll-to-match
+            const textSnippet = matchIdx >= 0
+                ? content.slice(matchIdx, matchIdx + Math.min(query.length + 40, 80)).trim()
+                : '';
+            const fragment = textSnippet
+                ? '#:~:text=' + encodeURIComponent(textSnippet)
+                : '';
+
             return `
             <li class="search-modal-result" data-index="${idx}">
-                <a href="${item.permalink}">
+                <a href="${item.permalink}${fragment}">
                     <span class="search-modal-result-title">${title}</span>
                     <span class="search-modal-result-preview">${preview}</span>
                 </a>
