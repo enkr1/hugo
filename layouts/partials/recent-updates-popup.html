@@ -1,0 +1,70 @@
+{{/* Recent Updates Popup — desktop-only floating card, shows 7 most recently modified posts */}}
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{ $filtered := where $pages "Params.hidden" "!=" true }}
+{{ $sorted := sort $filtered ".Lastmod" "desc" }}
+{{ $recent := first 7 $sorted }}
+
+<div class="recent-updates-popup" id="recent-updates-popup">
+    <button class="recent-updates-popup__close" id="recent-updates-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <a href="/updated/" class="recent-updates-popup__header">
+        <h3 class="recent-updates-popup__title">Recent Updates</h3>
+    </a>
+
+    <ul class="recent-updates-popup__list">
+        {{ range $recent }}
+            <li class="recent-updates-popup__item">
+                <a href="{{ .RelPermalink }}" class="recent-updates-popup__link">
+                    <span class="recent-updates-popup__post-title">{{ .Title }}</span>
+                    <span class="recent-updates-popup__date">
+                        {{- $diff := sub now.Unix .Lastmod.Unix -}}
+                        {{- $mins := int (div $diff 60) -}}
+                        {{- $hours := int (div $diff 3600) -}}
+                        {{- $days := int (div $diff 86400) -}}
+                        {{- if lt $days 1 -}}
+                            {{- if lt $hours 1 -}}
+                                {{ $mins }}m ago
+                            {{- else -}}
+                                {{ $hours }}h ago
+                            {{- end -}}
+                        {{- else if lt $days 7 -}}
+                            {{ $days }}d ago
+                        {{- else if eq .Lastmod.Year now.Year -}}
+                            {{ .Lastmod.Format "Jan 2" }}
+                        {{- else -}}
+                            {{ .Lastmod.Format "Jan 2, 2006" }}
+                        {{- end -}}
+                    </span>
+                </a>
+            </li>
+        {{ end }}
+    </ul>
+
+    <a href="/updated/" class="recent-updates-popup__footer">See all &rarr;</a>
+</div>
+
+<script>
+(function() {
+    var DISMISS_HOURS = 24;
+    var KEY = 'updates_popup_dismissed';
+
+    var dismissed = localStorage.getItem(KEY);
+    if (dismissed && (Date.now() - Number(dismissed)) < DISMISS_HOURS * 60 * 60 * 1000) return;
+
+    var popup = document.getElementById('recent-updates-popup');
+    var closeBtn = document.getElementById('recent-updates-close');
+    if (!popup || !closeBtn) return;
+
+    popup.classList.add('recent-updates-popup--visible');
+
+    closeBtn.addEventListener('click', function() {
+        localStorage.setItem(KEY, String(Date.now()));
+        popup.classList.remove('recent-updates-popup--visible');
+    });
+})();
+</script>
