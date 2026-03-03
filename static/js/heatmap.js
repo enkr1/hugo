@@ -185,7 +185,11 @@
     grid.appendChild(inner);
   }
 
-  // --- Filter archive list ---
+  // --- Filter list (works with both archive grouped-list and updated flat list) ---
+  var archiveList = document.getElementById('archive-list');
+  var updatedList = document.getElementById('updated-list');
+  var listEl = archiveList || updatedList;
+
   function filterArchive(ds, posts) {
     // Toggle: clicking the same date clears the filter
     if (activeFilter === ds) {
@@ -199,40 +203,53 @@
     filterDateEl.textContent = formatDate(new Date(ds + 'T00:00:00'));
     filterBanner.hidden = false;
 
-    // Hide all rows, then show matching ones
-    document.querySelectorAll('#archive-list .grouped-list__row').forEach(function (row) {
-      row.style.display = row.getAttribute('data-date') === ds ? '' : 'none';
-    });
+    if (archiveList) {
+      // Grouped list: filter rows, hide empty containers
+      document.querySelectorAll('#archive-list .grouped-list__row').forEach(function (row) {
+        row.style.display = row.getAttribute('data-date') === ds ? '' : 'none';
+      });
 
-    // Hide empty month/year containers
-    document.querySelectorAll('#archive-list .grouped-list__month').forEach(function (month) {
-      var visible = month.querySelectorAll('.grouped-list__row[style=""],.grouped-list__row:not([style])');
-      var hasVisible = Array.from(visible).some(function (r) { return r.style.display !== 'none'; });
-      month.style.display = hasVisible ? '' : 'none';
-    });
+      document.querySelectorAll('#archive-list .grouped-list__month').forEach(function (month) {
+        var visible = month.querySelectorAll('.grouped-list__row[style=""],.grouped-list__row:not([style])');
+        var hasVisible = Array.from(visible).some(function (r) { return r.style.display !== 'none'; });
+        month.style.display = hasVisible ? '' : 'none';
+      });
 
-    document.querySelectorAll('#archive-list .grouped-list__year').forEach(function (year) {
-      var visible = year.querySelectorAll('.grouped-list__month[style=""],.grouped-list__month:not([style])');
-      var hasVisible = Array.from(visible).some(function (m) { return m.style.display !== 'none'; });
-      year.style.display = hasVisible ? '' : 'none';
-    });
+      document.querySelectorAll('#archive-list .grouped-list__year').forEach(function (year) {
+        var visible = year.querySelectorAll('.grouped-list__month[style=""],.grouped-list__month:not([style])');
+        var hasVisible = Array.from(visible).some(function (m) { return m.style.display !== 'none'; });
+        year.style.display = hasVisible ? '' : 'none';
+      });
+    } else if (updatedList) {
+      // Flat list: filter article cards by data-date
+      document.querySelectorAll('#updated-list .article-card').forEach(function (card) {
+        card.style.display = card.getAttribute('data-date') === ds ? '' : 'none';
+      });
+    }
 
-    // Scroll to the archive list
-    document.getElementById('archive-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll to the list
+    if (listEl) listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function clearFilter() {
     activeFilter = null;
     filterBanner.hidden = true;
-    document.querySelectorAll('#archive-list .grouped-list__row').forEach(function (row) {
-      row.style.display = '';
-    });
-    document.querySelectorAll('#archive-list .grouped-list__year').forEach(function (el) {
-      el.style.display = '';
-    });
-    document.querySelectorAll('#archive-list .grouped-list__month').forEach(function (el) {
-      el.style.display = '';
-    });
+
+    if (archiveList) {
+      document.querySelectorAll('#archive-list .grouped-list__row').forEach(function (row) {
+        row.style.display = '';
+      });
+      document.querySelectorAll('#archive-list .grouped-list__year').forEach(function (el) {
+        el.style.display = '';
+      });
+      document.querySelectorAll('#archive-list .grouped-list__month').forEach(function (el) {
+        el.style.display = '';
+      });
+    } else if (updatedList) {
+      document.querySelectorAll('#updated-list .article-card').forEach(function (card) {
+        card.style.display = '';
+      });
+    }
   }
 
   // --- Year nav (clamped to data range) ---

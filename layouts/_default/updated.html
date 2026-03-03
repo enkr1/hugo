@@ -8,9 +8,28 @@
         <h1 class="section-title">{{ .Title }} · {{ len $filtered }}</h1>
     </header>
 
-    <section class="article-list">
+    {{/* Activity Heatmap — by last-modified date */}}
+    <div class="heatmap-section">
+        <div class="heatmap-header">
+            <button class="heatmap-nav" id="heatmap-prev" aria-label="Previous year">&#9664;</button>
+            <span class="heatmap-year" id="heatmap-year">{{ now.Year }}</span>
+            <button class="heatmap-nav" id="heatmap-next" aria-label="Next year">&#9654;</button>
+        </div>
+        <div id="heatmap" class="heatmap-grid"></div>
+        <div id="heatmap-filter" class="heatmap-filter" hidden>
+            Showing posts from <span id="heatmap-filter-date" class="heatmap-filter-date"></span>
+            <button id="heatmap-clear" class="heatmap-clear" aria-label="Clear filter">&times;</button>
+        </div>
+    </div>
+
+    {{/* Post data for heatmap JS — uses Lastmod instead of Date */}}
+    <script id="heatmap-data" type="application/json">
+    [{{ range $i, $p := $filtered }}{{ if $i }},{{ end }}{"date":"{{ $p.Lastmod.Format "2006-01-02" }}","title":"{{ $p.Title | safeJS }}","url":"{{ $p.RelPermalink }}"}{{ end }}]
+    </script>
+
+    <section class="article-list" id="updated-list">
         {{ range $sorted }}
-            <article class="article-card">
+            <article class="article-card" data-date="{{ .Lastmod.Format "2006-01-02" }}">
                 <a href="{{ .RelPermalink }}" class="article-card__link" aria-label="{{ .Title }}"></a>
 
                 <div class="article-details">
@@ -38,6 +57,8 @@
             </article>
         {{ end }}
     </section>
+
+    <script src="/js/heatmap.js" defer></script>
 
     {{ partialCached "footer/footer" . }}
 {{ end }}
