@@ -1,0 +1,119 @@
+{{/* GA4 Custom Events — production only, article pages only */}}
+{{ if and .IsPage (not hugo.IsServer) }}
+{{ $tags := delimit ((.Params.tags) | default (slice)) "," }}
+{{ $cats := ((.Params.categories) | default (slice)) | jsonify }}
+<script>
+(function() {
+  if (typeof gtag !== 'function') return;
+
+  var meta = {
+    title:      {{ .Title | jsonify | safeJS }},
+    section:    {{ .Section | jsonify | safeJS }},
+    tags:       {{ $tags | jsonify | safeJS }},
+    categories: {{ $cats | safeJS }}
+  };
+
+  // ── 1. Content metadata (custom dimensions on every page_view) ──
+  // Flattens nested category arrays → "About Me/Journals"
+  var catStr = (Array.isArray(meta.categories)
+    ? meta.categories.map(function(c) { return Array.isArray(c) ? c.join('/') : c; }).join(', ')
+    : String(meta.categories));
+
+  gtag('set', {
+    content_type:       meta.section,
+    article_tags:       meta.tags,
+    article_categories: catStr
+  });
+
+  // ── 2. Reading depth tracking ──
+  var content = document.querySelector('.article-content');
+  if (content) {
+    var depthMilestones = [25, 50, 75, 100];
+    var depthFired = {};
+
+    function checkReadDepth() {
+      var contentTop = content.getBoundingClientRect().top + window.scrollY;
+      var contentHeight = content.offsetHeight;
+      if (contentHeight === 0) return;
+
+      var viewportBottom = window.scrollY + window.innerHeight;
+      var progress = Math.min(100, Math.max(0,
+        ((viewportBottom - contentTop) / contentHeight) * 100
+      ));
+
+      for (var i = 0; i < depthMilestones.length; i++) {
+        var m = depthMilestones[i];
+        if (progress >= m && !depthFired[m]) {
+          depthFired[m] = true;
+          gtag('event', 'read_depth', {
+            depth_percentage: m,
+            article_title:    meta.title,
+            content_type:     meta.section,
+            article_tags:     meta.tags
+          });
+        }
+      }
+    }
+
+    var depthTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!depthTicking) {
+        requestAnimationFrame(function() { checkReadDepth(); depthTicking = false; });
+        depthTicking = true;
+      }
+    });
+    checkReadDepth(); // catch short articles already in view
+  }
+
+  // ── 3. Active reading time milestones ──
+  var timeMilestones = [30, 60, 120, 300];
+  var timeFired = {};
+  var activeSeconds = 0;
+  var lastActivity = Date.now();
+
+  // Active = tab visible + focused + user interacted within last 60s
+  var IDLE_TIMEOUT = 60 * 1000;
+  function isActivelyReading() {
+    if (document.visibilityState !== 'visible') return false;
+    if (!document.hasFocus()) return false;
+    return (Date.now() - lastActivity) < IDLE_TIMEOUT;
+  }
+
+  // Timer: ticks every second, only counts if actively reading
+  setInterval(function() {
+    if (!isActivelyReading()) return;
+    activeSeconds++;
+
+    for (var i = 0; i < timeMilestones.length; i++) {
+      var t = timeMilestones[i];
+      if (activeSeconds >= t && !timeFired[t]) {
+        timeFired[t] = true;
+
+        // Capture current scroll depth at this milestone
+        var depth = 0;
+        if (content) {
+          var ct = content.getBoundingClientRect().top + window.scrollY;
+          var ch = content.offsetHeight;
+          if (ch > 0) {
+            depth = Math.min(100, Math.max(0,
+              ((window.scrollY + window.innerHeight - ct) / ch) * 100
+            ));
+          }
+        }
+
+        gtag('event', 'reading_milestone', {
+          time_seconds:       t,
+          article_title:      meta.title,
+          depth_at_milestone: Math.round(depth)
+        });
+      }
+    }
+  }, 1000);
+
+  // Track last activity time (used by isActivelyReading)
+  ['scroll', 'mousemove', 'keydown', 'click', 'touchstart'].forEach(function(evt) {
+    document.addEventListener(evt, function() { lastActivity = Date.now(); }, { passive: true });
+  });
+})();
+</script>
+{{ end }}

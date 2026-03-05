@@ -175,6 +175,14 @@
                 </a>
             </li>
         `}).join('');
+
+        // GA4: track search query + result count
+        if (typeof gtag === 'function') {
+            gtag('event', 'blog_search', {
+                search_term:   query,
+                results_count: results.length
+            });
+        }
     }
 
     // Update selection highlight
