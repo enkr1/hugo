@@ -17,11 +17,10 @@
 {{/* Google Site Verification */}}
 <meta name="google-site-verification" content="wSUWWkv_QhNXB_N6r3rOSU2YlmmWxYBk6UWVlgu1q94" />
 
-{{/* Firebase + Firestore - only in production */}}
+{{/* Firestore only (view counts + unique visitors) - production only */}}
 {{ if not hugo.IsServer }}
 <script type="module">
   import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
   import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -30,12 +29,10 @@
     projectId: "hexo-blog-9ccea",
     storageBucket: "hexo-blog-9ccea.appspot.com",
     messagingSenderId: "71411607593",
-    appId: "1:71411607593:web:d04c5895d438fb244020c3",
-    measurementId: "G-TJPENBTDNS"
+    appId: "1:71411607593:web:d04c5895d438fb244020c3"
   };
 
   const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-  const analytics = getAnalytics(app);
   window.firestoreDb = getFirestore(app);
 </script>
 {{ end }}
