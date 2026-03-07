@@ -686,6 +686,45 @@ print(list)
 # [0,1,2,4]
 ```
 
+#### 2D Lists (List of Lists)
+
+The `[[0] * N] * N` trap — looks right, creates aliased rows:
+
+```py
+N = 3
+
+# BAD — all rows are the SAME object
+grid = [[0] * N] * N
+grid[0][0] = 1
+print(grid)
+# [[1, 0, 0], [1, 0, 0], [1, 0, 0]]  ← ALL rows changed!
+```
+
+Why? `[row] * N` copies the **reference** N times. All N rows point to the same list in memory.
+
+```py
+N = 3
+
+# GOOD — each row is an independent list
+grid = [[0] * N for _ in range(N)]
+grid[0][0] = 1
+print(grid)
+# [[1, 0, 0], [0, 0, 0], [0, 0, 0]]  ← only row 0 changed
+```
+
+The list comprehension creates a **new** `[0] * N` on each iteration.
+
+```py
+N = 3
+
+# Also GOOD — explicit loop
+grid = []
+for i in range(N):
+    grid.append([0] * N)
+```
+
+**Rule of thumb:** Never use `* N` on the **outer** dimension of a 2D list. Use a `for` loop or list comprehension instead.
+
 ### Tuples
 ```py
 storage = (32,64,128,256)
