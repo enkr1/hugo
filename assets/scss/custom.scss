@@ -9,44 +9,47 @@
  * Dynamic (流年曦): #D97706 - Fire→Metal - click flash
  * Base: #0A0F1C (渊墨黑) / #F8FAFC (月影白)
  *
- * TODO: GRADUAL MIGRATION STRATEGY
- * ================================
- * Goal: Shrink this file to ~200 lines (design tokens only)
- * We own the theme fork (hugo-theme-enkr), so migrate component styles there.
+ * MIGRATION COMPLETE — component styles live in theme (hugo-theme-enkr)
  *
- * Strategy: Migrate as we touch code, not as one big refactor.
- * - When editing a component, move its styles from here → theme
- * - Remove !important hacks (theme has priority now)
- * - Keep ONLY: :root design tokens, color philosophy, global resets
+ * This file keeps ONLY:
+ * - @import "fonts"
+ * - :root design tokens (CSS custom properties)
+ * - html global resets
+ * - Ba Zi seasonal styles (丙午 2026)
  *
- * What stays here (SSOT):
- * - CSS custom properties (--font-*, --gold, --spacing-*, etc)
- * - Ba Zi color system philosophy comments
- * - html/body global styles
- *
- * What moves to theme:
- * - Typography (article-content h1-h6) → theme/layout/article.scss
- * - Cards (border animations) → theme/layout/list.scss
- * - Tags, categories, widgets → theme/partials/widgets.scss
- * - TOC, pagination, footer → their respective theme files
- * - Everything else that's component-specific
- *
- * Migration tracker (current: ~802 lines, target: ~200):
- * [x] Categories tree → theme/partials/widgets.scss (saved ~200 lines)
- * [x] Scrollbar → theme/partials/base.scss (saved ~20 lines)
- * [x] Scroll-to-top button → theme/partials/sidebar.scss (saved ~50 lines)
- * [x] Tags/Categories → theme/partials/article.scss (saved ~85 lines)
- * [x] Article subtitle → theme/partials/article.scss (saved ~14 lines)
- * [x] Typography (lists, hr) → theme/partials/layout/article.scss (saved ~100 lines)
- * [x] Cards (border animations) → theme/partials/layout/list.scss (saved ~237 lines)
- * [x] Pagination → theme/partials/pagination.scss (saved ~115 lines)
- * [x] Footer → theme/partials/footer.scss (saved ~68 lines)
- * [x] Fullpage nav → theme/partials/_fullpage-nav.scss (saved ~228 lines)
- * [x] Infinite scroll → theme/partials/_infinite-scroll.scss (saved ~91 lines)
- * [x] Right sidebar search → theme/partials/layout/search.scss (saved ~46 lines)
- * [x] Grouped list → theme/partials/_grouped-list.scss (saved ~103 lines)
- * [x] Code/syntax → theme/partials/_code.scss (saved ~97 lines)
- * [x] Buttons → theme/partials/base.scss (saved ~49 lines)
+ * Migration log:
+ * [x] Categories tree → theme/partials/widgets.scss
+ * [x] Scrollbar → theme/partials/base.scss
+ * [x] Scroll-to-top → theme/partials/sidebar.scss
+ * [x] Tags/Categories → theme/partials/article.scss
+ * [x] Article subtitle → theme/partials/article.scss
+ * [x] Typography → theme/partials/layout/article.scss
+ * [x] Cards → theme/partials/layout/list.scss
+ * [x] Pagination → theme/partials/pagination.scss
+ * [x] Footer → theme/partials/footer.scss
+ * [x] Fullpage nav → theme/partials/_fullpage-nav.scss
+ * [x] Infinite scroll → theme/partials/_infinite-scroll.scss
+ * [x] Right sidebar search → theme/partials/layout/search.scss
+ * [x] Grouped list → theme/partials/_grouped-list.scss
+ * [x] Code/syntax → theme/partials/_code.scss
+ * [x] Buttons → theme/partials/base.scss
+ * [x] Article metadata → theme/partials/article.scss
+ * [x] Article links → theme/partials/article.scss
+ * [x] Anchor flash + images → theme/partials/article.scss
+ * [x] Tables → theme/partials/article.scss
+ * [x] Related content → theme/partials/article.scss
+ * [x] Disqus container → theme/partials/article.scss
+ * [x] Nav links → theme/partials/sidebar.scss
+ * [x] Left sidebar → theme/partials/sidebar.scss
+ * [x] Sidebar header → theme/partials/sidebar.scss
+ * [x] Widgets + archives → theme/partials/widgets.scss
+ * [x] Subcategories + divider → theme/partials/widgets.scss
+ * [x] Layout → theme/partials/layout/article.scss
+ * [x] Breadcrumb → theme/partials/_breadcrumb.scss
+ * [x] Reading progress → theme/partials/_reading-progress.scss
+ * [x] Selection → theme/partials/base.scss
+ * [x] Mobile nav → theme/partials/_mobile-nav.scss
+ * [x] Responsive → theme/partials/_responsive.scss
  */
 
 /* ===========================================
@@ -58,7 +61,7 @@
     --font-display: 'Cormorant Garamond', 'Georgia', serif;
     --font-body: 'Inter', 'LXGW WenKai TC', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-    --font-chinese: 'LXGW WenKai TC', 'Noto Serif SC', 'Songti SC', serif; // Kept for explicit Chinese-only use
+    --font-chinese: 'LXGW WenKai TC', 'Noto Serif SC', 'Songti SC', serif;
 
     // Override theme's font variables
     --base-font-family: var(--font-body);
@@ -94,34 +97,23 @@
     --transition-base: 150ms ease;
     --transition-slow: 300ms ease;
 
-    // BORDER RADIUS - SSOT Control (inherits from --radius-base in variables.scss)
-    // Cards & Major Containers
+    // BORDER RADIUS - SSOT Control
     --radius-card: var(--radius-base);
     --radius-card-hover: var(--radius-base);
     --radius-widget: var(--radius-base);
-
-    // Content Elements
-    --radius-code-inline: 4px;     // Inline code snippets
-    --radius-code-block: 6px;      // Code blocks
+    --radius-code-inline: 4px;
+    --radius-code-block: 6px;
     --radius-image: calc(var(--radius-base) * 0.67);
-
-    // Interactive Elements
-    --radius-button: 2px;          // Regular buttons
-    --radius-button-circle: 50%;   // Circular buttons (scroll-to-top, etc)
-    --radius-input: 4px;           // Form inputs
-
-    // Small UI Elements
-    --radius-tag: 2px;             // Tags (if we add background)
-    --radius-badge: 2px;           // Badges, indicators
-    --radius-scrollbar: 2px;       // Scrollbar thumb
-
-    // Special Components
+    --radius-button: 2px;
+    --radius-button-circle: 50%;
+    --radius-input: 4px;
+    --radius-tag: 2px;
+    --radius-badge: 2px;
+    --radius-scrollbar: 2px;
     --radius-search: var(--radius-base);
     --radius-related: var(--radius-base);
-    --radius-toggle: calc(var(--toggle-height) / 2); // Theme toggle pill
-
-    // Deprecated (kept for compatibility)
-    --radius-xs: 2px;
+    --radius-toggle: calc(var(--toggle-height) / 2);
+    --radius-xs: 2px; // Deprecated
 
     // SPACING
     --spacing-xs: 0.5rem;
@@ -131,56 +123,20 @@
     --spacing-xl: 3rem;
     --section-separation: 2rem;
     --menu-icon-separation: 2rem;
-
-    // Color system now defined in theme/variables.scss
-    // We own the theme fork, so all color definitions moved there
 }
+
+/* ===========================================
+   GLOBAL RESETS
+   =========================================== */
 
 html {
     scroll-behavior: smooth;
-    // Force scrollbar to always be visible to prevent layout shifts
     overflow-y: scroll;
-}
-
-/* Light/Dark mode colors now defined in theme/variables.scss */
-
-// Article metadata → migrated to theme/partials/article.scss
-
-
-// Article content links → migrated to theme/partials/article.scss
-
-// Nav links → migrated to theme/partials/sidebar.scss
-
-// Left sidebar → migrated to theme/partials/sidebar.scss
-
-// Sidebar categories widget → migrated to theme/partials/widgets.scss
-
-// Scroll padding for anchor links - prevents headings from touching viewport top
-html {
     scroll-padding-top: 2rem;
 }
 
-// Anchor flash → migrated to theme/partials/article.scss
-// Article images → migrated to theme/partials/article.scss
-// PhotoSwipe caption → migrated to theme/partials/article.scss
-
-// Layout → migrated to theme/partials/layout/article.scss
-
-// Breadcrumb → migrated to theme/partials/_breadcrumb.scss
-
-// Code/syntax highlighting → migrated to theme/partials/_code.scss
-
-// Sidebar header → migrated to theme/partials/sidebar.scss
-
-// Widgets → migrated to theme/partials/widgets.scss
-
-// Reading progress → migrated to theme/partials/_reading-progress.scss
-
-// Selection → migrated to theme/partials/base.scss
-
 /* ===========================================
-   2026 丙午 SPECIAL - Fire transformation indicator
-   Optional: Add class "bingwu-year" to elements
+   2026 丙午 SPECIAL - Fire transformation
    =========================================== */
 
 .bingwu-indicator {
@@ -197,7 +153,6 @@ html {
     }
 }
 
-// Fire glow animation for special occasions
 @keyframes fire-transform {
     0%, 100% { box-shadow: none; }
     50% { box-shadow: 0 0 20px var(--dynamic-glow); }
@@ -206,20 +161,3 @@ html {
 .fire-blessing {
     animation: fire-transform 2s ease-in-out;
 }
-
-// Infinite scroll → migrated to theme/partials/_infinite-scroll.scss
-
-// Mobile nav → migrated to theme/partials/_mobile-nav.scss
-
-// Responsive → migrated to theme/partials/_responsive.scss
-
-// Related content → migrated to theme/partials/article.scss
-
-
-// Disqus container → migrated to theme/partials/article.scss
-
-// Subcategories + section divider → migrated to theme/partials/widgets.scss
-
-// Fullpage navigation → migrated to theme/partials/_fullpage-nav.scss
-
-// Right sidebar search trigger → migrated to theme/partials/layout/search.scss
