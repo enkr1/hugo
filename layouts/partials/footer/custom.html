@@ -4,9 +4,9 @@
 {{/* Mobile Bottom Navigation */}}
 <nav class="mobile-nav" id="mobile-nav">
     {{ $currentPage := . }}
-    {{ range .Site.Menus.main }}
-    {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
-    <a href="{{ .URL }}" class="mobile-nav__item{{ if $active }} active{{ end }}"{{ if eq .Params.newTab true }} target="_blank"{{ end }}>
+    {{ range .Site.Menus.mobile }}
+    {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "mobile" .) ($currentPage.IsMenuCurrent "mobile" .)) }}
+    <a href="{{ .URL }}" class="mobile-nav__item{{ if $active }} active{{ end }}"{{ if eq .Params.newTab true }} target="_blank" rel="noopener"{{ end }}>
         {{ $icon := default .Pre .Params.Icon }}
         {{ with $icon }}
             {{ partial "helper/icon" . }}

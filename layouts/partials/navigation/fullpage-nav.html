@@ -16,7 +16,7 @@
             {{- range .Site.Menus.main -}}
             {{- $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) -}}
             <li class="{{ if $active }}active{{ end }}">
-                <a href="{{ .URL }}" {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                <a href="{{ .URL }}" {{ if eq .Params.newTab true }}target="_blank" rel="noopener"{{ end }}>
                     {{ .Name }}
                 </a>
             </li>

@@ -1,5 +1,5 @@
 <nav class="floating-toolbar floating-toolbar--left" aria-label="Site navigation">
-    {{/* Navigation links */}}
+    {{/* Navigation links (skip external/newTab items — placed manually below) */}}
     {{ range .Site.Menus.main }}
         {{ if not (eq .Params.newTab true) }}
         <a href="{{ .URL }}" class="toolbar-icon" aria-label="{{ .Name }}">
@@ -22,6 +22,18 @@
     <a href="{{ with .Site.GetPage `/archives` }}{{ .RelPermalink }}{{ else }}/archives/{{ end }}" class="toolbar-icon" aria-label="Archives">
         {{ partial "helper/icon" "archives" }}
     </a>
+
+    {{/* External links (newTab items from menu.main) */}}
+    {{ range .Site.Menus.main }}
+        {{ if eq .Params.newTab true }}
+        <a href="{{ .URL }}" class="toolbar-icon" aria-label="{{ .Name }}" target="_blank" rel="noopener">
+            {{ $icon := default .Pre .Params.Icon }}
+            {{ with $icon }}
+                {{ partial "helper/icon" . }}
+            {{ end }}
+        </a>
+        {{ end }}
+    {{ end }}
 
     {{/* Search last */}}
     <button class="toolbar-icon" data-search-trigger aria-label="Search">

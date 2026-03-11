@@ -157,6 +157,40 @@ weight = 5
 icon = 'link'
 newTab = true
 
+# Mobile bottom nav (subset of menu.main — update both if URLs/icons change)
+[[menu.mobile]]
+identifier = 'home'
+name = 'Home'
+url = '/'
+weight = 1
+[menu.mobile.params]
+icon = 'home'
+
+[[menu.mobile]]
+identifier = 'journals'
+name = 'Journals'
+url = '/journals/'
+weight = 2
+[menu.mobile.params]
+icon = 'journal'
+
+[[menu.mobile]]
+identifier = 'about'
+name = 'About'
+url = '/about/'
+weight = 3
+[menu.mobile.params]
+icon = 'user'
+
+[[menu.mobile]]
+identifier = 'platforms'
+name = 'Platforms'
+url = 'https://enkr1.github.io/platforms/'
+weight = 4
+[menu.mobile.params]
+icon = 'link'
+newTab = true
+
 # Related posts
 [related]
 includeNewer = true
