@@ -4,8 +4,7 @@
 {{ $cats := ((.Params.categories) | default (slice)) | jsonify }}
 <script>
 (function() {
-  if (typeof gtag !== 'function') { console.warn('[GA4] gtag not found — custom events disabled'); return; }
-  console.log('[GA4] Custom events loaded for:', {{ .Title | jsonify | safeJS }});
+  if (typeof gtag !== 'function') { return; }
 
   var meta = {
     title:      {{ .Title | jsonify | safeJS }},
@@ -46,7 +45,6 @@
         var m = depthMilestones[i];
         if (progress >= m && !depthFired[m]) {
           depthFired[m] = true;
-          console.log('[GA4] read_depth →', m + '%', meta.title);
           gtag('event', 'read_depth', {
             depth_percentage: m,
             article_title:    meta.title,
@@ -103,7 +101,6 @@
           }
         }
 
-        console.log('[GA4] reading_milestone →', t + 's', '(depth: ' + Math.round(depth) + '%)');
         gtag('event', 'reading_milestone', {
           time_seconds:       t,
           article_title:      meta.title,

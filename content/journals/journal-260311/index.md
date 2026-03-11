@@ -47,6 +47,7 @@ currently still brainstorming some combos and prepping this beat as a battling s
 
 这周做了一波 digital cleanup：
 
-- ebooks 文件夹全部 rename 成统一格式 (`Author - Title (Year).ext`)，24 本书
-- [interview prep repo](https://github.com/enkr1/interview_preparation_materials) 也整理了 — 文件名标准化 + [GitHub Pages](https://enkr1.github.io/interview_preparation_materials/) 链接全部修好
-- 约了牙医去做牙冠 真的破财啊
+- 整理了 ebooks 文件夹全部 24 本书、然后存 github 上了 哈哈哈哈 🔥
+- [interview prep repo](https://github.com/enkr1/interview_preparation_materials) 也整理了 - 文件名标准化 + [GitHub Pages](https://enkr1.github.io/interview_preparation_materials/) 链接全部修好 ✨
+- 约了牙医去做牙冠 真的破财啊 😭
+- 开始拍 gym content 了！用剪映剪卡点视频，感觉踏出了很大一步 ✅
