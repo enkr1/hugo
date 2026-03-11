@@ -295,6 +295,27 @@ $$\int f(u(x)) \cdot u'(x)\,dx = F(u(x)) + C$$
 
 **Steps:** Let $u = $ (inside function), $du = u'(x)\,dx$, rewrite, integrate, substitute back.
 
+#### How to Choose $u$ ⭐️
+
+**Principle:** $u$-sub = Chain Rule in reverse. If differentiation "unwraps" $f(g(x))$ via chain rule, integration "wraps it back up" via $u$-sub.
+
+**3-step pattern recognition:**
+
+1. **Find the "nesting"** — look for function-inside-function: $\cos(\pi/x)$, $(1+\sqrt{x})^2$, $e^{\sin x}$
+2. **Inner function = $u$ candidate** — $u = \pi/x$, $u = 1+\sqrt{x}$, $u = \sin x$
+3. **Check: does $du$ match the rest?** — compute $du$ and see if it equals (up to a constant) the remaining factors in the integrand
+
+| Integrand | Nesting | $u$ | $du$ | Leftover matches? |
+|-----------|---------|-----|------|-------------------|
+| $\cos(\pi/x)/x^2$ | $\cos(\boxed{\pi/x})$ | $\pi/x$ | $-\pi/x^2\,dx$ | $1/x^2\,dx$ = $du/(-\pi)$ ✓ |
+| $1/[\sqrt{x}(1+\sqrt{x})^2]$ | $(1+\boxed{\sqrt{x}})^2$ | $1+\sqrt{x}$ | $dx/(2\sqrt{x})$ | $dx/\sqrt{x}$ = $2\,du$ ✓ |
+
+> ⚠️ **If $du$ doesn't match (even after pulling out constants) → wrong $u$, try another.** Constants can be adjusted; extra $x$-terms cannot.
+
+#### Verification Trick
+
+**Always check your answer by differentiating back.** If $\int f(x)\,dx = F(x) + C$, then $F'(x)$ must equal $f(x)$.
+
 #### $u$-Substitution (Definite) ⭐️
 
 $$\int_a^b f(u(x)) \cdot u'(x)\,dx = \int_{u(a)}^{u(b)} f(u)\,du$$
@@ -315,6 +336,254 @@ $$\int_a^b f(u(x)) \cdot u'(x)\,dx = \int_{u(a)}^{u(b)} f(u)\,du$$
 - $x^2 - a^2$: $x$ is hypotenuse → $\sec\theta$
 
 > ⚠️ **After trig sub, convert back.** Draw the right triangle to express $\theta$ in terms of $x$.
+
+---
+
+### Standard Antiderivative Table ⭐️
+
+| Function | Antiderivative | Notes |
+|----------|---------------|-------|
+| $x^n$ ($n \neq -1$) | $\dfrac{x^{n+1}}{n+1} + C$ | **NEW exp is power AND divisor.** $\div$ by new exp, not old! |
+| $x^{-1} = \dfrac{1}{x}$ | $\ln\|x\| + C$ | Power rule exception ($n=-1 \to$ divide by 0). **Don't forget $\|x\|$!** |
+| $e^x$ | $e^x + C$ | Its own antiderivative |
+| $\sin x$ | $-\cos x + C$ | |
+| $\cos x$ | $\sin x + C$ | |
+| $\sec^2 x$ | $\tan x + C$ | |
+| $\dfrac{1}{1+x^2}$ | $\arctan(x) + C$ | Needed for improper integrals |
+| $\dfrac{1}{\sqrt{1-x^2}}$ | $\arcsin(x) + C$ | |
+
+#### Power-Reduction (for $\sin^2$, $\cos^2$) ⭐️
+
+$$\sin^2(u) = \frac{1 - \cos(2u)}{2} \qquad \cos^2(u) = \frac{1 + \cos(2u)}{2}$$
+
+> Memory: **s**in → **s**ubtract (minus), **c**os → **c**ollect (plus). Or remember one + use $\sin^2 + \cos^2 = 1$.
+
+#### Absolute Value Integrals
+
+1. Find where expression inside $|\cdot|$ equals **zero** → split point
+2. Determine sign on each side → remove $|\cdot|$
+3. Integrate each piece separately → **ADD** (not subtract!)
+
+#### Exponent Rules (Common Traps)
+
+| Rule | Formula | Trap |
+|------|---------|------|
+| Power of power | $(a^m)^n = a^{m \times n}$ | **MULTIPLY**, not add! |
+| Product | $a^m \cdot a^n = a^{m+n}$ | Add exponents (same base) |
+| Reciprocal | $a^{-n} = \dfrac{1}{a^n}$ | $\sec^{-2}x = \cos^2 x$ |
+
+#### Trig Reciprocals & Identities
+
+| Identity | |
+|----------|-|
+| $\sec x = 1/\cos x$ | $\csc x = 1/\sin x$ |
+| $1 + \tan^2 x = \sec^2 x$ | $1 + \cot^2 x = \csc^2 x$ |
+| $\sin(x + \pi) = -\sin x$ | $\cos(x + \pi) = -\cos x$ |
+
+---
+
+### 4.5 Integrals Involving Trig Identities
+
+**Strategy:** Simplify FIRST using identities, THEN integrate.
+
+| See this | Rewrite as | Identity used |
+|----------|-----------|---------------|
+| $\tan^2\theta$ | $\sec^2\theta - 1$ | $1 + \tan^2 = \sec^2$ |
+| $\cos\theta \cdot \tan\theta$ | $\sin\theta$ | $\tan = \sin/\cos$, cancel $\cos$ |
+| $\cos\theta \cdot \sec\theta$ | $1$ | $\sec = 1/\cos$, cancel |
+| $\sin^2\theta$ | $\frac{1-\cos 2\theta}{2}$ | Power reduction |
+| $\cos^2\theta$ | $\frac{1+\cos 2\theta}{2}$ | Power reduction |
+
+> ⚠️ **Don't integrate trig products directly.** Always simplify/expand first, then integrate term by term.
+
+---
+
+### 4.6 Integration by Parts (IBP) ⭐️
+
+#### Formula
+
+$$\int u\,dv = uv - \int v\,du$$
+
+#### LIATE Rule — How to Choose $u$
+
+Pick $u$ from the **first** matching category (higher priority = better $u$):
+
+| Priority | Type | Examples | Why |
+|----------|------|---------|-----|
+| 1st | **L**ogarithmic | $\ln x$, $\log x$ | Differentiating simplifies it |
+| 2nd | **I**nverse trig | $\arctan x$, $\arcsin x$ | Same — simpler after $d/dx$ |
+| 3rd | **A**lgebraic | $x$, $x^2$, $\sqrt{x}$ | Powers reduce when differentiated |
+| 4th | **T**rigonometric | $\sin x$, $\cos x$ | Cycles under differentiation |
+| 5th | **E**xponential | $e^x$, $2^x$ | Stays the same — best as $dv$ |
+
+**Everything NOT chosen as $u$ → goes into $dv$.**
+
+#### Common IBP Patterns
+
+| Type | Example | Key move |
+|------|---------|----------|
+| **Basic** | $\int x e^x\,dx$ | $u=x$, $dv=e^x dx$. One round. |
+| **Log type** | $\int \ln(x)/x^2\,dx$ | $u=\ln x$, $dv=x^{-2}dx$. Log disappears after differentiation. |
+| **Inverse trig** | $\int \arctan(1/x)\,dx$ | $u=\arctan(1/x)$, $dv=dx$. Differentiate the arctan. |
+| **Cycling** | $\int \cos(\ln x)\,dx$ | IBP twice → original integral reappears → solve algebraically. |
+| **Sub + IBP combo** | $\int e^{\sqrt{x}}\,dx$ | First $t=\sqrt{x}$, then IBP on the result. |
+
+> ⚠️ **Cycling:** If after 2 rounds of IBP you see the original integral $I$ again: $I = (\text{stuff}) - I$, solve $2I = \text{stuff}$, so $I = \text{stuff}/2$.
+
+---
+
+### 4.7 Partial Fractions ⭐️
+
+#### When to Use
+
+Integrand is a **rational function** $P(x)/Q(x)$ where $\deg P < \deg Q$.
+
+> ⚠️ If $\deg P \geq \deg Q$: **long division first**, then PF on the remainder.
+
+#### Decomposition Forms
+
+| Factor in $Q(x)$ | Partial fraction form |
+|-------------------|----------------------|
+| $(x-a)$ | $\dfrac{A}{x-a}$ |
+| $(x-a)^2$ | $\dfrac{A}{x-a} + \dfrac{B}{(x-a)^2}$ |
+| $(x-a)^3$ | $\dfrac{A}{x-a} + \dfrac{B}{(x-a)^2} + \dfrac{C}{(x-a)^3}$ |
+| $(x^2+bx+c)$ irreducible | $\dfrac{Ax+B}{x^2+bx+c}$ |
+
+#### Solve for Constants
+
+1. **Multiply both sides** by $Q(x)$ to clear denominators
+2. **Strategic $x$ values** — plug in roots of each factor to isolate constants
+3. **Compare coefficients** — for remaining unknowns, match powers of $x$
+
+#### Integration After PF
+
+| Term | Integral |
+|------|----------|
+| $\dfrac{A}{x-a}$ | $A\ln|x-a| + C$ |
+| $\dfrac{A}{(x-a)^n}$ | $\dfrac{A}{-(n-1)(x-a)^{n-1}} + C$ |
+| $\dfrac{Ax+B}{x^2+c^2}$ | Split: $A$ part → $\ln$, $B$ part → $\arctan$ |
+
+---
+
+### 4.8 Improper Integrals ⭐️
+
+#### Type I — Infinite Limits
+
+$$\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx$$
+
+If the limit is finite → **converges**. If not → **diverges**.
+
+For $\int_{-\infty}^{\infty}$: split at any $c$: $\int_{-\infty}^c + \int_c^{\infty}$ (both must converge).
+
+#### Type II — Discontinuity at Endpoint
+
+$$\int_a^b f(x)\,dx \text{ where } f \to \infty \text{ at } x=a$$
+
+$$= \lim_{c \to a^+} \int_c^b f(x)\,dx$$
+
+> ⚠️ **Discontinuity INSIDE $[a,b]$** at $x=d$: split into $\int_a^d + \int_d^b$. Both must converge.
+
+#### $p$-Test ⭐️
+
+$$\int_1^\infty \frac{1}{x^p}\,dx \begin{cases} \text{converges} & p > 1 \\ \text{diverges} & p \leq 1 \end{cases}$$
+
+$$\int_0^1 \frac{1}{x^p}\,dx \begin{cases} \text{converges} & p < 1 \\ \text{diverges} & p \geq 1 \end{cases}$$
+
+> Memory: At $\infty$, need $p>1$ (fast enough decay). At $0$, need $p<1$ (mild enough blow-up).
+
+#### Key Antiderivatives for Improper Integrals
+
+| Integral | Result | Needed for |
+|----------|--------|-----------|
+| $\int \dfrac{1}{1+x^2}\,dx$ | $\arctan(x) + C$ | $\lim_{x\to\infty}\arctan(x) = \pi/2$ |
+| $\int \dfrac{1}{x^p}\,dx$ | $\dfrac{x^{1-p}}{1-p} + C$ ($p \neq 1$) | $p$-test evaluation |
+
+---
+
+### 4.9 Volumes of Solids of Revolution — Disk/Washer ⭐️
+
+#### Disk Method (solid, no hole)
+
+Revolve $y = f(x)$ around $x$-axis:
+
+$$V = \pi \int_a^b [f(x)]^2\,dx$$
+
+> Think: stack of circular disks, each with radius $= f(x)$.
+
+#### Washer Method (hollow, two curves)
+
+Revolve region between $f(x)$ (outer) and $g(x)$ (inner) around $x$-axis:
+
+$$V = \pi \int_a^b \left([f(x)]^2 - [g(x)]^2\right)\,dx$$
+
+> Think: disk with a hole. Area $= \pi R^2 - \pi r^2$.
+
+#### Shifted Axis
+
+Revolving around $y = k$ (not $x$-axis):
+
+| | Radius |
+|--|--------|
+| **Disk** around $y=k$ | $R(x) = f(x) - k$ |
+| **Washer** around $y=k$ | Outer: $f(x)-k$, Inner: $g(x)-k$ |
+
+> ⚠️ If axis is ABOVE the curve: $R = k - f(x)$ (flip the subtraction).
+
+#### Cross-Section Volumes (Non-Revolution)
+
+$$V = \int_a^b A(x)\,dx$$
+
+where $A(x)$ is the cross-sectional area at position $x$.
+
+| Cross-section shape | $A(x)$ given side length $s$ |
+|--------------------|-----------------------------|
+| Square | $s^2$ |
+| Semicircle (diameter $= s$) | $\frac{\pi}{8}s^2$ |
+| Equilateral triangle | $\frac{\sqrt{3}}{4}s^2$ |
+| Isosceles right triangle (leg $= s$) | $\frac{1}{2}s^2$ |
+
+---
+
+### 4.10 Volumes — Cylindrical Shells ⭐️
+
+#### Shell Method
+
+Revolve region around $y$-axis:
+
+$$V = 2\pi \int_a^b x \cdot f(x)\,dx$$
+
+> Think: nested cylindrical tubes. Each shell has radius $= x$, height $= f(x)$, thickness $= dx$.
+
+#### Shifted Axis
+
+Revolving around $x = k$:
+
+$$V = 2\pi \int_a^b |x - k| \cdot f(x)\,dx$$
+
+> ⚠️ Shell radius $= |x - k|$, NOT just $x$.
+
+#### Disk/Washer vs Shell Decision Tree
+
+```text
+Which axis of revolution?
+         │
+    ┌────┴────┐
+ x-axis     y-axis
+    │         │
+ Slicing      Slicing
+ ⊥ to x?     ⊥ to y?
+    │         │
+  dy slices   dx slices
+  = Shell     = Shell
+    │         │
+  dx slices   dy slices
+  = Disk/W    = Disk/W
+```
+
+**Rule of thumb:**
+- **Slicing perpendicular to axis of revolution** → Disk/Washer
+- **Slicing parallel to axis of revolution** → Shell
+- If function is $y = f(x)$ and revolving around $y$-axis → **Shell** is usually easier (no need to solve for $x$)
 
 ---
 
