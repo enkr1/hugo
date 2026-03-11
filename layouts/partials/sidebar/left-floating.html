@@ -1,5 +1,5 @@
 <nav class="floating-toolbar floating-toolbar--left" aria-label="Site navigation">
-    {{/* Navigation links (skip external/newTab items — placed manually below) */}}
+    {{/* Navigation links (external items rendered after separator) */}}
     {{ range .Site.Menus.main }}
         {{ if not (eq .Params.newTab true) }}
         <a href="{{ .URL }}" class="toolbar-icon" aria-label="{{ .Name }}">
@@ -23,7 +23,7 @@
         {{ partial "helper/icon" "archives" }}
     </a>
 
-    {{/* External links (newTab items from menu.main) */}}
+    {{/* External links — after Archives, before Search */}}
     {{ range .Site.Menus.main }}
         {{ if eq .Params.newTab true }}
         <a href="{{ .URL }}" class="toolbar-icon" aria-label="{{ .Name }}" target="_blank" rel="noopener">

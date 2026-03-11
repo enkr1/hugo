@@ -5,7 +5,7 @@
 <nav class="mobile-nav" id="mobile-nav">
     {{ $currentPage := . }}
     {{ range .Site.Menus.mobile }}
-    {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "mobile" .) ($currentPage.IsMenuCurrent "mobile" .)) }}
+    {{ $active := eq $currentPage.RelPermalink .URL }}
     <a href="{{ .URL }}" class="mobile-nav__item{{ if $active }} active{{ end }}"{{ if eq .Params.newTab true }} target="_blank" rel="noopener"{{ end }}>
         {{ $icon := default .Pre .Params.Icon }}
         {{ with $icon }}
