@@ -34,6 +34,10 @@ name = "Jing Hui PANG | 彭竞辉 | ENKR"
 email = ""
 keywords = ['ENKR', 'Jing Hui PANG', 'Pang Jing Hui', '彭竞辉', 'Beatbox', 'ByteDance', 'ByteDancer', '字节跳动', 'Beatboxing artist', 'Programming', 'Software Engineering', 'Full-Stack Development', 'Elixir programming', 'JavaScript', 'PHP', 'Singapore tech community', '555 Beatbox Initiative', 'Beatbox battles', 'ByteDance engineer', 'Tech and music integration', 'Technology', 'Music', 'UI/UX Design', 'Web development', 'DevOps', 'Cloud technologies', 'AWS', 'Terraform', 'MySQL', 'PostgreSQL', 'Singapore beatboxer', 'Esh', 'We are rising 555']
 
+[params.opengraph.twitter]
+site = "enkr999"
+card = "summary_large_image"
+
 [params.footer]
 since = 2023
 [params.footer.visitorCount]
