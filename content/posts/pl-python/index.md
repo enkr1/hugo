@@ -510,10 +510,7 @@ class Solution:
             pointer_placement -= 1
 
         nums1[: pointer_nums2 + 1] = nums2[: pointer_nums2 + 1]
-        qwe
 ```
-
-qwe
 
 **Python-Specific Learnings**
 1. **In-place Modification**
