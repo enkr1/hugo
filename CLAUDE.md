@@ -19,8 +19,10 @@ hugo --gc --minify             # Production build (matches CI)
 
 # Content creation
 hugo new content/posts/my-post/index.md     # New blog post (page bundle)
-hugo new content/journals/journal-YYMMDD/index.md  # New journal entry
-./create_journal.sh                         # Quick journal creation for today
+hugo new content/journals/journal-YYMMDD/index.md  # New weekly journal entry
+./create_journal.sh                         # Quick weekly journal creation for today
+./create_journal_note.sh                    # Ad-hoc journal with title prompt
+./create_journal_note.sh "My Title"         # Ad-hoc journal with inline title
 ```
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
