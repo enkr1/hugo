@@ -498,6 +498,23 @@ $$\int_0^1 \frac{1}{x^p}\,dx \begin{cases} \text{converges} & p < 1 \\ \text{div
 | $\int \dfrac{1}{1+x^2}\,dx$ | $\arctan(x) + C$ | $\lim_{x\to\infty}\arctan(x) = \pi/2$ |
 | $\int \dfrac{1}{x^p}\,dx$ | $\dfrac{x^{1-p}}{1-p} + C$ ($p \neq 1$) | $p$-test evaluation |
 
+#### Must-Know Limits for Improper Integrals ⭐️
+
+| Limit | Value | Used in |
+|-------|-------|---------|
+| $\arctan(\infty)$ | $\pi/2$ | $\int_0^\infty \frac{1}{1+x^2}\,dx$ |
+| $\arctan(-\infty)$ | $-\pi/2$ | Symmetric Type I |
+| $\arctan(0)$ | $0$ | Lower bound evaluation |
+| $e^{-\infty}$ | $0$ | $\int_0^\infty e^{-x}\,dx$ |
+| $e^{\infty}$ | $\infty$ | Divergence check |
+| $\ln(0^+)$ | $-\infty$ | $\int_0^1 1/x\,dx$ (divergent, $p=1$) |
+| $\ln(\infty)$ | $\infty$ | Grows slower than any $x^\epsilon$ |
+| $\dfrac{1}{\infty}$ | $0$ | Every Type I problem |
+| $\dfrac{1}{0^+}$ | $\infty$ | Every Type II problem |
+| $\lim_{x \to 0^+} x \ln x$ | $0$ | "0 wins over $-\infty$" — log singularity problems |
+
+> ⚠️ **Big three for CT2:** $\arctan(\infty) = \pi/2$, $e^{-\infty} = 0$, $\ln(0^+) = -\infty$. Put these on your helpsheet.
+
 ---
 
 ### 4.9 Volumes of Solids of Revolution — Disk/Washer ⭐️
