@@ -8,6 +8,7 @@ categories: ["Education", "Mathematics"]
 toc: true
 math: true
 draft: false
+sticky: 2100
 ---
 
 for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT1 formulas (Chapters 1.1–3.4), see the [CT1 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet" >}}).
