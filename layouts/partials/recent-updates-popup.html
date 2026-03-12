@@ -3,6 +3,7 @@
 {{ $filtered := where $pages "Params.hidden" "!=" true }}
 {{ $sorted := sort $filtered ".Lastmod" "desc" }}
 {{ $recent := first 7 $sorted }}
+{{ $changes := .Site.Data.changes }}
 
 <div class="recent-updates-popup" id="recent-updates-popup">
     <div class="recent-updates-popup__bell" aria-hidden="true">
@@ -26,8 +27,20 @@
     <ul class="recent-updates-popup__list">
         {{ range $recent }}
             <li class="recent-updates-popup__item">
-                <a href="{{ .RelPermalink }}" class="recent-updates-popup__link">
+                {{ $changeData := false }}
+                {{ if $changes }}{{ with index $changes.files .File.Path }}{{ $changeData = . }}{{ end }}{{ end }}
+                <a href="{{ .RelPermalink }}{{ with $changeData }}{{ with .sections }}?changed={{ delimit . "," }}{{ end }}{{ end }}" class="recent-updates-popup__link">
                     <span class="recent-updates-popup__post-title">{{ .Title }}</span>
+                    {{/* Change indicator */}}
+                    {{ with $changeData }}
+                        {{ if eq .type "new" }}
+                            <span class="recent-updates-popup__change recent-updates-popup__change--new recent-updates-popup__change--major">new</span>
+                        {{ else if or (gt .added 0.0) (gt .removed 0.0) }}
+                            <span class="recent-updates-popup__change{{ if gt .net 50.0 }} recent-updates-popup__change--major{{ end }}">
+                                {{- if gt .added 0.0 }}<span class="diff-add">+{{ .added }}</span>{{ end }}{{ if and (gt .added 0.0) (gt .removed 0.0) }} {{ end }}{{ if gt .removed 0.0 }}<span class="diff-del">-{{ .removed }}</span>{{ end -}}
+                            </span>
+                        {{ end }}
+                    {{ end }}
                     <span class="recent-updates-popup__date">
                         {{- $diff := sub now.Unix .Lastmod.Unix -}}
                         {{- $mins := int (div $diff 60) -}}

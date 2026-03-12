@@ -3,6 +3,7 @@
     {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
     {{ $filtered := where $pages "Params.hidden" "!=" true }}
     {{ $sorted := sort $filtered ".Lastmod" "desc" }}
+    {{ $changes := .Site.Data.changes }}
 
     <header class="section-header--grouped">
         <h1 class="section-title">{{ .Title }} · {{ len $filtered }}</h1>
@@ -29,12 +30,16 @@
 
     <section class="article-list" id="updated-list">
         {{ range $sorted }}
+            {{ $changeData := false }}
+            {{ if $changes }}{{ with index $changes.files .File.Path }}{{ $changeData = . }}{{ end }}{{ end }}
+            {{ $changedParam := "" }}
+            {{ with $changeData }}{{ with .sections }}{{ $changedParam = printf "?changed=%s" (delimit . ",") }}{{ end }}{{ end }}
             <article class="article-card" data-date="{{ .Lastmod.Format "2006-01-02" }}">
-                <a href="{{ .RelPermalink }}" class="article-card__link" aria-label="{{ .Title }}"></a>
+                <a href="{{ .RelPermalink }}{{ $changedParam }}" class="article-card__link" aria-label="{{ .Title }}"></a>
 
                 <div class="article-details">
                     <h2 class="article-title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        <a href="{{ .RelPermalink }}{{ $changedParam }}">{{ .Title }}</a>
                     </h2>
 
                     {{ with .Params.description }}
@@ -48,6 +53,27 @@
                                 Updated: {{ .Lastmod | time.Format (or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 · 3:04 PM") }}
                             </time>
                         </div>
+
+                        {{/* Change summary badges */}}
+                        {{ with $changeData }}
+                            <div class="change-summary">
+                                {{ if eq .type "new" }}
+                                    <span class="change-badge change-badge--new">New post</span>
+                                {{ else }}
+                                    {{ if or (gt .added 0.0) (gt .removed 0.0) }}
+                                        <span class="change-badge change-badge--lines">
+                                            {{- if gt .added 0.0 }}<span class="diff-add">+{{ .added }}</span>{{ end -}}
+                                            {{- if and (gt .added 0.0) (gt .removed 0.0) }} {{ end -}}
+                                            {{- if gt .removed 0.0 }}<span class="diff-del">-{{ .removed }}</span>{{ end -}}
+                                            {{ if gt .added 0.0 }} lines{{ else }} removed{{ end }}
+                                        </span>
+                                    {{ end }}
+                                {{ end }}
+                                {{ range .sections }}
+                                    <span class="change-badge change-badge--section">{{ . }}</span>
+                                {{ end }}
+                            </div>
+                        {{ end }}
 
                         <div class="article-tags">
                             {{ range (.GetTerms "tags") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}

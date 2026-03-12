@@ -15,5 +15,8 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Generated build artifacts
+data/changes.json
+
 # Node.js (for nested category script)
 node_modules/

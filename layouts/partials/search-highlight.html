@@ -46,4 +46,49 @@
         marks.forEach(m => m.classList.add('search-highlight--fade'));
     }, 3000);
 })();
+
+// ── Changed-section highlighting (from /updated/ and bell popup) ──
+(function() {
+    const param = new URLSearchParams(window.location.search).get('changed');
+    if (!param) return;
+
+    // Clean URL without reload
+    history.replaceState(null, '', window.location.pathname + window.location.hash);
+
+    const article = document.querySelector('.article-content');
+    if (!article) return;
+
+    const sectionNames = param.split(',').map(s => s.trim().toLowerCase());
+    const headings = article.querySelectorAll('h1, h2, h3');
+    const marked = [];
+    let firstMatch = null;
+
+    headings.forEach(heading => {
+        const text = heading.textContent.trim().toLowerCase();
+        if (!sectionNames.includes(text)) return;
+
+        heading.classList.add('changed-section');
+        marked.push(heading);
+        if (!firstMatch) firstMatch = heading;
+
+        // Walk siblings until next heading of same-or-higher level
+        const level = parseInt(heading.tagName[1], 10);
+        let sibling = heading.nextElementSibling;
+        while (sibling) {
+            if (/^H[1-3]$/i.test(sibling.tagName) && parseInt(sibling.tagName[1], 10) <= level) break;
+            sibling.classList.add('changed-section-content');
+            marked.push(sibling);
+            sibling = sibling.nextElementSibling;
+        }
+    });
+
+    if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Fade out after 5s
+    setTimeout(() => {
+        marked.forEach(el => el.classList.add('changed-section--fade'));
+    }, 5000);
+})();
 </script>
