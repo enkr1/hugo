@@ -170,5 +170,5 @@ FDT: $f'$ changes $+\to-$ → local max · $-\to+$ → local min · same sign �
 
 ## Related
 
-- [Cheatsheet 1.1–3.4 (CT1)]({{< ref "nus-bit-tcx2101-cheatsheet-1.1-3.4" >}})
-- [Cheatsheet 3.5–4.11 (CT2)]({{< ref "nus-bit-tcx2101-cheatsheet-3.5-4.11" >}})
+- [Cheatsheet 1.1–3.4 (CT1)]({{< ref "tcx2101-calculus-cheatsheet" >}})
+- [Cheatsheet 3.5–4.11 (CT2)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}})
