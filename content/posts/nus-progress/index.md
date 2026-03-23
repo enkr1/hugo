@@ -37,13 +37,13 @@ draft: false
 <div class="subtitle">Calculus & Linear Algebra — 31 topics</div>
 <div class="progress-bar">
 <span style="width:22.6%;background:#003D7C" title="Confident: 7"></span>
-<span style="width:45.2%;background:#C9A882" title="Comfortable: 14"></span>
-<span style="width:32.2%;background:#E5E7EB" title="Not started: 10"></span>
+<span style="width:61.3%;background:#C9A882" title="Comfortable/Familiar: 19"></span>
+<span style="width:16.1%;background:#E5E7EB" title="Not started: 5"></span>
 </div>
 <div class="progress-legend">
 <span><i style="background:#003D7C"></i>Confident: 7</span>
-<span><i style="background:#C9A882"></i>Comfortable: 14</span>
-<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 10</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 19</span>
+<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 5</span>
 </div>
 </div>
 <div class="progress-card">
@@ -87,7 +87,8 @@ draft: false
 
 ### What's Next
 
-- **Ch 6.5–6.9:** Determinants, eigenvalues, eigenvectors, diagonalization
+- **Quiz 6.5–6.9:** Due Fri 27 (exposed in T8 class, need quiz pass)
+- **HW2:** Due Mon 30
 - **Ch 7.1–7.5:** Vectors, dot/cross product, lines & planes, vector spaces
 - **CT3:** Apr 13 — scope 5.1–7.6
 
@@ -116,11 +117,11 @@ draft: false
 | 6.2 | Matrix Algebra | 🔸 Comfortable |
 | 6.3 | Linear Systems & Matrix Equations | 🔸 Comfortable |
 | 6.4 | Invertible Matrices | 🔸 Comfortable |
-| 6.5 | Determinants | ⬜ Not started |
-| 6.6 | Eigenvalues | ⬜ Not started |
-| 6.7 | Eigenvectors | ⬜ Not started |
-| 6.8 | Diagonalization | ⬜ Not started |
-| 6.9 | Applications | ⬜ Not started |
+| 6.5 | Determinants | 🔸 Familiar |
+| 6.6 | Eigenvalues | 🔸 Familiar |
+| 6.7 | Eigenvectors | 🔸 Familiar |
+| 6.8 | Diagonalization | 🔸 Familiar |
+| 6.9 | Applications | 🔸 Familiar |
 | 7.1 | Vectors in Rn | ⬜ Not started |
 | 7.2 | Dot Product | ⬜ Not started |
 | 7.3 | Cross Product | ⬜ Not started |
@@ -198,4 +199,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-03-22 02:46 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-03-23 22:56 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
