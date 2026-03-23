@@ -187,11 +187,11 @@ I haven't written SQL in 6+ months.
 - subagents for distributed work
 - opus as primary model
 - ghostty as terminal
+- PostToolUse hooks for auto-formatting — prettier → eslint --fix fallback
 
 **will try:**
 - git worktrees for parallel isolation — the biggest takeaway from this thread
 - `--teleport` for web ↔ local handoff
-- PostToolUse hooks for auto-formatting
 - PostCompact hooks to re-inject context after compression
 
 **skipping (for now):**
