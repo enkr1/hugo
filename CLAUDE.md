@@ -23,6 +23,7 @@ hugo new content/journals/journal-YYMMDD/index.md  # New weekly journal entry
 ./create_journal.sh                         # Quick weekly journal creation for today
 ./create_journal_note.sh                    # Ad-hoc journal with title prompt
 ./create_journal_note.sh "My Title"         # Ad-hoc journal with inline title
+./journal.sh                                # Alias for weekly journal creation
 ```
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
@@ -134,7 +135,7 @@ When touching ANY component style in `custom.scss`, migrate it to the theme as p
 **custom.scss keeps ONLY:** `@import "fonts"`, `:root` design tokens, `html` global resets
 **Everything else belongs in:** `themes/stack/assets/scss/` (component styles, responsive, widgets, etc.)
 
-This is not a one-time refactor — shrink custom.scss incrementally with every PR that touches styling. Current: ~1400 lines. Target: ~200 lines.
+This is not a one-time refactor — shrink custom.scss incrementally with every PR that touches styling. Current: ~163 lines (migration largely complete). Target: ~100 lines.
 
 **Template lookup order:** `layouts/` → `themes/stack/layouts/`
 
@@ -186,6 +187,16 @@ When creating posts about NUS BIT coursework:
   ```
 
 **Workflow:** Session notes → Atomic notes → Blog post emerges when notes cluster.
+
+---
+
+## Shortcodes
+
+Custom overrides in `layouts/shortcodes/`:
+- `youtube.html`, `vimeo.html` — override Hugo built-in embeds
+
+Theme-provided (`themes/stack/layouts/shortcodes/`):
+- `quote.html`, `video.html`, `bilibili.html`, `gitlab.html`, `tencent.html`
 
 ---
 
