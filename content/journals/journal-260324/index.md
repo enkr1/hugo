@@ -1,16 +1,30 @@
 ---
 title: "Journal: Week 59"
 date: 2026-03-24T01:36:23+08:00
-description:
+description: "meal prep era, AI doing the thinking for me, CT3 sprint begins, some opensource project contributions going"
 tags:
   - journal
   - NUS
   - engineering
   - open-source
+  - meal-prep
 categories:
   - "About Me"
   - "Journals"
 keywords:
+  - "Meal Prep"
+  - "NUS BIT"
+  - "Linear Algebra"
+  - "Calculus"
+  - "Open Source"
+  - "Coursemology"
+  - "Ghostty"
+  - "Deep Thinking"
+  - "AI Thinking"
+  - "Claude Code"
+  - "OOP"
+  - "CT3 Exam Prep"
+  - "Weekly Journal"
 comments: false
 ---
 
@@ -19,6 +33,8 @@ comments: false
 ### 🍳 meal prep era
 
 this week i finally took my meal prep a lil... more serious?? cuz my friend asked me: "why dont you buy an egg cooker urself and boil em in the morning to save money?" and i went to lazada immediately to just purchase an egg steamer, glass bowl, and the next day i bought greek yoghurt, cereal, blueberry, eggs and banana! and damn, indeed requires a bit more time to do all these but im on 3rd or 4th day now? i think im getting the hang of it! HOHOHO im loving it.
+
+![my greek yoghurt bowl~ 🫐🥣](meal-prep.jpg)
 
 also been thinking about something. im so grateful to be alive to have the chance to absorb info like this, i think im just so lucky to be alive right now as somebody who's super curious in anything, adhd like me, i could literally get any info i want within a sec, but this made me realise something i have not been doing often which is to deep think, i have been seeing deepseek, claude code, showing the steps to think and it just hits me again, and it brought me some kind of weirdness seeing it doing the thinking FOR me instead of me DOING the THINKING... it's weird, grateful and unhappiness, just weird. and it reminds me that im the owner of everything im about to do, so i have the control, jinghui, read more, think more.
 
