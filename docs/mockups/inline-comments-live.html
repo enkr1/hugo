@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inline Comments — Live Demo (Lark Style)</title>
+<style>
+  :root {
+    --gold: #8B7355;
+    --gold-bg: rgba(139, 115, 85, 0.12);
+    --gold-hover: rgba(139, 115, 85, 0.22);
+    --water: #1E4B8C;
+    --fire: #D97706;
+    --bg: #f8f6f3;
+    --card-bg: #fff;
+    --text: #1f1f1f;
+    --text-secondary: #585a5a;
+    --text-muted: #8f959e;
+    --border: #e0e0e0;
+    --border-light: #f0f0f0;
+    --active-border: #f7c948;
+    --mention-bg: #34c182;
+    --mention-text: #fff;
+    --radius: 8px;
+    --radius-sm: 6px;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+    --transition: 0.15s ease;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ===== Header ===== */
+  .site-header {
+    background: var(--gold);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+  }
+
+  .site-name { font-family: var(--font-display); font-size: 1.05rem; }
+
+  .header-right { display: flex; align-items: center; gap: 0.8rem; }
+
+  .auth-area { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
+
+  .signin-btn-header {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: #fff;
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .signin-btn-header:hover { background: rgba(255,255,255,0.15); }
+
+  .user-info { display: none; align-items: center; gap: 0.4rem; }
+  .user-info.visible { display: flex; }
+
+  .signout-link {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.7rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ===== Demo banner ===== */
+  .demo-banner {
+    background: linear-gradient(135deg, #1e1e2e, #2d2d44);
+    color: #cdd6f4;
+    padding: 0.45rem 1.5rem;
+    font-size: 0.73rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .demo-banner strong { color: #f9e2af; }
+
+  .demo-hint {
+    background: rgba(249, 226, 175, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+  }
+
+  /* ===== Main layout ===== */
+  .main-layout {
+    display: flex;
+    height: calc(100vh - 76px);
+  }
+
+  /* ===== Left TOC ===== */
+  .toc-sidebar {
+    width: 200px;
+    padding: 1.2rem 0.8rem;
+    border-right: 1px solid #eee;
+    background: #faf9f7;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .toc-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    padding-left: 0.4rem;
+  }
+
+  .toc-item {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-left: 2px solid transparent;
+    margin-bottom: 0.1rem;
+    cursor: pointer;
+    transition: all 0.12s;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .toc-item:hover { background: rgba(139,115,85,0.05); color: var(--text); }
+
+  .toc-item.active {
+    color: var(--gold);
+    border-left-color: var(--gold);
+    font-weight: 600;
+    background: rgba(139,115,85,0.05);
+  }
+
+  .toc-item.sub { padding-left: 1rem; font-size: 0.74rem; }
+
+  /* ===== Article ===== */
+  .article-area {
+    flex: 1;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+    min-width: 0;
+    max-width: 750px;
+    scroll-behavior: smooth;
+  }
+
+  .article-area h1 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .article-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .article-content p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+
+  .article-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 2rem 0 0.8rem;
+  }
+
+  .article-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin: 1rem 0 1.2rem;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .ck { color: #cba6f7; } .cf { color: #89b4fa; }
+  .cs { color: #a6e3a1; } .cc { color: #6c7086; font-style: italic; }
+
+  /* ===== Highlights ===== */
+  mark.comment-hl {
+    background: var(--gold-bg);
+    border-bottom: 2px solid var(--gold);
+    padding: 1px 0;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background var(--transition);
+  }
+
+  mark.comment-hl:hover, mark.comment-hl.active {
+    background: var(--gold-hover);
+  }
+
+  /* ===== Selection popup ===== */
+  .selection-popup {
+    position: fixed;
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--text);
+    color: #fff;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    z-index: 1000;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .selection-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--text);
+    rotate: 45deg;
+  }
+
+  .selection-popup:hover { background: #1a1a2e; }
+
+  .selection-popup svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* ===== Comment panel ===== */
+  .comment-panel {
+    width: 360px;
+    border-left: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .panel-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .panel-title .count {
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 0.3rem;
+  }
+
+  .panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+
+  /* ===== Lark-style comment card ===== */
+  .comment-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0;
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    transition: top 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.2s ease, box-shadow 0.15s ease;
+    cursor: default;
+    animation: fadeIn 0.25s ease;
+    overflow: hidden;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .comment-card.focused {
+    border-top: 4px solid var(--active-border);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+
+  .comment-card.resolved { opacity: 0.45; }
+
+  /* Card header: quoted text + controls */
+  .card-header {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.75rem 0.4rem;
+    gap: 0.5rem;
+  }
+
+  .quoted-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: 0;
+  }
+
+  .quoted-bar::before {
+    content: '';
+    display: block;
+    width: 3px;
+    min-height: 16px;
+    align-self: stretch;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .quoted-text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .card-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .comment-card:hover .card-controls,
+  .comment-card.focused .card-controls {
+    opacity: 1;
+  }
+
+  .ctrl-btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.1s;
+  }
+
+  .ctrl-btn:hover { background: var(--border-light); color: var(--text); }
+
+  .ctrl-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Comment entry (author + text) */
+  .comment-entry {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.3rem 0.75rem 0.5rem;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #5bb5a2, #4a90d9);
+  }
+
+  .entry-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .entry-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .author-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .timestamp {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .entry-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text);
+    word-wrap: break-word;
+  }
+
+  /* Hover actions on individual entries */
+  .entry-actions {
+    display: none;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.3rem;
+    gap: 0.1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .comment-entry { position: relative; }
+
+  .comment-entry:hover .entry-actions { display: flex; }
+
+  .entry-action-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .entry-action-btn:hover { background: var(--border-light); color: var(--text); }
+
+  /* Reply box — Lark style */
+  .reply-box {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.75rem 0.5rem;
+    border-top: 1px solid var(--border-light);
+    gap: 0.4rem;
+    position: relative;
+  }
+
+  .reply-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.6rem;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color var(--transition);
+    color: var(--text);
+    background: #fafafa;
+  }
+
+  .reply-input::placeholder { color: var(--text-muted); }
+  .reply-input:focus { border-color: #4a90d9; background: #fff; }
+
+  .reply-icon-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .reply-icon-btn:hover { background: var(--border-light); color: var(--text); }
+  .reply-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* @mention pill — Lark green */
+  .mention {
+    display: inline;
+    background: var(--mention-bg);
+    color: var(--mention-text);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Mention dropdown */
+  .mention-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0.75rem;
+    right: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    z-index: 500;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+
+  .mention-dropdown.visible { display: block; }
+
+  .mention-dropdown-header {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    padding: 0.4rem 0.6rem 0.2rem;
+  }
+
+  .mention-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.08s;
+  }
+
+  .mention-option:hover, .mention-option.selected { background: #f0f4ff; }
+
+  .mention-option .avatar { width: 24px; height: 24px; font-size: 0.5rem; }
+
+  /* Composer */
+  .composer {
+    display: none;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--active-border);
+    border-radius: var(--radius);
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    z-index: 10;
+    overflow: hidden;
+    animation: fadeIn 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .composer.visible { display: block; }
+
+  .composer .card-header { padding-bottom: 0.3rem; }
+
+  .composer-body { padding: 0.3rem 0.75rem 0.5rem; }
+
+  .composer-textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    resize: vertical;
+    min-height: 60px;
+    outline: none;
+    color: var(--text);
+    background: #fafafa;
+  }
+
+  .composer-textarea:focus { border-color: #4a90d9; background: #fff; }
+
+  .composer-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    margin-top: 0.4rem;
+  }
+
+  .btn {
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition);
+    font-weight: 500;
+  }
+
+  .btn-ghost { border: 1px solid var(--border); background: #fff; color: var(--text-secondary); }
+  .btn-ghost:hover { border-color: #999; color: var(--text); }
+
+  .btn-primary { border: none; background: #4a90d9; color: #fff; }
+  .btn-primary:hover { background: #3a7bc8; }
+  .btn-primary:disabled { background: #ccc; cursor: default; }
+
+  /* Empty state */
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-muted); position: relative; }
+  .empty-state .icon { font-size: 2rem; margin-bottom: 0.4rem; opacity: 0.2; }
+  .empty-state p { font-size: 0.85rem; }
+  .empty-state .sub { font-size: 0.75rem; margin-top: 0.2rem; }
+
+  /* Sign in */
+  .signin-prompt { text-align: center; padding: 1rem; margin-top: 0.5rem; position: relative; }
+
+  .signin-google {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: all var(--transition);
+  }
+
+  .signin-google:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-color: #999; }
+  .signin-google svg { width: 16px; height: 16px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 2000;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .toast.visible { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <span class="site-name">blog.enkr1.com</span>
+  <div class="header-right">
+    <div class="auth-area">
+      <button class="signin-btn-header" id="header-signin" onclick="signIn()">Sign in</button>
+      <div class="user-info" id="header-user">
+        <span id="header-username" style="font-size:0.78rem;opacity:0.9"></span>
+        <div class="avatar" id="header-avatar" style="width:24px;height:24px;font-size:0.5rem"></div>
+        <span class="signout-link" onclick="signOut()">Sign out</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo-banner">
+  <strong>Live Demo</strong>
+  <span class="demo-hint">Select text to comment</span>
+  <span class="demo-hint">Click highlights to focus cards</span>
+  <span class="demo-hint">Type @ to mention</span>
+</div>
+
+<div class="selection-popup" id="selection-popup" onclick="onAddCommentClick()">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  Add comment
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="main-layout">
+  <div class="toc-sidebar">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-item active">Five Elements Overview</div>
+    <div class="toc-item sub">Generation Cycle</div>
+    <div class="toc-item sub">Control Cycle</div>
+    <div class="toc-item">Practical Applications</div>
+    <div class="toc-item sub">Career Analysis</div>
+    <div class="toc-item sub">Relationships</div>
+    <div class="toc-item">Chart Reading</div>
+    <div class="toc-item sub">Day Master</div>
+    <div class="toc-item sub">Luck Pillars</div>
+    <div class="toc-item">Case Studies</div>
+  </div>
+
+  <div class="article-area" id="article-area">
+    <h1>Understanding Ba Zi: The Five Elements</h1>
+    <div class="article-meta">
+      <span>Mar 20, 2026</span><span>8 min read</span><span>142 views</span>
+    </div>
+    <div class="article-content" id="article-content">
+      <h2>Five Elements Overview</h2>
+      <p>The five elements — Metal (金), Water (水), Wood (木), Fire (火), and Earth (土) — form the foundation of Ba Zi analysis. Each element interacts with others through cycles of generation and control, creating a dynamic system that mirrors the natural world.</p>
+      <p>Understanding these relationships is essential for interpreting a Ba Zi chart. The elements don't exist in isolation — they constantly influence each other, strengthening or weakening depending on their position and quantity in the chart.</p>
+      <h3>Generation Cycle</h3>
+      <p>In the generation cycle (相生), Wood feeds Fire, Fire creates Earth (ash), Earth bears Metal (minerals form in earth), Metal collects Water (condensation on metal surfaces), and Water nourishes Wood (plants need water). This productive cycle ensures balance and harmony across all domains of life.</p>
+      <p>The generation cycle represents nurturing relationships. A strong generator produces a strong offspring element. For example, abundant Wood in a chart can produce powerful Fire, which represents passion, visibility, and charisma.</p>
+      <div class="code-block">
+<span class="cc">// Five element cycle relationships</span>
+<span class="ck">const</span> <span class="cf">elements</span> = {
+  <span class="cs">'金 Metal'</span>:  { generates: <span class="cs">'水 Water'</span>, controls: <span class="cs">'木 Wood'</span> },
+  <span class="cs">'水 Water'</span>:  { generates: <span class="cs">'木 Wood'</span>,  controls: <span class="cs">'火 Fire'</span> },
+  <span class="cs">'木 Wood'</span>:   { generates: <span class="cs">'火 Fire'</span>,  controls: <span class="cs">'土 Earth'</span> },
+  <span class="cs">'火 Fire'</span>:   { generates: <span class="cs">'土 Earth'</span>, controls: <span class="cs">'金 Metal'</span> },
+  <span class="cs">'土 Earth'</span>:  { generates: <span class="cs">'金 Metal'</span>, controls: <span class="cs">'水 Water'</span> },
+};
+      </div>
+      <h3>Control Cycle</h3>
+      <p>The control cycle (相克) provides checks and balances. Wood controls Earth (roots hold soil), Earth controls Water (dam holds water), Water controls Fire (extinguishes flame), Fire controls Metal (smelting), and Metal controls Wood (axe cuts tree). Without control, generation runs unchecked and the system loses balance.</p>
+      <p>In chart interpretation, the controlling element represents challenges, discipline, and structure. A healthy amount of control builds character, while excessive control can indicate oppression or struggle. The key is always balance.</p>
+      <h2>Practical Applications</h2>
+      <p>Understanding these cycles allows practitioners to identify imbalances in a person's chart. A chart heavy in Fire but lacking Water suggests someone who is passionate and visible but may burn out without deliberate rest and reflection.</p>
+      <p>The interplay extends beyond individual elements. When we examine the full eight characters (四柱八字), we see how elements interact across the four pillars — Year, Month, Day, and Hour — creating a rich tapestry of influences that shape personality, career aptitude, and relationship dynamics.</p>
+      <p>Each pillar has a Heavenly Stem and Earthly Branch, both carrying elemental properties. The Day Stem is considered the "Day Master" and represents the self. All other elements in the chart are interpreted relative to this central reference point.</p>
+      <p>Ba Zi analysis isn't about predicting a fixed fate. It's a framework for understanding inherent tendencies and making conscious choices. Like a weather forecast, it tells you what conditions to expect — but you decide whether to bring an umbrella.</p>
+    </div>
+  </div>
+
+  <div class="comment-panel">
+    <div class="panel-header">
+      <div class="panel-title">Comments <span class="count" id="comment-count">0</span></div>
+    </div>
+    <div class="panel-body" id="panel-body">
+      <div class="composer" id="composer">
+        <div class="card-header">
+          <div class="quoted-bar"><span class="quoted-text" id="composer-quoted"></span></div>
+        </div>
+        <div class="composer-body">
+          <textarea class="composer-textarea" id="composer-text" placeholder="Add a comment..."></textarea>
+          <div class="composer-footer">
+            <button class="btn btn-ghost" onclick="cancelCompose()">Cancel</button>
+            <button class="btn btn-primary" id="composer-submit" onclick="submitComment()" disabled>Comment</button>
+          </div>
+        </div>
+      </div>
+      <div id="comments-list"></div>
+      <div class="empty-state" id="empty-state">
+        <div class="icon">💬</div>
+        <p>No comments yet</p>
+        <p class="sub">Select text to start a conversation</p>
+      </div>
+      <div class="signin-prompt" id="signin-prompt" style="display:none">
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem">Sign in to comment</p>
+        <button class="signin-google" onclick="signIn()">
+          <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Sign in with Google
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ State ============
+let currentUser = null;
+let comments = [];
+let commentIdCounter = 0;
+let pendingSelection = null;
+let focusedCommentId = null;
+
+const AVATAR_GRADIENTS = [
+  'linear-gradient(135deg, #5bb5a2, #4a90d9)',
+  'linear-gradient(135deg, #e8915b, #e06b8f)',
+  'linear-gradient(135deg, #8b7de8, #5bb5a2)',
+  'linear-gradient(135deg, #4a90d9, #8b7de8)',
+  'linear-gradient(135deg, #e06b8f, #f7c948)',
+];
+
+const DEMO_USERS = [
+  { uid: '1', displayName: 'Alex Lee', gradient: AVATAR_GRADIENTS[0], initials: 'AL' },
+  { uid: '2', displayName: 'Sarah K', gradient: AVATAR_GRADIENTS[1], initials: 'SK' },
+  { uid: '3', displayName: 'Ming W', gradient: AVATAR_GRADIENTS[2], initials: 'MW' },
+];
+
+// ============ Auth ============
+function signIn() {
+  currentUser = {
+    uid: 'me',
+    displayName: 'Jing Hui',
+    gradient: AVATAR_GRADIENTS[3],
+    initials: 'JH',
+  };
+  document.getElementById('header-signin').style.display = 'none';
+  const ui = document.getElementById('header-user');
+  ui.classList.add('visible');
+  document.getElementById('header-username').textContent = currentUser.displayName;
+  const av = document.getElementById('header-avatar');
+  av.style.background = currentUser.gradient;
+  av.textContent = currentUser.initials;
+  document.getElementById('signin-prompt').style.display = 'none';
+  showToast('Signed in as ' + currentUser.displayName);
+  render();
+}
+
+function signOut() {
+  currentUser = null;
+  document.getElementById('header-signin').style.display = '';
+  document.getElementById('header-user').classList.remove('visible');
+  document.getElementById('signin-prompt').style.display = '';
+  cancelCompose();
+  showToast('Signed out');
+  render();
+}
+
+// ============ Selection ============
+const popup = document.getElementById('selection-popup');
+const articleContent = document.getElementById('article-content');
+
+document.addEventListener('mouseup', () => {
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+      popup.style.display = 'none';
+      pendingSelection = null;
+      return;
+    }
+    const range = sel.getRangeAt(0);
+    if (!articleContent.contains(range.commonAncestorContainer)) {
+      popup.style.display = 'none';
+      pendingSelection = null;
+      return;
+    }
+    const rect = range.getBoundingClientRect();
+    const text = sel.toString().trim();
+    const fullText = articleContent.textContent;
+    const idx = fullText.indexOf(text);
+    const prefix = idx > 0 ? fullText.substring(Math.max(0, idx - 30), idx) : '';
+    const suffix = idx >= 0 ? fullText.substring(idx + text.length, idx + text.length + 30) : '';
+    pendingSelection = { text, range: range.cloneRange(), prefix, suffix };
+    popup.style.display = 'flex';
+    popup.style.left = (rect.left + rect.width / 2 - popup.offsetWidth / 2) + 'px';
+    popup.style.top = (rect.top - 40) + 'px';
+  }, 10);
+});
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.selection-popup') || e.target.closest('.comment-panel')) return;
+  popup.style.display = 'none';
+});
+
+// ============ CRUD ============
+function onAddCommentClick() {
+  if (!currentUser) signIn();
+  if (!pendingSelection) return;
+  popup.style.display = 'none';
+  const comp = document.getElementById('composer');
+  comp.classList.add('visible');
+  document.getElementById('composer-quoted').textContent = truncate(pendingSelection.text, 60);
+  const ta = document.getElementById('composer-text');
+  ta.value = '';
+  ta.focus();
+  document.getElementById('panel-body').scrollTop = 0;
+  window.getSelection().removeAllRanges();
+}
+
+document.getElementById('composer-text').addEventListener('input', (e) => {
+  document.getElementById('composer-submit').disabled = !e.target.value.trim();
+});
+
+function submitComment() {
+  const text = document.getElementById('composer-text').value.trim();
+  if (!text || !pendingSelection || !currentUser) return;
+  const id = ++commentIdCounter;
+  comments.unshift({
+    id, quotedText: pendingSelection.text,
+    prefix: pendingSelection.prefix, suffix: pendingSelection.suffix,
+    text, author: { ...currentUser },
+    createdAt: new Date(), resolved: false, replies: [],
+  });
+  cancelCompose();
+  render();
+  highlightText(comments[0]);
+  focusComment(id);
+  showToast('Comment added');
+}
+
+function cancelCompose() {
+  document.getElementById('composer').classList.remove('visible');
+  document.getElementById('composer-text').value = '';
+  pendingSelection = null;
+}
+
+function addReply(commentId) {
+  const input = document.getElementById('reply-input-' + commentId);
+  const text = input.value.trim();
+  if (!text || !currentUser) return;
+  const c = comments.find(c => c.id === commentId);
+  if (!c) return;
+  c.replies.push({ author: { ...currentUser }, text, createdAt: new Date() });
+  input.value = '';
+  closeMentionDropdown(commentId);
+  render();
+  showToast('Reply added');
+}
+
+function resolveComment(id) {
+  const c = comments.find(c => c.id === id);
+  if (!c) return;
+  c.resolved = !c.resolved;
+  const hl = document.querySelector(`mark[data-id="${id}"]`);
+  if (hl && c.resolved) hl.outerHTML = hl.innerHTML;
+  else if (!c.resolved) highlightText(c);
+  render();
+}
+
+// ============ Highlighting ============
+function highlightText(comment) {
+  const walker = document.createTreeWalker(articleContent, NodeFilter.SHOW_TEXT);
+  let node;
+  while (node = walker.nextNode()) {
+    const idx = node.textContent.indexOf(comment.quotedText);
+    if (idx === -1) continue;
+    if (node.parentElement.tagName === 'MARK') continue;
+    const range = document.createRange();
+    range.setStart(node, idx);
+    range.setEnd(node, idx + comment.quotedText.length);
+    const mark = document.createElement('mark');
+    mark.className = 'comment-hl';
+    mark.dataset.id = comment.id;
+    mark.onclick = () => focusComment(comment.id);
+    range.surroundContents(mark);
+    break;
+  }
+}
+
+function focusComment(id) {
+  document.querySelectorAll('.comment-card.focused').forEach(c => c.classList.remove('focused'));
+  document.querySelectorAll('mark.comment-hl.active').forEach(m => m.classList.remove('active'));
+  focusedCommentId = id;
+  const card = document.getElementById('card-' + id);
+  if (card) { card.classList.add('focused'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  const mark = document.querySelector(`mark[data-id="${id}"]`);
+  if (mark) { mark.classList.add('active'); mark.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+}
+
+// ============ Mentions ============
+function getThreadParticipants(comment) {
+  const seen = new Set();
+  const ps = [];
+  if (!seen.has(comment.author.uid)) { seen.add(comment.author.uid); ps.push(comment.author); }
+  comment.replies.forEach(r => { if (!seen.has(r.author.uid)) { seen.add(r.author.uid); ps.push(r.author); } });
+  return ps.filter(p => !currentUser || p.uid !== currentUser.uid);
+}
+
+let activeMentionDD = null;
+let mentionSelIdx = 0;
+
+function handleReplyInput(event, cid) {
+  const val = event.target.value;
+  const pos = event.target.selectionStart;
+  const dd = document.getElementById('mention-dd-' + cid);
+  const before = val.substring(0, pos);
+  const atIdx = before.lastIndexOf('@');
+  if (atIdx >= 0 && (atIdx === 0 || before[atIdx - 1] === ' ')) {
+    const query = before.substring(atIdx + 1).toLowerCase();
+    const c = comments.find(c => c.id === cid);
+    const ps = getThreadParticipants(c);
+    const filtered = ps.filter(p => p.displayName.toLowerCase().includes(query));
+    if (filtered.length > 0) {
+      dd.innerHTML = `<div class="mention-dropdown-header">People in this thread</div>
+        ${filtered.map((p, i) => `<div class="mention-option ${i === 0 ? 'selected' : ''}" onclick="insertMention(${cid},'${esc(p.displayName)}')" data-idx="${i}"><div class="avatar" style="background:${p.gradient}">${p.initials}</div><span>${esc(p.displayName)}</span></div>`).join('')}`;
+      dd.classList.add('visible');
+      activeMentionDD = { cid, atIdx, filtered };
+      mentionSelIdx = 0;
+    } else { dd.classList.remove('visible'); activeMentionDD = null; }
+  } else { dd.classList.remove('visible'); activeMentionDD = null; }
+}
+
+function handleReplyKey(event, cid) {
+  const dd = document.getElementById('mention-dd-' + cid);
+  if (activeMentionDD && activeMentionDD.cid === cid && dd.classList.contains('visible')) {
+    const opts = dd.querySelectorAll('.mention-option');
+    if (event.key === 'ArrowDown') { event.preventDefault(); mentionSelIdx = Math.min(mentionSelIdx + 1, opts.length - 1); opts.forEach((o, i) => o.classList.toggle('selected', i === mentionSelIdx)); }
+    else if (event.key === 'ArrowUp') { event.preventDefault(); mentionSelIdx = Math.max(mentionSelIdx - 1, 0); opts.forEach((o, i) => o.classList.toggle('selected', i === mentionSelIdx)); }
+    else if (event.key === 'Enter') { event.preventDefault(); const s = activeMentionDD.filtered[mentionSelIdx]; if (s) insertMention(cid, s.displayName); }
+    else if (event.key === 'Escape') { dd.classList.remove('visible'); activeMentionDD = null; }
+    return;
+  }
+  if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); addReply(cid); }
+}
+
+function insertMention(cid, name) {
+  const input = document.getElementById('reply-input-' + cid);
+  const dd = document.getElementById('mention-dd-' + cid);
+  const val = input.value;
+  const pos = input.selectionStart;
+  const before = val.substring(0, pos);
+  const atIdx = before.lastIndexOf('@');
+  const b = val.substring(0, atIdx);
+  const a = val.substring(pos);
+  input.value = b + '@' + name + ' ' + a;
+  const np = atIdx + name.length + 2;
+  input.setSelectionRange(np, np);
+  input.focus();
+  dd.classList.remove('visible');
+  activeMentionDD = null;
+}
+
+function closeMentionDropdown(cid) {
+  const dd = document.getElementById('mention-dd-' + cid);
+  if (dd) dd.classList.remove('visible');
+  activeMentionDD = null;
+}
+
+function renderMentions(text) {
+  let r = esc(text);
+  [...DEMO_USERS, { displayName: 'Jing Hui' }].forEach(u => {
+    const p = '@' + esc(u.displayName);
+    if (r.includes(p)) r = r.replace(p, `<span class="mention">@${esc(u.displayName)}</span>`);
+  });
+  return r;
+}
+
+// ============ Render ============
+function render() {
+  const list = document.getElementById('comments-list');
+  const empty = document.getElementById('empty-state');
+  const badge = document.getElementById('comment-count');
+  const active = comments.filter(c => !c.resolved);
+  badge.textContent = comments.length;
+  empty.style.display = comments.length === 0 ? '' : 'none';
+
+  list.innerHTML = comments.map(c => `
+    <div class="comment-card ${c.resolved ? 'resolved' : ''} ${focusedCommentId === c.id ? 'focused' : ''}"
+         id="card-${c.id}" onclick="focusComment(${c.id})">
+      <div class="card-header">
+        <div class="quoted-bar"><span class="quoted-text">${esc(truncate(c.quotedText, 60))}</span></div>
+        <div class="card-controls">
+          <button class="ctrl-btn" title="Previous comment"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+          <button class="ctrl-btn" title="Next comment"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+          <button class="ctrl-btn" title="Copy link"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Master comment -->
+      <div class="comment-entry">
+        <div class="avatar" style="background:${c.author.gradient}">${c.author.initials}</div>
+        <div class="entry-content">
+          <div class="entry-meta">
+            <span class="author-name">${esc(c.author.displayName)}</span>
+            <span class="timestamp">${timeAgo(c.createdAt)}</span>
+          </div>
+          <div class="entry-text">${esc(c.text)}</div>
+        </div>
+        <div class="entry-actions">
+          <button class="entry-action-btn" title="Like">👍</button>
+          <button class="entry-action-btn" title="Reply">💬</button>
+        </div>
+      </div>
+
+      <!-- Replies -->
+      ${c.replies.map(r => `
+        <div class="comment-entry">
+          <div class="avatar" style="background:${r.author.gradient}">${r.author.initials}</div>
+          <div class="entry-content">
+            <div class="entry-meta">
+              <span class="author-name">${esc(r.author.displayName)}</span>
+              <span class="timestamp">${timeAgo(r.createdAt)}</span>
+            </div>
+            <div class="entry-text">${renderMentions(r.text)}</div>
+          </div>
+          <div class="entry-actions">
+            <button class="entry-action-btn" title="Like">👍</button>
+            <button class="entry-action-btn" title="Reply">💬</button>
+          </div>
+        </div>
+      `).join('')}
+
+      <!-- Reply box -->
+      ${currentUser && !c.resolved ? `
+        <div class="reply-box" onclick="event.stopPropagation()">
+          <div class="mention-dropdown" id="mention-dd-${c.id}"></div>
+          <input class="reply-input" id="reply-input-${c.id}" placeholder="Reply"
+            onkeydown="handleReplyKey(event,${c.id})"
+            oninput="handleReplyInput(event,${c.id})">
+          <button class="reply-icon-btn" title="Send" onclick="addReply(${c.id})">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </div>` : ''}
+    </div>
+  `).join('');
+}
+
+// ============ Positioning ============
+const articleArea = document.getElementById('article-area');
+const panelBody = document.getElementById('panel-body');
+const MIN_GAP = 10; // minimum px between cards
+
+function positionCards() {
+  const panelRect = panelBody.getBoundingClientRect();
+  const articleRect = articleArea.getBoundingClientRect();
+
+  // collect card positions based on their highlight Y-offset
+  const cardPositions = [];
+
+  // sort comments by their highlight's vertical position in the article
+  const sorted = [...comments].sort((a, b) => {
+    const hlA = document.querySelector(`mark[data-id="${a.id}"]`);
+    const hlB = document.querySelector(`mark[data-id="${b.id}"]`);
+    if (!hlA && !hlB) return 0;
+    if (!hlA) return 1;
+    if (!hlB) return -1;
+    return hlA.getBoundingClientRect().top - hlB.getBoundingClientRect().top;
+  });
+
+  sorted.forEach(c => {
+    const card = document.getElementById('card-' + c.id);
+    if (!card) return;
+
+    const hl = document.querySelector(`mark[data-id="${c.id}"]`);
+    let targetTop;
+
+    if (hl) {
+      // target Y = highlight's position relative to the panel body
+      const hlRect = hl.getBoundingClientRect();
+      targetTop = hlRect.top - panelRect.top + panelBody.scrollTop;
+    } else {
+      // orphaned: stack after the last card
+      targetTop = cardPositions.length > 0
+        ? cardPositions[cardPositions.length - 1].bottom + MIN_GAP
+        : 0;
+    }
+
+    // collision resolution: ensure card doesn't overlap previous card
+    if (cardPositions.length > 0) {
+      const prevBottom = cardPositions[cardPositions.length - 1].bottom;
+      if (targetTop < prevBottom + MIN_GAP) {
+        targetTop = prevBottom + MIN_GAP;
+      }
+    }
+
+    // clamp to non-negative
+    targetTop = Math.max(0, targetTop);
+
+    card.style.top = targetTop + 'px';
+
+    cardPositions.push({
+      id: c.id,
+      top: targetTop,
+      bottom: targetTop + card.offsetHeight,
+    });
+  });
+
+  // set panel body min-height to contain all cards
+  if (cardPositions.length > 0) {
+    const lastBottom = cardPositions[cardPositions.length - 1].bottom;
+    panelBody.style.minHeight = (lastBottom + 20) + 'px';
+  } else {
+    panelBody.style.minHeight = '';
+  }
+
+  // position composer near the pending selection if visible
+  const comp = document.getElementById('composer');
+  if (comp.classList.contains('visible') && pendingSelection) {
+    // find the text in the article to position composer
+    const sel = window.getSelection();
+    if (sel && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      const compTop = rect.top - panelRect.top + panelBody.scrollTop;
+      comp.style.top = Math.max(0, compTop) + 'px';
+    } else {
+      comp.style.top = '0px';
+    }
+  }
+}
+
+// Sync on article scroll — reposition cards with lerped panel scroll
+let positionRaf = null;
+let panelTargetScroll = 0;
+let panelCurrentScroll = 0;
+let isLerping = false;
+
+function lerpPanelScroll() {
+  const diff = panelTargetScroll - panelCurrentScroll;
+  if (Math.abs(diff) < 0.5) {
+    panelCurrentScroll = panelTargetScroll;
+    panelBody.scrollTop = panelCurrentScroll;
+    isLerping = false;
+    return;
+  }
+  // ease factor: lower = smoother/slower
+  panelCurrentScroll += diff * 0.12;
+  panelBody.scrollTop = panelCurrentScroll;
+  requestAnimationFrame(lerpPanelScroll);
+}
+
+articleArea.addEventListener('scroll', () => {
+  if (positionRaf) cancelAnimationFrame(positionRaf);
+  positionRaf = requestAnimationFrame(() => {
+    positionCards();
+    // lerped panel scroll sync
+    const scrollRatio = articleArea.scrollTop / (articleArea.scrollHeight - articleArea.clientHeight || 1);
+    const panelMaxScroll = panelBody.scrollHeight - panelBody.clientHeight;
+    if (panelMaxScroll > 0) {
+      panelTargetScroll = scrollRatio * panelMaxScroll;
+      if (!isLerping) {
+        isLerping = true;
+        panelCurrentScroll = panelBody.scrollTop;
+        requestAnimationFrame(lerpPanelScroll);
+      }
+    }
+  });
+});
+
+// Recalculate on resize
+let resizeTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(positionCards, 100);
+});
+
+// Hook into render — reposition after DOM update
+const _origRender = render;
+render = function() {
+  _origRender();
+  // wait for DOM to settle, then position
+  requestAnimationFrame(() => {
+    requestAnimationFrame(positionCards);
+  });
+};
+
+// ============ Seed ============
+function seedDemo() {
+  comments = [
+    {
+      id: ++commentIdCounter,
+      quotedText: 'Metal (金), Water (水), Wood (木), Fire (火), and Earth (土)',
+      prefix: 'The five elements — ', suffix: ' — form the foundation',
+      text: 'Is there a specific order of importance among the five elements?',
+      author: DEMO_USERS[0],
+      createdAt: new Date(Date.now() - 120000), resolved: false,
+      replies: [{
+        author: { uid: 'me', displayName: 'Jing Hui', gradient: AVATAR_GRADIENTS[3], initials: 'JH' },
+        text: "No hierarchy — they're all equal. The balance between them is what matters.",
+        createdAt: new Date(Date.now() - 60000),
+      }],
+    },
+    {
+      id: ++commentIdCounter,
+      quotedText: 'Water nourishes Wood',
+      prefix: 'and ', suffix: ' (plants need water)',
+      text: 'Beautiful metaphor. Does this map to real seasonal patterns in Chinese agriculture?',
+      author: DEMO_USERS[1],
+      createdAt: new Date(Date.now() - 300000), resolved: false, replies: [],
+    },
+    {
+      id: ++commentIdCounter,
+      quotedText: 'Wood controls Earth (roots hold soil), Earth controls Water (dam holds water), Water controls Fire',
+      prefix: 'The control cycle (相克) provides checks and balances. ', suffix: ' (extinguishes flame)',
+      text: 'This reminds me of the Krebs cycle in biology! Negative feedback for homeostasis.',
+      author: DEMO_USERS[2],
+      createdAt: new Date(Date.now() - 600000), resolved: false,
+      replies: [{
+        author: DEMO_USERS[0],
+        text: '@Ming W Great analogy. Both are about maintaining balance through opposing forces.',
+        createdAt: new Date(Date.now() - 480000),
+      }],
+    },
+  ];
+  comments.forEach(c => highlightText(c));
+  focusedCommentId = comments[0].id;
+  render();
+}
+
+// ============ Helpers ============
+function truncate(s, n) { return s.length > n ? s.substring(0, n) + '…' : s; }
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+function timeAgo(d) {
+  const s = Math.floor((Date.now() - d.getTime()) / 1000);
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s / 60) + ' min ago';
+  if (s < 86400) return Math.floor(s / 3600) + ' hrs ago';
+  return Math.floor(s / 86400) + 'd ago';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(() => t.classList.remove('visible'), 2000);
+}
+
+seedDemo();
+</script>
+</body>
+</html>
