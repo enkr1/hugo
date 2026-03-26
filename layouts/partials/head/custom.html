@@ -17,7 +17,7 @@
 {{/* Google Site Verification */}}
 <meta name="google-site-verification" content="wSUWWkv_QhNXB_N6r3rOSU2YlmmWxYBk6UWVlgu1q94" />
 
-{{/* Firestore only (view counts + unique visitors) - production only */}}
+{{/* Firebase — single source of truth for all Firebase services (production only) */}}
 {{ if not hugo.IsServer }}
 <script type="module">
   import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
@@ -33,6 +33,7 @@
   };
 
   const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+  window.firebaseApp = app;
   window.firestoreDb = getFirestore(app);
 </script>
 {{ end }}
