@@ -12,9 +12,9 @@
         {{ partialCached "article/components/math.html" . }}
     {{ end }}
 
-    {{/* Inline comments — only on pages with comments enabled, production only.
+    {{/* Inline comments — on pages with comments enabled.
          Uses a separate js.Build bundle (NOT in main.ts) to avoid partialCached issues. */}}
-    {{ if and (not hugo.IsServer) (ne .Params.comments false) }}
+    {{ if ne .Params.comments false }}
     <div id="inline-comments-root" data-article-slug="{{ .RelPermalink | replaceRE `^/|/$` `` }}"></div>
     {{- with resources.Get "ts/inline-comments/index.ts" -}}
         {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
