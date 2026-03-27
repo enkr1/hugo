@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Existing: article view counts ─────────────────────────────
+    match /articles/{articleId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // ── Inline comments ───────────────────────────────────────────
+    match /comments/{commentId} {
+      allow read: if true;
+
+      allow create: if request.auth != null
+        && request.resource.data.author.uid == request.auth.uid
+        && request.resource.data.author.displayName is string
+        && request.resource.data.author.photoURL is string
+        && request.resource.data.author.photoURL.matches('^https://.*')
+        && request.resource.data.articleSlug is string
+        && request.resource.data.quotedText is string
+        && request.resource.data.quotedText.size() < 1000
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() < 5000
+        && request.resource.data.anchorStatus in ['active', 'orphaned']
+        && request.resource.data.createdAt == request.time;
+
+      // Split update: author edits text OR any user likes/unlikes
+      allow update: if request.auth != null
+        && (
+          // Author can edit their own comment text
+          (request.auth.uid == resource.data.author.uid
+            && request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['text', 'updatedAt']))
+          ||
+          // Any authenticated user can like/unlike (atomic ops)
+          (request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['likes', 'likedBy']))
+        );
+
+      allow delete: if false;
+
+      // Replies subcollection
+      match /replies/{replyId} {
+        allow read: if true;
+
+        allow create: if request.auth != null
+          && request.resource.data.author.uid == request.auth.uid
+          && request.resource.data.author.displayName is string
+          && request.resource.data.author.photoURL is string
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() < 5000
+          && request.resource.data.createdAt == request.time;
+
+        allow update: if request.auth.uid == resource.data.author.uid
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['text', 'updatedAt']);
+
+        allow delete: if false;
+      }
+    }
+  }
+}
