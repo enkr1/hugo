@@ -1,5 +1,15 @@
-{{/* Right sidebar for article pages - widgets (no menu, no TOC, no categories) */}}
+{{/* Right sidebar for article pages - widgets + inline comments */}}
 <aside class="sidebar right-sidebar sticky">
+    {{/* Inline comments — must be INSIDE the aside for :has() CSS selector to work */}}
+    {{ if ne .Params.comments false }}
+    <div id="inline-comments-root" data-article-slug="{{ .RelPermalink | replaceRE `^/|/$` `` }}"></div>
+    {{- with resources.Get "ts/inline-comments/index.ts" -}}
+        {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
+        {{- $inlineComments := . | js.Build $opts | fingerprint -}}
+        <script type="module" src="{{ $inlineComments.RelPermalink }}"></script>
+    {{- end -}}
+    {{ end }}
+
     {{/* Include page widgets (tags, archives, etc - but not TOC or categories) */}}
     {{- $scope := "page" -}}
     {{- with (index .Site.Params.widgets $scope) -}}

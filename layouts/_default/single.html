@@ -57,14 +57,5 @@
 {{ end }}
 
 {{ define "right-sidebar" }}
-    {{/* Inline comments panel — sits in the right sidebar column */}}
-    {{ if ne .Params.comments false }}
-    <div id="inline-comments-root" data-article-slug="{{ .RelPermalink | replaceRE `^/|/$` `` }}"></div>
-    {{- with resources.Get "ts/inline-comments/index.ts" -}}
-        {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
-        {{- $inlineComments := . | js.Build $opts | fingerprint -}}
-        <script type="module" src="{{ $inlineComments.RelPermalink }}"></script>
-    {{- end -}}
-    {{ end }}
     {{ partial "sidebar/right-menu.html" . }}
 {{ end }}
