@@ -14,8 +14,8 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ██░░░ Ch 6 | Linear algebra (matrices, systems) |
-| TCX1004 | Active | ███░░ Unit 6 | PnC (quiz done), graph theory next |
+| TCX2101 | Active | ███░░ Ch 7 | Vectors, span, subspaces |
+| TCX1004 | Active | ███░░ Unit 7 | Graph Theory (quiz done), probability next |
 | TCX1002 | Active | ███░░ W10 | Mock tests, practical prep |
 
 ### At a Glance
@@ -34,15 +34,15 @@ draft: false
 <div class="progress-grid">
 <div class="progress-card">
 <h4>TCX2101</h4>
-<div class="subtitle">Calculus & Linear Algebra — 31 topics</div>
+<div class="subtitle">Calculus & Linear Algebra — 32 topics</div>
 <div class="progress-bar">
-<span style="width:22.6%;background:#003D7C" title="Confident: 7"></span>
-<span style="width:61.3%;background:#C9A882" title="Comfortable/Familiar: 19"></span>
-<span style="width:16.1%;background:#E5E7EB" title="Not started: 5"></span>
+<span style="width:21.9%;background:#003D7C" title="Confident: 7"></span>
+<span style="width:62.5%;background:#C9A882" title="Comfortable/Familiar: 20"></span>
+<span style="width:15.6%;background:#E5E7EB" title="Not started: 5"></span>
 </div>
 <div class="progress-legend">
 <span><i style="background:#003D7C"></i>Confident: 7</span>
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 19</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 20</span>
 <span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 5</span>
 </div>
 </div>
@@ -87,7 +87,7 @@ draft: false
 
 ### What's Next
 
-- **Quiz 6.5–6.9:** Due Fri 27 (exposed in T8 class, need quiz pass)
+- ~~**Quiz 6.5–6.9:**~~ All 5/5 ✅ (completed Mar 24-25)
 - **HW2:** Due Mon 30
 - **Ch 7.1–7.5:** Vectors, dot/cross product, lines & planes, vector spaces
 - **CT3:** Apr 13 — scope 5.1–7.6
@@ -117,11 +117,11 @@ draft: false
 | 6.2 | Matrix Algebra | 🔸 Comfortable |
 | 6.3 | Linear Systems & Matrix Equations | 🔸 Comfortable |
 | 6.4 | Invertible Matrices | 🔸 Comfortable |
-| 6.5 | Determinants | 🔸 Familiar |
-| 6.6 | Eigenvalues | 🔸 Familiar |
-| 6.7 | Eigenvectors | 🔸 Familiar |
-| 6.8 | Diagonalization | 🔸 Familiar |
-| 6.9 | Applications | 🔸 Familiar |
+| 6.5 | Elementary Matrices | 🔸 Comfortable |
+| 6.6 | Invertibility Equivalences | 🔸 Comfortable |
+| 6.7 | Determinants & Cofactors | 🔸 Comfortable |
+| 6.8 | Det & Row Operations | 🔸 Comfortable |
+| 6.9 | Det Properties & Invertibility | 🔸 Comfortable |
 | 7.1 | Vectors in Rn | ⬜ Not started |
 | 7.2 | Dot Product | ⬜ Not started |
 | 7.3 | Cross Product | ⬜ Not started |
@@ -153,7 +153,7 @@ draft: false
 | 4 | Induction, Recurrences | 🔸 Comfortable |
 | 5 | Asymptotic Notation, Algorithm Analysis | 🔸 Comfortable |
 | 6 | Combinatorics | 🔸 Comfortable |
-| 7 | Graph Theory | ⬜ Not started |
+| 7 | Graph Theory | 🔸 Quiz done |
 | 8 | Basic Probability | ⬜ Not started |
 | 9 | Distributions, Expectation, Variance | ⬜ Not started |
 
@@ -199,4 +199,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-03-23 22:56 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-03-30 01:14 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
