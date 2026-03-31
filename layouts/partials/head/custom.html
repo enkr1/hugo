@@ -35,3 +35,8 @@
   window.firebaseApp = app;
   window.firestoreDb = getFirestore(app);
 </script>
+
+{{/* Google Identity Services — Client ID for One Tap */}}
+<script>
+  window.googleClientId = "{{ .Site.Params.googleClientId | default "" }}";
+</script>

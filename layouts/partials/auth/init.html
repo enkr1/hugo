@@ -1,0 +1,19 @@
+{{/* Auth — site-wide Google One Tap + fixed icon */}}
+<div id="auth-root" class="auth-root"></div>
+{{- with resources.Get "ts/auth-ui/index.ts" -}}
+    {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
+    {{- $authUI := . | js.Build $opts | fingerprint -}}
+    <script type="module">
+        import { mountAuthUI } from '{{ $authUI.RelPermalink }}';
+        const root = document.getElementById('auth-root');
+        if (root) mountAuthUI(root);
+    </script>
+{{- end -}}
+{{- with resources.Get "ts/auth/index.ts" -}}
+    {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
+    {{- $auth := . | js.Build $opts | fingerprint -}}
+    <script type="module">
+        import { initAuth } from '{{ $auth.RelPermalink }}';
+        initAuth().catch(err => console.error('[auth] init failed:', err));
+    </script>
+{{- end -}}
