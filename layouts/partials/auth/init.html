@@ -1,5 +1,4 @@
-{{/* Auth — site-wide Google One Tap + fixed icon */}}
-<div id="auth-root" class="auth-root"></div>
+{{/* Auth — site-wide Google One Tap + sidebar login */}}
 {{- with resources.Get "ts/auth-entry.ts" -}}
     {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
     {{- $authEntry := . | js.Build $opts | fingerprint -}}
