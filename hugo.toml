@@ -24,6 +24,7 @@ page = '/:slug/'
 
 # Main params
 [params]
+googleClientId = "71411607593-s5b8k4j2gt2laqhrjvvrklu3rt04ci4k.apps.googleusercontent.com"
 mainSections = ['posts', 'journals']
 featuredImageField = 'image'
 rssFullContent = true
