@@ -3,8 +3,12 @@
     {{ if ne .Params.comments false }}
     {{/* Inline comments panel — replaces widgets when comments are enabled */}}
     <div id="inline-comments-root" data-article-slug="{{ .RelPermalink | replaceRE `^/|/$` `` }}"></div>
+    {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
+    {{- with resources.Get "ts/auth-entry.ts" -}}
+        {{- $authScript := . | js.Build $opts | fingerprint -}}
+        <script type="module" src="{{ $authScript.RelPermalink }}"></script>
+    {{- end -}}
     {{- with resources.Get "ts/inline-comments/index.ts" -}}
-        {{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
         {{- $inlineComments := . | js.Build $opts | fingerprint -}}
         <script type="module" src="{{ $inlineComments.RelPermalink }}"></script>
     {{- end -}}
