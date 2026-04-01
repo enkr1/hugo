@@ -222,11 +222,9 @@ async function fetchViewCounts(db, elements, { increaseCount = false } = {}) {
         // Cache check first
         const cached = getCachedCount(title);
         if (cached !== null) {
-            console.log(`[Cache] Hit for "${title}" → ${cached}`);
             el.textContent = cached;
             return;
         }
-        console.log(`[Cache] Miss for "${title}" — fetching from Firestore`);
 
         const docRef = doc(db, 'articles', title);
         const count = await getCount(db, docRef, increaseCount, title);
@@ -257,11 +255,9 @@ waitForFirestore(async (db) => {
         if (!increaseCount) {
             const cached = getCachedCount(title);
             if (cached !== null) {
-                console.log(`[Cache] Hit for "${title}" → ${cached}`);
                 el.textContent = cached;
                 return;
             }
-            console.log(`[Cache] Miss for "${title}" — fetching from Firestore`);
         }
 
         const docRef = doc(db, 'articles', title);
