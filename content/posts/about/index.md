@@ -1,7 +1,7 @@
 ---
 title: "About Me"
-slug: "about"
-comments: false
+date: 1999-12-06
+sticky: 1
 ---
 
 ## Hello! I am Pang Jing Hui 彭竞辉.

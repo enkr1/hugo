@@ -130,14 +130,6 @@ weight = 1
 icon = 'home'
 
 [[menu.main]]
-identifier = 'about'
-name = 'About'
-url = '/about/'
-weight = 2
-[menu.main.params]
-icon = 'user'
-
-[[menu.main]]
 identifier = 'journals'
 name = 'Journals'
 url = '/journals/'
@@ -178,14 +170,6 @@ url = '/journals/'
 weight = 2
 [menu.mobile.params]
 icon = 'journal'
-
-[[menu.mobile]]
-identifier = 'about'
-name = 'About'
-url = '/about/'
-weight = 3
-[menu.mobile.params]
-icon = 'user'
 
 [[menu.mobile]]
 identifier = 'platforms'
