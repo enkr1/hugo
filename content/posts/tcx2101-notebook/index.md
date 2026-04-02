@@ -1841,3 +1841,686 @@ where $r(x) = x - L$ is the **radius** of a typical cylindrical shell.
 | **Shell** (about $y$-axis, $L=0$) | $V = \int_a^b 2\pi x f(x)\,dx$ | Special case: $r(x) = x$ |
 
 > ⚠️ **Warning:** The shell method formula assumes $f(x) \geq 0$. If the region is between two curves, the height becomes $f(x) - g(x)$.
+
+---
+
+## Chapter 6: Matrix Algebra
+
+### 6.1 Introduction to Matrices
+
+#### Definition
+
+A (real-valued) **matrix** is a rectangular array of (real) numbers
+
+$$\mathbf{A} = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix} = (a_{ij})_{m \times n}$$
+
+where $a_{ij} \in \mathbb{R}$ are real numbers. The **size** of the matrix is said to be $m \times n$ (read as $m$ by $n$), where $m$ is the number of rows and $n$ is the number of columns. The numbers in the array are called **entries**. The $(i,j)$-entry, $a_{ij}$, $i = 1, \ldots, m$, $j = 1, \ldots, n$, is the number in the $i$-th row $j$-th column.
+
+#### Special Types of Matrices
+
+**Vectors**
+
+An $n \times 1$ matrix is called a **(column) vector**, and a $1 \times n$ matrix is called a **(row) vector**.
+
+$$\begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \text{ column vector} \qquad \begin{pmatrix} v_1 & v_2 & \cdots & v_n \end{pmatrix} \text{ row vector}$$
+
+If it is not specified whether the vector is a column or a row vector, by default we will assume it is a **column vector**.
+
+**Zero Matrices**
+
+All entries equal $0$, denoted as $\mathbf{0}_{m \times n}$. Not necessarily a square matrix.
+
+$$\mathbf{0}_{2\times 3} = \begin{pmatrix} 0&0&0 \\ 0&0&0 \end{pmatrix}, \quad \mathbf{0}_{3\times 3} = \begin{pmatrix} 0&0&0 \\ 0&0&0 \\ 0&0&0 \end{pmatrix}, \quad \mathbf{0}_{4\times 1} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \quad \mathbf{0}_{1\times 1} = \begin{pmatrix} 0 \end{pmatrix}$$
+
+**Square Matrices**
+
+Number of rows = number of columns:
+
+$$\mathbf{A} = (a_{ij})_n = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{pmatrix}$$
+
+A size $n \times n$ matrix is a square matrix of **order** $n$. The entries $a_{ii}$, $i = 1, 2, \ldots, n$, (explicitly, $a_{11}, a_{22}, \ldots, a_{nn}$) are called the **diagonal entries** of the (square) matrix.
+
+**Diagonal Matrix**
+
+$\mathbf{D} = (a_{ij})_n$, $a_{ij} = 0$ for $i \neq j$.
+
+$$\mathbf{D} = \text{diag}(d_1, d_2, \ldots, d_n) = \begin{pmatrix} d_1 & 0 & \cdots & 0 \\ 0 & d_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & d_n \end{pmatrix}$$
+
+**Scalar Matrix**
+
+$\mathbf{C} = (a_{ij})_n$, $a_{ij} = \begin{cases} c & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$
+
+$$\mathbf{C} = \text{diag}(c, c, \ldots, c) = \begin{pmatrix} c & 0 & \cdots & 0 \\ 0 & c & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & c \end{pmatrix}$$
+
+**Identity Matrix**
+
+$\mathbf{I} = (a_{ij})_n$, $a_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$
+
+$$\mathbf{I}_n = \text{diag}(1, 1, \ldots, 1) = \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 1 \end{pmatrix}$$
+
+A scalar matrix can also be denoted as $\mathbf{C} = c\mathbf{I}$, where $\mathbf{I}$ is the identity matrix.
+
+#### Triangular Matrices
+
+**Upper triangular:** $\mathbf{A} = (a_{ij})$, $a_{ij} = 0$ for all $i > j$.
+
+**Strictly upper triangular:** $\mathbf{A} = (a_{ij})$, $a_{ij} = 0$ for all $i \geq j$.
+
+**Lower triangular:** $\mathbf{A} = (a_{ij})$, $a_{ij} = 0$ for all $i < j$.
+
+**Strictly lower triangular:** $\mathbf{A} = (a_{ij})$, $a_{ij} = 0$ for all $i \leq j$.
+
+#### Symmetric Matrices
+
+$\mathbf{A} = (a_{ij})_n$, $a_{ij} = a_{ji}$.
+
+$$\begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{pmatrix} = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{n1} \\ a_{12} & a_{22} & \cdots & a_{n2} \\ \vdots & \vdots & \ddots & \vdots \\ a_{1n} & a_{2n} & \cdots & a_{nn} \end{pmatrix}$$
+
+---
+
+### 6.2 Matrix Algebra
+
+#### Matrix Addition and Scalar Multiplication
+
+**Scalar multiplication:**
+
+$$c\begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix} = \begin{pmatrix} ca_{11} & ca_{12} & \cdots & ca_{1n} \\ ca_{21} & ca_{22} & \cdots & ca_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ ca_{m1} & ca_{m2} & \cdots & ca_{mn} \end{pmatrix}$$
+
+**Matrix addition:**
+
+$$\begin{pmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \cdots & a_{mn} \end{pmatrix} + \begin{pmatrix} b_{11} & \cdots & b_{1n} \\ \vdots & \ddots & \vdots \\ b_{m1} & \cdots & b_{mn} \end{pmatrix} = \begin{pmatrix} a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \end{pmatrix}$$
+
+**Theorem (Properties of Matrix Addition and Scalar Multiplication):** For matrices $\mathbf{A} = (a_{ij})_{m \times n}$, $\mathbf{B} = (b_{ij})_{m \times n}$, $\mathbf{C} = (c_{ij})_{m \times n}$, and real numbers $a, b \in \mathbb{R}$:
+
+| Property | Rule |
+|----------|------|
+| (i) Commutative | $\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$ |
+| (ii) Associative | $\mathbf{A} + (\mathbf{B} + \mathbf{C}) = (\mathbf{A} + \mathbf{B}) + \mathbf{C}$ |
+| (iii) Additive identity | $\mathbf{0}_{m \times n} + \mathbf{A} = \mathbf{A}$ |
+| (iv) Additive inverse | $\mathbf{A} + (-\mathbf{A}) = \mathbf{0}_{m \times n}$ |
+| (v) Distributive law | $a(\mathbf{A} + \mathbf{B}) = a\mathbf{A} + a\mathbf{B}$ |
+| (vi) Scalar addition | $(a + b)\mathbf{A} = a\mathbf{A} + b\mathbf{A}$ |
+| (vii) Associative | $(ab)\mathbf{A} = a(b\mathbf{A})$ |
+| (viii) | If $a\mathbf{A} = \mathbf{0}_{m \times n}$, then either $a = 0$ or $\mathbf{A} = \mathbf{0}$ |
+
+#### Matrix Multiplication
+
+**Definition:** Matrix multiplication:
+
+$$\mathbf{AB} = (a_{ij})_{m \times p}(b_{ij})_{p \times n} = \left(\sum_{k=1}^p a_{ik}b_{kj}\right)_{m \times n}$$
+
+> ⚠️ **Caution:** Matrix multiplication is **not commutative** — $\mathbf{AB} \neq \mathbf{BA}$ in general.
+
+**Definition:** If we multiply $\mathbf{A}$ to the left of $\mathbf{B}$, we are **pre-multiplying** $\mathbf{A}$ to $\mathbf{B}$. If we multiply $\mathbf{A}$ to the right of $\mathbf{B}$, we are **post-multiplying** $\mathbf{A}$ to $\mathbf{B}$.
+
+**Theorem (Properties of Matrix Multiplication):**
+
+| Property | Rule |
+|----------|------|
+| (i) Associative | $(\mathbf{AB})\mathbf{C} = \mathbf{A}(\mathbf{BC})$ |
+| (ii) Left distributive | $\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{AB} + \mathbf{AC}$ |
+| (iii) Right distributive | $(\mathbf{A} + \mathbf{B})\mathbf{C} = \mathbf{AC} + \mathbf{BC}$ |
+| (iv) Scalar | $c(\mathbf{AB}) = (c\mathbf{A})\mathbf{B} = \mathbf{A}(c\mathbf{B})$ |
+| (v) Multiplicative identity | $\mathbf{I}_m \mathbf{A} = \mathbf{A} = \mathbf{A}\mathbf{I}_n$ |
+| (vi) Nonzero zero divisor | There exist $\mathbf{A} \neq \mathbf{0}$ and $\mathbf{B} \neq \mathbf{0}$ such that $\mathbf{AB} = \mathbf{0}$ |
+| (vii) Zero matrix | $\mathbf{A}\mathbf{0}_{n \times p} = \mathbf{0}_{m \times p}$ and $\mathbf{0}_{p \times m}\mathbf{A} = \mathbf{0}_{p \times n}$ |
+
+**Definition:** Define the power of square matrices inductively:
+
+- (i) $\mathbf{A}^0 = \mathbf{I}$
+- (ii) $\mathbf{A}^n = \mathbf{A}\mathbf{A}^{n-1}$, for $n \geq 1$
+
+#### Transpose
+
+**Definition:** Let $\mathbf{A} = (a_{ij})$ be a $m \times n$ matrix. The **transpose** of $\mathbf{A}$, denoted as $\mathbf{A}^T$, is the $n \times m$ matrix whose $(i,j)$-entry is the $(j,i)$-entry of $\mathbf{A}$:
+
+$$\mathbf{A} = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix}_{m \times n} \quad \mathbf{A}^T = \begin{pmatrix} a_{11} & a_{21} & \cdots & a_{m1} \\ a_{12} & a_{22} & \cdots & a_{m2} \\ \vdots & \vdots & \ddots & \vdots \\ a_{1n} & a_{2n} & \cdots & a_{mn} \end{pmatrix}_{n \times m}$$
+
+**Theorem (Properties of Transpose):**
+
+| Property | Rule |
+|----------|------|
+| (i) | $(\mathbf{A}^T)^T = \mathbf{A}$ |
+| (ii) | $(c\mathbf{A})^T = c\mathbf{A}^T$ |
+| (iii) | $(\mathbf{A} + \mathbf{B})^T = \mathbf{A}^T + \mathbf{B}^T$ |
+| (iv) | $(\mathbf{AB})^T = \mathbf{B}^T \mathbf{A}^T$ |
+
+By property (iv): $(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k)^T = \mathbf{A}_k^T \cdots \mathbf{A}_2^T \mathbf{A}_1^T$.
+
+**Definition:** A square matrix $\mathbf{A}$ is **symmetric** if and only if $\mathbf{A}^T = \mathbf{A}$.
+
+---
+
+### 6.3 Linear System and Matrix Equation
+
+#### Matrix and Vector Equation
+
+A linear system in standard form
+
+$$\begin{cases} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\\\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\\\ \qquad\qquad\qquad\vdots \\\\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m \end{cases}$$
+
+can be expressed as a **matrix equation**:
+
+$$\mathbf{A}\mathbf{x} = \mathbf{b}$$
+
+where $\mathbf{A} = (a_{ij})_{m \times n}$ is the **coefficient matrix**, $\mathbf{x} = (x_i)_{n \times 1}$ the **variable vector**, and $\mathbf{b} = (b_i)_{m \times 1}$ the **constant vector**.
+
+It can also be expressed as a **vector equation**:
+
+$$x_1\mathbf{a}_1 + x_2\mathbf{a}_2 + \cdots + x_n\mathbf{a}_n = \mathbf{b}$$
+
+where $\mathbf{a}_i$ is the **coefficient vector** for variable $x_i$, for $i = 1, \ldots, n$.
+
+#### Properties of Homogeneous Linear Systems
+
+A **homogeneous** linear system $\mathbf{Ax} = \mathbf{0}$ is always consistent, since the zero vector is a solution: $\mathbf{A0} = \mathbf{0}$.
+
+**Definition:** The zero vector is called the **trivial solution**. A nonzero solution to a homogeneous system is called a **nontrivial solution**.
+
+**Theorem:** A homogeneous linear system $\mathbf{Ax} = \mathbf{0}$ has infinitely many solutions if and only if it has a nontrivial solution.
+
+**Lemma:**
+
+(i) Let $\mathbf{v}$ be a particular solution to $\mathbf{Ax} = \mathbf{b}$, and $\mathbf{u}$ be a particular solution to the homogeneous system $\mathbf{Ax} = \mathbf{0}$ with the same coefficient matrix $\mathbf{A}$. Then $\mathbf{v} + \mathbf{u}$ is also a solution to $\mathbf{Ax} = \mathbf{b}$.
+
+(ii) Suppose $\mathbf{v}_1$ and $\mathbf{v}_2$ are solutions to the linear system $\mathbf{Ax} = \mathbf{b}$. Then $\mathbf{v}_1 - \mathbf{v}_2$ is a solution to the homogeneous linear system $\mathbf{Ax} = \mathbf{0}$ with the same coefficient matrix.
+
+#### Block Multiplication
+
+Let $\mathbf{b}_j$ be the $j$-th column of $\mathbf{B}$. Then
+
+$$\mathbf{AB} = \mathbf{A}\begin{pmatrix} | & | & & | \\ \mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_n \\ | & | & & | \end{pmatrix} = \begin{pmatrix} | & | & & | \\ \mathbf{Ab}_1 & \mathbf{Ab}_2 & \cdots & \mathbf{Ab}_n \\ | & | & & | \end{pmatrix}$$
+
+Also, if $\mathbf{a}_i$ is the $i$-th row of $\mathbf{A}$, then
+
+$$\mathbf{AB} = \begin{pmatrix} - & \mathbf{a}_1 & - \\ - & \mathbf{a}_2 & - \\ & \vdots & \\ - & \mathbf{a}_m & - \end{pmatrix}\mathbf{B} = \begin{pmatrix} - & \mathbf{a}_1\mathbf{B} & - \\ - & \mathbf{a}_2\mathbf{B} & - \\ & \vdots & \\ - & \mathbf{a}_m\mathbf{B} & - \end{pmatrix}$$
+
+---
+
+### 6.4 Inverse of Matrices
+
+#### Definition
+
+A $n \times n$ square matrix $\mathbf{A}$ is **invertible** if there exists a square matrix $\mathbf{B}$ of the same size such that $\mathbf{AB} = \mathbf{I}_n = \mathbf{BA}$.
+
+A matrix is said to be **non-invertible** (or **singular**) otherwise.
+
+**Theorem (Uniqueness of inverse):** If $\mathbf{B}$ and $\mathbf{C}$ are both inverses of a square matrix $\mathbf{A}$, then $\mathbf{B} = \mathbf{C}$.
+
+Since the inverse is unique, we denote the inverse of an invertible matrix $\mathbf{A}$ by $\mathbf{A}^{-1}$:
+
+$$\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}_n = \mathbf{A}^{-1}\mathbf{A}$$
+
+#### Inverse of 2 by 2 Square Matrices
+
+**Theorem:** A $2 \times 2$ square matrix $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is invertible if and only if $ad - bc \neq 0$. In this case, the inverse is given by
+
+$$\mathbf{A}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
+
+#### Invertibility and Linear System
+
+**Theorem (Cancellation Law for Matrices):** Let $\mathbf{A}$ be an invertible matrix of order $n$.
+
+(i) **(Left cancellation)** If $\mathbf{B}$ and $\mathbf{C}$ are $n \times m$ matrices with $\mathbf{AB} = \mathbf{AC}$, then $\mathbf{B} = \mathbf{C}$.
+
+(ii) **(Right cancellation)** If $\mathbf{B}$ and $\mathbf{C}$ are $m \times n$ matrices with $\mathbf{BA} = \mathbf{CA}$, then $\mathbf{B} = \mathbf{C}$.
+
+**Theorem (Invertibility and linear system):** Suppose $\mathbf{A}$ is an $n \times n$ invertible square matrix. Then for any $n \times 1$ vector $\mathbf{b}$, $\mathbf{Ax} = \mathbf{b}$ has a unique solution.
+
+**Corollary:** Suppose $\mathbf{A}$ is invertible. Then the trivial solution is the only solution to the homogeneous system $\mathbf{Ax} = \mathbf{0}$.
+
+#### Algorithm to Compute Inverse
+
+Suppose $\mathbf{A}$ is an invertible $n \times n$ matrix. By uniqueness of the inverse, there must be a unique solution to $\mathbf{AX} = \mathbf{I}$.
+
+By block multiplication, we are solving the augmented matrix
+
+$$\begin{pmatrix} \mathbf{A} \mid \mathbf{I} \end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix} \mathbf{I} \mid \mathbf{A}^{-1} \end{pmatrix}$$
+
+#### Properties of Inverse
+
+**Theorem (Properties of inverses):** Let $\mathbf{A}$ be an invertible matrix of order $n$.
+
+| Property | Rule |
+|----------|------|
+| (i) | $(\mathbf{A}^{-1})^{-1} = \mathbf{A}$ |
+| (ii) | For any nonzero real number $a$, $(a\mathbf{A})^{-1} = \frac{1}{a}\mathbf{A}^{-1}$ |
+| (iii) | $(\mathbf{A}^T)^{-1} = (\mathbf{A}^{-1})^T$ |
+| (iv) | If $\mathbf{B}$ is invertible of the same size, $(\mathbf{AB})^{-1} = \mathbf{B}^{-1}\mathbf{A}^{-1}$ |
+
+By (iv): if $\mathbf{A}_1, \mathbf{A}_2, \ldots, \mathbf{A}_k$ are invertible matrices of the same size, then
+
+$$(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k)^{-1} = \mathbf{A}_k^{-1} \cdots \mathbf{A}_2^{-1} \mathbf{A}_1^{-1}$$
+
+**Definition:** The negative power of an invertible matrix is defined to be $\mathbf{A}^{-n} = (\mathbf{A}^{-1})^n$ for any $n > 0$.
+
+---
+
+### 6.5 Elementary Matrices
+
+#### Definition
+
+A square matrix of order $n$, $\mathbf{E}$, is called an **elementary matrix** if it can be obtained from the identity matrix $\mathbf{I}_n$ by performing a single elementary row operation:
+
+$$\mathbf{I}_n \xrightarrow{r} \mathbf{E}$$
+
+where $r$ is an elementary row operation. The elementary row operation performed to obtain $\mathbf{E}$ is said to be the row operation **corresponding** to the elementary matrix.
+
+#### Elementary Matrix and Elementary Row Operation
+
+**Theorem:** Let $\mathbf{A}$ be an $n \times m$ matrix and $\mathbf{E}$ be the elementary matrix corresponding to the elementary row operation $r$. Then the product $\mathbf{EA}$ is the resultant of performing the row operation $r$ on $\mathbf{A}$:
+
+$$\mathbf{A} \xrightarrow{r} \mathbf{EA}$$
+
+Suppose $\mathbf{B}$ is row equivalent to $\mathbf{A}$:
+
+$$\mathbf{A} \xrightarrow{r_1} \xrightarrow{r_2} \cdots \xrightarrow{r_k} \mathbf{B}$$
+
+Let $\mathbf{E}_i$ be the elementary matrix corresponding to $r_i$, for $i = 1, 2, \ldots, k$. Then
+
+$$\mathbf{B} = \mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1 \mathbf{A}$$
+
+**Theorem:** Two $n \times m$ matrices $\mathbf{A}$ and $\mathbf{B}$ are row equivalent if and only if there exist elementary matrices $\mathbf{E}_1, \mathbf{E}_2, \ldots, \mathbf{E}_k$ such that $\mathbf{B} = \mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1 \mathbf{A}$.
+
+#### Inverse of Elementary Matrices
+
+**Theorem (Inverse of elementary matrices):** Every elementary matrix $\mathbf{E}$ is invertible. The inverse $\mathbf{E}^{-1}$ is the elementary row operation corresponding to the **reverse** of the original corresponding row operation:
+
+| Row operation for $\mathbf{E}$ | Row operation for $\mathbf{E}^{-1}$ |
+|-------------------------------|--------------------------------------|
+| $R_i + cR_j$ | $R_i - cR_j$ |
+| $R_i \leftrightarrow R_j$ | $R_i \leftrightarrow R_j$ |
+| $cR_i$ | $\frac{1}{c}R_i$ |
+
+---
+
+### 6.6 Equivalent Statements for Invertibility
+
+#### Worked Example: Invertibility via Row Reduction and Elementary Matrices
+
+Consider the matrix $\mathbf{A} = \begin{pmatrix} 1 & -1 & 1 \\ -1 & 1 & 1 \\ 0 & -1 & 1 \end{pmatrix}$. We illustrate two important equivalent statements:
+
+- $\mathbf{A}$ is invertible $\iff$ the reduced row-echelon form of $\mathbf{A}$ is the identity matrix.
+- $\mathbf{A}$ is invertible $\iff$ $\mathbf{A}$ can be written as a product of elementary matrices.
+
+**Step 1. Row reduction.** We reduce $\mathbf{A}$ to the identity matrix:
+
+$$\begin{pmatrix} 1&-1&1 \\ -1&1&1 \\ 0&-1&1 \end{pmatrix} \xrightarrow{R_1 - R_3} \xrightarrow{R_2 + R_1} \xrightarrow{R_3 + R_2} \xrightarrow{\frac{1}{2}R_3} \xrightarrow{R_2 - R_3} \begin{pmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&1 \end{pmatrix}$$
+
+The RREF of $\mathbf{A}$ is $\mathbf{I}_3$. Therefore, $\mathbf{A}$ is invertible.
+
+**Step 2. Translate row operations into elementary matrices.** Each row operation corresponds to premultiplication by an elementary matrix:
+
+$$\begin{pmatrix}1&0&0\\0&1&-1\\0&0&1\end{pmatrix} \begin{pmatrix}1&0&0\\0&1&0\\0&0&1/2\end{pmatrix} \begin{pmatrix}1&0&0\\0&1&0\\0&1&1\end{pmatrix} \begin{pmatrix}1&0&0\\1&1&0\\0&0&1\end{pmatrix} \begin{pmatrix}1&0&-1\\0&1&0\\0&0&1\end{pmatrix} \mathbf{A} = \mathbf{I}_3$$
+
+That is, $(\mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1)\mathbf{A} = \mathbf{I}_3$.
+
+**Step 3. Reverse the process.** From the equation above:
+
+$$\mathbf{A} = (\mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1)^{-1} = \mathbf{E}_1^{-1}\mathbf{E}_2^{-1} \cdots \mathbf{E}_k^{-1}$$
+
+> ⚠️ **Caution:** The order reverses when taking inverses: $(\mathbf{E}_k \cdots \mathbf{E}_1)^{-1} = \mathbf{E}_1^{-1} \cdots \mathbf{E}_k^{-1}$.
+
+#### Computing $\mathbf{A}^{-1}$ from the Product of Elementary Matrices
+
+If we define $\mathbf{M} := \mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1$, then $\mathbf{MA} = \mathbf{I}_3$. Evaluating the product:
+
+$$\mathbf{M} = \begin{pmatrix} 1 & 0 & -1 \\ 1/2 & 1/2 & -1 \\ 1/2 & 1/2 & 0 \end{pmatrix}$$
+
+We verify both $\mathbf{MA} = \mathbf{I}_3$ and $\mathbf{AM} = \mathbf{I}_3$, confirming:
+
+$$\mathbf{A}^{-1} = \begin{pmatrix} 1 & 0 & -1 \\ 1/2 & 1/2 & -1 \\ 1/2 & 1/2 & 0 \end{pmatrix}$$
+
+> 💡 This computation matches exactly the method of forming $(\mathbf{A} \mid \mathbf{I})$ and row reducing to $(\mathbf{I} \mid \mathbf{A}^{-1})$.
+
+#### Equivalent Statement: Unique Solution of $\mathbf{Ax} = \mathbf{b}$ for Every $\mathbf{b}$
+
+**Key statement:** A square matrix $\mathbf{A}$ is invertible if and only if, for **every** vector $\mathbf{b}$, the linear system $\mathbf{Ax} = \mathbf{b}$ has a **unique** solution.
+
+#### Proofs: Elementary Matrices and Invertibility
+
+**Theorem:** If $\mathbf{A} = \mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1$ is a product of elementary matrices, then $\mathbf{A}$ is invertible.
+
+**Corollary:** If the reduced row-echelon form of $\mathbf{A}$ is $\mathbf{I}$, then $\mathbf{A}$ is invertible.
+
+*Proof.* If $\text{rref}(\mathbf{A}) = \mathbf{I}$, then there exist elementary matrices $\mathbf{E}_1, \ldots, \mathbf{E}_k$ such that $\mathbf{E}_k \cdots \mathbf{E}_1 \mathbf{A} = \mathbf{I}$. Then $\mathbf{A} = \mathbf{E}_1^{-1} \mathbf{E}_2^{-1} \cdots \mathbf{E}_k^{-1}$, which is a product of elementary matrices (since the inverse of an elementary matrix is again elementary). By the theorem, $\mathbf{A}$ is invertible.
+
+#### Invertibility and Homogeneous System
+
+**Theorem:** A square matrix $\mathbf{A}$ is invertible if and only if the homogeneous system $\mathbf{Ax} = \mathbf{0}$ has only the trivial solution.
+
+*Proof.*
+
+($\Rightarrow$) If $\mathbf{A}$ is invertible, then $\mathbf{x} = \mathbf{A}^{-1}\mathbf{0} = \mathbf{0}$. So the homogeneous system has only the trivial solution.
+
+($\Leftarrow$) If $\mathbf{Ax} = \mathbf{0}$ has only the trivial solution, then the RREF of $\mathbf{A}$ must have a pivot in every column (otherwise there would be free variables and infinitely many solutions). Therefore $\text{rref}(\mathbf{A}) = \mathbf{I}$, and by the corollary above, $\mathbf{A}$ is invertible.
+
+#### Left and Right Inverses
+
+**Definition:** Let $\mathbf{A}$ be an $n \times m$ matrix.
+
+- A $m \times n$ matrix $\mathbf{B}$ is called a **left inverse** of $\mathbf{A}$ if $\mathbf{BA} = \mathbf{I}_m$.
+- A $m \times n$ matrix $\mathbf{B}$ is called a **right inverse** of $\mathbf{A}$ if $\mathbf{AB} = \mathbf{I}_n$.
+
+$\mathbf{B}$ is a left inverse of $\mathbf{A}$ if and only if $\mathbf{A}$ is a right inverse of $\mathbf{B}$.
+
+**Theorem:** A square matrix $\mathbf{A}$ is invertible if and only if it has a left inverse.
+
+**Theorem:** A square matrix $\mathbf{A}$ is invertible if and only if it has a right inverse.
+
+> 💡 In the square case, having only a left inverse or only a right inverse is already enough to guarantee a true inverse.
+
+#### Algorithm for Finding the Inverse of a Matrix
+
+Let $\mathbf{A}$ be an $n \times n$ matrix.
+
+**Step 1.** Form the augmented matrix $(\mathbf{A} \mid \mathbf{I}_n)$.
+
+**Step 2.** Row reduce: $(\mathbf{A} \mid \mathbf{I}_n) \longrightarrow (\mathbf{R} \mid \mathbf{B})$, where $\mathbf{R}$ is the REF or RREF of $\mathbf{A}$.
+
+**Step 3.**
+- If $\mathbf{R} \neq \mathbf{I}_n$ (or if the REF contains a zero row), then $\mathbf{A}$ is **not invertible**.
+- If $\mathbf{R} = \mathbf{I}_n$, then $\mathbf{A}$ is invertible, and $\mathbf{A}^{-1} = \mathbf{B}$.
+
+#### Summary: Equivalent Statements of Invertibility
+
+**Theorem (Equivalent Statements of Invertibility):** Let $\mathbf{A}$ be a **square** matrix of order $n$. The following statements are equivalent:
+
+1. $\mathbf{A}$ is invertible.
+2. $\mathbf{A}^T$ is invertible.
+3. (left inverse) There exists a matrix $\mathbf{B}$ such that $\mathbf{BA} = \mathbf{I}$.
+4. (right inverse) There exists a matrix $\mathbf{B}$ such that $\mathbf{AB} = \mathbf{I}$.
+5. The reduced row-echelon form of $\mathbf{A}$ is the identity matrix $\mathbf{I}$.
+6. $\mathbf{A}$ can be expressed as a product of elementary matrices.
+7. The homogeneous system $\mathbf{Ax} = \mathbf{0}$ has only the trivial solution.
+8. For **every** vector $\mathbf{b}$, the system $\mathbf{Ax} = \mathbf{b}$ has a **unique** solution.
+
+> 💡 Any one of these conditions can be used as a definition or test for invertibility. Once you know one statement is true, all the others follow automatically.
+
+---
+
+### 6.7 Determinant by Cofactor Expansion
+
+#### Definition
+
+We define the **determinant** of $\mathbf{A}$ of order $n$, denoted as $\det(\mathbf{A})$ or $|\mathbf{A}|$, by induction.
+
+**Order 1:** For $n = 1$, $\mathbf{A} = (a)$, $\det(\mathbf{A}) = a$.
+
+**Order 2:** For $n = 2$, $\mathbf{A} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $\det(\mathbf{A}) = ad - bc$.
+
+**Order $n \geq 2$:** Define $\mathbf{M}_{ij}$, called the $(i,j)$ **matrix minor** of $\mathbf{A}$, to be the matrix obtained from $\mathbf{A}$ by deleting the $i$-th row and $j$-th column.
+
+The $(i,j)$-**cofactor** of $\mathbf{A}$, denoted as $A_{ij}$, is the (real) number given by
+
+$$A_{ij} = (-1)^{i+j} \det(\mathbf{M}_{ij})$$
+
+The determinant of $\mathbf{A}$ is defined to be
+
+$$\det(\mathbf{A}) = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in} = \sum_{k=1}^n a_{ik}A_{ik} \quad \text{(row expansion)}$$
+
+$$\det(\mathbf{A}) = a_{1j}A_{1j} + a_{2j}A_{2j} + \cdots + a_{nj}A_{nj} = \sum_{k=1}^n a_{kj}A_{kj} \quad \text{(column expansion)}$$
+
+This is called the **cofactor expansion** along row $i$ or column $j$.
+
+#### Theorem (Determinant is Invariant under Transpose)
+
+The determinant of a square matrix $\mathbf{A}$ is equal to the determinant of its transpose:
+
+$$\det(\mathbf{A}) = \det(\mathbf{A}^T)$$
+
+#### Corollary
+
+The determinant of a **triangular matrix** is the product of the diagonal entries. If $\mathbf{A} = (a_{ij})_n$ is a triangular matrix, then
+
+$$\det(\mathbf{A}) = a_{11} a_{22} \cdots a_{nn} = \prod_{k=1}^n a_{kk}$$
+
+> 💡 If a square matrix $\mathbf{A}$ has a zero row or column, then $\det(\mathbf{A}) = 0$.
+
+---
+
+### 6.8 Determinant by Reduction
+
+#### Effect of Elementary Row Operations on Determinant
+
+**Theorem:** Suppose $\mathbf{B}$ is obtained from $\mathbf{A}$ by a single elementary row operation, $\mathbf{A} \xrightarrow{r} \mathbf{B}$. Then:
+
+| Row operation $r$ | Effect on determinant |
+|-------------------|----------------------|
+| $R_i + aR_j$ (row addition) | $\det(\mathbf{B}) = \det(\mathbf{A})$ |
+| $cR_i$ (row scaling) | $\det(\mathbf{B}) = c \det(\mathbf{A})$ |
+| $R_i \leftrightarrow R_j$ (row swap) | $\det(\mathbf{B}) = -\det(\mathbf{A})$ |
+
+#### Determinant of Elementary Matrices
+
+**Corollary:** The determinant of an elementary matrix $\mathbf{E}$ is:
+
+| Elementary matrix corresponding to | $\det(\mathbf{E})$ |
+|-------------------------------------|---------------------|
+| $R_i + aR_j$ | $1$ |
+| $cR_i$ | $c$ |
+| $R_i \leftrightarrow R_j$ | $-1$ |
+
+#### Determinant via Row Reduction
+
+**Theorem:** Let $\mathbf{A}$ and $\mathbf{R}$ be square matrices such that $\mathbf{R} = \mathbf{E}_k \cdots \mathbf{E}_2 \mathbf{E}_1 \mathbf{A}$ for some elementary matrices $\mathbf{E}_1, \ldots, \mathbf{E}_k$. Then
+
+$$\det(\mathbf{R}) = \det(\mathbf{E}_k) \cdots \det(\mathbf{E}_2) \det(\mathbf{E}_1) \det(\mathbf{A})$$
+
+**Corollary:** Let $\mathbf{A}$ be a $n \times n$ square matrix. Suppose
+
+$$\mathbf{A} \xrightarrow{r_1} \xrightarrow{r_2} \cdots \xrightarrow{r_k} \mathbf{R} = \begin{pmatrix} d_1 & * & \cdots & * \\ 0 & d_2 & \cdots & * \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & d_n \end{pmatrix}$$
+
+where $\mathbf{R}$ is in row-echelon form. Let $\mathbf{E}_i$ be the elementary matrix corresponding to $r_i$. Then
+
+$$\det(\mathbf{A}) = \frac{d_1 d_2 \cdots d_n}{\det(\mathbf{E}_k) \cdots \det(\mathbf{E}_2) \det(\mathbf{E}_1)}$$
+
+> 💡 If a square matrix $\mathbf{A}$ has 2 equal rows, then $\det(\mathbf{A}) = 0$. Similarly, if $\mathbf{A}$ has 2 equal columns, then $\det(\mathbf{A}) = 0$.
+
+---
+
+### 6.9 Properties of Determinant
+
+#### Equivalent Statements of Invertibility (Extended)
+
+**Theorem:** Let $\mathbf{A}$ be a square matrix of order $n$. The following statements are equivalent:
+
+1. $\mathbf{A}$ is invertible.
+2. $\mathbf{A}^T$ is invertible.
+3. $\mathbf{A}$ has a left-inverse, i.e., there is a matrix $\mathbf{B}$ such that $\mathbf{BA} = \mathbf{I}$.
+4. $\mathbf{A}$ has a right-inverse, i.e., there is a matrix $\mathbf{B}$ such that $\mathbf{AB} = \mathbf{I}$.
+5. The reduced row-echelon form of $\mathbf{A}$ is the identity matrix.
+6. $\mathbf{A}$ can be expressed as a product of elementary matrices.
+7. The homogeneous system $\mathbf{Ax} = \mathbf{0}$ has only the trivial solution.
+8. For any $\mathbf{b}$, the system $\mathbf{Ax} = \mathbf{b}$ is consistent.
+9. The determinant of $\mathbf{A}$ is nonzero: $\det(\mathbf{A}) \neq 0$.
+
+#### Theorem (Determinant of Product)
+
+Let $\mathbf{A}$ and $\mathbf{B}$ be square matrices of the same size. Then
+
+$$\det(\mathbf{AB}) = \det(\mathbf{A})\det(\mathbf{B})$$
+
+By induction, for square matrices $\mathbf{A}_1, \mathbf{A}_2, \ldots, \mathbf{A}_k$ of the same size:
+
+$$\det(\mathbf{A}_1 \mathbf{A}_2 \cdots \mathbf{A}_k) = \det(\mathbf{A}_1) \det(\mathbf{A}_2) \cdots \det(\mathbf{A}_k)$$
+
+#### Theorem (Determinant of Inverse)
+
+If $\mathbf{A}$ is invertible, then
+
+$$\det(\mathbf{A}^{-1}) = \det(\mathbf{A})^{-1}$$
+
+#### Theorem (Determinant of Scalar Multiplication)
+
+For any square matrix $\mathbf{A}$ of order $n$ and scalar $c$:
+
+$$\det(c\mathbf{A}) = c^n \det(\mathbf{A})$$
+
+---
+
+## Chapter 7: Euclidean Vector Spaces
+
+### 7.1 Vectors and Vector Algebra
+
+#### Vectors
+
+A (real) $n$-vector (or vector) is a collection of $n$ ordered real numbers,
+
+$$\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}, \quad \text{where } v_i \in \mathbb{R} \text{ for } i = 1, \ldots, n.$$
+
+The real number $v_i$ is called the $i$-th **coordinate** of the vector $\mathbf{v}$.
+
+The **Euclidean $n$-space**, denoted as $\mathbb{R}^n$, is the collection of all $n$-vectors:
+
+$$\mathbb{R}^n = \left\{ \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \;\middle|\; v_i \in \mathbb{R} \text{ for } i = 1, \ldots, n \right\}$$
+
+#### Vector Addition and Scalar Multiplication
+
+Since vectors are matrices (column vectors are $n \times 1$ matrices), the properties of matrix addition and scalar multiplication hold for vectors.
+
+For any vectors $\mathbf{u, v, w}$ and scalars $a, b \in \mathbb{R}$:
+
+| Property | Rule |
+|----------|------|
+| (i) Closure | $\mathbf{u} + \mathbf{v}$ is a vector in $\mathbb{R}^n$ |
+| (ii) Commutative | $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ |
+| (iii) Associative | $\mathbf{u} + (\mathbf{v} + \mathbf{w}) = (\mathbf{u} + \mathbf{v}) + \mathbf{w}$ |
+| (iv) Zero vector | $\mathbf{0} + \mathbf{v} = \mathbf{v}$ |
+| (v) Negative | $-\mathbf{v}$ is a vector in $\mathbb{R}^n$ such that $\mathbf{v} - \mathbf{v} = \mathbf{0}$ |
+| (vi) Scalar multiple | $a\mathbf{v}$ is a vector in $\mathbb{R}^n$ |
+| (vii) Distribution | $a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}$ |
+| (viii) Distribution | $(a + b)\mathbf{u} = a\mathbf{u} + b\mathbf{u}$ |
+| (ix) Associativity | $(ab)\mathbf{u} = a(b\mathbf{u})$ |
+| (x) Zero product | If $a\mathbf{u} = \mathbf{0}$, then either $a = 0$ or $\mathbf{u} = \mathbf{0}$ |
+
+#### Linear Combination
+
+A **linear combination** of $\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k \in \mathbb{R}^n$ is
+
+$$c_1\mathbf{u}_1 + c_2\mathbf{u}_2 + \cdots + c_k\mathbf{u}_k, \quad \text{for some } c_1, c_2, \ldots, c_k \in \mathbb{R}.$$
+
+The scalars $c_1, c_2, \ldots, c_k$ are called **coefficients**.
+
+#### Span (Linear Span)
+
+Let $\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k$ be vectors in $\mathbb{R}^n$. The **span** (or linear span) of $\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k$ is the subset of $\mathbb{R}^n$ containing all the linear combinations:
+
+$$\text{span}\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\} = \left\{ c_1\mathbf{u}_1 + c_2\mathbf{u}_2 + \cdots + c_k\mathbf{u}_k \;\middle|\; c_1, c_2, \ldots, c_k \in \mathbb{R} \right\}$$
+
+#### Algorithm to Check for Linear Combination
+
+Let $S = \{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ be a set of vectors in $\mathbb{R}^n$. Form the $n \times k$ matrix $\mathbf{A} = \begin{pmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_k\end{pmatrix}$ whose columns are the vectors in $S$.
+
+Then a vector $\mathbf{v}$ in $\mathbb{R}^n$ is in $\text{span}\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ **if and only if** the system $\mathbf{Ax = v}$ is **consistent**.
+
+If the system is consistent, then the solutions to the system are the possible coefficients of the linear combination.
+
+#### Properties of Linear Spans
+
+**Theorem (Properties of linear span):** Let $S = \{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ be a finite set of vectors. The span of $S$ has the following properties:
+
+1. The span of $S$ contains the origin: $\mathbf{0} \in \text{span}(S)$.
+2. The span of $S$ is **closed under vector addition**: for any $\mathbf{u}, \mathbf{v} \in \text{span}(S)$, $\mathbf{u} + \mathbf{v} \in \text{span}(S)$.
+3. The span of $S$ is **closed under scalar multiplication**: for any $\mathbf{u} \in \text{span}(S)$ and $\alpha \in \mathbb{R}$, $\alpha\mathbf{u} \in \text{span}(S)$.
+
+> 💡 Properties (ii) and (iii) can be combined: the span is **closed under linear combinations** — if $\mathbf{u}, \mathbf{v} \in \text{span}(S)$ and $\alpha, \beta$ are any scalars, then $\alpha\mathbf{u} + \beta\mathbf{v} \in \text{span}(S)$.
+
+**Theorem (Linear span is closed under linear combinations):** For any vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m$ in $\text{span}(S)$:
+
+$$\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_m\} \subseteq \text{span}(S)$$
+
+#### Algorithm to Check for Set Relations between Spans
+
+Given two sets $T = \{\mathbf{v}_1, \ldots, \mathbf{v}_m\}$ and $S = \{\mathbf{u}_1, \ldots, \mathbf{u}_k\}$:
+
+**Theorem:** $\text{span}(T) \subseteq \text{span}(S)$ if and only if the augmented system
+
+$$\left(\begin{array}{cccc|c|c|c} \mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_k & \mathbf{v}_1 & \cdots & \mathbf{v}_m \end{array}\right)$$
+
+is consistent (for all $\mathbf{v}_i$ simultaneously).
+
+### 7.2 Subspaces
+
+#### Solution Sets to a Linear System and Subspace
+
+The set of solutions to a linear system $\mathbf{Ax = b}$ can be expressed:
+
+**Implicitly:** $V = \left\{ \mathbf{u} \in \mathbb{R}^n \;\middle|\; \mathbf{Au = b} \right\}$
+
+**Explicitly:** $V = \left\{ \mathbf{u} + s_1\mathbf{v}_1 + s_2\mathbf{v}_2 + \cdots + s_k\mathbf{v}_k \;\middle|\; s_1, s_2, \ldots, s_k \in \mathbb{R} \right\}$
+
+where $\mathbf{u} + s_1\mathbf{v}_1 + \cdots + s_k\mathbf{v}_k$ is the general solution.
+
+#### Definition (Subspace)
+
+A subset $V$ of $\mathbb{R}^n$ is a **subspace** if it satisfies:
+
+1. $V$ contains the zero vector: $\mathbf{0} \in V$
+2. $V$ is **closed under scalar multiplication**: for any $\mathbf{v} \in V$ and scalar $\alpha$, the vector $\alpha\mathbf{v} \in V$
+3. $V$ is **closed under addition**: for any $\mathbf{u}, \mathbf{v} \in V$, the sum $\mathbf{u} + \mathbf{v} \in V$
+
+> 💡 Property (i) can be replaced with (i'): $V$ is **nonempty**.
+> Properties (ii) and (iii) are equivalent to (ii'): $V$ is **closed under linear combination** — for any $\mathbf{u}, \mathbf{v} \in V$ and scalars $\alpha, \beta$, $\alpha\mathbf{u} + \beta\mathbf{v} \in V$.
+
+#### Theorem (Solution Set of Homogeneous System)
+
+The solution set $V = \{\mathbf{u} \mid \mathbf{Au = b}\}$ to a linear system $\mathbf{Ax = b}$ is a subspace **if and only if** $\mathbf{b = 0}$ (i.e., the system is **homogeneous**).
+
+The solution set to a homogeneous system is called a **solution space**.
+
+#### Theorem (Subspaces ≡ Linear Spans)
+
+A subset $V \subseteq \mathbb{R}^n$ is a subspace **if and only if** it is a linear span: $V = \text{span}(S)$ for some finite set $S = \{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$.
+
+#### How to Check if a Set is a Subspace
+
+**To show $V$ IS a subspace:** Either find a spanning set $S$ such that $V = \text{span}(S)$, or show $V$ satisfies the 3 conditions.
+
+**To show $V$ is NOT a subspace:** Either:
+- Show it does not contain the zero vector: $\mathbf{0} \notin V$, or
+- Find $\mathbf{v} \in V$ and scalar $\alpha$ such that $\alpha\mathbf{v} \notin V$, or
+- Find $\mathbf{u}, \mathbf{v} \in V$ such that $\mathbf{u} + \mathbf{v} \notin V$
+
+#### Subspaces of $\mathbb{R}^2$
+
+| Dimension | Form | Geometry |
+|-----------|------|----------|
+| 0 | $\{\mathbf{0}\}$ | A point |
+| 1 | $\text{span}\{(x_1, y_1)^T\}$ | Lines through origin (looks like $\mathbb{R}^1$) |
+| 2 | $\mathbb{R}^2$ | Whole plane |
+
+#### Subspaces of $\mathbb{R}^3$
+
+| Dimension | Form | Geometry |
+|-----------|------|----------|
+| 0 | $\{\mathbf{0}\}$ | A point |
+| 1 | $\text{span}\{(x_1, y_1, z_1)^T\}$ | Lines through origin (looks like $\mathbb{R}^1$) |
+| 2 | $\text{span}\{(x_1, y_1, z_1)^T, (x_2, y_2, z_2)^T\}$ | Planes through origin (looks like $\mathbb{R}^2$) |
+| 3 | $\mathbb{R}^3$ | Whole space |
+
+> ⚠️ For planes: the two spanning vectors must **not** be scalar multiples of each other.
+
+### 7.3 Linear Independence
+
+#### Definition
+
+A set $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ is **linearly independent** if the only coefficients $c_1, c_2, \ldots, c_k$ satisfying the equation
+
+$$c_1\mathbf{u}_1 + c_2\mathbf{u}_2 + \cdots + c_k\mathbf{u}_k = \mathbf{0}$$
+
+are $c_1 = c_2 = \cdots = c_k = 0$.
+
+Otherwise, we say that the set is **linearly dependent**.
+
+#### Algorithm to Check for Linear Independence
+
+Let $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ be a set of vectors in $\mathbb{R}^n$.
+
+1. $\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ is **linearly independent** if and only if the **homogeneous system** $\begin{pmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_k\end{pmatrix}\mathbf{x} = \mathbf{0}$ has **only the trivial solution**.
+
+2. The homogeneous system has only the **trivial solution** if and only if the **reduced row-echelon form** of $\begin{pmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_k\end{pmatrix}$ has **no non-pivot column**.
+
+#### Theorem
+
+A subset $S = \{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_k\}$ of $\mathbb{R}^n$ is **linearly independent** if and only if the reduced row-echelon form of $\mathbf{A} = \begin{pmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_k\end{pmatrix}$ has **no non-pivot columns**.

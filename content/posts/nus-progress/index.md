@@ -37,13 +37,13 @@ draft: false
 <div class="subtitle">Calculus & Linear Algebra — 32 topics</div>
 <div class="progress-bar">
 <span style="width:21.9%;background:#003D7C" title="Confident: 7"></span>
-<span style="width:62.5%;background:#C9A882" title="Comfortable/Familiar: 20"></span>
-<span style="width:15.6%;background:#E5E7EB" title="Not started: 5"></span>
+<span style="width:74.2%;background:#C9A882" title="Comfortable/Familiar: 23"></span>
+<span style="width:3.2%;background:#E5E7EB" title="Not started: 1"></span>
 </div>
 <div class="progress-legend">
 <span><i style="background:#003D7C"></i>Confident: 7</span>
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 20</span>
-<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 5</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 23</span>
+<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 1</span>
 </div>
 </div>
 <div class="progress-card">
@@ -54,8 +54,8 @@ draft: false
 <span style="width:33.3%;background:#E5E7EB" title="Not started: 3"></span>
 </div>
 <div class="progress-legend">
-<span><i style="background:#C9A882"></i>Comfortable: 6</span>
-<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 3</span>
+<span><i style="background:#C9A882"></i>Comfortable: 7</span>
+<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 2</span>
 </div>
 </div>
 <div class="progress-card">
@@ -88,8 +88,12 @@ draft: false
 ### What's Next
 
 - ~~**Quiz 6.5–6.9:**~~ All 5/5 ✅ (completed Mar 24-25)
-- **HW2:** Due Mon 30
-- **Ch 7.1–7.5:** Vectors, dot/cross product, lines & planes, vector spaces
+- ~~**Quiz 7.1–7.2:**~~ 7.1 4/5, 7.2 5/5 ✅ (completed Mar 30)
+- ~~**Quiz 7.3:**~~ 5/5 ✅ (completed Apr 2)
+- ~~**Quiz 7.4:**~~ 5/5 ✅ (completed Apr 2)
+- ~~**Quiz 7.1:**~~ 5/5 ✅ (completed Apr 2, att 9)
+- **HW2:** Due Apr 5
+- **Quiz 7.5:** Due Apr 10
 - **CT3:** Apr 13 — scope 5.1–7.6
 
 ### Topic Mastery
@@ -122,11 +126,11 @@ draft: false
 | 6.7 | Determinants & Cofactors | 🔸 Comfortable |
 | 6.8 | Det & Row Operations | 🔸 Comfortable |
 | 6.9 | Det Properties & Invertibility | 🔸 Comfortable |
-| 7.1 | Vectors in Rn | ⬜ Not started |
-| 7.2 | Dot Product | ⬜ Not started |
-| 7.3 | Cross Product | ⬜ Not started |
-| 7.4 | Lines & Planes | ⬜ Not started |
-| 7.5 | Vector Spaces | ⬜ Not started |
+| 7.1 | Vectors & Span | 🔸 Comfortable |
+| 7.2 | Subspaces | 🔸 Comfortable |
+| 7.3 | Linear Independence | 🔸 Comfortable |
+| 7.4 | Basis of Subspace | 🔸 Comfortable |
+| 7.5 | Dimension of Subspaces | ⬜ Not started |
 
 ---
 
@@ -139,8 +143,10 @@ draft: false
 
 ### What's Next
 
-- **Unit 6:** Combinatorics — quiz done (8/8), deeper practice needed
-- **Units 7–9:** Graph theory, probability, distributions
+- **Tutorial 5:** Q1 + Q5 done (both graded). Q2-Q4,Q6-Q7 remaining.
+- **Unit 6:** Combinatorics — quiz done (8/8), T5 practice
+- **Units 7–9:** Graph theory (quiz done), probability, distributions
+- **Assignment 2:** Due Apr 13
 - **Final Exam:** Apr 30
 
 ### Topic Mastery
@@ -199,4 +205,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-03-30 01:14 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-02 13:28 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
