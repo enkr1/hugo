@@ -39,7 +39,9 @@ service cloud.firestore {
               .hasOnly(['likes', 'likedBy']))
         );
 
-      allow delete: if false;
+      // Author can delete their own comment
+      allow delete: if request.auth != null
+        && request.auth.uid == resource.data.author.uid;
 
       // Replies subcollection
       match /replies/{replyId} {
@@ -58,7 +60,9 @@ service cloud.firestore {
           && request.resource.data.diff(resource.data).affectedKeys()
               .hasOnly(['text', 'updatedAt']);
 
-        allow delete: if false;
+        // Author can delete their own reply
+        allow delete: if request.auth != null
+          && request.auth.uid == resource.data.author.uid;
       }
     }
   }
