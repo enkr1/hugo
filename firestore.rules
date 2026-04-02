@@ -56,9 +56,17 @@ service cloud.firestore {
           && request.resource.data.text.size() < 5000
           && request.resource.data.createdAt == request.time;
 
-        allow update: if request.auth.uid == resource.data.author.uid
-          && request.resource.data.diff(resource.data).affectedKeys()
-              .hasOnly(['text', 'updatedAt']);
+        allow update: if request.auth != null
+          && (
+            // Author can edit text
+            (request.auth.uid == resource.data.author.uid
+              && request.resource.data.diff(resource.data).affectedKeys()
+                  .hasOnly(['text', 'updatedAt']))
+            ||
+            // Any authenticated user can like/unlike
+            (request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['likes', 'likedBy', 'likedByNames']))
+          );
 
         // Author can delete their own reply
         allow delete: if request.auth != null
