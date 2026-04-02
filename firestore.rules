@@ -36,7 +36,7 @@ service cloud.firestore {
           ||
           // Any authenticated user can like/unlike (atomic ops)
           (request.resource.data.diff(resource.data).affectedKeys()
-              .hasOnly(['likes', 'likedBy']))
+              .hasOnly(['likes', 'likedBy', 'likedByNames']))
         );
 
       // Author can delete their own comment
