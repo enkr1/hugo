@@ -11,8 +11,6 @@
         {{ end }}
     {{ end }}
 
-    <div class="toolbar-separator"></div>
-
     {{/* Tags */}}
     <a href="{{ with .Site.GetPage `/tags` }}{{ .RelPermalink }}{{ else }}/tags/{{ end }}" class="toolbar-icon" aria-label="Tags">
         {{ partial "helper/icon" "tag" }}
