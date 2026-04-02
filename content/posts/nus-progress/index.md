@@ -173,6 +173,7 @@ draft: false
 
 ### What's Next
 
+- **Tutorial 7:** Q1 done, Q2-Q4 remaining
 - **Mock Tests 6–10:** Weekly practice (Mar 28 – Apr 18)
 - **Practical Exam:** Apr 16
 - **Final Exam:** May 4
@@ -203,4 +204,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-02 14:55 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-03 04:06 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
