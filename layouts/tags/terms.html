@@ -3,18 +3,30 @@
         <h1 class="section-title">{{ .Title }}</h1>
     </header>
 
-    <section class="categories-tree categories-tree--page">
-        <ul class="categories-list">
-            {{- range .Data.Terms.ByCount -}}
-                <li class="category-item depth-0">
-                    <a href="{{ .Page.Permalink }}">
-                        <span class="category-name">#{{ .Page.Title | lower }}</span>
-                        <span class="category-line"></span>
-                        <span class="category-count">{{ .Count }}</span>
-                    </a>
-                </li>
+    {{- $terms := .Data.Terms.ByCount -}}
+    {{- $maxCount := 1 -}}
+    {{- with index $terms 0 -}}
+        {{- $maxCount = .Count -}}
+    {{- end -}}
+    {{- $logMax := math.Log (float (cond (gt $maxCount 1) $maxCount 2)) -}}
+
+    <section class="tag-cloud-map">
+        {{- range $terms -}}
+            {{- $logCount := math.Log (float (cond (gt .Count 1) .Count 2)) -}}
+            {{- $ratio := div $logCount $logMax -}}
+            {{- $tier := "tag-pill--sm" -}}
+            {{- if gt $ratio 0.6 -}}
+                {{- $tier = "tag-pill--lg" -}}
+            {{- else if gt $ratio 0.25 -}}
+                {{- $tier = "tag-pill--md" -}}
             {{- end -}}
-        </ul>
+            <a href="{{ .Page.Permalink }}" class="tag-pill {{ $tier }}">
+                {{- .Page.Title | lower -}}
+                {{- if ne $tier "tag-pill--sm" -}}
+                    <span class="tag-pill__count">{{ .Count }}</span>
+                {{- end -}}
+            </a>
+        {{- end -}}
     </section>
 
     {{ partialCached "footer/footer" . }}
