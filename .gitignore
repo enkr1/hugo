@@ -20,3 +20,8 @@ data/changes.json
 
 # Node.js (for nested category script)
 node_modules/
+
+# Claude Code artifacts
+.superpowers/
+TASKS.json
+_work/
