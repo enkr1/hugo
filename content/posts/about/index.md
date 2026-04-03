@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 1999-12-06
-sticky: 1
+sticky: 99998
 ---
 
 ## Hello! I am Pang Jing Hui 彭竞辉.

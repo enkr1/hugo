@@ -22,7 +22,6 @@ keywords:
   - "ByteDance career insights"
   - "Overcoming coding challenges"
   - "Algorithm practice"
-sticky: 800
 ---
 
 
