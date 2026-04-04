@@ -91,7 +91,7 @@ draft: false
 - ~~**Quiz 7.4:**~~ 5/5 ✅ (completed Apr 2)
 - ~~**Quiz 7.1:**~~ 5/5 ✅ (completed Apr 2, att 9)
 - **Quiz 7.5:** 1/5 — in progress, due Apr 10
-- **HW2:** Due Apr 5
+- ~~**HW2:**~~ ✅ Complete — submitting (due Apr 5)
 - **CT3:** Apr 13 — scope 5.1–7.6
 
 ### Topic Mastery
@@ -189,6 +189,7 @@ draft: false
 | Recursion | ✅ Confident |
 | Algorithms & Complexity | 🔸 Comfortable |
 | OOP | 🔸 Comfortable |
+| Functional Programming (filter, reduce, map) | 🔸 Comfortable |
 
 ---
 
@@ -204,4 +205,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-03 17:46 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-04 15:00 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
