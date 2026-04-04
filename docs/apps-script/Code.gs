@@ -32,20 +32,23 @@ function getConfig() {
 // ─── Firestore REST API ────────────────────────────────────────────
 
 /**
- * Run a structured query against Firestore REST API.
+ * Run a structured query against a Firestore collection.
  * @param {Object} config - from getConfig()
- * @param {string} collectionId - 'comments' or 'replies'
+ * @param {string} parentPath - parent document path (empty for root collections)
+ * @param {string} collectionId - collection name
  * @param {string} sinceISO - ISO timestamp to filter createdAt >
- * @param {boolean} allDescendants - true for collection group query (replies)
  * @returns {Object[]} parsed documents
  */
-function queryFirestore(config, collectionId, sinceISO, allDescendants) {
+function queryFirestore(config, parentPath, collectionId, sinceISO) {
+  const basePath = parentPath
+    ? parentPath + '/' + collectionId
+    : collectionId;
   const url = FIRESTORE_BASE +
-    config.projectId + '/databases/(default)/documents:runQuery';
+    config.projectId + '/databases/(default)/documents/' + parentPath + ':runQuery';
 
   const body = {
     structuredQuery: {
-      from: [{ collectionId: collectionId, allDescendants: !!allDescendants }],
+      from: [{ collectionId: collectionId }],
       where: {
         fieldFilter: {
           field: { fieldPath: 'createdAt' },
@@ -67,7 +70,7 @@ function queryFirestore(config, collectionId, sinceISO, allDescendants) {
   });
 
   if (response.getResponseCode() !== 200) {
-    Logger.log('Firestore query error: ' + response.getContentText());
+    Logger.log('Firestore query error (' + basePath + '): ' + response.getContentText());
     return [];
   }
 
@@ -130,12 +133,6 @@ function parseFirestoreValue(val) {
   return null;
 }
 
-/** Extract parent comment ID from a reply's Firestore path. */
-function extractParentCommentId(replyPath) {
-  const parts = (replyPath || '').split('/');
-  const idx = parts.indexOf('comments');
-  return idx >= 0 ? parts[idx + 1] : '';
-}
 
 // ─── Telegram ──────────────────────────────────────────────────────
 
@@ -182,14 +179,10 @@ function formatCommentMessage(comment) {
   const text = escapeHtml(comment.text);
 
   return [
-    '\ud83d\udcac New comment on <b>' + slug + '</b>',
-    '',
-    '<b>' + name + '</b> highlighted:',
-    '<i>\u201c' + quoted + '\u201d</i>',
-    '',
-    text,
-    '',
-    '\ud83d\udd17 ' + BLOG_URL + slug + '/'
+    '\ud83d\udcac <b>' + name + '</b> on <b>' + slug + '</b>',
+    '<blockquote>' + quoted + '</blockquote>',
+    '<pre>' + text + '</pre>',
+    '\ud83d\udd17 ' + BLOG_URL + slug + '/?comment=' + comment._id
   ].join('\n');
 }
 
@@ -204,24 +197,17 @@ function formatReplyMessage(parentComment, reply) {
 
   let slug = '';
   let quoted = '';
+  let commentId = '';
   if (parentComment) {
     slug = escapeHtml(parentComment.articleSlug);
     quoted = escapeHtml(parentComment.quotedText);
+    commentId = parentComment._id;
   }
 
-  const lines = ['\u21a9\ufe0f New reply'];
-  if (slug) lines.push('on <b>' + slug + '</b>');
-  lines.push('');
-  lines.push('<b>' + name + '</b> replied:');
-  lines.push(text);
-  if (quoted) {
-    lines.push('');
-    lines.push('Re: <i>\u201c' + quoted + '\u201d</i>');
-  }
-  if (slug) {
-    lines.push('');
-    lines.push('\ud83d\udd17 ' + BLOG_URL + slug + '/');
-  }
+  const lines = ['\u21a9\ufe0f <b>' + name + '</b> replied on <b>' + (slug || 'unknown') + '</b>'];
+  if (quoted) lines.push('<blockquote>' + quoted + '</blockquote>');
+  lines.push('<pre>' + text + '</pre>');
+  if (slug) lines.push('\ud83d\udd17 ' + BLOG_URL + slug + '/?comment=' + commentId);
 
   return lines.join('\n');
 }
@@ -231,11 +217,10 @@ function formatReplyMessage(parentComment, reply) {
 function checkNewComments() {
   const config = getConfig();
   const seen = new Set(config.notifiedIds);
-
-  const newComments = queryFirestore(config, 'comments', config.lastCheck, false);
-  const newReplies = queryFirestore(config, 'replies', config.lastCheck, true);
-
   const newIds = [];
+
+  // Query new top-level comments
+  const newComments = queryFirestore(config, '', 'comments', config.lastCheck);
 
   newComments.forEach(function(c) {
     if (seen.has(c._id)) return;
@@ -243,20 +228,15 @@ function checkNewComments() {
     newIds.push(c._id);
   });
 
-  // Batch-fetch unique parent comments to avoid N+1 per reply
-  const parentCache = {};
-  newReplies.forEach(function(r) {
-    const parentId = extractParentCommentId(r._path);
-    if (parentId && !(parentId in parentCache)) {
-      parentCache[parentId] = fetchFirestoreDoc(config, 'comments/' + parentId);
-    }
-  });
-
-  newReplies.forEach(function(r) {
-    if (seen.has(r._id)) return;
-    const parentId = extractParentCommentId(r._path);
-    sendTelegram(config, formatReplyMessage(parentCache[parentId] || null, r));
-    newIds.push(r._id);
+  // Query replies per comment (no collection group index needed)
+  const allComments = queryFirestore(config, '', 'comments', new Date(0).toISOString());
+  allComments.forEach(function(c) {
+    const replies = queryFirestore(config, 'comments/' + c._id, 'replies', config.lastCheck);
+    replies.forEach(function(r) {
+      if (seen.has(r._id)) return;
+      sendTelegram(config, formatReplyMessage(c, r));
+      newIds.push(r._id);
+    });
   });
 
   // 30s overlap guards against clock drift; dedup IDs catch the overlap
@@ -279,7 +259,7 @@ function testSendTelegram() {
 
 function testFirestoreQuery() {
   const config = getConfig();
-  const comments = queryFirestore(config, 'comments', new Date(0).toISOString(), false);
+  const comments = queryFirestore(config, '', 'comments', new Date(0).toISOString());
   Logger.log('Found ' + comments.length + ' comments:');
   comments.forEach(function(c) {
     Logger.log('  - [' + c.articleSlug + '] ' + (c.author ? c.author.displayName : '?') + ': ' + c.text);
