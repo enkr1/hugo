@@ -95,5 +95,49 @@ Nested numbering for sub-proofs:
 
 ---
 
+## Unit 8: Basic Probability
+
+### Core Definitions
+
+| Term | Definition |
+|------|-----------|
+| Sample space $\Omega$ | Set of ALL possible outcomes |
+| Event | A **subset** of $\Omega$ |
+| $\Pr[E]$ (uniform) | $\|E\| / \|\Omega\|$ |
+
+### Rules
+
+| Rule | Formula |
+|------|---------|
+| Non-negative | $\Pr[x] \geq 0$ |
+| Sum to 1 | $\sum_{x \in \Omega} \Pr[x] = 1$ |
+| Complement | $\Pr[\bar{A}] = 1 - \Pr[A]$ |
+| Disjoint union | $A \cap B = \emptyset \Rightarrow \Pr[A \cup B] = \Pr[A] + \Pr[B]$ |
+
+### Conditional Probability
+
+$$\Pr[A \mid B] = \frac{\Pr[A \cap B]}{\Pr[B]}$$
+
+"Given B happened, what's the chance of A?" — B becomes your new universe.
+
+### Bayes' Theorem
+
+$$\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B]}$$
+
+Use when you know $\Pr[B|A]$ but need $\Pr[A|B]$.
+
+### Independence
+
+Two events $A$, $B$ are **independent** if:
+
+$$\Pr[A \cap B] = \Pr[A] \cdot \Pr[B]$$
+
+- **Meaning:** knowing one happened doesn't change the other's probability
+- **The test is NOT "do they overlap?"** — the test is **"does the overlap equal the product?"**
+- $A \cap B \neq \emptyset$ can still be independent (e.g. two separate dice)
+- **Pairwise independent $\neq$ mutually independent** — the 3-coin example: $D_1, D_3$ are pairwise independent, but $D_1, D_2, D_3$ together are NOT
+
+---
+
 _Source: [Unit 1 Notes](https://github.com/enkr1/nus_bit_priv/blob/main/000_mods/TCX1004/mathematical-techniques/content/Unit%20Notes/Unit%201.md) § "Allowable Rules of Deductions/Inferences"_
 _Created: 2026-03-03_

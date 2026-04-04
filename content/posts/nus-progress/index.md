@@ -15,7 +15,7 @@ draft: false
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
 | TCX2101 | Active | ███░░ Ch 7 | Vectors, span, subspaces |
-| TCX1004 | Active | ███░░ Unit 7 | Graph Theory (quiz done), probability next |
+| TCX1004 | Active | ████░ Unit 8 | Probability (quiz done), distributions next |
 | TCX1002 | Active | ███░░ W10 | Mock tests, practical prep |
 
 ### At a Glance
@@ -48,12 +48,12 @@ draft: false
 <h4>TCX1004</h4>
 <div class="subtitle">Mathematical Techniques — 9 units</div>
 <div class="progress-bar">
-<span style="width:66.7%;background:#C9A882" title="Comfortable: 6"></span>
-<span style="width:33.3%;background:#E5E7EB" title="Not started: 3"></span>
+<span style="width:88.9%;background:#C9A882" title="Comfortable: 8"></span>
+<span style="width:11.1%;background:#E5E7EB" title="Not started: 1"></span>
 </div>
 <div class="progress-legend">
-<span><i style="background:#C9A882"></i>Comfortable: 7</span>
-<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 2</span>
+<span><i style="background:#C9A882"></i>Comfortable: 8</span>
+<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 1</span>
 </div>
 </div>
 <div class="progress-card">
@@ -143,7 +143,7 @@ draft: false
 
 - **Tutorial 5:** Q1 + Q5 done (both graded). Q2-Q4,Q6-Q7 remaining.
 - **Unit 6:** Combinatorics — quiz done (8/8), T5 practice
-- **Units 7–9:** Graph theory (quiz done), probability, distributions
+- **Units 7–9:** Graph theory (quiz done), probability (quiz done), distributions
 - **Assignment 2:** Due Apr 13
 - **Final Exam:** Apr 30
 
@@ -158,7 +158,7 @@ draft: false
 | 5 | Asymptotic Notation, Algorithm Analysis | 🔸 Comfortable |
 | 6 | Combinatorics | 🔸 Comfortable |
 | 7 | Graph Theory | 🔸 Quiz done |
-| 8 | Basic Probability | ⬜ Not started |
+| 8 | Basic Probability | 🔸 Comfortable |
 | 9 | Distributions, Expectation, Variance | ⬜ Not started |
 
 ---
@@ -205,4 +205,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-04 15:00 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-04 19:46 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
