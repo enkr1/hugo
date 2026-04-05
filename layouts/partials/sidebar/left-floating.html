@@ -33,6 +33,11 @@
         {{ end }}
     {{ end }}
 
+    {{/* Visitor geo map */}}
+    <a href="{{ with .Site.GetPage `/visitors` }}{{ .RelPermalink }}{{ else }}/visitors/{{ end }}" class="toolbar-icon" aria-label="Visitors">
+        {{ partial "helper/icon" "world" }}
+    </a>
+
     {{/* Search */}}
     <button class="toolbar-icon" data-search-trigger aria-label="Search">
         {{ partial "helper/icon" "search" }}

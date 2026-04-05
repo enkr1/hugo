@@ -124,7 +124,7 @@
 {{/* Firestore View Count - only in production */}}
 {{ if not hugo.IsServer }}
 <script type="module">
-import { doc, collection, getDoc, setDoc, increment } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { doc, collection, getDoc, setDoc, increment, writeBatch } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // ── Cache utilities (sessionStorage, 5-min TTL) ──────────────
 const CACHE_TTL = 5 * 60 * 1000;
@@ -220,13 +220,13 @@ async function recordGeo(db) {
             localStorage.setItem(GEO_KEY, JSON.stringify({ cc: country, lat, lng, ts: Date.now() }));
         }
 
-        // Increment country count
-        await setDoc(doc(db, 'visitor_geo', 'summary'), { [country]: increment(1) }, { merge: true });
-
-        // Store coordinates (idempotent — merge won't overwrite with same values)
+        // Atomic write: increment count + store coordinates together
+        const batch = writeBatch(db);
+        batch.set(doc(db, 'visitor_geo', 'summary'), { [country]: increment(1) }, { merge: true });
         if (lat != null && lng != null) {
-            await setDoc(doc(db, 'visitor_geo', 'coords'), { [country]: { lat, lng } }, { merge: true });
+            batch.set(doc(db, 'visitor_geo', 'coords'), { [country]: { lat, lng } }, { merge: true });
         }
+        await batch.commit();
     } catch { /* geo is best-effort — never break view counting */ }
 }
 
@@ -256,8 +256,7 @@ async function getCount(db, docRef, increaseCount, title) {
         }
         setCachedCount(title, count);
         return count;
-    } catch (err) {
-        console.error('[Firestore] Error:', err);
+    } catch {
         return null;
     }
 }

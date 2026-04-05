@@ -1,0 +1,25 @@
+{{ define "body-class" }}visitors-page{{ end }}
+{{ define "main" }}
+<div class="visitors-header">
+    <h1>Where Readers Come From</h1>
+</div>
+
+<div class="globe-container">
+    <canvas id="cobe-globe" width="800" height="800"></canvas>
+</div>
+
+<div class="geo-stats" id="geo-stats">
+    <span class="geo-stats__total" id="geo-total-views">...</span>
+    <span class="geo-stats__label">total views</span>
+</div>
+
+<ol class="country-list" id="country-list"></ol>
+
+{{- $opts := dict "minify" hugo.IsProduction -}}
+{{- with resources.Get "ts/visitor-map.ts" -}}
+    {{- $script := . | js.Build $opts | fingerprint -}}
+    <script type="module" src="{{ $script.RelPermalink }}"></script>
+{{- end -}}
+
+{{ partialCached "footer/footer" . }}
+{{ end }}
