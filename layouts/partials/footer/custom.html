@@ -124,7 +124,7 @@
 {{/* Firestore View Count - only in production */}}
 {{ if not hugo.IsServer }}
 <script type="module">
-import { doc, collection, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { doc, collection, getDoc, setDoc, increment } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // ── Cache utilities (sessionStorage, 5-min TTL) ──────────────
 const CACHE_TTL = 5 * 60 * 1000;
@@ -183,6 +183,37 @@ function waitForFirestore(callback, maxAttempts = 20) {
     check();
 }
 
+// ── Geo recording ────────────────────────────────────────────
+const GEO_KEY = 'visitor-geo-country';
+const GEO_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+async function recordGeo(db) {
+    try {
+        // Check localStorage cache
+        let country = null;
+        const raw = localStorage.getItem(GEO_KEY);
+        if (raw) {
+            const entry = JSON.parse(raw);
+            if (Date.now() - entry.ts < GEO_TTL) country = entry.cc;
+            else localStorage.removeItem(GEO_KEY);
+        }
+
+        // Fetch if not cached
+        if (!country) {
+            const resp = await fetch('https://ipapi.co/country/', {
+                signal: AbortSignal.timeout(3000),
+            });
+            if (!resp.ok) return;
+            country = (await resp.text()).trim();
+            if (!/^[A-Z]{2}$/.test(country)) return;
+            localStorage.setItem(GEO_KEY, JSON.stringify({ cc: country, ts: Date.now() }));
+        }
+
+        // Increment country count (increment, doc, setDoc are all static imports)
+        await setDoc(doc(db, 'visitor_geo', 'summary'), { [country]: increment(1) }, { merge: true });
+    } catch { /* geo is best-effort — never break view counting */ }
+}
+
 // ── View count read/write ─────────────────────────────────────
 async function getCount(db, docRef, increaseCount, title) {
     try {
@@ -195,6 +226,7 @@ async function getCount(db, docRef, increaseCount, title) {
                 count = 1;
                 localStorage.setItem(title, 'true');
                 setDedupCookie(title);
+                recordGeo(db);
             }
         } else {
             count = d.data().count;
@@ -203,6 +235,7 @@ async function getCount(db, docRef, increaseCount, title) {
                 count++;
                 localStorage.setItem(title, 'true');
                 setDedupCookie(title);
+                recordGeo(db);
             }
         }
         setCachedCount(title, count);
