@@ -1,0 +1,35 @@
+{{/* Visitor Map Widget — shows world dot map colored by visitor geography */}}
+{{ if not hugo.IsServer }}
+<section class="widget visitor-map">
+    <h2 class="widget-title section-title">Visitors</h2>
+    <div class="visitor-map__container" id="visitor-map">
+        <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" class="visitor-map__svg">
+            {{/* Simplified continent outlines — equirectangular projection */}}
+            {{/* x = longitude + 180, y = 90 - latitude */}}
+            <g class="visitor-map__land" fill="var(--card-background)" stroke="var(--body-text-color)" stroke-width="0.3" stroke-opacity="0.2">
+                {{/* North America */}}
+                <path d="M30,20 L55,15 L70,20 L80,30 L75,45 L65,55 L55,50 L50,60 L40,65 L35,55 L25,50 L20,35 Z" />
+                {{/* South America */}}
+                <path d="M85,75 L100,70 L110,80 L115,95 L110,115 L100,130 L90,140 L80,135 L75,115 L80,95 L85,85 Z" />
+                {{/* Europe */}}
+                <path d="M165,25 L175,20 L190,22 L195,30 L190,38 L180,42 L170,38 L165,32 Z" />
+                {{/* Africa */}}
+                <path d="M170,55 L185,50 L200,55 L205,70 L200,90 L190,100 L175,95 L170,80 L165,65 Z" />
+                {{/* Asia */}}
+                <path d="M200,15 L230,10 L260,15 L280,25 L290,40 L280,50 L260,55 L240,50 L220,45 L210,50 L200,45 L195,30 Z" />
+                {{/* Southeast Asia / Oceania */}}
+                <path d="M270,60 L285,55 L300,60 L305,70 L295,80 L280,75 L270,65 Z" />
+                {{/* Australia */}}
+                <path d="M285,100 L310,95 L325,100 L330,115 L320,125 L300,125 L285,115 Z" />
+            </g>
+            {{/* Dots injected here by visitor-map.ts */}}
+            <g id="geo-dots"></g>
+        </svg>
+        <div class="visitor-map__tooltip" id="geo-tooltip"></div>
+        <div class="visitor-map__summary" id="geo-summary">
+            <span class="visitor-map__count" id="geo-country-count">...</span>
+            <span class="visitor-map__label">countries</span>
+        </div>
+    </div>
+</section>
+{{ end }}
