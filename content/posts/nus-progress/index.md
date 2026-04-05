@@ -90,9 +90,10 @@ draft: false
 - ~~**Quiz 7.3:**~~ 5/5 ✅ (completed Apr 2)
 - ~~**Quiz 7.4:**~~ 5/5 ✅ (completed Apr 2)
 - ~~**Quiz 7.1:**~~ 5/5 ✅ (completed Apr 2, att 9)
-- **Quiz 7.5:** 1/5 — in progress, due Apr 10
-- ~~**HW2:**~~ ✅ Complete — submitting (due Apr 5)
-- **CT3:** Apr 13 — scope 5.1–7.6
+- ~~**Quiz 7.5:**~~ 5/5 ✅ (completed Apr 4)
+- ~~**Quiz 8.1:**~~ 5/5 ✅ (completed Apr 4)
+- ~~**HW2:**~~ ✅ Submitted (Apr 4)
+- **CT3:** Apr 13 — scope 5.1–7.6, 8-day prep in progress (Day 1 done)
 
 ### Topic Mastery
 
@@ -205,4 +206,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-04 19:46 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-05 20:44 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
