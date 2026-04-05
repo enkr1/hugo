@@ -2,16 +2,16 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ── Existing: article view counts ─────────────────────────────
+    // ── Article view counts (read-only, populated externally) ──
     match /articles/{articleId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if false;
     }
 
-    // ── Visitor geography (country-level counts) ─────────────
+    // ── Visitor geography (read-only, populated externally) ──
     match /visitor_geo/{docId} {
       allow read: if true;
-      allow write: if true;
+      allow write: if false;
     }
 
     // ── Inline comments ───────────────────────────────────────────
@@ -32,7 +32,7 @@ service cloud.firestore {
         && request.resource.data.anchorStatus in ['active', 'orphaned']
         && request.resource.data.createdAt == request.time;
 
-      // Split update: author edits text OR any user likes/unlikes
+      // Split update: author edits text OR any user likes/unlikes OR replyCount update
       allow update: if request.auth != null
         && (
           // Author can edit their own comment text
@@ -43,6 +43,10 @@ service cloud.firestore {
           // Any authenticated user can like/unlike (atomic ops)
           (request.resource.data.diff(resource.data).affectedKeys()
               .hasOnly(['likes', 'likedBy', 'likedByNames']))
+          ||
+          // Any authenticated user can update replyCount (atomic increment)
+          (request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['replyCount']))
         );
 
       // Author can delete their own comment

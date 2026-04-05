@@ -229,7 +229,8 @@ function checkNewComments() {
   });
 
   // Query replies per comment (no collection group index needed)
-  const allComments = queryFirestore(config, '', 'comments', new Date(0).toISOString());
+  var sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+  const allComments = queryFirestore(config, '', 'comments', sevenDaysAgo);
   allComments.forEach(function(c) {
     const replies = queryFirestore(config, 'comments/' + c._id, 'replies', config.lastCheck);
     replies.forEach(function(r) {
