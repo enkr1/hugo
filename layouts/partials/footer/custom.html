@@ -189,28 +189,44 @@ const GEO_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 async function recordGeo(db) {
     try {
-        // Check localStorage cache
+        // Check localStorage cache for country code
         let country = null;
+        let lat = null;
+        let lng = null;
         const raw = localStorage.getItem(GEO_KEY);
         if (raw) {
             const entry = JSON.parse(raw);
-            if (Date.now() - entry.ts < GEO_TTL) country = entry.cc;
-            else localStorage.removeItem(GEO_KEY);
+            if (Date.now() - entry.ts < GEO_TTL) {
+                country = entry.cc;
+                lat = entry.lat;
+                lng = entry.lng;
+            } else {
+                localStorage.removeItem(GEO_KEY);
+            }
         }
 
         // Fetch if not cached
         if (!country) {
-            const resp = await fetch('https://ipapi.co/country/', {
+            const resp = await fetch('https://ipapi.co/json/', {
                 signal: AbortSignal.timeout(3000),
             });
             if (!resp.ok) return;
-            country = (await resp.text()).trim();
-            if (!/^[A-Z]{2}$/.test(country)) return;
-            localStorage.setItem(GEO_KEY, JSON.stringify({ cc: country, ts: Date.now() }));
+            const data = await resp.json();
+            country = data.country_code;
+            lat = data.latitude;
+            lng = data.longitude;
+            if (!country || !/^[A-Z]{2}$/.test(country)) return;
+            if (lat == null || lng == null) return;
+            localStorage.setItem(GEO_KEY, JSON.stringify({ cc: country, lat, lng, ts: Date.now() }));
         }
 
-        // Increment country count (increment, doc, setDoc are all static imports)
+        // Increment country count
         await setDoc(doc(db, 'visitor_geo', 'summary'), { [country]: increment(1) }, { merge: true });
+
+        // Store coordinates (idempotent — merge won't overwrite with same values)
+        if (lat != null && lng != null) {
+            await setDoc(doc(db, 'visitor_geo', 'coords'), { [country]: { lat, lng } }, { merge: true });
+        }
     } catch { /* geo is best-effort — never break view counting */ }
 }
 
