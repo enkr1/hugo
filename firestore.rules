@@ -2,16 +2,18 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ── Article view counts (read-only, populated externally) ──
+    // ── Article view counts ─────────────────────────────────
     match /articles/{articleId} {
       allow read: if true;
-      allow write: if false;
+      allow create, update: if true;
+      allow delete: if false;
     }
 
-    // ── Visitor geography (read-only, populated externally) ──
+    // ── Visitor geography (country-level counts + coords) ──
     match /visitor_geo/{docId} {
       allow read: if true;
-      allow write: if false;
+      allow create, update: if true;
+      allow delete: if false;
     }
 
     // ── Inline comments ───────────────────────────────────────────
