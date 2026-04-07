@@ -133,6 +133,15 @@ Put vectors as **columns**, row reduce, count pivots.
 
 ## Span, Subspace, Basis (Q3)
 
+### Definitions (Plain English)
+
+- **Subspace** $V \subseteq \mathbb{R}^n$ = a "flat thing through the origin" (line, plane, ...) closed under $+$ and scalar $\times$.
+- **Span**$\{v_1, \ldots, v_k\}$ = all combinations $c_1 v_1 + \cdots + c_k v_k$.
+- **Basis** of $V$ = minimal set of independent vectors that span $V$ (every vector in $V$ is a unique combo).
+- **Dimension** = number of vectors in a basis.
+
+> Vectors **in** $V$ are $(x_1, \ldots, x_n)$ that **satisfy the equation**. NOT the coefficients of the equation.
+
 ### Subspace Proof Template (3 conditions)
 
 Given $V = \{\ \mathbf{x} \in \mathbb{R}^n : [\text{equation} = 0]\ \}$
@@ -158,6 +167,14 @@ Set up $[\mathbf{v}_1\ |\ \mathbf{v}_2\ |\ \cdots\ |\ \mathbf{w}]$ and row reduc
 1. Solve equation for one variable
 2. Remaining variables = free parameters ($s, t, \ldots$)
 3. Write as linear combination → coefficient vectors = basis
+
+**Worked example:** $V = \{(x,y,z) : 2x - y + 3z = 0\}$
+
+Solve: $y = 2x + 3z$. Let $x = s$, $z = t$:
+
+$$(x, y, z) = (s,\ 2s + 3t,\ t) = s(1, 2, 0) + t(0, 3, 1)$$
+
+**Basis** $= \{(1, 2, 0),\ (0, 3, 1)\}$, $\dim(V) = 2$.
 
 ### Dimension
 
