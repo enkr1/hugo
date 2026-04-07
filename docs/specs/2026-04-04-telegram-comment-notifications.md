@@ -9,7 +9,7 @@ The inline comments system (Firestore-backed) has no notification mechanism. Blo
 
 ## Solution
 
-Google Apps Script polls Firestore every 5 minutes and sends Telegram messages for new comments and replies.
+Google Apps Script polls Firestore every 1 hour and sends Telegram messages for new comments and replies.
 
 **Why Apps Script (not Cloud Functions):** Firebase project `hexo-blog-9ccea` is on Spark (free) plan. Cloud Functions require Blaze. Apps Script is free and already used for email subscriptions.
 
@@ -17,7 +17,7 @@ Google Apps Script polls Firestore every 5 minutes and sends Telegram messages f
 
 ```
 User posts comment → Firestore write (existing client code)
-  → (1-5 min) Apps Script time-trigger polls Firestore REST API
+  → (≤1 hr) Apps Script time-trigger polls Firestore REST API
   → Formats and sends message via Telegram Bot API
   → Blog owner receives Telegram notification
 ```
@@ -34,7 +34,7 @@ User posts comment → Firestore write (existing client code)
 
 - **Project:** "Blog Comment Notifier" at script.google.com
 - **Source:** `docs/apps-script/Code.gs` (canonical copy in this repo)
-- **Trigger:** Time-driven, every 5 minutes, runs `checkNewComments()`
+- **Trigger:** Time-driven, every 1 hour, runs `checkNewComments()` (reduced from every 1 minute on 2026-04-07 after `urlfetch` quota burn; structural N+1 fix in `Code.gs:231-241` deferred)
 
 ### Script Properties
 
@@ -54,7 +54,7 @@ Apps Script uses `ScriptApp.getOAuthToken()` — works because the same Google a
 
 ## How It Works
 
-1. Time trigger fires `checkNewComments()` every 5 minutes
+1. Time trigger fires `checkNewComments()` every 1 hour
 2. Reads `LAST_CHECK` watermark from Script Properties
 3. Queries Firestore REST API for `comments` where `createdAt > lastCheck`
 4. Queries Firestore REST API for `replies` (collection group, `allDescendants: true`) where `createdAt > lastCheck`
