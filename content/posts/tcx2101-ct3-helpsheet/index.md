@@ -105,7 +105,29 @@ All equivalent:
 - Columns of $A$ are linearly independent
 - Columns of $A$ span $\mathbb{R}^n$
 
+**Plain English — all the same thing:**
+
+| Invertible (good) | NOT invertible (bad) |
+|---|---|
+| $\det \neq 0$ | $\det = 0$ |
+| RREF = $I$ | RREF has zero row |
+| All columns have pivots | A column has no pivot |
+| No free variables | Free variables exist |
+| $A\mathbf{x}=\mathbf{0}$ only $\mathbf{x}=\mathbf{0}$ | $A\mathbf{x}=\mathbf{0}$ has other solutions |
+| Columns independent | Columns dependent |
+
+> Flip any one → all flip. **Package deal.**
 > Zero entries in the matrix does NOT mean not invertible. Only $\det = 0$ matters.
+
+### Linear Independence
+
+Put vectors as **columns**, row reduce, count pivots.
+- Every column has pivot → **independent**
+- Any column without pivot → **dependent** (that vector = combo of pivot columns)
+- Set contains $\mathbf{0}$ → **always dependent**
+
+> **Independent = invertible ONLY when square** ($n$ vectors in $\mathbb{R}^n$).
+> Fewer vectors in $\mathbb{R}^n$? Can check independence, but invertibility doesn't apply.
 
 ---
 
