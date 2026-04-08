@@ -153,6 +153,69 @@ Given $V = \{\ \mathbf{x} \in \mathbb{R}^n : [\text{equation} = 0]\ \}$
 > Homogeneous $(= 0)$: always works (sum of zeros = zero, scalar $\times$ zero = zero).
 > Non-homogeneous $(= 5, 1, \ldots)$: NEVER a subspace ($\mathbf{0}$ fails).
 
+### Subspace Proof — Worked Example (Full Marks Format)
+
+**Prove** $V = \{(x, y, z) \in \mathbb{R}^3 : 2x - y + z = 0\}$ **is a subspace of** $\mathbb{R}^3$.
+
+**(i) Zero vector:** $\mathbf{0} = (0,0,0)$. Check: $2(0) - 0 + 0 = 0$ ✓. So $\mathbf{0} \in V$.
+
+**(ii) Closed under $+$:** Let $\mathbf{u}=(u_1,u_2,u_3),\ \mathbf{v}=(v_1,v_2,v_3) \in V$.
+
+Since $\mathbf{u}, \mathbf{v} \in V$:
+
+$$2u_1 - u_2 + u_3 = 0 \quad \ldots (1)$$
+
+$$2v_1 - v_2 + v_3 = 0 \quad \ldots (2)$$
+
+Consider $\mathbf{u}+\mathbf{v} = (u_1+v_1,\ u_2+v_2,\ u_3+v_3)$. Plug into the equation:
+
+$$2(u_1+v_1) - (u_2+v_2) + (u_3+v_3)$$
+
+$$= 2u_1 + 2v_1 - u_2 - v_2 + u_3 + v_3 \quad [\text{expand}]$$
+
+$$= (2u_1 - u_2 + u_3) + (2v_1 - v_2 + v_3) \quad [\text{regroup}]$$
+
+$$= 0 + 0 \quad [\text{by (1), (2)}]$$
+
+$$= 0 \quad \checkmark$$
+
+So $\mathbf{u}+\mathbf{v} \in V$.
+
+**(iii) Closed under scalar $\times$:** Let $\mathbf{u} \in V$ and $c \in \mathbb{R}$.
+
+Since $\mathbf{u} \in V$:
+
+$$2u_1 - u_2 + u_3 = 0 \quad \ldots (*)$$
+
+Consider $c\mathbf{u} = (cu_1, cu_2, cu_3)$. Plug into the equation:
+
+$$2(cu_1) - (cu_2) + (cu_3)$$
+
+$$= 2cu_1 - cu_2 + cu_3 \quad [\text{expand}]$$
+
+$$= c(2u_1 - u_2 + u_3) \quad [\text{factor } c]$$
+
+$$= c \cdot 0 \quad [\text{by } (*)]$$
+
+$$= 0 \quad \checkmark$$
+
+So $c\mathbf{u} \in V$.
+
+$\therefore V$ is a subspace of $\mathbb{R}^3$.
+
+> **Memorize these phrases** (examiners want this exact rhythm):
+> 1. "Let $\mathbf{u}, \mathbf{v} \in V$."
+> 2. "Since $\mathbf{u}, \mathbf{v} \in V$: [eq] … (1), [eq] … (2)"
+> 3. "Consider $\mathbf{u}+\mathbf{v}$. Plug into the equation:"
+> 4. "[by (1), (2)]" — written next to the "= 0 + 0" step
+> 5. "$\therefore V$ is a subspace of $\mathbb{R}^n$."
+>
+> **Traps to avoid:**
+> - Writing "= 0" in the plug-in line (premature — show the chain of steps)
+> - Using specific numbers instead of $u_1, u_2, \ldots$ (not general enough)
+> - Writing "$c\mathbf{u} = 0$" (wrong — $c\mathbf{u}$ is a vector, you're proving it's **in V**)
+> - Forgetting to cite "(1), (2)" at the step where the pattern appears
+
 ### Span Test
 
 Is $\mathbf{w}$ in $\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots\}$?
@@ -164,17 +227,35 @@ Set up $[\mathbf{v}_1\ |\ \mathbf{v}_2\ |\ \cdots\ |\ \mathbf{w}]$ and row reduc
 
 ### Basis from Equation
 
-1. Solve equation for one variable
-2. Remaining variables = free parameters ($s, t, \ldots$)
-3. Write as linear combination → coefficient vectors = basis
+1. Solve each equation for one variable (in terms of the others)
+2. **ALL remaining variables are free** — including any that don't appear in the equations!
+3. Write general vector $(x, y, z, \ldots)$ with ALL substitutions → ONE vector
+4. Split into parameter-parts → factor → coefficient vectors = basis
 
-**Worked example:** $V = \{(x,y,z) : 2x - y + 3z = 0\}$
+> **🎯 Free variable rule (CRITICAL):**
+> - Variables that **appear** in an equation → one becomes pivot per equation (forced)
+> - Variables that **don't appear** in any equation → automatically **FREE**
+> - **$\dim(V) = n - (\text{number of independent equations})$**
 
-Solve: $y = 2x + 3z$. Let $x = s$, $z = t$:
+**Worked example** ($\mathbb{R}^4$, 1 equation — *note: $w$ is free since it's not in the equation*):
 
-$$(x, y, z) = (s,\ 2s + 3t,\ t) = s(1, 2, 0) + t(0, 3, 1)$$
+$V = \{(x,y,z,w) \in \mathbb{R}^4 : x - 2y + z = 0\}$
 
-**Basis** $= \{(1, 2, 0),\ (0, 3, 1)\}$, $\dim(V) = 2$.
+Solve for $x$: $\quad x = 2y - z$
+Free vars: $y = s$, $z = t$, $w = r$ (3 free → dim = 3)
+
+$$(x, y, z, w) = (2s - t,\ s,\ t,\ r)$$
+
+Split:
+
+$$= (2s, s, 0, 0) + (-t, 0, t, 0) + (0, 0, 0, r)$$
+
+Factor:
+
+$$= s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$$
+
+**Basis** $= \{(2,1,0,0),\ (-1,0,1,0),\ (0,0,0,1)\}$
+$\dim(V) = 3$
 
 ### Dimension
 
