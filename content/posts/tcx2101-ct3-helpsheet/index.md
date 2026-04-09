@@ -16,25 +16,30 @@ draft: false
   [class*="backlink"], [class*="mention"],
   .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
   .article-page .main-article > :last-child ~ * { display: none !important; }
-  body, .main-article { font-size: 9pt !important; line-height: 1.3 !important; }
+  body, .main-article { font-size: 9pt !important; line-height: 1.25 !important; }
   h2 { font-size: 12pt !important; margin: 6px 0 3px !important; }
   h3 { font-size: 10pt !important; margin: 4px 0 2px !important; }
+  h4 { font-size: 9.5pt !important; margin: 3px 0 1px !important; }
   table { font-size: 8.5pt !important; margin: 2px 0 !important; }
   td, th { padding: 1px 4px !important; }
   p, blockquote { margin: 2px 0 !important; }
+  ul, ol { margin: 2px 0 !important; padding-left: 18px !important; }
+  li { margin: 0 !important; }
   hr { margin: 4px 0 !important; }
+  .katex-display { margin: 2px 0 !important; }
   .main-article { max-width: 100% !important; padding: 0 !important; }
 }
 </style>
 
-## RREF & Linear Systems (Q1)
+## 1. RREF & Linear Systems (Q1)
 
-### RREF Rules (3 conditions)
+### RREF Rules
 
 1. Each leading entry is **1**
 2. Each leading 1 is the **only nonzero in its column** (zeros above AND below)
 3. Leading 1s move right as you go down
 
+> ⚠️ **RREF ≠ identity** when free vars exist. Leading 1s don't need to be on the diagonal. *(Mock #1 Q1 trap.)*
 > REF = zeros below only. R**R**EF = zeros above AND below.
 
 ### Pivot vs Free Variables
@@ -45,17 +50,14 @@ Scan each **column** of RREF:
 
 $\text{#free vars} = \text{#variables} - \text{#pivots}$
 
-### Vector Form from RREF
+### Vector Form Recipe
 
-**$\mathbf{x}_p$:** Set all free vars = 0, read the RHS column (insert 0 at free var positions).
-
-**Direction vectors:** For each free variable column:
-1. Read the column entries at each pivot row
-2. Move to other side of $=$ (flip sign) → fills pivot var slots
-3. Free var itself → 1
-4. Other free vars → 0
-
-$$\mathbf{x} = \mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2$$
+1. **$\mathbf{x}_p$:** set all free vars = 0, read RHS at pivot rows (insert 0 at free-var positions).
+2. **Direction vectors** (one per free var):
+   - Read the column entries at each pivot row
+   - Move to other side of $=$ (flip sign) → fills pivot var slots
+   - Free var itself → 1; other free vars → 0
+3. Combine: $\mathbf{x} = \mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2 + \ldots$
 
 | Free vars | Solution type |
 |-----------|--------------|
@@ -63,217 +65,154 @@ $$\mathbf{x} = \mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2$$
 | 1 | Line ($\mathbf{x}_p + s\mathbf{v}$) |
 | 2 | Plane ($\mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2$) |
 
-> **Inconsistent:** Row $[0\ 0\ \cdots\ 0\ |\ b]$ with $b \neq 0$ → no solution.
+> **Inconsistent:** row $[0\ 0\ \cdots\ 0\ |\ b]$ with $b \neq 0$ → no solution.
 
 ---
 
-## Determinants & Properties (Q2)
+## 2. Determinants & Invertibility (Q2)
 
-### Cofactor Expansion
+### Method Choice by Size
 
-Pick the row/column with **most zeros**. Sign pattern (checkerboard):
+- **2×2:** $\det = ad - bc$ (**minus**, not plus!)
+- **3×3:** cofactor expansion — pick row/col with **most zeros**
+- **4×4:** **row reduce to triangular** (track sign flips from swaps, scalar pulls from scaling). Cofactor on 4×4 = slow + error-prone.
 
-$$C_{ij} = (-1)^{i+j} M_{ij}$$
-
-2×2: $\det = ad - bc$ (**minus**, not plus!)
-
-4×4 → 3×3 → 2×2 (same method, just nesting)
+**Cofactor sign:** $C_{ij} = (-1)^{i+j} M_{ij}$ (checkerboard)
 
 ### Determinant Properties
 
 | Formula | Result |
 |---------|--------|
-| $\det(kA)$ | $= k^n \cdot \det(A)$ where $n$ = matrix size |
-| $\det(AB)$ | $= \det(A) \cdot \det(B)$ |
-| $\det(A^{-1})$ | $= 1/\det(A)$ |
-| $\det(A^n)$ | $= \det(A)^n$ |
-| $\det(A^T)$ | $= \det(A)$ |
-| $\det(I)$ | $= 1$ |
+| $\det(kA)$ | $k^n \det(A)$ — $n$ = matrix size |
+| $\det(AB)$ | $\det(A)\det(B)$ |
+| $\det(A^{-1})$ | $1/\det(A)$ |
+| $\det(A^n)$ | $\det(A)^n$ |
+| $\det(A^T)$ | $\det(A)$ |
+| $\det(I)$ | $1$ |
 
-> $\det(kA) = k^n \det(A)$, **NOT** $k \cdot \det(A)$. Each of $n$ rows gets multiplied by $k$.
+> ⚠️ **Diagonal product ≠ det** unless **triangular**. Counter-example: the row-swap matrix $[[0,1],[1,0]]$ has diagonal product $= 0$ but $\det = -1$.
+> ⚠️ $\det(kA) = k^n\det(A)$, **NOT** $k\det(A)$. Each of $n$ rows gets multiplied by $k$.
 
-### Invertibility
+### Invertibility — Package Deal (flip one, all flip)
 
-$A$ is invertible $\iff \det(A) \neq 0$
-
-All equivalent:
-- $\det(A) \neq 0$
-- RREF of $A = I_n$
-- $A$ has $n$ pivots
-- $A\mathbf{x} = \mathbf{b}$ has unique solution for all $\mathbf{b}$
-- $A\mathbf{x} = \mathbf{0}$ has only $\mathbf{x} = \mathbf{0}$
-- Columns of $A$ are linearly independent
-- Columns of $A$ span $\mathbb{R}^n$
-
-**Plain English — all the same thing:**
-
-| Invertible (good) | NOT invertible (bad) |
+| ✅ Invertible | ❌ Not invertible |
 |---|---|
-| $\det \neq 0$ | $\det = 0$ |
-| RREF = $I$ | RREF has zero row |
-| All columns have pivots | A column has no pivot |
+| $\det(A) \neq 0$ | $\det(A) = 0$ |
+| RREF $= I_n$ | RREF has zero row |
+| All $n$ columns have pivots | A column has no pivot |
 | No free variables | Free variables exist |
 | $A\mathbf{x}=\mathbf{0}$ only $\mathbf{x}=\mathbf{0}$ | $A\mathbf{x}=\mathbf{0}$ has other solutions |
-| Columns independent | Columns dependent |
+| Columns linearly independent | Columns dependent |
+| Columns span $\mathbb{R}^n$ | Columns don't span $\mathbb{R}^n$ |
+| $A\mathbf{x}=\mathbf{b}$ unique $\forall \mathbf{b}$ | $A\mathbf{x}=\mathbf{b}$ not always solvable |
 
-> Flip any one → all flip. **Package deal.**
-> Zero entries in the matrix does NOT mean not invertible. Only $\det = 0$ matters.
+> Zero *entries* in $A$ don't mean non-invertible. **Only $\det = 0$ matters.**
 
-### Linear Independence
+### Linear Independence Test
 
 Put vectors as **columns**, row reduce, count pivots.
 - Every column has pivot → **independent**
 - Any column without pivot → **dependent** (that vector = combo of pivot columns)
 - Set contains $\mathbf{0}$ → **always dependent**
 
-> **Independent = invertible ONLY when square** ($n$ vectors in $\mathbb{R}^n$).
-> Fewer vectors in $\mathbb{R}^n$? Can check independence, but invertibility doesn't apply.
+> ⚠️ **Pairwise non-scalar ≠ independent.** 3 vectors can be dependent even when no two are scalar multiples. **Always use pivot-count**, never the pairwise check. *(Apr 6 class flag.)*
+> **Independent ⇔ Invertible** only when **square** ($n$ vectors in $\mathbb{R}^n$). Fewer vectors → independence still testable, invertibility N/A.
 
 ---
 
-## Span, Subspace, Basis (Q3)
+## 3. Definitions (Plain English)
 
-### Definitions (Plain English)
-
-- **Subspace** $V \subseteq \mathbb{R}^n$ = a "flat thing through the origin" (line, plane, ...) closed under $+$ and scalar $\times$.
-- **Span**$\{v_1, \ldots, v_k\}$ = all combinations $c_1 v_1 + \cdots + c_k v_k$.
-- **Basis** of $V$ = minimal set of independent vectors that span $V$ (every vector in $V$ is a unique combo).
-- **Dimension** = number of vectors in a basis.
+- **Subspace** $V \subseteq \mathbb{R}^n$: "flat thing through the origin" (line/plane/…), closed under $+$ and scalar $\times$
+- **Span**$\{v_1, \ldots, v_k\}$: all combinations $c_1 v_1 + \cdots + c_k v_k$
+- **Basis** of $V$: minimal independent set that spans $V$ (every $v \in V$ is a **unique** combo)
+- **Dimension**: number of vectors in a basis
 
 > Vectors **in** $V$ are $(x_1, \ldots, x_n)$ that **satisfy the equation**. NOT the coefficients of the equation.
 
-### Subspace Proof Template (3 conditions)
+---
 
-Given $V = \{\ \mathbf{x} \in \mathbb{R}^n : [\text{equation} = 0]\ \}$
+## 4. Subspace Proof Template
 
-1. **Zero vector:** Plug in $\mathbf{0}$ → does equation hold?
-2. **Closed under $+$:** Let $\mathbf{u}, \mathbf{v} \in V$. Show $\mathbf{u}+\mathbf{v}$ satisfies equation.
-3. **Closed under scalar $\times$:** Let $\mathbf{u} \in V$, $c \in \mathbb{R}$. Show $c\mathbf{u}$ satisfies equation.
+Given $V = \{\mathbf{x} \in \mathbb{R}^n : [\text{equation} = 0]\}$, show **3 conditions**:
 
-> Homogeneous $(= 0)$: always works (sum of zeros = zero, scalar $\times$ zero = zero).
-> Non-homogeneous $(= 5, 1, \ldots)$: NEVER a subspace ($\mathbf{0}$ fails).
+1. **Zero vector** $\mathbf{0} \in V$ (plug in, check)
+2. **Closed under $+$:** let $\mathbf{u}, \mathbf{v} \in V$, show $\mathbf{u}+\mathbf{v} \in V$
+3. **Closed under scalar $\times$:** let $\mathbf{u} \in V$, $c \in \mathbb{R}$, show $c\mathbf{u} \in V$
 
-### Subspace Proof — Worked Example (Full Marks Format)
+> Homogeneous $(= 0)$: always works. **Non-homogeneous** $(\neq 0)$: **never** a subspace ($\mathbf{0}$ fails).
 
-**Prove** $V = \{(x, y, z) \in \mathbb{R}^3 : 2x - y + z = 0\}$ **is a subspace of** $\mathbb{R}^3$.
+### Worked Example — $V = \{(x,y,z) : 2x - y + z = 0\}$
 
-**(i) Zero vector:** $\mathbf{0} = (0,0,0)$. Check: $2(0) - 0 + 0 = 0$ ✓. So $\mathbf{0} \in V$.
+**(i)** $2(0) - 0 + 0 = 0\ \checkmark$. So $\mathbf{0} \in V$.
 
-**(ii) Closed under $+$:** Let $\mathbf{u}=(u_1,u_2,u_3),\ \mathbf{v}=(v_1,v_2,v_3) \in V$.
-
-Since $\mathbf{u}, \mathbf{v} \in V$:
-
-$$2u_1 - u_2 + u_3 = 0 \quad \ldots (1)$$
-
-$$2v_1 - v_2 + v_3 = 0 \quad \ldots (2)$$
-
-Consider $\mathbf{u}+\mathbf{v} = (u_1+v_1,\ u_2+v_2,\ u_3+v_3)$. Plug into the equation:
-
+**(ii) Closed under $+$:** Let $\mathbf{u}, \mathbf{v} \in V$. Then
+$$2u_1 - u_2 + u_3 = 0\ \ldots(1), \qquad 2v_1 - v_2 + v_3 = 0\ \ldots(2)$$
+Consider $\mathbf{u}+\mathbf{v}$. Plug into the equation:
 $$2(u_1+v_1) - (u_2+v_2) + (u_3+v_3)$$
-
-$$= 2u_1 + 2v_1 - u_2 - v_2 + u_3 + v_3 \quad [\text{expand}]$$
-
 $$= (2u_1 - u_2 + u_3) + (2v_1 - v_2 + v_3) \quad [\text{regroup}]$$
-
-$$= 0 + 0 \quad [\text{by (1), (2)}]$$
-
-$$= 0 \quad \checkmark$$
-
+$$= 0 + 0 \quad [\text{by }(1),(2)]$$
+$$= 0\ \checkmark$$
 So $\mathbf{u}+\mathbf{v} \in V$.
 
-**(iii) Closed under scalar $\times$:** Let $\mathbf{u} \in V$ and $c \in \mathbb{R}$.
-
-Since $\mathbf{u} \in V$:
-
-$$2u_1 - u_2 + u_3 = 0 \quad \ldots (*)$$
-
-Consider $c\mathbf{u} = (cu_1, cu_2, cu_3)$. Plug into the equation:
-
+**(iii) Closed under scalar $\times$:** Let $\mathbf{u} \in V$, $c \in \mathbb{R}$. Then $2u_1 - u_2 + u_3 = 0\ \ldots(3)$. Consider $c\mathbf{u}$:
 $$2(cu_1) - (cu_2) + (cu_3)$$
-
-$$= 2cu_1 - cu_2 + cu_3 \quad [\text{expand}]$$
-
 $$= c(2u_1 - u_2 + u_3) \quad [\text{factor } c]$$
-
-$$= c \cdot 0 \quad [\text{by } (*)]$$
-
-$$= 0 \quad \checkmark$$
-
+$$= c \cdot 0 \quad [\text{by }(3)]$$
+$$= 0\ \checkmark$$
 So $c\mathbf{u} \in V$.
 
 $\therefore V$ is a subspace of $\mathbb{R}^3$.
 
-> **Memorize these phrases** (examiners want this exact rhythm):
-> 1. "Let $\mathbf{u}, \mathbf{v} \in V$."
-> 2. "Since $\mathbf{u}, \mathbf{v} \in V$: [eq] … (1), [eq] … (2)"
-> 3. "Consider $\mathbf{u}+\mathbf{v}$. Plug into the equation:"
-> 4. "[by (1), (2)]" — written next to the "= 0 + 0" step
-> 5. "$\therefore V$ is a subspace of $\mathbb{R}^n$."
->
-> **Traps to avoid:**
-> - Writing "= 0" in the plug-in line (premature — show the chain of steps)
-> - Using specific numbers instead of $u_1, u_2, \ldots$ (not general enough)
-> - Writing "$c\mathbf{u} = 0$" (wrong — $c\mathbf{u}$ is a vector, you're proving it's **in V**)
-> - Forgetting to cite "(1), (2)" at the step where the pattern appears
-
-### Span Test
-
-Is $\mathbf{w}$ in $\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots\}$?
-
-Set up $[\mathbf{v}_1\ |\ \mathbf{v}_2\ |\ \cdots\ |\ \mathbf{w}]$ and row reduce.
-
-- Consistent → **yes** (read coefficients)
-- Contradiction row → **no**
-
-### Basis from Equation
-
-1. Solve each equation for one variable (in terms of the others)
-2. **ALL remaining variables are free** — including any that don't appear in the equations!
-3. Write general vector $(x, y, z, \ldots)$ with ALL substitutions → ONE vector
-4. Split into parameter-parts → factor → coefficient vectors = basis
-
-> **🎯 Free variable rule (CRITICAL):**
-> - Variables that **appear** in an equation → one becomes pivot per equation (forced)
-> - Variables that **don't appear** in any equation → automatically **FREE**
-> - **$\dim(V) = n - (\text{number of independent equations})$**
-
-**Worked example** ($\mathbb{R}^4$, 1 equation — *note: $w$ is free since it's not in the equation*):
-
-$V = \{(x,y,z,w) \in \mathbb{R}^4 : x - 2y + z = 0\}$
-
-Solve for $x$: $\quad x = 2y - z$
-Free vars: $y = s$, $z = t$, $w = r$ (3 free → dim = 3)
-
-$$(x, y, z, w) = (2s - t,\ s,\ t,\ r)$$
-
-Split:
-
-$$= (2s, s, 0, 0) + (-t, 0, t, 0) + (0, 0, 0, r)$$
-
-Factor:
-
-$$= s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$$
-
-**Basis** $= \{(2,1,0,0),\ (-1,0,1,0),\ (0,0,0,1)\}$
-$\dim(V) = 3$
-
-### Dimension
-
-$\dim(V) = $ number of vectors in any basis
-
-- $\dim(\mathbb{R}^n) = n$
-- $\dim(\{\mathbf{0}\}) = 0$ (basis = empty set $\emptyset$)
-- $\dim(\text{Nul}(A)) = $ #free vars (Rank-Nullity)
-- More vectors than $\dim$ → **dependent**
-- Equal count + independent → **basis**
-- Fewer + independent → can extend to basis
-
-### Linear Independence Check
-
-Put vectors as **columns**, row reduce, count pivots.
-- All columns have pivots → **independent**
-- A column without pivot → **dependent**
+> **Exam phrases (memorize the rhythm):** "Let $\mathbf{u}, \mathbf{v} \in V$" · "Since $\mathbf{u}, \mathbf{v} \in V$: [eq]…(1), [eq]…(2)" · "Consider $\mathbf{u}+\mathbf{v}$. Plug in:" · "[by (1),(2)]" · "$\therefore V$ is a subspace of $\mathbb{R}^n$."
 
 ---
 
-_Building as I prep — last updated: 2026-04-05_
+## 5. Basis from Equation
+
+**Recipe:** (1) solve each equation for one variable, (2) write the general vector with **all** substitutions, (3) split into parameter parts → factor → coefficient vectors = basis.
+
+> 🎯 **Free variable rule (CRITICAL):** variables that **don't appear** in any equation are automatically **FREE**. $\dim(V) = n - (\text{# independent equations})$.
+
+**Example** ($\mathbb{R}^4$, 1 equation — note $w$ is free since it's not in the equation):
+
+$V = \{(x,y,z,w) \in \mathbb{R}^4 : x - 2y + z = 0\}$
+
+Solve for $x$: $x = 2y - z$. Let $y = s,\ z = t,\ w = r$ (3 free vars → $\dim = 3$).
+
+$$(x,y,z,w) = (2s - t,\ s,\ t,\ r) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$$
+
+**Basis** $= \{(2,1,0,0),\ (-1,0,1,0),\ (0,0,0,1)\},\ \dim(V) = 3$
+
+---
+
+## 6. Span Test
+
+Is $\mathbf{w} \in \text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots\}$?
+
+Set up augmented $[\mathbf{v}_1 \mid \mathbf{v}_2 \mid \cdots \mid \mathbf{w}]$ and row reduce.
+
+- **Consistent** → **yes** (coefficients from RHS column = the combo)
+- **Contradiction row** $[0\ \cdots\ 0\ |\ b \neq 0]$ → **no**
+
+> ⚠️ **Independence ≠ Span.** Different question, different test.
+> Independence: $[\mathbf{v}_1 \mid \cdots \mid \mathbf{v}_k]$ (no augmentation), count pivots.
+> Span: $[\mathbf{v}_1 \mid \cdots \mid \mathbf{v}_k \mid \mathbf{w}]$, check consistency.
+
+---
+
+## 7. Rank-Nullity & Null Space Basis
+
+$$\text{rank}(A) + \text{nullity}(A) = n \qquad (n = \text{number of columns of } A)$$
+
+- $\text{rank}(A)$ = number of **pivot** columns in RREF
+- $\text{nullity}(A) = \dim(\text{Nul}(A))$ = number of **free** columns
+- $\text{Nul}(A) = \{\mathbf{x} : A\mathbf{x} = \mathbf{0}\}$ (always a subspace)
+
+### Null Space Basis Recipe
+
+1. Row reduce $A$ to RREF
+2. Identify pivot cols vs free cols
+3. Express pivot vars in terms of free vars (from each nonzero RREF row)
+4. For each free var: set it $= 1$, other free vars $= 0$, fill pivot slots from the expression. Free-var positions form an **identity pattern** → independence guaranteed.
+
+> ⚠️ **Sign-error verification (critical):** plug each basis vector back into $A\mathbf{x} = \mathbf{0}$. **Every equation MUST equal 0.** If not, you flipped a sign wrong when rearranging. *(This caught yesterday's $v_2$ bug — 30 seconds to verify, saves the mark.)*
