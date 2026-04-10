@@ -5,7 +5,6 @@ date: 2026-04-05
 description: "A4 double-sided helpsheet for CT3 (13 Apr). Scope: 5.1–7.6 (Linear Algebra)."
 tags: ["nus", "math", "linear-algebra", "cheatsheet", "tcx2101", "ct3"]
 categories: ["Education", "Mathematics"]
-toc: false
 math: true
 draft: false
 ---
@@ -40,7 +39,6 @@ draft: false
 3. Leading 1s move right as you go down
 
 > ⚠️ **RREF ≠ identity** when free vars exist. Leading 1s don't need to be on the diagonal. *(Mock #1 Q1 trap.)*
-> REF = zeros below only. R**R**EF = zeros above AND below.
 
 ### Pivot vs Free Variables
 
@@ -97,16 +95,13 @@ $\text{#free vars} = \text{#variables} - \text{#pivots}$
 
 | ✅ Invertible | ❌ Not invertible |
 |---|---|
-| $\det(A) \neq 0$ | $\det(A) = 0$ |
+| $\det(A) \neq 0$ | $\det(A) = 0$ (regardless of zero entries) |
 | RREF $= I_n$ | RREF has zero row |
 | All $n$ columns have pivots | A column has no pivot |
 | No free variables | Free variables exist |
-| $A\mathbf{x}=\mathbf{0}$ only $\mathbf{x}=\mathbf{0}$ | $A\mathbf{x}=\mathbf{0}$ has other solutions |
+| $A\mathbf{x}=\mathbf{0}$ only $\mathbf{x}=\mathbf{0}$ | $A\mathbf{x}=\mathbf{0}$ has other/inf many solutions |
 | Columns linearly independent | Columns dependent |
-| Columns span $\mathbb{R}^n$ | Columns don't span $\mathbb{R}^n$ |
-| $A\mathbf{x}=\mathbf{b}$ unique $\forall \mathbf{b}$ | $A\mathbf{x}=\mathbf{b}$ not always solvable |
 
-> Zero *entries* in $A$ don't mean non-invertible. **Only $\det = 0$ matters.**
 
 ### Linear Independence Test
 
@@ -162,8 +157,6 @@ $$= 0\ \checkmark$$
 So $c\mathbf{u} \in V$.
 
 $\therefore V$ is a subspace of $\mathbb{R}^3$.
-
-> **Exam phrases (memorize the rhythm):** "Let $\mathbf{u}, \mathbf{v} \in V$" · "Since $\mathbf{u}, \mathbf{v} \in V$: [eq]…(1), [eq]…(2)" · "Consider $\mathbf{u}+\mathbf{v}$. Plug in:" · "[by (1),(2)]" · "$\therefore V$ is a subspace of $\mathbb{R}^n$."
 
 ---
 
