@@ -14,9 +14,9 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ███░░ Ch 7 | Vectors, span, subspaces |
-| TCX1004 | Active | ████░ Unit 8 | Probability (quiz done), distributions next |
-| TCX1002 | Active | ███░░ W10 | Mock tests, practical prep |
+| TCX2101 | Active | ████░ Ch 8 | CT3 prep (Day 7), helpsheet print |
+| TCX1004 | Active | ████░ Unit 8 | A2 in progress (Q1 ✅), R;R reteached |
+| TCX1002 | Active | ████░ W11 | MT9 Q1 ✅, practical prep |
 
 ### At a Glance
 
@@ -34,14 +34,14 @@ draft: false
 <div class="progress-grid">
 <div class="progress-card">
 <h4>TCX2101</h4>
-<div class="subtitle">Calculus & Linear Algebra — 32 topics</div>
+<div class="subtitle">Calculus & Linear Algebra — 33 topics</div>
 <div class="progress-bar">
-<span style="width:21.9%;background:#003D7C" title="Confident: 7"></span>
-<span style="width:75%;background:#C9A882" title="Comfortable/Familiar: 24"></span>
+<span style="width:21.2%;background:#003D7C" title="Confident: 7"></span>
+<span style="width:75.8%;background:#C9A882" title="Comfortable/Familiar: 25"></span>
 </div>
 <div class="progress-legend">
 <span><i style="background:#003D7C"></i>Confident: 7</span>
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 24</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 25</span>
 </div>
 </div>
 <div class="progress-card">
@@ -93,7 +93,7 @@ draft: false
 - ~~**Quiz 7.5:**~~ 5/5 ✅ (completed Apr 4)
 - ~~**Quiz 8.1:**~~ 5/5 ✅ (completed Apr 4)
 - ~~**HW2:**~~ ✅ Submitted (Apr 4)
-- **CT3:** Apr 13 — scope 5.1–7.6, 8-day prep in progress (Day 1 done)
+- **CT3:** Apr 13 — scope 5.1–7.6, 8-day prep Day 5/6 (Mock #2: 28/30)
 
 ### Topic Mastery
 
@@ -129,7 +129,8 @@ draft: false
 | 7.2 | Subspaces | 🔸 Comfortable |
 | 7.3 | Linear Independence | 🔸 Comfortable |
 | 7.4 | Basis of Subspace | 🔸 Comfortable |
-| 7.5 | Dimension of Subspaces | 🔸 Familiar |
+| 7.5 | Dimension of Subspaces | 🔸 Comfortable |
+| 8.1 | Dot Product, Norm, Distance | 🔸 Comfortable |
 
 ---
 
@@ -142,10 +143,10 @@ draft: false
 
 ### What's Next
 
+- **Assignment 2 (15%):** Due Apr 13 — Q1 ✅, Q2-Q5 in progress
 - **Tutorial 5:** Q1 + Q5 done (both graded). Q2-Q4,Q6-Q7 remaining.
 - **Unit 6:** Combinatorics — quiz done (8/8), T5 practice
 - **Units 7–9:** Graph theory (quiz done), probability (quiz done), distributions
-- **Assignment 2:** Due Apr 13
 - **Final Exam:** Apr 30
 
 ### Topic Mastery
@@ -206,4 +207,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-05 20:44 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-11 14:35 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
