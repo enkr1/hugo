@@ -62,4 +62,4 @@ i have never done cardio for the first 3 years, none, and sometimes when i feel 
 
 ---
 
-> I'll talk more about my fitness journey and why I'm moving away from PPL in a separate blog post next time.
+> i'll talk more about my fitness journey and why i'm moving away from PPL in a separate blog post next time.
