@@ -10,60 +10,54 @@ draft: false
 ---
 
 <style>
+@page { margin: 10mm; }
 @media print {
+  /* Hide ALL theme chrome */
   .backlinks-section, .backlinks-list, .article-header, .article-footer,
   [class*="backlink"], [class*="mention"],
   .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
+  footer, aside, .site-footer, .post-footer,
+  [class*="related"], [class*="comment"], [class*="share"], [class*="social"],
+  [class*="copyright"], [class*="license"], [class*="prev-next"],
   .article-page .main-article > :last-child ~ * { display: none !important; }
-  body, .main-article { font-size: 9pt !important; line-height: 1.25 !important; }
-  h2 { font-size: 12pt !important; margin: 6px 0 3px !important; }
-  h3 { font-size: 10pt !important; margin: 4px 0 2px !important; }
-  h4 { font-size: 9.5pt !important; margin: 3px 0 1px !important; }
-  table { font-size: 8.5pt !important; margin: 2px 0 !important; }
-  td, th { padding: 1px 4px !important; }
-  p, blockquote { margin: 2px 0 !important; }
-  ul, ol { margin: 2px 0 !important; padding-left: 18px !important; }
+  /* Kill min-height + flexbox stretch that forces blank pages */
+  html, body, main, article, div, section {
+    min-height: 0 !important; height: auto !important;
+  }
+  main, [class*="main"], [class*="content"], body {
+    flex: initial !important; flex-grow: 0 !important;
+    display: block !important;
+  }
+  body, .main-article { font-size: 8pt !important; line-height: 1.15 !important; }
+  body { margin: 0 !important; padding: 0 !important; }
+  h2 { font-size: 10pt !important; margin: 3px 0 1px !important; }
+  h3 { font-size: 9pt !important; margin: 2px 0 1px !important; }
+  h4 { font-size: 8.5pt !important; margin: 2px 0 0 !important; }
+  table { font-size: 7.5pt !important; margin: 1px 0 !important; }
+  td, th { padding: 1px 3px !important; }
+  p, blockquote { margin: 1px 0 !important; }
+  blockquote { padding: 1px 6px !important; }
+  ul, ol { margin: 1px 0 !important; padding-left: 14px !important; }
   li { margin: 0 !important; }
-  hr { margin: 4px 0 !important; }
-  .katex-display { margin: 2px 0 !important; }
-  .main-article { max-width: 100% !important; padding: 0 !important; }
+  hr { margin: 2px 0 !important; border: none; border-top: 0.5px solid #999; }
+  .katex-display { margin: 1px 0 !important; }
+  .main-article { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
 }
 </style>
 
 ## 1. RREF & Linear Systems (Q1)
 
-### RREF Rules
-
-1. Each leading entry is **1**
-2. Each leading 1 is the **only nonzero in its column** (zeros above AND below)
-3. Leading 1s move right as you go down
-
-> ⚠️ **RREF ≠ identity** when free vars exist. Leading 1s don't need to be on the diagonal. *(Mock #1 Q1 trap.)*
-
-### Pivot vs Free Variables
-
-Scan each **column** of RREF:
-- Has leading 1 → **pivot variable** (equation decides)
-- No leading 1 → **free variable** (you choose = $s, t, \ldots$)
-
-$\text{#free vars} = \text{#variables} - \text{#pivots}$
-
-### Vector Form Recipe
-
-1. **$\mathbf{x}_p$:** set all free vars = 0, read RHS at pivot rows (insert 0 at free-var positions).
-2. **Direction vectors** (one per free var):
-   - Read the column entries at each pivot row
-   - Move to other side of $=$ (flip sign) → fills pivot var slots
-   - Free var itself → 1; other free vars → 0
-3. Combine: $\mathbf{x} = \mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2 + \ldots$
-
-| Free vars | Solution type |
-|-----------|--------------|
-| 0 | Unique ($\mathbf{x}_p$ only, RREF left = $I$) |
-| 1 | Line ($\mathbf{x}_p + s\mathbf{v}$) |
-| 2 | Plane ($\mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2$) |
-
-> **Inconsistent:** row $[0\ 0\ \cdots\ 0\ |\ b]$ with $b \neq 0$ → no solution.
+| Concept | Details |
+|---|---|
+| **RREF** | Leading 1s, only nonzero in column (above+below), step right down |
+| **Pivot** | Column has leading 1 (forced) |
+| **Free** | Column has no leading 1 (you choose = s, t, …). #free = #vars − #pivots |
+| ⚠️ | RREF ≠ identity when free vars exist — leading 1s don't need diagonal |
+| **1. xₚ** | Set free vars = 0, read RHS at pivot rows (0 at free positions) |
+| **2. Dir. vectors** | Per free var: pivot-row entries, flip sign → pivot slots. That free = 1, others = 0 |
+| **3. Combine** | x = xₚ + sv₁ + tv₂ + … |
+| **Result** | 0 free = Unique · 1 free = Line · 2 free = Plane |
+| ⚠️ | Inconsistent: row [0 … 0 | b≠0] → no solution |
 
 ---
 
@@ -146,15 +140,13 @@ Consider $\mathbf{u}+\mathbf{v}$. Plug into the equation:
 $$2(u_1+v_1) - (u_2+v_2) + (u_3+v_3)$$
 $$= (2u_1 - u_2 + u_3) + (2v_1 - v_2 + v_3) \quad [\text{regroup}]$$
 $$= 0 + 0 \quad [\text{by }(1),(2)]$$
-$$= 0\ \checkmark$$
-So $\mathbf{u}+\mathbf{v} \in V$.
+$$= 0\ \checkmark \quad \therefore\ \mathbf{u}+\mathbf{v} \in V.$$
 
 **(iii) Closed under scalar $\times$:** Let $\mathbf{u} \in V$, $c \in \mathbb{R}$. Then $2u_1 - u_2 + u_3 = 0\ \ldots(3)$. Consider $c\mathbf{u}$:
 $$2(cu_1) - (cu_2) + (cu_3)$$
 $$= c(2u_1 - u_2 + u_3) \quad [\text{factor } c]$$
 $$= c \cdot 0 \quad [\text{by }(3)]$$
-$$= 0\ \checkmark$$
-So $c\mathbf{u} \in V$.
+$$= 0\ \checkmark \quad \therefore\ c\mathbf{u} \in V.$$
 
 $\therefore V$ is a subspace of $\mathbb{R}^3$.
 
@@ -164,7 +156,7 @@ $\therefore V$ is a subspace of $\mathbb{R}^3$.
 
 **Recipe:** (1) solve each equation for one variable, (2) write the general vector with **all** substitutions, (3) split into parameter parts → factor → coefficient vectors = basis.
 
-> 🎯 **Free variable rule (CRITICAL):** variables that **don't appear** in any equation are automatically **FREE**. $\dim(V) = n - (\text{# independent equations})$.
+> 🎯 **Free variable rule (CRITICAL):** variables that **don't appear** in any equation are automatically **FREE**. dim(V) = n − (#independent equations).
 
 **Example** ($\mathbb{R}^4$, 1 equation — note $w$ is free since it's not in the equation):
 
@@ -195,7 +187,7 @@ Set up augmented $[\mathbf{v}_1 \mid \mathbf{v}_2 \mid \cdots \mid \mathbf{w}]$ 
 
 ## 7. Rank-Nullity & Null Space Basis
 
-$$\text{rank}(A) + \text{nullity}(A) = n \qquad (n = \text{number of columns of } A)$$
+$\text{rank}(A) + \text{nullity}(A) = n$ where $n$ = number of columns of $A$
 
 - $\text{rank}(A)$ = number of **pivot** columns in RREF
 - $\text{nullity}(A) = \dim(\text{Nul}(A))$ = number of **free** columns
