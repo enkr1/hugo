@@ -14,9 +14,9 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ████░ Ch 8 | CT3 prep (Day 7), helpsheet print |
-| TCX1004 | Active | ████░ Unit 8 | A2 in progress (Q1 ✅), R;R reteached |
-| TCX1002 | Active | ████░ W11 | MT9 Q1 ✅, practical prep |
+| TCX2101 | Active | ████░ Ch 8 | CT3 tomorrow, helpsheet print-ready |
+| TCX1004 | Active | ████░ Unit 8 | A2 submitted ✅ (est. 30/30), T6 next |
+| TCX1002 | Active | ████░ W11 | PE Apr 16, mock sprint in progress |
 
 ### At a Glance
 
@@ -143,7 +143,7 @@ draft: false
 
 ### What's Next
 
-- **Assignment 2 (15%):** Due Apr 13 — Q1 ✅, Q2-Q5 in progress
+- ~~**Assignment 2 (15%):**~~ ✅ Submitted (Apr 12)
 - **Tutorial 5:** Q1 + Q5 done (both graded). Q2-Q4,Q6-Q7 remaining.
 - **Unit 6:** Combinatorics — quiz done (8/8), T5 practice
 - **Units 7–9:** Graph theory (quiz done), probability (quiz done), distributions
@@ -207,4 +207,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-11 14:35 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-12 20:16 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
