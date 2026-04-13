@@ -12,18 +12,16 @@ description:
 keywords:
 ---
 
-## Day 1: Chest & Upper/mid Back biased + Arms
+## Day 1: Chest & Back
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| A1 | Incline Smith Press | 3 x 6-10 |
+| A1 | Incline Smith Press / Incline DB Press / Incline Machine Press | 3 x 6-10 |
 | A2 | Neutral-Grip Lat Pulldown | 3 x 8-12 |
-| B1 | Machine Chest Press / Flat Dumbbell Press | 2-3 x 8-12 |
-| B2 | Chest-Supported Row (upper/mid back focused) | 2-3 x 8-12 |
-| C1 | Cable Fly (mid/lower chest bias) | 2 x 12-15 |
-| C2 | Straight-Arm Pulldown | 2 x 10-15 |
-| D1 | Rope Pressdown | 2 x 10-15 |
-| D2 | Machine Curl / Cable Curl / Bayesian Curl | 2 x 8-12 |
+| B1 | Machine Chest Press / Flat DB Press | 2-3 x 8-12 |
+| B2 | Chest-Supported Row / Seal Row / Machine Row | 2-3 x 8-12 |
+| C1 | Cable Fly (mid/lower chest) | 2 x 12-15 |
+| C2 | Wide-Grip Cable Row / Face Pull (elbows flared, upper back) | 2 x 10-15 |
 
 ---
 
@@ -31,27 +29,26 @@ keywords:
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| 1 | Hack Squat / Pendulum Squat | 3 x 5-8 |
-| 2 | Leg Press (low-to-mid foot placement, quad bias) | 3 x 10-15 |
-| 3 | Bulgarian Split Squat (upright torso, quad + glute) | 2 x 8-12 each leg |
-| 4 | Leg Extension (isolation) | 2 x 12-18 |
-| 5 | Seated Leg Curl | 2 x 8-12 |
-| 6 | Standing Calf Raise | 3 x 8-12 |
+| 1 | Heel-Elevated Smith Squat / Hack Squat / Pendulum Squat | 3 x 5-8 |
+| 2 | Leg Press (quad bias) | 3 x 10-15 |
+| 3 | Bulgarian Split Squat / Walking Lunge | 2 x 8-12 each |
+| 4 | Leg Extension | 2 x 12-18 |
+| 5 | Seated Leg Curl / Lying Leg Curl | 2 x 8-12 |
+| 6 | Standing Calf Raise / Leg Press Calf Raise | 3 x 8-12 |
+| 7 | Adductor (inward) | 2 x 10-15 |
 
 ---
 
-## Day 3: Shoulders + Arms
+## Day 3: Arms + Delts
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| warm-up | Reverse Pec Deck Fly | 1 x 10-15 |
-| A1 | Cable Lateral Raise | 4 x 12-20 |
-| A2 | Overhead Cable Triceps Extension | 3 x 8-12 |
-| B1 | Reverse Pec Deck | 3 x 12-20 |
-| B2 | Incline Dumbbell Curl | 2 x 8-12 |
-| C1 | Machine Lateral Raise | 3 x 15-25 |
-| C2 | Pushdown | 2 x 10-15 |
-| D | Preacher Curl | 2 x 10-15 |
+| A1 | Overhead Cable Triceps Extension | 3 x 8-12 |
+| A2 | Incline Dumbbell Curl / Bayesian Curl | 3 x 8-12 |
+| B1 | Rope Pressdown / V-Bar Pressdown | 2-3 x 10-15 |
+| B2 | Preacher Curl / Machine Curl / Spider Curl | 2-3 x 10-15 |
+| C1 | Cable Lateral Raise / DB Lateral Raise | 3 x 12-20 |
+| C2 | Reverse Pec Deck / Face Pull | 3 x 12-20 |
 
 ---
 
@@ -61,50 +58,48 @@ recovery, joint freshness, performance reset.
 
 ---
 
-## Day 5: Upper-mid-Lat Back bias + Chest
+## Day 5: Back & Chest
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
 | A1 | Lat Pulldown / Weighted Pull-Up | 3 x 6-10 |
-| A2 | Incline Machine Press | 3 x 8-12 |
-| B1 | Chest-Supported Row / High Row (upper/mid-back focused) | 3 x 8-12 |
-| B2 | Pec Deck (overall/mid chest) | 2 x 12-15 |
-| C1 | Single-Arm Cable Lat Row | 2 x 10-15 |
-| C2 | Cable Lateral Raise | 2 x 15-20 |
-| D1 | Hammer Curl | 2 x 8-12 |
-| D2 | Single-Arm Pressdown / Bar Pushdown | 2 x 10-15 |
-| optional | DB / Machine Shrug | 2 x 10-12 |
+| A2 | Incline Machine Press / Incline Smith Press | 3 x 8-12 |
+| B1 | Chest-Supported Row / High Row | 3 x 8-12 |
+| B2 | Pec Deck (seat high, lower chest bias) | 2 x 12-15 |
+| C1 | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |
+| C2 | Cable Lateral Raise / DB Lateral Raise | 2 x 15-20 |
 
 ---
 
-## Day 6: Posterior chain + Glute-biased lower
+## Day 6: Posterior chain + Glute-biased
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| 1 | RDL - Romanian Deadlift (hip hinge, hamstring, glute) | 3 x 6-10 |
-| 2 | Leg Curl (hamstring knee flexion, lying preferred if available) | 2-3 x 8-12 |
-| 3 | Hip Thrust | 3 x 8-12 |
-| 4 | Heel-Elevated Smith Squat | 3 x 8-12 |
-| 5 | Seated Calf Raise | 2-3 x 10-15 |
-| 6 | Cable Lateral Raise (optional) | 0-2 x 15-20 |
+| 1 | RDL / DB RDL | 3 x 6-10 |
+| 2 | Lying Leg Curl / Seated Leg Curl | 2-3 x 8-12 |
+| 3 | Hip Thrust / Cable Pull-Through | 3 x 8-12 |
+| 4 | Goblet Squat / Heel-Elevated Smith Squat | 3 x 8-12 |
+| 5 | Seated Calf Raise / Smith Calf Raise | 2-3 x 10-15 |
+| 6 | Abductor (outward) | 2 x 10-15 |
 
 ---
 
-## Day 7: Delts + Arms Touchup
+## Day 7: Arms Touchup + Delts
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| 1 | Cable Lateral Raise | 3 x 15-25 |
-| 2 | Reverse Pec Deck / Rear Delt Fly | 3 x 15-25 |
-| 3 | Bayesian Curl | 2 x 10-15 |
-| 4 | Overhead Cable Triceps Extension | 2 x 10-15 |
-| 5 | Rope Pushdown | 1-2 x 12-15 |
+| A1 | Bayesian Curl / Hammer Curl | 3 x 8-12 |
+| A2 | Overhead Tricep Extension / Skull Crusher | 2 x 10-15 |
+| B | Cable Lateral Raise / DB Lateral Raise | 2 x 15-25 |
+| C | Rope Pushdown / V-Bar Pushdown | 1-2 x 12-15 |
 
 ---
 
 i've been running [PPLR since day 1]({{< ref "workout-plan-day-1-pplr" >}}) for a long time, and recovery was getting harder with my schedule. my weak points are shoulders and arms, and pure PPL wasn't giving them enough direct, high-quality work without wrecking everything else.
 
-so i'm switching to a parts split - two mirror-biased upper days (chest-first vs back-first), two lower days (quad vs posterior chain), and two dedicated shoulder + arm touches.
+so i'm switching to an arms-focused parts split - two upper days (chest-first vs back-first), two lower days (quad vs posterior chain), and two dedicated arm + delt sessions.
+
+shoutout to cayden for reviewing and helping me clean up the plan - cut the redundant volume, fixed the back movement angles, and made sure arms actually get trained fresh instead of always last when fatigued.
 
 <!-- TODO(human): add more personal context about the switch - when exactly, how it felt, what triggered the final decision -->
 
