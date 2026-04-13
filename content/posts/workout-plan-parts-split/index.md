@@ -7,7 +7,7 @@ tags:
   - "push-pull-legs"
 categories:
   - ["Personal Development", "Fitness"]
-subtitle: "my new 7-day specialization split"
+subtitle: "my new 7-day arms-focused split"
 description:
 keywords:
 ---
@@ -39,15 +39,15 @@ keywords:
 
 ---
 
-## Day 3: Arms + Delts
+## Day 3: Arms A + Delts
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| A1 | Overhead Cable Triceps Extension | 3 x 8-12 |
-| A2 | Incline Dumbbell Curl / Bayesian Curl | 3 x 8-12 |
-| B1 | Rope Pressdown / V-Bar Pressdown | 2-3 x 10-15 |
-| B2 | Preacher Curl / Machine Curl / Spider Curl | 2-3 x 10-15 |
-| C1 | Cable Lateral Raise / DB Lateral Raise | 3 x 12-20 |
+| A1 | Overhead Cable Triceps Extension (long head) | 3 x 8-12 |
+| A2 | Incline Dumbbell Curl / Bayesian Curl (long head) | 3 x 8-12 |
+| B1 | Rope Pressdown / V-Bar Pressdown (lateral head) | 3 x 10-15 |
+| B2 | Preacher Curl / Machine Curl / Spider Curl (short head) | 3 x 10-15 |
+| C1 | Cable Lateral Raise / DB Lateral Raise | 4 x 12-20 |
 | C2 | Reverse Pec Deck / Face Pull | 3 x 12-20 |
 
 ---
@@ -64,10 +64,9 @@ recovery, joint freshness, performance reset.
 |---|----------|-------------|
 | A1 | Lat Pulldown / Weighted Pull-Up | 3 x 6-10 |
 | A2 | Incline Machine Press / Incline Smith Press | 3 x 8-12 |
-| B1 | Chest-Supported Row / High Row | 3 x 8-12 |
+| B1 | Chest-Supported Row / Cable Row | 3 x 8-12 |
 | B2 | Pec Deck (seat high, lower chest bias) | 2 x 12-15 |
-| C1 | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |
-| C2 | Cable Lateral Raise / DB Lateral Raise | 2 x 15-20 |
+| C | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |
 
 ---
 
@@ -84,22 +83,23 @@ recovery, joint freshness, performance reset.
 
 ---
 
-## Day 7: Arms Touchup + Delts
+## Day 7: Arms B + Delts
 
 | # | Exercise | Sets x Reps |
 |---|----------|-------------|
-| A1 | Bayesian Curl / Hammer Curl | 3 x 8-12 |
-| A2 | Overhead Tricep Extension / Skull Crusher | 2 x 10-15 |
-| B | Cable Lateral Raise / DB Lateral Raise | 2 x 15-25 |
-| C | Rope Pushdown / V-Bar Pushdown | 1-2 x 12-15 |
+| A1 | Hammer Curl / Cross-body Curl (brachialis) | 3 x 8-12 |
+| A2 | Skull Crusher / Close-grip Press (lateral + medial head) | 3 x 10-15 |
+| B1 | Bayesian Curl / Cable Curl (long head stretch) | 2 x 10-15 |
+| B2 | Rope Pushdown / V-Bar Pushdown (lateral head) | 2 x 10-15 |
+| C | Cable Lateral Raise / DB Lateral Raise | 2 x 15-25 |
 
 ---
 
 i've been running [PPLR since day 1]({{< ref "workout-plan-day-1-pplr" >}}) for a long time, and recovery was getting harder with my schedule. my weak points are shoulders and arms, and pure PPL wasn't giving them enough direct, high-quality work without wrecking everything else.
 
-so i'm switching to an arms-focused parts split - two upper days (chest-first vs back-first), two lower days (quad vs posterior chain), and two dedicated arm + delt sessions.
+so i'm switching to an arms-focused parts split - two upper days (chest-first vs back-first), two lower days (quad vs posterior chain), and two dedicated arm + delt sessions targeting different muscle heads.
 
-shoutout to cayden for reviewing and helping me clean up the plan - cut the redundant volume, fixed the back movement angles, and made sure arms actually get trained fresh instead of always last when fatigued.
+shoutout to cayden and marcus for reviewing and helping me clean up the plan - cut the redundant volume, fixed the back movement angles, and made sure arms actually get trained fresh instead of always last when fatigued.
 
 <!-- TODO(human): add more personal context about the switch - when exactly, how it felt, what triggered the final decision -->
 
