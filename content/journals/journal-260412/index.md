@@ -41,7 +41,13 @@ and i just found myself so much more productive when i actually ignore the noise
 
 another highlight is the beatbox reflection with artsy, we talked about so much - competition plan (SG in June, then World Cup), leaning into my power-type identity, combo training to expand the arsenal, flow > lyrics, and comfort zone - not about doing things you don't like, but finding a way to do things comfortably in an uncomfortable situation
 
-my biggest highlight is that he reminded me that beatboxing is a great way for us to express emotion, release stress, etc - make good use of it, create what i truly love and enjoy, follow my heart 🥹❤️
+my biggest highlight is that he reminded me:
+
+{{< quote author="Artsy" >}}
+beatboxing is a great way for us to express emotion, release stress - make good use of it, create what you truly love and enjoy, follow your heart
+{{< /quote >}}
+
+🥹❤️
 
 
 
