@@ -14,9 +14,9 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ████░ Ch 8 | CT3 tomorrow, helpsheet print-ready |
-| TCX1004 | Active | ████░ Unit 8 | A2 submitted ✅ (est. 30/30), T6 next |
-| TCX1002 | Active | ████░ W11 | PE Apr 16, mock sprint in progress |
+| TCX2101 | Active | ████░ Ch 8 | CT3 today (4 mocks done), Final Apr 28 |
+| TCX1004 | Active | ████░ Unit 8 | A2 submitted ✅, T6 next, Final Apr 30 |
+| TCX1002 | Active | ████░ W11 | PE Apr 16 (3 days), mock sprint active |
 
 ### At a Glance
 
@@ -207,4 +207,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-12 20:16 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-13 16:23 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
