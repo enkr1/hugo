@@ -1,15 +1,13 @@
 ---
-title: Phoenix
+title: Programming Styles
 type: nested-category
 categoryPath:
   - Software Engineering
-  - Frameworks
-  - Phoenix
-slug: phoenix
+  - Programming Styles
+slug: programming-styles
 _generated: true
-_generatedAt: '2026-04-10T10:53:10.927Z'
+_generatedAt: '2026-04-10T10:53:10.933Z'
 parentPath:
   - Software Engineering
-  - Frameworks
 ---
 
