@@ -8,6 +8,7 @@ tags:
   - "personal-reflections"
   - "journaling"
   - "writing-journey"
+  - "reminder 🥹❤️"
 # categories:
 #   - ["About Me", "Reflections"]
 # subtitle: "The reason behind this blog, how it started, and what it has become."
