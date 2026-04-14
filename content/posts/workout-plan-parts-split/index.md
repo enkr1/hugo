@@ -116,11 +116,11 @@ recovery, joint freshness, performance reset.
 
 ---
 
-i've been running [PPLR since day 1]({{< ref "workout-plan-day-1-pplr" >}}) for a long time, and recovery was getting harder with my schedule. my weak points are shoulders and arms, and pure PPL wasn't giving them enough direct, high-quality work without wrecking everything else.
+i've been running [PPLR since day 1]({{< ref "workout-plan-day-1-pplr" >}}) for a long time, and recovery was getting harder with my schedule. my weak points are shoulders and arms, and pure PPLR on repeat wasn't giving them enough direct, high-quality work without wrecking everything else.
 
 so i'm switching to an arms-focused parts split - two upper days (chest-first vs back-first), two lower days (quad vs posterior chain), and two dedicated arm + delt sessions targeting different muscle heads.
 
-shoutout to cayden and marcus for refining this plan, choosing the right replacements, cutting redundant volume, fixing the back movement angles, and teaching me about CNS fatigue - made sure arms actually get trained fresh instead of always last when fatigued.
+once again thanks cayden ng for the help in reviewing and refining this plan, choosing the right replacements, cutting redundant volume, fixing the back movement angles, and teaching me about CNS fatigue - made sure arms actually get trained fresh instead of always last when fatigued.
 
 <!-- TODO(human): add more personal context about the switch - when exactly, how it felt, what triggered the final decision -->
 
