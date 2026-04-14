@@ -14,9 +14,9 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ████░ Ch 8 | CT3 today (4 mocks done), Final Apr 28 |
-| TCX1004 | Active | ████░ Unit 8 | A2 submitted ✅, T6 next, Final Apr 30 |
-| TCX1002 | Active | ████░ W11 | PE Apr 16 (3 days), mock sprint active |
+| TCX2101 | Active | ████░ Ch 8 | CT3 done (~8/10), Final Apr 28 |
+| TCX1004 | Active | █████ Unit 9 | A2 ✅, T6 submitted, Final Apr 30 |
+| TCX1002 | Active | ████░ W11 | PE Apr 16 (TOMORROW), mock sprint active |
 
 ### At a Glance
 
@@ -48,12 +48,10 @@ draft: false
 <h4>TCX1004</h4>
 <div class="subtitle">Mathematical Techniques — 9 units</div>
 <div class="progress-bar">
-<span style="width:88.9%;background:#C9A882" title="Comfortable: 8"></span>
-<span style="width:11.1%;background:#E5E7EB" title="Not started: 1"></span>
+<span style="width:100%;background:#C9A882" title="Comfortable/Familiar: 9"></span>
 </div>
 <div class="progress-legend">
-<span><i style="background:#C9A882"></i>Comfortable: 8</span>
-<span><i style="background:#E5E7EB;border:1px solid #d1d5db"></i>Not started: 1</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 9</span>
 </div>
 </div>
 <div class="progress-card">
@@ -93,7 +91,9 @@ draft: false
 - ~~**Quiz 7.5:**~~ 5/5 ✅ (completed Apr 4)
 - ~~**Quiz 8.1:**~~ 5/5 ✅ (completed Apr 4)
 - ~~**HW2:**~~ ✅ Submitted (Apr 4)
-- **CT3:** Apr 13 — scope 5.1–7.6, 8-day prep Day 5/6 (Mock #2: 28/30)
+- ~~**CT3:**~~ ✅ Done (~8/10). Q2+Q3 clean, Q1 arithmetic incomplete.
+- **Quiz 8.2-8.5:** Apr 17
+- **Final Exam:** Apr 28
 
 ### Topic Mastery
 
@@ -144,10 +144,9 @@ draft: false
 ### What's Next
 
 - ~~**Assignment 2 (15%):**~~ ✅ Submitted (Apr 12)
-- **Tutorial 5:** Q1 + Q5 done (both graded). Q2-Q4,Q6-Q7 remaining.
-- **Unit 6:** Combinatorics — quiz done (8/8), T5 practice
-- **Units 7–9:** Graph theory (quiz done), probability (quiz done), distributions
-- **Final Exam:** Apr 30
+- ~~**Tutorial 6:**~~ ✅ Submitted (Q1 complete, Q3 pending)
+- **Week 12 Quiz (Random Variables):** Apr 19
+- **Final Exam:** Apr 30 — scope Unit 6+ (open-book printed)
 
 ### Topic Mastery
 
@@ -161,7 +160,7 @@ draft: false
 | 6 | Combinatorics | 🔸 Comfortable |
 | 7 | Graph Theory | 🔸 Quiz done |
 | 8 | Basic Probability | 🔸 Comfortable |
-| 9 | Distributions, Expectation, Variance | ⬜ Not started |
+| 9 | Distributions, Expectation, Variance | 🔸 Familiar |
 
 ---
 
@@ -175,9 +174,8 @@ draft: false
 
 ### What's Next
 
-- **Tutorial 7:** Q1 done, Q2-Q4 remaining
-- **Mock Tests 6–10:** Weekly practice (Mar 28 – Apr 18)
-- **Practical Exam:** Apr 16
+- **Practical Exam:** Apr 16 (TOMORROW) — 4 tasks × 5 marks, unlimited cheatsheet
+- **Mock Test sprint:** MT1-MT9 Q2-Q6 coverage
 - **Final Exam:** May 4
 
 ### Topic Mastery
@@ -207,4 +205,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-13 16:23 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-15 00:20 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
