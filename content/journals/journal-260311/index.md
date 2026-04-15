@@ -4,7 +4,6 @@ date: 2026-03-11T15:00:00+08:00
 tags:
   - journal
   - engineering
-  - NUS
   - travel
 categories:
   - "About Me"

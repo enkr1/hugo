@@ -4,7 +4,6 @@ date: 2026-04-12T19:54:37+08:00
 description: "replanning my workout split, waking up at 5am (sometimes), and a beatbox reflection that hit different"
 tags:
   - journal
-  - NUS
   - fitness
   - beatbox
 categories:

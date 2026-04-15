@@ -6,6 +6,7 @@ tags:
   - "inspirational"
   - "motivation"
   - "quote"
+  - "reminder 🥹❤️"
 categories:
 subtitle:
 description:

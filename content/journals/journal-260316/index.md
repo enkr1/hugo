@@ -3,7 +3,6 @@ title: "Journal: Week 58"
 date: 2026-03-16T23:00:00+08:00
 tags:
   - journal
-  - NUS
   - engineering
 categories:
   - "About Me"

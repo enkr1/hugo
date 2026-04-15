@@ -4,7 +4,6 @@ date: 2026-03-03T12:00:00+08:00
 tags:
   - journal
   - engineering
-  - NUS
   - gratitude
 categories:
   - "About Me"

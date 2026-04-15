@@ -6,7 +6,6 @@ tags:
   - journal
   - fitness
   - beatbox
-  - NUS
   - time-management
 categories:
   - "About Me"

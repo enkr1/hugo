@@ -4,7 +4,6 @@ date: 2026-03-24T01:36:23+08:00
 description: "meal prep era, AI doing the thinking for me, CT3 sprint begins, some opensource project contributions going"
 tags:
   - journal
-  - NUS
   - engineering
   - open-source
   - meal-prep

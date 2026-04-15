@@ -5,7 +5,6 @@ description: "ignoring signals, escaping into comfort, and the gap between knowi
 tags:
   - journal
   - beatbox
-  - NUS
   - self-reflection
   - time-management
 categories:
