@@ -1,5 +1,6 @@
 ---
 title: "My Workout Plan: Parts Split (Arms & Delts Focused)"
+sticky: 2200
 date: 2026-04-10T18:52:21+0800
 tags:
   - "fitness"
