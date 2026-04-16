@@ -16,7 +16,7 @@ draft: false
 |--------|--------|---------|-------|
 | TCX2101 | Active | ████░ Ch 8 | CT3 done (~8/10), Final Apr 28 |
 | TCX1004 | Active | █████ Unit 9 | A2 ✅, T6 submitted, Final Apr 30 |
-| TCX1002 | Active | ████░ W11 | PE TODAY 19:00, cheatsheet printed, Final May 4 |
+| TCX1002 | Active | █████ W11 | PE 20/20 ✅, Final May 4 |
 
 ### At a Glance
 
@@ -174,9 +174,7 @@ draft: false
 
 ### What's Next
 
-- **Practical Exam:** Apr 16 (TODAY 19:00) — 4 tasks × 5 marks, unlimited cheatsheet ✅ printed
-- ~~**Mock Test sprint:**~~ Combined Mocks practiced on Coursemology ✅
-- ~~**PE cheatsheet:**~~ Created + printed ✅
+- ~~**Practical Exam:**~~ **20/20 ✅** (Q1 5/5, Q2 5/5, Q3 6/6, Q4 4/4)
 - **Final Exam:** May 4 — fill-in-the-blank style (reading comprehension)
 
 ### Topic Mastery
@@ -207,4 +205,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-16 17:24 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-16 22:35 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
