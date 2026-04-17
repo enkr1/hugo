@@ -14,7 +14,7 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | ████░ Ch 8 | CT3 done (~8/10), Final Apr 28 |
+| TCX2101 | Active | █████ Ch 8 done | Ch 8 §8.1-8.5 covered + §8.2-8.5 L3, Final Apr 28 |
 | TCX1004 | Active | █████ Unit 9 | A2 ✅, T6 submitted, Final Apr 30 |
 | TCX1002 | Active | █████ W11 | PE 20/20 ✅, Final May 4 |
 
@@ -92,7 +92,7 @@ draft: false
 - ~~**Quiz 8.1:**~~ 5/5 ✅ (completed Apr 4)
 - ~~**HW2:**~~ ✅ Submitted (Apr 4)
 - ~~**CT3:**~~ ✅ Done (~8/10). Q2+Q3 clean, Q1 arithmetic incomplete.
-- **Quiz 8.2-8.5:** Apr 17
+- ~~**Quiz 8.2-8.5:**~~ ALL 5/5 ✅ + §8.2-8.5 L3 Confident (Apr 17)
 - **Final Exam:** Apr 28
 
 ### Topic Mastery
@@ -131,6 +131,10 @@ draft: false
 | 7.4 | Basis of Subspace | 🔸 Comfortable |
 | 7.5 | Dimension of Subspaces | 🔸 Comfortable |
 | 8.1 | Dot Product, Norm, Distance | 🔸 Comfortable |
+| 8.2 | Orthogonality | ✅ Confident |
+| 8.3 | Orthogonal & Orthonormal Bases | ✅ Confident |
+| 8.4 | Projection & Gram-Schmidt | ✅ Confident |
+| 8.5 | Least Squares | ✅ Confident |
 
 ---
 
@@ -205,4 +209,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-16 22:35 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-17 21:29 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
