@@ -98,7 +98,7 @@ recovery, joint freshness, performance reset.
 
 {{< raw >}}
 <div style="margin: 2rem auto; max-width: 640px;">
-<svg viewBox="50 0 510 500" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+<svg viewBox="50 0 590 500" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
   <defs>
     <linearGradient id="legend-grad" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0%" stop-color="#c9a040" stop-opacity="0"/>
@@ -112,12 +112,14 @@ recovery, joint freshness, performance reset.
   <text x="386" y="18" fill="#999" font-size="11" text-anchor="middle">Day 5</text>
   <text x="456" y="18" fill="#999" font-size="11" text-anchor="middle">Day 6</text>
   <text x="526" y="18" fill="#999" font-size="11" text-anchor="middle">Day 7</text>
+  <text x="596" y="18" fill="#c9a040" font-size="11" text-anchor="middle" font-weight="600">Total</text>
   <text x="176" y="31" fill="#666" font-size="9" text-anchor="middle">Quad</text>
   <text x="246" y="31" fill="#666" font-size="9" text-anchor="middle">Chest&amp;Back</text>
   <text x="316" y="31" fill="#666" font-size="9" text-anchor="middle">Arms A</text>
   <text x="386" y="31" fill="#666" font-size="9" text-anchor="middle">Posterior</text>
   <text x="456" y="31" fill="#666" font-size="9" text-anchor="middle">Back&amp;Chest</text>
   <text x="526" y="31" fill="#666" font-size="9" text-anchor="middle">Arms B</text>
+  <text x="596" y="31" fill="#c9a040" font-size="9" text-anchor="middle" opacity="0.7">Weekly</text>
   <!-- Upper chest -->
   <text x="140" y="56" fill="#999" font-size="11" text-anchor="end">Upper chest</text>
   <rect x="148" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
@@ -230,6 +232,23 @@ recovery, joint freshness, performance reset.
   <rect x="358" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
   <rect x="428" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
   <rect x="498" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.56"/><text x="526" y="447" fill="#fff" font-size="10" text-anchor="middle">5</text>
+  <!-- Separator before Total column -->
+  <line x1="562" y1="36" x2="562" y2="460" stroke="#c9a040" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.35"/>
+  <!-- Total (weekly aggregate, opacity = sets/11) -->
+  <rect x="568" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.27"/><text x="596" y="57" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">3</text>
+  <rect x="568" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="87" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.36"/><text x="596" y="117" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">4</text>
+  <rect x="568" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.55"/><text x="596" y="147" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">6</text>
+  <rect x="568" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="177" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.36"/><text x="596" y="207" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">4</text>
+  <rect x="568" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.82"/><text x="596" y="237" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">9</text>
+  <rect x="568" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.68"/><text x="596" y="267" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">7-8</text>
+  <rect x="568" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.82"/><text x="596" y="297" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">9</text>
+  <rect x="568" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="327" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.55"/><text x="596" y="357" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">6</text>
+  <rect x="568" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.45"/><text x="596" y="387" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5</text>
+  <rect x="568" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="1.0"/><text x="596" y="417" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">11</text>
+  <rect x="568" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="1.0"/><text x="596" y="447" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">11</text>
   <!-- Legend -->
   <rect x="148" y="470" width="180" height="10" rx="3" fill="url(#legend-grad)"/>
   <text x="148" y="493" fill="#888" font-size="9">0 sets</text>
