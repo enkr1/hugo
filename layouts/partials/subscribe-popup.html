@@ -1,71 +1,81 @@
-{{/* Subscribe Popup — desktop-only floating card, premium Ba Zi design */}}
-<div class="subscribe-popup" id="subscribe-popup">
-    <button class="subscribe-popup__close" id="subscribe-popup-close" aria-label="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-    </button>
+{{/* Subscribe Modal — accessible dialog, gated by scroll + time, 7-day dismiss */}}
+<div class="subscribe-modal" id="subscribe-modal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="subscribe-modal-title" aria-describedby="subscribe-modal-desc"
+     hidden>
+    <div class="subscribe-modal__backdrop" data-close></div>
+    <div class="subscribe-modal__panel" role="document">
+        <button class="subscribe-modal__close" id="subscribe-modal-close" data-close type="button" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
 
-    <h3 class="subscribe-popup__title">Stay in the loop</h3>
-    <p class="subscribe-popup__desc">Get notified when I publish something new.</p>
+        <h3 class="subscribe-modal__title" id="subscribe-modal-title">Stay in the loop</h3>
+        <p class="subscribe-modal__desc" id="subscribe-modal-desc">Get notified when I publish something new.</p>
 
-    <form class="subscribe-popup__form" id="subscribe-popup-form" autocomplete="off">
-        <div class="subscribe-popup__field">
-            <input
-                type="email"
-                name="email"
-                class="subscribe-popup__input"
-                placeholder="your@email.com"
-                required
-                aria-label="Email address"
-            />
-            <button type="submit" class="subscribe-popup__submit" aria-label="Subscribe">
-                <span>Subscribe</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </button>
-        </div>
-    </form>
+        <form class="subscribe-modal__form" id="subscribe-modal-form" autocomplete="off">
+            <div class="subscribe-modal__field">
+                <label for="subscribe-modal-email" class="visually-hidden">Email address</label>
+                <input
+                    id="subscribe-modal-email"
+                    type="email"
+                    name="email"
+                    class="subscribe-modal__input"
+                    placeholder="your@email.com"
+                    autocomplete="email"
+                    required
+                />
+                <button type="submit" class="subscribe-modal__submit" aria-label="Subscribe">
+                    <span>Subscribe</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </form>
 
-    <div class="subscribe-popup__feedback" id="subscribe-popup-feedback" hidden></div>
+        <div class="subscribe-modal__feedback" id="subscribe-modal-feedback" role="status" aria-live="polite" hidden></div>
+    </div>
 </div>
 
 <script>
 (function() {
     var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwEzLvqwcJL5aWI0q8qqTH9Ozn9bJOEhAw72zIKe6fVxI7pRWGMf43N-2vSTnHC5jjOOA/exec';
     var DISMISS_DAYS = 7;
-    var SCROLL_THRESHOLD = 50;
-    var TIME_THRESHOLD = 120000; // 2 minutes
     var BOT_THRESHOLD = 3000;
+    var isMobile = window.matchMedia('(max-width: 1023px)').matches;
+    var SCROLL_THRESHOLD = isMobile ? 75 : 50;
+    var TIME_THRESHOLD = isMobile ? 180000 : 120000;
 
-    // ── Gate checks ──
     if (localStorage.getItem('blog_subscribed')) return;
-
     var dismissed = localStorage.getItem('subscribe_popup_dismissed');
     if (dismissed && (Date.now() - Number(dismissed)) < DISMISS_DAYS * 24 * 60 * 60 * 1000) return;
 
-    // ── DOM refs ──
-    var popup = document.getElementById('subscribe-popup');
-    var closeBtn = document.getElementById('subscribe-popup-close');
-    var form = document.getElementById('subscribe-popup-form');
-    var feedback = document.getElementById('subscribe-popup-feedback');
-    if (!popup || !form) return;
+    var modal = document.getElementById('subscribe-modal');
+    var panel = modal && modal.querySelector('.subscribe-modal__panel');
+    var closeBtn = document.getElementById('subscribe-modal-close');
+    var form = document.getElementById('subscribe-modal-form');
+    var emailInput = document.getElementById('subscribe-modal-email');
+    var feedback = document.getElementById('subscribe-modal-feedback');
+    if (!modal || !panel || !form || !emailInput || !feedback) return;
 
     var loadTime = Date.now();
     var maxScroll = 0;
     var shown = false;
+    var opened = false;
+    var previouslyFocused = null;
+    var timeCheck;
 
-    // ── Engagement tracking ──
     function checkEngagement() {
         if (shown) return;
-        var timeOk = (Date.now() - loadTime) >= TIME_THRESHOLD;
-        if (timeOk && maxScroll >= SCROLL_THRESHOLD) {
+        if ((Date.now() - loadTime) >= TIME_THRESHOLD && maxScroll >= SCROLL_THRESHOLD) {
             shown = true;
-            popup.classList.add('subscribe-popup--visible');
+            openModal();
             window.removeEventListener('scroll', onScroll);
+            clearInterval(timeCheck);
         }
     }
 
@@ -77,35 +87,87 @@
         checkEngagement();
     }
 
-    window.addEventListener('scroll', onScroll);
-    // Check time periodically (user may have scrolled past 50% already)
-    var timeCheck = setInterval(function() {
-        if (shown) { clearInterval(timeCheck); return; }
-        checkEngagement();
-    }, 5000);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    timeCheck = setInterval(checkEngagement, 5000);
 
-    // ── Hide popup ──
-    function hidePopup() {
-        popup.classList.remove('subscribe-popup--visible');
+    function focusableElements() {
+        return panel.querySelectorAll(
+            'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
     }
 
-    // ── Close button ──
-    closeBtn.addEventListener('click', function() {
+    function onKeydown(e) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            dismissAndClose();
+            return;
+        }
+        if (e.key !== 'Tab') return;
+        var focusables = focusableElements();
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
+
+    function openModal() {
+        if (opened) return;
+        opened = true;
+        previouslyFocused = document.activeElement;
+        modal.hidden = false;
+        requestAnimationFrame(function() { modal.classList.add('subscribe-modal--open'); });
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', onKeydown);
+        setTimeout(function() { closeBtn.focus(); }, 50);
+    }
+
+    function closeModal() {
+        if (!opened) return;
+        opened = false;
+        modal.classList.remove('subscribe-modal--open');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKeydown);
+        setTimeout(function() {
+            modal.hidden = true;
+            if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+                previouslyFocused.focus();
+            }
+        }, 200);
+    }
+
+    function dismissAndClose() {
         localStorage.setItem('subscribe_popup_dismissed', String(Date.now()));
-        hidePopup();
-        clearInterval(timeCheck);
+        closeModal();
+    }
+
+    modal.addEventListener('click', function(e) {
+        var target = e.target;
+        while (target && target !== modal) {
+            if (target.hasAttribute && target.hasAttribute('data-close')) {
+                dismissAndClose();
+                return;
+            }
+            target = target.parentNode;
+        }
     });
 
-    // ── Form submit ──
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
         var isBot = (Date.now() - loadTime) < BOT_THRESHOLD;
-        var email = form.email.value.trim();
-        var submitBtn = form.querySelector('.subscribe-popup__submit');
+        var email = emailInput.value.trim();
+        var submitBtn = form.querySelector('.subscribe-modal__submit');
 
         submitBtn.disabled = true;
         feedback.hidden = true;
+
+        var params = new URLSearchParams(window.location.search);
 
         fetch(ENDPOINT, {
             method: 'POST',
@@ -116,26 +178,28 @@
                 page_url: window.location.href,
                 page_title: document.title,
                 referrer: document.referrer || '(direct)',
-                device: 'desktop',
+                device: isMobile ? 'mobile' : 'desktop',
                 screen: window.innerWidth + 'x' + window.innerHeight,
                 time_on_page: Math.round((Date.now() - loadTime) / 1000),
                 locale: navigator.language || '',
                 scroll_depth: maxScroll,
-                source: 'popup',
+                utm_source: params.get('utm_source') || '',
+                utm_medium: params.get('utm_medium') || '',
+                utm_campaign: params.get('utm_campaign') || '',
+                source: 'modal',
                 website: isBot ? 'bot' : ''
             })
         })
         .then(function() {
             localStorage.setItem('blog_subscribed', 'true');
             feedback.textContent = "You're in! Thanks for subscribing.";
-            feedback.className = 'subscribe-popup__feedback subscribe-popup__feedback--ok';
+            feedback.className = 'subscribe-modal__feedback subscribe-modal__feedback--ok';
             feedback.hidden = false;
             form.hidden = true;
-            clearInterval(timeCheck);
         })
         .catch(function() {
             feedback.textContent = 'Something went wrong. Please try again.';
-            feedback.className = 'subscribe-popup__feedback subscribe-popup__feedback--error';
+            feedback.className = 'subscribe-modal__feedback subscribe-modal__feedback--error';
             feedback.hidden = false;
         })
         .finally(function() {
