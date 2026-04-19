@@ -93,6 +93,9 @@ draft: false
 - ~~**HW2:**~~ ✅ Submitted (Apr 4)
 - ~~**CT3:**~~ ✅ Done (~8/10). Q2+Q3 clean, Q1 arithmetic incomplete.
 - ~~**Quiz 8.2-8.5:**~~ ALL 5/5 ✅ + §8.2-8.5 L3 Confident (Apr 17)
+- ~~**Finals Helpsheet v1:**~~ ✅ Comprehensive Ch 1-8 (Apr 20) — density-tightened print CSS, A4×2 fit iteration next
+- **Drill from helpsheet** (§8.5 + §8.2) — Apr 21 onwards
+- **Past papers hunt** — Canvas + NUS Library
 - **Final Exam:** Apr 28
 
 ### Topic Mastery
@@ -209,4 +212,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-19 22:01 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-20 00:31 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_

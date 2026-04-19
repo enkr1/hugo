@@ -27,6 +27,8 @@ draft: false
 }
 </style>
 
+> **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
+
 ## Improper Integrals (4.8)
 
 | Type | Definition | Key Rule |

@@ -10,6 +10,8 @@ math: true
 draft: false
 ---
 
+> **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
+
 for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT2 formulas (Chapters 3.5–4.11), see the [CT2 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}).
 
 ---

@@ -12,6 +12,8 @@ sticky: 2101
 ---
 
 
+> **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for full section-by-section reference.
+
 i also wrote some exam-ready cheatsheets that i found easy to absorb.
 1. [cheatsheet for class test 1 (1.1 ~ 3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}})
 

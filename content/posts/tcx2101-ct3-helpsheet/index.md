@@ -53,6 +53,8 @@ draft: false
 }
 </style>
 
+> **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
+
 ## 1. RREF & Linear Systems (Q1)
 
 | Concept | Details |
