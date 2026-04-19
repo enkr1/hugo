@@ -1,6 +1,7 @@
 ---
 title: "Why I Write"
-sticky: 10000
+# sticky: 10000  # unstuck — already linked under About Me; pinning exam-focus posts during finals
+
 date: 2025-03-19 01:29:43
 tags:
   - "about-this-blog"

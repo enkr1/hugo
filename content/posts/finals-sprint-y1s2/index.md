@@ -1,5 +1,6 @@
 ---
 title: "Y1S2 Finals Sprint: 17 Days, 3 Exams, 3 Prep Modes"
+sticky: 10000
 slug: "finals-sprint-y1s2"
 date: 2026-04-17
 description: "Planning the Apr 17 to May 4 finals window. Person-days allocation, energy curve, and why each of TCX2101, TCX1004, TCX1002 needs a different prep mode."
