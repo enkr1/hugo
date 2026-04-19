@@ -164,7 +164,7 @@ draft: false
 | 6 | Combinatorics | 🔸 Comfortable |
 | 7 | Graph Theory | 🔸 Quiz done |
 | 8 | Basic Probability | 🔸 Comfortable |
-| 9 | Distributions, Expectation, Variance | 🔸 Familiar |
+| 9 | Distributions, Expectation, Variance | ✅ Confident |
 
 ---
 
@@ -209,4 +209,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-17 21:29 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-19 22:01 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
