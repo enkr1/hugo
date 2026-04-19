@@ -38,9 +38,15 @@ for the general cheatsheet (Units 1-5: proof rules, sets, induction), see the [T
 
 ## Unit 9: Distributions, Expectation, Variance
 
-*Layout philosophy pending — see chat for decision.*
+### Step 1 — identify the distribution (3 questions)
 
-### Distribution formulas
+1. **Single trial, two outcomes?** → Bernoulli$(p)$
+2. **Fixed $n$ trials, count successes?** → Binomial$(n, p)$ — verify BINS (Binary / Independent / Number fixed / Same $p$)
+3. **Count trials until first success?** → Geometric$(p)$
+
+If none match: likely Uniform (all outcomes equally likely), or distribution is unknown → use **bounds** (Markov / Chebyshev).
+
+### Step 2 — distribution formulas
 
 | Distribution | $E[X]$ | $\text{Var}[X]$ | Trigger words |
 |--------------|--------|-----------------|---------------|
@@ -55,13 +61,6 @@ for the general cheatsheet (Units 1-5: proof rules, sets, induction), see the [T
 |-------|---------|-------------|
 | Markov | $P[X \geq a] \leq E[X]/a$ | only $E[X]$ known, one-tail, $X \geq 0$ |
 | Chebyshev | $P[\lvert X - \mu \rvert \geq a] \leq \text{Var}[X]/a^2$ | $E[X]$ and $\text{Var}[X]$ known, two-tail |
-
-### BINS — Binomial identification
-
-- **B**inary outcomes (success / fail)
-- **I**ndependent trials
-- **N**umber of trials fixed ($n$)
-- **S**ame probability each trial ($p$)
 
 ### Linearity of Expectation
 
