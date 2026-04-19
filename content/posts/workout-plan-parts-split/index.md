@@ -15,39 +15,39 @@ keywords:
 
 ## Day 1: Quad biased
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| 1 | Heel-Elevated Smith Squat / Hack Squat / Pendulum Squat (quads) | 3 x 5-8 |
-| 2 | Leg Extension (quads, isolation) | 3 x 12-18 |
-| 3 | Seated Leg Curl / Lying Leg Curl (hamstrings) | 2 x 8-12 |
-| 4 | Standing Calf Raise / Leg Press Calf Raise (calves, gastrocnemius) | 3 x 8-12 |
-| 5 | Adductor (squeeze in) | 2 x 10-15 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| 1 | Heel-Elevated Smith Squat / Hack Squat / Pendulum Squat (quads) | 3 x 5-8 | 50 |
+| 2 | Leg Extension (quads, isolation) | 3 x 12-18 | 80+ |
+| 3 | Seated Leg Curl / Lying Leg Curl (hamstrings) | 2 x 8-12 | 72+ |
+| 4 | Standing Calf Raise / Leg Press Calf Raise (calves, gastrocnemius) | 3 x 8-12 | 45+ |
+| 5 | Adductor (squeeze in) | 2 x 10-15 | 65+ |
 
 ---
 
 ## Day 2: Chest & Back
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| A1 | Incline Smith Press / Incline DB Press / Incline Machine Press (upper chest) | 3 x 6-10 |
-| A2 | Wide-Grip Lat Pulldown (upper/mid back, lat width) | 3 x 8-12 |
-| B1 | Machine Chest Press / Flat DB Press (mid chest) | 2-3 x 8-12 |
-| B2 | Chest-Supported Row (mid back, rhomboids) | 2-3 x 8-12 |
-| C1 | Cable Fly (mid/lower chest) | 2 x 12-15 |
-| C2 | Wide-Grip Cable Row / Face Pull (elbows flared, upper back) | 2 x 10-15 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| A1 | Incline Smith Press / Incline DB Press / Incline Machine Press (upper chest) | 3 x 6-10 | 25 |
+| A2 | Wide-Grip Lat Pulldown (upper/mid back, lat width) | 3 x 8-12 |  |
+| B1 | Machine Chest Press / Flat DB Press (mid chest) | 2-3 x 8-12 | 25 |
+| B2 | Chest-Supported Row (mid back, rhomboids) | 2-3 x 8-12 | 50 |
+| C1 | Cable Fly (mid/lower chest) | 2 x 12-15 | 11+ |
+| C2 | Wide-Grip Cable Row / Face Pull (elbows flared, upper back) | 2 x 10-15 | 41+ |
 
 ---
 
 ## Day 3: Arms A + Delts
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| A1 | Overhead Cable Triceps Extension (long head) | 3 x 8-12 |
-| A2 | Incline Dumbbell Curl / Bayesian Curl (long head) | 3 x 8-12 |
-| B1 | Rope Pressdown / V-Bar Pressdown (lateral head) | 3 x 10-15 |
-| B2 | Preacher Curl / Machine Curl / Spider Curl (short head) | 3 x 10-15 |
-| C1 | Cable Lateral Raise / DB Lateral Raise (side delts) | 4 x 12-20 |
-| C2 | Reverse Pec Deck / Face Pull (rear delts) | 3 x 12-20 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| A1 | Overhead Cable Triceps Extension (long head) | 3 x 8-12 |  |
+| A2 | Incline Dumbbell Curl / Bayesian Curl (long head) | 3 x 8-12 |  |
+| B1 | Rope Pressdown / V-Bar Pressdown (lateral head) | 3 x 10-15 |  |
+| B2 | Preacher Curl / Machine Curl / Spider Curl (short head) | 3 x 10-15 |  |
+| C1 | Cable Lateral Raise / DB Lateral Raise (side delts) | 4 x 12-20 |  |
+| C2 | Reverse Pec Deck / Face Pull (rear delts) | 3 x 12-20 |  |
 
 ---
 
@@ -59,38 +59,42 @@ recovery, joint freshness, performance reset.
 
 ## Day 5: Posterior chain + Glute-biased
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| 1 | RDL / DB RDL (hamstrings, glutes) | 3 x 6-10 |
-| 2 | Lying Leg Curl / Seated Leg Curl (hamstrings) | 2-3 x 8-12 |
-| 3 | Hip Thrust / Cable Pull-Through (glutes) | 3 x 8-12 |
-| 4 | Bulgarian Split Squat / Goblet Squat (quads, glutes) | 3 x 8-12 |
-| 5 | Seated Calf Raise / Smith Calf Raise (calves, soleus) | 2-3 x 10-15 |
-| 6 | Abductor (push out) | 2 x 10-15 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| 1 | RDL / DB RDL (hamstrings, glutes) | 3 x 6-10 |  |
+| 2 | Lying Leg Curl / Seated Leg Curl (hamstrings) | 2-3 x 8-12 |  |
+| 3 | Hip Thrust / Cable Pull-Through (glutes) | 3 x 8-12 |  |
+| 4 | Bulgarian Split Squat / Goblet Squat (quads, glutes) | 3 x 8-12 |  |
+| 5 | Seated Calf Raise / Smith Calf Raise (calves, soleus) | 2-3 x 10-15 |  |
+| 6 | Abductor (push out) | 2 x 10-15 |  |
 
 ---
 
 ## Day 6: Back & Chest
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| A1 | Lat Pulldown / Weighted Pull-Up (lats, back width) | 3 x 6-10 |
-| A2 | Flat Machine Press / Flat DB Press (mid chest) | 3 x 8-12 |
-| B1 | Chest-Supported Row / Cable Row (mid back, rhomboids) | 3 x 8-12 |
-| B2 | Pec Deck (seat high, lower chest bias) | 2 x 12-15 |
-| C | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| A1 | Lat Pulldown / Weighted Pull-Up (lats, back width) | 3 x 6-10 |  |
+| A2 | Flat Machine Press / Flat DB Press (mid chest) | 3 x 8-12 |  |
+| B1 | Chest-Supported Row / Cable Row (mid back, rhomboids) | 3 x 8-12 |  |
+| B2 | Pec Deck (seat high, lower chest bias) | 2 x 12-15 |  |
+| C | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |  |
 
 ---
 
 ## Day 7: Arms B + Delts
 
-| # | Exercise | Sets x Reps |
-|---|----------|-------------|
-| A1 | Hammer Curl / Cross-body Curl (brachialis) | 3 x 8-12 |
-| A2 | Skull Crusher / Close-grip Press (lateral + medial head) | 3 x 10-15 |
-| B1 | Bayesian Curl / Cable Curl (long head stretch) | 2 x 10-15 |
-| B2 | Rope Pushdown / V-Bar Pushdown (lateral head) | 2 x 10-15 |
-| C | Cable Lateral Raise / DB Lateral Raise (side delts) | 2 x 15-25 |
+| # | Exercise | Sets x Reps | Remark |
+|---|----------|-------------|--------|
+| A1 | Hammer Curl / Cross-body Curl (brachialis) | 3 x 8-12 | 14+ |
+| A2 | JM Press / Skull Crusher / Close-grip Press (lateral + medial head) | 3 x 10-15 |  |
+| B1 | Bayesian Curl / Cable Curl (long head stretch) | 2 x 10-15 |  |
+| B2 | Rope Pushdown / V-Bar Pushdown (lateral head) | 2 x 10-15 | 41 |
+| C | Cable Lateral Raise / DB Lateral Raise (side delts) | 2 x 15-25 | 5+ |
+
+**Legend:**
+- `Remark` column = working weight (kg).
+- `N+` = at or above N kg (progressed past that floor).
 
 ---
 
