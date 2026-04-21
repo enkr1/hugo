@@ -21,7 +21,7 @@ keywords:
 | 2 | Leg Extension (quads, isolation) | 3 x 12-18 | 80+ |
 | 3 | Seated Leg Curl / Lying Leg Curl (hamstrings) | 2 x 8-12 | 72+ |
 | 4 | Standing Calf Raise / Leg Press Calf Raise (calves, gastrocnemius) | 3 x 8-12 | 45+ |
-| 5 | Adductor (squeeze in) | 2 x 10-15 | 65+ |
+| 5 | Adductor (adductors, squeeze in) | 2 x 10-15 | 65+ |
 
 ---
 
@@ -29,12 +29,12 @@ keywords:
 
 | # | Exercise | Sets x Reps | Remark |
 |---|----------|-------------|--------|
-| A1 | Incline Smith Press / Incline DB Press / Incline Machine Press (upper chest) | 3 x 6-10 | 25 |
-| A2 | Wide-Grip Lat Pulldown (upper/mid back, lat width) | 3 x 8-12 |  |
-| B1 | Machine Chest Press / Flat DB Press (mid chest) | 2-3 x 8-12 | 25 |
+| A1 | Incline Smith Press / Incline DB Press / Incline Machine Press (upper chest) | 3 x 6-10 | 45 |
+| A2 | Wide-Grip / Neutral-Grip Lat Pulldown (lats, mid back) | 3 x 8-12 | 70 |
+| B1 | Machine Chest Press / Flat DB Press (mid chest) | 2-3 x 8-12 | 30 |
 | B2 | Chest-Supported Row (mid back, rhomboids) | 2-3 x 8-12 | 50 |
-| C1 | Cable Fly (mid/lower chest) | 2 x 12-15 | 11+ |
-| C2 | Wide-Grip Cable Row / Face Pull (elbows flared, upper back) | 2 x 10-15 | 41+ |
+| C1 | Cable Fly (mid/lower chest) | 2 x 12-15 | 13 |
+| C2 | Wide-Grip Cable Row / Face Pull (elbows flared, upper back) | 2 x 10-15 | 42 |
 
 ---
 
@@ -66,7 +66,7 @@ recovery, joint freshness, performance reset.
 | 3 | Hip Thrust / Cable Pull-Through (glutes) | 3 x 8-12 |  |
 | 4 | Bulgarian Split Squat / Goblet Squat (quads, glutes) | 3 x 8-12 |  |
 | 5 | Seated Calf Raise / Smith Calf Raise (calves, soleus) | 2-3 x 10-15 |  |
-| 6 | Abductor (push out) | 2 x 10-15 |  |
+| 6 | Abductor (abductors / glute medius, push out) | 2 x 10-15 |  |
 
 ---
 
@@ -86,8 +86,8 @@ recovery, joint freshness, performance reset.
 
 | # | Exercise | Sets x Reps | Remark |
 |---|----------|-------------|--------|
-| A1 | Hammer Curl / Cross-body Curl (brachialis) | 3 x 8-12 | 14+ |
-| A2 | JM Press / Skull Crusher / Close-grip Press (lateral + medial head) | 3 x 10-15 |  |
+| A1 | Hammer Curl / Cross-body Curl (brachialis, long head bias) | 3 x 8-12 | 14+ |
+| A2 | JM Press / Skull Crusher (long head) / Close-grip Press (lateral + medial head) | 3 x 10-15 |  |
 | B1 | Bayesian Curl / Cable Curl (long head stretch) | 2 x 10-15 |  |
 | B2 | Rope Pushdown / V-Bar Pushdown (lateral head) | 2 x 10-15 | 41 |
 | C | Cable Lateral Raise / DB Lateral Raise (side delts) | 2 x 15-25 | 5+ |
