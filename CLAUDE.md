@@ -149,6 +149,8 @@ Workflow: `.github/workflows/hugo.yml`
 
 - **Future dates**: Hugo skips posts with `date` in the future. Always check `date` output before setting frontmatter date. Use a time earlier than current time, or run `hugo server --buildFuture`.
 - **Date correctness**: Always verify the creation date is accurate before writing. Run `date '+%Y-%m-%dT%H:%M:%S%z'` to get the correct timestamp. Never guess the date/time.
+- **ALWAYS scaffold with `hugo new`, never hand-write frontmatter.** The archetype's `{{ .Date }}` produces a full ISO datetime (`2026-04-21T03:15:00+08:00`) — hand-typed frontmatter drops to date-only (`2026-04-21`), breaking sort order and lastmod. Also pre-populates `tags: []` / `keywords: []` / `description: ""` with TODO markers. Check every new post has **datetime + non-empty tags covering the post's core theme words** (e.g. a post about failure MUST tag `failure`).
+- **Pre-commit hook enforces the above on new files.** `.githooks/pre-commit` blocks commits that add any `content/*.md` with date-only or empty tags. Existing files are exempt (legacy date-only allowed). First-time setup per clone: `git config core.hooksPath .githooks`. Emergency bypass: `git commit --no-verify`.
 - **enableGitInfo = true**: `.Lastmod` comes from git. New uncommitted files won't have a last-modified date.
 
 ## Key Configuration (hugo.toml)

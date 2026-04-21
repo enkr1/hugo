@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""Hugo frontmatter validator — pre-commit hook.
+
+Policy: only enforces on newly ADDED files under content/*.md.
+Existing files keep their legacy frontmatter (per user rule "旧的忘记时间就算了").
+
+New posts must have:
+  - `date` as full ISO datetime (YYYY-MM-DDTHH:MM:SS+TZ)
+  - `tags` non-empty
+
+Exit 1 to block commit.
+
+Stdlib only. No PyYAML.
+"""
+from __future__ import annotations
+
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+FRONTMATTER = re.compile(r"^---\r?\n(.*?)\r?\n---", re.DOTALL)
+DATE_LINE = re.compile(r"^date:\s*(.+?)\s*(?:#.*)?$", re.MULTILINE)
+DATETIME_VAL = re.compile(r"^['\"]?\d{4}-\d{2}-\d{2}T\d{2}:\d{2}")
+TAGS_INLINE = re.compile(r"^tags:\s*\[(.*?)\]\s*(?:#.*)?$", re.MULTILINE)
+TAGS_BLOCK = re.compile(r"^tags:\s*\n((?:[ \t]+-.*\n?)+)", re.MULTILINE)
+
+
+def staged_added_files() -> list[str]:
+    result = subprocess.run(
+        ["git", "diff", "--cached", "--name-only", "--diff-filter=A"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return [line for line in result.stdout.splitlines() if line]
+
+
+def read_frontmatter(path: Path) -> str | None:
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    match = FRONTMATTER.match(text)
+    return match.group(1) if match else None
+
+
+def tags_non_empty(fm: str) -> bool:
+    inline = TAGS_INLINE.search(fm)
+    if inline is not None:
+        return bool(inline.group(1).strip())
+    block = TAGS_BLOCK.search(fm)
+    if block is not None:
+        return bool(block.group(1).strip())
+    return False
+
+
+def date_is_datetime(fm: str) -> bool:
+    match = DATE_LINE.search(fm)
+    if match is None:
+        return False
+    return DATETIME_VAL.match(match.group(1)) is not None
+
+
+def check(path: Path) -> list[str]:
+    fm = read_frontmatter(path)
+    if fm is None:
+        return []
+    errors: list[str] = []
+    if not date_is_datetime(fm):
+        errors.append(
+            f"{path}: `date` must be full ISO datetime "
+            "(YYYY-MM-DDTHH:MM:SS+08:00). Use `hugo new`, don't hand-write."
+        )
+    if not tags_non_empty(fm):
+        errors.append(
+            f"{path}: `tags` must be non-empty. Tag the post's core theme words."
+        )
+    return errors
+
+
+def main() -> int:
+    candidates = [
+        f
+        for f in staged_added_files()
+        if f.endswith(".md") and f.startswith("content/")
+    ]
+    failures: list[str] = []
+    for file in candidates:
+        failures.extend(check(Path(file)))
+
+    if failures:
+        print("\n✗ Hugo frontmatter validation failed:\n", file=sys.stderr)
+        for line in failures:
+            print(f"  - {line}", file=sys.stderr)
+        print(
+            "\nFix: scaffold new posts with `hugo new content/<path>` "
+            "(archetype sets datetime + TODO tags).\n"
+            "Bypass (emergency only): git commit --no-verify\n",
+            file=sys.stderr,
+        )
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
