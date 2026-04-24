@@ -86,6 +86,10 @@ draft: false
   hr { margin: 1px 0 !important; border: none; border-top: 0.4px solid #999; }
   .katex-display { margin: 0 !important; font-size: 0.9em !important; }
   .katex { font-size: 0.95em !important; }
+  .katex .frac-line {
+    border-bottom-width: 0.02em !important;
+    border-bottom-color: rgba(0,0,0,0.55) !important;
+  }
   h3, h4 {
     page-break-after: avoid !important;
     break-after: avoid !important;
@@ -694,7 +698,7 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | Decomposition | $v = p + r$ where $p$ = projection of $v$ onto $W$, $r \in W^\perp$ (residual) |
 | Residual $r$ | $r = v - p$; lives in $W^\perp$ |
 
-### 58. Gram-Schmidt (concept only, procedure NOT tested)
+### 58. Gram-Schmidt
 
 | Step | Formula |
 |---|---|
@@ -723,4 +727,3 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | $b$ vector | $y$ values |
 | Solve | $A^T A \begin{bmatrix}c \\\\ m\end{bmatrix} = A^T b \Rightarrow$ intercept $c$, slope $m$ |
 | Qualitative fit judgment | NOT tested, only calculation |
-
