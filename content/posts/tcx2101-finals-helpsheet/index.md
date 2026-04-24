@@ -2,7 +2,7 @@
 title: "TCX2101 | Finals Helpsheet (A4 Double-Sided)"
 slug: "tcx2101-finals-helpsheet"
 date: 2026-04-19
-description: "A4 double-sided helpsheet for TCX2101 Final Exam (Apr 28). 63 numbered sections. Sections 54-61 = orthogonality (highest exam emphasis)."
+description: "A4 double-sided helpsheet for TCX2101 Final Exam (Apr 28)."
 tags: ["nus", "math", "calculus", "linear-algebra", "cheatsheet", "tcx2101", "finals"]
 categories: ["Education", "Mathematics"]
 math: true
@@ -10,7 +10,7 @@ draft: false
 ---
 
 <style>
-@page { margin: 5mm; }
+@page { margin: 4mm; }
 @media print {
   .left-sidebar, .right-sidebar, .sidebar,
   .toc-left-sidebar,
@@ -36,7 +36,7 @@ draft: false
     gap: 0 !important;
   }
   body, .main-article {
-    font-size: 6.3pt !important;
+    font-size: 6.6pt !important;
     line-height: 1.0 !important;
     letter-spacing: -0.15px !important;
   }
@@ -46,11 +46,11 @@ draft: false
     column-fill: balance !important;
     column-rule: 0.3px solid #e5e5e5 !important;
   }
-  h3 { font-size: 7.3pt !important; margin: 0 !important; border-top: 0.3px solid #ccc; padding-top: 0 !important; }
-  h4 { font-size: 7.1pt !important; margin: 0 !important; }
+  h3 { font-size: 6.8pt !important; margin: 1pt 0 0 0 !important; border-top: 0.3px solid #ccc; padding-top: 0 !important; }
+  h4 { font-size: 6.7pt !important; margin: 0 !important; }
   table {
-    font-size: 6.3pt !important;
-    margin: 0 !important;
+    font-size: 6.6pt !important;
+    margin: 0 0 0.2rem 0 !important;
     border-collapse: collapse !important;
     border-spacing: 0 !important;
     width: 100% !important;
@@ -62,8 +62,13 @@ draft: false
     vertical-align: top !important;
   }
   th { background: #f4f4f4 !important; }
-  p, blockquote {
-    font-size: 6.3pt !important;
+  p {
+    font-size: 5.4pt !important;
+    line-height: 1.0 !important;
+    margin: 0 0 1px 0 !important;
+  }
+  blockquote {
+    font-size: 6.6pt !important;
     line-height: 1.0 !important;
     margin: 0 0 1px 0 !important;
   }
@@ -130,12 +135,15 @@ draft: false
 
 ### 4. Key Limits
 
-| | | | | |
-|---|---|---|---|---|
-| $\tan^{-1}(\infty) = \frac{\pi}{2}$ | $\tan^{-1}(0) = 0$ | $\tan^{-1}(-\infty) = -\frac{\pi}{2}$ | $e^{-\infty} = 0$ | $e^\infty = \infty$ |
-| $\ln(0^+) = -\infty$ | $\frac{1}{\infty} = 0$ | $\frac{1}{0^+} = \infty$ | $\frac{1}{0^-} = -\infty$ | $e^0 = 1$ |
-| $\ln(1) = 0$ | $\ln(\infty) = \infty$ | $\lim_{x \to 0^+} x \ln x = 0$ | $\lim_{x \to \infty} \frac{\ln x}{x} = 0$ | $\lim_{x \to 0} \frac{\sin x}{x} = 1$ |
-| $\lim_{x \to 0} \frac{1 - \cos x}{x} = 0$ | $\lim_{x \to \infty} x e^{-x} = 0$ | $\lim_{x \to 0} \frac{\tan x}{x} = 1$ | $\lim_{x \to 0} \frac{e^x - 1}{x} = 1$ | $\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e$ |
+| | | |
+|---|---|---|
+| $\tan^{-1}(\infty) = \frac{\pi}{2}$ | $\tan^{-1}(0) = 0$ | $\tan^{-1}(-\infty) = -\frac{\pi}{2}$ |
+| $e^0 = 1$ | $e^{-\infty} = 0$ | $e^\infty = \infty$ |
+| $\lim_{x \to 0} \frac{e^x - 1}{x} = 1$ | $\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e$ | $\lim_{x \to \infty} x e^{-x} = 0$ |
+| $\ln(1) = 0$ | $\ln(0^+) = -\infty$ | $\ln(\infty) = \infty$ |
+| $\lim_{x \to 0^+} x \ln x = 0$ | $\lim_{x \to \infty} \frac{\ln x}{x} = 0$ | $\lim_{x \to 0} \frac{1 - \cos x}{x} = 0$ |
+| $\frac{1}{\infty} = 0$ | $\frac{1}{0^+} = \infty$ | $\frac{1}{0^-} = -\infty$ |
+| $\lim_{x \to 0} \frac{\sin x}{x} = 1$ | $\lim_{x \to 0} \frac{\tan x}{x} = 1$ | |
 
 ### 5. Limits at Infinity — Rational $\frac{a_n x^n + \dots}{b_m x^m + \dots}$
 
@@ -231,7 +239,7 @@ $$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} = \lim_{x \to a} \frac{f(x) - f
 | Power-reduce ($\cos^2$) | $\cos^2 u = \frac{1 + \cos 2u}{2}$ |
 | Reciprocal | $\sec = \frac{1}{\cos}$, $\csc = \frac{1}{\sin}$, $\cot = \frac{\cos}{\sin}$ |
 
-### 15. Derivatives & Antiderivatives Master Table ⭐
+### 15. Derivatives & Antiderivatives Master Table
 
 Read LEFT→RIGHT for derivatives, right column for antiderivatives ($+C$ implicit). CO $=$ negative. For composed $f(u(x))$: multiply derivative by $u'$ (chain rule §13).
 
@@ -265,7 +273,7 @@ Read LEFT→RIGHT for derivatives, right column for antiderivatives ($+C$ implic
 | $\frac{1}{a^2+x^2}$ | — | $\frac{1}{a}\tan^{-1}\frac{x}{a}$ |
 | $\frac{1}{\sqrt{a^2-x^2}}$ | — | $\sin^{-1}\frac{x}{a}$ |
 
-⚠ $\int \cos x = +\sin x$ ($-\sin$ is derivative). $x^n$: divide by NEW exponent $(n+1)$.
+$\int \cos x = +\sin x$ ($-\sin$ is derivative). $x^n$: divide by NEW exponent $(n+1)$.
 
 ### 16. Integration Techniques
 
@@ -345,7 +353,7 @@ Ex: $x^2 + y^2 = 25 \Rightarrow 2x + 2y \cdot y' = 0 \Rightarrow y' = -\frac{x}{
 | $f'(c) = 0$ | Rolle's |
 | $f'(c) = $ ratio | MVT |
 
-⚠ L'Hôpital: check indeterminate form FIRST. Stop when no longer indet. Diff top & bottom SEPARATELY (not quotient rule).
+L'Hôpital: check indeterminate form FIRST. Stop when no longer indet. Diff top & bottom SEPARATELY (not quotient rule).
 
 ### 21. Linear Approximation
 
@@ -400,8 +408,8 @@ $\int_a^b f(x) \, dx = F(b) - F(a)$, where $F$ any antiderivative. **Don't forge
 | Odd $f$ ($f(-x) = -f(x)$) | $0$ |
 | Even $f$ ($f(-x) = f(x)$) | $2 \int_0^a f$ |
 
-⚠ Improper: verify BOTH halves converge before using symmetry.
-⚠ $\int_{-1}^1 \frac{1}{x^2} \, dx$ diverges (interior blow-up). Write "DIVERGES" not "$= \infty$".
+Improper: verify BOTH halves converge before using symmetry.
+$\int_{-1}^1 \frac{1}{x^2} \, dx$ diverges (interior blow-up). Write "DIVERGES" not "$= \infty$".
 
 ### 28. Area
 
@@ -410,7 +418,7 @@ $\int_a^b f(x) \, dx = F(b) - F(a)$, where $F$ any antiderivative. **Don't forge
 | Under curve | $\int_a^b \|f(x)\| \, dx$ (find zeros, split, negate where $f < 0$) |
 | Between curves | $\int_a^b (\text{top} - \text{bottom}) \, dx$ (sketch, find intersections) |
 
-⚠ $\int_a^b f$ is SIGNED area (negatives cancel). Use $|f|$ for actual area.
+$\int_a^b f$ is SIGNED area (negatives cancel). Use $|f|$ for actual area.
 
 ### 29. Volume
 
@@ -456,7 +464,7 @@ $\int_a^b f(x) \, dx = F(b) - F(a)$, where $F$ any antiderivative. **Don't forge
 | Free col | No leading 1 (parameter: $s, t, \dots$) |
 | Count | \#free $= n - $ \#pivots |
 
-⚠ RREF $\neq$ identity when free vars exist. Solve for PIVOT vars, not free.
+RREF $\neq$ identity when free vars exist. Solve for PIVOT vars, not free.
 
 ### 34. Vector Form Solution
 
@@ -486,12 +494,12 @@ $\int_a^b f(x) \, dx = F(b) - F(a)$, where $F$ any antiderivative. **Don't forge
 
 | Op | Formula / Note |
 |---|---|
-| Sum | $(A+B)_{ij} = A_{ij} + B_{ij}$ (same dim) |
-| Scalar | $(kA)_{ij} = k \cdot A_{ij}$ |
-| Product | $(AB)_{ij} = \sum_k A_{ik} B_{kj}$. $A$ is $m \times n$, $B$ is $n \times p \Rightarrow AB$ is $m \times p$ |
+| Sum | Entrywise; same dim required |
+| Scalar | Multiply every entry by $k$ |
+| Product | $A$ is $m \times n$, $B$ is $n \times p \Rightarrow AB$ is $m \times p$; entry = row × col dot product |
 | Associative | $(AB)C = A(BC)$ |
 | Distributive | $A(B + C) = AB + AC$ |
-| ⚠ NOT commutative | $AB \neq BA$ in general |
+| NOT commutative | $AB \neq BA$ in general |
 | Transpose of product | $(AB)^T = B^T A^T$ |
 | Inverse of product | $(AB)^{-1} = B^{-1} A^{-1}$ (REVERSE order) |
 | Double transpose | $(A^T)^T = A$ |
@@ -532,7 +540,7 @@ $\int_a^b f(x) \, dx = F(b) - F(a)$, where $F$ any antiderivative. **Don't forge
 | Trap | Detail |
 |---|---|
 | NOT linear | $\det(A+B) \neq \det(A) + \det(B)$. Try $A=B=I$: $\det(2I) = 4 \neq 2$ |
-| Zero + Zero | $\det(A) = 0, \det(B) = 0 \not\Rightarrow \det(A+B) = 0$. Try $A = \begin{bmatrix}1&0\\0&0\end{bmatrix}, B = \begin{bmatrix}0&0\\0&1\end{bmatrix} \Rightarrow A+B = I$ |
+| Zero + Zero | $\det(A) = 0, \det(B) = 0 \not\Rightarrow \det(A+B) = 0$. Try $A = \begin{bmatrix}1&0\\\\0&0\end{bmatrix}, B = \begin{bmatrix}0&0\\\\0&1\end{bmatrix} \Rightarrow A+B = I$ |
 | Simplify first | $M^2 M^{-1} = M \Rightarrow \det = \det(M)$ |
 
 ### 42. $2 \times 2$ Inverse
@@ -568,7 +576,7 @@ $A = \begin{bmatrix}a & b \\ c & d\end{bmatrix} \Rightarrow A^{-1} = \frac{1}{ad
 | Indep | Every col has pivot |
 | Dep | Any col without pivot ($=$ combo of pivot cols) |
 | Always dep | Contains $0$ vector |
-| ⚠ | Pairwise non-scalar $\neq$ indep. Always use pivot-count |
+| | Pairwise non-scalar $\neq$ indep. Always use pivot-count |
 
 ### 46. Vector Space Definitions
 
@@ -618,7 +626,7 @@ $(x,y,z,w) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$. Basis $=$ those three vecto
 | nullity | \# free cols |
 | Null basis | Same as §34 vector form with RHS $= 0$ |
 
-⚠ Verify: plug each null basis vector into $Ax = 0$. Every row must $= 0$.
+Verify: plug each null basis vector into $Ax = 0$. Every row must $= 0$.
 
 ### 51. Dimension Constraints
 
@@ -635,7 +643,7 @@ $(x,y,z,w) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$. Basis $=$ those three vecto
 | $\text{Col}(A)$ | Span of columns (image of $x \mapsto Ax$) | PIVOT columns of $A$ (from ORIGINAL, not RREF) |
 | $\text{Null}(A)$ | $\{x : Ax = 0\}$ | Vector form with RHS $= 0$ |
 
-### 53. Orthogonality Foundation ⭐
+### 53. Orthogonality Foundation
 
 | Formula | Note |
 |---|---|
@@ -643,9 +651,8 @@ $(x,y,z,w) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$. Basis $=$ those three vecto
 | $\|u + v\|^2$ | $= \|u\|^2 + 2(u \cdot v) + \|v\|^2$ |
 | If $u \perp v$ | $\|u + v\|^2 = \|u\|^2 + \|v\|^2$ |
 
-*§53-60 = orthogonality cluster (highest exam emphasis per Apr 17 recording).*
 
-### 54. Orthogonal vs Orthonormal ⭐
+### 54. Orthogonal vs Orthonormal
 
 | Set type | Condition |
 |---|---|
@@ -653,7 +660,7 @@ $(x,y,z,w) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$. Basis $=$ those three vecto
 | Orthonormal | Orthogonal AND every $\|u\| = 1$ |
 | $\mathbf{0}$ vector | Orthogonal to everything (ok in orthogonal set). NOT orthonormal (length 0) |
 
-### 55. Orthogonal Complement $W^\perp$ ⭐
+### 55. Orthogonal Complement $W^\perp$
 
 | Rule | Statement |
 |---|---|
@@ -669,7 +676,7 @@ $(x,y,z,w) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$. Basis $=$ those three vecto
 | 3 | Get homogeneous linear system |
 | 4 | Solve (§34 vector form) $\Rightarrow$ basis of $W^\perp$ |
 
-### 56. Coefficients in Basis Expansion ⭐
+### 56. Coefficients in Basis Expansion
 
 For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 
@@ -679,13 +686,13 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | Orthonormal | $c_i = v \cdot u_i$ (denom $= 1$) |
 | Observation | $v \cdot u_k = 0 \Rightarrow c_k = 0$ |
 
-### 57. Projection & Decomposition ⭐
+### 57. Projection & Decomposition
 
 | Concept | Formula |
 |---|---|
-| $\text{proj}_W(v)$ | $\sum_i \frac{v \cdot u_i}{u_i \cdot u_i} u_i$ over orthogonal basis of $W$ |
-| Decomposition | $v = \text{proj}_W(v) + v_\perp$ |
-| $v_\perp$ | $v - \text{proj}_W(v)$, lives in $W^\perp$ |
+| Projection onto $W$ | $\sum_i \frac{v \cdot u_i}{u_i \cdot u_i} u_i$ over orthogonal basis of $W$ |
+| Decomposition | $v = p + r$ where $p$ = projection of $v$ onto $W$, $r \in W^\perp$ (residual) |
+| Residual $r$ | $r = v - p$; lives in $W^\perp$ |
 
 ### 58. Gram-Schmidt (concept only, procedure NOT tested)
 
@@ -696,7 +703,7 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | General | $v_i$ subtracts projection onto previous $v$'s |
 | Normalise (if orthonormal wanted) | Divide each $v_i$ by $\|v_i\|$ |
 
-### 59. Least Squares ⭐⭐ (HIGHEST emphasis)
+### 59. Least Squares
 
 | Item | Formula / Note |
 |---|---|
@@ -706,7 +713,7 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | Method | Form augmented $[A^T A \mid A^T b]$, row reduce, solve |
 | Size check | $A$ is $m \times n \Rightarrow A^T A$ is $n \times n$ |
 
-### 60. Best Fit Line ⭐
+### 60. Best Fit Line
 
 | Item | Formula |
 |---|---|
@@ -714,6 +721,6 @@ For $v = c_1 u_1 + \dots + c_n u_n$ with $\{u_i\}$ orthogonal basis of $V$:
 | Model | $y = mx + c$ |
 | $A$ matrix | Col 1 $=$ 1s, Col 2 $= x$ values |
 | $b$ vector | $y$ values |
-| Solve | $A^T A \begin{bmatrix}c \\ m\end{bmatrix} = A^T b \Rightarrow$ intercept $c$, slope $m$ |
-| ⚠ Qualitative fit judgment | NOT tested, only calculation |
+| Solve | $A^T A \begin{bmatrix}c \\\\ m\end{bmatrix} = A^T b \Rightarrow$ intercept $c$, slope $m$ |
+| Qualitative fit judgment | NOT tested, only calculation |
 
