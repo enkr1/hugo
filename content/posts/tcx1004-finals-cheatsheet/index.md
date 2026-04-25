@@ -2,7 +2,7 @@
 title: "TCX1004 | Finals Cheatsheet (All Units)"
 slug: "nus-bit-tcx1004-finals-cheatsheet"
 date: 2026-04-19
-description: "Open-book cheatsheet for NUS TCX1004 Finals (Apr 30, 2026) — Logic & Proofs, Combinatorics, Graph Theory, Probability, Distributions"
+description: "Open-book cheatsheet for NUS TCX1004 Finals (Apr 30, 2026) — Logic & Proofs, Set Theory, Relations, Induction, Big-O, Combinatorics, Graph Theory, Probability, Distributions"
 tags: ["nus", "math", "discrete-math", "cheatsheet", "tcx1004", "finals"]
 categories: ["Education", "Mathematics"]
 toc: true
@@ -13,8 +13,8 @@ draft: false
 full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}).
 
 **Exam:** Apr 30, 2026 · 17:00 · LT7A Seat 64 · **Open Book** · No calculators · 1.5h
-**Tested scope:** Unit 6+ (Combinatorics, Graph Theory, Probability, Distributions/Expectation/Variance)
-**Reference scope (this doc):** Unit 1 + Units 6-9 (Unit 1 included for cumulative reasoning — proofs, deduction rules, justification patterns)
+**Tested scope:** Unit 6+ (Combinatorics, Graph Theory, Probability, Distributions/Expectation/Variance) — *per current sprint inference*
+**Reference scope (this doc):** Units 1-9 (full module — Prof has not confirmed scope reduction; covering everything as insurance against scope surprise)
 **Note:** leave answers unsimplified.
 
 ---
@@ -77,6 +77,292 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | Naming from $\exists$ | "Let $t \in A$ be such that $P(t)$." |
 | Direct proof | "Assume [antecedent]." → derive → conclude [consequent] |
 | Proof by contradiction | "Assume, for contradiction, that $\lnot$[statement]." |
+
+---
+
+## Unit 2: Set Theory
+
+### Decision tree — what's the question asking?
+
+| Question shape | Tool |
+|---------------|------|
+| "is $A \subseteq B$?" | check $\forall x \in A \to x \in B$ |
+| "is $A = B$?" | double subset: prove $A \subseteq B$ AND $B \subseteq A$ |
+| "size of $\mathcal{P}(A)$ where $\lvert A\rvert = n$" | $2^n$ |
+| "size of $A \times B$" | $\lvert A\rvert \cdot \lvert B\rvert$ |
+| simplify nested set expression | apply distributive / De Morgan |
+| set membership of nested object | distinguish $\in$ vs $\subseteq$ vs $\mathcal{P}$ |
+
+### Notation primer
+
+| Symbol | Meaning |
+|--------|---------|
+| $[n]$ | $\{1, 2, \ldots, n\}$; $[0] = \emptyset$ |
+| $\emptyset$ | empty set; always $\subseteq$ any set |
+| $\mathbb{N}$ | natural numbers (often $\{0, 1, 2, \ldots\}$ in CS) |
+| $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ | integers, rationals, reals, complex |
+| $\{a, b, c\}$ | set-roster (explicit listing) |
+| $\{x \in S : P(x)\}$ | set-builder ($x$ from $S$ where $P(x)$ holds) |
+| $\lvert A\rvert$ | cardinality (size) of $A$ |
+
+### Set operations
+
+| Op | Definition | Logic equivalent |
+|----|-----------|-----------------|
+| $A \cup B$ | $\{x : x \in A \lor x \in B\}$ | $\lor$ |
+| $A \cap B$ | $\{x : x \in A \land x \in B\}$ | $\land$ |
+| $A \setminus B$ | $\{x \in A : x \notin B\}$ | $\land \lnot$ |
+| $A \times B$ | $\{(x, y) : x \in A \land y \in B\}$ | Cartesian product |
+| $\mathcal{P}(A)$ | $\{X : X \subseteq A\}$ | power set, $\lvert \mathcal{P}(A)\rvert = 2^{\lvert A\rvert}$ |
+
+### Subset & equality
+
+- $A \subseteq B \equiv \forall x \in A \, [x \in B]$
+- $A = B \equiv (A \subseteq B \land B \subseteq A)$ — **double subset method**
+- $\emptyset \subseteq A$ for any $A$ (vacuously true)
+
+### Key identities
+
+**Distributive:**
+$$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$$
+$$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$$
+
+**De Morgan (set-difference form):**
+$$A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$$
+$$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
+
+### Proof template — show $A = B$
+
+1. **Show $A \subseteq B$:** "Let $x \in A$ be arbitrary. [chain of inferences using $A$'s definition] Therefore $x \in B$."
+2. **Show $B \subseteq A$:** "Let $x \in B$ be arbitrary. [chain] Therefore $x \in A$."
+3. **Conclude:** "By double subset, $A = B$."
+
+### Common gotchas (Unit 2)
+
+- **$\in$ vs $\subseteq$:** $\{x\} \subseteq A$ iff $x \in A$. But $\{x\} \in A$ means the *set* $\{x\}$ is itself an element of $A$ (different statement).
+- **Power set vs membership:** if $3 \in A$, then $\{3\} \in \mathcal{P}(A)$ (NOT $3 \in \mathcal{P}(A)$).
+- **Set difference NOT associative:** $(A \setminus B) \setminus C \neq A \setminus (B \setminus C)$. Always parenthesize.
+- **Empty intersection ≠ disjoint union for 3+ sets:** $A \cap B \cap C = \emptyset$ does NOT imply pairwise disjoint (Unit 6 link).
+
+### Cross-hooks
+
+- Set ops underpin **PIE in Unit 6** (sum/intersection of events)
+- Cartesian product is foundation for **Relations (Unit 3)** and **sample-space pairs in Unit 8**
+
+### Pre-submit sanity checks (Unit 2)
+
+- Used double subset for "show $A = B$"? Both directions stated?
+- $\in$ vs $\subseteq$ — re-read every membership claim
+- Set-difference parenthesized?
+- $\lvert \mathcal{P}(A)\rvert = 2^{\lvert A\rvert}$ — not $\lvert A\rvert^2$
+
+---
+
+## Unit 3: Relations
+
+### Decision tree — what's the question asking?
+
+| Question shape | Tool |
+|---------------|------|
+| "is $R$ reflexive?" | $\forall a \in A \, [(a,a) \in R]$ — check every element |
+| "is $R$ symmetric?" | $\forall a, b \, [(a,b) \in R \to (b,a) \in R]$ |
+| "is $R$ anti-symmetric?" | $\forall a, b \, [((a,b) \in R \land (b,a) \in R) \to a = b]$ |
+| "is $R$ transitive?" | $\forall a, b, c \, [((a,b) \in R \land (b,c) \in R) \to (a,c) \in R]$ |
+| compute $R^{-1}$ | flip every pair |
+| compute $R; S$ | chain through middle element |
+| classify divisibility / mod-$n$ | use the property table below |
+
+### Core definitions
+
+| Term | Definition |
+|------|-----------|
+| **Relation** | $R \subseteq A \times B$ (subset of a Cartesian product) |
+| **Inverse** | $R^{-1} = \{(b, a) : (a, b) \in R\}$ |
+| **Composition** | $R; S = \{(a, c) : \exists b \, [(a,b) \in R \land (b,c) \in S]\}$ |
+
+**Composition note:** $R; S$ requires output type of $R$ matches input type of $S$, else $R; S = \emptyset$.
+
+### Classic relations
+
+| Relation | Definition |
+|----------|-----------|
+| **Divisibility $D$** | $D = \{(x, y) \in \mathbb{Z}^2 : \exists k \in \mathbb{Z}, k \neq 0, \, xk = y\}$ |
+| **Congruence mod $n$** ($C_n$) | $C_n = \{(a, b) \in \mathbb{Z}^2 : \exists k \in \mathbb{Z}, \, a - b = nk\}$ |
+
+### Properties (for $R \subseteq A \times A$)
+
+| Property | Definition (∀ over $A$) |
+|----------|-------------------------|
+| Reflexive | $(a, a) \in R$ for every $a$ |
+| Symmetric | $(a, b) \in R \to (b, a) \in R$ |
+| Anti-symmetric | $(a, b) \in R \land (b, a) \in R \to a = b$ |
+| Transitive | $(a, b) \in R \land (b, c) \in R \to (a, c) \in R$ |
+
+### Property classification — classic relations
+
+| Relation | Reflexive | Symmetric | Anti-symmetric | Transitive |
+|----------|:---------:|:---------:|:--------------:|:----------:|
+| Divisibility $D$ | ✓ | ✗ | ✓ | ✓ |
+| Congruence mod $n$ | ✓ | ✓ | ✗ | ✓ |
+
+### Common gotchas (Unit 3)
+
+- **Symmetric ≠ NOT anti-symmetric.** A relation can be **neither** (e.g., $\{(1,2), (2,3)\}$). Or **both** (only the diagonal, like $\{(1,1), (2,2)\}$).
+- **Reflexive requires every element of $A$**, not just every element appearing in $R$. If $A = \{1, 2, 3\}$ and $R = \{(1,1), (2,2)\}$, $R$ is NOT reflexive on $A$ (missing $(3,3)$).
+- **Composition is NOT commutative:** $R; S \neq S; R$ in general.
+- **$D \subseteq D; D$:** divisibility is transitive — composition with itself is contained in itself.
+
+### Cross-hooks
+
+- A graph edge set is a relation: $E \subseteq V \times V$ → **Unit 7** (graphs are special relations)
+- Equivalence relations (reflexive + symmetric + transitive) partition the set — useful in counting equivalence classes (**Unit 6** combinatorics)
+
+### Pre-submit sanity checks (Unit 3)
+
+- For "is $R$ reflexive?" — checked every element of $A$, not just ones appearing in $R$?
+- Symmetric & anti-symmetric — checked separately, didn't assume opposites
+- Composition $R; S$ — middle element exists in shared type?
+
+---
+
+## Unit 4: Induction & Recurrences
+
+### Decision tree — what's the question asking?
+
+| Question shape | Tool |
+|---------------|------|
+| "prove $\forall n \geq b \, [P(n)]$" | weak induction — base $P(b)$, inductive $P(n) \to P(n+1)$ |
+| recurrence depends on multiple prev terms | strong induction — assume $\forall j < k \, [P(j)]$ |
+| analyse $T(n) = T(n-1) + 1$ | arithmetic series → $T(n) = n + c$ |
+| analyse $T(n) = T(n/2) + c$ | divide-and-conquer → $T(n) = O(\log n)$ |
+| derive closed form for sum | guess pattern, prove by induction |
+
+### Weak induction template
+
+**To prove $\forall n \geq b \, [P(n)]$:**
+
+1. **Base case:** prove $P(b)$ directly.
+2. **Inductive step:** for arbitrary $n \geq b$, assume $P(n)$ (the **inductive hypothesis**). Prove $P(n+1)$.
+3. **Conclude:** "By induction, $\forall n \geq b \, [P(n)]$."
+
+**Standard opener:** "Let $P(n)$ be the statement [...]. We prove $P(n)$ by induction on $n$."
+
+### Strong induction template
+
+**To prove $\forall n \geq b \, [P(n)]$ when $P(n)$ depends on multiple smaller values:**
+
+1. **Base cases:** prove $P(b_1), P(b_1+1), \ldots, P(b_2 - 1)$ — number of base cases = step size in inductive step.
+2. **Inductive step:** for arbitrary $k \geq b_2$, **assume $\forall j$ with $b_1 \leq j < k$, $P(j)$ holds**. Prove $P(k)$.
+3. **Conclude:** "By strong induction, $\forall n \geq b_1 \, [P(n)]$."
+
+**Rule of thumb:** if recurrence reaches back $s$ steps (e.g., $T(n) = T(n-1) + T(n-2)$ reaches back 2), need $s$ base cases.
+
+### Classic recurrences
+
+| Recurrence | Closed form | Application |
+|-----------|-------------|-------------|
+| $T(n) = T(n-1) + 1, \, T(0) = 0$ | $T(n) = n$ | linear loop |
+| $F(n) = n \cdot F(n-1), \, F(1) = 1$ | $F(n) = n!$ | factorial |
+| $S(n) = S(n-1) + S(n-2), \, S(1) = 1, S(2) = 2$ | Fibonacci-shifted | stair climbing |
+| $C(n) = C(\lceil n/2 \rceil) + 1, \, C(1) = 1$ | $C(n) = \lceil \log_2 n\rceil + 1$ | binary search |
+
+### Common gotchas (Unit 4)
+
+- **Forgotten base case:** induction is invalid without it — the entire chain collapses.
+- **Wrong base value:** if $P(n)$ only holds for $n \geq 4$, your base case must start at $n = 4$, NOT $n = 0$.
+- **Strong induction base count:** stepping back 2 → need 2 bases; stepping back $s$ → need $s$ bases. Mismatch breaks the proof.
+- **Inductive hypothesis scope:** in weak induction, you assume only $P(n)$. In strong induction, you assume $P(j)$ for ALL $j < k$. Don't conflate.
+- **Closed form vs recurrence:** if asked "find closed form", you must derive AND prove (induction). Don't just guess.
+
+### Cross-hooks
+
+- Recurrences feed **Unit 5 Big-O** via substitution method
+- Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
+- Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
+
+### Pre-submit sanity checks (Unit 4)
+
+- Stated base case explicitly?
+- Inductive hypothesis stated *as an assumption*, not as a fact?
+- For strong induction — number of bases matches step size?
+- Conclusion sentence at the end ("By induction, ...")?
+- For closed-form derivation — did you prove the closed form (not just guess)?
+
+---
+
+## Unit 5: Big-O & Asymptotic Analysis
+
+### Decision tree — what's the question asking?
+
+| Question shape | Tool |
+|---------------|------|
+| "is $g(n) \in O(f(n))$?" | find $n_0, c$ s.t. $g(n) \leq c \cdot f(n)$ for $n \geq n_0$ |
+| "is $g(n) \in \Omega(f(n))$?" | find $n_0, c$ s.t. $g(n) \geq c \cdot f(n)$ for $n \geq n_0$ |
+| "is $g(n) \in \Theta(f(n))$?" | both $O$ AND $\Omega$ |
+| polynomial $f(n)$ of degree $k$ | $f(n) \in \Theta(n^k)$ — drop constants & lower terms |
+| compare $f(n)$ and $g(n)$ growth | use the function ordering ladder |
+| analyse recurrence $T(n)$ | substitution method (assume → show → conclude) |
+| prove loop correctness | loop invariant — init + maintain + terminate |
+
+### Three asymptotic notations
+
+| Notation | Definition | Intuition |
+|----------|-----------|-----------|
+| $O(f(n))$ | $\exists n_0, c > 0, \, \forall n \geq n_0, \, g(n) \leq c \cdot f(n)$ | upper bound (at most) |
+| $\Omega(f(n))$ | $\exists n_0, c > 0, \, \forall n \geq n_0, \, g(n) \geq c \cdot f(n)$ | lower bound (at least) |
+| $\Theta(f(n))$ | $g \in O(f) \land g \in \Omega(f)$ | tight bound |
+
+### Polynomial bound theorem
+
+If $f(n) = \sum_{i=0}^{k} a_i n^i$ with $a_k > 0$, then $f(n) \in \Theta(n^k)$.
+
+**Effect:** drop all lower-order terms AND constants. $5n^3 + 100n^2 + 7 \in \Theta(n^3)$.
+
+### Function ordering ladder (smallest → largest)
+
+$$\sqrt{\log n} \ll \log n \ll \log^2 n \ll \sqrt{n} \ll n \ll n \log n \ll n^2 \ll n^k \ll 2^{\sqrt{n}} \ll 2^{n/2} \ll 2^n \ll 2^{n^2}$$
+
+**Use:** if $f \ll g$ in this ladder, then $f \in O(g)$ but $g \notin O(f)$.
+
+### Substitution method (analyse recurrences)
+
+**To show $T(n) \in O(f(n))$:**
+
+1. **Assume:** $T(m) \leq c \cdot f(m)$ for all $m < n$ (inductive hypothesis on size).
+2. **Show:** plug into recurrence and derive $T(n) \leq c \cdot f(n)$ — **same form**, same constant $c$.
+3. **Conclude:** $T(n) \in O(f(n))$.
+
+**Critical:** the form you conclude must match the form you assumed. If you assume $T(m) \leq c \cdot m^2$, you must conclude $T(n) \leq c \cdot n^2$ (not $c \cdot n^2 + n$).
+
+### Loop invariant — proof structure
+
+To prove a loop computes a correct result, identify an **invariant** (statement about loop state) and prove all 3:
+
+1. **Initialization:** invariant holds *before* the first iteration
+2. **Maintenance:** if invariant holds before iteration $i$, it holds after iteration $i$
+3. **Termination:** when the loop exits, the invariant + exit condition imply program correctness
+
+### Common gotchas (Unit 5)
+
+- **Substitution method form mismatch:** if you assume $T(m) \leq cm$, you must conclude $T(n) \leq cn$, not $T(n) \leq cn + 5$. Tighten the assumption to absorb the slack.
+- **Exponential constants don't pull through:** $2^{n/2} \in O(2^n)$ ✓, but $2^n \in O(2^{n/2})$ ✗ (needs $c \cdot 2^{n/2} \geq 2^n$, i.e., $c \geq 2^{n/2}$ — not constant).
+- **Big-O is one direction.** $g \in O(f)$ does NOT mean $f \in O(g)$. Use $\Theta$ for tight equivalence.
+- **Loop invariant — all 3 parts required.** Skipping termination is a common point loss.
+- **$O$ vs $\Theta$ in answers:** if a question says "what is the running time", the strongest correct answer is $\Theta$. Stating just $O$ is incomplete (technically true but loses precision marks).
+
+### Cross-hooks
+
+- Big-O bounds **combinatorial counting** (Unit 6 "sense of scale" — Stirling, binomial bounds)
+- Substitution method applies to **divide-and-conquer recurrences** (binary search, merge sort)
+- Loop invariants are induction in disguise — feeds back to Unit 4 templates
+
+### Pre-submit sanity checks (Unit 5)
+
+- $O$, $\Omega$, $\Theta$ — gave the *tightest* one when possible?
+- Substitution conclusion form matches assumption form?
+- Constants in front (e.g., $5n^2$) — dropped per polynomial bound?
+- Function comparison — used the ladder, not gut feeling?
+- Loop invariant — stated all 3 parts?
 
 ---
 
