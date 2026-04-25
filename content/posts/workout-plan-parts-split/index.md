@@ -42,12 +42,12 @@ keywords:
 
 | # | Exercise | Sets x Reps | Remark |
 |---|----------|-------------|--------|
-| A1 | Overhead Cable Triceps Extension (long head) | 3 x 8-12 |  |
-| A2 | Incline Dumbbell Curl / Bayesian Curl (long head) | 3 x 8-12 |  |
-| B1 | Rope Pressdown / V-Bar Pressdown (lateral head) | 3 x 10-15 |  |
-| B2 | Preacher Curl / Machine Curl / Spider Curl (short head) | 3 x 10-15 |  |
-| C1 | Cable Lateral Raise / DB Lateral Raise (side delts) | 4 x 12-20 |  |
-| C2 | Reverse Pec Deck / Face Pull (rear delts) | 3 x 12-20 |  |
+| A1 | Overhead Cable Triceps Extension (long head) | 3 x 8-12 | 21 |
+| A2 | Seated Incline Dumbbell Curl / Bayesian Curl (long head) | 3 x 8-12 | 15 |
+| B1 | Rope Pressdown / V-Bar Pressdown (lateral head) | 3 x 10-15 | 21 |
+| B2 | Machine Curl / Single DB Preacher Curl (15x9) / Spider Curl (short head) | 3 x 10-15 |  |
+| C1 | Cable Single Lateral Raise / DB Lateral Raise (side delts) | 4 x 12-20 | 5 |
+| C2 | Archery Pull / Reverse Pec Deck / Face Pull (rear delts) | 3 x 12-20 | 5 |
 
 ---
 
@@ -61,12 +61,12 @@ recovery, joint freshness, performance reset.
 
 | # | Exercise | Sets x Reps | Remark |
 |---|----------|-------------|--------|
-| 1 | RDL / DB RDL (hamstrings, glutes) | 3 x 6-10 |  |
-| 2 | Lying Leg Curl / Seated Leg Curl (hamstrings) | 2-3 x 8-12 |  |
-| 3 | Hip Thrust / Cable Pull-Through (glutes) | 3 x 8-12 |  |
-| 4 | Bulgarian Split Squat / Goblet Squat (quads, glutes) | 3 x 8-12 |  |
-| 5 | Seated Calf Raise / Smith Calf Raise (calves, soleus) | 2-3 x 10-15 |  |
-| 6 | Abductor (abductors / glute medius, push out) | 2 x 10-15 |  |
+| 1 | RDL / DB RDL (hamstrings, glutes) | 3 x 6-10 | 55x6 |
+| 2 | Lying Leg Curl / Seated Leg Curl (hamstrings) | 2-3 x 8-12 | 80 slc |
+| 3 | Hip Thrust / Cable Pull-Through (glutes) | 3 x 8-12 | 40ps |
+| 4 | Bulgarian Split Squat / Goblet Squat (quads, glutes) | 3 x 8-12 | 20x12 |
+| 5 | Seated Calf Raise / Smith Calf Raise (calves, soleus) (40ps) | 2-3 x 10-15 |  |
+| 6 | Abductor (abductors / glute medius, push out) | 2 x 10-15 | 95×15 |
 
 ---
 
@@ -74,11 +74,11 @@ recovery, joint freshness, performance reset.
 
 | # | Exercise | Sets x Reps | Remark |
 |---|----------|-------------|--------|
-| A1 | Lat Pulldown / Weighted Pull-Up (lats, back width) | 3 x 6-10 |  |
-| A2 | Flat Machine Press / Flat DB Press (mid chest) | 3 x 8-12 |  |
+| A1 | Lat Pulldown / Weighted Pull-Up (lats, back width) | 3 x 6-10 | >80 |
+| A2 | Flat Machine Press / Flat DB Press (mid chest) | 3 x 8-12 | 40 |
 | B1 | Chest-Supported Row / Cable Row (mid back, rhomboids) | 3 x 8-12 |  |
 | B2 | Pec Deck (seat high, lower chest bias) | 2 x 12-15 |  |
-| C | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 |  |
+| C | Reverse Fly / Face Pull (upper back, elbows flared) | 2 x 12-15 | 28 |
 
 ---
 
