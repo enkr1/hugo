@@ -10,7 +10,7 @@ draft: false
 ---
 
 <style>
-@page { margin: 4mm; }
+@page { margin: 2mm; }
 @media print {
   .left-sidebar, .right-sidebar, .sidebar,
   .toc-left-sidebar,
@@ -36,7 +36,7 @@ draft: false
     gap: 0 !important;
   }
   body, .main-article {
-    font-size: 6.6pt !important;
+    font-size: 7pt !important;
     line-height: 1.0 !important;
     letter-spacing: -0.15px !important;
   }
@@ -270,8 +270,8 @@ Read LEFT→RIGHT for derivatives, right column for antiderivatives ($+C$ implic
 | $\cos^{-1} x$ | $-\frac{1}{\sqrt{1-x^2}}$ | — |
 | $\tan^{-1} x$ | $\frac{1}{1+x^2}$ | — |
 | $\cot^{-1} x$ | $-\frac{1}{1+x^2}$ | — |
-| $\sec^{-1} x$ | $\frac{1}{|x|\sqrt{x^2-1}}$ | — |
-| $\csc^{-1} x$ | $-\frac{1}{|x|\sqrt{x^2-1}}$ | — |
+| $\sec^{-1} x$ | $\frac{1}{\lvert x \rvert \sqrt{x^2-1}}$ | — |
+| $\csc^{-1} x$ | $-\frac{1}{\lvert x \rvert \sqrt{x^2-1}}$ | — |
 | $\frac{1}{1+x^2}$ | — | $\tan^{-1} x$ |
 | $\frac{1}{\sqrt{1-x^2}}$ | — | $\sin^{-1} x$ |
 | $\frac{1}{a^2+x^2}$ | — | $\frac{1}{a}\tan^{-1}\frac{x}{a}$ |
