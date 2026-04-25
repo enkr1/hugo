@@ -652,6 +652,36 @@ $$\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B]}$$
 | False positive rate | $\Pr[B \mid \bar{A}]$ |
 | True negative rate (specificity) | $\Pr[\bar{B} \mid \bar{A}]$ |
 
+### Law of Total Probability + Extended Bayes
+
+**Decomposition (foundation):** for any events $A, B$, the set $B$ splits into two disjoint pieces along $A$:
+$$B = (B \cap A) \cup (B \cap \bar{A}) \quad \text{(disjoint)}$$
+
+**Law of Total Probability:**
+$$\Pr[B] = \Pr[B \mid A] \cdot \Pr[A] + \Pr[B \mid \bar{A}] \cdot \Pr[\bar{A}]$$
+
+**Extended Bayes (substitute LoTP into the denominator):**
+$$\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B \mid A] \cdot \Pr[A] + \Pr[B \mid \bar{A}] \cdot \Pr[\bar{A}]}$$
+
+**When to use:**
+- You DON'T know $\Pr[B]$ directly, but DO know $\Pr[B \mid A]$ and $\Pr[B \mid \bar{A}]$
+- Asked to find a "false positive rate" given other rates (rearrange extended Bayes for $\Pr[B \mid \bar{A}]$)
+
+**Proof template (T6 Q2.1 pattern):**
+1. $(B \cap A) \cup (B \cap \bar{A}) = B$ (decomposition fact)
+2. Apply $\Pr[A \mid B] = \frac{\Pr[A \cap B]}{\Pr[B]}$
+3. Replace numerator: $\Pr[A \cap B] = \Pr[B \mid A] \cdot \Pr[A]$ (multiplication rule)
+4. Replace denominator: $\Pr[B] = \Pr[(B \cap A) \cup (B \cap \bar{A})] = \Pr[B \cap A] + \Pr[B \cap \bar{A}]$ (disjoint sum)
+5. Apply multiplication rule to each: $\Pr[B \cap A] = \Pr[B \mid A] \Pr[A]$ and $\Pr[B \cap \bar{A}] = \Pr[B \mid \bar{A}] \Pr[\bar{A}]$
+
+### Sandwich complement heuristic
+
+For "$a < X < b$" or "$X \in [a, b]$" type events with awkward direct computation, use the complement:
+$$\Pr[a < X < b] = 1 - \Pr[X \leq a] - \Pr[X \geq b]$$
+or equivalently $1 - \Pr[(X \leq a) \cup (X \geq b)]$ since the two halves are disjoint.
+
+**Use when:** the bounded event spans multiple values but the two outside ranges are easier to enumerate.
+
 ### Table method (fast Bayes alternative)
 
 When given counts/totals, draw a 2×2 table — every cell is just a count. Conditional probabilities read as **(target row ∩ given column) / (column total)**.
@@ -725,11 +755,35 @@ If none match: likely Uniform (all outcomes equally likely), or distribution is 
 | Markov | $P[X \geq a] \leq E[X]/a$ | only $E[X]$ known, one-tail, $X \geq 0$ |
 | Chebyshev | $P[\lvert X - \mu \rvert \geq a] \leq \text{Var}[X]/a^2$ | $E[X]$ and $\text{Var}[X]$ known, two-tail |
 
-### Linearity of Expectation
+### Linearity of Expectation & Variance rules
 
-$$E[X + Y] = E[X] + E[Y] \quad \text{(always, even if dependent)}$$
+**Sum (always — even if dependent):**
+$$E[X + Y] = E[X] + E[Y]$$
 
-$$\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y] \quad \text{(only if independent)}$$
+**Sum (only if INDEPENDENT):**
+$$E[X \cdot Y] = E[X] \cdot E[Y]$$
+$$\text{Var}[X + Y] = \text{Var}[X] + \text{Var}[Y]$$
+
+**Scaling (constant multiplier $a$):**
+$$E[aX] = a \cdot E[X]$$
+$$\text{Var}[aX] = a^2 \cdot \text{Var}[X] \quad \text{(squared!)}$$
+
+**Variance ↔ second moment identity:**
+$$\text{Var}[X] = E[X^2] - (E[X])^2 \quad \Longleftrightarrow \quad E[X^2] = \text{Var}[X] + (E[X])^2$$
+
+**Bernoulli special case:** $Z \in \{0, 1\}$ ⟹ $Z^2 = Z$ ⟹ $E[Z^2] = E[Z] = p$ (matches $\text{Var}[Z] + p^2 = p(1-p) + p^2 = p$).
+
+### Indicator variable pattern (sum of Bernoullis)
+
+When $X$ counts "how many of $n$ events happened", decompose:
+$$X = \sum_{i=1}^{n} X_i \quad \text{where } X_i = \begin{cases} 1 & \text{if event } i \text{ occurs} \\ 0 & \text{otherwise} \end{cases}$$
+
+Each $X_i \sim \text{Bernoulli}(p_i)$, so by linearity:
+$$E[X] = \sum_{i=1}^{n} p_i$$
+
+**Critical property:** linearity of expectation works **even when $X_i$ are dependent**. So you can use this even for events that "interact" (e.g., balls-in-bins, fixed points of permutations).
+
+**Bins-and-balls example (T6 Q4):** $n$ balls into $n$ bins, $X$ = balls in bin 1. Each $X_i \sim \text{Bernoulli}(1/n)$, so $E[X] = n \cdot (1/n) = 1$. Then Markov: $\Pr[X \geq a] \leq E[X]/a = 1/a$.
 
 ### Variable legend (don't confuse under pressure)
 
