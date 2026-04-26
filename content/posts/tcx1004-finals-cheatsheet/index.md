@@ -155,6 +155,7 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - $\in$ vs $\subseteq$ — re-read every membership claim
 - Set-difference parenthesized?
 - $\lvert \mathcal{P}(A)\rvert = 2^{\lvert A\rvert}$ — not $\lvert A\rvert^2$
+- 🚨 **$A \times A$ enumeration:** list ALL combinations $(a, b)$ regardless of order. For $\lvert A\rvert = 3$, expect **9 pairs** (not 6). Common error: unconsciously skip pairs where first element > second. Systematic: fix first, iterate ALL seconds. (Past error: 2026-02-27.)
 
 ---
 
@@ -211,6 +212,8 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - **Reflexive requires every element of $A$**, not just every element appearing in $R$. If $A = \{1, 2, 3\}$ and $R = \{(1,1), (2,2)\}$, $R$ is NOT reflexive on $A$ (missing $(3,3)$).
 - **Composition is NOT commutative:** $R; S \neq S; R$ in general.
 - **$D \subseteq D; D$:** divisibility is transitive — composition with itself is contained in itself.
+- 🚨 **$R;R$ = EXACTLY 2-step chains** — NOT transitive closure. $(a,c) \in R;R \Leftrightarrow \exists b, (a,b), (b,c) \in R$. If chain is 3+ steps (e.g., $5 \to 6 \to 7 \to 8$), only the first 2-step is in $R;R$, the rest live in $R;R;R$ etc. (Past error: 2026-02-27.)
+- 🚨 **"$R \subseteq A \times A$" ≠ "$R = A \times A$"** — $\subseteq$ means ANY subset, including $\emptyset$ and tiny ones. For "true for any $R \subseteq A \times A$" claims, **try smallest/emptiest $R$ as counterexample first**. (Past error: 2026-02-27.)
 
 ### Cross-hooks
 
@@ -280,6 +283,16 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
 - Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
 
+### Telescoping sum identities (induction-friendly)
+
+When sum has consecutive cancellation pattern, expand each term as a difference:
+$$\frac{1}{r(r+1)} = \frac{1}{r} - \frac{1}{r+1}$$
+
+**Telescoping sum:**
+$$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{r+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$
+
+**Use in induction:** if asked to prove a closed-form identity, partial-fraction expansion often makes the inductive step trivial (most terms cancel).
+
 ### Pre-submit sanity checks (Unit 4)
 
 - Stated base case explicitly?
@@ -333,6 +346,23 @@ $$\sqrt{\log n} \ll \log n \ll \log^2 n \ll \sqrt{n} \ll n \ll n \log n \ll n^2 
 3. **Conclude:** $T(n) \in O(f(n))$.
 
 **Critical:** the form you conclude must match the form you assumed. If you assume $T(m) \leq c \cdot m^2$, you must conclude $T(n) \leq c \cdot n^2$ (not $c \cdot n^2 + n$).
+
+### Logarithmic / divide-and-conquer recurrence pattern
+
+For $M(n) = c \cdot M(\lfloor n/b \rfloor) + f(n)$ with $b \geq 2$ (typical: $b = 2$ for binary search / merge sort):
+
+**Algebra simplifications you'll need:**
+- $\lfloor n/b \rfloor \leq n/b$ (drop floor for upper bound)
+- $\log_b(n/b) = \log_b n - 1$ (log of quotient)
+- $\log_b(\lfloor n/b \rfloor) \leq \log_b(n/b) = \log_b n - 1$
+
+**Worked pattern (T4 Q4):** $M(n) = 2 M(\lfloor n/2 \rfloor) + n$. Guess $M(n) \leq c \cdot n \log_2 n$. Inductive step:
+
+$$M(n) \leq 2 \cdot c \cdot \tfrac{n}{2} \log_2(\tfrac{n}{2}) + n = c \cdot n (\log_2 n - 1) + n = c \cdot n \log_2 n - cn + n \leq c \cdot n \log_2 n \quad (c \geq 1)$$
+
+Conclusion: $M(n) \in O(n \log n)$.
+
+**Key trick:** the $-cn + n$ term must absorb (i.e., $cn \geq n$ → $c \geq 1$). This is the "tighten constant to absorb slack" rule.
 
 ### Loop invariant — proof structure
 
@@ -441,6 +471,18 @@ $$\lvert A \cup B \cup C\rvert = \lvert A\rvert + \lvert B\rvert + \lvert C\rver
 - $\binom{n}{0} = 1$ (one way to choose nothing — the empty set)
 - $\binom{n}{n} = 1$
 - $P(0, 0) = 1$ (the empty sequence)
+
+### Circular permutations
+
+For $n$ distinct objects arranged in a **circle** (rotations equivalent):
+$$\text{circular arrangements} = (n - 1)!$$
+
+**Why:** linear count is $n!$; in a circle, $n$ rotations of any arrangement look identical → divide by $n$.
+
+**If reflections also equivalent** (clockwise = counter-clockwise — e.g., necklaces, undirected seating):
+$$\frac{(n - 1)!}{2}$$
+
+**Use cases:** seating around round table (Q: $(n-1)!$), beads on a necklace (necklace = $(n-1)!/2$), counting cycles in graphs (see Unit 7).
 
 ### Stars and bars
 
@@ -555,7 +597,10 @@ $$\left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\ri
 $$\sum_{v \in V} \deg(v) = 2 \cdot \lvert E\rvert$$
 **Why:** each edge $(u,v)$ contributes $+1$ to $\deg(u)$ and $+1$ to $\deg(v)$ → contributes $2$ total.
 
-**Corollary:** the number of odd-degree vertices is always even.
+**Corollary 1:** the number of **odd-degree vertices** is always even.
+
+**Corollary 2 (parity impossibility — T5 Q3 pattern):** if a question gives degree-sequence $(d_1, \ldots, d_n)$, compute $\sum d_i$. **If odd, the graph CANNOT exist** — handshake forces even sum. Common impossibility test:
+- "Can 7 people each shake hands with exactly 5 others?" → $\sum = 35$ (odd) → **impossible**.
 
 #### Theorem 2: Edges in $K_n$
 $$\lvert E(K_n)\rvert = \binom{n}{2} = \frac{n(n-1)}{2}$$
@@ -566,6 +611,21 @@ $$\lvert E(K_n)\rvert = \binom{n}{2} = \frac{n(n-1)}{2}$$
 - **Max nodes:** $\frac{k^{h+1} - 1}{k - 1}$ (every internal node has all $k$ children — geometric series $1 + k + k^2 + \ldots + k^h$)
 
 **Sanity check ($k = 3$, $h = 2$):** min $= 3$, max $= 1 + 3 + 9 = 13 = \frac{3^3 - 1}{2}$ ✓
+
+### Cycle counting in a complete graph $K_n$
+
+**Number of distinct $k$-cycles in $K_n$** (for $3 \leq k \leq n$):
+$$\binom{n}{k} \cdot \frac{(k-1)!}{2}$$
+
+**Decomposition:**
+- $\binom{n}{k}$ — choose which $k$ vertices form the cycle
+- $(k-1)!$ — arrange them in a circle (circular permutation, see Unit 6)
+- $\div 2$ — undirected: clockwise ≡ counter-clockwise
+
+**Total cycles in $K_n$ (sum over all sizes):**
+$$\sum_{k=3}^{n} \binom{n}{k} \cdot \frac{(k-1)!}{2}$$
+
+**Sanity check ($n = 4$, $k = 3$):** $\binom{4}{3} \cdot \frac{2!}{2} = 4 \cdot 1 = 4$ triangles in $K_4$ ✓
 
 ### Pigeonhole Principle
 
