@@ -447,6 +447,16 @@ $$\lvert A \cup B\rvert = \lvert A\rvert + \lvert B\rvert - \lvert A \cap B\rver
 **Three sets:**
 $$\lvert A \cup B \cup C\rvert = \lvert A\rvert + \lvert B\rvert + \lvert C\rvert - \lvert A \cap B\rvert - \lvert B \cap C\rvert - \lvert A \cap C\rvert + \lvert A \cap B \cap C\rvert$$
 
+**General PIE for $n$ sets:**
+$$\left\lvert \bigcup_{i=1}^{n} A_i \right\rvert = \sum_{k=1}^{n} (-1)^{k+1} \sum_{1 \leq i_1 < i_2 < \ldots < i_k \leq n} \lvert A_{i_1} \cap A_{i_2} \cap \ldots \cap A_{i_k}\rvert$$
+
+**Reading the formula:** alternating signs by intersection-size $k$ — singles add (+), pairs subtract (−), triples add (+), quadruples subtract (−), etc. Last term has sign $(-1)^{n+1}$.
+
+**4-set explicit form:**
+$$\lvert A \cup B \cup C \cup D\rvert = \sum \lvert A_i\rvert - \sum_{i<j} \lvert A_i \cap A_j\rvert + \sum_{i<j<k} \lvert A_i \cap A_j \cap A_k\rvert - \lvert A \cap B \cap C \cap D\rvert$$
+
+**Term count:** for $n$ sets, there are $\binom{n}{1} + \binom{n}{2} + \ldots + \binom{n}{n} = 2^n - 1$ total terms (every non-empty subset of indices contributes one).
+
 **"Divisible by $x$ or $y$" pattern:** for $A \cap B$, divisibility condition is $\text{lcm}(x, y)$ — NOT $xy$.
 
 | $x, y$ | $\text{lcm}(x, y)$ | $A \cap B$ counts multiples of |
