@@ -27,36 +27,36 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 | # | Rule | Pattern | Justification Format |
 |---|------|---------|---------------------|
-| 1 | Definition unpacking | Expand/contract a definition | `[Unpacking definition of even(x)]` |
-| 2 | Logical equivalence | $\lnot(p \lor q) \equiv \lnot p \land \lnot q$ | `[Logically equivalent to line N]` |
-| 3 | Basic algebra | $x + 5 = 12 \to x = 7$ | `[By basic algebra from line N]` |
-| 4 | Specialisation | $p \land q \to p$ | `[By specialisation on line N]` |
-| 5 | Conjunction | $p, \, q \to p \land q$ | `[By conjunction on lines N and M]` |
-| 6 | Generalisation | $p \to p \lor q$ | `[By generalisation on line N]` |
-| 7 | Proof by cases | $p \lor q$, each case $\to r$ | `[Proof by cases on lines N, M.x, O.x]` |
-| 8 | Modus ponens | $p \to q, \, p \implies q$ | `[By modus ponens on lines N and M]` |
-| 9 | Modus tollens | $p \to q, \, \lnot q \implies \lnot p$ | `[By modus tollens on lines N and M]` |
-| 10 | Implication introduction | Assume $p$, derive $q \implies p \to q$ | `[Implication introduction on lines N and N.x]` |
-| 11 | Double negation | $\lnot(\lnot p) \equiv p$ | `[Double negation on line N]` |
-| 12a | Existential generalisation | $c \in A, \, P(c) \implies \exists x \in A \, [P(x)]$ | `[Existential generalisation on lines N and M]` |
-| 12b | Existential instantiation | $\exists x \in A \, [P(x)] \implies$ Let $c \in A$ s.t. $P(c)$ | `[Existential instantiation on line N]` |
-| 12c | Universal generalisation | arb $x \in A$, $P(x) \implies \forall x \in A \, [P(x)]$ | `[Universal generalisation on lines N and M]` |
-| 12d | Universal instantiation | $\forall x \in A \, [P(x)], \, c \in A \implies P(c)$ | `[Universal instantiation on lines N and M]` |
-| 13 | Using lemma | Apply a proven result | `[By lemma]` or `[By Lemma X]` |
-| 14 | Contradiction | $a \land \lnot a \implies \bot$ | `[Contradiction on line N]` |
-| 15 | Proof by contradiction | Assume $\lnot p$, derive $\bot \implies p$ | `[Proof by contradiction on lines N and M]` |
+| 1 | Definition unpacking | Expand/contract a definition | [Unpacking definition of even(x)] |
+| 2 | Logical equivalence | $\lnot(p \lor q) \equiv \lnot p \land \lnot q$ | [Logically equivalent to line N] |
+| 3 | Basic algebra | $x + 5 = 12 \to x = 7$ | [By basic algebra from line N] |
+| 4 | Specialisation | $p \land q \to p$ | [By specialisation on line N] |
+| 5 | Conjunction | $p, \, q \to p \land q$ | [By conjunction on lines N and M] |
+| 6 | Generalisation | $p \to p \lor q$ | [By generalisation on line N] |
+| 7 | Proof by cases | $p \lor q$, each case $\to r$ | [Proof by cases on lines N, M.x, O.x] |
+| 8 | Modus ponens | $p \to q, \, p \implies q$ | [By modus ponens on lines N and M] |
+| 9 | Modus tollens | $p \to q, \, \lnot q \implies \lnot p$ | [By modus tollens on lines N and M] |
+| 10 | Implication introduction | Assume $p$, derive $q \implies p \to q$ | [Implication introduction on lines N and N.x] |
+| 11 | Double negation | $\lnot(\lnot p) \equiv p$ | [Double negation on line N] |
+| 12a | Existential generalisation | $c \in A, \, P(c) \implies \exists x \in A \, [P(x)]$ | [Existential generalisation on lines N and M] |
+| 12b | Existential instantiation | $\exists x \in A \, [P(x)] \implies$ Let $c \in A$ s.t. $P(c)$ | [Existential instantiation on line N] |
+| 12c | Universal generalisation | arb $x \in A$, $P(x) \implies \forall x \in A \, [P(x)]$ | [Universal generalisation on lines N and M] |
+| 12d | Universal instantiation | $\forall x \in A \, [P(x)], \, c \in A \implies P(c)$ | [Universal instantiation on lines N and M] |
+| 13 | Using lemma | Apply a proven result | [By lemma] or [By Lemma X] |
+| 14 | Contradiction | $a \land \lnot a \implies \bot$ | [Contradiction on line N] |
+| 15 | Proof by contradiction | Assume $\lnot p$, derive $\bot \implies p$ | [Proof by contradiction on lines N and M] |
 
 ### Justification Patterns
 
-**Format:** `[By RULE_NAME on line(s) N]` or `[RULE_NAME on lines N and M]`
+**Format:** [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and M]
 
 | Lines needed | Pattern | Examples |
 |-------------|---------|----------|
-| Single line | `on line N` | Specialisation, generalisation, definition unpacking |
-| Two lines | `on lines N and M` | Modus ponens, universal instantiation, conjunction |
-| Multi-line | `on lines N, M.x, O.x` | Proof by cases (the OR + each case conclusion) |
+| Single line | on line N | Specialisation, generalisation, definition unpacking |
+| Two lines | on lines N and M | Modus ponens, universal instantiation, conjunction |
+| Multi-line | on lines N, M.x, O.x | Proof by cases (the OR + each case conclusion) |
 
-> "By" prefix is optional — both `[By specialisation on line 1]` and `[Proof by cases on lines 1, 2.1, 3.1]` are valid.
+> "By" prefix is optional — both [By specialisation on line 1] and [Proof by cases on lines 1, 2.1, 3.1] are valid.
 
 ### Line Numbering Convention
 
@@ -83,7 +83,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 ### Common gotchas (Unit 1)
 
 - **Use TCX1004 official rule names** — "Specialisation" not "Simplification", "Generalisation" not "Addition". Mismatched names lose marks even with correct logic.
-- **Proof by cases citation needs every branch:** `[Proof by cases on lines N, M.x, O.x]` — cite the OR statement AND each case's conclusion.
+- **Proof by cases citation needs every branch:** [Proof by cases on lines N, M.x, O.x] — cite the OR statement AND each case's conclusion.
 - **Indentation = scope:** lines 1.1, 1.2 live INSIDE line 1's scope. Don't reference outside-scope lines without de-indenting.
 - **Modus ponens vs modus tollens:** $p \to q, p \implies q$ (ponens) vs $p \to q, \lnot q \implies \lnot p$ (tollens). Don't swap.
 - **Existential vs Universal instantiation:** existential needs "Let $c \in A$ be such that..." (introducing a witness). Universal just plugs in $c$.
@@ -97,7 +97,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 ### Sanity checks (Unit 1)
 
-- Every line cites a rule with proper format `[By RULE on line(s) N]`?
+- Every line cites a rule with proper format [By RULE on line(s) N]?
 - Used **TCX1004's** rule names (Rules 1-15), not generic logic textbook names?
 - Indentation matches scope (1.1 inside 1's scope, etc.)?
 - Final line has the conclusion you wanted to prove?
