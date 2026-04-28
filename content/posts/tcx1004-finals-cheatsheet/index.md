@@ -14,14 +14,12 @@ draft: false
 
 full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}).
 
-**Exam:** Apr 30, 2026 · 17:00 · LT7A Seat 64 · **Open Book** · No calculators · 1.5h
-**Tested scope:** Unit 6+ (Combinatorics, Graph Theory, Probability, Distributions/Expectation/Variance) — *per current sprint inference*
-**Reference scope (this doc):** Units 1-9 (full module — Prof has not confirmed scope reduction; covering everything as insurance against scope surprise)
-**Note:** leave answers unsimplified.
+- **Exam:** Apr 30, 2026 · 17:00 · LT7A Seat 64 · **Open Book** · No calculators · 1.5h
+- **Tested scope:** Unit 6+ (Combinatorics, Graph Theory, Probability, Distributions/Expectation/Variance) — *per current sprint inference*
+- **Reference scope (this doc):** Units 1-9 (full module — Prof has not confirmed scope reduction; covering everything as insurance against scope surprise)
+- **Note:** leave answers unsimplified.
 
 </div>
-
----
 
 ## Unit 1: Logic & Proofs (reference)
 
@@ -81,6 +79,30 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | Naming from $\exists$ | "Let $t \in A$ be such that $P(t)$." |
 | Direct proof | "Assume [antecedent]." → derive → conclude [consequent] |
 | Proof by contradiction | "Assume, for contradiction, that $\lnot$[statement]." |
+
+### Common gotchas (Unit 1)
+
+- **Use TCX1004 official rule names** — "Specialisation" not "Simplification", "Generalisation" not "Addition". Mismatched names lose marks even with correct logic.
+- **Proof by cases citation needs every branch:** `[Proof by cases on lines N, M.x, O.x]` — cite the OR statement AND each case's conclusion.
+- **Indentation = scope:** lines 1.1, 1.2 live INSIDE line 1's scope. Don't reference outside-scope lines without de-indenting.
+- **Modus ponens vs modus tollens:** $p \to q, p \implies q$ (ponens) vs $p \to q, \lnot q \implies \lnot p$ (tollens). Don't swap.
+- **Existential vs Universal instantiation:** existential needs "Let $c \in A$ be such that..." (introducing a witness). Universal just plugs in $c$.
+
+### Cross-hooks
+
+- Logic rules are the formal language of **all proof-based units** — set equality (Unit 2), induction (Unit 4), Big-O (Unit 5)
+- **Definition unpacking** (Rule 1) is the most-used rule across all units — every formal proof starts with it
+- **Proof by contradiction** (Rule 15) is the standard technique for impossibility proofs (Unit 7 handshake parity, Unit 6 PIE counterexamples)
+- **Existential generalisation** (Rule 12a) is how you *prove* relations are non-empty / structures exist
+
+### Sanity checks (Unit 1)
+
+- Every line cites a rule with proper format `[By RULE on line(s) N]`?
+- Used **TCX1004's** rule names (Rules 1-15), not generic logic textbook names?
+- Indentation matches scope (1.1 inside 1's scope, etc.)?
+- Final line has the conclusion you wanted to prove?
+- For $\forall$ proofs: opened with "Let $x$ be arbitrary"?
+- For $\exists$ proofs: provided a concrete witness?
 
 ---
 
@@ -153,7 +175,7 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - Set ops underpin **PIE in Unit 6** (sum/intersection of events)
 - Cartesian product is foundation for **Relations (Unit 3)** and **sample-space pairs in Unit 8**
 
-### Pre-submit sanity checks (Unit 2)
+### Sanity checks (Unit 2)
 
 - Used double subset for "show $A = B$"? Both directions stated?
 - $\in$ vs $\subseteq$ — re-read every membership claim
@@ -224,7 +246,7 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - A graph edge set is a relation: $E \subseteq V \times V$ → **Unit 7** (graphs are special relations)
 - Equivalence relations (reflexive + symmetric + transitive) partition the set — useful in counting equivalence classes (**Unit 6** combinatorics)
 
-### Pre-submit sanity checks (Unit 3)
+### Sanity checks (Unit 3)
 
 - For "is $R$ reflexive?" — checked every element of $A$, not just ones appearing in $R$?
 - Symmetric & anti-symmetric — checked separately, didn't assume opposites
@@ -273,6 +295,16 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 | $S(n) = S(n-1) + S(n-2), \, S(1) = 1, S(2) = 2$ | Fibonacci-shifted | stair climbing |
 | $C(n) = C(\lceil n/2 \rceil) + 1, \, C(1) = 1$ | $C(n) = \lceil \log_2 n\rceil + 1$ | binary search |
 
+### Telescoping sum identities (induction-friendly)
+
+When sum has consecutive cancellation pattern, expand each term as a difference:
+$$\frac{1}{r(r+1)} = \frac{1}{r} - \frac{1}{r+1}$$
+
+**Telescoping sum:**
+$$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{r+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$
+
+**Use in induction:** if asked to prove a closed-form identity, partial-fraction expansion often makes the inductive step trivial (most terms cancel).
+
 ### Common gotchas (Unit 4)
 
 - **Forgotten base case:** induction is invalid without it — the entire chain collapses.
@@ -287,17 +319,7 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
 - Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
 
-### Telescoping sum identities (induction-friendly)
-
-When sum has consecutive cancellation pattern, expand each term as a difference:
-$$\frac{1}{r(r+1)} = \frac{1}{r} - \frac{1}{r+1}$$
-
-**Telescoping sum:**
-$$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{r+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$
-
-**Use in induction:** if asked to prove a closed-form identity, partial-fraction expansion often makes the inductive step trivial (most terms cancel).
-
-### Pre-submit sanity checks (Unit 4)
+### Sanity checks (Unit 4)
 
 - Stated base case explicitly?
 - Inductive hypothesis stated *as an assumption*, not as a fact?
@@ -390,7 +412,7 @@ To prove a loop computes a correct result, identify an **invariant** (statement 
 - Substitution method applies to **divide-and-conquer recurrences** (binary search, merge sort)
 - Loop invariants are induction in disguise — feeds back to Unit 4 templates
 
-### Pre-submit sanity checks (Unit 5)
+### Sanity checks (Unit 5)
 
 - $O$, $\Omega$, $\Theta$ — gave the *tightest* one when possible?
 - Substitution conclusion form matches assumption form?
@@ -402,7 +424,7 @@ To prove a loop computes a correct result, identify an **invariant** (statement 
 
 ## Unit 6: Combinatorics
 
-### Decision tree — what am I counting?
+### Decision tree — what's the question asking?
 
 | Question shape | Formula |
 |---------------|---------|
@@ -536,7 +558,25 @@ $$\left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\ri
 
 **Use case:** lower-bounding the running time of "try all subsets" / "try all triplets" algorithms — leads to exponential-in-$n$ scaling, motivates better algorithms.
 
-### Pre-submit sanity checks (Unit 6)
+### Common gotchas (Unit 6)
+
+- **Pairwise vs triple-wise disjoint:** for sum rule, every PAIR must be disjoint, not just the triple intersection $A \cap B \cap C = \emptyset$ alone.
+- **Order matters trap:** $P(n,k)$ vs $\binom{n}{k}$ — re-read the question for "arrange" / "order" / "sequence" (= P) vs "choose" / "select" / "subset" (= C).
+- **lcm not product** for "divisible by both $x$ and $y$" — $\text{lcm}(2, 4) = 4$ not $8$.
+- **Off-by-one** on inclusive ranges: integers in $[a, b]$ = $b - a + 1$ (always $+1$).
+- **Empty case conventions:** $0! = 1$, $\binom{n}{0} = 1$, $P(0, 0) = 1$ (NOT zero).
+- **Stars and bars sign error:** for $x_i \geq 0$ summing to $n$, formula is $\binom{n + t - 1}{t - 1}$ — $(t-1)$ bars, NOT $t$ bars.
+- **"At least $m$" complement faster:** $2^n - \sum_{i<m} \binom{n}{i}$ usually beats direct summation $\sum_{i \geq m} \binom{n}{i}$.
+
+### Cross-hooks
+
+- Set ops (Unit 2) underpin **PIE** (sum/union of disjoint cases)
+- **Permutations of $n$ distinct items** = $n!$ ↔ **circular** = $(n-1)!$ ↔ **cycle counting in $K_n$** (Unit 7)
+- $\binom{n}{2}$ = number of edges in complete graph $K_n$ (Unit 7)
+- Stirling / binomial bounds = **Big-O sense of scale** for combinatorial algorithms (Unit 5)
+- Combinatorial identities (e.g., $\binom{n}{k} = \binom{n}{n-k}$) often proven by **induction** (Unit 4)
+
+### Sanity checks (Unit 6)
 
 - **Disjoint check** before sum rule — pairwise, not just triple-wise
 - **Order matters?** → $P(n, k)$, not $\binom{n}{k}$
@@ -549,7 +589,7 @@ $$\left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\ri
 
 ## Unit 7: Graph Theory
 
-### Decision tree — what does the question want?
+### Decision tree — what's the question asking?
 
 | Question shape | Tool |
 |---------------|------|
@@ -652,7 +692,25 @@ $n$ pigeons in $m$ pigeonholes ⟹ some hole contains $\geq \lceil n/m \rceil$ p
 
 **Example:** 6M people in Singapore, max 1M possible hair counts ⟹ ≥ $\lceil 6\text{M}/1\text{M} \rceil = 6$ people share a hair count.
 
-### Pre-submit sanity checks (Unit 7)
+### Common gotchas (Unit 7)
+
+- **Self-loop counts twice in degree:** edge $(v, v)$ contributes degree 2 to vertex $v$ (endpoint twice), even though it's one edge.
+- **Reflexive ≠ "every loop in $R$":** for graphs as relations on $V$, reflexive means every vertex has a self-loop; missing one fails reflexivity.
+- **Bipartite ≠ NO cycles** — bipartite means no **odd-length** cycles. Even cycles are fine.
+- **Odd-degree count is always even** (Handshake corollary): if you count odd-degree vertices and get an odd number, you miscounted edges.
+- **Tree edge count is rigid:** $\lvert E\rvert = \lvert V\rvert - 1$. If counts disagree, structure is NOT a tree (has cycle or disconnected).
+- **$k$-ary "max" tree formula assumes full saturation:** every internal node has all $k$ children. Real trees often hit fewer; the formula is an upper bound.
+- **Pigeonhole gives lower bound only:** "at least $\lceil n/m \rceil$" — actual count could be higher; don't claim equality.
+
+### Cross-hooks
+
+- Graph edge set $E \subseteq V \times V$ is a **relation on $V$** (Unit 3) — undirected = symmetric, simple = no self-loops + no duplicate, etc.
+- **Cycle counting in $K_n$** uses **circular permutations** + **combinations** (Unit 6)
+- **Pigeonhole** applies anywhere with bounded categories — combinatorics, probability, distributions
+- **Tree node-count bounds** ($\frac{k^{h+1} - 1}{k-1}$) come from **geometric series** = **induction** (Unit 4)
+- **Handshake parity** is a 1-line proof using $\sum$ counting — same flavor as combinatorial identities (Unit 6)
+
+### Sanity checks (Unit 7)
 
 - **Self-loop** contributes **2** to degree (endpoint twice)
 - **Bipartite** ⟺ no odd cycle (even cycles are fine)
@@ -792,7 +850,25 @@ When the problem describes a sequence of choices (e.g., Monty Hall):
 
 **Probabilities along a branch are conditional**, so multiplying = chain rule of probability.
 
-### Pre-submit sanity checks (Unit 8)
+### Common gotchas (Unit 8)
+
+- **Independence ≠ disjoint** — these are OPPOSITES at non-zero probability. Disjoint $A \cap B = \emptyset$ → $\Pr[A \cap B] = 0$, but independence wants $\Pr[A] \cdot \Pr[B] > 0$.
+- **Bayes direction confusion:** $\Pr[A \mid B]$ vs $\Pr[B \mid A]$ — the "given" condition determines the denominator. Re-read every conditional bar.
+- **Pairwise vs mutual independence:** events can be pairwise independent but NOT mutually independent (3-coin example: $D_1, D_2, D_3$). Always check all subsets.
+- **Disjoint required for sum:** $\Pr[A \cup B] = \Pr[A] + \Pr[B]$ ONLY when disjoint. General case needs PIE: $-\Pr[A \cap B]$.
+- **LoTP requires partition:** $\Pr[B] = \Pr[B \mid A]\Pr[A] + \Pr[B \mid \bar{A}]\Pr[\bar{A}]$ uses $A, \bar{A}$ as a 2-partition. For 3+ partition, sum over all parts.
+- **Tree-method conditional probabilities:** edges from a node have probabilities **conditional on reaching that node** — they sum to 1 from each branching point, not over the whole tree.
+- **Probability outside $[0, 1]$** = arithmetic error somewhere upstream.
+
+### Cross-hooks
+
+- Sample space $\Omega$ = a **set** (Unit 2); events = subsets of $\Omega$
+- "Counting outcomes uniformly" → $\Pr[E] = \lvert E\rvert / \lvert \Omega\rvert$ uses **combinatorics** (Unit 6) for $\lvert E\rvert$
+- Conditional probability formalism feeds **distribution definitions** (Unit 9)
+- Bayes' Theorem proof = chain rule + LoTP — induction-flavored derivation (Unit 4 style)
+- Independence multiplicative form $\Pr[A \cap B] = \Pr[A]\Pr[B]$ ↔ **$E[XY] = E[X]E[Y]$** for independent random variables (Unit 9)
+
+### Sanity checks (Unit 8)
 
 - $0 \leq \Pr[\cdot] \leq 1$ — never negative, never $>1$
 - $\Pr[\Omega] = 1$ and $\Pr[\emptyset] = 0$
@@ -871,12 +947,31 @@ $$E[X] = \sum_{i=1}^{n} p_i$$
 
 $a$ and $\sigma$ are different variables even when they share a numeric value.
 
----
+### Common gotchas (Unit 9)
 
-## Pre-submit sanity checks
+- **$E$ vs $\text{Var}$ scaling:** $E[aX] = a \cdot E[X]$ but $\text{Var}[aX] = a^2 \cdot \text{Var}[X]$ — squared, not linear.
+- **$E[XY]$ requires independence:** $E[X+Y] = E[X] + E[Y]$ is ALWAYS true, but $E[XY] = E[X]E[Y]$ ONLY when $X, Y$ independent.
+- **$\text{Var}[X+Y]$ requires independence:** general $\text{Var}[X+Y] = \text{Var}[X] + \text{Var}[Y] + 2\text{Cov}[X,Y]$; covariance vanishes only for independent vars.
+- **Chebyshev variable confusion:** $a$ (threshold) and $\sigma$ (std dev) are different variables even when sharing a numeric value. Plug carefully.
+- **Markov needs $X \geq 0$:** doesn't apply to signed random variables.
+- **Geometric variance formula:** $(1-p)/p^2$ — easy to forget the squared denominator.
+- **Indicator pattern works for dependent $X_i$ too:** linearity of expectation is unconditional. Use it freely for "count events" problems.
+- **$E[X^2] \neq (E[X])^2$:** by definition, $\text{Var}[X] = E[X^2] - (E[X])^2 \geq 0$, so $E[X^2] \geq (E[X])^2$ with equality only when $\text{Var}[X] = 0$.
+
+### Cross-hooks
+
+- Distributions are **named random variables** (Unit 8 RVs with specific PMFs)
+- Bernoulli + Binomial connect to **combinatorics** (Unit 6) — Binomial PMF uses $\binom{n}{k}$
+- **Indicator variable pattern** decomposes a count into sum of Bernoullis — heavy use in graph-theory expectations (Unit 7) and combinatorial probabilistic arguments
+- Chebyshev / Markov bounds are the "distribution-free" tail bounds — used when distribution is unknown but moments are known
+- $E[X^2] = \text{Var}[X] + (E[X])^2$ identity often shortcuts variance computation for Bernoulli-like vars
+
+### Sanity checks (Unit 9)
 
 - probability $\in [0, 1]$ — never negative
 - $E[X] \in [\min X, \max X]$ — NOT bounded by $[0, 1]$
 - re-add arithmetic on 1-mark questions
 - plugged $a$ (threshold) or $\sigma$ (std dev)? they are different
 - Chebyshev monotonicity: larger $a$ → smaller bound. if bound grew, you plugged wrong.
+- $\text{Var}[aX] = a^2 \text{Var}[X]$ — squared coefficient
+- $E[XY] = E[X]E[Y]$ — only if independent
