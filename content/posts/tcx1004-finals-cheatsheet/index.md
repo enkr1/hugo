@@ -10,12 +10,16 @@ math: true
 draft: false
 ---
 
+<div class="print-hide">
+
 full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}).
 
 **Exam:** Apr 30, 2026 · 17:00 · LT7A Seat 64 · **Open Book** · No calculators · 1.5h
 **Tested scope:** Unit 6+ (Combinatorics, Graph Theory, Probability, Distributions/Expectation/Variance) — *per current sprint inference*
 **Reference scope (this doc):** Units 1-9 (full module — Prof has not confirmed scope reduction; covering everything as insurance against scope surprise)
 **Note:** leave answers unsimplified.
+
+</div>
 
 ---
 
