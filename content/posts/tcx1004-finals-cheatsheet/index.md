@@ -535,6 +535,52 @@ $$\lvert A \cup B \cup C \cup D\rvert = \sum \lvert A_i\rvert - \sum_{i<j} \lver
 | $2, 4$ | $4$ | $4$ (not $8$) |
 | $6, 10$ | $30$ | $30$ (not $60$) |
 
+### Worked example — 3-set PIE (food popularity contest)
+
+**The problem:** at a food popularity contest, voters can vote for any combination of three options: $A$ = Lor Mee, $B$ = Nasi Lemak, $C$ = Chicken Rice. Each voter must pick at least one. We collected:
+
+| Vote category | Count |
+|---|---|
+| Voted for $A$ (possibly + others) | $\lvert A\rvert = 10$ |
+| Voted for $B$ (possibly + others) | $\lvert B\rvert = 7$ |
+| Voted for $C$ (possibly + others) | $\lvert C\rvert = 9$ |
+| Voted for both $A$ AND $B$ | $\lvert A \cap B\rvert = 3$ |
+| Voted for both $A$ AND $C$ | $\lvert A \cap C\rvert = 5$ |
+| Voted for both $B$ AND $C$ | $\lvert B \cap C\rvert = 2$ |
+| Voted for all three | $\lvert A \cap B \cap C\rvert = 1$ |
+
+**Find:** total number of voters surveyed (i.e., $\lvert A \cup B \cup C\rvert$).
+
+**Why use PIE (not sum rule):** the three sets are NOT disjoint — some voters appear in 2 or 3 sets. Direct sum $\lvert A\rvert + \lvert B\rvert + \lvert C\rvert$ would double/triple-count overlaps. PIE corrects for this.
+
+**Apply 3-set PIE formula:**
+
+$$\lvert A \cup B \cup C\rvert = \lvert A\rvert + \lvert B\rvert + \lvert C\rvert - \lvert A \cap B\rvert - \lvert A \cap C\rvert - \lvert B \cap C\rvert + \lvert A \cap B \cap C\rvert$$
+
+**Plug in values:**
+$$\lvert A \cup B \cup C\rvert = 10 + 7 + 9 - 3 - 5 - 2 + 1$$
+
+**Compute step-by-step (no calc):**
+- $10 + 7 + 9 = 26$ (singles)
+- $3 + 5 + 2 = 10$ (pairs subtract)
+- $26 - 10 = 16$ (after subtracting double-counts)
+- $16 + 1 = 17$ (add back the triple-counted center)
+
+**Answer:** $\lvert A \cup B \cup C\rvert = 17$ voters.
+
+**Visual sanity (Venn diagram intuition):**
+- Add 3 single circles → triple intersection counted 3×, pair regions counted 2×
+- Subtract 3 pair intersections → triple intersection now counted $3 - 3 = 0$×
+- Add back triple intersection → counted exactly 1×
+
+Each region appears exactly once in the final count. ✓
+
+**Where this can go wrong:**
+1. **Sign error:** PIE alternates $+, -, +$ for $\binom{n}{1}, \binom{n}{2}, \binom{n}{3}$. Last term ($n=3$, sign $(-1)^{n+1} = +$) is **add**, not subtract. Re-check.
+2. **Missing the +$\lvert A \cap B \cap C\rvert$ term:** if you only do 2-set PIE applied 3 times, you under-count. The triple intersection MUST be added back.
+3. **Confusing "voted for both A AND B" with "voted ONLY for both A AND B":** here we treat the given $\lvert A \cap B\rvert = 3$ as the FULL pairwise intersection (people who voted for at least both A and B, possibly + C). If the problem said "exactly A and B (not C)", that'd be $\lvert A \cap B\rvert - \lvert A \cap B \cap C\rvert = 3 - 1 = 2$ — different number.
+4. **Forgetting "must vote for at least one":** if voters could vote for nothing, you'd need $\lvert$ universe $\rvert$ separately. Here every voter is in $A \cup B \cup C$, so total voters = union size.
+
 ### Permutations & Combinations — master table
 
 | Quantity | Formula | Meaning |
