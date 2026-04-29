@@ -21,6 +21,116 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 </div>
 
+## Quick Numerical Reference (no-calc cheats)
+
+### Powers of 2
+
+| $n$ | $2^n$ | | $n$ | $2^n$ |
+|---|---|---|---|---|
+| 0 | 1 |  | 8 | 256 |
+| 1 | 2 |  | 9 | 512 |
+| 2 | 4 |  | 10 | 1024 |
+| 3 | 8 |  | 12 | 4096 |
+| 4 | 16 |  | 16 | 65536 |
+| 5 | 32 |  | 20 | 1048576 (~1M) |
+| 6 | 64 |  | 32 | ~4.3 × 10⁹ |
+| 7 | 128 |  | 64 | ~1.8 × 10¹⁹ |
+
+### Factorials
+
+| $n$ | $n!$ |
+|---|---|
+| 0 | 1 |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 6 |
+| 4 | 24 |
+| 5 | 120 |
+| 6 | 720 |
+| 7 | 5040 |
+| 8 | 40 320 |
+| 9 | 362 880 |
+| 10 | 3 628 800 |
+
+### Pascal's triangle — $\binom{n}{k}$ (rows $n = 0$ to $7$)
+
+|  | $k=0$ | $k=1$ | $k=2$ | $k=3$ | $k=4$ | $k=5$ | $k=6$ | $k=7$ |
+|---|---|---|---|---|---|---|---|---|
+| $n=0$ | 1 |  |  |  |  |  |  |  |
+| $n=1$ | 1 | 1 |  |  |  |  |  |  |
+| $n=2$ | 1 | 2 | 1 |  |  |  |  |  |
+| $n=3$ | 1 | 3 | 3 | 1 |  |  |  |  |
+| $n=4$ | 1 | 4 | 6 | 4 | 1 |  |  |  |
+| $n=5$ | 1 | 5 | 10 | 10 | 5 | 1 |  |  |
+| $n=6$ | 1 | 6 | 15 | 20 | 15 | 6 | 1 |  |
+| $n=7$ | 1 | 7 | 21 | 35 | 35 | 21 | 7 | 1 |
+
+**Identity:** $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ (Pascal's rule — each entry = sum of two above)
+
+**Symmetry:** $\binom{n}{k} = \binom{n}{n-k}$ (e.g., $\binom{7}{2} = \binom{7}{5} = 21$)
+
+### Common sum identities
+
+| Identity | Formula |
+|----------|---------|
+| Arithmetic sum | $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ |
+| Sum of squares | $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$ |
+| Sum of cubes | $\sum_{i=1}^{n} i^3 = \left( \frac{n(n+1)}{2} \right)^2$ |
+| Geometric (any $r \neq 1$) | $\sum_{i=0}^{n} r^i = \frac{r^{n+1} - 1}{r - 1}$ |
+| Geometric special $r = 2$ | $\sum_{i=0}^{n} 2^i = 2^{n+1} - 1$ |
+| All subsets sum | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$ |
+| Alternating subsets | $\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$ ($n \geq 1$) |
+
+### Powers of small primes (mental sanity)
+
+| $n$ | $3^n$ | $5^n$ | $7^n$ |
+|---|---|---|---|
+| 0 | 1 | 1 | 1 |
+| 1 | 3 | 5 | 7 |
+| 2 | 9 | 25 | 49 |
+| 3 | 27 | 125 | 343 |
+| 4 | 81 | 625 | 2401 |
+| 5 | 243 | 3125 | — |
+| 6 | 729 | — | — |
+
+### $\log_2 x$ (for Big-O recurrences)
+
+| $x$ | $\log_2 x$ |
+|---|---|
+| 1 | 0 |
+| 2 | 1 |
+| 4 | 2 |
+| 8 | 3 |
+| 16 | 4 |
+| 32 | 5 |
+| 64 | 6 |
+| 128 | 7 |
+| 256 | 8 |
+| 512 | 9 |
+| 1024 | 10 |
+
+**Useful:** $\log_2(n/2) = \log_2 n - 1$, $\log_2(n^k) = k \log_2 n$, $\log_2(ab) = \log_2 a + \log_2 b$
+
+### $P(n, k)$ — small permutations
+
+| | $k=1$ | $k=2$ | $k=3$ | $k=4$ |
+|---|---|---|---|---|
+| $n=3$ | 3 | 6 | 6 | — |
+| $n=4$ | 4 | 12 | 24 | 24 |
+| $n=5$ | 5 | 20 | 60 | 120 |
+| $n=6$ | 6 | 30 | 120 | 360 |
+| $n=7$ | 7 | 42 | 210 | 840 |
+
+> Recall: $P(n, k) = \frac{n!}{(n-k)!}$ — "n choose k, then arrange them"
+
+### Verifying mental sums (sanity tricks)
+
+- **Even × Odd parity:** sum of degrees in graph = $2|E|$ (always even — Handshake) — flag if odd
+- **Probability sum:** all outcomes' $\Pr$ should sum to 1; flag if not
+- **Binomial PMF sum:** $\sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = 1$ — sanity check
+
+---
+
 ## Unit 1: Logic & Proofs
 
 15 Rules of Deduction:
@@ -279,39 +389,6 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 
 **Rule of thumb:** if recurrence reaches back $s$ steps (e.g., $T(n) = T(n-1) + T(n-2)$ reaches back 2), need $s$ base cases.
 
-### Classic recurrences
-
-| Recurrence | Closed form | Application |
-|-----------|-------------|-------------|
-| $T(n) = T(n-1) + 1, \, T(0) = 0$ | $T(n) = n$ | linear loop |
-| $F(n) = n \cdot F(n-1), \, F(1) = 1$ | $F(n) = n!$ | factorial |
-| $S(n) = S(n-1) + S(n-2), \, S(1) = 1, S(2) = 2$ | Fibonacci-shifted | stair climbing |
-| $C(n) = C(\lceil n/2 \rceil) + 1, \, C(1) = 1$ | $C(n) = \lceil \log_2 n\rceil + 1$ | binary search |
-
-### Telescoping sum identities (induction-friendly)
-
-When sum has consecutive cancellation pattern, expand each term as a difference:
-$$\frac{1}{r(r+1)} = \frac{1}{r} - \frac{1}{r+1}$$
-
-**Telescoping sum:**
-$$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{r+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$
-
-**Use in induction:** if asked to prove a closed-form identity, partial-fraction expansion often makes the inductive step trivial (most terms cancel).
-
-### Common gotchas (Unit 4)
-
-- **Forgotten base case:** induction is invalid without it — the entire chain collapses.
-- **Wrong base value:** if $P(n)$ only holds for $n \geq 4$, your base case must start at $n = 4$, NOT $n = 0$.
-- **Strong induction base count:** stepping back 2 → need 2 bases; stepping back $s$ → need $s$ bases. Mismatch breaks the proof.
-- **Inductive hypothesis scope:** in weak induction, you assume only $P(n)$. In strong induction, you assume $P(j)$ for ALL $j < k$. Don't conflate.
-- **Closed form vs recurrence:** if asked "find closed form", you must derive AND prove (induction). Don't just guess.
-
-### Cross-hooks
-
-- Recurrences feed **Unit 5 Big-O** via substitution method
-- Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
-- Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
-
 ### Worked example — induction proof of $\sum_{i=1}^n i = \frac{n(n+1)}{2}$
 
 **The claim:** for all integers $n \geq 1$, $\quad \sum_{i=1}^n i = \frac{n(n+1)}{2}$
@@ -364,6 +441,39 @@ This matches the target. ✓
 3. **Confusing $n$ (universal) with $k$ (the assumed specific value)** — keep them distinct
 4. **Algebra error in factoring $(k+1)$** — write the factoring step out, don't skip
 5. **Forgetting conclusion sentence** — "By induction, ..." closes the proof
+
+### Classic recurrences
+
+| Recurrence | Closed form | Application |
+|-----------|-------------|-------------|
+| $T(n) = T(n-1) + 1, \, T(0) = 0$ | $T(n) = n$ | linear loop |
+| $F(n) = n \cdot F(n-1), \, F(1) = 1$ | $F(n) = n!$ | factorial |
+| $S(n) = S(n-1) + S(n-2), \, S(1) = 1, S(2) = 2$ | Fibonacci-shifted | stair climbing |
+| $C(n) = C(\lceil n/2 \rceil) + 1, \, C(1) = 1$ | $C(n) = \lceil \log_2 n\rceil + 1$ | binary search |
+
+### Telescoping sum identities (induction-friendly)
+
+When sum has consecutive cancellation pattern, expand each term as a difference:
+$$\frac{1}{r(r+1)} = \frac{1}{r} - \frac{1}{r+1}$$
+
+**Telescoping sum:**
+$$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{r+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$
+
+**Use in induction:** if asked to prove a closed-form identity, partial-fraction expansion often makes the inductive step trivial (most terms cancel).
+
+### Common gotchas (Unit 4)
+
+- **Forgotten base case:** induction is invalid without it — the entire chain collapses.
+- **Wrong base value:** if $P(n)$ only holds for $n \geq 4$, your base case must start at $n = 4$, NOT $n = 0$.
+- **Strong induction base count:** stepping back 2 → need 2 bases; stepping back $s$ → need $s$ bases. Mismatch breaks the proof.
+- **Inductive hypothesis scope:** in weak induction, you assume only $P(n)$. In strong induction, you assume $P(j)$ for ALL $j < k$. Don't conflate.
+- **Closed form vs recurrence:** if asked "find closed form", you must derive AND prove (induction). Don't just guess.
+
+### Cross-hooks
+
+- Recurrences feed **Unit 5 Big-O** via substitution method
+- Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
+- Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
 
 ### Sanity checks (Unit 4)
 
@@ -839,12 +949,74 @@ $$\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B \mid A] \cdot \Pr[A] +
 - You DON'T know $\Pr[B]$ directly, but DO know $\Pr[B \mid A]$ and $\Pr[B \mid \bar{A}]$
 - Asked to find a "false positive rate" given other rates (rearrange extended Bayes for $\Pr[B \mid \bar{A}]$)
 
-**Proof template (T6 Q2.1 pattern):**
+**Proof template (T6Q2.1 pattern):**
 1. $(B \cap A) \cup (B \cap \bar{A}) = B$ (decomposition fact)
 2. Apply $\Pr[A \mid B] = \frac{\Pr[A \cap B]}{\Pr[B]}$
 3. Replace numerator: $\Pr[A \cap B] = \Pr[B \mid A] \cdot \Pr[A]$ (multiplication rule)
 4. Replace denominator: $\Pr[B] = \Pr[(B \cap A) \cup (B \cap \bar{A})] = \Pr[B \cap A] + \Pr[B \cap \bar{A}]$ (disjoint sum)
 5. Apply multiplication rule to each: $\Pr[B \cap A] = \Pr[B \mid A] \Pr[A]$ and $\Pr[B \cap \bar{A}] = \Pr[B \mid \bar{A}] \Pr[\bar{A}]$
+
+### Worked example — Bayes + LoTP rearrange (T6Q2.2 disease test)
+
+**The problem:**
+- Disease $F$ affects $1$ in every $1000$ people in the city
+- A test, when administered to a positive person, reports "positive" $85\%$ of the time
+- Among everyone tested (positive or not), the test reports "positive" $10\%$ of the time
+- **Find:** if a person doesn't have the disease, what's the chance the test reports positive? (i.e., the **false positive rate**)
+
+**Translate the problem into events + probabilities:**
+
+Let $A$ = "person has disease", $B$ = "test reports positive".
+
+| English | Symbol | Value |
+|---------|--------|-------|
+| 1 in 1000 has disease | $\Pr[A]$ | $0.001$ |
+| Test catches positive person | $\Pr[B \mid A]$ | $0.85$ |
+| Overall positive rate | $\Pr[B]$ | $0.1$ |
+| **WANT** false positive rate | $\Pr[B \mid \bar{A}]$ | ? |
+
+**Why basic Bayes alone won't work:**
+
+Basic Bayes gives $\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B]}$ — that's the wrong direction. We need $\Pr[B \mid \bar{A}]$ (test reports positive **given** no disease).
+
+We need a relation that **contains** $\Pr[B \mid \bar{A}]$ as one of the unknowns and lets us solve for it.
+
+**Use Law of Total Probability (LoTP):**
+
+$$\Pr[B] = \Pr[B \mid A] \cdot \Pr[A] + \Pr[B \mid \bar{A}] \cdot \Pr[\bar{A}]$$
+
+> **Why this works:** the event $B$ partitions into "$B$ AND has disease" plus "$B$ AND no disease". Sum the probabilities — these two pieces are disjoint and cover all of $B$.
+
+This equation has **one unknown** $\Pr[B \mid \bar{A}]$ — solve for it.
+
+**Step 1 — compute $\Pr[\bar{A}]$ using complement rule:**
+
+$$\Pr[\bar{A}] = 1 - \Pr[A] = 1 - 0.001 = 0.999$$
+
+**Step 2 — substitute knowns into LoTP:**
+
+$$0.1 = (0.85)(0.001) + \Pr[B \mid \bar{A}] \cdot (0.999)$$
+
+**Step 3 — isolate $\Pr[B \mid \bar{A}]$ algebraically:**
+
+Subtract $(0.85)(0.001) = 0.00085$ from both sides:
+$$0.1 - 0.00085 = \Pr[B \mid \bar{A}] \cdot 0.999$$
+$$0.09915 = \Pr[B \mid \bar{A}] \cdot 0.999$$
+
+Divide both sides by $0.999$:
+$$\Pr[B \mid \bar{A}] = \frac{0.09915}{0.999}$$
+
+**Leave unsimplified** (no calc) — that's the final answer. (Numerical: $\approx 0.09925$, or $\approx 9.93\%$ false positive rate.)
+
+**Sanity check:**
+- False positive rate ~10% — close to the overall positive rate (also 10%), since most people don't have the disease, so the overall rate is dominated by tests on $\bar{A}$ folks. Makes sense.
+- The disease is rare ($0.1\%$) but the test still flags 10% of healthy people as positive — that's why the chance you actually have the disease given a positive test is so low (~0.85% from Part 1).
+
+**Where this can go wrong:**
+1. **Bayes direction confusion** — confusing "test positive given disease" $\Pr[B \mid A]$ with "disease given test positive" $\Pr[A \mid B]$. Re-read which one is the **GIVEN** (the conditioning side, after the bar).
+2. **Forgetting $\Pr[\bar{A}] = 1 - \Pr[A]$** — easy to leave $\Pr[\bar{A}]$ as a separate unknown.
+3. **Not realizing LoTP can be REARRANGED to solve for $\Pr[B \mid \bar{A}]$** — the equation has 4 quantities; if you know 3, you solve for the 4th.
+4. **Plugging $\Pr[A]$ in place of $\Pr[\bar{A}]$** — pay attention to which probability is being multiplied.
 
 ### Sandwich complement heuristic
 
@@ -907,68 +1079,6 @@ When the problem describes a sequence of choices (e.g., Monty Hall):
 - Conditional probability formalism feeds **distribution definitions** (Unit 9)
 - Bayes' Theorem proof = chain rule + LoTP — induction-flavored derivation (Unit 4 style)
 - Independence multiplicative form $\Pr[A \cap B] = \Pr[A]\Pr[B]$ ↔ **$E[XY] = E[X]E[Y]$** for independent random variables (Unit 9)
-
-### Worked example — Bayes + LoTP rearrange (T6 Q2.2 disease test)
-
-**The problem:**
-- Disease $F$ affects $1$ in every $1000$ people in the city
-- A test, when administered to a positive person, reports "positive" $85\%$ of the time
-- Among everyone tested (positive or not), the test reports "positive" $10\%$ of the time
-- **Find:** if a person doesn't have the disease, what's the chance the test reports positive? (i.e., the **false positive rate**)
-
-**Translate the problem into events + probabilities:**
-
-Let $A$ = "person has disease", $B$ = "test reports positive".
-
-| English | Symbol | Value |
-|---------|--------|-------|
-| 1 in 1000 has disease | $\Pr[A]$ | $0.001$ |
-| Test catches positive person | $\Pr[B \mid A]$ | $0.85$ |
-| Overall positive rate | $\Pr[B]$ | $0.1$ |
-| **WANT** false positive rate | $\Pr[B \mid \bar{A}]$ | ? |
-
-**Why basic Bayes alone won't work:**
-
-Basic Bayes gives $\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B]}$ — that's the wrong direction. We need $\Pr[B \mid \bar{A}]$ (test reports positive **given** no disease).
-
-We need a relation that **contains** $\Pr[B \mid \bar{A}]$ as one of the unknowns and lets us solve for it.
-
-**Use Law of Total Probability (LoTP):**
-
-$$\Pr[B] = \Pr[B \mid A] \cdot \Pr[A] + \Pr[B \mid \bar{A}] \cdot \Pr[\bar{A}]$$
-
-> **Why this works:** the event $B$ partitions into "$B$ AND has disease" plus "$B$ AND no disease". Sum the probabilities — these two pieces are disjoint and cover all of $B$.
-
-This equation has **one unknown** $\Pr[B \mid \bar{A}]$ — solve for it.
-
-**Step 1 — compute $\Pr[\bar{A}]$ using complement rule:**
-
-$$\Pr[\bar{A}] = 1 - \Pr[A] = 1 - 0.001 = 0.999$$
-
-**Step 2 — substitute knowns into LoTP:**
-
-$$0.1 = (0.85)(0.001) + \Pr[B \mid \bar{A}] \cdot (0.999)$$
-
-**Step 3 — isolate $\Pr[B \mid \bar{A}]$ algebraically:**
-
-Subtract $(0.85)(0.001) = 0.00085$ from both sides:
-$$0.1 - 0.00085 = \Pr[B \mid \bar{A}] \cdot 0.999$$
-$$0.09915 = \Pr[B \mid \bar{A}] \cdot 0.999$$
-
-Divide both sides by $0.999$:
-$$\Pr[B \mid \bar{A}] = \frac{0.09915}{0.999}$$
-
-**Leave unsimplified** (no calc) — that's the final answer. (Numerical: $\approx 0.09925$, or $\approx 9.93\%$ false positive rate.)
-
-**Sanity check:**
-- False positive rate ~10% — close to the overall positive rate (also 10%), since most people don't have the disease, so the overall rate is dominated by tests on $\bar{A}$ folks. Makes sense.
-- The disease is rare ($0.1\%$) but the test still flags 10% of healthy people as positive — that's why the chance you actually have the disease given a positive test is so low (~0.85% from Part 1).
-
-**Where this can go wrong:**
-1. **Bayes direction confusion** — confusing "test positive given disease" $\Pr[B \mid A]$ with "disease given test positive" $\Pr[A \mid B]$. Re-read which one is the **GIVEN** (the conditioning side, after the bar).
-2. **Forgetting $\Pr[\bar{A}] = 1 - \Pr[A]$** — easy to leave $\Pr[\bar{A}]$ as a separate unknown.
-3. **Not realizing LoTP can be REARRANGED to solve for $\Pr[B \mid \bar{A}]$** — the equation has 4 quantities; if you know 3, you solve for the 4th.
-4. **Plugging $\Pr[A]$ in place of $\Pr[\bar{A}]$** — pay attention to which probability is being multiplied.
 
 ### Sanity checks (Unit 8)
 
@@ -1034,40 +1144,7 @@ $$E[X] = \sum_{i=1}^{n} p_i$$
 
 **Critical property:** linearity of expectation works **even when $X_i$ are dependent**. So you can use this even for events that "interact" (e.g., balls-in-bins, fixed points of permutations).
 
-**Bins-and-balls example (T6 Q4):** $n$ balls into $n$ bins, $X$ = balls in bin 1. Each $X_i \sim \text{Bernoulli}(1/n)$, so $E[X] = n \cdot (1/n) = 1$. Then Markov: $\Pr[X \geq a] \leq E[X]/a = 1/a$.
-
-### Variable legend (don't confuse under pressure)
-
-| Symbol | Source | Role |
-|--------|--------|------|
-| $\mu$ | $E[X]$ from question | center |
-| $\text{Var}[X]$ | from question | spread$^2$ |
-| $\sigma$ | $= \sqrt{\text{Var}[X]}$ (derived) | std dev — appears in $1/k^2$ form only |
-| $a$ | threshold inside $P[\lvert X - \mu \rvert \geq a]$ | denominator (squared) |
-| $k$ | $= a/\sigma$ | $\sigma$-multiples in alternate form |
-
-$a$ and $\sigma$ are different variables even when they share a numeric value.
-
-### Common gotchas (Unit 9)
-
-- **$E$ vs $\text{Var}$ scaling:** $E[aX] = a \cdot E[X]$ but $\text{Var}[aX] = a^2 \cdot \text{Var}[X]$ — squared, not linear.
-- **$E[XY]$ requires independence:** $E[X+Y] = E[X] + E[Y]$ is ALWAYS true, but $E[XY] = E[X]E[Y]$ ONLY when $X, Y$ independent.
-- **$\text{Var}[X+Y]$ requires independence:** general $\text{Var}[X+Y] = \text{Var}[X] + \text{Var}[Y] + 2\text{Cov}[X,Y]$; covariance vanishes only for independent vars.
-- **Chebyshev variable confusion:** $a$ (threshold) and $\sigma$ (std dev) are different variables even when sharing a numeric value. Plug carefully.
-- **Markov needs $X \geq 0$:** doesn't apply to signed random variables.
-- **Geometric variance formula:** $(1-p)/p^2$ — easy to forget the squared denominator.
-- **Indicator pattern works for dependent $X_i$ too:** linearity of expectation is unconditional. Use it freely for "count events" problems.
-- **$E[X^2] \neq (E[X])^2$:** by definition, $\text{Var}[X] = E[X^2] - (E[X])^2 \geq 0$, so $E[X^2] \geq (E[X])^2$ with equality only when $\text{Var}[X] = 0$.
-
-### Cross-hooks
-
-- Distributions are **named random variables** (Unit 8 RVs with specific PMFs)
-- Bernoulli + Binomial connect to **combinatorics** (Unit 6) — Binomial PMF uses $\binom{n}{k}$
-- **Indicator variable pattern** decomposes a count into sum of Bernoullis — heavy use in graph-theory expectations (Unit 7) and combinatorial probabilistic arguments
-- Chebyshev / Markov bounds are the "distribution-free" tail bounds — used when distribution is unknown but moments are known
-- $E[X^2] = \text{Var}[X] + (E[X])^2$ identity often shortcuts variance computation for Bernoulli-like vars
-
-### Worked example — bins-and-balls expectation + Markov bound (T6 Q4)
+### Worked example — bins-and-balls expectation + Markov bound (T6Q4)
 
 **The problem:** throw $n$ balls into $n$ bins. Each ball lands in any specific bin with probability $\frac{1}{n}$, independently of other balls. Let $X$ = number of balls landing in **bin 1**.
 
@@ -1123,6 +1200,37 @@ So the answer is: $\Pr[X > a] \leq \frac{1}{a}$.
 3. **Forgetting Markov needs $X \geq 0$** — doesn't apply to signed RVs (e.g., gain/loss)
 4. **Confusing $\Pr[X > a]$ with $\Pr[X \geq a]$** — Markov gives the latter; the former is bounded **by** the latter
 5. **Plugging $E[X] = n$ instead of $1$** — common arithmetic slip
+
+### Variable legend (don't confuse under pressure)
+
+| Symbol | Source | Role |
+|--------|--------|------|
+| $\mu$ | $E[X]$ from question | center |
+| $\text{Var}[X]$ | from question | spread$^2$ |
+| $\sigma$ | $= \sqrt{\text{Var}[X]}$ (derived) | std dev — appears in $1/k^2$ form only |
+| $a$ | threshold inside $P[\lvert X - \mu \rvert \geq a]$ | denominator (squared) |
+| $k$ | $= a/\sigma$ | $\sigma$-multiples in alternate form |
+
+$a$ and $\sigma$ are different variables even when they share a numeric value.
+
+### Common gotchas (Unit 9)
+
+- **$E$ vs $\text{Var}$ scaling:** $E[aX] = a \cdot E[X]$ but $\text{Var}[aX] = a^2 \cdot \text{Var}[X]$ — squared, not linear.
+- **$E[XY]$ requires independence:** $E[X+Y] = E[X] + E[Y]$ is ALWAYS true, but $E[XY] = E[X]E[Y]$ ONLY when $X, Y$ independent.
+- **$\text{Var}[X+Y]$ requires independence:** general $\text{Var}[X+Y] = \text{Var}[X] + \text{Var}[Y] + 2\text{Cov}[X,Y]$; covariance vanishes only for independent vars.
+- **Chebyshev variable confusion:** $a$ (threshold) and $\sigma$ (std dev) are different variables even when sharing a numeric value. Plug carefully.
+- **Markov needs $X \geq 0$:** doesn't apply to signed random variables.
+- **Geometric variance formula:** $(1-p)/p^2$ — easy to forget the squared denominator.
+- **Indicator pattern works for dependent $X_i$ too:** linearity of expectation is unconditional. Use it freely for "count events" problems.
+- **$E[X^2] \neq (E[X])^2$:** by definition, $\text{Var}[X] = E[X^2] - (E[X])^2 \geq 0$, so $E[X^2] \geq (E[X])^2$ with equality only when $\text{Var}[X] = 0$.
+
+### Cross-hooks
+
+- Distributions are **named random variables** (Unit 8 RVs with specific PMFs)
+- Bernoulli + Binomial connect to **combinatorics** (Unit 6) — Binomial PMF uses $\binom{n}{k}$
+- **Indicator variable pattern** decomposes a count into sum of Bernoullis — heavy use in graph-theory expectations (Unit 7) and combinatorial probabilistic arguments
+- Chebyshev / Markov bounds are the "distribution-free" tail bounds — used when distribution is unknown but moments are known
+- $E[X^2] = \text{Var}[X] + (E[X])^2$ identity often shortcuts variance computation for Bernoulli-like vars
 
 ### Sanity checks (Unit 9)
 
