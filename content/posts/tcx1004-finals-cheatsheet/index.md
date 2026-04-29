@@ -21,116 +21,6 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 </div>
 
-## Quick Numerical Reference (no-calc cheats)
-
-### Powers of 2
-
-| $n$ | $2^n$ | | $n$ | $2^n$ |
-|---|---|---|---|---|
-| 0 | 1 |  | 8 | 256 |
-| 1 | 2 |  | 9 | 512 |
-| 2 | 4 |  | 10 | 1024 |
-| 3 | 8 |  | 12 | 4096 |
-| 4 | 16 |  | 16 | 65536 |
-| 5 | 32 |  | 20 | 1048576 (~1M) |
-| 6 | 64 |  | 32 | ~4.3 × 10⁹ |
-| 7 | 128 |  | 64 | ~1.8 × 10¹⁹ |
-
-### Factorials
-
-| $n$ | $n!$ |
-|---|---|
-| 0 | 1 |
-| 1 | 1 |
-| 2 | 2 |
-| 3 | 6 |
-| 4 | 24 |
-| 5 | 120 |
-| 6 | 720 |
-| 7 | 5040 |
-| 8 | 40 320 |
-| 9 | 362 880 |
-| 10 | 3 628 800 |
-
-### Pascal's triangle — $\binom{n}{k}$ (rows $n = 0$ to $7$)
-
-|  | $k=0$ | $k=1$ | $k=2$ | $k=3$ | $k=4$ | $k=5$ | $k=6$ | $k=7$ |
-|---|---|---|---|---|---|---|---|---|
-| $n=0$ | 1 |  |  |  |  |  |  |  |
-| $n=1$ | 1 | 1 |  |  |  |  |  |  |
-| $n=2$ | 1 | 2 | 1 |  |  |  |  |  |
-| $n=3$ | 1 | 3 | 3 | 1 |  |  |  |  |
-| $n=4$ | 1 | 4 | 6 | 4 | 1 |  |  |  |
-| $n=5$ | 1 | 5 | 10 | 10 | 5 | 1 |  |  |
-| $n=6$ | 1 | 6 | 15 | 20 | 15 | 6 | 1 |  |
-| $n=7$ | 1 | 7 | 21 | 35 | 35 | 21 | 7 | 1 |
-
-**Identity:** $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ (Pascal's rule — each entry = sum of two above)
-
-**Symmetry:** $\binom{n}{k} = \binom{n}{n-k}$ (e.g., $\binom{7}{2} = \binom{7}{5} = 21$)
-
-### Common sum identities
-
-| Identity | Formula |
-|----------|---------|
-| Arithmetic sum | $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ |
-| Sum of squares | $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$ |
-| Sum of cubes | $\sum_{i=1}^{n} i^3 = \left( \frac{n(n+1)}{2} \right)^2$ |
-| Geometric (any $r \neq 1$) | $\sum_{i=0}^{n} r^i = \frac{r^{n+1} - 1}{r - 1}$ |
-| Geometric special $r = 2$ | $\sum_{i=0}^{n} 2^i = 2^{n+1} - 1$ |
-| All subsets sum | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$ |
-| Alternating subsets | $\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$ ($n \geq 1$) |
-
-### Powers of small primes (mental sanity)
-
-| $n$ | $3^n$ | $5^n$ | $7^n$ |
-|---|---|---|---|
-| 0 | 1 | 1 | 1 |
-| 1 | 3 | 5 | 7 |
-| 2 | 9 | 25 | 49 |
-| 3 | 27 | 125 | 343 |
-| 4 | 81 | 625 | 2401 |
-| 5 | 243 | 3125 | — |
-| 6 | 729 | — | — |
-
-### $\log_2 x$ (for Big-O recurrences)
-
-| $x$ | $\log_2 x$ |
-|---|---|
-| 1 | 0 |
-| 2 | 1 |
-| 4 | 2 |
-| 8 | 3 |
-| 16 | 4 |
-| 32 | 5 |
-| 64 | 6 |
-| 128 | 7 |
-| 256 | 8 |
-| 512 | 9 |
-| 1024 | 10 |
-
-**Useful:** $\log_2(n/2) = \log_2 n - 1$, $\log_2(n^k) = k \log_2 n$, $\log_2(ab) = \log_2 a + \log_2 b$
-
-### $P(n, k)$ — small permutations
-
-| | $k=1$ | $k=2$ | $k=3$ | $k=4$ |
-|---|---|---|---|---|
-| $n=3$ | 3 | 6 | 6 | — |
-| $n=4$ | 4 | 12 | 24 | 24 |
-| $n=5$ | 5 | 20 | 60 | 120 |
-| $n=6$ | 6 | 30 | 120 | 360 |
-| $n=7$ | 7 | 42 | 210 | 840 |
-
-> Recall: $P(n, k) = \frac{n!}{(n-k)!}$ — "n choose k, then arrange them"
-
-### Verifying mental sums (sanity tricks)
-
-- **Even × Odd parity:** sum of degrees in graph = $2|E|$ (always even — Handshake) — flag if odd
-- **Probability sum:** all outcomes' $\Pr$ should sum to 1; flag if not
-- **Binomial PMF sum:** $\sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = 1$ — sanity check
-
----
-
 ## Unit 1: Logic & Proofs
 
 15 Rules of Deduction:
@@ -1241,3 +1131,119 @@ $a$ and $\sigma$ are different variables even when they share a numeric value.
 - Chebyshev monotonicity: larger $a$ → smaller bound. if bound grew, you plugged wrong.
 - $\text{Var}[aX] = a^2 \text{Var}[X]$ — squared coefficient
 - $E[XY] = E[X]E[Y]$ — only if independent
+
+## Quick Numerical Reference (no-calc cheats)
+
+### Powers of 2
+
+| $n$ | $2^n$ |
+|---|---|
+| 0 | 1 |
+| 1 | 2 |
+| 2 | 4 |
+| 3 | 8 |
+| 4 | 16 |
+| 5 | 32 |
+| 6 | 64 |
+| 7 | 128 |
+| 8 | 256 |
+| 9 | 512 |
+| 10 | 1024 |
+| 12 | 4096 |
+| 16 | 65536 |
+| 20 | 1 048 576 (~1M) |
+| 32 | ~4.3 × 10⁹ |
+| 64 | ~1.8 × 10¹⁹ |
+
+### Factorials
+
+| $n$ | $n!$ |
+|---|---|
+| 0 | 1 |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 6 |
+| 4 | 24 |
+| 5 | 120 |
+| 6 | 720 |
+| 7 | 5040 |
+| 8 | 40 320 |
+| 9 | 362 880 |
+| 10 | 3 628 800 |
+
+### Pascal's triangle — $\binom{n}{k}$ (rows $n = 0$ to $7$)
+
+|  | $k=0$ | $k=1$ | $k=2$ | $k=3$ | $k=4$ | $k=5$ | $k=6$ | $k=7$ |
+|---|---|---|---|---|---|---|---|---|
+| $n=0$ | 1 |  |  |  |  |  |  |  |
+| $n=1$ | 1 | 1 |  |  |  |  |  |  |
+| $n=2$ | 1 | 2 | 1 |  |  |  |  |  |
+| $n=3$ | 1 | 3 | 3 | 1 |  |  |  |  |
+| $n=4$ | 1 | 4 | 6 | 4 | 1 |  |  |  |
+| $n=5$ | 1 | 5 | 10 | 10 | 5 | 1 |  |  |
+| $n=6$ | 1 | 6 | 15 | 20 | 15 | 6 | 1 |  |
+| $n=7$ | 1 | 7 | 21 | 35 | 35 | 21 | 7 | 1 |
+
+**Identity:** $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$ (Pascal's rule — each entry = sum of two above)
+
+**Symmetry:** $\binom{n}{k} = \binom{n}{n-k}$ (e.g., $\binom{7}{2} = \binom{7}{5} = 21$)
+
+### Common sum identities
+
+| Identity | Formula |
+|----------|---------|
+| Arithmetic sum | $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ |
+| Sum of squares | $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$ |
+| Sum of cubes | $\sum_{i=1}^{n} i^3 = \left( \frac{n(n+1)}{2} \right)^2$ |
+| Geometric (any $r \neq 1$) | $\sum_{i=0}^{n} r^i = \frac{r^{n+1} - 1}{r - 1}$ |
+| Geometric special $r = 2$ | $\sum_{i=0}^{n} 2^i = 2^{n+1} - 1$ |
+| All subsets sum | $\sum_{k=0}^{n} \binom{n}{k} = 2^n$ |
+| Alternating subsets | $\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$ ($n \geq 1$) |
+
+### Powers of small primes (mental sanity)
+
+| $n$ | $3^n$ | $5^n$ | $7^n$ |
+|---|---|---|---|
+| 0 | 1 | 1 | 1 |
+| 1 | 3 | 5 | 7 |
+| 2 | 9 | 25 | 49 |
+| 3 | 27 | 125 | 343 |
+| 4 | 81 | 625 | 2401 |
+| 5 | 243 | 3125 | — |
+| 6 | 729 | — | — |
+
+### $\log_2 x$ (for Big-O recurrences)
+
+| $x$ | $\log_2 x$ |
+|---|---|
+| 1 | 0 |
+| 2 | 1 |
+| 4 | 2 |
+| 8 | 3 |
+| 16 | 4 |
+| 32 | 5 |
+| 64 | 6 |
+| 128 | 7 |
+| 256 | 8 |
+| 512 | 9 |
+| 1024 | 10 |
+
+**Useful:** $\log_2(n/2) = \log_2 n - 1$, $\log_2(n^k) = k \log_2 n$, $\log_2(ab) = \log_2 a + \log_2 b$
+
+### $P(n, k)$ — small permutations
+
+|  | $k=1$ | $k=2$ | $k=3$ | $k=4$ |
+|---|---|---|---|---|
+| $n=3$ | 3 | 6 | 6 | — |
+| $n=4$ | 4 | 12 | 24 | 24 |
+| $n=5$ | 5 | 20 | 60 | 120 |
+| $n=6$ | 6 | 30 | 120 | 360 |
+| $n=7$ | 7 | 42 | 210 | 840 |
+
+> Recall: $P(n, k) = \frac{n!}{(n-k)!}$ — "n choose k, then arrange them"
+
+### Verifying mental sums (sanity tricks)
+
+- **Even × Odd parity:** sum of degrees in graph = $2|E|$ (always even — Handshake) — flag if odd
+- **Probability sum:** all outcomes' $\Pr$ should sum to 1; flag if not
+- **Binomial PMF sum:** $\sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = 1$ — sanity check
