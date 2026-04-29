@@ -14,9 +14,9 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2101 | Active | █████ Ch 8 done | Ch 8 §8.1-8.5 covered + §8.2-8.5 L3, Final Apr 28 |
-| TCX1004 | Active | █████ Unit 9 | A2 ✅, T6 submitted, Final Apr 30 |
-| TCX1002 | Active | █████ W11 | PE 20/20 ✅, Final May 4 |
+| TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
+| TCX1004 | Active | █████ Unit 9 | Cheatsheet locked (1297 lines, all 9 units, 4 worked examples, no-calc reference). Final Apr 30 (tomorrow) |
+| TCX1002 | Pending | █████ W11 | PE 20/20 ✅, Final May 4. Phase 1 trigger active post-1004 |
 
 ### At a Glance
 
@@ -34,13 +34,13 @@ draft: false
 <div class="progress-grid">
 <div class="progress-card">
 <h4>TCX2101</h4>
-<div class="subtitle">Calculus & Linear Algebra — 33 topics</div>
+<div class="subtitle">Calculus & Linear Algebra — 36 topics</div>
 <div class="progress-bar">
-<span style="width:21.2%;background:#003D7C" title="Confident: 7"></span>
-<span style="width:75.8%;background:#C9A882" title="Comfortable/Familiar: 25"></span>
+<span style="width:30.6%;background:#003D7C" title="Confident: 11"></span>
+<span style="width:69.4%;background:#C9A882" title="Comfortable/Familiar: 25"></span>
 </div>
 <div class="progress-legend">
-<span><i style="background:#003D7C"></i>Confident: 7</span>
+<span><i style="background:#003D7C"></i>Confident: 11</span>
 <span><i style="background:#C9A882"></i>Comfortable/Familiar: 25</span>
 </div>
 </div>
@@ -48,22 +48,24 @@ draft: false
 <h4>TCX1004</h4>
 <div class="subtitle">Mathematical Techniques — 9 units</div>
 <div class="progress-bar">
-<span style="width:100%;background:#C9A882" title="Comfortable/Familiar: 9"></span>
+<span style="width:11.1%;background:#003D7C" title="Confident: 1"></span>
+<span style="width:88.9%;background:#C9A882" title="Comfortable/Familiar: 8"></span>
 </div>
 <div class="progress-legend">
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 9</span>
+<span><i style="background:#003D7C"></i>Confident: 1</span>
+<span><i style="background:#C9A882"></i>Comfortable/Familiar: 8</span>
 </div>
 </div>
 <div class="progress-card">
 <h4>TCX1002</h4>
-<div class="subtitle">Programming — 7 topics</div>
+<div class="subtitle">Programming — 9 topics</div>
 <div class="progress-bar">
-<span style="width:71.4%;background:#003D7C" title="Confident: 5"></span>
-<span style="width:28.6%;background:#C9A882" title="Comfortable: 2"></span>
+<span style="width:55.6%;background:#003D7C" title="Confident: 5"></span>
+<span style="width:44.4%;background:#C9A882" title="Comfortable: 4"></span>
 </div>
 <div class="progress-legend">
 <span><i style="background:#003D7C"></i>Confident: 5</span>
-<span><i style="background:#C9A882"></i>Comfortable: 2</span>
+<span><i style="background:#C9A882"></i>Comfortable: 4</span>
 </div>
 </div>
 </div>
@@ -93,10 +95,12 @@ draft: false
 - ~~**HW2:**~~ ✅ Submitted (Apr 4)
 - ~~**CT3:**~~ ✅ Done (~8/10). Q2+Q3 clean, Q1 arithmetic incomplete.
 - ~~**Quiz 8.2-8.5:**~~ ALL 5/5 ✅ + §8.2-8.5 L3 Confident (Apr 17)
-- ~~**Finals Helpsheet v1:**~~ ✅ Comprehensive Ch 1-8 (Apr 20) — density-tightened print CSS, A4×2 fit iteration next
-- **Drill from helpsheet** (§8.5 + §8.2) — Apr 21 onwards
-- **Past papers hunt** — Canvas + NUS Library
-- **Final Exam:** Apr 28
+- ~~**Finals Helpsheet v1:**~~ ✅ Comprehensive Ch 1-8 (Apr 20)
+- ~~**T5 Integration deep pass with Qwen:**~~ ✅ Apr 22 (4 new error patterns logged)
+- ~~**Helpsheet A4×2 final fit:**~~ ✅ Apr 25 (3-col portrait, 7pt body, KaTeX + table-cell LaTeX bugs squashed)
+- ~~**Past papers acquired:**~~ ✅ Apr 25
+- **Drill window** Apr 26-27 (past papers + top 3 weak micro-topics)
+- **Final Exam:** Apr 28 (tomorrow)
 
 ### Topic Mastery
 
@@ -152,8 +156,10 @@ draft: false
 
 - ~~**Assignment 2 (15%):**~~ ✅ Submitted (Apr 12)
 - ~~**Tutorial 6:**~~ ✅ Submitted (Q1 complete, Q3 pending)
-- **Week 12 Quiz (Random Variables):** Apr 19
-- **Final Exam:** Apr 30 — scope Unit 6+ (open-book printed)
+- ~~**Week 12 Quiz (Random Variables):**~~ ✅ 9/9 Apr 19 (Unit 9 L3 via Chebyshev breakthrough)
+- ~~**Cheatsheet built from scaffold to full Units 2-9:**~~ ✅ Apr 25 (754 lines)
+- ~~**T6 walk-validation patches:**~~ ✅ Apr 25 (Law of Total Probability + Extended Bayes for Unit 8, E[XY] independent + Var scaling + indicator pattern for Unit 9)
+- **Final Exam:** Apr 30 (open-book; scope TBC pending Prof briefing)
 
 ### Topic Mastery
 
@@ -182,7 +188,8 @@ draft: false
 ### What's Next
 
 - ~~**Practical Exam:**~~ **20/20 ✅** (Q1 5/5, Q2 5/5, Q3 6/6, Q4 4/4)
-- **Final Exam:** May 4 — fill-in-the-blank style (reading comprehension)
+- ~~**Mock Test 10:**~~ ✅ Done in class Apr 18 (Q1 NumPy pair-wise sq-diff live-taught)
+- **Final Exam:** May 4 (100% fill-in-the-blank on Examplify, A4 helpsheet, recursive decomposition mindset)
 
 ### Topic Mastery
 
@@ -212,4 +219,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-20 00:31 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-04-29 20:18 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
