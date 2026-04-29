@@ -21,9 +21,9 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 </div>
 
-## Unit 1: Logic & Proofs (reference)
+## Unit 1: Logic & Proofs
 
-### The 15 Rules of Deduction
+15 Rules of Deduction:
 
 | # | Rule | Pattern | Justification Format |
 |---|------|---------|---------------------|
@@ -46,9 +46,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | 14 | Contradiction | $a \land \lnot a \implies \bot$ | [Contradiction on line N] |
 | 15 | Proof by contradiction | Assume $\lnot p$, derive $\bot \implies p$ | [Proof by contradiction on lines N and M] |
 
-### Justification Patterns
-
-**Format:** [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and M]
+Justification Patterns: [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and M]
 
 | Lines needed | Pattern | Examples |
 |-------------|---------|----------|
@@ -56,9 +54,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | Two lines | on lines N and M | Modus ponens, universal instantiation, conjunction |
 | Multi-line | on lines N, M.x, O.x | Proof by cases (the OR + each case conclusion) |
 
-> "By" prefix is optional — both [By specialisation on line 1] and [Proof by cases on lines 1, 2.1, 3.1] are valid.
-
-### Line Numbering Convention
+Line Numbering Convention
 
 ```text
 1. [outer statement]
@@ -70,7 +66,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 **Indentation = scope.** Sub-lines (1.1, 1.2, ...) live inside the scope of line 1.
 
-### Common Proof Openers
+Common Proof Openers:
 
 | Situation | Opener |
 |-----------|--------|
@@ -80,7 +76,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | Direct proof | "Assume [antecedent]." → derive → conclude [consequent] |
 | Proof by contradiction | "Assume, for contradiction, that $\lnot$[statement]." |
 
-### Common gotchas (Unit 1)
+Common gotchas (Unit 1):
 
 - **Use TCX1004 official rule names** — "Specialisation" not "Simplification", "Generalisation" not "Addition". Mismatched names lose marks even with correct logic.
 - **Proof by cases citation needs every branch:** [Proof by cases on lines N, M.x, O.x] — cite the OR statement AND each case's conclusion.
@@ -88,7 +84,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 - **Modus ponens vs modus tollens:** $p \to q, p \implies q$ (ponens) vs $p \to q, \lnot q \implies \lnot p$ (tollens). Don't swap.
 - **Existential vs Universal instantiation:** existential needs "Let $c \in A$ be such that..." (introducing a witness). Universal just plugs in $c$.
 
-### Cross-hooks
+Cross-hooks:
 
 - Logic rules are the formal language of **all proof-based units** — set equality (Unit 2), induction (Unit 4), Big-O (Unit 5)
 - **Definition unpacking** (Rule 1) is the most-used rule across all units — every formal proof starts with it
@@ -104,11 +100,10 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 - For $\forall$ proofs: opened with "Let $x$ be arbitrary"?
 - For $\exists$ proofs: provided a concrete witness?
 
----
+
+
 
 ## Unit 2: Set Theory
-
-### Decision tree — what's the question asking?
 
 | Question shape | Tool |
 |---------------|------|
@@ -119,7 +114,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | simplify nested set expression | apply distributive / De Morgan |
 | set membership of nested object | distinguish $\in$ vs $\subseteq$ vs $\mathcal{P}$ |
 
-### Notation primer
+### Notation primer:
 
 | Symbol | Meaning |
 |--------|---------|
@@ -183,11 +178,9 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - $\lvert \mathcal{P}(A)\rvert = 2^{\lvert A\rvert}$ — not $\lvert A\rvert^2$
 - 🚨 **$A \times A$ enumeration:** list ALL combinations $(a, b)$ regardless of order. For $\lvert A\rvert = 3$, expect **9 pairs** (not 6). Common error: unconsciously skip pairs where first element > second. Systematic: fix first, iterate ALL seconds. (Past error: 2026-02-27.)
 
----
+
 
 ## Unit 3: Relations
-
-### Decision tree — what's the question asking?
 
 | Question shape | Tool |
 |---------------|------|
@@ -252,11 +245,11 @@ $$A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$$
 - Symmetric & anti-symmetric — checked separately, didn't assume opposites
 - Composition $R; S$ — middle element exists in shared type?
 
----
+
 
 ## Unit 4: Induction & Recurrences
 
-### Decision tree — what's the question asking?
+
 
 | Question shape | Tool |
 |---------------|------|
@@ -319,6 +312,59 @@ $$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{
 - Induction is the proof technique for **Unit 6 combinatorial identities** (e.g., $\sum_{i=1}^n i = n(n+1)/2$)
 - Loop-counting recurrences appear in **Unit 6** "Binomial coefficients & nested for loops"
 
+### Worked example — induction proof of $\sum_{i=1}^n i = \frac{n(n+1)}{2}$
+
+**The claim:** for all integers $n \geq 1$, $\quad \sum_{i=1}^n i = \frac{n(n+1)}{2}$
+
+**Why use induction?** The sum has variable upper bound $n$, and we want to prove it for *every* $n \geq 1$. Direct computation is impossible (infinite cases), so we induct on $n$.
+
+**Step 1 — Base case ($n = 1$):** verify the smallest case directly.
+
+LHS: $\sum_{i=1}^{1} i = 1$
+
+RHS: $\frac{1 \cdot (1+1)}{2} = \frac{2}{2} = 1$
+
+LHS $=$ RHS ✓ — base case holds.
+
+**Step 2 — Inductive hypothesis (IH):** *assume* the claim holds for some specific value $n = k$ (where $k \geq 1$).
+
+That is, **assume**: $\sum_{i=1}^{k} i = \frac{k(k+1)}{2}$
+
+> **Important:** this is an ASSUMPTION, not a proven fact. We're saying "if it's true at $k$..."
+
+**Step 3 — Inductive step:** prove the claim holds for $n = k+1$, *given the IH*.
+
+The target is to show: $\sum_{i=1}^{k+1} i = \frac{(k+1)(k+2)}{2}$
+
+> Why $(k+1)(k+2)/2$? Just plug $n = k+1$ into the original RHS: $\frac{(k+1)((k+1)+1)}{2} = \frac{(k+1)(k+2)}{2}$.
+
+Start from LHS at $n = k+1$:
+
+$$\sum_{i=1}^{k+1} i = \underbrace{\sum_{i=1}^{k} i}_{\text{this is the IH}} + (k+1)$$
+
+> We pulled out the last term $(k+1)$ because the first $k$ terms exactly match the IH.
+
+Apply IH (substitute $\frac{k(k+1)}{2}$ for the sum):
+
+$$= \frac{k(k+1)}{2} + (k+1)$$
+
+Factor out $(k+1)$ from both terms:
+
+$$= (k+1) \cdot \left( \frac{k}{2} + 1 \right) = (k+1) \cdot \frac{k + 2}{2} = \frac{(k+1)(k+2)}{2}$$
+
+This matches the target. ✓
+
+**Step 4 — Conclusion:**
+
+> "By the principle of induction, $\sum_{i=1}^n i = \frac{n(n+1)}{2}$ for all $n \geq 1$."
+
+**Where this can go wrong:**
+1. **Skipping base case** — proof invalid; cite it explicitly even if "obvious"
+2. **Stating IH as fact** — must say "Assume that..." not "We have that..."
+3. **Confusing $n$ (universal) with $k$ (the assumed specific value)** — keep them distinct
+4. **Algebra error in factoring $(k+1)$** — write the factoring step out, don't skip
+5. **Forgetting conclusion sentence** — "By induction, ..." closes the proof
+
 ### Sanity checks (Unit 4)
 
 - Stated base case explicitly?
@@ -327,11 +373,10 @@ $$\sum_{r=1}^{n} \frac{1}{r(r+1)} = \sum_{r=1}^{n} \left(\frac{1}{r} - \frac{1}{
 - Conclusion sentence at the end ("By induction, ...")?
 - For closed-form derivation — did you prove the closed form (not just guess)?
 
----
 
 ## Unit 5: Big-O & Asymptotic Analysis
 
-### Decision tree — what's the question asking?
+
 
 | Question shape | Tool |
 |---------------|------|
@@ -420,11 +465,10 @@ To prove a loop computes a correct result, identify an **invariant** (statement 
 - Function comparison — used the ladder, not gut feeling?
 - Loop invariant — stated all 3 parts?
 
----
+
 
 ## Unit 6: Combinatorics
 
-### Decision tree — what's the question asking?
 
 | Question shape | Formula |
 |---------------|---------|
@@ -585,11 +629,8 @@ $$\left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\ri
 - **Empty case sanity** — $0! = 1$, $\binom{n}{0} = 1$ (NOT zero)
 - **"At least $m$"** — try complement ($2^n - \text{small sum}$) before computing direct sum
 
----
 
 ## Unit 7: Graph Theory
-
-### Decision tree — what's the question asking?
 
 | Question shape | Tool |
 |---------------|------|
@@ -718,11 +759,10 @@ $n$ pigeons in $m$ pigeonholes ⟹ some hole contains $\geq \lceil n/m \rceil$ p
 - **Handshake** always gives even sum — if your $\sum \deg$ is odd, you miscounted
 - **Pigeonhole** gives a *lower bound* — "at least this many", not exact count
 
----
 
 ## Unit 8: Probability
 
-### Decision tree — what's the question asking?
+
 
 | Question shape | Tool |
 |---------------|------|
@@ -868,6 +908,68 @@ When the problem describes a sequence of choices (e.g., Monty Hall):
 - Bayes' Theorem proof = chain rule + LoTP — induction-flavored derivation (Unit 4 style)
 - Independence multiplicative form $\Pr[A \cap B] = \Pr[A]\Pr[B]$ ↔ **$E[XY] = E[X]E[Y]$** for independent random variables (Unit 9)
 
+### Worked example — Bayes + LoTP rearrange (T6 Q2.2 disease test)
+
+**The problem:**
+- Disease $F$ affects $1$ in every $1000$ people in the city
+- A test, when administered to a positive person, reports "positive" $85\%$ of the time
+- Among everyone tested (positive or not), the test reports "positive" $10\%$ of the time
+- **Find:** if a person doesn't have the disease, what's the chance the test reports positive? (i.e., the **false positive rate**)
+
+**Translate the problem into events + probabilities:**
+
+Let $A$ = "person has disease", $B$ = "test reports positive".
+
+| English | Symbol | Value |
+|---------|--------|-------|
+| 1 in 1000 has disease | $\Pr[A]$ | $0.001$ |
+| Test catches positive person | $\Pr[B \mid A]$ | $0.85$ |
+| Overall positive rate | $\Pr[B]$ | $0.1$ |
+| **WANT** false positive rate | $\Pr[B \mid \bar{A}]$ | ? |
+
+**Why basic Bayes alone won't work:**
+
+Basic Bayes gives $\Pr[A \mid B] = \frac{\Pr[B \mid A] \cdot \Pr[A]}{\Pr[B]}$ — that's the wrong direction. We need $\Pr[B \mid \bar{A}]$ (test reports positive **given** no disease).
+
+We need a relation that **contains** $\Pr[B \mid \bar{A}]$ as one of the unknowns and lets us solve for it.
+
+**Use Law of Total Probability (LoTP):**
+
+$$\Pr[B] = \Pr[B \mid A] \cdot \Pr[A] + \Pr[B \mid \bar{A}] \cdot \Pr[\bar{A}]$$
+
+> **Why this works:** the event $B$ partitions into "$B$ AND has disease" plus "$B$ AND no disease". Sum the probabilities — these two pieces are disjoint and cover all of $B$.
+
+This equation has **one unknown** $\Pr[B \mid \bar{A}]$ — solve for it.
+
+**Step 1 — compute $\Pr[\bar{A}]$ using complement rule:**
+
+$$\Pr[\bar{A}] = 1 - \Pr[A] = 1 - 0.001 = 0.999$$
+
+**Step 2 — substitute knowns into LoTP:**
+
+$$0.1 = (0.85)(0.001) + \Pr[B \mid \bar{A}] \cdot (0.999)$$
+
+**Step 3 — isolate $\Pr[B \mid \bar{A}]$ algebraically:**
+
+Subtract $(0.85)(0.001) = 0.00085$ from both sides:
+$$0.1 - 0.00085 = \Pr[B \mid \bar{A}] \cdot 0.999$$
+$$0.09915 = \Pr[B \mid \bar{A}] \cdot 0.999$$
+
+Divide both sides by $0.999$:
+$$\Pr[B \mid \bar{A}] = \frac{0.09915}{0.999}$$
+
+**Leave unsimplified** (no calc) — that's the final answer. (Numerical: $\approx 0.09925$, or $\approx 9.93\%$ false positive rate.)
+
+**Sanity check:**
+- False positive rate ~10% — close to the overall positive rate (also 10%), since most people don't have the disease, so the overall rate is dominated by tests on $\bar{A}$ folks. Makes sense.
+- The disease is rare ($0.1\%$) but the test still flags 10% of healthy people as positive — that's why the chance you actually have the disease given a positive test is so low (~0.85% from Part 1).
+
+**Where this can go wrong:**
+1. **Bayes direction confusion** — confusing "test positive given disease" $\Pr[B \mid A]$ with "disease given test positive" $\Pr[A \mid B]$. Re-read which one is the **GIVEN** (the conditioning side, after the bar).
+2. **Forgetting $\Pr[\bar{A}] = 1 - \Pr[A]$** — easy to leave $\Pr[\bar{A}]$ as a separate unknown.
+3. **Not realizing LoTP can be REARRANGED to solve for $\Pr[B \mid \bar{A}]$** — the equation has 4 quantities; if you know 3, you solve for the 4th.
+4. **Plugging $\Pr[A]$ in place of $\Pr[\bar{A}]$** — pay attention to which probability is being multiplied.
+
 ### Sanity checks (Unit 8)
 
 - $0 \leq \Pr[\cdot] \leq 1$ — never negative, never $>1$
@@ -877,13 +979,12 @@ When the problem describes a sequence of choices (e.g., Monty Hall):
 - **Independence ≠ disjoint** — disjoint events with non-zero prob are NEVER independent ($\Pr[A \cap B] = 0$ but $\Pr[A] \cdot \Pr[B] > 0$)
 - **Pairwise vs mutual** independence — verify all subsets, not just pairs
 
----
 
 ## Unit 9: Distributions, Expectation, Variance
 
 ### Step 1 — identify the distribution (3 questions)
 
-1. **Single trial, two outcomes?** → Bernoulli$(p)$
+1. **1 trial, 2 outcomes?** → Bernoulli$(p)$
 2. **Fixed $n$ trials, count successes?** → Binomial$(n, p)$ — verify BINS (Binary / Independent / Number fixed / Same $p$)
 3. **Count trials until first success?** → Geometric$(p)$
 
@@ -965,6 +1066,63 @@ $a$ and $\sigma$ are different variables even when they share a numeric value.
 - **Indicator variable pattern** decomposes a count into sum of Bernoullis — heavy use in graph-theory expectations (Unit 7) and combinatorial probabilistic arguments
 - Chebyshev / Markov bounds are the "distribution-free" tail bounds — used when distribution is unknown but moments are known
 - $E[X^2] = \text{Var}[X] + (E[X])^2$ identity often shortcuts variance computation for Bernoulli-like vars
+
+### Worked example — bins-and-balls expectation + Markov bound (T6 Q4)
+
+**The problem:** throw $n$ balls into $n$ bins. Each ball lands in any specific bin with probability $\frac{1}{n}$, independently of other balls. Let $X$ = number of balls landing in **bin 1**.
+
+Find: (1) $E[X]$, and (2) a bound for $\Pr[X > a]$.
+
+**Why decompose into indicators:**
+
+Computing $E[X]$ directly via PMF would require summing $\sum_{k=0}^{n} k \cdot \Pr[X = k]$ — messy. Instead, decompose $X$ into a sum of simple indicators.
+
+**Set up indicator variables:**
+
+For each ball $i \in \{1, \ldots, n\}$, define:
+
+$$X_i = \begin{cases} 1 & \text{if ball } i \text{ lands in bin 1} \\ 0 & \text{otherwise} \end{cases}$$
+
+Then $X = \sum_{i=1}^{n} X_i$ — count of balls in bin 1 = sum of indicators.
+
+> **What kind of distribution does $X_i$ have?** Single trial, two outcomes (lands or doesn't). So $X_i \sim \text{Bernoulli}(p)$ where $p = \Pr[\text{ball } i \text{ lands in bin 1}] = \frac{1}{n}$.
+
+**Recall:** for $Y \sim \text{Bernoulli}(p)$, $E[Y] = p$.
+
+**Step 1 — Apply linearity of expectation to find $E[X]$:**
+
+$$E[X] = E\left[\sum_{i=1}^{n} X_i\right] = \sum_{i=1}^{n} E[X_i]$$
+
+> **Linearity is unconditional** — works whether or not the $X_i$ are independent. (In this problem they happen to be independent, but the rule doesn't care.)
+
+Each $E[X_i] = \frac{1}{n}$ (Bernoulli mean):
+
+$$E[X] = \sum_{i=1}^{n} \frac{1}{n} = n \cdot \frac{1}{n} = 1$$
+
+**Sanity:** by symmetry, on average each of the $n$ bins gets $\frac{n \text{ balls}}{n \text{ bins}} = 1$ ball. ✓
+
+**Alternative observation (for understanding):** $X$ actually follows $\text{Binomial}(n, 1/n)$ since it's a sum of $n$ i.i.d. Bernoullis with the same parameter. Direct formula gives $E[X] = np = n \cdot \frac{1}{n} = 1$. Same answer.
+
+**Step 2 — Find a bound for $\Pr[X > a]$:**
+
+Markov's inequality requires $X \geq 0$. Here $X$ is a count (number of balls), so $X \geq 0$ always. ✓
+
+Markov bound:
+$$\Pr[X \geq a] \leq \frac{E[X]}{a} = \frac{1}{a}$$
+
+> **The question asks for $\Pr[X > a]$ (strict), but Markov gives $\Pr[X \geq a]$ (non-strict).** Since $\{X > a\} \subseteq \{X \geq a\}$ (every outcome with $X > a$ also has $X \geq a$):
+$$\Pr[X > a] \leq \Pr[X \geq a] \leq \frac{1}{a}$$
+
+So the answer is: $\Pr[X > a] \leq \frac{1}{a}$.
+
+**Sanity check:** for $a = 5$, the bound says $\Pr[X \geq 5] \leq 0.2$ — i.e., at most 20% chance bin 1 has 5+ balls. Reasonable for $E[X] = 1$.
+
+**Where this can go wrong:**
+1. **Trying to compute $E[X]$ via Binomial PMF directly** — slower, error-prone, defeats the lesson
+2. **Forgetting that linearity works without independence** — students often hesitate when $X_i$ might be dependent. Linearity doesn't care.
+3. **Forgetting Markov needs $X \geq 0$** — doesn't apply to signed RVs (e.g., gain/loss)
+4. **Confusing $\Pr[X > a]$ with $\Pr[X \geq a]$** — Markov gives the latter; the former is bounded **by** the latter
+5. **Plugging $E[X] = n$ instead of $1$** — common arithmetic slip
 
 ### Sanity checks (Unit 9)
 
