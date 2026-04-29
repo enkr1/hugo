@@ -334,6 +334,56 @@ This matches the target. ✓
 4. **Algebra error in factoring $(k+1)$** — write the factoring step out, don't skip
 5. **Forgetting conclusion sentence** — "By induction, ..." closes the proof
 
+### Worked example — strong induction proof of $S(n) \leq 2^n$ (stair climbing)
+
+**The setup:** stair climbing recurrence — climb 1 or 2 stairs at a time. $S(n)$ = number of ways to climb $n$ stairs.
+
+$$S(n) = S(n-1) + S(n-2), \quad S(1) = 1, \quad S(2) = 2$$
+
+**The claim:** for all integers $n \geq 1$, $\quad S(n) \leq 2^n$.
+
+**Why use STRONG induction (not weak)?** The recurrence $S(n) = S(n-1) + S(n-2)$ reaches back **2 steps**. To prove $P(k)$ we need both $P(k-1)$ AND $P(k-2)$ — weak induction (which only gives us $P(k-1)$) is insufficient. Strong induction lets us assume ALL prior $P(j)$ for $j < k$.
+
+**Step 1 — Base cases:** since recurrence reaches back 2 steps, we need **2 base cases**.
+
+$P(1)$: $S(1) = 1 \leq 2 = 2^1$ ✓
+
+$P(2)$: $S(2) = 2 \leq 4 = 2^2$ ✓
+
+**Step 2 — Inductive hypothesis (strong form):** for arbitrary $k \geq 3$, **assume** that $P(j)$ holds for ALL $j$ with $1 \leq j < k$.
+
+That is, **assume**: $S(j) \leq 2^j$ for every $j \in \{1, 2, \ldots, k-1\}$.
+
+> **Difference from weak induction:** weak only assumes $P(k-1)$. Strong assumes $P(1), P(2), \ldots, P(k-1)$ all together.
+
+**Step 3 — Inductive step:** prove $S(k) \leq 2^k$.
+
+Apply the recurrence:
+$$S(k) = S(k-1) + S(k-2)$$
+
+Apply IH to both $S(k-1)$ and $S(k-2)$ (both indices $< k$, so both covered by IH):
+$$S(k) \leq 2^{k-1} + 2^{k-2}$$
+
+Algebraic simplification — factor out $2^{k-2}$:
+$$2^{k-1} + 2^{k-2} = 2 \cdot 2^{k-2} + 1 \cdot 2^{k-2} = 3 \cdot 2^{k-2}$$
+
+Compare to target $2^k$:
+$$2^k = 4 \cdot 2^{k-2}$$
+
+Since $3 \leq 4$:
+$$S(k) \leq 3 \cdot 2^{k-2} \leq 4 \cdot 2^{k-2} = 2^k \quad ✓$$
+
+**Step 4 — Conclusion:**
+
+> "By strong induction, $S(n) \leq 2^n$ for all $n \geq 1$."
+
+**Where this can go wrong:**
+1. **Only stating 1 base case** — strong induction with 2-step recurrence MUST have 2 base cases ($P(1), P(2)$). With 1 base, $k = 3$ inductive step would need $P(2)$ from base + $P(1)$ from IH; if $P(1)$ isn't a base, IH at $k = 3$ assumes $P(1), P(2)$ both, but $P(1)$ was never established → circular.
+2. **Conflating weak and strong IH** — if you wrote "assume $P(k-1)$" instead of "assume $P(j)$ for all $j < k$", you can't apply IH to $S(k-2)$. Match the IH form to the recurrence's reach.
+3. **Algebra error in factoring $2^{k-2}$** — write the factoring step explicitly; rushing gives $2^{k-1} + 2^{k-2} = 2^{k-1+k-2}$ (wrong, that's multiplication not addition).
+4. **Forgetting strict inequality vs equality** — the bound is $\leq$, not $=$. Use $\leq$ consistently; $=$ is a stronger claim that requires a different proof structure.
+5. **Wrong base case start** — if claim were "$S(n) \leq 2^n$ for $n \geq 3$", you'd need bases at $n = 3$ and $n = 4$, NOT $n = 1, 2$. Match base values to the claim's domain.
+
 ### Classic recurrences
 
 | Recurrence | Closed form | Application |
