@@ -23,7 +23,7 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 
 ## Unit 1: Logic & Proofs
 
-15 Rules of Deduction:
+### The 15 Rules of Deduction
 
 | # | Rule | Pattern | Justification Format |
 |---|------|---------|---------------------|
@@ -46,7 +46,9 @@ full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}
 | 14 | Contradiction | $a \land \lnot a \implies \bot$ | [Contradiction on line N] |
 | 15 | Proof by contradiction | Assume $\lnot p$, derive $\bot \implies p$ | [Proof by contradiction on lines N and M] |
 
-Justification Patterns: [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and M]
+### Justification Patterns
+
+**Format:** [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and M]
 
 | Lines needed | Pattern | Examples |
 |-------------|---------|----------|
@@ -54,7 +56,7 @@ Justification Patterns: [By RULE_NAME on line(s) N] or [RULE_NAME on lines N and
 | Two lines | on lines N and M | Modus ponens, universal instantiation, conjunction |
 | Multi-line | on lines N, M.x, O.x | Proof by cases (the OR + each case conclusion) |
 
-Line Numbering Convention
+### Line Numbering Convention
 
 ```text
 1. [outer statement]
@@ -66,7 +68,7 @@ Line Numbering Convention
 
 **Indentation = scope.** Sub-lines (1.1, 1.2, ...) live inside the scope of line 1.
 
-Common Proof Openers:
+### Common Proof Openers
 
 | Situation | Opener |
 |-----------|--------|
@@ -76,7 +78,7 @@ Common Proof Openers:
 | Direct proof | "Assume [antecedent]." → derive → conclude [consequent] |
 | Proof by contradiction | "Assume, for contradiction, that $\lnot$[statement]." |
 
-Common gotchas (Unit 1):
+### Common gotchas (Unit 1)
 
 - **Use TCX1004 official rule names** — "Specialisation" not "Simplification", "Generalisation" not "Addition". Mismatched names lose marks even with correct logic.
 - **Proof by cases citation needs every branch:** [Proof by cases on lines N, M.x, O.x] — cite the OR statement AND each case's conclusion.
@@ -84,7 +86,7 @@ Common gotchas (Unit 1):
 - **Modus ponens vs modus tollens:** $p \to q, p \implies q$ (ponens) vs $p \to q, \lnot q \implies \lnot p$ (tollens). Don't swap.
 - **Existential vs Universal instantiation:** existential needs "Let $c \in A$ be such that..." (introducing a witness). Universal just plugs in $c$.
 
-Cross-hooks:
+### Cross-hooks
 
 - Logic rules are the formal language of **all proof-based units** — set equality (Unit 2), induction (Unit 4), Big-O (Unit 5)
 - **Definition unpacking** (Rule 1) is the most-used rule across all units — every formal proof starts with it
