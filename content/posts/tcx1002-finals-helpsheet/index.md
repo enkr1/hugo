@@ -10,6 +10,117 @@ math: false
 draft: false
 ---
 
+<style>
+@page { margin: 2mm; }
+@media print {
+  .left-sidebar, .right-sidebar, .sidebar,
+  .toc-left-sidebar,
+  #TableOfContents, .widget--toc,
+  .floating-toolbar, .scroll-to-top, .search-modal,
+  .backlinks-section, .backlinks-list, .article-header, .article-footer,
+  [class*="backlink"], [class*="mention"],
+  .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
+  footer, aside, .site-footer, .post-footer,
+  .related-content--wrapper, .subscribe-form,
+  [class*="share"], [class*="social"],
+  [class*="copyright"], [class*="license"], [class*="prev-next"],
+  .inline-comment-popup, .ic-floating-pill,
+  .article-page .main-article > :last-child ~ * { display: none !important; }
+  html, body, main, article, div, section {
+    min-height: 0 !important; height: auto !important;
+  }
+  main, .main-article, .article-content, .main-container, .container, body {
+    flex: initial !important; flex-grow: 0 !important;
+    display: block !important;
+    max-width: 100% !important; width: 100% !important;
+    padding: 0 !important; margin: 0 !important;
+    gap: 0 !important;
+  }
+  body, .main-article {
+    font-size: 7pt !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.15px !important;
+  }
+  .main-article {
+    column-count: 3 !important;
+    column-gap: 4mm !important;
+    column-fill: balance !important;
+    column-rule: 0.3px solid #e5e5e5 !important;
+  }
+  /* Override theme's page-break-before on h2 (would otherwise break each section to own page) */
+  .article-content h2 {
+    page-break-before: auto !important;
+    break-before: column !important;
+    font-size: 7.5pt !important;
+    margin: 2pt 0 1pt 0 !important;
+    padding: 1pt 3pt !important;
+    background: #222 !important;
+    color: #fff !important;
+  }
+  h3 {
+    font-size: 6.8pt !important;
+    margin: 1pt 0 0 0 !important;
+    padding: 0 0 0 0.3em !important;
+    border-top: 0.3px solid #ccc !important;
+    border-left: none !important;
+    background: rgba(0,0,0,0.04) !important;
+  }
+  h4 { font-size: 6.7pt !important; margin: 0 !important; }
+  /* Code blocks — 1002's dominant content; tight monospace */
+  pre, .highlight, .highlight pre {
+    font-size: 5.8pt !important;
+    line-height: 1.05 !important;
+    margin: 1px 0 !important;
+    padding: 1px 3px !important;
+    background: rgba(0,0,0,0.03) !important;
+    overflow: hidden !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+  pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
+  code { font-size: 0.95em !important; }
+  /* Tables */
+  table {
+    font-size: 6.6pt !important;
+    margin: 0 0 0.2rem 0 !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+  td, th {
+    padding: 0.5px 2px !important;
+    line-height: 1.0 !important;
+    border: 0.3px solid #ccc !important;
+    vertical-align: top !important;
+  }
+  th { background: #f4f4f4 !important; }
+  p {
+    font-size: 6pt !important;
+    line-height: 1.05 !important;
+    margin: 0 0 1px 0 !important;
+  }
+  blockquote {
+    font-size: 6.4pt !important;
+    line-height: 1.0 !important;
+    margin: 0 0 1px 0 !important;
+    padding: 0 5px !important;
+    border-left: 2px solid #bbb !important;
+  }
+  ul, ol { margin: 0 !important; padding-left: 10px !important; }
+  li { margin: 0 !important; line-height: 1.05 !important; font-size: 6pt !important; }
+  hr { display: none !important; }
+  h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    break-before: avoid-column !important;
+  }
+  pre, blockquote, table, tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  p:empty { display: none !important; }
+}
+</style>
+
 ## Constraints & Scope
 
 - **1 × A4 double-sided** (confirmed Prof Jiang, Apr 18)
