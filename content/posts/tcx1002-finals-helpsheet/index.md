@@ -18,9 +18,30 @@ draft: false
 - **TBC (still pending Apr 18 tutorial answers):** OOP, regex
 - Strategy anchor: decomposition into subproblems → **recursive thinking** (Prof Jiang Apr 18 lunch)
 
-## Scope Priorities (TODO human)
+## Scope Priorities
 
-<!-- TODO(human): Rank scope decision — see Learn by Doing request in chat. -->
+**Tier 1 — exam-time first lookup (high frequency × tested-weak):**
+1. **NumPy distance matrix** (Apr 18 live-walk → strongest signal)
+2. **`reduce`** (`from functools import reduce`; `reduce(fn, iter, init)` arg order)
+3. **Backtracking template** (base case = `[]` not `None`; combine `[(curr,)] + res`)
+4. **OOP `@property`** (TBC hedge — read-only / write-only)
+5. **Regex** (TBC hedge — midterm + T3 evidence)
+
+**Tier 2 — secondary lookup (high freq × tested-OK):**
+- filter / sorted / map / lambda
+- Recursive RLE + recursive shrink idioms (`% / //`, `s[1:]`, `lst[1:]`)
+- 2D Grid (zigzag + column-RTL)
+- OOP class + inheritance + polymorphism
+- try / except
+- Mock Test Solutions MT1–MT10
+
+**Tier 3 — 1-line compressed (foundation, won't blank):**
+- enumerate · defaultdict / Counter · @lru_cache · two-pointer merge · sliding window · LCS · wildcard match
+
+**READ-FIRST checklist (before filling any blank):**
+- What does the comment say the function returns? (list? tuple? bool?)
+- What types are the args? (str? int? list of tuples?)
+- What does the surrounding code do with the blank's value?
 
 ## Quick Reference
 
@@ -60,14 +81,19 @@ class X:
 
 ### filter / reduce
 
+```python
+from functools import reduce        # ⚠️ MUST import — reduce is NOT builtin
+# Signature: reduce(fn, iterable, initial)   ← 3rd arg is INITIAL (seed), not iterable
+# Lambda convention: lambda acc, x: ...      ← acc FIRST (matters for non-commutative ops)
+```
+
 **filter:** keep items where fn returns True. **reduce:** fold list into one value.
 
 ```python
-from functools import reduce
-
-valid = list(filter(lambda x: x[1] != "NA", data))
-
-total = reduce(lambda acc, x: acc + x, [1,2,3], 0)  # 6
+valid  = list(filter(lambda x: x[1] != "NA", data))
+total  = reduce(lambda acc, x: acc + x,  [1,2,3], 0)   # 6
+prod   = reduce(lambda acc, x: acc * x,  [1,2,3,4], 1) # 24
+joined = reduce(lambda acc, x: acc + x, ["h","i","!"], "")  # "hi!"
 ```
 
 **Build dict with reduce** (mutable acc — faster):
@@ -93,14 +119,11 @@ sorted(data, key=lambda x: (-x[1], x[0]))  # desc by [1], asc by [0]
 # sorted() → NEW list    .sort() → in-place, returns None
 ```
 
-### @lru_cache (Memoization)
-
-**Turn exponential recursion into O(n).** Args must be hashable (no lists — use tuples).
+### @lru_cache
 
 ```python
-from functools import lru_cache
-@lru_cache(maxsize=None)
-def fn(n): ...
+from functools import lru_cache    # args must be hashable (tuples, not lists)
+@lru_cache(maxsize=None)            # ↑ exponential recursion → O(n)
 ```
 
 ### defaultdict / Counter
@@ -116,6 +139,8 @@ c.most_common(2)              # [(3,3), (2,2)]
 ```
 
 ### String Methods
+
+> **Python rule:** `x.method()` not `method(x)`. Exception: `len(x)`, `int(x)`, `str(x)`, `sum(x)`, `max(x)`, `min(x)`, `sorted(x)`, `abs(x)` are free functions. Everything else string-/list-/dict-specific is `obj.method()`.
 
 ```python
 "  hello  ".strip()              # 'hello'       both ends
@@ -199,19 +224,6 @@ raise ValueError("insufficient balance")  # throw your own
 raise AttributeError("write-only")
 ```
 
-### for-else
-
-**`else` runs only if loop finishes WITHOUT `break`.** Useful for "search and fail" patterns.
-
-```python
-for item in lst:
-    if item == target:
-        print("found")
-        break
-else:
-    print("not found")  # only runs if no break
-```
-
 ### enumerate
 
 ```python
@@ -228,6 +240,40 @@ isinstance(x, (int, float))           # True for subclasses too
 type(x) == int                         # exact match only
 ```
 
+### NumPy — Distance Matrix Pattern
+
+> Universal skeleton for "find pair (i, j) with min/max distance". Live-taught Apr 18 (MT10).
+
+```python
+import numpy as np
+
+# === Build NxN pairwise distance matrix ===
+A = np.array(arr)                      # 1D list → np.ndarray
+D = (A[:, None] - A) ** 2              # squared diff, shape (N, N)
+M = np.abs(A[:, None] - A)             # Manhattan diff, shape (N, N)
+
+# === Poison diagonal so argmin/argmax skips self-vs-self ===
+np.fill_diagonal(D, D.max())           # finding CLOSEST → diag = max
+np.fill_diagonal(D, -1)                # finding FARTHEST → diag = -1
+
+# === Find extreme + convert flat idx → (i, j) ===
+flat = D.argmin()                      # OR D.argmax() — returns flat index
+i, j = np.unravel_index(flat, D.shape) # flat → (row, col) tuple
+```
+
+**Key idioms (recognize, don't derive):**
+- `A[:, None]` — inserts new axis at position 1: shape `(N,)` → `(N, 1)`
+- Broadcasting: `(N, 1) - (1, N)` → `(N, N)` matrix where `D[i,j] = A[i] - A[j]`
+- `argmin` / `argmax` return **flat** (1D) index → must `unravel_index` to get `(i, j)`
+- `np.fill_diagonal(D, value)` — overwrites `D[i, i]` in place
+
+**Higher-dim Euclidean (only if input is `(N, D)` matrix of points):**
+
+```python
+diff = A[:, None, :] - A[None, :, :]   # shape (N, N, D)
+E = (diff ** 2).sum(axis=-1)           # shape (N, N), squared euclidean
+```
+
 ---
 
 ## Algorithms
@@ -239,22 +285,36 @@ No → Greedy (O(N)). Yes → Backtracking (O(P^N)).
 
 ### Backtracking — Wishful Thinking
 
-**Template:** choose → recurse → undo. Assume the rest works (wishful thinking). If it didn't, undo and try next.
+**Template:** choose → recurse → undo. **Base case = SUCCESS** (return `[]` / `state` / `True`, NOT `None`). `None` = all branches failed.
 
 ```python
 def backtrack(remaining, state):
     if not remaining:
-        return state
+        return state                     # ✓ base = SUCCESS (e.g. [], state, True)
 
     curr = remaining[0]
     for option in get_options(curr):
         if not is_valid(option, state): continue
         apply(option, state)             # CHOOSE
         result = backtrack(remaining[1:], state)
-        if result is not None:           # wish granted
-            return result
+        if result is not None:           # wish granted → combine current with result
+            return result                # (or: return [(curr, option)] + result)
         undo(option, state)              # UNDO
-    return None                          # all failed
+    return None                          # all failed → propagate fail upward
+```
+
+**Result-builder variant** (for problems that COLLECT pairs/groups):
+
+```python
+def pair_up(items, ok):
+    if not items: return []              # success base = [] (NOT None!)
+    first = items[0]
+    for partner in items[1:]:
+        if ok(first, partner):
+            rest = pair_up([x for x in items if x not in (first, partner)], ok)
+            if rest is not None:
+                return [(first, partner)] + rest   # ⚠️ MUST prepend current pair
+    return None
 ```
 
 **Concrete example — student scheduling:**
@@ -306,19 +366,14 @@ def edit_distance(s1, s2):
     return dp(len(s1), len(s2))
 ```
 
-### Wildcard Match
-
-**`?` = one char, `*` = any sequence (including empty).**
+### Wildcard Match (`?`=1 char, `*`=any seq)
 
 ```python
 def match(pat, text):
-    if not pat and not text: return True
-    if not pat: return False
-    if pat[0] == '*':
-        return match(pat[1:], text) or (bool(text) and match(pat, text[1:]))
+    if not pat: return not text
+    if pat[0] == '*': return match(pat[1:], text) or (bool(text) and match(pat, text[1:]))
     if not text: return False
-    if pat[0] == '?' or pat[0] == text[0]:
-        return match(pat[1:], text[1:])
+    if pat[0] in (text[0], '?'): return match(pat[1:], text[1:])
     return False
 ```
 
@@ -347,20 +402,15 @@ def rle_rec(seq):
     return ((seq[0], 1),) + rest
 ```
 
-### Two-Pointer Merge
-
-**Merge two sorted lists in O(M+N) without re-sorting.**
+### Two-Pointer Merge (sorted lists, O(M+N))
 
 ```python
-def merge(l1, l2, comp=lambda x, y: x - y):
+def merge(l1, l2):
     p1 = p2 = 0; out = []
     while p1 < len(l1) and p2 < len(l2):
-        if comp(l1[p1], l2[p2]) <= 0:
-            out.append(l1[p1]); p1 += 1
-        else:
-            out.append(l2[p2]); p2 += 1
-    out.extend(l1[p1:]); out.extend(l2[p2:])
-    return out
+        if l1[p1] <= l2[p2]: out.append(l1[p1]); p1 += 1
+        else: out.append(l2[p2]); p2 += 1
+    return out + l1[p1:] + l2[p2:]
 ```
 
 ### Dense Ranking (1-2-2-3)
@@ -377,18 +427,13 @@ def dense_rank(rows, key=lambda x: (-x[1], -x[2], -x[3], x[0])):
     return out
 ```
 
-### Sliding Window (Moving Average)
-
-**O(n) with running sum: add new element, subtract oldest.**
+### Sliding Window (running sum, O(n))
 
 ```python
 def sma(prices, w):
-    out = [None] * (w - 1)
-    s = sum(prices[:w])
-    out.append(s / w)
+    s = sum(prices[:w]); out = [None]*(w-1) + [s/w]
     for i in range(w, len(prices)):
-        s += prices[i] - prices[i - w]
-        out.append(s / w)
+        s += prices[i] - prices[i-w]; out.append(s/w)
     return out
 ```
 
@@ -528,6 +573,8 @@ dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 **Single-element tuple:** `(1,)` is tuple. `(1)` is just int.
 
 **str(n) for digits:** left-to-right, handles 0. `n%10` loop reverses + misses 0. Also: `ch` is string — `int(ch)` before math.
+
+**Digit-iteration idiom (recursive):** `n % 10` = LAST digit (extract). `n // 10` = REST of n (shrink). They are complementary — `n = (n//10)*10 + (n%10)`. **Never confuse — recursive call MUST use `// 10`, not `% 10`.**
 
 **Tuple immutable:** `out[-1][1] += 1` crashes. Fix: `out[-1] = (key, count+1)`.
 
@@ -761,4 +808,33 @@ def encode_parity_rec(n):
     if rest[-1][0] == char:
         return rest[:-1] + [(char, rest[-1][1] + 1)]
     return rest + [(char, 1)]
+```
+
+### MT10 — Pair-wise Squared Difference (NumPy, No Loops)
+
+```python
+# Find (i, j) such that (arr[i] - arr[j])**2 is minimal, i < j.
+# No loops allowed. Live-taught Apr 18.
+import numpy as np
+
+def min_sqdiff_pair(arr):
+    A = np.array(arr)
+    D = (A[:, None] - A) ** 2          # NxN matrix, D[i,j] = (A[i]-A[j])²
+    np.fill_diagonal(D, D.max())       # poison diagonal (self-self = 0)
+    flat = D.argmin()                  # flat index of minimum
+    return np.unravel_index(flat, D.shape)   # (i, j) tuple
+
+# Test: min_sqdiff_pair([1, 4, 7, 10]) → (0, 1) | (1, 2) | (2, 3)
+```
+
+**Variant — farthest pair (max abs-diff):**
+
+```python
+def farthest_pair(arr):
+    A = np.array(arr)
+    M = np.abs(A[:, None] - A)         # Manhattan distance matrix
+    flat = M.argmax()                  # NO fill_diagonal needed (diag = 0 already minimal)
+    return np.unravel_index(flat, M.shape)
+
+# Test: farthest_pair([3, 7, 1, 10]) → (2, 3) | (3, 2)
 ```
