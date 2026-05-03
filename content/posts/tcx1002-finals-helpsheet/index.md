@@ -68,6 +68,22 @@ draft: false
     background: rgba(0,0,0,0.04) !important;
   }
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
+  /* Hide Hugo/chroma line numbers in print (covers all wrapper variants) */
+  .lntable td:first-child,
+  .lntable .lntd:first-child,
+  .lnt, .lntable .lnt,
+  .linenos, .line-numbers,
+  .chroma .lntable td.lntd:first-child,
+  pre.lntable td:first-child {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+  }
+  /* Make sure the code column takes full width after line-num hide */
+  .lntable, .lntable td:last-child, .lntable .lntd:last-child {
+    width: 100% !important;
+  }
+
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
     font-size: 0.9em !important;
