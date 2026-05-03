@@ -37,7 +37,7 @@ draft: false
     gap: 0 !important;
   }
   body, .main-article {
-    font-size: 8pt !important;
+    font-size: 7pt !important;
     line-height: 1.05 !important;
     letter-spacing: -0.1px !important;
   }
@@ -68,10 +68,10 @@ draft: false
     background: rgba(0,0,0,0.04) !important;
   }
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
-  /* Code blocks — 1002's dominant content; tight monospace */
+  /* Code blocks — 1002's dominant content; size unified with body */
   pre, .highlight, .highlight pre {
-    font-size: 6.5pt !important;
-    line-height: 1.1 !important;
+    font-size: 7pt !important;
+    line-height: 1.05 !important;
     margin: 1px 0 !important;
     padding: 2px 4px !important;
     background: rgba(0,0,0,0.03) !important;
@@ -80,7 +80,7 @@ draft: false
     word-break: break-word !important;
   }
   pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
-  code { font-size: 0.95em !important; }
+  code { font-size: 1em !important; }
   /* Tables */
   table {
     font-size: 6.6pt !important;
