@@ -272,7 +272,7 @@ from functools import reduce        # ⚠️ MUST import — reduce is NOT built
 # filter — keep items where fn returns True
 valid  = list(filter(lambda x: x[1] != "NA", data))
 
-# map — apply fn to each
+# map — apply fn to each. ⚠️ map/filter return one-shot iterators — wrap list() once
 upper  = list(map(lambda s: s.upper(), words))     # OR: map(str.upper, words)
 
 # reduce — fold to single value
@@ -292,6 +292,10 @@ reduce(lambda acc, x: {**acc, x[0]: acc.get(x[0], 0) + x[1]}, data, {})
 sorted(data, key=lambda x: (-x[1], x[0]))   # desc by [1], asc by [0] tie-break
 sorted(data, reverse=True)                   # OR explicit reverse flag
 # ⚠️ -x[N] negation trick: numbers ONLY (strings → TypeError)
+
+# ⚠️ Mutable default arg = shared across calls!
+def f(x, target=None):                       # safe pattern
+    if target is None: target = []
 ```
 
 ### String Methods
@@ -354,6 +358,11 @@ lst.remove(x)        # remove first x (ValueError if missing)
 lst.index(x)         # index of first x (ValueError if missing)
 lst.reverse()        # in-place, returns None!
 lst.extend([1,2])    # add each item     vs  lst.append([1,2]) → nested
+# ⚠️ for n in nums: nums.remove(n)  → skips elements; use [n for n in nums if ...]
+# ⚠️ y = x; y += [6]  → mutates x!  safe: y = y + [6]
+# ⚠️ a[:]  = outer new, inner shared  → deep: [row[:] for row in a]
+# ⚠️ (1,)  = tuple   (1) = int   ← single-elem tuple needs the comma
+# ⚠️ tuple immutable: out[-1][1] += 1 crashes → out[-1] = (key, count+1)
 
 # SET
 s.add(x)             # add one
@@ -402,8 +411,9 @@ for i, val in enumerate(lst, start=1): # i=1,2,3...
 ```python
 import math                            # for ceil, gcd, sqrt, inf
 f"${balance:.2f}"                      # 2 decimal places
-isinstance(x, (int, float))           # True for subclasses too
+isinstance(x, (int, float))            # True for subclasses too
 type(x) == int                         # exact match only
+# ⚠️ round(2.5) → 2 (banker's rounding!) — use math.ceil() to "round up"
 ```
 
 ---
@@ -416,6 +426,11 @@ type(x) == int                         # exact match only
 # Q: "Can my local choice block someone downstream?"
 # No  → Greedy        O(N)
 # Yes → Backtracking  O(P^N)
+# Recursive shrink ops:
+#   ints   → n // 10  (REST)   vs  n % 10  (LAST digit) ← recursive call uses //
+#   str    → s[1:]
+#   list   → lst[1:]
+# Safe digit iter: int(ch) for ch in str(n)   ← handles leading 0
 ```
 
 ### Backtracking — Wishful Thinking
@@ -633,31 +648,6 @@ c2, d2 = (x2 + dy, y2 - dx), (x1 + dy, y1 - dx)   # CW
 dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 # compare with tolerance: abs(dist - target) < 1e-9
 ```
-
----
-
-## Common Pitfalls
-
-```python
-round(2.5)              # → 2 (banker's!); use math.ceil() to round up
-"".split(" ")           # → [""]   ⚠️ NOT []
-"".split()              # → []
-[[0]] * 3               # ⚠️ all rows = same list; fix: [[0] for _ in range(3)]
-for n in nums: nums.remove(n)   # ⚠️ skips; fix: nums = [n for n in nums if ...]
-m = map(fn, lst); list(m); list(m)   # 2nd → []; wrap list() immediately
-sorted(lst)             # NEW list
-lst.sort()              # in-place, returns None
-def f(x, target=[]):    # ⚠️ shared across calls; fix: target=None then if target is None: target=[]
-y = x; y += [6]         # mutates x! safe: y = y + [6]
-a[:]                    # outer new, inner shared; deep: [row[:] for row in a]
-(1,)                    # tuple    (1) → int
-n % 10                  # LAST digit (extract)
-n // 10                 # REST of n (shrink)  ← recursive call MUST use //, not %
-out[-1][1] += 1         # ⚠️ tuple immutable; fix: out[-1] = (key, count+1)
-int(ch) for ch in str(n)   # safe digit iter (handles leading 0)
-```
-
----
 
 <div style="page-break-before: always"></div>
 
