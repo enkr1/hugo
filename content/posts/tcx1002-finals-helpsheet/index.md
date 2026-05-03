@@ -329,6 +329,22 @@ chr((ord(c) - ord('a') + shift) % 26 + ord('a')) # Caesar cipher
 ### List / Set / Dict Methods
 
 ```python
+# INIT (1D / 2D / 3D)
+[0] * N                                        # 1D, length N: [0,0,0,...]
+[[0] * C for _ in range(R)]                    # 2D, R rows × C cols ✓ SAFE
+[[[0] * D for _ in range(C)] for _ in range(R)]  # 3D, R × C × D    ✓ SAFE
+[[0] * C] * R                                  # ⚠️ BROKEN — all rows same ref
+list(range(N))                                  # [0, 1, 2, ..., N-1]
+set()                                           # empty set (NOT {} — that's dict!)
+{}                                              # empty dict
+dict.fromkeys(['a','b','c'], 0)                 # {'a':0, 'b':0, 'c':0}
+
+# NumPy (if needed)
+np.zeros((R, C))            # 2D zeros
+np.ones((R, C, D))          # 3D ones
+np.full((R, C), 99)         # 2D filled with 99
+np.arange(N).reshape(R, C)  # 0..N-1 reshaped to RxC
+
 # LIST
 lst.append(x)       # add to end (in-place)
 lst.insert(i, x)    # insert at index (in-place)
