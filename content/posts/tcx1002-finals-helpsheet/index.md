@@ -162,38 +162,37 @@ draft: false
 
 ## Quick Reference
 
-### OOP — Class + Inheritance + Polymorphism
+### OOP — class · inheritance · polymorphism · @property
 
 ```python
 class Parent:
     def __init__(self, name):
         self.name = name
-    def method(self): return "base"
-    def __str__(self): return f"Parent({self.name})"
+        self._val = 0                         # convention: leading _ = "private"
+    def method(self): return "base"           # overridable
+    def __str__(self):  return f"Parent({self.name})"
     def __repr__(self): return f"Parent('{self.name}')"
 
-class Child(Parent):
-    def __init__(self, name, extra):
-        super().__init__(name)
-        self.extra = extra
-    def method(self): return "override"  # polymorphism
-    def __str__(self): return f"Child({self.name})"
-```
-
-### OOP — @property (Read-Only / Write-Only)
-
-```python
-class X:
-    def __init__(self):
-        self._val = 0
-
-    @property                        # READ-ONLY
+    @property                                  # READ-ONLY: getter only
     def val(self): return self._val
 
-    @property                        # WRITE-ONLY (getter raises)
-    def deposit(self): raise AttributeError
+    @property                                  # WRITE-ONLY: getter raises
+    def deposit(self): raise AttributeError("write-only")
     @deposit.setter
-    def deposit(self, amt): self._val += amt
+    def deposit(self, amt): self._val += amt   # x.deposit = 50 → triggers setter
+
+class Child(Parent):                           # inheritance
+    def __init__(self, name, extra):
+        super().__init__(name)                 # call parent __init__
+        self.extra = extra
+    def method(self): return "override"        # polymorphism (no isinstance check)
+    def __str__(self): return f"Child({self.name})"
+
+# Use:
+c = Child("A", 9); c.method()                  # "override"
+c.val                                          # 0  (read-only)
+c.deposit = 50; c.val                          # 50
+c.val = 99                                     # ⚠️ AttributeError (no setter)
 ```
 
 ### filter / reduce
