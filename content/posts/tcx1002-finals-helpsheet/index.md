@@ -194,8 +194,6 @@ draft: false
 
 </div>
 
-## Quick Reference
-
 ### NumPy — Distance Matrix Pattern
 
 ```python
