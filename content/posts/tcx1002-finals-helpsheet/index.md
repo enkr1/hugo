@@ -286,18 +286,6 @@ sorted(data, reverse=True)                   # OR explicit reverse flag
 # ⚠️ -x[N] negation trick: numbers ONLY (strings → TypeError)
 ```
 
-### defaultdict / Counter
-
-```python
-from collections import defaultdict, Counter
-
-groups = defaultdict(list)    # auto [] on missing key
-counts = defaultdict(int)     # auto 0 on missing key
-
-c = Counter([1,2,2,3,3,3])   # {3:3, 2:2, 1:1}
-c.most_common(2)              # [(3,3), (2,2)]
-```
-
 ### String Methods
 
 ```python
