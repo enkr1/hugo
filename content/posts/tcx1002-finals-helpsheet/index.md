@@ -345,14 +345,11 @@ a ^ b                # symmetric difference
 {k: v for k, v in pairs}                # dict
 {x for x in lst}                         # set
 [x for row in matrix for x in row]      # flatten 2D
-```
 
-### Dict Tricks
-
-```python
+# DICT TRICKS
 d.get(key, default)                    # no KeyError
 d.setdefault(key, []).append(item)     # group without defaultdict
-counts[x] = counts.get(x, 0) + 1      # count without Counter
+counts[x] = counts.get(x, 0) + 1       # count without Counter
 ```
 
 ### try / except
