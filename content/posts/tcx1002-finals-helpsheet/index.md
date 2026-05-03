@@ -96,7 +96,7 @@ draft: false
 
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
-    font-size: 0.9em !important;
+    font-size: 0.85em !important;
     line-height: 1.05 !important;
     margin: 0 !important;
     padding: 1px 4px !important;
@@ -457,10 +457,6 @@ type(x) == int                         # exact match only
 # ⚠️ round(2.5) → 2 (banker's rounding!) — use math.ceil() to "round up"
 ```
 
----
-
-## Algorithms
-
 ### Greedy vs Backtracking
 
 ```python
@@ -621,9 +617,7 @@ for col_offset in range(N):
         if p >= len(s): break
 ```
 
----
-
-## Formulas
+### Formulas
 
 ```python
 import math
@@ -671,8 +665,6 @@ dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 ```
 
 <div style="page-break-before: always"></div>
-
-## Mock Test Solutions
 
 ### MT1 — Char Type Map (Recursive)
 
