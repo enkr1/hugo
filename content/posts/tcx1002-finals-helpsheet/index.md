@@ -256,9 +256,8 @@ c.most_common(2)              # [(3,3), (2,2)]
 
 ### String Methods
 
-> **Python rule:** `x.method()` not `method(x)`. Exception: `len(x)`, `int(x)`, `str(x)`, `sum(x)`, `max(x)`, `min(x)`, `sorted(x)`, `abs(x)` are free functions. Everything else string-/list-/dict-specific is `obj.method()`.
-
 ```python
+# Rule: x.method() not method(x). Free fns: len, int, str, sum, max, min, sorted, abs.
 "  hello  ".strip()              # 'hello'       both ends
 "  hello  ".lstrip()             # 'hello  '     left only
 "  hello  ".rstrip()             # '  hello'     right only
@@ -278,9 +277,7 @@ c.most_common(2)              # [(3,3), (2,2)]
 "123".isdigit()                  # True
 "abc".isalpha()                  # True
 "abc123".isalnum()               # True
-```
 
-```python
 # ord / chr — character ↔ number
 ord('A')  # 65    ord('a')  # 97    ord('0')  # 48
 chr(65)   # 'A'   chr(97)   # 'a'
@@ -358,36 +355,31 @@ type(x) == int                         # exact match only
 
 ### NumPy — Distance Matrix Pattern
 
-> Universal skeleton for "find pair (i, j) with min/max distance". Live-taught Apr 18 (MT10).
-
 ```python
 import numpy as np
 
-# === Build NxN pairwise distance matrix ===
+# Build NxN pairwise distance matrix
 A = np.array(arr)                      # 1D list → np.ndarray
 D = (A[:, None] - A) ** 2              # squared diff, shape (N, N)
 M = np.abs(A[:, None] - A)             # Manhattan diff, shape (N, N)
 
-# === Poison diagonal so argmin/argmax skips self-vs-self ===
+# Poison diagonal so argmin/argmax skips self-vs-self
 np.fill_diagonal(D, D.max())           # finding CLOSEST → diag = max
 np.fill_diagonal(D, -1)                # finding FARTHEST → diag = -1
 
-# === Find extreme + convert flat idx → (i, j) ===
+# Find extreme + convert flat idx → (i, j)
 flat = D.argmin()                      # OR D.argmax() — returns flat index
 i, j = np.unravel_index(flat, D.shape) # flat → (row, col) tuple
-```
 
-**Key idioms (recognize, don't derive):**
-- `A[:, None]` — inserts new axis at position 1: shape `(N,)` → `(N, 1)`
-- Broadcasting: `(N, 1) - (1, N)` → `(N, N)` matrix where `D[i,j] = A[i] - A[j]`
-- `argmin` / `argmax` return **flat** (1D) index → must `unravel_index` to get `(i, j)`
-- `np.fill_diagonal(D, value)` — overwrites `D[i, i]` in place
+# Key idioms:
+# A[:, None]      = inserts new axis pos 1: (N,) → (N, 1)
+# (N,1) - (1,N)   = broadcasting → (N, N), D[i,j] = A[i] - A[j]
+# argmin/argmax   = return FLAT (1D) index → must unravel_index for (i, j)
+# fill_diagonal   = overwrites D[i, i] in place
 
-**Higher-dim Euclidean (only if input is `(N, D)` matrix of points):**
-
-```python
-diff = A[:, None, :] - A[None, :, :]   # shape (N, N, D)
-E = (diff ** 2).sum(axis=-1)           # shape (N, N), squared euclidean
+# Higher-dim Euclidean (input = (N, D) matrix of points)
+diff = A[:, None, :] - A[None, :, :]   # (N, N, D)
+E = (diff ** 2).sum(axis=-1)           # (N, N), squared euclidean
 ```
 
 ---
