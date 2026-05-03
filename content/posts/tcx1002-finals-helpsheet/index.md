@@ -544,7 +544,7 @@ def edit_distance(s1, s2):
 # Group consecutive identical elements → [(key, count), ...]
 # Only `bucket` changes per problem (e.g. parity, char-type, vowel/cons)
 
-# Iterative
+# Iterative (recursive form: see MT2 for canonical worked example)
 def rle(seq, bucket=lambda x: x):
     out = []
     for x in seq:
@@ -554,14 +554,6 @@ def rle(seq, bucket=lambda x: x):
         else:
             out.append((key, 1))
     return out
-
-# Recursive
-def rle_rec(seq):
-    if not seq: return ()
-    rest = rle_rec(seq[1:])
-    if rest and rest[0][0] == seq[0]:
-        return ((seq[0], rest[0][1] + 1),) + rest[1:]
-    return ((seq[0], 1),) + rest
 ```
 
 ### Two-Pointer Merge (sorted lists, O(M+N))
@@ -762,27 +754,4 @@ def high_low(records):
     )}, valid, {})
 ```
 
-### MT9 — Digit Parity RLE
-
-```python
-# Iterative
-def encode_parity(n):
-    out = []
-    for ch in str(n):
-        t = "E" if int(ch) % 2 == 0 else "O"
-        if out and t == out[-1][0]:
-            out[-1] = (t, out[-1][1] + 1)
-        else:
-            out.append((t, 1))
-    return out
-
-# Recursive
-def encode_parity_rec(n):
-    char = "E" if (n % 10) % 2 == 0 else "O"
-    if n < 10: return [(char, 1)]
-    rest = encode_parity_rec(n // 10)
-    if rest[-1][0] == char:
-        return rest[:-1] + [(char, rest[-1][1] + 1)]
-    return rest + [(char, 1)]
-```
 
