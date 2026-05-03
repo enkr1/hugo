@@ -254,51 +254,36 @@ c.deposit = 50; c.val                          # 50
 c.val = 99                                     # ⚠️ AttributeError (no setter)
 ```
 
-### filter / reduce
+### Functional — filter · map · reduce · sorted · lambda
 
 ```python
 from functools import reduce        # ⚠️ MUST import — reduce is NOT builtin
-# Signature: reduce(fn, iterable, initial)   ← 3rd arg is INITIAL (seed), not iterable
-# Lambda convention: lambda acc, x: ...      ← acc FIRST (matters for non-commutative ops)
-```
+# reduce signature:  reduce(fn, iterable, initial)   ← 3rd arg = SEED (not iterable!)
+# lambda convention: lambda acc, x: ...              ← acc FIRST
 
-**filter:** keep items where fn returns True. **reduce:** fold list into one value.
-
-```python
+# filter — keep items where fn returns True
 valid  = list(filter(lambda x: x[1] != "NA", data))
-total  = reduce(lambda acc, x: acc + x,  [1,2,3], 0)   # 6
-prod   = reduce(lambda acc, x: acc * x,  [1,2,3,4], 1) # 24
+
+# map — apply fn to each
+upper  = list(map(lambda s: s.upper(), words))     # OR: map(str.upper, words)
+
+# reduce — fold to single value
+total  = reduce(lambda acc, x: acc + x,  [1,2,3], 0)        # 6
+prod   = reduce(lambda acc, x: acc * x,  [1,2,3,4], 1)      # 24
 joined = reduce(lambda acc, x: acc + x, ["h","i","!"], "")  # "hi!"
-```
 
-**Build dict with reduce** (mutable acc — faster):
-
-```python
+# Build dict with reduce — MUTABLE acc (faster, MUST return acc!)
 def collect(acc, item):
     acc.setdefault(item[0], []).append(item[1])
-    return acc                       # ← MUST return acc!
+    return acc
 result = reduce(collect, data, {})
-```
-
-**Immutable style** (slower, but works in lambda):
-
-```python
+# Immutable style (slower but lambda-friendly)
 reduce(lambda acc, x: {**acc, x[0]: acc.get(x[0], 0) + x[1]}, data, {})
-```
 
-### Sorting
-
-```python
-sorted(data, key=lambda x: (-x[1], x[0]))  # desc by [1], asc by [0]
-# ⚠️ negative trick only works on numbers, not strings
-# sorted() → NEW list    .sort() → in-place, returns None
-```
-
-### @lru_cache
-
-```python
-from functools import lru_cache    # args must be hashable (tuples, not lists)
-@lru_cache(maxsize=None)            # ↑ exponential recursion → O(n)
+# sorted — NEW list. .sort() = in-place, returns None
+sorted(data, key=lambda x: (-x[1], x[0]))   # desc by [1], asc by [0] tie-break
+sorted(data, reverse=True)                   # OR explicit reverse flag
+# ⚠️ -x[N] negation trick: numbers ONLY (strings → TypeError)
 ```
 
 ### defaultdict / Counter
@@ -492,10 +477,7 @@ def lcs(t1, t2, acc=""):
 ### Edit Distance (Levenshtein) — min ops insert/del/replace
 
 ```python
-from functools import lru_cache
-
 def edit_distance(s1, s2):
-    @lru_cache(maxsize=None)
     def dp(i, j):
         if i == 0: return j
         if j == 0: return i
