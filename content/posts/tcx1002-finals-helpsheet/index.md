@@ -47,11 +47,13 @@ draft: false
     column-fill: balance !important;
     column-rule: 0.3px solid #e5e5e5 !important;
   }
-  /* Override theme's page-break-before on h2 (would otherwise break each section to own page) */
+  /* Override theme's page-break-before on h2 — let sections flow inline within columns */
   .article-content h2 {
     page-break-before: auto !important;
-    break-before: column !important;
-    font-size: 7.5pt !important;
+    break-before: auto !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 7.2pt !important;
     margin: 2pt 0 1pt 0 !important;
     padding: 1pt 3pt !important;
     background: #222 !important;
