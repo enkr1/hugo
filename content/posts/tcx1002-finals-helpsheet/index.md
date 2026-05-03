@@ -123,6 +123,8 @@ draft: false
 }
 </style>
 
+<div class="print-hide">
+
 ## Constraints & Scope
 
 - **1 × A4 double-sided** (confirmed Prof Jiang, Apr 18)
@@ -155,6 +157,8 @@ draft: false
 - What does the comment say the function returns? (list? tuple? bool?)
 - What types are the args? (str? int? list of tuples?)
 - What does the surrounding code do with the blank's value?
+
+</div>
 
 ## Quick Reference
 
