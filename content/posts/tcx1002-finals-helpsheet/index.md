@@ -644,19 +644,6 @@ out[-1][1] += 1         # ⚠️ tuple immutable; fix: out[-1] = (key, count+1)
 int(ch) for ch in str(n)   # safe digit iter (handles leading 0)
 ```
 
-### Pre-Submit
-
-```
-□ Edge: [], "", 0, None, single, all-same, negative, boundaries
-□ Return type matches spec (list? tuple? int? float?)
-□ return X, not print(X)
-□ Off-by-one: range(n) vs range(n+1), < vs <=
-□ Remove debug prints
-□ Didn't shadow: list, dict, sum, max, min, type
-□ Imports at top
-□ Fn signature matches spec
-```
-
 ---
 
 ## Regex
