@@ -61,19 +61,19 @@ draft: false
   }
   h3 {
     font-size: 6.8pt !important;
-    margin: 1pt 0 0 0 !important;
+    margin: 0 !important;
     padding: 0 0 0 0.3em !important;
     border-top: 0.3px solid #ccc !important;
     border-left: none !important;
     background: rgba(0,0,0,0.04) !important;
   }
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
-  /* Code blocks — 1002's dominant content; size unified with body */
-  pre, .highlight, .highlight pre {
+  /* Code blocks — kill ALL margin/wrapper spacing for tight section join */
+  pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
     font-size: 7pt !important;
     line-height: 1.05 !important;
-    margin: 1px 0 !important;
-    padding: 2px 4px !important;
+    margin: 0 !important;
+    padding: 1px 4px !important;
     background: rgba(0,0,0,0.03) !important;
     overflow: hidden !important;
     white-space: pre-wrap !important;
@@ -108,8 +108,10 @@ draft: false
     border-left: 2px solid #bbb !important;
   }
   ul, ol { margin: 0 !important; padding-left: 10px !important; }
-  li { margin: 0 !important; line-height: 1.05 !important; font-size: 6pt !important; }
-  hr { display: none !important; }
+  li { margin: 0 !important; line-height: 1.0 !important; font-size: 6pt !important; }
+  hr { display: none !important; margin: 0 !important; height: 0 !important; }
+  /* Hugo wraps each markdown block in a div — kill its margin too */
+  .article-content > * { margin-top: 0 !important; margin-bottom: 0 !important; }
   h3, h4 {
     page-break-after: avoid !important;
     break-after: avoid !important;
