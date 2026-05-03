@@ -70,7 +70,7 @@ draft: false
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
-    font-size: 6.2pt !important;
+    font-size: 0.9em !important;
     line-height: 1.05 !important;
     margin: 0 !important;
     padding: 1px 4px !important;
@@ -80,7 +80,7 @@ draft: false
     word-break: break-word !important;
   }
   pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
-  code { font-size: 0.95em !important; }
+  code { font-size: 0.9em !important; }
   /* Tables */
   table {
     font-size: 6.6pt !important;
@@ -117,7 +117,13 @@ draft: false
     break-after: avoid !important;
     break-before: avoid-column !important;
   }
-  pre, blockquote, table, tr {
+  /* Allow code blocks to split across columns — prevents huge whitespace gaps */
+  /* Keep break-inside: avoid only on small atomic units (table rows, blockquotes) */
+  pre, .highlight {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+  blockquote, tr {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
