@@ -68,9 +68,9 @@ draft: false
     background: rgba(0,0,0,0.04) !important;
   }
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
-  /* Code blocks — kill ALL margin/wrapper spacing for tight section join */
+  /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
-    font-size: 7pt !important;
+    font-size: 6.2pt !important;
     line-height: 1.05 !important;
     margin: 0 !important;
     padding: 1px 4px !important;
@@ -80,7 +80,7 @@ draft: false
     word-break: break-word !important;
   }
   pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
-  code { font-size: 1em !important; }
+  code { font-size: 0.95em !important; }
   /* Tables */
   table {
     font-size: 6.6pt !important;
