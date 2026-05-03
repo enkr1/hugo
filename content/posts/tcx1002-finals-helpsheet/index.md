@@ -37,13 +37,13 @@ draft: false
     gap: 0 !important;
   }
   body, .main-article {
-    font-size: 7pt !important;
-    line-height: 1.0 !important;
-    letter-spacing: -0.15px !important;
+    font-size: 8pt !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.1px !important;
   }
   .main-article {
-    column-count: 3 !important;
-    column-gap: 4mm !important;
+    column-count: 2 !important;
+    column-gap: 5mm !important;
     column-fill: balance !important;
     column-rule: 0.3px solid #e5e5e5 !important;
   }
@@ -70,10 +70,10 @@ draft: false
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
   /* Code blocks — 1002's dominant content; tight monospace */
   pre, .highlight, .highlight pre {
-    font-size: 5.8pt !important;
-    line-height: 1.05 !important;
+    font-size: 6.5pt !important;
+    line-height: 1.1 !important;
     margin: 1px 0 !important;
-    padding: 1px 3px !important;
+    padding: 2px 4px !important;
     background: rgba(0,0,0,0.03) !important;
     overflow: hidden !important;
     white-space: pre-wrap !important;
