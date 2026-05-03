@@ -393,44 +393,47 @@ E = (diff ** 2).sum(axis=-1)           # shape (N, N), squared euclidean
 
 ### Greedy vs Backtracking
 
-**"Can my local choice block someone downstream?"**
-No → Greedy (O(N)). Yes → Backtracking (O(P^N)).
+```python
+# Q: "Can my local choice block someone downstream?"
+# No  → Greedy        O(N)
+# Yes → Backtracking  O(P^N)
+```
 
 ### Backtracking — Wishful Thinking
 
-**Template:** choose → recurse → undo. **Base case = SUCCESS** (return `[]` / `state` / `True`, NOT `None`). `None` = all branches failed.
-
 ```python
+# Pattern: choose → recurse → undo.
+# ⚠️ Base case = SUCCESS ([] / state / True), NOT None.
+# ⚠️ None = "all branches failed" only.
 def backtrack(remaining, state):
     if not remaining:
-        return state                     # ✓ base = SUCCESS (e.g. [], state, True)
-
+        return state                     # ✓ SUCCESS base
     curr = remaining[0]
     for option in get_options(curr):
         if not is_valid(option, state): continue
         apply(option, state)             # CHOOSE
         result = backtrack(remaining[1:], state)
-        if result is not None:           # wish granted → combine current with result
-            return result                # (or: return [(curr, option)] + result)
+        if result is not None:
+            return result                # combine: return [(curr, option)] + result
         undo(option, state)              # UNDO
-    return None                          # all failed → propagate fail upward
+    return None                          # all failed → propagate fail
 ```
 
-**Result-builder variant** (for problems that COLLECT pairs/groups):
+**Result-builder variant (collect pairs/groups):**
 
 ```python
 def pair_up(items, ok):
-    if not items: return []              # success base = [] (NOT None!)
+    if not items: return []              # ✓ success = [] (NOT None!)
     first = items[0]
     for partner in items[1:]:
         if ok(first, partner):
             rest = pair_up([x for x in items if x not in (first, partner)], ok)
             if rest is not None:
-                return [(first, partner)] + rest   # ⚠️ MUST prepend current pair
+                return [(first, partner)] + rest   # ⚠️ MUST prepend current
     return None
 ```
 
-**Concrete example — student scheduling:**
+**Concrete — student scheduling:**
 
 ```python
 def assign(students, classes):
@@ -443,16 +446,15 @@ def assign(students, classes):
             cls[pref] -= 1
             ans = bt(rem[1:], cls, res)
             if ans is not None: return ans
-            cls[pref] += 1; res[pref].pop()
+            cls[pref] += 1; res[pref].pop()    # UNDO
         return None
     return bt(students, classes.copy(), {})
 ```
 
 ### LCS (Longest Common Subsequence)
 
-**Find longest sequence present in both strings in same order.** Exponential without memo.
-
 ```python
+# Longest sequence present in both, same order. Exponential w/o memo.
 def lcs(t1, t2, acc=""):
     if not t1 or not t2: return acc
     if t1[0] == t2[0]:
@@ -462,9 +464,7 @@ def lcs(t1, t2, acc=""):
     return p1 if len(p1) > len(p2) else p2
 ```
 
-### Edit Distance (Levenshtein)
-
-**Min operations (insert/delete/replace) to turn s1 into s2.** Use @lru_cache.
+### Edit Distance (Levenshtein) — min ops insert/del/replace
 
 ```python
 from functools import lru_cache
@@ -492,9 +492,10 @@ def match(pat, text):
 
 ### RLE (Run-Length Encoding)
 
-**Group consecutive identical elements into (key, count) pairs.** Only the bucket function changes per problem.
-
 ```python
+# Group consecutive identical elements → [(key, count), ...]
+# Only `bucket` changes per problem (e.g. parity, char-type, vowel/cons)
+
 # Iterative
 def rle(seq, bucket=lambda x: x):
     out = []
@@ -528,9 +529,8 @@ def merge(l1, l2):
 
 ### Dense Ranking (1-2-2-3)
 
-**Same score = same rank. Next different score = rank + 1 (no skip).**
-
 ```python
+# Same score = same rank. Next different score = rank+1 (no skip).
 def dense_rank(rows, key=lambda x: (-x[1], -x[2], -x[3], x[0])):
     s = sorted(rows, key=key)
     rank = 1; out = [(rank, *s[0])]
@@ -552,24 +552,17 @@ def sma(prices, w):
 
 ### 2D Grid
 
-**Setup:** find smallest N where N*N >= len(s), create grid.
-
 ```python
+# Setup: smallest N s.t. N*N >= len(s)
 N = 1
 while N * N < len(s): N += 1
 grid = [[" "] * N for _ in range(N)]
-```
 
-**Zigzag** (odd rows reversed):
-
-```python
+# Zigzag (odd rows reversed)
 row, col = i // N, i % N
 if row % 2 == 1: col = N - col - 1
-```
 
-**Column fill right-to-left:**
-
-```python
+# Column fill right-to-left
 for col_offset in range(N):
     for row in range(N):
         grid[row][N - col_offset - 1] = s[p]; p += 1
@@ -580,83 +573,47 @@ for col_offset in range(N):
 
 ## Formulas
 
-**Weighted average:** sum(value x weight) / sum(weights). E.g. GPA.
-
 ```python
+import math
+
+# Weighted average (e.g. GPA)
 sum(v * w for v, w in data) / sum(w for _, w in data)
-```
 
-**Trimmed mean:** drop outliers then average. E.g. drop highest + lowest judge score.
-
-```python
+# Trimmed mean — drop highest + lowest
 (sum(scores) - max(scores) - min(scores)) / (len(scores) - 2)
-```
 
-**Euclidean distance:** straight-line between two points.
-
-```python
+# Euclidean distance (straight line)
 math.sqrt(sum((a - b) ** 2 for a, b in zip(p1, p2)))
-```
 
-**Manhattan distance:** grid-walking distance (no diagonals).
-
-```python
+# Manhattan distance (grid, no diagonals)
 sum(abs(a - b) for a, b in zip(p1, p2))
-```
 
-**Prime check:** trial division up to sqrt(n).
-
-```python
+# Prime check — trial division up to sqrt(n)
 def is_prime(n):
     if n < 2: return False
     for i in range(2, int(n**0.5) + 1):
         if n % i == 0: return False
     return True
-```
 
-**GCD:** built-in.
+math.gcd(a, b)                     # built-in GCD
 
-```python
-math.gcd(a, b)
-```
-
-**Newton's method (sqrt):** stop when guess stops changing.
-
-```python
+# Newton's sqrt — stop when guess stabilises
 x_next = (x_prev + n / x_prev) / 2
-# converge when: abs(x_next - x_prev) < tol
-```
+# converge: abs(x_next - x_prev) < tol
 
-**"Top X% rounded up":** ceil, never round.
+math.ceil(total * pct / 100)       # "top X% rounded up" — never round()
+day = i % 7                         # circular indexing (wraparound)
 
-```python
-top_k = math.ceil(total * percentage / 100)
-```
-
-**Circular indexing:** wraparound.
-
-```python
-day = i % 7
-```
-
-**Diagonal detection:** same diagonal = same sum or same difference.
-
-```python
+# Diagonal detection (same sum / same diff)
 same_pos_diag = (r1 + c1) == (r2 + c2)
 same_neg_diag = (r1 - c1) == (r2 - c2)
-```
 
-**90° rotation:** given vector `(dx, dy)`, the perpendicular is `(-dy, dx)` or `(dy, -dx)`. Use to find square corners from one edge.
-
-```python
+# 90° rotation — perpendicular of (dx, dy) is (-dy, dx) or (dy, -dx)
 dx, dy = x2 - x1, y2 - y1
-c1, d1 = (x2 - dy, y2 + dx), (x1 - dy, y1 + dx)  # counterclockwise
-c2, d2 = (x2 + dy, y2 - dx), (x1 + dy, y1 - dx)  # clockwise
-```
+c1, d1 = (x2 - dy, y2 + dx), (x1 - dy, y1 + dx)   # CCW
+c2, d2 = (x2 + dy, y2 - dx), (x1 + dy, y1 - dx)   # CW
 
-**Distance between two points:**
-
-```python
+# Distance between 2D points (no math import needed)
 dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 # compare with tolerance: abs(dist - target) < 1e-9
 ```
@@ -665,31 +622,24 @@ dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 
 ## Common Pitfalls
 
-**Banker's rounding:** `round(2.5)` = 2, not 3. Use `math.ceil()` for "round up".
-
-**split gotcha:** `"".split(" ")` = `[""]`. `"".split()` = `[]`.
-
-**Shared reference:** `[[0]] * 3` — all rows are same list. Fix: `[[0] for _ in range(3)]`.
-
-**Mutation during iteration:** `for n in nums: nums.remove(n)` skips elements. Fix: list comp.
-
-**One-shot iterators:** `list(map(...))` second time = `[]`. Wrap in `list()` immediately.
-
-**sorted vs sort:** `sorted(lst)` = new list. `lst.sort()` = None (in-place).
-
-**Mutable default:** `def f(x, target=[])` — shared across calls. Fix: `target=None`.
-
-**+= on alias:** `y = x; y += [6]` mutates x too. `y = y + [6]` is safe.
-
-**Shallow copy:** `a[:]` — outer new, inner shared. Fix: `[row[:] for row in a]`.
-
-**Single-element tuple:** `(1,)` is tuple. `(1)` is just int.
-
-**str(n) for digits:** left-to-right, handles 0. `n%10` loop reverses + misses 0. Also: `ch` is string — `int(ch)` before math.
-
-**Digit-iteration idiom (recursive):** `n % 10` = LAST digit (extract). `n // 10` = REST of n (shrink). They are complementary — `n = (n//10)*10 + (n%10)`. **Never confuse — recursive call MUST use `// 10`, not `% 10`.**
-
-**Tuple immutable:** `out[-1][1] += 1` crashes. Fix: `out[-1] = (key, count+1)`.
+```python
+round(2.5)              # → 2 (banker's!); use math.ceil() to round up
+"".split(" ")           # → [""]   ⚠️ NOT []
+"".split()              # → []
+[[0]] * 3               # ⚠️ all rows = same list; fix: [[0] for _ in range(3)]
+for n in nums: nums.remove(n)   # ⚠️ skips; fix: nums = [n for n in nums if ...]
+m = map(fn, lst); list(m); list(m)   # 2nd → []; wrap list() immediately
+sorted(lst)             # NEW list
+lst.sort()              # in-place, returns None
+def f(x, target=[]):    # ⚠️ shared across calls; fix: target=None then if target is None: target=[]
+y = x; y += [6]         # mutates x! safe: y = y + [6]
+a[:]                    # outer new, inner shared; deep: [row[:] for row in a]
+(1,)                    # tuple    (1) → int
+n % 10                  # LAST digit (extract)
+n // 10                 # REST of n (shrink)  ← recursive call MUST use //, not %
+out[-1][1] += 1         # ⚠️ tuple immutable; fix: out[-1] = (key, count+1)
+int(ch) for ch in str(n)   # safe digit iter (handles leading 0)
+```
 
 ### Pre-Submit
 
@@ -710,36 +660,24 @@ dist = ((x1 - x2)**2 + (y1 - y2)**2) ** 0.5
 
 ```python
 import re
-```
 
-**findall:** all matches as list of strings. With groups `()`, returns only group content.
+# findall — all matches as list. With groups () → only group content
+re.findall(r'\d+', "age 25, score 99")        # ['25', '99']
+re.findall(r'(\d+)-(\d+)', "12-34 56-78")     # [('12','34'), ('56','78')]
 
-```python
-re.findall(r'\d+', "age 25, score 99")          # ['25', '99']
-re.findall(r'(\d+)-(\d+)', "12-34 56-78")       # [('12','34'), ('56','78')]
-```
-
-**search:** first match anywhere. Returns match object or None — always check before `.group()`.
-
-```python
+# search — first match anywhere. Returns match obj or None — ALWAYS check
 m = re.search(r'(\d+)-(\d+)', "call 123-456")
 if m:
-    m.group(0)  # '123-456' (full match)
-    m.group(1)  # '123' (first group)
-```
+    m.group(0)   # '123-456'  full match
+    m.group(1)   # '123'      first group
 
-**sub / split:**
+# sub / split
+re.sub(r'\d+', 'X', "abc123def456")           # 'abcXdefX'
+re.split(r'[,;\s]+', "a, b;c  d")             # ['a','b','c','d']
 
-```python
-re.sub(r'\d+', 'X', "abc123def456")         # 'abcXdefX'
-re.split(r'[,;\s]+', "a, b;c  d")           # ['a','b','c','d']
-```
-
-**Greedy vs non-greedy:**
-
-```python
-re.findall(r'<.+>', '<a><b>')     # ['<a><b>']    greedy
-re.findall(r'<.+?>', '<a><b>')    # ['<a>','<b>'] non-greedy
+# Greedy vs non-greedy
+re.findall(r'<.+>',  '<a><b>')                # ['<a><b>']      greedy
+re.findall(r'<.+?>', '<a><b>')                # ['<a>','<b>']   non-greedy
 ```
 
 **Pattern cheat:**
