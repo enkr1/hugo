@@ -197,6 +197,23 @@ i, j = np.unravel_index(flat, D.shape) # flat → (row, col) tuple
 # Higher-dim Euclidean (input = (N, D) matrix of points)
 diff = A[:, None, :] - A[None, :, :]   # (N, N, D)
 E = (diff ** 2).sum(axis=-1)           # (N, N), squared euclidean
+
+# === Worked examples ===
+
+# Closest pair — min squared diff (i < j)
+def min_sqdiff_pair(arr):
+    A = np.array(arr)
+    D = (A[:, None] - A) ** 2
+    np.fill_diagonal(D, D.max())
+    return np.unravel_index(D.argmin(), D.shape)
+# min_sqdiff_pair([1,4,7,10]) → (0,1) | (1,2) | (2,3)
+
+# Farthest pair — max abs diff (no fill_diagonal: diag=0 already min)
+def farthest_pair(arr):
+    A = np.array(arr)
+    M = np.abs(A[:, None] - A)
+    return np.unravel_index(M.argmax(), M.shape)
+# farthest_pair([3,7,1,10]) → (2,3) | (3,2)
 ```
 
 ### Regex
@@ -705,46 +722,6 @@ def avg_rating(votes):
     return {k: v["t"]/v["c"] for k, v in temp.items()}
 ```
 
-### MT5 — Library Fines (OOP + Polymorphism)
-
-```python
-class MemberCard:
-    def __init__(self, mid):
-        self.member_id = mid; self.balance = 0.0
-    def top_up(self, amt): self.balance += amt; return self.balance
-    def fine_for(self, loan): return loan.days_overdue * 0.5
-    def pay_fine(self, loan):
-        fine = self.fine_for(loan)
-        if self.balance >= fine: self.balance -= fine
-        else: raise ValueError("insufficient")
-        return fine
-    def __str__(self): return f"MemberCard({self.member_id}): balance=${self.balance:.2f}"
-
-class StudentMemberCard(MemberCard):
-    def fine_for(self, loan): return super().fine_for(loan) * 0.5
-    def __str__(self): return f"StudentMemberCard({self.member_id}): balance=${self.balance:.2f}"
-```
-
-### MT6 — BankAccount (@property)
-
-```python
-class BankAccount:
-    def __init__(self, owner):
-        self._owner = owner; self._balance = 0.0; self._pin = "0000"
-    @property
-    def owner(self): return self._owner
-    @property
-    def balance(self): return self._balance
-    @property
-    def deposit(self): raise AttributeError
-    @deposit.setter
-    def deposit(self, q): self._balance += q
-    @property
-    def pin(self): raise AttributeError
-    @pin.setter
-    def pin(self, q): self._pin = q
-```
-
 ### MT7 — Column Grid R→L
 
 ```python
@@ -813,31 +790,3 @@ def encode_parity_rec(n):
     return rest + [(char, 1)]
 ```
 
-### MT10 — Pair-wise Squared Difference (NumPy, No Loops)
-
-```python
-# Find (i, j) such that (arr[i] - arr[j])**2 is minimal, i < j.
-# No loops allowed. Live-taught Apr 18.
-import numpy as np
-
-def min_sqdiff_pair(arr):
-    A = np.array(arr)
-    D = (A[:, None] - A) ** 2          # NxN matrix, D[i,j] = (A[i]-A[j])²
-    np.fill_diagonal(D, D.max())       # poison diagonal (self-self = 0)
-    flat = D.argmin()                  # flat index of minimum
-    return np.unravel_index(flat, D.shape)   # (i, j) tuple
-
-# Test: min_sqdiff_pair([1, 4, 7, 10]) → (0, 1) | (1, 2) | (2, 3)
-```
-
-**Variant — farthest pair (max abs-diff):**
-
-```python
-def farthest_pair(arr):
-    A = np.array(arr)
-    M = np.abs(A[:, None] - A)         # Manhattan distance matrix
-    flat = M.argmax()                  # NO fill_diagonal needed (diag = 0 already minimal)
-    return np.unravel_index(flat, M.shape)
-
-# Test: farthest_pair([3, 7, 1, 10]) → (2, 3) | (3, 2)
-```
