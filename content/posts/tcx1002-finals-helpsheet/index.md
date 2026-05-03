@@ -457,19 +457,6 @@ type(x) == int                         # exact match only
 # ⚠️ round(2.5) → 2 (banker's rounding!) — use math.ceil() to "round up"
 ```
 
-### Greedy vs Backtracking
-
-```python
-# Q: "Can my local choice block someone downstream?"
-# No  → Greedy        O(N)
-# Yes → Backtracking  O(P^N)
-# Recursive shrink ops:
-#   ints   → n // 10  (REST)   vs  n % 10  (LAST digit) ← recursive call uses //
-#   str    → s[1:]
-#   list   → lst[1:]
-# Safe digit iter: int(ch) for ch in str(n)   ← handles leading 0
-```
-
 ### Backtracking — Wishful Thinking
 
 ```python
@@ -525,6 +512,10 @@ def assign(students, classes):
 ### Edit Distance (Levenshtein) — canonical recursive template
 
 ```python
+# Recursive shrink ops:
+#   ints  → n // 10 (REST) vs n % 10 (LAST digit)  ← recursive call uses //
+#   str   → s[1:]      list → lst[1:]
+#   safe digit iter: int(ch) for ch in str(n)      ← handles leading 0
 # Pattern: multi-choice recursion (match → no-cost; mismatch → 1 + min(3 sub-calls))
 # Same shape works for: LCS, wildcard match, sub-sequence problems.
 def edit_distance(s1, s2):
