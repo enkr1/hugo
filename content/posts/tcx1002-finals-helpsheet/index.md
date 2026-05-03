@@ -68,21 +68,31 @@ draft: false
     background: rgba(0,0,0,0.04) !important;
   }
   h4 { font-size: 6.7pt !important; margin: 0 !important; }
-  /* Hide Hugo/chroma line numbers in print (covers all wrapper variants) */
+  /* Hide Hugo/chroma line numbers in print — Stack theme uses <span class="ln"> + <span class="line"> wrappers */
+  .ln, span.ln,
+  .lnt, span.lnt,
   .lntable td:first-child,
   .lntable .lntd:first-child,
-  .lnt, .lntable .lnt,
   .linenos, .line-numbers,
+  .chroma .ln, .chroma .lnt,
   .chroma .lntable td.lntd:first-child,
-  pre.lntable td:first-child {
+  pre.lntable td:first-child,
+  .highlight .ln, .highlight .lnt,
+  code .ln, pre .ln {
     display: none !important;
+    visibility: hidden !important;
     width: 0 !important;
     padding: 0 !important;
+    margin: 0 !important;
+    color: transparent !important;
+    user-select: none !important;
   }
-  /* Make sure the code column takes full width after line-num hide */
+  /* Code column reclaim full width */
   .lntable, .lntable td:last-child, .lntable .lntd:last-child {
     width: 100% !important;
   }
+  /* Stack theme often wraps each line — strip leading whitespace marker */
+  .chroma .line { padding-left: 0 !important; }
 
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
@@ -518,40 +528,20 @@ def assign(students, classes):
     return bt(students, classes.copy(), {})
 ```
 
-### LCS (Longest Common Subsequence)
+### Edit Distance (Levenshtein) — canonical recursive template
 
 ```python
-# Longest sequence present in both, same order. Exponential w/o memo.
-def lcs(t1, t2, acc=""):
-    if not t1 or not t2: return acc
-    if t1[0] == t2[0]:
-        return lcs(t1[1:], t2[1:], acc + t1[0])
-    p1 = lcs(t1, t2[1:], acc)
-    p2 = lcs(t1[1:], t2, acc)
-    return p1 if len(p1) > len(p2) else p2
-```
-
-### Edit Distance (Levenshtein) — min ops insert/del/replace
-
-```python
+# Pattern: multi-choice recursion (match → no-cost; mismatch → 1 + min(3 sub-calls))
+# Same shape works for: LCS, wildcard match, sub-sequence problems.
 def edit_distance(s1, s2):
     def dp(i, j):
-        if i == 0: return j
-        if j == 0: return i
-        if s1[i-1] == s2[j-1]: return dp(i-1, j-1)
-        return 1 + min(dp(i-1, j), dp(i, j-1), dp(i-1, j-1))
+        if i == 0: return j               # base 1: empty s1 → insert all of s2
+        if j == 0: return i               # base 2: empty s2 → delete all of s1
+        if s1[i-1] == s2[j-1]: return dp(i-1, j-1)              # match → no cost
+        return 1 + min(dp(i-1, j),        # delete s1[i-1]
+                       dp(i, j-1),        # insert s2[j-1]
+                       dp(i-1, j-1))      # replace
     return dp(len(s1), len(s2))
-```
-
-### Wildcard Match (`?`=1 char, `*`=any seq)
-
-```python
-def match(pat, text):
-    if not pat: return not text
-    if pat[0] == '*': return match(pat[1:], text) or (bool(text) and match(pat, text[1:]))
-    if not text: return False
-    if pat[0] in (text[0], '?'): return match(pat[1:], text[1:])
-    return False
 ```
 
 ### RLE (Run-Length Encoding)
