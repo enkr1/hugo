@@ -96,7 +96,7 @@ draft: false
 
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
-    font-size: 0.85em !important;
+    font-size: 0.78em !important;
     line-height: 1.05 !important;
     margin: 0 !important;
     padding: 1px 4px !important;
