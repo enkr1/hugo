@@ -162,6 +162,65 @@ draft: false
 
 ## Quick Reference
 
+### NumPy — Distance Matrix Pattern
+
+```python
+import numpy as np
+
+# Build NxN pairwise distance matrix
+A = np.array(arr)                      # 1D list → np.ndarray
+D = (A[:, None] - A) ** 2              # squared diff, shape (N, N)
+M = np.abs(A[:, None] - A)             # Manhattan diff, shape (N, N)
+
+# Poison diagonal so argmin/argmax skips self-vs-self
+np.fill_diagonal(D, D.max())           # finding CLOSEST → diag = max
+np.fill_diagonal(D, -1)                # finding FARTHEST → diag = -1
+
+# Find extreme + convert flat idx → (i, j)
+flat = D.argmin()                      # OR D.argmax() — returns flat index
+i, j = np.unravel_index(flat, D.shape) # flat → (row, col) tuple
+
+# Key idioms:
+# A[:, None]      = inserts new axis pos 1: (N,) → (N, 1)
+# (N,1) - (1,N)   = broadcasting → (N, N), D[i,j] = A[i] - A[j]
+# argmin/argmax   = return FLAT (1D) index → must unravel_index for (i, j)
+# fill_diagonal   = overwrites D[i, i] in place
+
+# Higher-dim Euclidean (input = (N, D) matrix of points)
+diff = A[:, None, :] - A[None, :, :]   # (N, N, D)
+E = (diff ** 2).sum(axis=-1)           # (N, N), squared euclidean
+```
+
+### Regex
+
+```python
+import re
+
+# findall — all matches as list. With groups () → only group content
+re.findall(r'\d+', "age 25, score 99")        # ['25', '99']
+re.findall(r'(\d+)-(\d+)', "12-34 56-78")     # [('12','34'), ('56','78')]
+
+# search — first match anywhere. Returns match obj or None — ALWAYS check
+m = re.search(r'(\d+)-(\d+)', "call 123-456")
+if m:
+    m.group(0)   # '123-456'  full match
+    m.group(1)   # '123'      first group
+
+# sub / split
+re.sub(r'\d+', 'X', "abc123def456")           # 'abcXdefX'
+re.split(r'[,;\s]+', "a, b;c  d")             # ['a','b','c','d']
+
+# Greedy vs non-greedy
+re.findall(r'<.+>',  '<a><b>')                # ['<a><b>']      greedy
+re.findall(r'<.+?>', '<a><b>')                # ['<a>','<b>']   non-greedy
+
+# Pattern cheat:
+# \d \D = digit / non-digit       \w \W = word [a-zA-Z0-9_] / non-word
+# \s \S = whitespace / non         \b = word boundary       . = any except \n
+# + * ? = 1+ / 0+ / 0-or-1        {n} {n,m} = exact n / range
+# ^ $ = start / end                (...) = capture group    (?=...) = lookahead
+```
+
 ### OOP — class · inheritance · polymorphism · @property
 
 ```python
@@ -351,35 +410,6 @@ import math                            # for ceil, gcd, sqrt, inf
 f"${balance:.2f}"                      # 2 decimal places
 isinstance(x, (int, float))           # True for subclasses too
 type(x) == int                         # exact match only
-```
-
-### NumPy — Distance Matrix Pattern
-
-```python
-import numpy as np
-
-# Build NxN pairwise distance matrix
-A = np.array(arr)                      # 1D list → np.ndarray
-D = (A[:, None] - A) ** 2              # squared diff, shape (N, N)
-M = np.abs(A[:, None] - A)             # Manhattan diff, shape (N, N)
-
-# Poison diagonal so argmin/argmax skips self-vs-self
-np.fill_diagonal(D, D.max())           # finding CLOSEST → diag = max
-np.fill_diagonal(D, -1)                # finding FARTHEST → diag = -1
-
-# Find extreme + convert flat idx → (i, j)
-flat = D.argmin()                      # OR D.argmax() — returns flat index
-i, j = np.unravel_index(flat, D.shape) # flat → (row, col) tuple
-
-# Key idioms:
-# A[:, None]      = inserts new axis pos 1: (N,) → (N, 1)
-# (N,1) - (1,N)   = broadcasting → (N, N), D[i,j] = A[i] - A[j]
-# argmin/argmax   = return FLAT (1D) index → must unravel_index for (i, j)
-# fill_diagonal   = overwrites D[i, i] in place
-
-# Higher-dim Euclidean (input = (N, D) matrix of points)
-diff = A[:, None, :] - A[None, :, :]   # (N, N, D)
-E = (diff ** 2).sum(axis=-1)           # (N, N), squared euclidean
 ```
 
 ---
@@ -635,47 +665,6 @@ n // 10                 # REST of n (shrink)  ← recursive call MUST use //, no
 out[-1][1] += 1         # ⚠️ tuple immutable; fix: out[-1] = (key, count+1)
 int(ch) for ch in str(n)   # safe digit iter (handles leading 0)
 ```
-
----
-
-## Regex
-
-```python
-import re
-
-# findall — all matches as list. With groups () → only group content
-re.findall(r'\d+', "age 25, score 99")        # ['25', '99']
-re.findall(r'(\d+)-(\d+)', "12-34 56-78")     # [('12','34'), ('56','78')]
-
-# search — first match anywhere. Returns match obj or None — ALWAYS check
-m = re.search(r'(\d+)-(\d+)', "call 123-456")
-if m:
-    m.group(0)   # '123-456'  full match
-    m.group(1)   # '123'      first group
-
-# sub / split
-re.sub(r'\d+', 'X', "abc123def456")           # 'abcXdefX'
-re.split(r'[,;\s]+', "a, b;c  d")             # ['a','b','c','d']
-
-# Greedy vs non-greedy
-re.findall(r'<.+>',  '<a><b>')                # ['<a><b>']      greedy
-re.findall(r'<.+?>', '<a><b>')                # ['<a>','<b>']   non-greedy
-```
-
-**Pattern cheat:**
-
-| Pattern | Meaning |
-|---------|---------|
-| `\d` / `\D` | digit / non-digit |
-| `\w` / `\W` | word char `[a-zA-Z0-9_]` / non-word |
-| `\s` / `\S` | whitespace / non-whitespace |
-| `\b` | word boundary |
-| `.` | any char except `\n` |
-| `+` / `*` / `?` | 1+ / 0+ / 0 or 1 |
-| `{n}` / `{n,m}` | exactly n / n to m |
-| `^` / `$` | start / end of string |
-| `(...)` | capture group |
-| `(?=...)` | lookahead (match without consuming) |
 
 ---
 
