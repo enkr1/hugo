@@ -15,8 +15,8 @@ draft: false
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
 | TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
-| TCX1004 | Active | █████ Unit 9 | Cheatsheet locked (1297 lines, all 9 units, 4 worked examples, no-calc reference). Final Apr 30 (tomorrow) |
-| TCX1002 | Pending | █████ W11 | PE 20/20 ✅, Final May 4. Phase 1 trigger active post-1004 |
+| TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
+| TCX1002 | Done (awaiting result) | █████ Topics done | Final taken May 4 ✅ — Examplify fill-blank. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not |
 
 ### At a Glance
 
@@ -159,7 +159,7 @@ draft: false
 - ~~**Week 12 Quiz (Random Variables):**~~ ✅ 9/9 Apr 19 (Unit 9 L3 via Chebyshev breakthrough)
 - ~~**Cheatsheet built from scaffold to full Units 2-9:**~~ ✅ Apr 25 (754 lines)
 - ~~**T6 walk-validation patches:**~~ ✅ Apr 25 (Law of Total Probability + Extended Bayes for Unit 8, E[XY] independent + Var scaling + indicator pattern for Unit 9)
-- **Final Exam:** Apr 30 (open-book; scope TBC pending Prof briefing)
+- ~~**Final Exam:**~~ ✅ Apr 30 — open-book, 1.5h, LT7A. Examples-heavy helpsheet strategy validated; free-form verb gaps (set roster, Cartesian product) surfaced for next-module learning
 
 ### Topic Mastery
 
@@ -189,7 +189,10 @@ draft: false
 
 - ~~**Practical Exam:**~~ **20/20 ✅** (Q1 5/5, Q2 5/5, Q3 6/6, Q4 4/4)
 - ~~**Mock Test 10:**~~ ✅ Done in class Apr 18 (Q1 NumPy pair-wise sq-diff live-taught)
-- **Final Exam:** May 4 (100% fill-in-the-blank on Examplify, A4 helpsheet, recursive decomposition mindset)
+- ~~**Final Exam:**~~ ✅ May 4 — Examplify fill-blank, A4 helpsheet. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not. Lessons captured for future syntax-recall modules.
+
+### Resources
+- [Finals Helpsheet](/nus-bit-tcx1002-finals-helpsheet/)
 
 ### Topic Mastery
 
@@ -219,4 +222,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-04-29 20:18 SGT — updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-05-04 13:23 SGT — Y1S2 finals phase complete (3/3). Special Term TCX2003 + TCX2005 begins May 11. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
