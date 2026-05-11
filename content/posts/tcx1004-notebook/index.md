@@ -8,7 +8,6 @@ categories: ["Education", "Mathematics"]
 toc: true
 math: true
 draft: false
-sticky: 1004
 ---
 
 > NUS TCX1004 study notebook. Prof's notes: [Mathematical Techniques](https://learn-compsci.github.io/mathematical-techniques/)

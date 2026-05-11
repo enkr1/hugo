@@ -8,7 +8,6 @@ categories: ["Education", "Mathematics"]
 toc: true
 math: true
 draft: false
-sticky: 2101
 ---
 
 

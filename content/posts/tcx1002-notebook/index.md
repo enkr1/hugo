@@ -7,7 +7,6 @@ tags: ["nus", "python", "programming", "notebook", "tcx1002"]
 categories: ["Education", "Programming"]
 toc: true
 draft: false
-sticky: 1002
 ---
 
 > NUS TCX1002 exam-focused gotchas & patterns. For general Python notes, see my [Python Notebook]({{< ref "pl-python" >}}).
