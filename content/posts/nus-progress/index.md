@@ -14,6 +14,8 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
+| TCX2003 | Active (Special Term) | █░░░ Lec1 done | Lec1 LIVE May 11 ✅. CREATE TABLE syntax + ER cardinality (1:1/1:N/M:N) covered. Iterative requirement-driven schema design discovered as prof's teaching pattern |
+| TCX2005 | Active (Special Term) | █░░░ L1 done | L1 LIVE attended May 14 ✅. 5 core frameworks introduced (CPSD/IPOF, 3 Dimensions, Complementary Assets, Business-IT interdependence, 5 Stakeholders) + 2 in-class new (3 Drivers/3 Constraints for org change, Rednote case as competitor-driven IS gap). Adopter-centric subject rule = high-value exam trap surfaced |
 | TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
 | TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
 | TCX1002 | Done (awaiting result) | █████ Topics done | Final taken May 4 ✅ — Examplify fill-blank. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not |
@@ -222,4 +224,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-05-04 13:23 SGT — Y1S2 finals phase complete (3/3). Special Term TCX2003 + TCX2005 begins May 11. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-05-15 03:40 SGT — TCX2005 L1 LIVE attended May 14 (Prof Prakash, LT15). Course identity reframed (MBA-lens), 5 L1 frameworks introduced, Rednote case mapped, adopter-centric trap surfaced. TCX2003 Lec1 LIVE attended May 11. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
