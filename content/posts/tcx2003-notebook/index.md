@@ -7,6 +7,7 @@ tags: ["nus", "sql", "mysql", "database", "notebook", "tcx2003"]
 categories: ["Education", "Database"]
 toc: true
 draft: false
+sticky: 2003
 ---
 
 Taking TCX2003 Database Systems this Special Term with Prof Jiang Kan. Flipped classroom, so most material is pre-watched and the live lecture is for clarification. This page is my running notebook, grows as the term goes.

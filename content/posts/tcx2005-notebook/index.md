@@ -7,6 +7,7 @@ tags: ["nus", "information-systems", "notebook", "tcx2005", "management"]
 categories: ["Education", "Information Systems"]
 toc: true
 draft: false
+sticky: 2005
 ---
 
 Taking TCX2005 Information Systems, Management and Organisations with Prof Prakash this Special Term. Eight weekly lectures, six Canvas quizzes, a team project, and a 50% open-book Examplify final on 11 July. The final ships the lecture slides bundled inside Examplify, no internet, no Ctrl-F across personal notes. Translation: lookup speed beats memorisation, but only if I have a *real* notebook to look up from.
