@@ -8,6 +8,7 @@ tags:
 categories:
   - ["Software Engineering", "Programming Languages", "SQL"]
   - ["Notebooks"]
+description: "Breaking down Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF) with everyday analogies. Covers functional dependencies, partial vs transitive dependencies, and when BCNF goes further than 3NF."
 ---
 
 Welcome to a journey through the realm of database normalisation—a key aspect of backend development that ensures your database is not only functional but also efficient and easy to manage. Today, let's break down two crucial normalisation forms—Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF)—using everyday examples to make these concepts clear and memorable.

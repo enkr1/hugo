@@ -27,7 +27,7 @@
                     {{- end -}}
 
                     <img src="{{ $Permalink }}"
-                        {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+                        {{ with $Srcset }}srcset="{{ . }}" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"{{ end }}
                         width="{{ $Width }}"
                         height="{{ $Height }}"
                         loading="lazy"
