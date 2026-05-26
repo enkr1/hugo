@@ -1,101 +1,174 @@
 ---
-title: 'SQL: Demystifying Database Design: A Dive into 3NF and BCNF'
+title: 'Database Normalisation: From 1NF to BCNF'
 date: 2024-04-20 03:09:54
+lastmod: 2026-05-25
 tags:
   - "database-design"
   - "backend"
   - "sql"
+  - "normalisation"
 categories:
   - ["Software Engineering", "Programming Languages", "SQL"]
   - ["Notebooks"]
-description: "Breaking down Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF) with everyday analogies. Covers functional dependencies, partial vs transitive dependencies, and when BCNF goes further than 3NF."
+description: "A practical walkthrough of database normalisation from 1NF to BCNF, grounded in functional dependencies and real schemas. Covers why each normal form exists, what anomaly it fixes, and how to decompose."
 ---
 
-Welcome to a journey through the realm of database normalisation—a key aspect of backend development that ensures your database is not only functional but also efficient and easy to manage. Today, let's break down two crucial normalisation forms—Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF)—using everyday examples to make these concepts clear and memorable.
+Database normalisation is about one thing: **don't store the same fact in more than one place.** Every normal form is a stricter version of that rule, backed by a formal tool called functional dependencies.
 
 <!-- more -->
 
-# Why Normalise?
+# Functional Dependencies: The Tool Behind It All
 
-Imagine you're organising a big party. You have a list of guests where each guest's contact details are repeated for every event they're attending. It would be cumbersome and error-prone, right? Normalisation in databases works similarly; it helps organise the data to avoid repetition and confusion, making the database easier to manage—like having a single, organised guest list.
+A functional dependency (FD) `X → Y` means: **if two rows have the same X value, they must have the same Y value.** Same input, guaranteed same output.
 
-# Third Normal Form (3NF): Clearing Up Confusion
-## What is 3NF?
-A database is in Third Normal Form if it's free from the first two forms' woes (repetitions and dependencies) and goes a step further: it eliminates indirect dependencies. That's like ensuring not only that each piece of guest information is recorded once but also that all details directly relate to the guest without unnecessary detours.
+Example from an NUS student table:
 
-## Real-life example:
-Consider a school database:
+| email           | name       | department | faculty             |
+|-----------------|------------|------------|---------------------|
+| tikki@gmail.com | TIKKI TAVI | CS         | School of Computing |
+| rikki@gmail.com | RIKKI TAVI | CS         | School of Computing |
+| bob@gmail.com   | BOB        | Chemistry  | Faculty of Science  |
 
-| StudentID | Name    | Subject | ProfessorID | ProfessorName |
-| --------- | ------- | ------- | ----------- | ------------- |
-| 1         | Alice   | Math    | 101         | Prof. X       |
-| 2         | Bob     | Science | 102         | Prof. Y       |
-| 3         | Charlie | English | 103         | Prof. Z       |
+- `email → name` (same email = same name, always)
+- `email → department` (same email = same department)
+- `department → faculty` (CS is always School of Computing)
 
-Here, `ProfessorName` depends on `ProfessorID` rather than on the `StudentID` or `Subject`. This is like knowing the professor's name by their ID, not by the student or the subject they teach.
+FDs tell you **why** to split tables. Foreign keys are **how** you reconnect them after splitting.
 
-## How to Achieve 3NF:
+**Key vocabulary:**
+- **Candidate key:** a minimal set of columns that uniquely identifies every row. A table can have several; you pick one as the primary key.
+- **Prime attribute:** any column that belongs to at least one candidate key.
+- **Non-prime attribute:** a column that isn't part of any candidate key.
+- **Superkey:** a candidate key, or any superset of one (candidate key + extra columns).
+- **Partial dependency:** a non-prime attribute depends on only *part* of a composite candidate key.
+- **Transitive dependency:** a non-prime attribute depends on another non-prime attribute (A → B → C, where B is not a candidate key).
 
-To organise this into 3NF, split the details into two tables where professors are listed separately. This way, each piece of information is stored only once and directly relates to the primary subject of its table.
+# 1NF: Atomic Values
 
-Students Table:
+**Rule:** every column holds a single, indivisible value. No lists, no comma-separated strings, no nested structures.
 
-| StudentID | Name    | Subject | ProfessorID |
-| --------- | ------- | ------- | ----------- |
-| 1         | Alice   | Math    | 101         |
-| 2         | Bob     | Science | 102         |
-| 3         | Charlie | English | 103         |
+**Bad (not 1NF):**
 
-Professors Table:
+| order_id | customer | items            |
+|----------|----------|------------------|
+| 001      | Alice    | Apple 2, Banana 5|
 
-| ProfessorID | ProfessorName |
-| ----------- | ------------- |
-| 101         | Prof. X       |
-| 102         | Prof. Y       |
-| 103         | Prof. Z       |
+You can't query "all orders containing Apple" without string parsing.
 
-# Boyce-Codd Normal Form (BCNF): A Tighter Ship
-## What is BCNF?
+**Good (1NF):**
 
-BCNF is like 3NF but _with stricter rules_. It's about ensuring that every non-trivial dependency in the table relies solely on a `superkey`, a combination of columns that uniquely identifies a row in the table.
+| order_id | customer | product_id | product | qty |
+|----------|----------|------------|---------|-----|
+| 001      | Alice    | A1         | Apple   | 2   |
+| 001      | Alice    | B2         | Banana  | 5   |
 
-### Practical Example:
+Candidate key: `(order_id, product_id)`. Atomic. But Alice's name is repeated, and if you add `address`, it repeats too. That's the next problem.
 
-Take a look at this course registration table:
+# 2NF: No Partial Dependencies
 
-| CourseID | Student | Professor |
-| -------- | ------- | --------- |
-| 1        | Alice   | Prof. X   |
-| 1        | Bob     | Prof. X   |
-| 2        | Alice   | Prof. Y   |
+**Rule:** already 1NF, and every non-prime attribute depends on the **entire** candidate key, not just part of it.
 
-The problem? `CourseID` alone doesn't always uniquely identify the professor since the same course could be taught by different professors in different years or semesters.
+In the 1NF table above, `customer` depends only on `order_id`, not on the full key `(order_id, product_id)`. That's a partial dependency.
 
-### How to Fix It:
+**Fix:** pull partial dependencies into their own tables.
 
-By restructuring the data, where `CourseID` combined with another attribute (like a semester) always leads to a specific professor. This ensures each table entry is uniquely identifiable by its key components, preventing any ambiguity.
-Absolutely! Let's elaborate on the example by adding another attribute—let's say "Semester"—to the table to ensure each entry is uniquely identifiable, thus adhering to the principles of BCNF.
+| order_id | customer |
+|----------|----------|
+| 001      | Alice    |
 
-**Example Table After Restructuring:**
-To resolve this and adhere to BCNF, we add the "Semester" attribute, which, combined with `CourseID`, will act as a superkey:
+| product_id | product |
+|------------|---------|
+| A1         | Apple   |
+| B2         | Banana  |
 
-| CourseID | Semester    | Student | Professor |
-| -------- | ----------- | ------- | --------- |
-| 1        | Fall 2024   | Alice   | Prof. X   |
-| 1        | Fall 2024   | Bob     | Prof. X   |
-| 2        | Spring 2025 | Alice   | Prof. Y   |
+| order_id | product_id | qty |
+|----------|------------|-----|
+| 001      | A1         | 2   |
+| 001      | B2         | 5   |
 
-Now, each combination of `CourseID` and `Semester` uniquely identifies the professor, ensuring no ambiguity remains:
+Now every non-prime attribute depends on the full key in its table.
 
-- **Superkey:** (`CourseID`, `Semester`)
-- Every row is now uniquely identifiable by this superkey, satisfying BCNF's requirement that every determinant must be a superkey.
+# 3NF: No Transitive Dependencies
 
-This restructuring eliminates any potential anomalies associated with updates, deletions, or insertions by ensuring that the dependencies within the table adhere strictly to the superkey rule. Such adjustments are crucial for maintaining the integrity and efficiency of database operations, particularly in environments with complex data interactions.
+**Rule:** already 2NF, and no non-prime attribute depends on another non-prime attribute.
 
-# Final Thoughts: Keeping It Practical
+Back to the NUS student table. After 2NF, it looks like:
 
-While normalisation is about reducing redundancy and improving data integrity, it's also about finding the right balance. Over-normalising can lead to overly complex databases, making them hard to query and manage. Always consider the specific needs of your application and strive for a practical level of normalisation that supports performance and maintainability.
+| email           | name       | department | faculty             |
+|-----------------|------------|------------|---------------------|
+| tikki@gmail.com | TIKKI TAVI | CS         | School of Computing |
+| rikki@gmail.com | RIKKI TAVI | CS         | School of Computing |
 
----
+`email → department → faculty`. The chain `email → faculty` is transitive through `department`.
 
-By understanding and applying these normalisation forms, you're setting the stage for a robust, scalable, and efficient database system. Dive into these principles, experiment with them, and watch as your backend systems become more streamlined than ever!
+**The anomaly:** NUS renames "School of Computing" to "NUS Computing." You must update every row where `department = CS`. Miss one row and your DB says CS belongs to two different faculties.
+
+**Fix:** decompose the transitive FD into its own table.
+
+| email           | name       | department |
+|-----------------|------------|------------|
+| tikki@gmail.com | TIKKI TAVI | CS         |
+| rikki@gmail.com | RIKKI TAVI | CS         |
+
+| department | faculty             |
+|------------|---------------------|
+| CS         | School of Computing |
+| Chemistry  | Faculty of Science  |
+
+One row to update. SSOT.
+
+**Memory trick:** "every non-key column describes the key, the whole key, and nothing but the key."
+
+# BCNF: Every Determinant Must Be a Superkey
+
+3NF has a loophole: it only restricts non-prime attributes. If *all* attributes are prime (part of some candidate key), 3NF can't complain, even when a problematic FD exists.
+
+BCNF closes that loophole with a simpler, stricter rule: **for every non-trivial FD `X → Y`, X must be a superkey.** No exceptions.
+
+**Example: Gym form-review system**
+
+Say you're building an app where coaches review users' exercise form via video clips. Each coach specialises in one exercise (e.g., a deadlift coach only reviews deadlift clips).
+
+`form_review(user_id, exercise_id, coach_id)`
+
+| user_id | exercise_id | coach_id |
+|---------|-------------|----------|
+| Jing    | deadlift    | Coach_A  |
+| Edmund  | deadlift    | Coach_A  |
+| Jing    | squat       | Coach_B  |
+
+FDs:
+- `{user_id, exercise_id} → coach_id` (each user-exercise pair gets one coach)
+- `coach_id → exercise_id` (each coach specialises in one exercise)
+
+Candidate keys: `{user_id, exercise_id}` and `{user_id, coach_id}`. All three columns are prime — they all belong to at least one candidate key. 3NF has nothing to complain about.
+
+But `coach_id → exercise_id` violates BCNF. `coach_id` alone is not a superkey because it doesn't determine `user_id` (one coach reviews many users).
+
+**The anomaly:** Coach_A switches specialisation from deadlift to squat. You have to update every row where `coach_id = Coach_A`. Miss one and your DB says Coach_A specialises in both deadlift and squat, contradicting the business rule.
+
+**Fix:** decompose into two tables.
+
+| user_id | coach_id |
+|---------|----------|
+| Jing    | Coach_A  |
+| Edmund  | Coach_A  |
+| Jing    | Coach_B  |
+
+| coach_id | exercise_id |
+|----------|-------------|
+| Coach_A  | deadlift    |
+| Coach_B  | squat       |
+
+Coach_A switches to squat? One row updated in the second table. Every determinant is now a superkey in its own table.
+
+# Summary
+
+| Normal Form | Eliminates | Core Rule |
+|-------------|------------|-----------|
+| **1NF** | Non-atomic values | Every column holds one value |
+| **2NF** | Partial dependencies | Non-prime attributes depend on the **whole** candidate key |
+| **3NF** | Transitive dependencies | Non-prime attributes depend only on candidate keys |
+| **BCNF** | Non-superkey determinants (including prime-on-prime) | Every determinant is a superkey |
+
+For most systems, 3NF or BCNF is the practical target. Normalise to eliminate redundancy. Denormalise deliberately (with awareness of the trade-off) when query performance demands it.
