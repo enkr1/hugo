@@ -15,7 +15,7 @@ draft: false
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
 | TCX2003 | Active (Special Term) | █░░░ Lec1 done | Lec1 LIVE May 11 ✅. CREATE TABLE syntax + ER cardinality (1:1/1:N/M:N) covered. Iterative requirement-driven schema design discovered as prof's teaching pattern |
-| TCX2005 | Active (Special Term) | █░░░ L1 done | L1 LIVE attended May 14 ✅. 5 core frameworks introduced (CPSD/IPOF, 3 Dimensions, Complementary Assets, Business-IT interdependence, 5 Stakeholders) + 2 in-class new (3 Drivers/3 Constraints for org change, Rednote case as competitor-driven IS gap). Adopter-centric subject rule = high-value exam trap surfaced |
+| TCX2005 | Active (Special Term) | ██░░░ L1+L2 done, T2 submitted | L1+L2 covered (CPSD/IPOF, 3 Dimensions, 6 strategic objectives, TPS/MIS/DSS/ESS hierarchy, ERP/SCM/CRM/KMS). Quiz 1 done (L1+L2 scope). T2 Netflix case study completed end-to-end with PDF submission ready. Independent framework synthesis: BM/BP/IS = exchange/verb/noun + Netflix POV principle for case study writing |
 | TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
 | TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
 | TCX1002 | Done (awaiting result) | █████ Topics done | Final taken May 4 ✅ — Examplify fill-blank. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not |
@@ -224,4 +224,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-05-15 03:40 SGT — TCX2005 L1 LIVE attended May 14 (Prof Prakash, LT15). Course identity reframed (MBA-lens), 5 L1 frameworks introduced, Rednote case mapped, adopter-centric trap surfaced. TCX2003 Lec1 LIVE attended May 11. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-05-27 04:30 SGT — TCX2005 T2 Netflix case study completed end-to-end (P1-P3 + Q b + Q c, ~30 iteration commits). PDF submission-ready. Frameworks crystallised: BM/BP/IS = exchange/verb/noun, Netflix POV principle, 6-feature A-formula for case studies. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
