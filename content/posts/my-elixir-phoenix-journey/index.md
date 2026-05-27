@@ -1,5 +1,6 @@
 ---
 title: "My Journey in Elixir Phoenix"
+draft: true
 date: 2024-05-19 19:07:45
 tags:
 categories:

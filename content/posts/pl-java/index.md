@@ -1,5 +1,6 @@
 ---
 title: "Java Notebook"
+draft: true
 date: 2024-05-09 02:16:50
 tags:
   - "programming"
