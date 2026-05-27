@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 29"
 date: 2025-03-17 02:53:47
+description: "heavy two weeks but loving the resilience, phuket trip with secondary school friends was exactly what i needed"
 tags:
   - "journal"
 categories:

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 25"
 date: 2025-02-10 01:44:28
+description: "back to sg after cny, actually missed the work routine, something big is coming and i need to be ready"
 tags:
   - "journal"
 categories:

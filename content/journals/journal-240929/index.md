@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 10"
 date: 2024-09-29 23:15:12
+description: "grandpa's 79th birthday in malaysia, time is fragile, hiding social media apps to be more present"
 tags:
   - journal
 categories:

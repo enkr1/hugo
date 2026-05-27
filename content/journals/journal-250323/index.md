@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 30"
 date: 2025-03-23 17:44:38
+description: "deep talk with my sister about strengths, realised my visual-spatial skills and pattern recognition aren't as common as i thought"
 tags:
   - "journal"
   - "姐姐"

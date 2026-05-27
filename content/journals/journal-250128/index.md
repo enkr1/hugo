@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 23"
 date: 2025-01-28 05:00:00
+description: "shipped the beijing uat feature live with no bugs, stranger helped me during a calf cramp, small kindness restores faith"
 tags:
   - "journal"
 categories:

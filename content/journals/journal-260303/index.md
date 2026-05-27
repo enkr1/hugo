@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 56"
 date: 2026-03-03T12:00:00+08:00
+description: "practising gratitude properly, grateful for love and family health, praying for more happy moments in 2026"
 tags:
   - journal
   - engineering

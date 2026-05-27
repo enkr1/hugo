@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 20"
 date: 2025-01-05 23:42:45
+description: "new year countdown performance with the crew, creatine loading phase, back to work-gym-beatbox routine"
 tags:
   - "journal"
 categories:

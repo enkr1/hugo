@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 53"
 date: 2026-02-12T01:37:44+08:00
+description: "jeannie from hk read my smart notes post and messaged excited, reminded me why i write, for that one person"
 tags:
   - journal
 categories:

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 31"
 date: 2025-03-29 18:41:47
+description: "full reset after three weeks of recovery, flung my ipad at the mrt, back to jb for 扫墓 with family"
 tags:
   - "journal"
   - "motivation"

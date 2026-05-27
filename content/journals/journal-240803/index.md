@@ -6,6 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-08-03 15:10:13
+description: "moved to a new place in sg, first bytedance all-hands in person, throat bass progress, relearning to be the user"
 ---
 
 ## ✨ Highlights of the Week

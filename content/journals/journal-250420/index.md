@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 34"
 date: 2025-04-20 18:57:21
+description: "recompleted leetcode 75 with pattern recognition mindset, taught my sister the problems, grateful for the ai era"
 tags:
   - "journal"
 categories:

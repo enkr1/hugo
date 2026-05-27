@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /search/
+Disallow: /page/
 
 Sitemap: https://blog.enkr1.com/sitemap.xml

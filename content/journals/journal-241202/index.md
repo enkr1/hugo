@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 18"
 date: 2024-12-02 03:44:06
+description: "lost my voice the day i planned to record the wildcard, freestyle in the office, didn't pass but carrying the lesson"
 tags:
   - "journal"
 categories:

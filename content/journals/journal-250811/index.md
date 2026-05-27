@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 40"
 date: 2025-08-11 21:37:18
+description: "started TCX1101 and TCX2002, re-learning maths pulled me back to secondary school, proud but not satisfied"
 tags:
   - "journal"
 categories:

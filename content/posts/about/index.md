@@ -1,6 +1,7 @@
 ---
 title: "About Me"
 date: 1999-12-06
+description: "Full-stack engineer at ByteDance, NUS BIT student, beatboxing artist. Tech, music, and personal growth from Singapore."
 sticky: 99998
 ---
 

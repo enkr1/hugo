@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 43"
 date: 2025-08-31 23:25:48
+description: "dream company interview fell short, over-prepared niche topics but missed basics, 7 other interviews went well though"
 tags:
   - "journal"
 categories:

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 45"
 date: 2025-09-16 13:00:36
+description: "zuhlke interviewer gave me a wake-up call, great at adapting tools but have i truly built from scratch"
 tags:
   - "journal"
 categories:

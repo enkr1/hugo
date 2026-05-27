@@ -6,6 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-09-16 00:33:57
+description: "calm week with hidden wins, impressed the toughest stakeholder without realising, deep in diary of a ceo"
 ---
 
 

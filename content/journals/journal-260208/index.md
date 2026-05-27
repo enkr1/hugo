@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 52"
 date: 2026-02-08 17:25:32
+description: "sick for a full week, upper stomach pain and sore throat, reminded me life is short and i can't waste time"
 tags:
   - "journal"
 categories:

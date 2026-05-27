@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 51"
 date: 2026-01-26 17:25:32
+description: "grateful for staying back to hear other students' questions, different mental models, loving connecting with professors"
 tags:
   - "journal"
 categories:

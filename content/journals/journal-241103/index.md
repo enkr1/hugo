@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 15"
 date: 2024-11-03 23:43:11
+description: "productive work-gym-beatbox routine, went back for mum's back injury, reconnected with secondary school friends"
 tags:
   - "journal"
 categories:

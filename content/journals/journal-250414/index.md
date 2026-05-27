@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 33"
 date: 2025-04-14 03:07:00
+description: "reunited with pixium ex-colleagues, reminiscing about lionel who taught me 90% of what i know, mentorship reflections"
 tags:
   - "journal"
 categories:

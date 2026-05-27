@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 37"
 date: 2025-07-15 18:36:19
+description: "back after 2 months of silence, disappeared for something big, pouring 200% into it since march"
 tags:
   - "journal"
 categories:

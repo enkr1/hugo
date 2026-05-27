@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 38"
 date: 2025-07-27 18:53:11
+description: "officially stepped into NUS as a student, orientation and admin done, energy reminded me of bytedance"
 tags:
   - "journal"
 categories:

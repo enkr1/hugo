@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 19"
 date: 2024-12-30 02:54:21
+description: "last journal of 2024, shocking work announcement, first solo business trip to beijing, 16 days of uat and bonding"
 tags:
   - "journal"
 categories:

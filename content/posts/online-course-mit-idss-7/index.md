@@ -1,6 +1,7 @@
 ---
 title: "Recommendation Systems"
 date: 2024-04-04 22:51:51
+description: "Notes on recommendation systems from the MIT IDSS machine learning programme."
 comments: false
 tags:
   - "mit-idss"
