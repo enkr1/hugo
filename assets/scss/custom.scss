@@ -1,56 +1,6 @@
 @import "fonts";
 
-/*
- * 金渊映日 2.0 - Ba Zi Energy Color System
- * 「金-水」为体，「转化火」为用
- *
- * Primary (内蕴金): #8B7355 - Metal/Earth - hovers, selections, CTAs
- * Secondary (智慧海): #1E4B8C - Water - links, tags, code
- * Dynamic (流年曦): #D97706 - Fire→Metal - click flash
- * Base: #0A0F1C (渊墨黑) / #F8FAFC (月影白)
- *
- * MIGRATION COMPLETE — component styles live in theme (hugo-theme-enkr)
- *
- * This file keeps ONLY:
- * - @import "fonts"
- * - :root design tokens (CSS custom properties)
- * - html global resets
- * - Ba Zi seasonal styles (丙午 2026)
- *
- * Migration log:
- * [x] Categories tree → theme/partials/widgets.scss
- * [x] Scrollbar → theme/partials/base.scss
- * [x] Scroll-to-top → theme/partials/sidebar.scss
- * [x] Tags/Categories → theme/partials/article.scss
- * [x] Article subtitle → theme/partials/article.scss
- * [x] Typography → theme/partials/layout/article.scss
- * [x] Cards → theme/partials/layout/list.scss
- * [x] Pagination → theme/partials/pagination.scss
- * [x] Footer → theme/partials/footer.scss
- * [x] Fullpage nav → theme/partials/_fullpage-nav.scss
- * [x] Infinite scroll → theme/partials/_infinite-scroll.scss
- * [x] Right sidebar search → theme/partials/layout/search.scss
- * [x] Grouped list → theme/partials/_grouped-list.scss
- * [x] Code/syntax → theme/partials/_code.scss
- * [x] Buttons → theme/partials/base.scss
- * [x] Article metadata → theme/partials/article.scss
- * [x] Article links → theme/partials/article.scss
- * [x] Anchor flash + images → theme/partials/article.scss
- * [x] Tables → theme/partials/article.scss
- * [x] Related content → theme/partials/article.scss
- * [x] Disqus container → theme/partials/article.scss
- * [x] Nav links → theme/partials/sidebar.scss
- * [x] Left sidebar → theme/partials/sidebar.scss
- * [x] Sidebar header → theme/partials/sidebar.scss
- * [x] Widgets + archives → theme/partials/widgets.scss
- * [x] Subcategories + divider → theme/partials/widgets.scss
- * [x] Layout → theme/partials/layout/article.scss
- * [x] Breadcrumb → theme/partials/_breadcrumb.scss
- * [x] Reading progress → theme/partials/_reading-progress.scss
- * [x] Selection → theme/partials/base.scss
- * [x] Mobile nav → theme/partials/_mobile-nav.scss
- * [x] Responsive → theme/partials/_responsive.scss
- */
+/* 金渊映日 2.0 — Ba Zi design tokens. Component styles live in theme (hugo-theme-enkr). */
 
 /* ===========================================
    DESIGN TOKENS
@@ -113,7 +63,7 @@
     --radius-search: var(--radius-base);
     --radius-related: var(--radius-base);
     --radius-toggle: calc(var(--toggle-height) / 2);
-    --radius-xs: 2px; // Deprecated
+
 
     // SPACING
     --spacing-xs: 0.5rem;
@@ -135,29 +85,3 @@ html {
     scroll-padding-top: 2rem;
 }
 
-/* ===========================================
-   2026 丙午 SPECIAL - Fire transformation
-   =========================================== */
-
-.bingwu-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25em;
-    color: var(--dynamic);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-
-    &::before {
-        content: '丙午';
-        font-size: 0.8em;
-    }
-}
-
-@keyframes fire-transform {
-    0%, 100% { box-shadow: none; }
-    50% { box-shadow: 0 0 20px var(--dynamic-glow); }
-}
-
-.fire-blessing {
-    animation: fire-transform 2s ease-in-out;
-}
