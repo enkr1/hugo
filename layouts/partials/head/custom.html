@@ -17,23 +17,30 @@
 {{/* Google Site Verification */}}
 <meta name="google-site-verification" content="wSUWWkv_QhNXB_N6r3rOSU2YlmmWxYBk6UWVlgu1q94" />
 
-{{/* Firebase — single source of truth for all Firebase services */}}
-<script type="module">
-  import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBxexVzGzOqDUGFzHVT_-oYxkqAetlFUSo",
-    authDomain: "hexo-blog-9ccea.firebaseapp.com",
-    projectId: "hexo-blog-9ccea",
-    storageBucket: "hexo-blog-9ccea.appspot.com",
-    messagingSenderId: "71411607593",
-    appId: "1:71411607593:web:d04c5895d438fb244020c3"
-  };
-
-  const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-  window.firebaseApp = app;
-  window.firestoreDb = getFirestore(app);
+{{/* Firebase — deferred init to avoid blocking first paint */}}
+<script>
+  (function() {
+    var config = {
+      apiKey: "AIzaSyBxexVzGzOqDUGFzHVT_-oYxkqAetlFUSo",
+      authDomain: "hexo-blog-9ccea.firebaseapp.com",
+      projectId: "hexo-blog-9ccea",
+      storageBucket: "hexo-blog-9ccea.appspot.com",
+      messagingSenderId: "71411607593",
+      appId: "1:71411607593:web:d04c5895d438fb244020c3"
+    };
+    function init() {
+      Promise.all([
+        import("https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"),
+        import("https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js")
+      ]).then(function(m) {
+        var app = !m[0].getApps().length ? m[0].initializeApp(config) : m[0].getApp();
+        window.firebaseApp = app;
+        window.firestoreDb = m[1].getFirestore(app);
+      });
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(init);
+    else setTimeout(init, 1);
+  })();
 </script>
 
 {{/* Google Identity Services — Client ID for One Tap */}}
