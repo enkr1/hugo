@@ -1,5 +1,6 @@
 ---
 title: "My Journey in Elixir Phoenix"
+draft: true
 date: 2024-05-19 19:07:45
 description: "Work-in-progress notes on learning Elixir and the Phoenix framework, from first steps to deployment."
 tags:
