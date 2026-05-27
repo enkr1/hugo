@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 41"
 date: 2025-08-19 14:43:23
+description: "first steps toward personal trainer project, posted on xhs and 3 people joined, coaching guys comes more naturally"
 tags:
   - "journal"
 categories:

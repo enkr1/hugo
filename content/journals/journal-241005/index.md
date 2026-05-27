@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 11"
 date: 2024-10-05 23:06:08
+description: "mum's birthday call across three countries, toby's gym trial, daidai's instant noodles hit different"
 tags:
   - journal
 categories:

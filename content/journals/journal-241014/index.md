@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 12"
 date: 2024-10-14 00:52:07
+description: "work is like working out, toby dropped truth bombs on mentorship, bytedance 7-2-1 parallels gym progress"
 tags:
   - journal
 categories:

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 42"
 date: 2025-08-25 01:21:29
+description: "dream company interview invite, prof's quote stuck with me, cutting signal from noise and reprioritising everything"
 tags:
   - "journal"
 categories:

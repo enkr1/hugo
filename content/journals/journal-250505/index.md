@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 36"
 date: 2025-05-05 00:10:02
+description: "conquered my biggest interview trauma from 2023, two years of prep paid off, rediscovered the joy of 0-to-1"
 tags:
   - "journal"
 categories:

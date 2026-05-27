@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 22"
 date: 2025-01-20 03:04:07
+description: "late nights finishing self-review, reflecting on growth at bytedance, from confused by business chinese to smiling at the progress"
 tags:
   - "journal"
 categories:

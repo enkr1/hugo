@@ -1,6 +1,7 @@
 ---
 title: "Networking & Graphical Models"
 date: 2024-04-11 22:51:56
+description: "Notes on networking and graphical models from the MIT IDSS machine learning programme."
 comments: false
 tags:
   - "mit-idss"

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 39"
 date: 2025-08-04 00:02:23
+description: "notion semester sprint system, revamped old setups, 40U advanced placement confirmed, school synced to calendar"
 tags:
   - "journal"
 categories:

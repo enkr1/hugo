@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 47"
 date: 2026-01-04 19:38:20
+description: "hello 2026, new year reflections for my future self"
 tags:
   - "journal"
 categories:

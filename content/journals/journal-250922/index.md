@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 46"
 date: 2025-09-22 03:09:50
+description: "fighting mental to sort what matters, re-categorising priorities, impressed that journalling has actually stuck"
 tags:
   - "journal"
 categories:

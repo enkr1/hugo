@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 27"
 date: 2025-02-24 03:13:55
+description: "hectic but productive, planned phuket trip, coached my bro on leg day over video call, teaching deepens understanding"
 tags:
   - "journal"
 categories:

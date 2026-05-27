@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 32"
 date: 2025-04-07 00:14:02
+description: "accepted NUS BIT offer, 2025 goal checked off, gym got demoted in priority but it's the long game"
 tags:
   - "journal"
 categories:

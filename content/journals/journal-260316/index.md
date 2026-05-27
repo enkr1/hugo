@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 58"
 date: 2026-03-16T23:00:00+08:00
+description: "time management levelled up, better at saying no to doom scrolling, falling back in love with math"
 tags:
   - journal
   - engineering

@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 17"
 date: 2024-11-29 00:38:24
+description: "first trip to china, lost my voice completely, started atomic habits, beatbox comp approaching with no voice"
 tags:
   - "journal"
 categories:

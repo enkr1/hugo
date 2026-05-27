@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 49"
 date: 2026-01-19 21:50:54
+description: "caught up with friends, strong first week of school, found a study workflow that feels game-changing already"
 tags:
   - "journal"
 categories:

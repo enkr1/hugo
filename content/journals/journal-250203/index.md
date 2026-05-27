@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 24"
 date: 2025-02-03 21:49:36
+description: "cny in jb, learnt mahjong, watching everyone age is bittersweet, cherishing family while we still have the time"
 tags:
   - "journal"
 categories:

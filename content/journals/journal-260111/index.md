@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 48"
 date: 2026-01-11 12:42:15
+description: "back on track, started cardio after 3 years of lifting, prepping for Y1S2, fresh map fresh mindset"
 tags:
   - "journal"
 categories:

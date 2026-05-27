@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 9"
 date: 2024-09-22 11:37:47
+description: "mid-autumn festival with family despite heavy rain, sweating the small stuff separates good from great"
 tags:
   - journal
 categories:

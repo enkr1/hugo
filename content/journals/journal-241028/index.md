@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 14"
 date: 2024-10-28 02:18:26
+description: "prepping for beatbox comp after 3 years, balancing work gym and practice, breakthrough feels close"
 tags:
   - "journal"
 categories:

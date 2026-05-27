@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 57"
 date: 2026-03-11T15:00:00+08:00
+description: "blog changelog week, shipped email subs, ga4 custom events, search ux overhaul, firebase cleanup, heatmap"
 tags:
   - journal
   - engineering

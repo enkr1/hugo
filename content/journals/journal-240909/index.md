@@ -6,6 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-09-09 01:02:02
+description: "shipped a project i once thought was impossible, said goodbye to my brother, toilet beatbox sessions are back"
 ---
 
 

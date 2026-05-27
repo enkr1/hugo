@@ -1,6 +1,7 @@
 ---
 title: "Deep Learning"
 date: 2024-03-21 22:51:41
+description: "Notes on deep learning fundamentals from the MIT IDSS machine learning programme."
 comments: false
 tags:
   - "mit-idss"

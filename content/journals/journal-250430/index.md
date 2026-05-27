@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 35"
 date: 2025-04-30 03:19:43
+description: "bittersweet farewell to kaiqing, wish we'd connected earlier, hoping our paths cross again"
 tags:
   - "journal"
 categories:

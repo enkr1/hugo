@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 44"
 date: 2025-09-08 17:32:46
+description: "hongjun reminded me execution beats planning, pulau ubin weekend, thinkpad ubuntu interview and i fought the keyboard"
 tags:
   - "journal"
 categories:

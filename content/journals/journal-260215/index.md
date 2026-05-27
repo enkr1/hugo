@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 54"
 date: 2026-02-15T23:52:48+08:00
+description: "wrote tcx1002 midterm reflection, built activity heatmap and bidirectional backlinks for the blog, cny celebrations"
 tags:
   - journal
 categories:

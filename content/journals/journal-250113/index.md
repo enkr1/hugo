@@ -1,6 +1,7 @@
 ---
 title: "Journal: Week 21"
 date: 2025-01-13 03:04:19
+description: "productive post-beijing catch-up, lo hey with relatives, aunty's birthday with dry ice cake, chris voss tactics in daily life"
 tags:
   - "journal"
 categories:
