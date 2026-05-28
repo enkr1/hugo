@@ -28,56 +28,68 @@ hugo new content/journals/journal-YYMMDD/index.md  # New weekly journal entry
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
 
-## Category Generation
+## Build-Time Scripts
 
-**CRITICAL:** Nested categories require manual generation of landing pages.
+CI runs two Node scripts before `hugo` — run them locally if you want parity:
 
 ```bash
-# Generate category pages after changing categories
+# Nested category landing pages — REQUIRED after category changes
 node themes/stack/scripts/generate-categories.js
+node themes/stack/scripts/generate-categories.js --clean   # nuke before regenerate
 
-# Clean all generated category files first (optional)
-node themes/stack/scripts/generate-categories.js --clean
+# Recent-changes metadata — populates data/changes.json for "recently updated" UI
+node themes/stack/scripts/generate-changes.js              # last 30 days by default
+node themes/stack/scripts/generate-changes.js --days=90
 ```
 
-**When to run:**
-- After adding/changing categories in post frontmatter
-- After deleting posts with unique category paths
-- Before deploying (to ensure category pages are up-to-date)
+**generate-categories.js:**
+- Scans posts for nested array categories like `["A", "B", "C"]`
+- Generates `_index.md` files at `content/categories/a/b/c/` (marked `_generated: true`)
+- Run manually whenever categories change. CI runs it on every deploy, but local builds will be stale.
 
-**What it does:**
-- Scans all posts for nested array categories like `["A", "B", "C"]`
-- Generates `_index.md` files at `content/categories/a/b/c/`
-- Creates browsable category tree at `https://blog.enkr1.com/categories/`
-
-**Important:** This is NOT automated. You must run it manually whenever categories change. The generated files are marked with `_generated: true` in frontmatter.
+**generate-changes.js:**
+- Walks git history of `content/*.md` over the last N days
+- Writes `data/changes.json` (added/removed lines, sections touched per file)
+- Consumed by `layouts/partials/recent-updates-popup.html`
+- Output is gitignored; CI regenerates it on every build (failure non-fatal: `|| true`)
 
 ## Architecture
 
 ```
 hugo/
+├── archetypes/             # Frontmatter templates (default, journals, journal-note)
 ├── content/
-│   ├── posts/              # Blog posts (~100): algorithms, books, goals, career
-│   ├── journals/           # Weekly journals (50+): journal-YYMMDD/ page bundles
-│   └── page/               # Static pages: about, archives, search
-├── layouts/
-│   ├── _default/           # Base template overrides
-│   ├── journals/           # Custom journal section templates
-│   │   ├── list.html       # Journal listing with pagination
-│   │   └── single.html     # Individual journal view
-│   ├── partials/           # Template component overrides
-│   │   ├── article/        # Article rendering
-│   │   ├── article-list/   # List item styling
-│   │   ├── footer/         # Footer components
-│   │   ├── head/           # Head meta/links
-│   │   ├── sidebar/        # Sidebar components
-│   │   └── widget/         # Widget overrides
-│   └── index.html          # Homepage template
-├── assets/scss/
-│   └── custom.scss         # Ba Zi theme - design tokens + component overrides (gradual migration to theme)
-├── themes/stack/           # Forked theme (git submodule → enkr1/hugo-theme-enkr)
+│   ├── posts/              # Blog posts (110): algorithms, books, goals, career, NUS
+│   ├── journals/           # Weekly + ad-hoc journals (69): journal-YYMMDD/ page bundles
+│   ├── categories/         # Generated nested category landing pages (do not hand-edit)
+│   └── page/               # Static pages: about, archives, search, visitors
+├── layouts/                # Project-level template overrides (win over theme)
+│   ├── _default/           # baseof, list, single, archives, updated
+│   ├── journals/           # Custom journal list + single
+│   ├── nested-category/    # Nested category list layout
+│   ├── page/visitors.html  # Visitor geography page
+│   ├── partials/           # See partial map below
+│   └── shortcodes/         # youtube, vimeo, raw
+├── assets/
+│   ├── scss/custom.scss    # Design tokens + Ba Zi seasonal styles (everything else lives in theme)
+│   └── ts/                 # Custom TS: code-copy line-strip, infiniteScroll (loaded by theme)
+├── static/js/heatmap.js    # Archive activity heatmap (vanilla JS, no build step)
+├── data/changes.json       # Build-time generated diff metadata (gitignored)
+├── docs/                   # Design docs, specs, plans, Apps Script source — NOT shipped
+├── scripts/fix-categories.py  # Ad-hoc Python utilities
+├── themes/stack/           # Forked theme (git submodule → enkr1/hugo-theme-enkr) — we own it
+├── firebase.json + firestore.rules + firestore.indexes.json  # Firestore config
 └── hugo.toml               # Main configuration
 ```
+
+**Key partials (project-level overrides at `layouts/partials/`):**
+- `article/components/` — header, footer, breadcrumb, details, subscribe
+- `auth/init.html` — bootstraps Google One Tap via `themes/stack/assets/ts/auth-entry.ts`
+- `head/custom.html` — fonts, GA4, **Firebase app init (SSOT for `window.firebaseApp` + `window.firestoreDb`)**, Google client ID
+- `head/schema.html` — JSON-LD structured data
+- `search-modal.html` — cmd+K search modal
+- `sidebar/` — left/right sidebars (floating + static variants)
+- `recent-updates-popup.html` — reads `data/changes.json` for "recently updated" UI
 
 ## Content Model
 
@@ -98,28 +110,26 @@ comments: false
 
 ## Custom Styling: Ba Zi Theme
 
-The `assets/scss/custom.scss` implements a design system based on Chinese five-element theory (金-水-火).
+Design system based on Chinese five-element theory (金-水-火). Tokens live in `assets/scss/custom.scss`; the actual element/colour primitives (`--gold`, `--water`, `--fire`, glass effects, shadows) are defined in the theme at `themes/stack/assets/scss/bazi/scss/_bazi-core.scss` and friends.
 
 ### Design Tokens (SSOT)
 
-All colors, typography, and spacing are defined as CSS custom properties:
-
 ```scss
-// Primary palette - use these, don't hardcode hex values
---gold: #8B7355;      // 内蕴金 - Metal/Earth - hovers, selections, CTAs
+// Primary palette — use these, don't hardcode hex values
+--gold:  #8B7355;     // 内蕴金 - Metal/Earth - hovers, selections, CTAs
 --water: #1E4B8C;     // 智慧海 - Water - links, tags, code
---fire: #D97706;      // 流年曦 - Fire - click flash, accent
+--fire:  #D97706;     // 流年曦 - Fire - click flash, accent
 
 // Typography
 --font-display: 'Cormorant Garamond'  // Headings
---font-body: 'Inter'                   // Body text
---font-mono: 'JetBrains Mono'         // Code
+--font-body:    'Inter'                // Body text
+--font-mono:    'JetBrains Mono'       // Code
 
 // Scale
---font-size-base: 1.6rem              // Base size (16px)
+--font-size-base: 1.6rem               // Base size (16px equivalent)
 ```
 
-**Before changing colors**, read the philosophy comments in custom.scss to maintain thematic coherence.
+**Before changing colours**, read the philosophy comments in custom.scss + `themes/stack/assets/scss/bazi/README.md` to maintain thematic coherence.
 
 ## Theme Customization
 
@@ -128,30 +138,107 @@ The theme is a **forked repo** (`enkr1/hugo-theme-enkr`) — we own it. Modify t
 ### Preferred approach (since we own the fork):
 1. **Styling:** Edit `themes/stack/assets/scss/` directly — no `!important` overrides needed
 2. **Templates:** Edit `themes/stack/layouts/` directly, or override in `layouts/` if testing
+3. **TypeScript:** Edit `themes/stack/assets/ts/` directly — Hugo Pipes `js.Build` handles bundling (no webpack/vite)
 
 ### MANDATORY: Migrate custom.scss as you go
 When touching ANY component style in `custom.scss`, migrate it to the theme as part of that change. Do not add new styles to custom.scss — put them directly in the theme.
 
-**custom.scss keeps ONLY:** `@import "fonts"`, `:root` design tokens, `html` global resets
+**custom.scss keeps ONLY:** `@import "fonts"`, `:root` design tokens, `html` global resets.
 **Everything else belongs in:** `themes/stack/assets/scss/` (component styles, responsive, widgets, etc.)
 
-This is not a one-time refactor — shrink custom.scss incrementally with every PR that touches styling. Current: ~163 lines (migration largely complete). Target: ~100 lines.
+Current: 87 lines (post-trim, see `d362624`). The earlier migration log + 丙午 seasonal block were both removed once migration was complete. If you find yourself adding more than tokens here, you're in the wrong file.
 
 **Template lookup order:** `layouts/` → `themes/stack/layouts/`
+
+### TypeScript Pipeline
+
+Hugo builds TS via `js.Build` (esbuild internally — fast, no external bundler config):
+
+| Entry | Loaded by | Purpose |
+|-------|-----------|---------|
+| `assets/ts/custom.ts` | theme footer (auto) | code-copy line-number stripping + infinite-scroll bootstrap |
+| `themes/stack/assets/ts/main.ts` | theme footer | core theme behaviour (color scheme, smooth anchors, scrollspy, gallery, menu) |
+| `themes/stack/assets/ts/auth-entry.ts` | `layouts/partials/auth/init.html` | One Tap + auth UI (fingerprinted, ES2020) |
+| `themes/stack/assets/ts/search.tsx` | search page | /search/ page implementation (also used by cmd+K modal) |
+
+Notable theme TS modules: `auth/`, `inline-comments/`, `visitor-count`, `visitor-map`, `waveform`. Edit in place — minification on prod build only (`hugo.IsProduction`).
+
+## Firebase & Firestore
+
+The blog is statically hosted on GitHub Pages but uses Firestore directly from the browser for dynamic features. Firebase is initialised once in `layouts/partials/head/custom.html` — exposed as `window.firebaseApp` and `window.firestoreDb` for downstream TS modules to consume. Do NOT re-initialise.
+
+**Project:** `hexo-blog-9ccea` (name predates the Hugo migration — don't rename).
+
+### Firestore collections (rules in `firestore.rules`)
+
+| Collection | Purpose | Read | Write |
+|-----------|---------|------|-------|
+| `articles/{slug}` | Per-article view counts | public | public increment, no delete |
+| `visitor_geo/{docId}` | Country-level visitor counts + coords (powers /visitors/ Cobe globe) | public | public, no delete |
+| `comments/{id}` | Inline comments (Lark-style highlight-to-comment) | public | authed only, field-validated |
+| `comments/{id}/replies/{id}` | Threaded replies | public | authed only |
+
+### Deploying rules
+
+```bash
+firebase deploy --only firestore:rules
+firebase deploy --only firestore:indexes
+```
+
+**Comment-rule invariants worth knowing before editing `firestore.rules`:**
+- Author can edit only `text` + `updatedAt` on their own comment (UID match)
+- Any authed user can flip `likes/likedBy/likedByNames` (atomic) or bump `replyCount`
+- `affectedKeys().hasOnly([...])` enforces field-level isolation — adding a new comment field means updating BOTH the validation rule AND any client write paths
+- `photoURL` must start with `https://` (blocks data: URIs)
+
+---
+
+## Auth — Google One Tap
+
+Site-wide One Tap login backed by Firebase Auth. Used to gate inline-comment creation.
+
+- **Client ID** lives in `hugo.toml` as `params.googleClientId`, exposed as `window.googleClientId` in `layouts/partials/head/custom.html`
+- **Bootstrap** via `layouts/partials/auth/init.html` → `themes/stack/assets/ts/auth-entry.ts`
+- **Modules** under `themes/stack/assets/ts/auth/`: `firebase-auth.ts`, `one-tap.ts`, `types.ts`
+- **UI** under `themes/stack/assets/ts/auth-ui/` (sidebar login chip + dropdown)
+- Loaded on every page — deferred to idle to keep LCP clean (per recent SEO pass)
+
+If One Tap fails to render (browser blocks third-party cookies, etc.), there is a fallback `renderButton` path — see `docs/specs/2026-04-03-auth-renderbutton-fallback-design.md`.
+
+---
+
+## Inline Comments (Lark-style)
+
+Highlight text in an article → comment pops out in the margin. Fully shipped.
+
+- **Spec:** `docs/specs/2026-03-25-inline-comments-design.md`
+- **TS modules:** `themes/stack/assets/ts/inline-comments/` (anchoring, positioning, selection, store, ui, utils, types)
+- **Styles:** `themes/stack/assets/scss/partials/_inline-comments.scss`
+- **Storage:** `comments` collection + `replies` subcollection (see Firestore section above)
+- **Auth required** for creating/replying/liking — handled via the One Tap flow above
+- **Anchor strategy:** comments store `quotedText` + position; on render, anchoring TS tries to relocate the quote in the current DOM (`anchorStatus: 'active' | 'orphaned'`). Orphaned comments still render but visually detached.
+
+Editing this system: changes to the data shape need matching updates in (a) `firestore.rules` field validators, (b) `inline-comments/store.ts` write paths, (c) `inline-comments/types.ts`.
+
+---
 
 ## Deployment
 
 Push to `main` → GitHub Actions builds with `hugo --gc --minify` → deploys to GitHub Pages.
 
-Workflow: `.github/workflows/hugo.yml`
+Workflow: `.github/workflows/hugo.yml`. Pipeline: install Hugo extended → checkout submodules (theme) → `npm ci` in `themes/stack/scripts` → `generate-categories.js` → `generate-changes.js` (non-fatal) → `hugo --gc --minify` → upload to Pages.
+
+Firestore rules/indexes deploy separately via `firebase deploy` — they are NOT part of the GitHub Actions workflow.
 
 ## Gotchas
 
 - **Future dates**: Hugo skips posts with `date` in the future. Always check `date` output before setting frontmatter date. Use a time earlier than current time, or run `hugo server --buildFuture`.
 - **Date correctness**: Always verify the creation date is accurate before writing. Run `date '+%Y-%m-%dT%H:%M:%S%z'` to get the correct timestamp. Never guess the date/time.
 - **ALWAYS scaffold with `hugo new`, never hand-write frontmatter.** The archetype's `{{ .Date }}` produces a full ISO datetime (`2026-04-21T03:15:00+08:00`) — hand-typed frontmatter drops to date-only (`2026-04-21`), breaking sort order and lastmod. Also pre-populates `tags: []` / `keywords: []` / `description: ""` with TODO markers. Check every new post has **datetime + non-empty tags covering the post's core theme words** (e.g. a post about failure MUST tag `failure`).
-- **Pre-commit hook enforces the above on new files.** `.githooks/pre-commit` blocks commits that add any `content/*.md` with date-only or empty tags. Existing files are exempt (legacy date-only allowed). First-time setup per clone: `git config core.hooksPath .githooks`. Emergency bypass: `git commit --no-verify`.
+- **Archetype `TODO(opus)` markers are AI directives, not human ones.** In `archetypes/default.md` and `archetypes/journals.md`, lines like `description: "" # TODO(opus): generate from highlights + recap` signal that the assistant should fill them when finalising the post. Don't leave them in commits — they fail the spirit of the pre-commit hook even if the regex doesn't catch them.
+- **Pre-commit hook enforces datetime + tags on new files.** `.githooks/pre-commit` is stdlib Python (no PyYAML) — blocks commits that ADD any `content/*.md` with date-only or empty tags. Existing files are exempt (legacy date-only allowed). First-time setup per clone: `git config core.hooksPath .githooks`. Emergency bypass: `git commit --no-verify`.
 - **enableGitInfo = true**: `.Lastmod` comes from git. New uncommitted files won't have a last-modified date.
+- **Theme submodule**: `themes/stack` is a git submodule pointing at `enkr1/hugo-theme-enkr`. After cloning, `git submodule update --init --recursive`. After editing theme files, commit/push from inside `themes/stack/` first, then bump the submodule ref in the main repo. See `docs/FIX_THEME_SUBMODULE.md` if the submodule pointer breaks.
 
 ## Key Configuration (hugo.toml)
 
@@ -160,6 +247,8 @@ Workflow: `.github/workflows/hugo.yml`
 - Build timeout: 300s (image-heavy pages)
 - Related posts: Enabled, weighted by tags/categories (threshold: 60)
 - Syntax highlighting: Line numbers enabled, uses CSS classes (not inline styles)
+- **Dual menu system:** `[[menu.main]]` (desktop sidebar) and `[[menu.mobile]]` (bottom nav). They are SEPARATE arrays — adding/removing/renaming a menu item requires editing both. Comment in `hugo.toml` calls this out.
+- **GA4** ID `G-4N4L18VB12` under `[services.googleAnalytics]` — custom events (`read_depth`, `reading_milestone`, `blog_search`) fire from `layouts/partials/analytics/custom-events.html`
 
 ---
 
@@ -195,7 +284,8 @@ When creating posts about NUS BIT coursework:
 ## Shortcodes
 
 Custom overrides in `layouts/shortcodes/`:
-- `youtube.html`, `vimeo.html` — override Hugo built-in embeds
+- `youtube.html`, `vimeo.html` — override Hugo built-in embeds (lazy-load + privacy-friendly)
+- `raw.html` — escape hatch to inject literal HTML without Goldmark mangling
 
 Theme-provided (`themes/stack/layouts/shortcodes/`):
 - `quote.html`, `video.html`, `bilibili.html`, `gitlab.html`, `tencent.html`
