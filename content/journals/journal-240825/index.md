@@ -6,7 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-08-25 15:24:28
-description: "dove back into elixir and fly.io, reading diary of a ceo, revisiting foundations opens new perspectives"
+description: "dove back into elixir + fly.io, deep in diary of a ceo, going back to basics hits different"
 ---
 
 ## ✨ Highlights of the Week

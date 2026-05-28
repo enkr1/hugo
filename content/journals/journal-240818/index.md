@@ -6,7 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-08-18 21:25:23
-description: "full productivity at work, back to PPL gym routine, relearned the power of writing todos like a second brain"
+description: "full productivity at work, back to PPL, relearnt that todos are basically a second brain"
 ---
 
 ## ✨ Highlights of the Week

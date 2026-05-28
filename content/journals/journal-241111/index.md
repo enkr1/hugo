@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 16"
 date: 2024-11-11 02:15:10
-description: "7/7 work grind, 25 days to beatbox comp, revisiting never split the difference, rereading catches what you missed"
+description: "7/7 work grind, 25 days to beatbox comp, revisiting never split the difference, rereading hits different"
 tags:
   - "journal"
 categories:

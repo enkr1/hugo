@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 1"
 date: 2024-07-28 07:10:05
-description: "first ever journal entry, got back into beatboxing, quality time with family, learning to ask before convincing"
+description: "first ever journal entry, got back into beatboxing, family time, sister's trick: ask before convincing"
 tags:
   - journal
 categories:

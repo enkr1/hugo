@@ -6,7 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-08-31 20:01:47
-description: "firsts everywhere, arabica coffee, candlelight concert, 9 months at bytedance, leaning into cognitive dissonance"
+description: "firsts everywhere, arabica coffee, candlelight concert, 9 months at bytedance, leaning into the discomfort"
 ---
 
 

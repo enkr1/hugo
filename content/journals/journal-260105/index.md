@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 47"
 date: 2026-01-04 19:38:20
-description: "first journal of 2026, breaking the q4 silence, learnt that the time thief was me all along, reflection is self-kindness"
+description: "first journal of 2026, q4 of trying not to journal taught me the opposite, the time thief was me all along (haha)"
 tags:
   - "journal"
 categories:

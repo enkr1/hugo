@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 13"
 date: 2024-10-20 22:27:42
-description: "judged the 555 beatbox academy event, gym with inovity, being proactive at work instead of waiting"
+description: "judged the 555 beatbox academy event, gym with inovity, asking questions at work instead of waiting for hands"
 tags:
   - "journal"
 categories:

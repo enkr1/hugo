@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 28"
 date: 2025-03-03 04:15:13
-description: "didn't recognise my own team leader, lesson in social grace, bro's gym progress showing, full-circle coaching moment"
+description: "didn't recognise my own team leader (full freeze mode), bro's gym progress showing, passing down what marcus + genix taught me"
 tags:
   - "journal"
 categories:

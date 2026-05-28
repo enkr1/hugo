@@ -6,7 +6,7 @@ categories:
   - ["About Me", "Journals"]
 comments: false
 date: 2024-08-12 03:30:11
-description: "brother came back from spain, family friction taught me framing matters more than good intentions"
+description: "brother came back from spain, family friction reminded me how you say it matters more than what you say"
 ---
 
 ## ✨ Highlights of the Week

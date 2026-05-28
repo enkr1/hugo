@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 26"
 date: 2025-02-16 17:23:49
-description: "thinking long-term about building something of my own, time management struggles with sudden ops and deadlines"
+description: "thinking long-term about building something of my own, ops keep eating my time, need a better workflow"
 tags:
   - "journal"
 categories:
