@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 47"
 date: 2026-01-04 19:38:20
-description: "hello 2026, new year reflections for my future self"
+description: "first journal of 2026, breaking the q4 silence, learnt that the time thief was me all along, reflection is self-kindness"
 tags:
   - "journal"
 categories:
