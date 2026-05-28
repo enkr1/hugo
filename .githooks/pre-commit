@@ -7,6 +7,7 @@ Existing files keep their legacy frontmatter (per user rule "旧的忘记时间�
 New posts must have:
   - `date` as full ISO datetime (YYYY-MM-DDTHH:MM:SS+TZ)
   - `tags` non-empty
+  - `description` non-empty and 50-160 chars (Google SERP snippet sweet spot)
 
 Exit 1 to block commit.
 
@@ -24,6 +25,10 @@ DATE_LINE = re.compile(r"^date:\s*(.+?)\s*(?:#.*)?$", re.MULTILINE)
 DATETIME_VAL = re.compile(r"^['\"]?\d{4}-\d{2}-\d{2}T\d{2}:\d{2}")
 TAGS_INLINE = re.compile(r"^tags:\s*\[(.*?)\]\s*(?:#.*)?$", re.MULTILINE)
 TAGS_BLOCK = re.compile(r"^tags:\s*\n((?:[ \t]+-.*\n?)+)", re.MULTILINE)
+DESC_LINE = re.compile(r'^description:\s*"([^"]*)"', re.MULTILINE)
+
+DESC_MIN = 50
+DESC_MAX = 160
 
 
 def staged_added_files() -> list[str]:
@@ -62,6 +67,26 @@ def date_is_datetime(fm: str) -> bool:
     return DATETIME_VAL.match(match.group(1)) is not None
 
 
+def description_error(fm: str) -> str | None:
+    match = DESC_LINE.search(fm)
+    if match is None:
+        return "`description` field missing or not double-quoted."
+    value = match.group(1).strip()
+    if not value:
+        return (
+            f"`description` empty. Write a {DESC_MIN}-{DESC_MAX} char SERP snippet "
+            "summarising the post (Google uses this verbatim)."
+        )
+    if len(value) < DESC_MIN:
+        return f"`description` too short ({len(value)} chars, min {DESC_MIN})."
+    if len(value) > DESC_MAX:
+        return (
+            f"`description` too long ({len(value)} chars, max {DESC_MAX}). "
+            "Google truncates after ~155."
+        )
+    return None
+
+
 def check(path: Path) -> list[str]:
     fm = read_frontmatter(path)
     if fm is None:
@@ -76,6 +101,9 @@ def check(path: Path) -> list[str]:
         errors.append(
             f"{path}: `tags` must be non-empty. Tag the post's core theme words."
         )
+    desc_err = description_error(fm)
+    if desc_err is not None:
+        errors.append(f"{path}: {desc_err}")
     return errors
 
 
