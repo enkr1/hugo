@@ -9,6 +9,8 @@ math: true
 draft: false
 ---
 
+> **TCX2101 (NUS Math) series:** [Notebook]({{< ref "tcx2101-notebook" >}}) · [Calculus (1.1-3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}}) · [Calculus (3.5-4.11)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}) · [CT2 helpsheet]({{< ref "tcx2101-ct2-helpsheet" >}}) · [CT3 helpsheet]({{< ref "tcx2101-ct3-helpsheet" >}}) · **Finals helpsheet (current)**
+
 <style>
 @page { margin: 2mm; }
 @media print {

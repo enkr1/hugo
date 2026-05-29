@@ -10,6 +10,8 @@ math: false
 draft: false
 ---
 
+> **TCX1002 (NUS Python) series:** [Notebook]({{< ref "tcx1002-notebook" >}}) · [Midterm cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}}) · **PE cheatsheet (current)** · [Finals helpsheet]({{< ref "tcx1002-finals-helpsheet" >}}) · [Midterm reflection]({{< ref "tcx1002-midterm-reflection" >}})
+
 ## Quick Reference
 
 ### OOP — Class + Inheritance + Polymorphism

@@ -21,6 +21,7 @@ keywords:
   - "Educational journey in AI"
 ---
 
+> **MIT IDSS series:** [0. Kickoff]({{< ref "online-course-mit-idss-0-ml-and-ai" >}}) · [1. Intro]({{< ref "online-course-mit-idss-1" >}}) · **2. Foundations (current)** · [3. Probability]({{< ref "online-course-mit-idss-3" >}})
 
 For myself:
 ```sh

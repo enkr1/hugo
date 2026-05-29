@@ -10,6 +10,8 @@ math: true
 draft: false
 ---
 
+> **TCX1004 (NUS Math Techniques) series:** [Notebook]({{< ref "tcx1004-notebook" >}}) · [Cheatsheet]({{< ref "tcx1004-cheatsheet" >}}) · **Finals cheatsheet (current)**
+
 <div class="print-hide">
 
 full unit-by-unit notes in the [TCX1004 notebook]({{< ref "tcx1004-notebook" >}}).

@@ -23,6 +23,8 @@ keywords:
   - "Data science techniques"
 ---
 
+> **MIT IDSS series:** [0. Kickoff]({{< ref "online-course-mit-idss-0-ml-and-ai" >}}) · [1. Intro]({{< ref "online-course-mit-idss-1" >}}) · [2. Foundations]({{< ref "online-course-mit-idss-2" >}}) · **3. Probability (current)**
+
 Unstructured data, the kind that doesn't fit neatly into traditional row and column databases, poses unique challenges and opportunities for data scientists. Let's explore how unsupervised learning, particularly clustering and dimensionality reduction, helps in making sense of this data chaos.
 
 ## Unsupervised Learning: Clustering vs. Classification

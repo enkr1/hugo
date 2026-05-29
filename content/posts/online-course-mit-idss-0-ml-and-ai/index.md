@@ -23,6 +23,8 @@ keywords:
 - "technology career development"
 ---
 
+> **MIT IDSS series:** **0. Kickoff (current)** · [1. Intro]({{< ref "online-course-mit-idss-1" >}}) · [2. Foundations]({{< ref "online-course-mit-idss-2" >}}) · [3. Probability]({{< ref "online-course-mit-idss-3" >}})
+
 Embarking on a new adventure is always thrilling, and it's even more so when it plunges me into the fascinating realms of **Machine Learning and Artificial Intelligence** through the [MIT IDSS program](https://www.mygreatlearning.com/mit-idss-data-science-machine-learning-program), in partnership with [Great Learning](https://www.mygreatlearning.com/). This journey isn't just about boosting my technical skills—it's about deepening my understanding of the complex world of data. With a keen interest in ML & AI, I'm eager to build a solid foundation of fundamentals that will propel my journey toward greater success!
 
 <!-- more -->

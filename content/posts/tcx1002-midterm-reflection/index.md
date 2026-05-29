@@ -10,6 +10,8 @@ math: false
 draft: false
 ---
 
+> **TCX1002 (NUS Python) series:** [Notebook]({{< ref "tcx1002-notebook" >}}) · [Midterm cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}}) · [PE cheatsheet]({{< ref "tcx1002-pe-cheatsheet" >}}) · [Finals helpsheet]({{< ref "tcx1002-finals-helpsheet" >}}) · **Midterm reflection (current)**
+
 [Code on GitHub](https://github.com/enkr1/nus_bit_priv/tree/main/000_mods/TCX1002/midterm) | [Midterm Cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}}) | [Full TCX1002 Notebook]({{< ref "tcx1002-notebook" >}})
 
 ---

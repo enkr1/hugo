@@ -23,6 +23,8 @@ keywords:
   - "Educational journey in AI"
 ---
 
+> **MIT IDSS series:** [0. Kickoff]({{< ref "online-course-mit-idss-0-ml-and-ai" >}}) · **1. Intro (current)** · [2. Foundations]({{< ref "online-course-mit-idss-2" >}}) · [3. Probability]({{< ref "online-course-mit-idss-3" >}})
+
 Welcome to my exploration into the incredible worlds of Data Science and Artificial Intelligence (AI)—arenas that are totally reshaping how we interact with technology, business, and beyond. I am really excited to share this learning journey with you as we dive into the nuts and bolts of these fascinating fields.
 
 ## What's the Deal with DS & AI?

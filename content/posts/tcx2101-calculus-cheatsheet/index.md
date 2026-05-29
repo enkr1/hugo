@@ -10,6 +10,8 @@ math: true
 draft: false
 ---
 
+> **TCX2101 (NUS Math) series:** [Notebook]({{< ref "tcx2101-notebook" >}}) · **Calculus (1.1-3.4) (current)** · [Calculus (3.5-4.11)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}) · [CT2 helpsheet]({{< ref "tcx2101-ct2-helpsheet" >}}) · [CT3 helpsheet]({{< ref "tcx2101-ct3-helpsheet" >}}) · [Finals helpsheet]({{< ref "tcx2101-finals-helpsheet" >}})
+
 > **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
 
 for the full chapter-by-chapter notes, see my [TCX2101 notebook]({{< ref "tcx2101-notebook" >}}). for CT2 formulas (Chapters 3.5–4.11), see the [CT2 cheatsheet]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}).

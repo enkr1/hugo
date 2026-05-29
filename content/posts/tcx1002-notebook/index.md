@@ -9,6 +9,8 @@ toc: true
 draft: false
 ---
 
+> **TCX1002 (NUS Python) series:** **Notebook (current)** · [Midterm cheatsheet]({{< ref "tcx1002-midterm-cheatsheet" >}}) · [PE cheatsheet]({{< ref "tcx1002-pe-cheatsheet" >}}) · [Finals helpsheet]({{< ref "tcx1002-finals-helpsheet" >}}) · [Midterm reflection]({{< ref "tcx1002-midterm-reflection" >}})
+
 > NUS TCX1002 exam-focused gotchas & patterns. For general Python notes, see my [Python Notebook]({{< ref "pl-python" >}}).
 >
 > even this mod is more of the fundamentals, but in case you wanna understand deeper about [complexity and Big-O notation, here you go]({{< ref "big-o-notation" >}}).
