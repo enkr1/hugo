@@ -24,6 +24,8 @@ hugo new content/journals/journal-YYMMDD/index.md  # New weekly journal entry
 ./create_journal_note.sh                    # Ad-hoc journal with title prompt
 ./create_journal_note.sh "My Title"         # Ad-hoc journal with inline title
 ./journal.sh                                # Alias for weekly journal creation
+./latest_journal.sh                         # Show the latest weekly journal (week + path)
+./latest_journal.sh -o                      #   ...and open the latest in $EDITOR
 ```
 
 **Requirements:** Hugo extended v0.154.5+ (SCSS compilation requires extended build)
