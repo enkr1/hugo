@@ -40,6 +40,16 @@ so why does the hundredth cake cost a fraction of the first, and what exactly is
 
 ## marginal cost is not quite what the card says
 
+a quick key for the shorthand, so the formulas below read easily:
+
+| symbol | what it means |
+|---|---|
+| $Q$ | quantity: how many units you make |
+| $TC$ | total cost of producing all of them |
+| $MC$ | marginal cost: the cost of one more unit |
+| $ATC$ | average total cost: total cost divided by units |
+| $\Delta$ | "change in" (so $\Delta Q$ is the change in quantity) |
+
 **marginal cost** is the cost of making one more unit. formally it is the change in total cost divided by the change in quantity, the slope of the total cost curve:
 
 $$ MC = \frac{\Delta TC}{\Delta Q} $$
