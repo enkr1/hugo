@@ -10,7 +10,7 @@ tags:
   - risk-management
   - position-sizing
   - investing
-  - research-notes
+  - research
 categories:
   - ["Education", "Mathematics"]
 keywords:
