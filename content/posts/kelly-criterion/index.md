@@ -36,7 +36,7 @@ you have a bet with an edge. you get to repeat it many times, profits roll back 
 
 the naive answer is "maximise expected wealth", and it is a trap. expected value is linear, so maximising $E[W]$ tells you to bet everything every round. do that repeatedly and you go broke with probability one (kelly says exactly this on p. 918 of the original paper). the expectation is propped up by an astronomically lucky path you will never live.
 
-kelly's move (bell labs, 1956) was to maximise $E[\log W]$ instead, which is the same as maximising the long-run compound growth rate. for a bet where you win $b$ per $1 staked with probability $p$ (lose the stake with probability $q = 1-p$), each round grows your log-wealth by
+kelly's move (bell labs, 1956) was to maximise $E[\log W]$ instead, which is the same as maximising the long-run compound growth rate. (*why* the log specifically, and not the raw average, is the honest thing to maximise is its own note: [the expected value is a path almost nobody actually lives]({{< ref "ergodicity" >}}).) for a bet where you win $b$ per $1 staked with probability $p$ (lose the stake with probability $q = 1-p$), each round grows your log-wealth by
 
 $$ g(f) = p\ln(1+bf) + q\ln(1-f) $$
 
