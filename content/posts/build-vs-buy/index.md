@@ -97,6 +97,14 @@ that $t^{\ast}$ is the whole decision in one symbol: the **break-even horizon**.
 
 notice this is the same machinery as the [marginal-cost note]({{< ref "marginal-cost-and-sunk-cost" >}}): a fixed cost is only ever expensive *per unit of use* when you do not use it much. stretch $F$ over a long enough horizon and it stops mattering, which is exactly why long-lived, heavily-used systems drift towards build, and short-lived or lightly-used ones stay bought.
 
+## the sticker price is the smallest number
+
+all of that assumes you actually know $F$, $m$, and $s$. the most common way this decision goes wrong is not the maths, it is the inputs: people weigh the price tag on one option against the *full* cost of the other.
+
+and the price tag is the smallest part of what you pay. the licence fee, or the developer's quote to build it, is the tip. under the waterline sits everything that never reaches the invoice: integration, data migration, training, the support contract, the security and compliance work, the downtime when it breaks, and one day the cost of ripping it out again. add up that whole iceberg over the years you will really use the thing and you get its **total cost of ownership**. that, not the sticker, is what $m$ and $s$ were always supposed to be.
+
+the trap even has a direction. a build's iceberg is bigger and better hidden: the one engineer who knows how it works is a salary that never stops, and maintenance compounds quietly for as long as the thing lives. a vendor's iceberg is mostly the vendor's problem, already priced into $s$. so setting a one-off build quote against a subscription almost always flatters building, because you are putting a tip next to an iceberg. the honest fix is small: compare iceberg to iceberg, lifetime to lifetime, and only then read the crossover.
+
 ## cost is the first word, not the last
 
 the crossover tells you *when* the money flips. it does not tell you whether money should decide. three things can override it:
