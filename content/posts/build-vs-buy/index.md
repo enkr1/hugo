@@ -117,6 +117,8 @@ nothing about the maths changed; what changed was the *answer to the checklist*.
 
 the shape is everywhere you spend. cooking versus eating out: the kitchen is $F$, each restaurant meal is $s$. learning a skill versus hiring it out. owning a car versus grabbing one. self-hosting versus paying for the service. the question is always the same two-parter: **how long will i lean on this, and is doing it myself actually my edge?** if the honest answers are "not long" and "no", buy it and feel nothing. if they are "for years" and "yes", that is the rare case worth building, and the upfront cost was never the real number.
 
+there is one exception that swallows the whole chart: if the thing you would be building is a network, the cost lines stop mattering. [an existing network's head start is its own kind of moat]({{< ref "network-effects" >}}), and rebuilding it from zero means dragging a cold network all the way to critical mass while the incumbent sits comfortably past it. that is the most expensive build there is, which is why you almost always buy into the network rather than recreate it.
+
 ## a personal note
 
 wip ...
@@ -125,4 +127,5 @@ wip ...
 
 - raymond mcleod & george schell, *management information systems*, and laudon & laudon, *managing the digital firm*: the textbook framing of make-versus-buy and the acquisition process (RFP and all).
 - my [marginal cost and sunk cost note]({{< ref "marginal-cost-and-sunk-cost" >}}): where the fixed-versus-variable cost machinery under this crossover comes from.
+- my [network effects note]({{< ref "network-effects" >}}): the one case where the crossover stops mattering, because an existing network is the most expensive thing to rebuild.
 - [my NUS progress page]({{< ref "nus-progress" >}}): the module (TCX2005) this came out of.
