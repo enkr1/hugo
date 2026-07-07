@@ -37,8 +37,11 @@ it'd been about six years since the five of us celebrated a birthday together, m
 - Sat the TCX2003 coding class test in person. That was the last piece of graded coursework across both modules. Everything now comes down to the two finals next week.
 - Fully into finals mode: building printed reference sheets and drilling past papers ahead of the exams.
 
-### 🔧 Blog / Projects
+### ✍️ Blog
 
 - Shipped a research note on network effects: why value scales with the network, why n log n beats n squared, and how a crowd hardens into a moat.
 - Shipped a research note on build vs buy: the cost crossover that sets the break-even point, and why cost alone never settles the call.
+
+### 🔧 Projects
+
 - Shipped [busypang.enkr1.com](https://busypang.enkr1.com), a personal-brand site I built for my brother.
