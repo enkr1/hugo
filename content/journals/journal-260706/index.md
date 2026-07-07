@@ -41,3 +41,4 @@ it'd been about six years since the five of us celebrated a birthday together, m
 
 - Shipped a research note on network effects: why value scales with the network, why n log n beats n squared, and how a crowd hardens into a moat.
 - Shipped a research note on build vs buy: the cost crossover that sets the break-even point, and why cost alone never settles the call.
+- A shoutout to my brother's storytelling hub, [busypang.enkr1.com](https://busypang.enkr1.com).
