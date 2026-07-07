@@ -22,9 +22,11 @@ last week i wrapped up a coaching session with a student. after it i built a fee
 
 it'd been about six years since the five of us celebrated a birthday together, my brother was studying abroad in spain all that while. after so long, this time just hits different. i've always believed we're the strongest five: we trust each other, we believe in each other, we hold each other up. i think that's what family is for. i'm beyond grateful we got to live that moment together. thanks to insta360 for sponsoring my brother's ace pro 2 + the instant print thing. it was so memorable, so proud of how far we've come, and we'll only do better from here. so proud of my family. i'm so 知足、感恩、开心 that we get a little better every year, and i know we'll only keep going.
 
-![The strongest five, together in JB](jb-reunion-1.jpg)
 
-![Celebrating the birthdays as five](jb-reunion-2.jpg)
+
+![20260702 - happy birthday 姐姐!](2026-bd-sis.jpg)
+
+![20260706 - happy birthday 贤!](2026-bd-bro.jpg)
 
 
 
