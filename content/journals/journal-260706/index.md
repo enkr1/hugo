@@ -20,7 +20,7 @@ comments: false
 
 last week i wrapped up a coaching session with a student. after it i built a feedback loop on what i could've done better, then shared a plan with them. caught up over dinner with a gym fren, jae. sat my class test too, i was honestly quite lost during it, not confident at all, thought i'd done badly. got 18/20! AND i went back to jb early to celebrate my sister's and brother's birthdays!!!!
 
-it'd been about six years since the five of us celebrated a birthday together, my brother was studying abroad in spain all that while. after so long, this time just hits different. i've always believed we're the strongest five: we trust each other, we believe in each other, we hold each other up. i think that's what family is for. i'm beyond grateful we got to live that moment together. thanks to insta360 for sponsoring my brother's ace pro 2 （直接可以打印出来的交卷）. it was so memorable, so proud of how far we've come, and we'll only do better from here. so proud of my family. i'm so 知足、感恩、开心 that we get a little better every year, and i know we'll only keep going.
+it'd been about six years since the five of us celebrated a birthday together, my brother was studying abroad in spain all that while. after so long, this time just hits different. i've always believed we're the strongest five: we trust each other, we believe in each other, we hold each other up. i think that's what family is for. i'm beyond grateful we got to live that moment together. thanks to insta360 for sponsoring my brother's ace pro 2 + the instant print thing. it was so memorable, so proud of how far we've come, and we'll only do better from here. so proud of my family. i'm so 知足、感恩、开心 that we get a little better every year, and i know we'll only keep going.
 
 
 
