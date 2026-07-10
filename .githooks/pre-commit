@@ -18,6 +18,7 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 FRONTMATTER = re.compile(r"^---\r?\n(.*?)\r?\n---", re.DOTALL)
@@ -31,14 +32,18 @@ DESC_MIN = 50
 DESC_MAX = 160
 
 
-def staged_added_files() -> list[str]:
+def staged_files(diff_filter: str) -> list[str]:
     result = subprocess.run(
-        ["git", "diff", "--cached", "--name-only", "--diff-filter=A"],
+        ["git", "diff", "--cached", "--name-only", f"--diff-filter={diff_filter}"],
         capture_output=True,
         text=True,
         check=True,
     )
     return [line for line in result.stdout.splitlines() if line]
+
+
+def staged_added_files() -> list[str]:
+    return staged_files("A")
 
 
 def read_frontmatter(path: Path) -> str | None:
@@ -87,6 +92,32 @@ def description_error(fm: str) -> str | None:
     return None
 
 
+def future_date_error(fm: str) -> str | None:
+    """Hugo silently skips future-dated posts at build time (even same-day
+    future times — this hid the parts-split retro on 2026-07-10). Applies to
+    ALL staged content, not just new files: legacy posts are date-only and in
+    the past, so they can't trip this."""
+    match = DATE_LINE.search(fm)
+    if match is None:
+        return None
+    raw = match.group(1).strip().strip("'\"")
+    post_dt: datetime | None = None
+    try:
+        post_dt = datetime.fromisoformat(raw.replace(" ", "T", 1))
+    except ValueError:
+        return None  # unparseable → let the datetime-format check handle it
+    now = datetime.now(timezone.utc)
+    if post_dt.tzinfo is None:
+        post_dt = post_dt.replace(tzinfo=timezone(timedelta(hours=8)))
+    if post_dt > now:
+        return (
+            f"`date` is in the future ({raw}) — Hugo will silently skip this "
+            "post at build time. Set it to now or earlier: "
+            "date '+%Y-%m-%dT%H:%M:%S%z'"
+        )
+    return None
+
+
 def check(path: Path) -> list[str]:
     fm = read_frontmatter(path)
     if fm is None:
@@ -116,6 +147,21 @@ def main() -> int:
     failures: list[str] = []
     for file in candidates:
         failures.extend(check(Path(file)))
+
+    # Future-date check runs on ALL staged content (added OR modified) —
+    # a modified legacy post can still be re-dated into the future.
+    touched = [
+        f
+        for f in staged_files("AM")
+        if f.endswith(".md") and f.startswith("content/")
+    ]
+    for file in touched:
+        fm = read_frontmatter(Path(file))
+        if fm is None:
+            continue
+        err = future_date_error(fm)
+        if err is not None:
+            failures.append(f"{file}: {err}")
 
     if failures:
         print("\n✗ Hugo frontmatter validation failed:\n", file=sys.stderr)
