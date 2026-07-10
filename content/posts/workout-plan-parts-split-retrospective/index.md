@@ -1,6 +1,6 @@
 ---
 title: "Parts Split, 12 Weeks Later: A Retrospective"
-date: 2026-07-10T21:30:00+08:00
+date: 2026-07-10T17:20:00+08:00
 tags:
   - "fitness"
   - "workout"
