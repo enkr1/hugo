@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1004-cheatsheet"
 date: 2026-03-03
 description: "Quick reference for NUS TCX1004: Logic & Proofs, Set Theory, Relations, Induction"
 tags: ["nus", "math", "discrete-math", "cheatsheet", "tcx1004"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX1004"]
 toc: true
 math: true
 draft: false

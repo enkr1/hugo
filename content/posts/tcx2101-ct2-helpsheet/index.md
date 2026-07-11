@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2101-ct2-helpsheet"
 date: 2026-03-13
 description: "A4 double-sided helpsheet for CT2 (16 Mar). Focus: Improper Integrals + Volume by Rotation."
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101", "ct2"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 toc: false
 math: true
 draft: false

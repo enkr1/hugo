@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2101-notebook"
 date: 2026-02-10
 description: "Comprehensive section-by-section notes for NUS TCX2101: Calculus and Linear Algebra"
 tags: ["nus", "math", "calculus", "notes", "tcx2101"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 toc: true
 math: true
 draft: false

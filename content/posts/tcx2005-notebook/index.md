@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2005-notebook"
 date: 2026-05-17T03:30:00+08:00
 description: "Running notebook for NUS TCX2005 Information Systems, Management and Organisations. Foundations of IS, CPSD vs IPOF, three dimensions, complementary assets, and Prakash's adopter-centric trap. Doubles as exam-ready reference for the open-book Examplify final."
 tags: ["nus", "information-systems", "notebook", "tcx2005", "management"]
-categories: ["Education", "Information Systems"]
+categories:
+  - ["Education", "NUS BIT", "TCX2005"]
 toc: true
 draft: false
 sticky: 2005

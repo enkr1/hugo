@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1002-midterm-cheatsheet"
 date: 2026-02-12
 description: "Personal Python cheatsheet for NUS TCX1002 midterm — only the stuff I forget or haven't drilled"
 tags: ["nus", "python", "cheatsheet", "tcx1002", "midterm"]
-categories: ["Education", "Programming"]
+categories:
+  - ["Education", "NUS BIT", "TCX1002"]
 toc: true
 math: false
 draft: false

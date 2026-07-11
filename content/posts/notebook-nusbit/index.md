@@ -8,7 +8,7 @@ tags:
   - "notebook"
 categories:
   - ["Notebooks"]
-  - ["Career Development", "Bachelor's Degree", "NUS | Bachelor of Information Technology"]
+  - ["Education", "NUS BIT"]
 subtitle: "My workflow, modules, study system, and lessons learnt"
 description: "A living notebook documenting my journey through the NUS Bachelor of Information Technology programme. How I adapted the Zettelkasten method for coursework, validated spaced repetition with real data, and what I've learnt juggling programming, logic, and calculus. For current and future students."
 keywords:

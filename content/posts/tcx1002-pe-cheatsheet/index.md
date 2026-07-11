@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1002-pe-cheatsheet"
 date: 2026-04-15
 description: "Personal Python cheatsheet for NUS TCX1002 Practical Exam — all topics, unlimited pages"
 tags: ["nus", "python", "cheatsheet", "tcx1002", "pe"]
-categories: ["Education", "Programming"]
+categories:
+  - ["Education", "NUS BIT", "TCX1002"]
 toc: true
 math: false
 draft: false

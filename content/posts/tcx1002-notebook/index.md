@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1002-notebook"
 date: 2026-02-10
 description: "Exam-ready reference for NUS TCX1002: iteration traps, data structure gotchas, functional patterns, algorithm templates"
 tags: ["nus", "python", "programming", "notebook", "tcx1002"]
-categories: ["Education", "Programming"]
+categories:
+  - ["Education", "NUS BIT", "TCX1002"]
 toc: true
 draft: false
 ---

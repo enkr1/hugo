@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2005-finals-cheatsheet"
 date: 2026-07-10T18:17:00+08:00
 description: "Open-book print cheatsheet for TCX2005 Final Exam (Jul 11): trap triggers, frameworks, risk strategies, L1-L9 full coverage."
 tags: ["nus", "information-systems", "cheatsheet", "tcx2005", "finals"]
-categories: ["Education"]
+categories:
+  - ["Education", "NUS BIT", "TCX2005"]
 toc: true
 math: false
 draft: false

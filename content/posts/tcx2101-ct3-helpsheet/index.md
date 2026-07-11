@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2101-ct3-helpsheet"
 date: 2026-04-05
 description: "A4 double-sided helpsheet for CT3 (13 Apr). Scope: 5.1–7.6 (Linear Algebra)."
 tags: ["nus", "math", "linear-algebra", "cheatsheet", "tcx2101", "ct3"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 math: true
 draft: false
 sheet: helpsheet

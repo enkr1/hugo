@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1004-notebook"
 date: 2026-02-10
 description: "Study notebook for NUS TCX1004: Proofs, Sets, Relations, Induction, Combinatorics, Graph Theory, Probability"
 tags: ["nus", "math", "discrete-math", "notebook", "tcx1004"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX1004"]
 toc: true
 math: true
 draft: false

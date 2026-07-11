@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2003-notebook"
 date: 2026-05-11T18:00:00+08:00
 description: "Exam-ready reference for NUS TCX2003 Database Systems & Management: MySQL types, constraints, ER design, normalization gotchas. Flipped classroom with Prof Jiang Kan."
 tags: ["nus", "sql", "mysql", "database", "notebook", "tcx2003"]
-categories: ["Education", "Database"]
+categories:
+  - ["Education", "NUS BIT", "TCX2003"]
 toc: true
 draft: false
 sticky: 2003

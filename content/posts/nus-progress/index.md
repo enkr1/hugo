@@ -4,7 +4,8 @@ slug: "nus-progress"
 date: 2026-03-19
 description: "Living study dashboard — mastery tracking across modules"
 tags: ["nus", "progress"]
-categories: ["Education"]
+categories:
+  - ["Education", "NUS BIT"]
 toc: true
 math: false
 draft: false

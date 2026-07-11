@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1002-midterm-reflection"
 date: 2026-02-14
 description: "Sunk cost, panic spirals, and the difference between ability and discipline"
 tags: ["nus", "python", "tcx1002", "midterm", "reflection"]
-categories: ["Education", "Reflection"]
+categories:
+  - ["Education", "NUS BIT", "TCX1002"]
 toc: false
 math: false
 draft: false

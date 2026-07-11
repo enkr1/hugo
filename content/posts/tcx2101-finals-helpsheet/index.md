@@ -4,7 +4,8 @@ slug: "tcx2101-finals-helpsheet"
 date: 2026-04-19
 description: "A4 double-sided helpsheet for TCX2101 Final Exam (Apr 28)."
 tags: ["nus", "math", "calculus", "linear-algebra", "cheatsheet", "tcx2101", "finals"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 math: true
 draft: false
 sheet: helpsheet

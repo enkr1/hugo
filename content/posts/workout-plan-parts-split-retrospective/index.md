@@ -17,7 +17,7 @@ keywords:
 comments: true
 ---
 
-back in april i published [my parts split plan](/posts/workout-plan-parts-split/) — a 7-day arms & delts focused container. it's been ~12 weeks. time to be honest about what happened.
+back in april i published [my parts split plan]({{< ref "workout-plan-parts-split" >}}) — a 7-day arms & delts focused container. it's been ~12 weeks. time to be honest about what happened.
 
 ## the scoreboard
 

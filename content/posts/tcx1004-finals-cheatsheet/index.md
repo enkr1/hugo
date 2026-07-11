@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1004-finals-cheatsheet"
 date: 2026-04-19
 description: "Open-book cheatsheet for NUS TCX1004 Finals (Apr 30, 2026) — Logic & Proofs, Set Theory, Relations, Induction, Big-O, Combinatorics, Graph Theory, Probability, Distributions"
 tags: ["nus", "math", "discrete-math", "cheatsheet", "tcx1004", "finals"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX1004"]
 toc: true
 math: true
 draft: false

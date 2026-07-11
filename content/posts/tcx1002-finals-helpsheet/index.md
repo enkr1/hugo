@@ -4,7 +4,8 @@ slug: "nus-bit-tcx1002-finals-helpsheet"
 date: 2026-04-20
 description: "A4 double-sided helpsheet for NUS TCX1002 Final Exam (May 4, Examplify fill-blank)"
 tags: ["nus", "python", "helpsheet", "tcx1002", "finals"]
-categories: ["Education", "Programming"]
+categories:
+  - ["Education", "NUS BIT", "TCX1002"]
 toc: true
 math: false
 draft: false

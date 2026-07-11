@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2101-cheatsheet-3.5-4.11"
 date: 2026-02-16
 description: "Formula reference for NUS TCX2101 CT2: MVT, Derivative Tests, L'Hôpital, Optimization, Integration, FTC, Area, Substitution"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 toc: true
 math: true
 draft: false

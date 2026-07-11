@@ -4,7 +4,8 @@ slug: "nus-bit-tcx2101-cheatsheet-1.1-3.4"
 date: 2026-02-05
 description: "Clean formula reference for NUS TCX2101: Functions, Limits, Continuity, Differentiation, Extreme Values"
 tags: ["nus", "math", "calculus", "cheatsheet", "tcx2101"]
-categories: ["Education", "Mathematics"]
+categories:
+  - ["Education", "NUS BIT", "TCX2101"]
 toc: true
 math: true
 draft: false
