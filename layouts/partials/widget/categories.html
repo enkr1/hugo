@@ -1,86 +1,7 @@
-{{- $context := .Context -}}
-
-{{- /* Build category tree from frontmatter paths with NESTED URLs */ -}}
-{{- $scratch := newScratch -}}
-{{- $scratch.Set "nodes" dict -}}
-{{- $scratch.Set "roots" slice -}}
-
-{{- /* Process all pages to extract category hierarchies */ -}}
-{{- range $context.Site.RegularPages -}}
-    {{- range .Params.categories -}}
-        {{- if reflect.IsSlice . -}}
-            {{- $path := . -}}
-
-            {{- /* Process each level in the path */ -}}
-            {{- range $i, $name := $path -}}
-                {{- /* Build the full slug path up to this level */ -}}
-                {{- $slugPath := slice -}}
-                {{- range $j, $n := $path -}}
-                    {{- if le $j $i -}}
-                        {{- $slugPath = $slugPath | append (replace $n "/" "-" | urlize) -}}
-                    {{- end -}}
-                {{- end -}}
-                {{- $nodeKey := delimit $slugPath "/" -}}
-                {{- $url := printf "/categories/%s/" $nodeKey -}}
-
-                {{- $nodes := $scratch.Get "nodes" -}}
-
-                {{- /* Create node if it doesn't exist */ -}}
-                {{- if not (index $nodes $nodeKey) -}}
-                    {{- $newNode := dict "name" $name "url" $url "slugPath" $nodeKey "children" slice "count" 0 "depth" $i -}}
-                    {{- $scratch.SetInMap "nodes" $nodeKey $newNode -}}
-                {{- end -}}
-
-                {{- /* Increment count for ALL levels in path (parent sums children) */ -}}
-                {{- $nodes = $scratch.Get "nodes" -}}
-                {{- $node := index $nodes $nodeKey -}}
-                {{- $newCount := add (index $node "count") 1 -}}
-                {{- $updatedNode := merge $node (dict "count" $newCount) -}}
-                {{- $scratch.SetInMap "nodes" $nodeKey $updatedNode -}}
-
-                {{- /* Track parent-child relationships */ -}}
-                {{- if eq $i 0 -}}
-                    {{- /* This is a root node */ -}}
-                    {{- $roots := $scratch.Get "roots" -}}
-                    {{- if not (in $roots $nodeKey) -}}
-                        {{- $scratch.Set "roots" ($roots | append $nodeKey) -}}
-                    {{- end -}}
-                {{- else -}}
-                    {{- /* Build parent's slug path */ -}}
-                    {{- $parentSlugPath := slice -}}
-                    {{- range $j, $n := $path -}}
-                        {{- if lt $j $i -}}
-                            {{- $parentSlugPath = $parentSlugPath | append (replace $n "/" "-" | urlize) -}}
-                        {{- end -}}
-                    {{- end -}}
-                    {{- $parentKey := delimit $parentSlugPath "/" -}}
-
-                    {{- /* Add as child of parent */ -}}
-                    {{- $nodes = $scratch.Get "nodes" -}}
-                    {{- $parentNode := index $nodes $parentKey -}}
-                    {{- if $parentNode -}}
-                        {{- $children := index $parentNode "children" -}}
-                        {{- if not (in $children $nodeKey) -}}
-                            {{- $newChildren := $children | append $nodeKey -}}
-                            {{- $updatedParent := merge $parentNode (dict "children" $newChildren) -}}
-                            {{- $scratch.SetInMap "nodes" $parentKey $updatedParent -}}
-                        {{- end -}}
-                    {{- end -}}
-
-                    {{- /* Remove from roots if it was added there */ -}}
-                    {{- $roots := $scratch.Get "roots" -}}
-                    {{- $newRoots := slice -}}
-                    {{- range $roots -}}
-                        {{- if ne . $nodeKey -}}
-                            {{- $newRoots = $newRoots | append . -}}
-                        {{- end -}}
-                    {{- end -}}
-                    {{- $scratch.Set "roots" $newRoots -}}
-                {{- end -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
-{{- end -}}
+{{- /* Tree data comes from the SSOT partial (cached once per build) */ -}}
+{{- $tree := partialCached "function/category-tree.html" site -}}
+{{- $nodes := index $tree "nodes" -}}
+{{- $roots := index $tree "roots" -}}
 
 <section class="widget categories-tree">
     <div class="widget-icon">
@@ -88,11 +9,8 @@
     </div>
     <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
 
-    {{- $nodes := $scratch.Get "nodes" -}}
-    {{- $roots := $scratch.Get "roots" -}}
-
     <ul class="categories-list">
-        {{- range $roots -}}
+        {{- range sort $roots -}}
             {{- $node := index $nodes . -}}
             {{- partial "widget/category-node.html" (dict "node" $node "nodes" $nodes "depth" 0) -}}
         {{- end -}}
