@@ -171,6 +171,12 @@ SELECT DISTINCT city FROM customer ORDER BY city; -- DISTINCT = whole selected r
 ### 1.5 JOINs
 
 ```sql
+-- OLD-STYLE comma join = INNER JOIN
+SELECT c.name, p.name
+FROM   customer c, sale s, product p
+WHERE  c.customer_id = s.customer_id
+  AND  p.product_id  = s.product_id;
+  
 -- INNER: matches only
 SELECT c.name, p.name AS product, s.qty, s.sale_date
 FROM   customer c
@@ -181,12 +187,6 @@ JOIN   product p ON p.product_id  = s.product_id;
 SELECT c.name, s.product_id, s.qty
 FROM   customer c
 LEFT JOIN sale s ON s.customer_id = c.customer_id;
-
--- OLD-STYLE comma join (JIANG KAN idiom) = INNER JOIN
-SELECT c.name, p.name
-FROM   customer c, sale s, product p
-WHERE  c.customer_id = s.customer_id
-  AND  p.product_id  = s.product_id;
 
 -- SELF-join, shared attribute: same city as 'Alice'
 SELECT a.name, b.name AS same_city
@@ -222,21 +222,18 @@ WHERE  s.product_id IS NULL;
 
 ```sql
 SELECT city FROM customer
-UNION -- dedup; UNION ALL keeps duplicates
-SELECT 'Online' AS city; -- column count + order must match
+UNION -- dedup pass; UNION ALL keeps dupes (use when dupes impossible: faster)
+SELECT 'Online' AS city; -- col count+order must match; names from FIRST branch
+-- ORDER BY / LIMIT: once, at the very end
 
 SELECT customer_id FROM sale
-INTERSECT -- MySQL 8.0.31+
+INTERSECT -- if unsure it exists: ≡ WHERE customer_id IN (subquery)
 SELECT customer_id FROM customer WHERE YEAR(joined) = 2024;
 
 SELECT customer_id FROM customer
-EXCEPT -- MySQL 8.0.31+
+EXCEPT -- ≡ anti-join: NOT EXISTS / LEFT JOIN…IS NULL (NULL-safe, unlike NOT IN)
 SELECT customer_id FROM sale;
 ```
-
-- Pre-8.0.31: `INTERSECT` ≡ `WHERE id IN (subquery)` · `EXCEPT` ≡ anti-join — `NOT EXISTS` (§1.8) or `LEFT JOIN … IS NULL` (§1.5); both NULL-safe, unlike `NOT IN`.
-- Result column names come from the **first** branch; `ORDER BY`/`LIMIT` once at the very end.
-- `UNION ALL` over `UNION` when dupes impossible — skips the dedup pass.
 
 ### 1.7 Aggregation
 
@@ -250,14 +247,14 @@ SELECT p.category,
 FROM   product p
 LEFT JOIN sale s ON s.product_id = p.product_id
 GROUP  BY p.category
-HAVING units_sold > 0 -- filter AFTER aggregation
+HAVING units_sold > 0 -- AFTER aggregation; alias OK…
 ORDER  BY units_sold DESC;
 
 SELECT s.customer_id, SUM(s.qty) AS total_qty
 FROM   sale s
-WHERE  s.sale_date >= '2025-01-01' -- row filter, BEFORE grouping
-GROUP  BY s.customer_id
-HAVING SUM(s.qty) > 10; -- group filter, AFTER grouping
+WHERE  s.sale_date >= '2025-01-01' -- row filter, BEFORE grouping — aggregate here = ILLEGAL
+GROUP  BY s.customer_id -- every non-agg SELECT col must appear here (ONLY_FULL_GROUP_BY)
+HAVING SUM(s.qty) > 10; -- …or repeat the aggregate expression
 ```
 
 | Func | Returns |
@@ -265,11 +262,7 @@ HAVING SUM(s.qty) > 10; -- group filter, AFTER grouping
 | `COUNT(*)` | all rows in group (incl. NULLs) |
 | `COUNT(col)` | non-NULL values of `col` |
 | `COUNT(DISTINCT col)` | distinct non-NULL values |
-| `SUM / AVG / MIN / MAX` | ignore NULLs |
-
-- Aggregates skip NULL → all-NULL group returns NULL — wrap `COALESCE(SUM(x),0)`.
-- `HAVING` may reference the alias or repeat the aggregate expression.
-- ⚠ Aggregate in `WHERE` = illegal (`WHERE` = rows *before* grouping) · ONLY_FULL_GROUP_BY: every non-aggregated `SELECT` column must appear in `GROUP BY`.
+| `SUM / AVG / MIN / MAX` | ignore NULLs; all-NULL group → NULL — wrap `COALESCE(SUM(x),0)` |
 
 ### 1.8 Subqueries & window
 
@@ -287,9 +280,10 @@ WHERE  customer_id IN (
     FROM   sale s JOIN product p ON p.product_id = s.product_id
     WHERE  p.category = 'tech');
 
--- EXISTS / NOT EXISTS (correlated; NULL-safe anti-pattern)
+-- EXISTS / NOT EXISTS (correlated; NULL-safe — NOT IN + one NULL in subquery → EMPTY result)
 SELECT c.name FROM customer c
 WHERE  NOT EXISTS (SELECT 1 FROM sale s WHERE s.customer_id = c.customer_id);
+       -- stops at first match; SELECT 1: select list ignored
 
 -- CORRELATED scalar: above own category average
 SELECT p.name, p.category, p.price
@@ -304,16 +298,12 @@ FROM ( SELECT customer_id, SUM(qty) AS total
 WHERE  t.total > 5;
 
 -- WINDOW: rank within category, rows not collapsed
+-- runs AFTER WHERE/GROUP BY/HAVING → to filter on rn, wrap in a derived table (above)
 SELECT name, category, price,
-       ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rn,
-       RANK()       OVER (PARTITION BY category ORDER BY price DESC) AS rnk
+       ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rn,  -- unique 1,2,3
+       RANK()       OVER (PARTITION BY category ORDER BY price DESC) AS rnk -- ties 1,1,3 (DENSE_RANK: 1,1,2)
 FROM   product;
 ```
-
-- **NOT IN NULL trap:** any NULL from the subquery → empty result. `NOT EXISTS` instead.
-- `EXISTS` stops at first match; `SELECT 1` idiomatic, select list ignored.
-- `ROW_NUMBER` unique (1,2,3) · `RANK` ties share then skip (1,1,3) · `DENSE_RANK` ties share, no skip (1,1,2).
-- Window funcs run after `WHERE`/`GROUP BY`/`HAVING` — to filter on `rn`, wrap in a derived table.
 
 ### 1.9 CREATE PROCEDURE — two shapes
 
@@ -327,7 +317,7 @@ Reaching for the scalar shape when the question wants rows is the classic trap.
 ```sql
 -- RESULT-SET shape (most common exam ask)
 DROP PROCEDURE IF EXISTS sales_summary;
-DELIMITER //
+DELIMITER // -- before ANY CREATE PROC/FUNC/TRIGGER (§1.9–1.12); reset ; after
 CREATE PROCEDURE sales_summary() -- NO params: returns ROWS
 BEGIN
     SELECT c.customer_id, c.name, COALESCE(SUM(s.qty),0) AS total_qty
@@ -342,10 +332,11 @@ CALL sales_summary();
 -- SCALAR-OUT shape
 DELIMITER //
 CREATE PROCEDURE total_spent(IN cid INT, OUT total DECIMAL(10,2))
+-- IN read-only (default) · OUT write-back · INOUT both; no RETURN (that's a function)
 BEGIN
     SELECT COALESCE(SUM(s.qty * p.price), 0.00) -- COALESCE: no-sale customer = 0
-    INTO total
-    FROM sale s, product p -- comma join (Jiang idiom)
+    INTO total -- must be exactly ONE row/value or it errors
+    FROM sale s, product p -- comma join
     WHERE s.product_id = p.product_id
       AND s.customer_id = cid;
 END //
@@ -353,15 +344,9 @@ DELIMITER ;
 CALL total_spent(1, @t);  SELECT @t;
 ```
 
-- UPSERT body: `IF EXISTS (SELECT 1 FROM product WHERE sku = sku_) THEN UPDATE … ELSE INSERT …; END IF;` — trailing-underscore params (`sku_`) dodge column-name clash (Jiang idiom); don't forget the closing `END IF;`.
-- `IN` read-only (default) · `OUT` write-back · `INOUT` both.
-- `SELECT … INTO var` must return exactly one row/value or it errors.
-- No `RETURN value` in a procedure — that's a function.
-- ⚠ `DELIMITER //` before **any** `CREATE PROCEDURE/FUNCTION/TRIGGER` (§1.9–1.12), reset `DELIMITER ;` after.
+- UPSERT body: `IF EXISTS (SELECT 1 FROM product WHERE sku = sku_) THEN UPDATE … ELSE INSERT …; END IF;` — `sku_` dodges column-name clash; don't drop the closing `END IF;`.
 
 ### 1.10 Full-dress procedure — cursor, handlers, transaction
-
-MySQL's required `DECLARE` order: **vars → cursor → handlers**.
 
 ```sql
 DROP PROCEDURE IF EXISTS publish_plan;
@@ -369,14 +354,14 @@ DELIMITER $$
 CREATE PROCEDURE publish_plan(IN p_job_id INT, IN p_quantity INT,
                               IN p_start_sn INT, IN p_process_csv VARCHAR(64))
 BEGIN
-    DECLARE v_step_id INT; DECLARE v_proc_id INT;
+    DECLARE v_step_id INT; DECLARE v_proc_id INT; -- ① vars first
     DECLARE v_i INT; DECLARE v_done INT DEFAULT 0;
 
-    DECLARE cur_proc CURSOR FOR -- AFTER vars, BEFORE handlers
+    DECLARE cur_proc CURSOR FOR -- ② cursor second
         SELECT id FROM process
         WHERE FIND_IN_SET(code, p_process_csv) > 0;
 
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = 1;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = 1; -- ③ handlers last (wrong order = compile error)
 
     DECLARE EXIT HANDLER FOR SQLEXCEPTION -- any error: undo all, re-raise
     BEGIN
@@ -431,26 +416,22 @@ SELECT name FROM product WHERE discounted_price(price, 15) > 20.00;
 DROP TRIGGER IF EXISTS trg_sale_stock; -- no CREATE OR REPLACE; drop first
 DELIMITER //
 CREATE TRIGGER trg_sale_stock
-BEFORE INSERT ON sale
+BEFORE INSERT ON sale -- {BEFORE|AFTER} {INSERT|UPDATE|DELETE}; guard=BEFORE, maintain-alone=AFTER
 FOR EACH ROW
 BEGIN
     DECLARE avail INT;
     SELECT stock INTO avail FROM product WHERE product_id = NEW.product_id;
     IF NEW.qty > avail THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Insufficient stock';
+        -- the reject: for rules a CHECK can't hold (needs subquery)
     END IF;
-    UPDATE product SET stock = stock - NEW.qty -- maintenance leg
+    UPDATE product SET stock = stock - NEW.qty -- maintenance leg (alone: AFTER, no DECLARE/IF)
     WHERE product_id = NEW.product_id;
 END //
 DELIMITER ;
+-- NEW = incoming (INSERT/UPDATE) · OLD = existing (UPDATE/DELETE)
+-- SET NEW.col = … legal ONLY in BEFORE (SET NEW.joined = OLD.joined freezes a col)
 ```
-
-- If asked for maintenance alone: same body, `AFTER INSERT ON sale`, no DECLARE/IF needed.
-
-- Timing × event: `{BEFORE | AFTER} {INSERT | UPDATE | DELETE}` + `FOR EACH ROW`.
-- `NEW.col` = incoming value (INSERT, UPDATE) · `OLD.col` = existing (UPDATE, DELETE).
-- `SET NEW.col = …` only legal in **BEFORE** — e.g. `SET NEW.joined = OLD.joined` freezes a column; compare `NEW.status <> OLD.status` to stamp transitions.
-- `SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '…'` = the reject; use when the rule needs a subquery `CHECK` can't do.
 
 ### 1.13 Procedure vs Function vs Trigger
 

@@ -166,11 +166,11 @@
     page-break-after: avoid !important;
     break-after: avoid !important;
   }
-  /* Allow code blocks to split across columns — prevents huge whitespace gaps */
-  /* Keep break-inside: avoid only on small atomic units (table rows, blockquotes) */
+  /* Keep code blocks whole — a block that doesn't fit hops to the next column/page.
+     Tradeoff: can leave whitespace gaps at column bottoms (why this was 'auto' before). */
   pre, .highlight {
-    page-break-inside: auto !important;
-    break-inside: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
   blockquote, tr {
     page-break-inside: avoid !important;
