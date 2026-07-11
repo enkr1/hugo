@@ -8,15 +8,8 @@ categories: ["Education"]
 toc: true
 math: false
 draft: false
+sheet: openbook
 ---
-
-<style>
-@media print {
-    mark { background: none; padding: 0; color: inherit; }
-    .print-hide { display: none; }
-}
-</style>
-
 
 <div class="print-hide">
 
@@ -74,7 +67,6 @@ draft: false
 | **Data redundancy** | same data stored in many places, values disagree |
 | **Data warehouse** | central store of current + historical data for analysis; data cannot be altered |
 | **Database management system (DBMS)** | software layer between applications and data files; centralizes data, controls redundancy |
-| **Decision support system (DSS)** | non-routine what-if modelling (a.k.a. **sensitivity analysis**: change one input, watch the output), middle management |
 | **Defense (risk)** | own technical safeguards (firewalls, intrusion detection) that lower likelihood |
 | **Defense in depth** | layered technical tools (firewall + intrusion detection + encryption + ...) |
 | **Double down** | deepen the existing strength, ignore the new game (Rolex mechanical watches) |
@@ -83,7 +75,6 @@ draft: false
 | **Enterprise resource planning (ERP)** | integrate **all** internal processes into one system |
 | **Environmental (PESTLE)** | green / sustainability (the second E, don't drop it) |
 | **Evil twin** | fake Wi-Fi access point |
-| **Executive support system (ESS)** | strategic dashboards, internal + external data, drill-down, senior management |
 | **Failed to adapt** | clung to old revenue (Kodak film) |
 | **Fast follower** | has the size + resources to capitalize on it |
 | **First mover** | inventor of the disruptive technology |
@@ -96,11 +87,11 @@ draft: false
 | **Knowledge management system (KMS)** | capture + share organisational knowledge |
 | **Least privilege** | minimum *permissions* to do the task; stricter, implies need-to-know |
 | **Legal (PESTLE)** | Ministry of Health guideline / industry regulation / written law. Personal Data Protection Act (PDPA) can be either P or L, check the framing |
-| **Management information system (MIS)** | routine predefined reports built from TPS data, middle management |
 | **Mitigate (risk)** | reduce the impact if it happens, own incident-response plans, backups |
 | **Need-to-know** | access only the *information* a role requires |
 | **Nonobvious relationship awareness (NORA)** | find **hidden** connections across separate data sources (security benefit + privacy risk) |
 | **NoSQL** | distributed database, flexible model; handles structured + unstructured, scales easily |
+| **Opt-in vs opt-out** | opt-in = data used **only if you say yes** (EU, stricter); opt-out = data **used unless you say no** (US default). Hook: opt-**out** = fight your way **out** |
 | **Organizational culture** | shared assumptions about **what** to produce, **how**, **where**, **for whom** |
 | **Organizational politics** | divergent viewpoints → struggle, competition, conflict (resistance hampers change) |
 | **Pharming** | redirects to a bogus site even when the correct web address is typed |
@@ -128,7 +119,6 @@ draft: false
 | **Terminate (risk)** | remove the vulnerable asset entirely |
 | **Total cost of ownership (TCO)** | direct + indirect cost of owning technology; hardware + software are only ~20% of it |
 | **Transaction cost** | cost of dealing with **external** parties (falls → outsourcing becomes viable) |
-| **Transaction processing system (TPS)** | daily transactions, operational level |
 | **Transfer / transference (risk)** | shift the risk elsewhere, cyber insurance, vendor contract, renegotiated service-level agreement. Test: <mark>"who bears the risk after? someone else = transference, NOT mitigation"</mark> |
 | **Trojan horse** | disguised as legitimate software |
 | **Unstructured decision** | no procedure, intuition and judgement (senior management) |
@@ -329,7 +319,16 @@ Match the **question's outcome** to the letter, not the means: "automation reduc
 - competitive advantage
 - survival (Barclays ATM, must-adopt-or-die)
 
-**Transaction processing / management information / decision support / executive support systems:** see term dictionary. Slide-42 trap: "what-if analysis on production capacity" = decision support system (non-routine + middle management + modelling), **not** management information system.
+**The 4 IS types (Slide 42, scenario classification):**
+
+| System | Users | Nature | Example |
+|---|---|---|---|
+| **Transaction processing (TPS)** | operational staff | **routine, structured, predefined**; records daily transactions | order entry, payroll, shipping |
+| **Management information (MIS)** | middle mgmt | **routine predefined reports** built from TPS data | weekly sales by region |
+| **Decision support (DSS)** | middle mgmt | **non-routine what-if** modelling (**sensitivity analysis**: change one input, watch the output) | simulate supplier-switch cost |
+| **Executive support (ESS)** | senior mgmt | strategic dashboards, internal + **external** data, drill-down | 5-year market trends |
+
+Slide-42 trap: "what-if analysis on production capacity" = decision support system (non-routine + middle management + modelling), **not** management information system.
 
 **Enterprise applications (span functions, all levels):**
 

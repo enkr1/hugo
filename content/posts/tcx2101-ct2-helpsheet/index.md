@@ -8,26 +8,11 @@ categories: ["Education", "Mathematics"]
 toc: false
 math: true
 draft: false
+sheet: helpsheet
+sheetCols: 1
 ---
 
 > **TCX2101 (NUS Math) series:** [Notebook]({{< ref "tcx2101-notebook" >}}) · [Calculus (1.1-3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}}) · [Calculus (3.5-4.11)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}) · **CT2 helpsheet (current)** · [CT3 helpsheet]({{< ref "tcx2101-ct3-helpsheet" >}}) · [Finals helpsheet]({{< ref "tcx2101-finals-helpsheet" >}})
-
-<style>
-@media print {
-  .backlinks-section, .backlinks-list, .article-header, .article-footer,
-  [class*="backlink"], [class*="mention"],
-  .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
-  .article-page .main-article > :last-child ~ * { display: none !important; }
-  body, .main-article { font-size: 9pt !important; line-height: 1.3 !important; }
-  h2 { font-size: 12pt !important; margin: 6px 0 3px !important; }
-  h3 { font-size: 10pt !important; margin: 4px 0 2px !important; }
-  table { font-size: 8.5pt !important; margin: 2px 0 !important; }
-  td, th { padding: 1px 4px !important; }
-  p, blockquote { margin: 2px 0 !important; }
-  hr { margin: 4px 0 !important; }
-  .main-article { max-width: 100% !important; padding: 0 !important; }
-}
-</style>
 
 > **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
 

@@ -1,0 +1,6 @@
+/* Open-book exam cheatsheet print style (extracted verbatim from tcx2005/tcx2003 inline blocks).
+   Activated via front matter: `sheet: openbook` — loaded by layouts/partials/head/custom.html. */
+@media print {
+    mark { background: none; padding: 0; color: inherit; }
+    .print-hide { display: none; }
+}

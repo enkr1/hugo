@@ -47,3 +47,18 @@
 <script>
   window.googleClientId = "{{ .Site.Params.googleClientId | default "" }}";
 </script>
+
+{{/* Exam-sheet print styles — opt-in via front matter.
+     `sheet: openbook`  → mark reset + .print-hide only (open-book cheatsheets)
+     `sheet: helpsheet` → dense 7pt multi-column A4 (restricted helpsheets)
+     `sheetCols: N`     → column count for helpsheet (default 2) */}}
+{{ with .Params.sheet }}
+  {{ with resources.Get (printf "scss/sheet-print-%s.scss" .) }}
+    {{ with . | css.Sass | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ with .Params.sheetCols }}
+<style>@media print { .main-article { --sheet-cols: {{ . }}; } }</style>
+{{ end }}

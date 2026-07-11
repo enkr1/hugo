@@ -7,104 +7,11 @@ tags: ["nus", "math", "calculus", "linear-algebra", "cheatsheet", "tcx2101", "fi
 categories: ["Education", "Mathematics"]
 math: true
 draft: false
+sheet: helpsheet
+sheetCols: 3
 ---
 
 > **TCX2101 (NUS Math) series:** [Notebook]({{< ref "tcx2101-notebook" >}}) · [Calculus (1.1-3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}}) · [Calculus (3.5-4.11)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}) · [CT2 helpsheet]({{< ref "tcx2101-ct2-helpsheet" >}}) · [CT3 helpsheet]({{< ref "tcx2101-ct3-helpsheet" >}}) · **Finals helpsheet (current)**
-
-<style>
-@page { margin: 2mm; }
-@media print {
-  .left-sidebar, .right-sidebar, .sidebar,
-  .toc-left-sidebar,
-  #TableOfContents, .widget--toc,
-  .floating-toolbar, .scroll-to-top, .search-modal,
-  .backlinks-section, .backlinks-list, .article-header, .article-footer,
-  [class*="backlink"], [class*="mention"],
-  .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
-  footer, aside, .site-footer, .post-footer,
-  .related-content--wrapper, .subscribe-form,
-  [class*="share"], [class*="social"],
-  [class*="copyright"], [class*="license"], [class*="prev-next"],
-  .inline-comment-popup, .ic-floating-pill,
-  .article-page .main-article > :last-child ~ * { display: none !important; }
-  html, body, main, article, div, section {
-    min-height: 0 !important; height: auto !important;
-  }
-  main, .main-article, .article-content, .main-container, .container, body {
-    flex: initial !important; flex-grow: 0 !important;
-    display: block !important;
-    max-width: 100% !important; width: 100% !important;
-    padding: 0 !important; margin: 0 !important;
-    gap: 0 !important;
-  }
-  body, .main-article {
-    font-size: 7pt !important;
-    line-height: 1.0 !important;
-    letter-spacing: -0.15px !important;
-  }
-  .main-article {
-    column-count: 3 !important;
-    column-gap: 4mm !important;
-    column-fill: balance !important;
-    column-rule: 0.3px solid #e5e5e5 !important;
-  }
-  h3 { font-size: 6.8pt !important; margin: 1pt 0 0 0 !important; border-top: 0.3px solid #ccc; padding-top: 0 !important; }
-  h4 { font-size: 6.7pt !important; margin: 0 !important; }
-  table {
-    font-size: 6.6pt !important;
-    margin: 0 0 0.2rem 0 !important;
-    border-collapse: collapse !important;
-    border-spacing: 0 !important;
-    width: 100% !important;
-  }
-  td, th {
-    padding: 0.5px 2px !important;
-    line-height: 1.0 !important;
-    border: 0.3px solid #ccc !important;
-    vertical-align: top !important;
-  }
-  th { background: #f4f4f4 !important; }
-  p {
-    font-size: 5.4pt !important;
-    line-height: 1.0 !important;
-    margin: 0 0 1px 0 !important;
-  }
-  blockquote {
-    font-size: 6.6pt !important;
-    line-height: 1.0 !important;
-    margin: 0 0 1px 0 !important;
-  }
-  p .katex, li .katex, blockquote .katex {
-    font-size: 0.95em !important;
-    line-height: 1.0 !important;
-    vertical-align: baseline !important;
-  }
-  blockquote {
-    padding: 0 5px !important;
-    border-left: 2px solid #bbb !important;
-  }
-  ul, ol { margin: 0 !important; padding-left: 11px !important; }
-  li { margin: 0 !important; line-height: 1.05 !important; }
-  hr { margin: 1px 0 !important; border: none; border-top: 0.4px solid #999; }
-  .katex-display { margin: 0 !important; font-size: 0.9em !important; }
-  .katex { font-size: 0.95em !important; }
-  .katex .frac-line {
-    border-bottom-width: 0.02em !important;
-    border-bottom-color: rgba(0,0,0,0.55) !important;
-  }
-  h3, h4 {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-    break-before: avoid-column !important;
-  }
-  tr, blockquote, .katex-display {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-  /* Eliminate empty paragraph space */
-  p:empty { display: none !important; }
-}
-</style>
 
 ### 1. One-Sided Limits
 
@@ -656,7 +563,6 @@ Verify: plug each null basis vector into $Ax = 0$. Every row must $= 0$.
 | $u \cdot u = \|u\|^2$ | **Always SQUARE**. $\|u\| = 3 \Rightarrow u \cdot u = 9$ |
 | $\|u + v\|^2$ | $= \|u\|^2 + 2(u \cdot v) + \|v\|^2$ |
 | If $u \perp v$ | $\|u + v\|^2 = \|u\|^2 + \|v\|^2$ |
-
 
 ### 54. Orthogonal vs Orthonormal
 

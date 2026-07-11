@@ -7,53 +7,11 @@ tags: ["nus", "math", "linear-algebra", "cheatsheet", "tcx2101", "ct3"]
 categories: ["Education", "Mathematics"]
 math: true
 draft: false
+sheet: helpsheet
+sheetCols: 1
 ---
 
 > **TCX2101 (NUS Math) series:** [Notebook]({{< ref "tcx2101-notebook" >}}) · [Calculus (1.1-3.4)]({{< ref "tcx2101-calculus-cheatsheet" >}}) · [Calculus (3.5-4.11)]({{< ref "tcx2101-calculus-cheatsheet-ct2" >}}) · [CT2 helpsheet]({{< ref "tcx2101-ct2-helpsheet" >}}) · **CT3 helpsheet (current)** · [Finals helpsheet]({{< ref "tcx2101-finals-helpsheet" >}})
-
-<style>
-@page { margin: 10mm; }
-@media print {
-  /* Hide ALL theme chrome — sidebars, toolbar, footer, related, comments */
-  .left-sidebar, .right-sidebar, .sidebar,
-  .toc-left-sidebar,
-  #TableOfContents, .widget--toc,
-  .floating-toolbar, .scroll-to-top, .search-modal,
-  .backlinks-section, .backlinks-list, .article-header, .article-footer,
-  [class*="backlink"], [class*="mention"],
-  .widget--newsletter, .newsletter, [class*="subscribe"], [class*="stay-in-loop"],
-  footer, aside, .site-footer, .post-footer,
-  .related-content--wrapper, .subscribe-form,
-  [class*="share"], [class*="social"],
-  [class*="copyright"], [class*="license"], [class*="prev-next"],
-  .inline-comment-popup, .ic-floating-pill,
-  .article-page .main-article > :last-child ~ * { display: none !important; }
-  /* Kill flexbox 3-column layout — force single column full-width */
-  html, body, main, article, div, section {
-    min-height: 0 !important; height: auto !important;
-  }
-  main, .main-article, .article-content, .main-container, .container, body {
-    flex: initial !important; flex-grow: 0 !important;
-    display: block !important;
-    max-width: 100% !important; width: 100% !important;
-    padding: 0 !important; margin: 0 !important;
-    gap: 0 !important;
-  }
-  body, .main-article { font-size: 8pt !important; line-height: 1.15 !important; }
-  h2 { font-size: 10pt !important; margin: 2rem 0 1px !important; }
-  h3 { font-size: 9pt !important; margin: 2px 0 1px !important; }
-  h4 { font-size: 8.5pt !important; margin: 2px 0 0 !important; }
-  table { font-size: 7.5pt !important; margin: 1px 0 !important; }
-  td, th { padding: 1px 3px !important; }
-  p, blockquote { margin: 1px 0 !important; }
-  blockquote { padding: 1px 6px !important; }
-  ul, ol { margin: 1px 0 !important; padding-left: 14px !important; }
-  li { margin: 0 !important; }
-  hr { margin: 2px 0 !important; border: none; border-top: 0.5px solid #999; }
-  .katex-display { margin: 1px 0 !important; }
-  h2, h3, h4 { page-break-after: avoid !important; }
-}
-</style>
 
 > **Current focus:** [TCX2101 Finals Helpsheet (Apr 28 exam)]({{< ref "tcx2101-finals-helpsheet" >}}). This page kept for history and cross-reference.
 
@@ -69,7 +27,6 @@ draft: false
 | **2. Dir. vectors** | Per free var: pivot-row entries, flip sign → pivot slots. That free = 1, others = 0 |
 | **3. Combine** | x = xₚ + sv₁ + tv₂ + … |
 | **Result** | 0 free = Unique · 1 free = Line · 2 free = Plane · Zero row but RHS ≠ 0 → no solution |
-
 
 ## 2. Determinants & Invertibility (Q2)
 
@@ -119,7 +76,6 @@ Put vectors as **columns**, row reduce, count pivots.
 - Contains **0** = (0,…,0) → **always dependent**
 - ⚠️ Pairwise non-scalar ≠ independent. **Always use pivot-count**, never pairwise check.
 
-
 ## 3. Definitions (Vector Spaces)
 
 | Term | Meaning |
@@ -128,7 +84,6 @@ Put vectors as **columns**, row reduce, count pivots.
 | **Span** | All combinations $c_1 v_1 + \cdots + c_k v_k$ |
 | **Basis** | Independent set that spans $V$ (no redundant vectors) |
 | **Dimension** | Number of vectors in a basis |
-
 
 ## 4. Subspace Proof — Worked Example: $V = \{(x,y,z) : 2x - y + z = 0\}$
 
@@ -151,7 +106,6 @@ $$= 0\ \checkmark \quad \therefore\ c\mathbf{u} \in V.$$
 
 $\therefore V$ is a subspace of $\mathbb{R}^3$.
 
-
 ## 5. Basis from Equation
 
 > 🎯 Variables **not in** the equation are automatically **FREE**. dim(V) = n − (#independent equations).
@@ -164,7 +118,6 @@ $$(x,y,z,w) = (2s - t,\ s,\ t,\ r) = s(2,1,0,0) + t(-1,0,1,0) + r(0,0,0,1)$$
 
 **Basis** $= \{(2,1,0,0),\ (-1,0,1,0),\ (0,0,0,1)\},\ \dim(V) = 3$
 
-
 ## 6. Span Test — Is $\mathbf{w} \in \text{span}\{\mathbf{v}_1, \mathbf{v}_2\}$?
 
 Stack as augmented $[\mathbf{v}_1 \mid \mathbf{v}_2 \mid \mathbf{w}]$, row reduce. **Ex:** $\mathbf{v}_1=(1,3,2),\ \mathbf{v}_2=(2,-1,4),\ \mathbf{w}=(2,1,5)$:
@@ -176,7 +129,6 @@ Stack as augmented $[\mathbf{v}_1 \mid \mathbf{v}_2 \mid \mathbf{w}]$, row reduc
 | | 2 | 4 | 5 | | 0 | 0 | **1** |
 
 Row $[0\ 0\ |\ 1]$ = contradiction → $\mathbf{w} \notin \text{span}$. No contradiction → $\mathbf{w} \in \text{span}$.
-
 
 ## 7. Rank-Nullity
 
