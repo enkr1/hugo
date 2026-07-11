@@ -10,7 +10,7 @@ toc: true
 math: false
 draft: false
 sheet: helpsheet
-sheetCols: 3
+sheetCols: 2
 ---
 
 <div class="print-hide">
@@ -25,47 +25,55 @@ sheetCols: 3
 
 ## 1. SQL
 
-### 1.1 ER & cardinality
+### 1.1 Entity Relationship & cardinality
+- **Strong entity** — can identify itself; its own columns form the PK (`building(building_id)`).
+- **Weak entity** — cannot identify itself (unit `#02` repeats across buildings). Borrows the owner's key: PK = **owner key + partial key** → `PRIMARY KEY (building_id, unit_no)`, FK `NOT NULL` `ON DELETE CASCADE`.
+- **Partial key** — the weak entity's own column (`unit_no`); unique only *inside one owner*, not globally.
+- **Superkey** — any column set that finds exactly one row (extras allowed). e.g. `{nric}`, `{email}`, `{nric, name}`.
+- **Candidate key** — a superkey with nothing extra (minimal). e.g. `{nric}`, `{email}` — not `{nric, name}`.
+- **Primary key** — the candidate key you choose. e.g. pick `nric`; `email` stays `UNIQUE`.
+- **Total participation** — "MUST have" → FK `NOT NULL` · **partial** — "may have" → FK nullable.
+- **Where does the FK go?** (`N`/`M` = letters for "**many**, no limit") 1:N (one-to-many) → FK on the **many** side · 1:1 → **merge** the two tables (or FK + `UNIQUE`) · M:N (many-to-many) → **junction table** with both FKs.
+- **Min-max `(min,max)`** — beside each entity in the diagram: joins the relationship ≥min, ≤max times. **min 1 = MUST → `NOT NULL`** · **max 1 = one partner → that side holds the FK**. e.g. `resume (1,1) —owned_by— (0,N) job_seeker` → FK `js_id NOT NULL` on resume.
 
-| Relationship | Table shape |
-|---|---|
-| **M:N** (seeker claims many skills, skill claimed by many) | **junction table** `job_seeker_skill_map`: both FKs + `PRIMARY KEY (js_id, skill_id)` composite. Relationship attributes (proficiency, **verified**) live HERE — they describe the claim, not either parent. (`sale` in 1.2 is this shape.) |
-| **1:N** (seeker has many resumes) | FK on the **many** side: `resume.js_id`. No new table. FK lives on the side that has "exactly one" of the other. |
-| **1:1** | FK on either side + `UNIQUE` on the FK column. |
-| **Weak entity** (unit `#02` repeats across buildings) | PK = **owner FK + partial key**: `PRIMARY KEY (building_id, unit_no)`, FK `ON DELETE CASCADE`. Can't be identified by own attributes alone. |
+### 1.1b Normalization
 
-- Key vocab ladder: **superkey** (any uniquely-identifying column set) ⊇ **candidate key** (minimal superkey) → **primary key** (the chosen one). Weak-entity PK parts are role names: **owner's key** + **partial key** — not "superkeys".
-- **Total participation** ("every resume MUST have an owner") → FK `NOT NULL` · **partial** ("may have") → FK nullable.
-- "Latest per parent" (active resume) = query concern, not schema: correlated `WHERE r.uploaded = (SELECT MAX(...) WHERE r2.js_id = r.js_id)`.
+- **Functional Dependency** `X → Y` = "know X ⇒ know Y" (`skill_id → skill_name`: same id, always same name). That is the *whole* concept.
+- **Why normalize** — same fact stored in 2+ rows goes stale: **update** (rename, miss a copy) · **insert** (can't add skill until claimed) · **delete** (last claim gone → name gone).
+- **1NF** — one value per cell. No lists (`skill1, skill2…`). ← WHY M:N forces a junction table.
+- **2NF** — no fact about **part** of the key. PK `(js_id, skill_id)` but `skill_id → skill_name` alone → violation → split out `skill`. (`prof` needs the whole key = fine.)
+- **3NF** — no fact about **another fact** (non-key → non-key): `postal_code → city` → split `postal(postal_code, city)`.
+  - ⚠ Numbers = **rule levels, not table counts**. Fixing violations *creates* tables, but "2NF ≠ 2 tables" — one table can pass 3NF; ten tables can all fail 2NF.
+- **BCNF** — every FD's left side must be a candidate key (catches what 3NF misses).
+- **Decompose** — each bad `X → Y` becomes table `(X PK, Y)`; original drops Y, keeps X as FK. Highest NF = last rung with zero violations.
+- Mantra: *the key (1NF), the whole key (2NF), and nothing but the key (3NF)*.
 
 ### 1.2 CREATE TABLE
 
-⚠ **Spec word → constraint** (marks leak here): "required" → `NOT NULL` · "unique / never share" → `UNIQUE` · "one of {…}" → `ENUM` · "must be positive / 350–500" → `CHECK` · "format like D0001" → `CHECK … REGEXP` · phone/id/code = text → **`VARCHAR`, not `INT`** · money → **`DECIMAL(m,2)`, never `FLOAT`** (binary rounding corrupts cents) · "enforce / must" → constraint keyword, **not** a SELECT fix (`COALESCE` is display).
-
 ```sql
-CREATE TABLE IF NOT EXISTS customer (          -- IF NOT EXISTS: idempotent re-run
+CREATE TABLE IF NOT EXISTS customer ( -- IF NOT EXISTS: idempotent re-run
   customer_id INT PRIMARY KEY,
-  name        VARCHAR(60) NOT NULL,            -- "required"
-  email       VARCHAR(120) UNIQUE,             -- no dup, NULL allowed
+  name        VARCHAR(60) NOT NULL, -- "required"
+  email       VARCHAR(120) UNIQUE, -- no dup, NULL allowed
   city        VARCHAR(40),
-  joined      DATE,                            -- DATETIME/TIMESTAMP if time needed
-  referred_by INT,                             -- self-FK column (NULL = direct signup)
+  joined      DATE, -- DATETIME/TIMESTAMP if time needed
+  referred_by INT, -- self-FK column (NULL = direct signup)
   CHECK (email REGEXP '^[^@]+@[^@]+\\.[^@]+$'),
   -- FIXED-FORMAT ID: CHECK (id REGEXP '^D[0-9]{4}$') = D0001 · '^A[0-9]{7}[A-Z]$' = matric
   --   {n} = exactly n · ^...$ anchor the WHOLE value (omit → any substring matches!) · REGEXP is case-INSENSITIVE
-  FOREIGN KEY (referred_by) REFERENCES customer(customer_id)  -- self-FK: MUST be nullable
+  FOREIGN KEY (referred_by) REFERENCES customer(customer_id) -- self-FK: MUST be nullable
     ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS product (
-  product_id INT AUTO_INCREMENT PRIMARY KEY,   -- AUTO_INCREMENT must be leftmost key column
-  sku        CHAR(8) UNIQUE,                   -- fixed width = CHAR; variable = VARCHAR
+  product_id INT AUTO_INCREMENT PRIMARY KEY, -- AUTO_INCREMENT must be leftmost key column
+  sku        CHAR(8) UNIQUE, -- fixed width = CHAR; variable = VARCHAR
   name       VARCHAR(80) NOT NULL,
-  category   ENUM('book','tech','food'),       -- invalid value rejected
+  category   ENUM('book','tech','food'), -- invalid value rejected
   price      DECIMAL(8,2) NOT NULL DEFAULT 0.00,
   stock      INT NOT NULL DEFAULT 0,
   added      DATE,
-  CHECK (price >= 0 AND stock >= 0)            -- multi-column CHECK
+  CHECK (price >= 0 AND stock >= 0) -- multi-column CHECK
 );
 
 CREATE TABLE IF NOT EXISTS sale (
@@ -73,8 +81,8 @@ CREATE TABLE IF NOT EXISTS sale (
   product_id  INT,
   sale_date   DATE,
   qty         INT NOT NULL,
-  PRIMARY KEY (customer_id, product_id, sale_date),            -- composite PK (table-level)
-  FOREIGN KEY (customer_id) REFERENCES customer(customer_id)   -- FK must reference a PK/UNIQUE column
+  PRIMARY KEY (customer_id, product_id, sale_date), -- composite PK (table-level)
+  FOREIGN KEY (customer_id) REFERENCES customer(customer_id) -- FK must reference a PK/UNIQUE column
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES product(product_id)
     ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -115,16 +123,16 @@ CREATE TABLE IF NOT EXISTS slot (
 INSERT INTO customer (customer_id, name, email, city, joined)
 VALUES (1, 'Ada', 'ada@mail.com', 'Singapore', '2026-01-10');
 
-INSERT INTO product (sku, name, category, price, stock, added) VALUES  -- multi-row: atomic, id omitted -> AUTO_INCREMENT
+INSERT INTO product (sku, name, category, price, stock, added) VALUES -- multi-row: atomic, id omitted -> AUTO_INCREMENT
   ('BK000001', 'SQL Primer', 'book', 19.90, 50, '2026-02-01'),
   ('TC000002', 'USB-C Hub',  'tech', 45.00, 12, '2026-02-03');
 
 UPDATE product
 SET price = price * 1.10, stock = stock - 5
-WHERE category = 'tech';                       -- no WHERE = EVERY row changed!
+WHERE category = 'tech'; -- no WHERE = EVERY row changed!
 
 DELETE FROM sale
-WHERE sale_date < '2026-01-01';                -- no WHERE = whole table gone!
+WHERE sale_date < '2026-01-01'; -- no WHERE = whole table gone!
 ```
 
 ### 1.4 SELECT ... WHERE
@@ -140,13 +148,13 @@ LIMIT  10;
 
 SELECT name, city, joined
 FROM   customer
-WHERE  city IN ('Singapore', 'Penang')                    -- set membership
-  AND  joined BETWEEN '2024-01-01' AND '2024-12-31'       -- inclusive both ends
-  AND  name LIKE 'A%'                                     -- % = any run, _ = one char
-  AND  email IS NOT NULL                                  -- never = NULL
+WHERE  city IN ('Singapore', 'Penang') -- set membership
+  AND  joined BETWEEN '2024-01-01' AND '2024-12-31' -- inclusive both ends
+  AND  name LIKE 'A%' -- % = any run, _ = one char
+  AND  email IS NOT NULL -- never = NULL
 ORDER  BY joined;
 
-SELECT DISTINCT city FROM customer ORDER BY city;         -- DISTINCT = whole selected row
+SELECT DISTINCT city FROM customer ORDER BY city; -- DISTINCT = whole selected row
 ```
 
 | Operator | Note |
@@ -214,15 +222,15 @@ WHERE  s.product_id IS NULL;
 
 ```sql
 SELECT city FROM customer
-UNION                                          -- dedup; UNION ALL keeps duplicates
-SELECT 'Online' AS city;                       -- column count + order must match
+UNION -- dedup; UNION ALL keeps duplicates
+SELECT 'Online' AS city; -- column count + order must match
 
 SELECT customer_id FROM sale
-INTERSECT                                      -- MySQL 8.0.31+
+INTERSECT -- MySQL 8.0.31+
 SELECT customer_id FROM customer WHERE YEAR(joined) = 2024;
 
 SELECT customer_id FROM customer
-EXCEPT                                         -- MySQL 8.0.31+
+EXCEPT -- MySQL 8.0.31+
 SELECT customer_id FROM sale;
 ```
 
@@ -235,21 +243,21 @@ SELECT customer_id FROM sale;
 ```sql
 SELECT p.category,
        COUNT(*)                AS n_products,
-       COALESCE(SUM(s.qty), 0) AS units_sold,  -- NULL -> 0 when no sales
+       COALESCE(SUM(s.qty), 0) AS units_sold, -- NULL -> 0 when no sales
        ROUND(AVG(p.price), 2)  AS avg_price,
        MIN(p.price)            AS cheapest,
        MAX(p.price)            AS dearest
 FROM   product p
 LEFT JOIN sale s ON s.product_id = p.product_id
 GROUP  BY p.category
-HAVING units_sold > 0                          -- filter AFTER aggregation
+HAVING units_sold > 0 -- filter AFTER aggregation
 ORDER  BY units_sold DESC;
 
 SELECT s.customer_id, SUM(s.qty) AS total_qty
 FROM   sale s
-WHERE  s.sale_date >= '2025-01-01'             -- row filter, BEFORE grouping
+WHERE  s.sale_date >= '2025-01-01' -- row filter, BEFORE grouping
 GROUP  BY s.customer_id
-HAVING SUM(s.qty) > 10;                        -- group filter, AFTER grouping
+HAVING SUM(s.qty) > 10; -- group filter, AFTER grouping
 ```
 
 | Func | Returns |
@@ -264,6 +272,8 @@ HAVING SUM(s.qty) > 10;                        -- group filter, AFTER grouping
 - ⚠ Aggregate in `WHERE` = illegal (`WHERE` = rows *before* grouping) · ONLY_FULL_GROUP_BY: every non-aggregated `SELECT` column must appear in `GROUP BY`.
 
 ### 1.8 Subqueries & window
+
+- "Latest per parent" (active resume): correlated `WHERE r.uploaded = (SELECT MAX(...) WHERE r2.js_id = r.js_id)`.
 
 ```sql
 -- SCALAR: above overall average (swap AVG->MAX, > to = : "find the dearest")
@@ -318,11 +328,11 @@ Reaching for the scalar shape when the question wants rows is the classic trap.
 -- RESULT-SET shape (most common exam ask)
 DROP PROCEDURE IF EXISTS sales_summary;
 DELIMITER //
-CREATE PROCEDURE sales_summary()                        -- NO params: returns ROWS
+CREATE PROCEDURE sales_summary() -- NO params: returns ROWS
 BEGIN
     SELECT c.customer_id, c.name, COALESCE(SUM(s.qty),0) AS total_qty
     FROM customer c LEFT JOIN sale s ON s.customer_id = c.customer_id
-    GROUP BY c.customer_id, c.name ORDER BY total_qty DESC;  -- body = §1.7 pattern
+    GROUP BY c.customer_id, c.name ORDER BY total_qty DESC; -- body = §1.7 pattern
 END //
 DELIMITER ;
 CALL sales_summary();
@@ -333,9 +343,9 @@ CALL sales_summary();
 DELIMITER //
 CREATE PROCEDURE total_spent(IN cid INT, OUT total DECIMAL(10,2))
 BEGIN
-    SELECT COALESCE(SUM(s.qty * p.price), 0.00)         -- COALESCE: no-sale customer = 0
+    SELECT COALESCE(SUM(s.qty * p.price), 0.00) -- COALESCE: no-sale customer = 0
     INTO total
-    FROM sale s, product p                              -- comma join (Jiang idiom)
+    FROM sale s, product p -- comma join (Jiang idiom)
     WHERE s.product_id = p.product_id
       AND s.customer_id = cid;
 END //
@@ -362,13 +372,13 @@ BEGIN
     DECLARE v_step_id INT; DECLARE v_proc_id INT;
     DECLARE v_i INT; DECLARE v_done INT DEFAULT 0;
 
-    DECLARE cur_proc CURSOR FOR                         -- AFTER vars, BEFORE handlers
+    DECLARE cur_proc CURSOR FOR -- AFTER vars, BEFORE handlers
         SELECT id FROM process
         WHERE FIND_IN_SET(code, p_process_csv) > 0;
 
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = 1;
 
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION               -- any error: undo all, re-raise
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION -- any error: undo all, re-raise
     BEGIN
         ROLLBACK;
         RESIGNAL;
@@ -401,14 +411,14 @@ DELIMITER ;
 ```sql
 DELIMITER //
 CREATE FUNCTION discounted_price(p DECIMAL(8,2), pct INT)
-RETURNS DECIMAL(8,2)                                    -- RETURNS = clause (type)
-DETERMINISTIC                                           -- required under default binlog settings
+RETURNS DECIMAL(8,2) -- RETURNS = clause (type)
+DETERMINISTIC -- required under default binlog settings
 BEGIN
-    RETURN ROUND(p * (1 - pct / 100), 2);               -- RETURN = statement (value)
+    RETURN ROUND(p * (1 - pct / 100), 2); -- RETURN = statement (value)
 END //
 DELIMITER ;
 
-SELECT name, discounted_price(price, 10) AS sale_price FROM product;  -- inline anywhere an expression fits
+SELECT name, discounted_price(price, 10) AS sale_price FROM product; -- inline anywhere an expression fits
 SELECT name FROM product WHERE discounted_price(price, 15) > 20.00;
 ```
 
@@ -418,7 +428,7 @@ SELECT name FROM product WHERE discounted_price(price, 15) > 20.00;
 
 ```sql
 -- ONE comprehensive trigger: guard (SIGNAL) + maintain (UPDATE side-effect)
-DROP TRIGGER IF EXISTS trg_sale_stock;                  -- no CREATE OR REPLACE; drop first
+DROP TRIGGER IF EXISTS trg_sale_stock; -- no CREATE OR REPLACE; drop first
 DELIMITER //
 CREATE TRIGGER trg_sale_stock
 BEFORE INSERT ON sale
@@ -429,7 +439,7 @@ BEGIN
     IF NEW.qty > avail THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Insufficient stock';
     END IF;
-    UPDATE product SET stock = stock - NEW.qty          -- maintenance leg
+    UPDATE product SET stock = stock - NEW.qty -- maintenance leg
     WHERE product_id = NEW.product_id;
 END //
 DELIMITER ;
@@ -482,6 +492,14 @@ for r in cur.stored_results():
     rows = r.fetchall()
 
 # scalar-OUT proc: OUT slots filled in the returned tuple, read BY INDEX
-result = cur.callproc("total_spent", (1, 0))   # placeholder 0 for the OUT position
-total = result[1]                              # 2nd param = 'total'
+result = cur.callproc("total_spent", (1, 0)) # placeholder 0 for the OUT position
+total = result[1] # 2nd param = 'total'
+
+row = cur.fetchone() # ONE row tuple (v1,v2) → scalar row[0]; no rows → None (None[0]=TypeError!)
+if cur.fetchone(): # existence test — None falsy
+rows = cur.fetchall() # list of tuples [(..),(..)]; no rows → [] NOT None ([][0]=IndexError)
+# cursor(dictionary=True) → rows are dicts: row['col'], [0] breaks
+
+request.method == 'POST' # form submitted; GET renders empty form
+request.form.get('x') # <input name="x">; None if absent (form['x'] raises)
 ```

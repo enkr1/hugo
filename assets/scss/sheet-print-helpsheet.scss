@@ -4,7 +4,7 @@
    set `sheetCols: N` in front matter (default 2) — emitted as --sheet-cols
    by layouts/partials/head/custom.html.
    Activated via front matter: `sheet: helpsheet`. */
-@page { margin: 2mm; }
+@page { margin: 5mm; }
 @media print {
   .left-sidebar, .right-sidebar, .sidebar,
   .toc-left-sidebar,
@@ -30,6 +30,10 @@
     gap: 0 !important;
   }
   body, .main-article {
+    /* Single knobs: prose size + one shared code size (mono has a taller
+       x-height, so equal pt reads bigger — drop the 0.95 if it still looms). */
+    --fs-prose: 6pt;
+    --fs-code: calc(var(--fs-prose) * 0.95);
     font-size: 7pt !important;
     line-height: 1.05 !important;
     letter-spacing: -0.1px !important;
@@ -89,23 +93,26 @@
 
   /* Code blocks — slightly smaller than body for visual hierarchy */
   pre, .highlight, .highlight pre, .highlight > div, figure.highlight {
-    font-size: 0.78em !important;
+    font-size: var(--fs-code) !important;
     line-height: 1.05 !important;
     margin: 0 !important;
     padding: 1px 4px !important;
     background: rgba(0,0,0,0.03) !important;
-    overflow: hidden !important;
+    overflow: clip !important; /* NOT hidden: hidden = scroll container = monolithic, blocks column breaks */
     white-space: pre-wrap !important;
     word-break: break-word !important;
   }
   pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
-  code { font-size: 0.9em !important; }
-  /* Tables */
+  code { font-size: var(--fs-code) !important; }
+  /* Tables — size to content, don't stretch to fill the column.
+     width:100% + auto layout hands surplus width to the column with the
+     widest unwrappable content (inline code), inflating the first col. */
   table {
     font-size: 6.6pt !important;
     margin: 0 0 0.2rem 0 !important;
     border-collapse: collapse !important;
-    width: 100% !important;
+    width: auto !important;
+    max-width: 100% !important;
   }
   td, th {
     padding: 0.5px 2px !important;
@@ -113,9 +120,25 @@
     border: 0.3px solid #ccc !important;
     vertical-align: top !important;
   }
+  /* Inline code in cells must be allowed to wrap, or it dictates column width.
+     break-word (not anywhere): keeps min-content = whole token, so the 1% trick
+     below can't crush label columns into per-character wrapping. */
+  td code, th code {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  /* First column: clamp to min-content (the 1% trick) — auto layout otherwise
+     awards width proportional to max-content, inflating label columns. */
+  td:first-child, th:first-child {
+    width: 1% !important;
+    white-space: nowrap !important; /* auto-fit: exactly as wide as longest label */
+    /* the td code break-word rule above would defeat nowrap inside code chips —
+       first column is labels, let them auto-fit too */
+    code { white-space: nowrap !important; overflow-wrap: normal !important; }
+  }
   th { background: #f4f4f4 !important; }
   p {
-    font-size: 6pt !important;
+    font-size: var(--fs-prose) !important;
     line-height: 1.05 !important;
     margin: 0 0 1px 0 !important;
   }
@@ -126,15 +149,22 @@
     padding: 0 5px !important;
     border-left: 2px solid #bbb !important;
   }
-  ul, ol { margin: 0 !important; padding-left: 10px !important; }
-  li { margin: 0 !important; line-height: 1.0 !important; font-size: 6pt !important; }
+  ul, ol { margin: 0 !important; padding-left: 7px !important; list-style: initial !important; }
+  li {
+    margin: 0 !important; line-height: 1.0 !important; font-size: var(--fs-prose) !important;
+    padding-left: 0 !important; /* theme reserves 1.7rem for its dash — reclaim it */
+  }
+  /* Stack theme draws its own bullet: an accent-colored 1rem×2px bar via
+     li::before (layout/article.scss) — that's the "brown dash". Kill it in print. */
+  li::before { content: none !important; }
+  /* Default disc marker, slightly shrunk for print density. */
+  li::marker { font-size: 5pt !important; }
   hr { display: none !important; margin: 0 !important; height: 0 !important; }
   /* Hugo wraps each markdown block in a div — kill its margin too */
   .article-content > * { margin-top: 0 !important; margin-bottom: 0 !important; }
   h3, h4 {
     page-break-after: avoid !important;
     break-after: avoid !important;
-    break-before: avoid-column !important;
   }
   /* Allow code blocks to split across columns — prevents huge whitespace gaps */
   /* Keep break-inside: avoid only on small atomic units (table rows, blockquotes) */
