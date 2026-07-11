@@ -72,7 +72,7 @@
 
         {{ if $showTags }}
             <div class="article-tags">
-                {{ range ($page.GetTerms "tags") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                {{ range ($page.GetTerms "tags") }}<a href="{{ .RelPermalink }}"{{ if eq (lower .LinkTitle) "nus" }} class="article-tag--nus"{{ end }}>{{ .LinkTitle }}</a>{{ end }}
             </div>
         {{ end }}
     </footer>
