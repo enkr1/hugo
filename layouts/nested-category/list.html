@@ -123,7 +123,7 @@
     {{- if gt (len $subRoots) 0 -}}
         <section class="subcategories-tree">
             <ul class="categories-list">
-                {{- range $subRoots -}}
+                {{- range sort $subRoots -}}
                     {{- $node := index $subNodes . -}}
                     {{- partial "widget/category-node.html" (dict "node" $node "nodes" $subNodes "depth" 0) -}}
                 {{- end -}}

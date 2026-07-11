@@ -1,0 +1,47 @@
+{{ define "body-class" }}profile-page{{ end }}
+{{ define "main" }}
+<div class="profile-header">
+    <h1>Profile</h1>
+</div>
+
+{{/* Profile card — populated client-side by profile-page.ts (auth-entry bundle) */}}
+<section id="profile-card" class="profile-card" aria-live="polite">
+    <div class="profile-card__avatar"></div>
+    <div class="profile-card__body">
+        <span class="profile-card__name">&hellip;</span>
+        <span class="profile-card__hint"></span>
+    </div>
+    <div class="profile-card__action"></div>
+</section>
+
+<section class="profile-section">
+    <h2 class="profile-section__title">Appearance</h2>
+    <div class="profile-setting">
+        <div class="profile-setting__info">
+            <span class="profile-setting__label">Dark mode</span>
+            <span class="profile-setting__hint">Follows your system until you flip it</span>
+        </div>
+        <button id="profile-theme-toggle" class="profile-switch" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode">
+            <span class="profile-switch__knob"></span>
+        </button>
+    </div>
+</section>
+
+<section class="profile-section">
+    <h2 class="profile-section__title">More settings</h2>
+    <div class="profile-setting profile-setting--disabled">
+        <div class="profile-setting__info">
+            <span class="profile-setting__label">Notifications</span>
+        </div>
+        <span class="profile-soon">Coming soon</span>
+    </div>
+    <div class="profile-setting profile-setting--disabled">
+        <div class="profile-setting__info">
+            <span class="profile-setting__label">Reading history</span>
+        </div>
+        <span class="profile-soon">Coming soon</span>
+    </div>
+</section>
+
+{{ partialCached "footer/footer" . }}
+{{ end }}

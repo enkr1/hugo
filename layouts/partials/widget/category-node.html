@@ -20,7 +20,7 @@
 
     {{- if $hasChildren -}}
         <ul class="category-children">
-            {{- range index $node "children" -}}
+            {{- range sort (index $node "children") -}}
                 {{- $childNode := index $nodes . -}}
                 {{- partial "widget/category-node.html" (dict "node" $childNode "nodes" $nodes "depth" (add $depth 1) "expandable" $expandable) -}}
             {{- end -}}

@@ -172,13 +172,12 @@ weight = 2
 icon = 'journal'
 
 [[menu.mobile]]
-identifier = 'platforms'
-name = 'Platforms'
-url = 'https://enkr1.github.io/platforms/'
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
 weight = 4
 [menu.mobile.params]
-icon = 'link'
-newTab = true
+icon = 'categories'
 
 # Related posts
 [related]
