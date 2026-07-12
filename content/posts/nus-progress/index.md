@@ -15,8 +15,8 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2003 | Active (Special Term) | █░░░ Lec1 done | Lec1 LIVE May 11 ✅. CREATE TABLE syntax + ER cardinality (1:1/1:N/M:N) covered. Iterative requirement-driven schema design discovered as prof's teaching pattern |
-| TCX2005 | Active (Special Term) | ██░░░ L1+L2 done, T2 submitted | L1+L2 covered (CPSD/IPOF, 3 Dimensions, 6 strategic objectives, TPS/MIS/DSS/ESS hierarchy, ERP/SCM/CRM/KMS). Quiz 1 done (L1+L2 scope). T2 Netflix case study completed end-to-end with PDF submission ready. Independent framework synthesis: BM/BP/IS = exchange/verb/noun + Netflix POV principle for case study writing |
+| TCX2003 | Active — final tomorrow | ████░ All CA complete | All coursework done (quizzes, class test, project demo). Final Mon 13 Jul — 1-A4 helpsheet printed, error-log cold-redo drill complete. Multi-idiom SQL sheet design carried over from Y1S2 helpsheet A/B lesson |
+| TCX2005 | Done (awaiting result) | █████ L1–L9 + final done | Final taken Jul 11 ✅ — open-book Examplify. Key lesson: sheet coverage ≠ exam-hall readability — keyword index with page refs beats self-contained prose (carried into TCX2003 sheet) |
 | TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
 | TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
 | TCX1002 | Done (awaiting result) | █████ Topics done | Final taken May 4 ✅ — Examplify fill-blank. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not |
@@ -225,4 +225,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-05-27 04:30 SGT — TCX2005 T2 Netflix case study completed end-to-end (P1-P3 + Q b + Q c, ~30 iteration commits). PDF submission-ready. Frameworks crystallised: BM/BP/IS = exchange/verb/noun, Netflix POV principle, 6-feature A-formula for case studies. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-07-12 19:39 SGT — TCX2005 final delivered (11 Jul); TCX2003 T-1 prep complete: helpsheet printed + error-log cold-redo drill done. Final Mon 13 Jul. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
