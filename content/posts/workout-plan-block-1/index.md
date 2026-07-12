@@ -17,7 +17,7 @@ keywords:
   - "Delts"
   - "Progressive Overload"
 comments: true
-draft: true
+draft: false
 ---
 
 ## Day 1: Push A · Delt-led
