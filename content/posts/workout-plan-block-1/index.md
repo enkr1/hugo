@@ -113,6 +113,169 @@ direct working sets per week (warm-up trio and indirect work counted separately)
 | Calves | 6 | gastroc + soleus split across leg days |
 | Abs | 6 | logged like lifts |
 
+{{< raw >}}
+<div style="margin: 2rem auto; max-width: 640px;">
+<svg viewBox="50 0 590 500" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="legend-grad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#c9a040" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#c9a040" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <!-- Column headers -->
+  <text x="176" y="18" fill="#999" font-size="11" text-anchor="middle">Day 1</text>
+  <text x="246" y="18" fill="#999" font-size="11" text-anchor="middle">Day 2</text>
+  <text x="316" y="18" fill="#999" font-size="11" text-anchor="middle">Day 3</text>
+  <text x="386" y="18" fill="#999" font-size="11" text-anchor="middle">Day 5</text>
+  <text x="456" y="18" fill="#999" font-size="11" text-anchor="middle">Day 6</text>
+  <text x="526" y="18" fill="#999" font-size="11" text-anchor="middle">Day 7</text>
+  <text x="596" y="18" fill="#c9a040" font-size="11" text-anchor="middle" font-weight="600">Total</text>
+  <text x="176" y="31" fill="#666" font-size="9" text-anchor="middle">Quad</text>
+  <text x="246" y="31" fill="#666" font-size="9" text-anchor="middle">Chest&amp;Back</text>
+  <text x="316" y="31" fill="#666" font-size="9" text-anchor="middle">Arms A</text>
+  <text x="386" y="31" fill="#666" font-size="9" text-anchor="middle">Posterior</text>
+  <text x="456" y="31" fill="#666" font-size="9" text-anchor="middle">Back&amp;Chest</text>
+  <text x="526" y="31" fill="#666" font-size="9" text-anchor="middle">Arms B</text>
+  <text x="596" y="31" fill="#c9a040" font-size="9" text-anchor="middle" opacity="0.7">Weekly</text>
+  <!-- Upper chest -->
+  <text x="140" y="56" fill="#999" font-size="11" text-anchor="end">Upper chest</text>
+  <rect x="148" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="246" y="57" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="288" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Mid chest -->
+  <text x="140" y="86" fill="#999" font-size="11" text-anchor="end">Mid chest</text>
+  <rect x="148" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.28"/><text x="246" y="87" fill="#fff" font-size="10" text-anchor="middle">2-3</text>
+  <rect x="288" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="456" y="87" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="498" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Lower chest -->
+  <text x="140" y="116" fill="#999" font-size="11" text-anchor="end">Lower chest</text>
+  <rect x="148" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="246" y="117" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="288" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="456" y="117" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="498" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Lats -->
+  <text x="140" y="146" fill="#999" font-size="11" text-anchor="end">Lats</text>
+  <rect x="148" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="246" y="147" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="288" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="456" y="147" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="498" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Mid back -->
+  <text x="140" y="176" fill="#999" font-size="11" text-anchor="end">Mid back</text>
+  <rect x="148" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.28"/><text x="246" y="177" fill="#fff" font-size="10" text-anchor="middle">2-3</text>
+  <rect x="288" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="456" y="177" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="498" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Upper back -->
+  <text x="140" y="206" fill="#999" font-size="11" text-anchor="end">Upper back</text>
+  <rect x="148" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="246" y="207" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="288" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="456" y="207" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="498" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Quads -->
+  <text x="140" y="236" fill="#999" font-size="11" text-anchor="end">Quads</text>
+  <rect x="148" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.67"/><text x="176" y="237" fill="#fff" font-size="10" text-anchor="middle">6</text>
+  <rect x="218" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="386" y="237" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="428" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Hamstrings -->
+  <text x="140" y="266" fill="#999" font-size="11" text-anchor="end">Hamstrings</text>
+  <rect x="148" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="176" y="267" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="218" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.61"/><text x="386" y="267" fill="#fff" font-size="10" text-anchor="middle">5-6</text>
+  <rect x="428" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Glutes -->
+  <text x="140" y="296" fill="#999" font-size="11" text-anchor="end">Glutes</text>
+  <rect x="148" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="1.0"/><text x="386" y="297" fill="#fff" font-size="10" text-anchor="middle">9</text>
+  <rect x="428" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Calves -->
+  <text x="140" y="326" fill="#999" font-size="11" text-anchor="end">Calves</text>
+  <rect x="148" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="176" y="327" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="218" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="358" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.28"/><text x="386" y="327" fill="#fff" font-size="10" text-anchor="middle">2-3</text>
+  <rect x="428" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Side delts -->
+  <text x="140" y="356" fill="#999" font-size="11" text-anchor="end">Side delts</text>
+  <rect x="148" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.44"/><text x="316" y="357" fill="#fff" font-size="10" text-anchor="middle">4</text>
+  <rect x="358" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="526" y="357" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <!-- Rear delts -->
+  <text x="140" y="386" fill="#999" font-size="11" text-anchor="end">Rear delts</text>
+  <rect x="148" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.33"/><text x="316" y="387" fill="#fff" font-size="10" text-anchor="middle">3</text>
+  <rect x="358" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.22"/><text x="456" y="387" fill="#fff" font-size="10" text-anchor="middle">2</text>
+  <rect x="498" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <!-- Biceps -->
+  <text x="140" y="416" fill="#999" font-size="11" text-anchor="end">Biceps</text>
+  <rect x="148" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.67"/><text x="316" y="417" fill="#fff" font-size="10" text-anchor="middle">6</text>
+  <rect x="358" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.56"/><text x="526" y="417" fill="#fff" font-size="10" text-anchor="middle">5</text>
+  <!-- Triceps -->
+  <text x="140" y="446" fill="#999" font-size="11" text-anchor="end">Triceps</text>
+  <rect x="148" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="218" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="288" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.67"/><text x="316" y="447" fill="#fff" font-size="10" text-anchor="middle">6</text>
+  <rect x="358" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="428" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0"/>
+  <rect x="498" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.56"/><text x="526" y="447" fill="#fff" font-size="10" text-anchor="middle">5</text>
+  <!-- Separator before Total column -->
+  <line x1="562" y1="36" x2="562" y2="460" stroke="#c9a040" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.35"/>
+  <!-- Total (weekly aggregate, opacity = sets/11) -->
+  <rect x="568" y="40" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.27"/><text x="596" y="57" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">3</text>
+  <rect x="568" y="70" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="87" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="100" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.36"/><text x="596" y="117" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">4</text>
+  <rect x="568" y="130" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.55"/><text x="596" y="147" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">6</text>
+  <rect x="568" y="160" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="177" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="190" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.36"/><text x="596" y="207" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">4</text>
+  <rect x="568" y="220" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.82"/><text x="596" y="237" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">9</text>
+  <rect x="568" y="250" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.68"/><text x="596" y="267" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">7-8</text>
+  <rect x="568" y="280" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.82"/><text x="596" y="297" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">9</text>
+  <rect x="568" y="310" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.50"/><text x="596" y="327" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5-6</text>
+  <rect x="568" y="340" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.55"/><text x="596" y="357" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">6</text>
+  <rect x="568" y="370" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="0.45"/><text x="596" y="387" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">5</text>
+  <rect x="568" y="400" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="1.0"/><text x="596" y="417" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">11</text>
+  <rect x="568" y="430" width="56" height="26" rx="4" fill="#c9a040" fill-opacity="1.0"/><text x="596" y="447" fill="#fff" font-size="10" text-anchor="middle" font-weight="600">11</text>
+  <!-- Legend -->
+  <rect x="148" y="470" width="180" height="10" rx="3" fill="url(#legend-grad)"/>
+  <text x="148" y="493" fill="#888" font-size="9">0 sets</text>
+  <text x="328" y="493" fill="#888" font-size="9" text-anchor="end">9 sets</text>
+  <text x="238" y="493" fill="#888" font-size="9" text-anchor="middle">volume (sets/week)</text>
+</svg>
+</div>
+{{< /raw >}}
+
+
 ---
 
 in april i published [my parts split plan]({{< ref "workout-plan-parts-split" >}}), and last week i closed it out with [a 12-week retrospective]({{< ref "workout-plan-parts-split-retrospective" >}}). this post is the third piece: the rebuild.
