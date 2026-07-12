@@ -8,7 +8,7 @@ categoryPath:
   - UI/UX
 slug: ui-ux
 _generated: true
-_generatedAt: '2026-07-11T04:58:32.497Z'
+_generatedAt: '2026-07-12T12:40:55.666Z'
 parentPath:
   - Software Engineering
   - Web Development

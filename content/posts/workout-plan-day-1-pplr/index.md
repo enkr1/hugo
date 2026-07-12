@@ -6,7 +6,7 @@ tags:
   - "workout"
   - "push-pull-legs"
 categories:
-  - ["Personal Development", "Fitness"]
+  - ["Fitness", "Training", "PPL"]
 subtitle: "My final workout plan before I switch to parts"
 description:
 keywords:

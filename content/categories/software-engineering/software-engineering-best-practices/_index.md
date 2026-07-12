@@ -6,7 +6,7 @@ categoryPath:
   - Software Engineering Best Practices
 slug: software-engineering-best-practices
 _generated: true
-_generatedAt: '2026-07-11T04:58:32.474Z'
+_generatedAt: '2026-07-12T12:40:55.630Z'
 parentPath:
   - Software Engineering
 ---

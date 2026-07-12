@@ -9,7 +9,7 @@ categoryPath:
   - Steven Bartlett
 slug: steven-bartlett
 _generated: true
-_generatedAt: '2026-07-11T04:58:32.478Z'
+_generatedAt: '2026-07-12T12:40:55.641Z'
 parentPath:
   - Personal Development
   - Collections

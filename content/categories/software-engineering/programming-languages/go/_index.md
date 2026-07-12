@@ -7,7 +7,7 @@ categoryPath:
   - Go
 slug: go
 _generated: true
-_generatedAt: '2026-07-11T04:58:32.492Z'
+_generatedAt: '2026-07-12T12:40:55.661Z'
 parentPath:
   - Software Engineering
   - Programming Languages

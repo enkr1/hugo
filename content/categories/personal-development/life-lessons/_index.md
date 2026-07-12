@@ -6,7 +6,7 @@ categoryPath:
   - Life Lessons
 slug: life-lessons
 _generated: true
-_generatedAt: '2026-07-11T04:58:32.479Z'
+_generatedAt: '2026-07-12T12:40:55.643Z'
 parentPath:
   - Personal Development
 ---

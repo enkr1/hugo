@@ -6,7 +6,7 @@ tags:
   - "workout"
   - "push-pull-legs"
 categories:
-  - ["Personal Development", "Fitness"]
+  - ["Fitness", "Training", "Splits"]
 subtitle: "my new 7-day arms-focused split"
 description:
 keywords:
