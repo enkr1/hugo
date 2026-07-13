@@ -8,7 +8,6 @@ categories:
   - ["Education", "NUS BIT", "TCX2003"]
 toc: true
 draft: false
-sticky: 2003
 ---
 
 Taking TCX2003 Database Systems this Special Term with Prof Jiang Kan. Flipped classroom, so most material is pre-watched and the live lecture is for clarification. This page is my running notebook, grows as the term goes.
