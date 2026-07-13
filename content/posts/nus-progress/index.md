@@ -15,7 +15,7 @@ draft: false
 
 | Module | Status | Mastery | Focus |
 |--------|--------|---------|-------|
-| TCX2003 | Active — final tomorrow | ████░ All CA complete | All coursework done (quizzes, class test, project demo). Final Mon 13 Jul — 1-A4 helpsheet printed, error-log cold-redo drill complete. Multi-idiom SQL sheet design carried over from Y1S2 helpsheet A/B lesson |
+| TCX2003 | Done (awaiting result) | █████ Final taken | Final taken Jul 13 ✅ — Examplify closed-book + 1-A4 helpsheet, felt confident. CA locked 58/60 pre-final. Lesson: SQL wants declarative keywords (UNIQUE, EXISTS) where the programmer reflex reaches for procedural checks (COUNT, hand-verify) |
 | TCX2005 | Done (awaiting result) | █████ L1–L9 + final done | Final taken Jul 11 ✅ — open-book Examplify. Key lesson: sheet coverage ≠ exam-hall readability — keyword index with page refs beats self-contained prose (carried into TCX2003 sheet) |
 | TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
 | TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
@@ -225,4 +225,4 @@ draft: false
 
 ---
 
-_Last synced: 2026-07-12 19:39 SGT — TCX2005 final delivered (11 Jul); TCX2003 T-1 prep complete: helpsheet printed + error-log cold-redo drill done. Final Mon 13 Jul. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_Last synced: 2026-07-13 13:47 SGT — 🎓 Special Term Y1ST COMPLETE. Both finals delivered (TCX2005 11 Jul, TCX2003 13 Jul — felt confident). Awaiting results ~Aug. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
