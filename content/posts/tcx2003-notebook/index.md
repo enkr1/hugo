@@ -117,6 +117,148 @@ If your column will appear in a financial statement, choose `DECIMAL`. If it rep
 
 ---
 
+## 3. CREATE TABLE & the 6 Constraints
+
+### Skeleton
+
+```sql
+CREATE TABLE table_name (
+  column1 TYPE [constraints],
+  column2 TYPE [constraints],
+  ...
+  [table_level_constraints]
+);
+```
+
+- Two-word keyword `CREATE TABLE`, never just `CREATE`.
+- Column list ends with `)` directly, no trailing comma (trailing comma is a genuine syntax error in SQL, not just style).
+- Table-level constraints (composite PK, multi-column FK) go after the column list.
+- For column types, see the integer reference in §1 and the DECIMAL/FLOAT decision in §2.
+
+### The 6 column constraints
+
+```sql
+CREATE TABLE customers (
+  id        INT          PRIMARY KEY,                 -- 1. PRIMARY KEY
+  email     VARCHAR(128) UNIQUE NOT NULL,             -- 2. UNIQUE, 3. NOT NULL
+  age       INT          CHECK (age >= 18),           -- 4. CHECK
+  status    VARCHAR(16)  DEFAULT 'active',            -- 5. DEFAULT
+  store_id  INT          REFERENCES stores(id)        -- 6. FOREIGN KEY (inline form)
+);
+```
+
+| # | Constraint | What it enforces |
+|---|------------|------------------|
+| 1 | `PRIMARY KEY` | Unique + NOT NULL combined. One per table. |
+| 2 | `UNIQUE` | No duplicate values (NULL still allowed in standard SQL). |
+| 3 | `NOT NULL` | Column must have a value. |
+| 4 | `CHECK (expr)` | Custom boolean condition. |
+| 5 | `DEFAULT value` | Auto-filled if INSERT omits the column. |
+| 6 | `FOREIGN KEY ... REFERENCES` | Value must exist in the referenced table's column (or be NULL). |
+
+> **MySQL gotcha:** the inline `col INT REFERENCES parent(id)` form above parses fine but InnoDB **silently ignores it** — no foreign key is actually created. Only a *table-level* `FOREIGN KEY (col) REFERENCES parent(id)` enforces the constraint. Use the table-level form (next section) for any real FK.
+
+### Composite & table-level constraints
+
+When a constraint spans multiple columns, put it at the table level:
+
+```sql
+CREATE TABLE order_items (
+  order_id   INT,
+  product_id INT,
+  quantity   INT NOT NULL,
+  PRIMARY KEY (order_id, product_id),                 -- composite PK
+  FOREIGN KEY (order_id) REFERENCES orders(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+```
+
+### FK referential actions (ON DELETE / ON UPDATE)
+
+```sql
+FOREIGN KEY (store_id) REFERENCES stores(id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+```
+
+| Action | When the parent row is deleted/updated |
+|--------|----------------------------------------|
+| `CASCADE` | Child rows also deleted/updated. |
+| `SET NULL` | Child FK column set to NULL (column must allow NULL). |
+| `RESTRICT` | Reject the operation if children exist. |
+| `NO ACTION` | Standard SQL defers the check; in MySQL it behaves identically to `RESTRICT`. |
+| `SET DEFAULT` | Standard SQL only — **InnoDB rejects it**, so it does not work in this course's MySQL. |
+
+Mnemonic: **C-S-R-N-D** (Cascade, Set null, Restrict, No action, Default). In MySQL you'll realistically only use the first three.
+
+### CHECK with REGEXP
+
+`CHECK` combines with `REGEXP` (MySQL) for pattern validation:
+
+```sql
+CREATE TABLE users (
+  username VARCHAR(32)  CHECK (username REGEXP '^[a-zA-Z0-9_]+$'),
+  email    VARCHAR(128) CHECK (email REGEXP '^[^@]+@[^@]+\\.[^@]+$'),
+  phone_sg VARCHAR(8)   CHECK (phone_sg REGEXP '^[89][0-9]{7}$')
+);
+```
+
+Anchors: `^` start, `$` end, `[a-z]` class, `[^abc]` negated class, `{n}` exactly n, `+` 1+, `*` 0+, `?` 0 or 1. In a SQL string literal the backslash is usually doubled (`\\d`). PostgreSQL uses `~` instead of `REGEXP`; this course is MySQL.
+
+### ALTER / DROP / RENAME
+
+```sql
+ALTER TABLE customers ADD COLUMN phone VARCHAR(8);
+ALTER TABLE customers DROP COLUMN phone;
+ALTER TABLE customers MODIFY COLUMN age SMALLINT;     -- change type
+ALTER TABLE customers ADD CONSTRAINT chk_age CHECK (age >= 0);
+
+DROP TABLE IF EXISTS customers;                       -- safe form
+RENAME TABLE customers TO clients;
+```
+
+### Worked example
+
+A small bookstore schema covering most of the above:
+
+```sql
+CREATE TABLE authors (
+  id    INT PRIMARY KEY,
+  name  VARCHAR(64) NOT NULL,
+  email VARCHAR(128) UNIQUE CHECK (email REGEXP '^[^@]+@[^@]+\\.[^@]+$')
+);
+
+CREATE TABLE books (
+  isbn      CHAR(13) PRIMARY KEY,
+  title     VARCHAR(256) NOT NULL,
+  price     NUMERIC(8, 2) DEFAULT 0.00 CHECK (price >= 0),
+  author_id INT,
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE reviews (
+  book_isbn CHAR(13),
+  reviewer  VARCHAR(64),
+  rating    TINYINT CHECK (rating BETWEEN 1 AND 5),
+  posted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (book_isbn, reviewer),
+  FOREIGN KEY (book_isbn) REFERENCES books(isbn) ON DELETE CASCADE
+);
+```
+
+Covers: all 6 constraints, composite PK, multi-table FK chain, `CHECK BETWEEN`, `CHECK REGEXP`, `DEFAULT CURRENT_TIMESTAMP`, both `CASCADE` and `SET NULL`.
+
+### Gotchas worth memorizing
+
+- **PK implies NOT NULL** — `id INT PRIMARY KEY` is enough; the NOT NULL is automatic.
+- **FK type must match parent's PK type exactly** — a mismatched type silently breaks joins.
+- **Fixed-length data deserves a fixed type** — `CHAR(2)` for ISO country codes, `CHAR(13)` for ISBN, not `VARCHAR`.
+- **Composite uniqueness is a constraint, not a computed check** — use `UNIQUE (a, b)` (or `PRIMARY KEY (a, b)`), not a hand-rolled `CHECK` with `COUNT`.
+
+---
+
 ## Cross-references
 
 - [SQL Notebook]({{< ref "pl-sql" >}}): engine-agnostic SQL coverage, injection, set ops, ROLLUP
