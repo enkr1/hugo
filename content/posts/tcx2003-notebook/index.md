@@ -259,6 +259,77 @@ Covers: all 6 constraints, composite PK, multi-table FK chain, `CHECK BETWEEN`, 
 
 ---
 
+## 4. SQL Queries (SELECT)
+
+### Clause order — written vs evaluated
+
+```sql
+SELECT   col, AGG(col)      -- 5. projected last
+FROM     t JOIN u ON ...    -- 1. tables assembled first
+WHERE    row_condition      -- 2. filter ROWS (before grouping)
+GROUP BY col                -- 3. collapse into groups
+HAVING   group_condition    -- 4. filter GROUPS (after aggregation)
+ORDER BY col                -- 6. sort
+LIMIT    n;                 -- 7. cut
+```
+
+You *write* `SELECT` first, but the engine *runs* `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT`. That order explains the two most common mistakes below.
+
+- **`WHERE` filters rows, `HAVING` filters groups.** A condition on a raw column → `WHERE`; a condition on an aggregate (`COUNT(*) > 3`) → `HAVING`. `WHERE COUNT(*) > 3` is an error (aggregate doesn't exist yet at WHERE-time).
+- A column in `SELECT` alongside `GROUP BY` must be either grouped or aggregated — you can't project a raw non-grouped column.
+
+### JOINs
+
+| Join | Keeps |
+|------|-------|
+| `INNER JOIN` | Only rows matching in both tables. |
+| `LEFT JOIN` | All left rows; right columns NULL where no match. |
+| `RIGHT JOIN` | All right rows; mirror of LEFT. |
+
+**Anti-join** (rows in A with *no* match in B) — the idiom is a LEFT JOIN filtered on the NULL:
+
+```sql
+SELECT a.id
+FROM   a LEFT JOIN b ON a.id = b.a_id
+WHERE  b.a_id IS NULL;        -- "a's that never appear in b"
+```
+
+### Subqueries: `IN` vs `EXISTS`
+
+```sql
+-- IN: compares a value against a ONE-COLUMN list
+WHERE dept_id IN (SELECT id FROM active_dept)
+
+-- EXISTS: checks whether a correlated subquery returns any row
+WHERE EXISTS (SELECT * FROM orders o WHERE o.cust_id = c.id)
+```
+
+- `IN` needs the subquery to project **exactly one column**; `SELECT *` fails.
+- `EXISTS` ignores the columns entirely — `SELECT *` / `SELECT 1` are equivalent and idiomatic.
+- **The `NOT IN` + NULL trap:** if the subquery returns even one `NULL`, `x NOT IN (…, NULL)` evaluates to UNKNOWN for every row → **zero results**. Prefer `NOT EXISTS` (NULL-safe) whenever the subquery column is nullable.
+
+### Set operators
+
+| Operator | Result | Dupes |
+|----------|--------|-------|
+| `UNION` | Rows in A **or** B | removed |
+| `UNION ALL` | Rows in A or B | kept (faster) |
+| `INTERSECT` | Rows in A **and** B | removed |
+| `MINUS` (Oracle) / `EXCEPT` (standard) | Rows in A **not** in B | removed |
+
+Both arms must have the **same number of columns, compatible types, same order.** Use whichever keyword the course slides use (`MINUS` vs `EXCEPT`).
+
+### Query-side gotchas worth memorizing
+
+- **English "or" under a negation → `UNION`, not `INTERSECT`.** "seekers who did *not* claim *or* verify a skill" = `NOT IN (claimed UNION verified)`. De Morgan: `NOT(A OR B)` excludes the *union*.
+- **`NOT IN` + nullable subquery → use `NOT EXISTS`** (the NULL trap above).
+- **Anti-join = LEFT JOIN … WHERE right IS NULL** (not `NOT IN`, which the NULL trap can break).
+- **UNION arms mirror each other** — same column, other table; the difference is only the source, not the shape.
+
+> For deeper query coverage (window functions, `ROLLUP`, injection defence) see the engine-agnostic [SQL Notebook]({{< ref "pl-sql" >}}).
+
+---
+
 ## Cross-references
 
 - [SQL Notebook]({{< ref "pl-sql" >}}): engine-agnostic SQL coverage, injection, set ops, ROLLUP
