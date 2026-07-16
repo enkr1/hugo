@@ -2,7 +2,7 @@
 title: "NUS BIT Progress"
 slug: "nus-progress"
 date: 2026-03-19
-description: "Living study dashboard — mastery tracking across modules"
+description: "NUS BIT degree at a glance — modules done, trajectory, and where I am."
 tags: ["nus", "progress"]
 categories:
   - ["Education", "NUS BIT"]
@@ -11,218 +11,50 @@ math: false
 draft: false
 ---
 
-## Overall Progress
+## Journey
 
-| Module | Status | Mastery | Focus |
-|--------|--------|---------|-------|
-| TCX2003 | Done (awaiting result) | █████ Final taken | Final taken Jul 13 ✅ — Examplify closed-book + 1-A4 helpsheet, felt confident. CA locked 58/60 pre-final. Lesson: SQL wants declarative keywords (UNIQUE, EXISTS) where the programmer reflex reaches for procedural checks (COUNT, hand-verify) |
-| TCX2005 | Done (awaiting result) | █████ L1–L9 + final done | Final taken Jul 11 ✅ — open-book Examplify. Key lesson: sheet coverage ≠ exam-hall readability — keyword index with page refs beats self-contained prose (carried into TCX2003 sheet) |
-| TCX2101 | Done (awaiting result) | █████ Ch 8 done | Final taken Apr 28 ✅ — meta-skill gap identified: method-selection ≠ content recall |
-| TCX1004 | Done (awaiting result) | █████ Unit 9 done | Final taken Apr 30 ✅ — open-book, examples-heavy helpsheet strategy worked. Free-form-verb gaps surfaced (set roster, Cartesian product) |
-| TCX1002 | Done (awaiting result) | █████ Topics done | Final taken May 4 ✅ — Examplify fill-blank. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not |
+```mermaid
+gantt
+    title BIT Journey
+    dateFormat YYYY-MM-DD
+    axisFormat %b %y
+    todayMarker stroke-width:3px,stroke:#e5534b,opacity:0.9
 
-### At a Glance
+    section Year 1
+        Y1S1 · TCX1101 + TCX2002 (extra)        :done, y1s1, 2025-08-11, 2025-12-06
+        Y1S2 · TCX1002 + TCX1004 + TCX2101      :done, y1s2, 2026-01-12, 2026-05-09
+        Y1ST · TCX2003 + TCX2005                :done, y1st, 2026-05-11, 2026-07-13
+        Finals 11 + 13 Jul ✓                    :milestone, m1, 2026-07-11, 0d
+    section Year 2 · focus BA
+        Y2S1 · TCX2004 + TCX2102 (reg 20 Jul)   :y2s1, 2026-08-10, 2026-12-05
+        Y2S2 · TCX2001 + BA 3211 + 3212         :y2s2, 2027-01-11, 2027-05-08
+        Y2ST · TCX2006 + GEX                    :y2st, 2027-05-10, 2027-07-10
+    section Year 3
+        Y3S1 · TCX3901 + BA 3213 + 3215         :y3s1, 2027-08-09, 2027-12-04
+        Y3S2 · TCX3901 wrap + BA 3214           :y3s2, 2028-01-10, 2028-05-06
+        Graduation 🎓                           :milestone, m2, 2028-05-06, 0d
+```
 
-<style>
-.progress-grid{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0}
-.progress-card{border:1px solid #e5e7eb;border-radius:.5rem;padding:1rem;background:var(--card-background,#fff)}
-.progress-card h4{margin:0 0 .25rem;color:var(--body-text-color,#1a1a1a)}
-.progress-card .subtitle{color:#6b7280;margin-bottom:.75rem}
-.progress-bar{height:1.5rem;border-radius:.25rem;overflow:hidden;display:flex;background:#e5e7eb;margin-bottom:.5rem}
-.progress-bar span{display:block;height:100%;transition:width .3s}
-.progress-legend{display:flex;flex-wrap:wrap;gap:.75rem;color:#6b7280}
-.progress-legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:2px;margin-right:.25rem;vertical-align:middle}
-</style>
+_Term rows flip to `done`/`active` at each rollover. Sem boundaries beyond Y1 are approximate — exact dates land with each SCALE circular._
 
-<div class="progress-grid">
-<div class="progress-card">
-<h4>TCX2101</h4>
-<div class="subtitle">Calculus & Linear Algebra — 36 topics</div>
-<div class="progress-bar">
-<span style="width:30.6%;background:#003D7C" title="Confident: 11"></span>
-<span style="width:69.4%;background:#C9A882" title="Comfortable/Familiar: 25"></span>
-</div>
-<div class="progress-legend">
-<span><i style="background:#003D7C"></i>Confident: 11</span>
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 25</span>
-</div>
-</div>
-<div class="progress-card">
-<h4>TCX1004</h4>
-<div class="subtitle">Mathematical Techniques — 9 units</div>
-<div class="progress-bar">
-<span style="width:11.1%;background:#003D7C" title="Confident: 1"></span>
-<span style="width:88.9%;background:#C9A882" title="Comfortable/Familiar: 8"></span>
-</div>
-<div class="progress-legend">
-<span><i style="background:#003D7C"></i>Confident: 1</span>
-<span><i style="background:#C9A882"></i>Comfortable/Familiar: 8</span>
-</div>
-</div>
-<div class="progress-card">
-<h4>TCX1002</h4>
-<div class="subtitle">Programming — 9 topics</div>
-<div class="progress-bar">
-<span style="width:55.6%;background:#003D7C" title="Confident: 5"></span>
-<span style="width:44.4%;background:#C9A882" title="Comfortable: 4"></span>
-</div>
-<div class="progress-legend">
-<span><i style="background:#003D7C"></i>Confident: 5</span>
-<span><i style="background:#C9A882"></i>Comfortable: 4</span>
-</div>
-</div>
-</div>
+## Where I Am
 
-[NUS-BIT Notebook](/nus-bit-notebook/) — cross-module overview
+**68 / 120 units counted · 7 modules done · Year 2 next (TCX2004 + TCX2102, register 20 Jul 2026) · focus area: Business Analytics · 3-year track, AY2025/26 cohort.**
+
+## Modules Done
+
+| Module | Term | Field | One thing it taught me |
+|--------|------|-------|------------------------|
+| TCX1101 Foundational Mathematics | Y1S1 | Math | Vectors, calculus, complex numbers — the numeracy base everything else stands on. |
+| TCX2002 Business Analytics | Y1S1 | Analytics | R, stats, model complexity — the groundwork for my BA focus area. |
+| TCX1002 Programming (Python) | Y1S2 | Programming | For library-heavy work, a helpsheet with multiple idioms beats one canonical example. |
+| TCX1004 Mathematical Techniques | Y1S2 | Math | Worked examples carry an open-book helpsheet further than restated theory. |
+| TCX2101 Calculus & Linear Algebra | Y1S2 | Math | Knowing the content isn't the same skill as choosing the right method under time. |
+| TCX2003 Database Systems | Y1ST | Data | SQL rewards the declarative keyword (UNIQUE, EXISTS) where instinct reaches for a procedural check. |
+| TCX2005 Information Systems & Management | Y1ST | Systems | An open-book sheet's job is fast lookup — a keyword index with page refs beats self-contained prose. |
+
+_Grades land ~Aug 2026; this table records them when they do._
 
 ---
 
-## TCX2101 — Calculus & Linear Algebra
-
-### Resources
-
-- [Cheatsheet (Ch 1–3.4)](/nus-bit-tcx2101-cheatsheet-1.1-3.4/)
-- [Cheatsheet (Ch 3.5–4.11)](/nus-bit-tcx2101-cheatsheet-3.5-4.11/)
-- [CT2 Helpsheet](/nus-bit-tcx2101-ct2-helpsheet/)
-- [Notebook (lecture notes)](/nus-bit-tcx2101-notebook/)
-
-### What's Next
-
-- ~~**Quiz 6.5–6.9:**~~ All 5/5 ✅ (completed Mar 24-25)
-- ~~**Quiz 7.1–7.2:**~~ 7.1 4/5, 7.2 5/5 ✅ (completed Mar 30)
-- ~~**Quiz 7.3:**~~ 5/5 ✅ (completed Apr 2)
-- ~~**Quiz 7.4:**~~ 5/5 ✅ (completed Apr 2)
-- ~~**Quiz 7.1:**~~ 5/5 ✅ (completed Apr 2, att 9)
-- ~~**Quiz 7.5:**~~ 5/5 ✅ (completed Apr 4)
-- ~~**Quiz 8.1:**~~ 5/5 ✅ (completed Apr 4)
-- ~~**HW2:**~~ ✅ Submitted (Apr 4)
-- ~~**CT3:**~~ ✅ Done (~8/10). Q2+Q3 clean, Q1 arithmetic incomplete.
-- ~~**Quiz 8.2-8.5:**~~ ALL 5/5 ✅ + §8.2-8.5 L3 Confident (Apr 17)
-- ~~**Finals Helpsheet v1:**~~ ✅ Comprehensive Ch 1-8 (Apr 20)
-- ~~**T5 Integration deep pass with Qwen:**~~ ✅ Apr 22 (4 new error patterns logged)
-- ~~**Helpsheet A4×2 final fit:**~~ ✅ Apr 25 (3-col portrait, 7pt body, KaTeX + table-cell LaTeX bugs squashed)
-- ~~**Past papers acquired:**~~ ✅ Apr 25
-- **Drill window** Apr 26-27 (past papers + top 3 weak micro-topics)
-- **Final Exam:** Apr 28 (tomorrow)
-
-### Topic Mastery
-
-| Chapter | Topic | Level |
-|---------|-------|-------|
-| 1 | Functions | ✅ Confident |
-| 2 | Limits & Continuity | ✅ Confident |
-| 3 | Differentiation & Applications | ✅ Confident |
-| 4.1 | Definite Integrals & Riemann Sums | 🔸 Comfortable |
-| 4.2 | FTC & Indefinite Integral | 🔸 Comfortable |
-| 4.3 | Area Under & Between Graphs | 🔸 Comfortable |
-| 4.4 | Integration by Substitution | 🔸 Comfortable |
-| 4.5 | Natural Logarithm & Exponential | 🔸 Comfortable |
-| 4.6 | Integration by Parts | 🔸 Comfortable |
-| 4.7 | Partial Fractions | 🔸 Comfortable |
-| 4.8 | Improper Integrals | 🔸 Comfortable |
-| 4.9 | Volume — Cross-Sections | 🔸 Comfortable |
-| 4.10 | Cylindrical Shells | 🔸 Comfortable |
-| 5.1 | Sequences | ✅ Confident |
-| 5.2 | Series | ✅ Confident |
-| 5.3 | Convergence Tests | ✅ Confident |
-| 5.4 | Power Series | ✅ Confident |
-| 6.1 | Introduction to Matrices | 🔸 Comfortable |
-| 6.2 | Matrix Algebra | 🔸 Comfortable |
-| 6.3 | Linear Systems & Matrix Equations | 🔸 Comfortable |
-| 6.4 | Invertible Matrices | 🔸 Comfortable |
-| 6.5 | Elementary Matrices | 🔸 Comfortable |
-| 6.6 | Invertibility Equivalences | 🔸 Comfortable |
-| 6.7 | Determinants & Cofactors | 🔸 Comfortable |
-| 6.8 | Det & Row Operations | 🔸 Comfortable |
-| 6.9 | Det Properties & Invertibility | 🔸 Comfortable |
-| 7.1 | Vectors & Span | 🔸 Comfortable |
-| 7.2 | Subspaces | 🔸 Comfortable |
-| 7.3 | Linear Independence | 🔸 Comfortable |
-| 7.4 | Basis of Subspace | 🔸 Comfortable |
-| 7.5 | Dimension of Subspaces | 🔸 Comfortable |
-| 8.1 | Dot Product, Norm, Distance | 🔸 Comfortable |
-| 8.2 | Orthogonality | ✅ Confident |
-| 8.3 | Orthogonal & Orthonormal Bases | ✅ Confident |
-| 8.4 | Projection & Gram-Schmidt | ✅ Confident |
-| 8.5 | Least Squares | ✅ Confident |
-
----
-
-## TCX1004 — Mathematical Techniques
-
-### Resources
-
-- [Cheatsheet](/nus-bit-tcx1004-cheatsheet/)
-- [Notebook](/nus-bit-tcx1004-notebook/)
-
-### What's Next
-
-- ~~**Assignment 2 (15%):**~~ ✅ Submitted (Apr 12)
-- ~~**Tutorial 6:**~~ ✅ Submitted (Q1 complete, Q3 pending)
-- ~~**Week 12 Quiz (Random Variables):**~~ ✅ 9/9 Apr 19 (Unit 9 L3 via Chebyshev breakthrough)
-- ~~**Cheatsheet built from scaffold to full Units 2-9:**~~ ✅ Apr 25 (754 lines)
-- ~~**T6 walk-validation patches:**~~ ✅ Apr 25 (Law of Total Probability + Extended Bayes for Unit 8, E[XY] independent + Var scaling + indicator pattern for Unit 9)
-- ~~**Final Exam:**~~ ✅ Apr 30 — open-book, 1.5h, LT7A. Examples-heavy helpsheet strategy validated; free-form verb gaps (set roster, Cartesian product) surfaced for next-module learning
-
-### Topic Mastery
-
-| Unit | Topic | Level |
-|------|-------|-------|
-| 1 | Propositions, Predicates, FOL, Proofs | 🔸 Comfortable |
-| 2 | Sets, Notations, Operations | 🔸 Comfortable |
-| 3 | Relations | 🔸 Comfortable |
-| 4 | Induction, Recurrences | 🔸 Comfortable |
-| 5 | Asymptotic Notation, Algorithm Analysis | 🔸 Comfortable |
-| 6 | Combinatorics | 🔸 Comfortable |
-| 7 | Graph Theory | 🔸 Quiz done |
-| 8 | Basic Probability | 🔸 Comfortable |
-| 9 | Distributions, Expectation, Variance | ✅ Confident |
-
----
-
-## TCX1002 — Programming (Python)
-
-### Resources
-
-- [Python Notebook](/nus-bit-tcx1002-notebook/)
-- [Midterm Cheatsheet](/nus-bit-tcx1002-midterm-cheatsheet/)
-- [Midterm Reflection](/nus-bit-tcx1002-midterm-reflection/)
-
-### What's Next
-
-- ~~**Practical Exam:**~~ **20/20 ✅** (Q1 5/5, Q2 5/5, Q3 6/6, Q4 4/4)
-- ~~**Mock Test 10:**~~ ✅ Done in class Apr 18 (Q1 NumPy pair-wise sq-diff live-taught)
-- ~~**Final Exam:**~~ ✅ May 4 — Examplify fill-blank, A4 helpsheet. Helpsheet A/B test: multi-variation `reduce` block worked, single-canonical NumPy block did not. Lessons captured for future syntax-recall modules.
-
-### Resources
-- [Finals Helpsheet](/nus-bit-tcx1002-finals-helpsheet/)
-
-### Topic Mastery
-
-| Topic | Level |
-|-------|-------|
-| Variables, Data Types | ✅ Confident |
-| Control Flow | ✅ Confident |
-| Functions | ✅ Confident |
-| Data Structures | ✅ Confident |
-| Recursion | ✅ Confident |
-| Algorithms & Complexity | 🔸 Comfortable |
-| OOP | 🔸 Comfortable |
-| Functional Programming (filter, reduce, map) | 🔸 Comfortable |
-| 2D Grids, RLE, Backtracking | 🔸 Comfortable |
-
----
-
-### Mastery Levels
-
-| Icon | Level | Name | Meaning |
-|------|-------|------|---------|
-| ⬜ | — | Not started | Haven't touched it |
-| 🔸 | L1 | Familiar | Can explain the concept |
-| 🔸 | L2 | Comfortable | Passed quiz / standard problems |
-| ✅ | L3 | Confident | Solves reliably on seen problem types |
-| ✅⚡ | L4 | Exam-ready | Unseen variants + correct under timed pressure |
-
----
-
-_Last synced: 2026-07-13 13:47 SGT — 🎓 Special Term Y1ST COMPLETE. Both finals delivered (TCX2005 11 Jul, TCX2003 13 Jul — felt confident). Awaiting results ~Aug. Updated during [/sync-progress](https://github.com/enkr1/nus_bit_priv)_
+_A degree status view, kept coarse on purpose. Per-topic mastery, quiz history and study notes live in a private coursework repo where the work actually happens — this page only tracks module status + trajectory, so it stays current between terms. Updated at module completion and term rollover, not per session._
