@@ -13,29 +13,50 @@ draft: false
 
 ## Journey
 
-```mermaid
-gantt
-    title BIT Journey
-    dateFormat YYYY-MM-DD
-    axisFormat %b %y
-    todayMarker stroke-width:3px,stroke:#e5534b,opacity:0.9
+<style>
+.bit-timeline{margin:1.75rem 0 1rem}
+.bit-year{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--nus-accent);margin:1.4rem 0 .7rem;opacity:.85}
+.bit-year:first-child{margin-top:0}
+.bit-track{position:relative;padding-left:1.9rem}
+.bit-track::before{content:"";position:absolute;left:.42rem;top:.5rem;bottom:.5rem;width:2px;background:var(--nus-accent);opacity:.25;border-radius:2px}
+.bit-node{position:relative;padding-bottom:1.25rem}
+.bit-node:last-child{padding-bottom:0}
+.bit-node::before{content:"";position:absolute;left:-1.68rem;top:.18rem;width:.82rem;height:.82rem;border-radius:50%;box-sizing:border-box;background:var(--card-background)}
+.bit-node.done::before{background:var(--nus-accent);border:2px solid var(--nus-accent)}
+.bit-node.now::before{border:2.5px solid var(--accent-color);box-shadow:0 0 0 4px var(--gold-subtle)}
+.bit-node.up::before{border:2px solid var(--border)}
+.bit-node.grad::before{background:var(--accent-color);border:2px solid var(--accent-color)}
+.bit-term{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--body-text-color)}
+.bit-node.now .bit-term{color:var(--accent-color-darker)}
+.bit-node.grad .bit-term{color:var(--accent-color-darker)}
+.bit-pill{font-size:.6rem;font-weight:800;letter-spacing:.08em;padding:.12rem .45rem;border-radius:999px;background:var(--gold-subtle);color:var(--nus-accent)}
+.bit-mods{display:block;font-size:1rem;line-height:1.35;color:var(--text-primary);margin-top:.15rem}
+.bit-node.up .bit-mods{color:var(--body-text-color)}
+.bit-check{color:var(--nus-accent);font-weight:700}
+</style>
 
-    section Year 1
-        Y1S1 · TCX1101 + TCX2002 (extra)        :done, y1s1, 2025-08-11, 2025-12-06
-        Y1S2 · TCX1002 + TCX1004 + TCX2101      :done, y1s2, 2026-01-12, 2026-05-09
-        Y1ST · TCX2003 + TCX2005                :done, y1st, 2026-05-11, 2026-07-13
-        Finals 11 + 13 Jul ✓                    :milestone, m1, 2026-07-11, 0d
-    section Year 2 · focus BA
-        Y2S1 · TCX2004 + TCX2102 (reg 20 Jul)   :y2s1, 2026-08-10, 2026-12-05
-        Y2S2 · TCX2001 + BA 3211 + 3212         :y2s2, 2027-01-11, 2027-05-08
-        Y2ST · TCX2006 + GEX                    :y2st, 2027-05-10, 2027-07-10
-    section Year 3
-        Y3S1 · TCX3901 + BA 3213 + 3215         :y3s1, 2027-08-09, 2027-12-04
-        Y3S2 · TCX3901 wrap + BA 3214           :y3s2, 2028-01-10, 2028-05-06
-        Graduation 🎓                           :milestone, m2, 2028-05-06, 0d
-```
+<div class="bit-timeline">
+  <div class="bit-year">Year 1 · done</div>
+  <div class="bit-track">
+    <div class="bit-node done"><span class="bit-term">Y1S1 · 2025</span><span class="bit-mods">TCX1101 · TCX2002</span></div>
+    <div class="bit-node done"><span class="bit-term">Y1S2 · early 2026</span><span class="bit-mods">TCX1002 · TCX1004 · TCX2101</span></div>
+    <div class="bit-node done"><span class="bit-term">Y1ST · mid 2026 <span class="bit-check">finals Jul ✓</span></span><span class="bit-mods">TCX2003 · TCX2005</span></div>
+  </div>
+  <div class="bit-year">Year 2 · focus Business Analytics</div>
+  <div class="bit-track">
+    <div class="bit-node now"><span class="bit-term">Y2S1 · Aug 2026 <span class="bit-pill">UP NEXT</span></span><span class="bit-mods">TCX2004 · TCX2102 &nbsp;<em>(register 20 Jul)</em></span></div>
+    <div class="bit-node up"><span class="bit-term">Y2S2 · Jan 2027</span><span class="bit-mods">TCX2001 · BA 3211 · BA 3212</span></div>
+    <div class="bit-node up"><span class="bit-term">Y2ST · May 2027</span><span class="bit-mods">TCX2006 · GEX</span></div>
+  </div>
+  <div class="bit-year">Year 3</div>
+  <div class="bit-track">
+    <div class="bit-node up"><span class="bit-term">Y3S1 · 2027</span><span class="bit-mods">TCX3901 · BA 3213 · BA 3215</span></div>
+    <div class="bit-node up"><span class="bit-term">Y3S2 · 2028</span><span class="bit-mods">TCX3901 wrap · BA 3214</span></div>
+    <div class="bit-node grad"><span class="bit-term">Graduation 🎓</span><span class="bit-mods">May 2028</span></div>
+  </div>
+</div>
 
-_Term rows flip to `done`/`active` at each rollover. Sem boundaries beyond Y1 are approximate — exact dates land with each SCALE circular._
+_Sem boundaries beyond Y1 are approximate — exact dates land with each SCALE circular._
 
 ## Where I Am
 
