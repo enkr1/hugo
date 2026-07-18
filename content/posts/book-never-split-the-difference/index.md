@@ -4,9 +4,8 @@ sticky: 0
 date: 2025-01-05 07:41:37
 tags:
   - "ebook"
-  - "reading"
 categories:
-  - ["Personal Development", "Collections", "Reading", "Book", "Christopher Voss"]
+  - ["Reading"]
   - ["Notebooks"]
 subtitle:
 description:

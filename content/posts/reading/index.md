@@ -4,10 +4,9 @@ sticky: 0
 date: 2024-10-26 16:49:19
 tags:
   - "ebooks"
-  - "reading"
   - "resources"
 categories:
-  - ["Personal Development", "Collections", "Reading"]
+  - ["Reading"]
   - ["Notebooks"]
 subtitle: "An Ever-Growing Collection of Knowledge and Inspiration"
 description: "Explore my personal collection of ebooks and resources on topics ranging from technology and coding to self-development. This list evolves as I discover new reads and valuable insights."

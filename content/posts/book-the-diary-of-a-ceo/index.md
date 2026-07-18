@@ -4,9 +4,8 @@ sticky: 0
 date: 2024-11-06 02:39:11
 tags:
   - "ebook"
-  - "reading"
 categories:
-  - ["Personal Development", "Collections", "Reading", "Book", "Steven Bartlett"]
+  - ["Reading"]
   - ["Notebooks"]
 subtitle:
 description:

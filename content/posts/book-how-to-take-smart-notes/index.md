@@ -4,12 +4,11 @@ slug: "book-how-to-take-smart-notes"
 date: 2026-01-30 03:28:29
 tags:
   - "ebook"
-  - "reading"
   - "knowledge-management"
   - "zettelkasten"
   - "productivity"
 categories:
-  - ["Personal Development", "Collections", "Reading", "Book", "Sönke Ahrens"]
+  - ["Reading"]
   - ["Notebooks"]
 subtitle: "The Zettelkasten method that changed how I learn"
 description: "How I stopped forgetting everything I learnt. A practical guide to the Zettelkasten method - the slip-box system that turns scattered notes into a networked second brain. Includes my daily workflow, setup, and real examples from my NUS BIT studies."

@@ -3,9 +3,8 @@ title: "The 7 Habits of Highly Effective People by Stephen Covey"
 date: 2024-04-29 23:56:51
 tags:
   - "physical-book"
-  - "reading"
 categories:
-   - ["Personal Development", "Collections", "Reading", "Book", "Stephen Covey"]
+   - ["Reading"]
    - ["Notebooks"]
 subtitle: "Personal Reflections on Covey's Principles for Lasting Success"
 description: "A personal exploration of Stephen Covey's The 7 Habits of Highly Effective People, delving into practical insights, reflections, and the ways these principles shape both personal growth and professional development. Discover key takeaways from each habit and learn how to apply Covey's strategies to cultivate a balanced, effective life."
