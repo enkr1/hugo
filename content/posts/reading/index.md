@@ -50,12 +50,14 @@ Including Google Leetcode Question, SWE's interview prep books, etc.
 ## eBooks
 > Inspirational Reads
 
-### Never Split the Difference: Negotiating As If Your Life Depended On It by Christopher Voss
-
-...
+### [Never Split the Difference: Negotiating As If Your Life Depended On It by Christopher Voss]({{< ref "book-never-split-the-difference" >}})
+A former FBI hostage negotiator on tactical empathy, calibrated questions, and the "no"-oriented approach. My notes on applying it to everyday negotiation.
 
 ### [The 7 Habits of Highly Effective People by Stephen Covey]({{< ref "book-the-7-habits-of-highly-effective-people" >}})
 A classic read on **personal development**, offering timeless principles to help you live more effectively and achieve success in all areas of life.
+
+### [How to Take Smart Notes by Sönke Ahrens]({{< ref "book-how-to-take-smart-notes" >}})
+The Zettelkasten method for turning reading into durable knowledge. The system behind my notebooks.
 
 ### [The Diary of a CEO by Steven Bartlett]({{< ref "book-the-diary-of-a-ceo" >}})
 
