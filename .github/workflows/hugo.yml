@@ -57,7 +57,12 @@ jobs:
         run: cd themes/stack/scripts && npm ci
 
       - name: Generate nested categories
-        run: node themes/stack/scripts/generate-categories.js
+        # --clean first so the deployed category tree is a pure function of
+        # current content: renamed/moved/deleted categories can't leave orphan
+        # pages live (e.g. the old Reading>Book>Author chain). Then regenerate.
+        run: |
+          node themes/stack/scripts/generate-categories.js --clean
+          node themes/stack/scripts/generate-categories.js
 
       - name: Generate change summaries
         run: node themes/stack/scripts/generate-changes.js || true
