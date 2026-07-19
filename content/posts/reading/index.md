@@ -1,5 +1,6 @@
 ---
-title: "My Reading Collection"
+title: "Reading List"
+slug: "my-reading-collection"
 sticky: 0
 date: 2024-10-26 16:49:19
 tags:
@@ -47,22 +48,16 @@ Including Google Leetcode Question, SWE's interview prep books, etc.
 
 
 
-## eBooks
-> Inspirational Reads
+## My Notes
 
-### [Never Split the Difference: Negotiating As If Your Life Depended On It by Christopher Voss]({{< ref "book-never-split-the-difference" >}})
-A former FBI hostage negotiator on tactical empathy, calibrated questions, and the "no"-oriented approach. My notes on applying it to everyday negotiation.
+the books i have actually written up live in my [Reading notes](/categories/reading/): *The 7 Habits of Highly Effective People*, *Never Split the Difference*, *How to Take Smart Notes*, and *The Diary of a CEO*.
 
-### [The 7 Habits of Highly Effective People by Stephen Covey]({{< ref "book-the-7-habits-of-highly-effective-people" >}})
-A classic read on **personal development**, offering timeless principles to help you live more effectively and achieve success in all areas of life.
+---
 
-### [How to Take Smart Notes by Sönke Ahrens]({{< ref "book-how-to-take-smart-notes" >}})
-The Zettelkasten method for turning reading into durable knowledge. The system behind my notebooks.
+## eBooks & Finds
+> read or stumbled upon, not yet noted
 
-### [The Diary of a CEO by Steven Bartlett]({{< ref "book-the-diary-of-a-ceo" >}})
-
-
-### [Cues: Master the Secret Language of Charismatic Communication](/https://www.amazon.co.uk/Cues-Master-Language-Charismatic-Communication/dp/0241554934?&linkCode=sl1&tag=diaryofaceo0c-21&linkId=0484728d5a239add83d9ebd1de90e1c2&language=en_GB&ref_=as_li_ss_tl)
+### [Cues: Master the Secret Language of Charismatic Communication](https://www.amazon.co.uk/Cues-Master-Language-Charismatic-Communication/dp/0241554934?&linkCode=sl1&tag=diaryofaceo0c-21&linkId=0484728d5a239add83d9ebd1de90e1c2&language=en_GB&ref_=as_li_ss_tl)
 
 ---
 
