@@ -28,13 +28,13 @@ i am just so lucky.
 
 ### 📚 NUS
 
-- Sat the TCX2005 final on Friday, backed by a fully audited open-book [cheatsheet](/posts/tcx2005-finals-cheatsheet/) that folded the old helpsheet into one document
-- Wrapped TCX2003 T-1 prep: [helpsheet](/posts/tcx2003-finals-helpsheet/) printed, error-log cold redo 5/5, sprint ticked off
+- Sat the TCX2005 final on Friday, backed by a fully audited open-book [cheatsheet]({{< ref "posts/tcx2005-finals-cheatsheet" >}}) that folded the old helpsheet into one document
+- Wrapped TCX2003 T-1 prep: [helpsheet]({{< ref "posts/tcx2003-finals-helpsheet" >}}) printed, error-log cold redo 5/5, sprint ticked off
 - Locked degree-plan SSOT v2 with the AY26/27 prereq map; the Sem-1 overload verdict is a firm no, with the Y2S2 window mapped out
 
 ### ✍️ Blog
 
-- Published a [Hany Rambod method study](/posts/hany-rambod-pro-creator/) and a [Parts Split retrospective](/posts/workout-plan-parts-split-retrospective/) that closes the loop on the original plan post
+- Published a [Hany Rambod method study]({{< ref "posts/hany-rambod-pro-creator" >}}) and a [Parts Split retrospective]({{< ref "posts/workout-plan-parts-split-retrospective" >}}) that closes the loop on the original plan post
 - Rebuilt the categories tree, migrated NUS posts into an Education tree, and added a profile page layout with theme auth refactor
 - Moved sheet print styling into shared SCSS driven by front matter, and added a commit hook that blocks future-dated content
 
@@ -46,6 +46,6 @@ i am just so lucky.
 ### 💪 Fitness
 
 - Opened the Road to Stage (Oct/Nov 2027) competition journey: timeline, photo protocol and Week 0 baseline all logged
-- Wrote and activated the [Block 1 rebuild plan v2](/posts/workout-plan-block-1/), delt-led PPL x2, live from 12 Jul
+- Wrote and activated the [Block 1 rebuild plan v2]({{< ref "posts/workout-plan-block-1" >}}), delt-led PPL x2, live from 12 Jul
 - Deep-dived Hany Rambod's FST-7 coaching protocol and seeded the competition nutrition doc with surplus maths
 - Coaching: a student graduated with his S3 finale and a handover programme; next week's sessions and August holds locked in for three others
