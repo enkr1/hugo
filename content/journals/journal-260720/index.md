@@ -48,10 +48,7 @@ it's got me thinking, is it really a win-win? while ur data is far more precious
 
 ### 🔧 Projects
 
-- Hardened the portfolio hero for mobile with dynamic viewport tracking and safe-area insets, and gave the profile README a career gantt with a live NOW line
-- Wrote a bughunt skill that chains issue triage through to the pull request, so a bug report walks itself to a branch
-
-### 🏋️ Gym Buddy
+#### 🏋️ Gym Buddy
 
 - Shipped the diet loop v1: photograph a meal and have its macros digested straight into the day's totals
 - Added a bulk, cut or maintain direction that drives the calorie target off bodyweight
@@ -60,6 +57,11 @@ it's got me thinking, is it really a win-win? while ur data is far more precious
 - Rebuilt the admin console on a Data Desk theme, with a bento dashboard, a sortable users table, and per-user roles and feature entitlements
 - Opened a coach surface for curating students, with a student detail page behind it
 - Swept the exercise catalogue onto grip-specific movements, so a plan can no longer ship a vague generic
+
+#### 🛠️ Tooling and site
+
+- Hardened the portfolio hero for mobile with dynamic viewport tracking and safe-area insets, and gave the profile README a career gantt with a live NOW line
+- Wrote a bughunt skill that chains issue triage through to the pull request, so a bug report walks itself to a branch
 
 ### 💪 Fitness
 
