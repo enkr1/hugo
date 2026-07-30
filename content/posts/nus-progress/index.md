@@ -64,17 +64,17 @@ _Sem boundaries beyond Y1 are approximate — exact dates land with each SCALE c
 
 ## Modules Done
 
-| Module | Term | Field | One thing it taught me |
-|--------|------|-------|------------------------|
-| TCX1101 Foundational Mathematics | Y1S1 | Math | Vectors, calculus, complex numbers — the numeracy base everything else stands on. |
-| TCX2002 Business Analytics | Y1S1 | Analytics | R, stats, model complexity — the groundwork for my BA focus area. |
-| TCX1002 Programming (Python) | Y1S2 | Programming | For library-heavy work, a helpsheet with multiple idioms beats one canonical example. |
-| TCX1004 Mathematical Techniques | Y1S2 | Math | Worked examples carry an open-book helpsheet further than restated theory. |
-| TCX2101 Calculus & Linear Algebra | Y1S2 | Math | Knowing the content isn't the same skill as choosing the right method under time. |
-| TCX2003 Database Systems | Y1ST | Data | SQL rewards the declarative keyword (UNIQUE, EXISTS) where instinct reaches for a procedural check. |
-| TCX2005 Information Systems & Management | Y1ST | Systems | An open-book sheet's job is fast lookup — a keyword index with page refs beats self-contained prose. |
+| Module | Term | Field | Grade | One thing it taught me |
+|--------|------|-------|-------|------------------------|
+| TCX1101 Foundational Mathematics | Y1S1 | Math | — | Vectors, calculus, complex numbers — the numeracy base everything else stands on. |
+| TCX2002 Business Analytics | Y1S1 | Analytics | — | R, stats, model complexity — the groundwork for my BA focus area. |
+| TCX1002 Programming (Python) | Y1S2 | Programming | — | For library-heavy work, a helpsheet with multiple idioms beats one canonical example. |
+| TCX1004 Mathematical Techniques | Y1S2 | Math | — | Worked examples carry an open-book helpsheet further than restated theory. |
+| TCX2101 Calculus & Linear Algebra | Y1S2 | Math | — | Knowing the content isn't the same skill as choosing the right method under time. |
+| TCX2003 Database Systems | Y1ST | Data | **A+** | SQL rewards the declarative keyword (UNIQUE, EXISTS) where instinct reaches for a procedural check. |
+| TCX2005 Information Systems & Management | Y1ST | Systems | **A-** | An open-book sheet's job is fast lookup — a keyword index with page refs beats self-contained prose. |
 
-_Grades land ~Aug 2026; this table records them when they do._
+_Y1ST results released 29 Jul 2026. Earlier per-module grades aren't recorded here; I only started logging them this term._
 
 ---
 
