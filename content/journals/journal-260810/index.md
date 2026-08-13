@@ -22,9 +22,9 @@ highlight of the week was probably that i received my biggest compliment from a 
 
 and from this gratefulness, i went to different gym centres as i always do, i tried to seek hints from this one guy, he has a solid build, we talked, vibed, i thought everything was good, and then i started asking some genuine questions on certain exercises, how he does the vacuum in posing, the only thing i got was “哦 这个是有讲究的，嗯 很多讲究”，“这里的 machine 不好”，“这个要练很久”，等等, so i didnt really get any practical feedback on what i was asking...
 
-it reminded me of the great people i met throughout my fitness journey from the VERY VERY start. i couldn't imagine myself here without them, they are so kind, so generous, i felt that they truly wanted me to be better. for real, i would literally drop my friends videos to ask if my form was good or bad, treating them like free online PT sessions... and they would always give me their honest feedback, and they would always be willing to share their knowledge with me.
+it reminded me of the great people i met throughout my fitness journey from the VERY VERY start. i couldn't imagine myself here without them, they are so kind, so generous, i felt that they truly wanted me to be better. for real, i would literally drop my friends videos to ask if my form was good or bad, treating them like free online PT sessions...
 
-this is what keeps me going, ill keep sharing with people who need help with their fitness journey, and ill keep learning from those who are willing to share their knowledge with me. i will always be grateful for the people who have helped me along the way, and i will strive to be that kind of person for others, too.
+this is what keeps me going, ill keep sharing with people who need help with their fitness journey, and ill keep learning from anyone still willing to teach me. my friends were my free online PT back then. now i get to be someone else's.
 
 
 ## 📋 Recap
