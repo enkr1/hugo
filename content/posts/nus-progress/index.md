@@ -44,7 +44,7 @@ draft: false
   </div>
   <div class="bit-year">Year 2 · focus Business Analytics</div>
   <div class="bit-track">
-    <div class="bit-node now"><span class="bit-term">Y2S1 · Aug 2026 <span class="bit-pill">UP NEXT</span></span><span class="bit-mods">TCX2004 · TCX2102 &nbsp;<em>(register 20 Jul)</em></span></div>
+    <div class="bit-node now"><span class="bit-term">Y2S1 · Aug 2026 <span class="bit-pill">IN PROGRESS</span></span><span class="bit-mods">TCX2004 · TCX2102</span></div>
     <div class="bit-node up"><span class="bit-term">Y2S2 · Jan 2027</span><span class="bit-mods">TCX2001 · BA 3211 · BA 3212</span></div>
     <div class="bit-node up"><span class="bit-term">Y2ST · May 2027</span><span class="bit-mods">TCX2006 · GEX</span></div>
   </div>
@@ -60,7 +60,7 @@ _Sem boundaries beyond Y1 are approximate — exact dates land with each SCALE c
 
 ## Where I Am
 
-**68 / 120 units counted · 7 modules done · Year 2 next (TCX2004 + TCX2102, register 20 Jul 2026) · focus area: Business Analytics · 3-year track, AY2025/26 cohort.**
+**68 / 120 units counted · 7 modules done · GPA 4.57 · currently reading TCX2004 + TCX2102 (Y2S1, since Aug 2026) · focus area: Business Analytics · 3-year track, AY2025/26 cohort.**
 
 ## Modules Done
 
