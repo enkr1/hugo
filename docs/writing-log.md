@@ -17,16 +17,17 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 |----|---------|---------------------|------|-----------|
 | P1 | Intensifier does the verb's job (`just` / `so` + generic adjective) | `just` 29x, `so` 28x, ~1 every 43 words | 1 | 2026-07-20 |
 | P2 | One overworked verb covering many meanings (`got` = acquired/attracted/received/possessed/scored/was able to) | `got` 13x, 8 distinct senses | 1 | 2026-07-20 |
-| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 2 | 2026-07-29 |
+| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 3 | 2026-08-17 |
 | P4 | `make`/`let` + bare infinitive | "made me thinking" | 1 | 2026-07-20 |
 | P5 | Transitive verb given a preposition + dropped article | "paying to company" | 4 | 2026-08-11 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 3 | 2026-08-11 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits" | 3 | 2026-08-11 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits" | 4 | 2026-08-17 |
 | P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 1 | 2026-07-20 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
 | P12 | Embedded question keeps the direct-question inversion | "how did he do the vacuum on posing" (W79) | 1 | 2026-08-11 |
+| P13 | Modal + bare past participle where the perfect is needed | "u would never thought about" (W80) | 1 | 2026-08-17 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -138,3 +139,31 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 Two things worth naming anyway. The quoted Chinese is the entry's best writing: he did not describe the man as evasive, he let him be evasive on the page, and leaving it untranslated is right (the reader who gets it gets all of it, the reader who does not still hears the tone). And the close is a **decision** rather than a feeling for the first time in six weeks, which was the standing craft ask.
 
 The unclaimed gap, offered and not written for him: paragraph one announces the compliment as the highlight, but paragraphs two and three together are longer and carry more heat. The entry may actually be about what kind of coach he refuses to become. He was shown the contradiction and left to decide.
+
+---
+
+## 2026-08-17 — Week 80
+
+**1. P3 — calque misfire (hit 3)**
+- Wrote: "i made such careless mistakes not just in work and also at work"
+- Fix: "i made such careless mistakes **at work too**"
+- Rule: `not just X` demands `but also Y`. Chinese lets 「不只是…也…」 run without a pivot; English needs the "but" to signal the turn, and `and also` cannot do that job. Same shape as the two earlier P3 hits: a frame carried over whole, correct in its own language, ungrammatical once transplanted.
+- Second half of the miss, and the reason the sentence collapsed rather than being repaired: both halves said *work*, so it contrasted a thing with itself. He was asked what the first half meant and did not say, so the pair was cut instead of guessed at. If it was school, the sentence is "not just in school but also at work" and the contrast comes back.
+
+**2. P8 — countable agreement (hit 4)**
+- Wrote: "this time i made a hard rules"
+- Fix: "this time i made a hard **rule**"
+- Rule: `a` takes a singular, or drop the article and go plural. Nothing in between. Fired twice in this one entry, the second being "during job interview" for "during job **interviews**", which is the bare-plural half of the same rule.
+
+**3. P13 — modal + bare past participle (new row)**
+- Wrote: "edge cases that u would never thought about"
+- Fix: "edge cases u would never **have thought of**"
+- Rule: after `would` / `could` / `should`, a past meaning needs `have` + participle. `would never thought` has no tense to sit in, because the modal has already used up the finite slot and `thought` is left stranded. Distinct from P9, which is drift *between* correctly-formed tenses; this one is a form that does not exist.
+
+*Also observed and not drilled (swapped out to keep the 3-item cap honest): P5, "got my diet in track" for "on track". One-off preposition, low transfer.*
+
+**Standing homework (P2), not counted against the 3:** `got` fires five times across four paragraphs in four distinct senses (had a chance, kept, attended, received). Not an error. It is the verb doing four other verbs' jobs, and the first place to look next week.
+
+**Craft note.** Paragraph two is the strongest structural work in this log so far, and it is built entirely out of ordering. Confident, finished in two minutes, looked around, helped friends, then the result on Sunday night. He never writes the word overconfident; the reader assembles it from the sequence, which is why the "wtf" lands as a turn rather than as a report. The job-interview callback in paragraph three then does the other half of the work: it grounds the new rule in a method he already trusts, so the resolution reads as something recovered rather than as self-punishment. Close is a decision for the second week running.
+
+A typo correction worth recording because the first call was wrong: "thoguht" was initially filed as voice alongside `u` and `tho`. It is a keyboard slip, not a marker, and the two are not the same category. Voice is a choice that survives being pointed out; a typo is not.
