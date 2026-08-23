@@ -17,17 +17,18 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 |----|---------|---------------------|------|-----------|
 | P1 | Intensifier does the verb's job (`just` / `so` + generic adjective) | `just` 29x, `so` 28x, ~1 every 43 words | 1 | 2026-07-20 |
 | P2 | One overworked verb covering many meanings (`got` = acquired/attracted/received/possessed/scored/was able to) | `got` 13x, 8 distinct senses | 1 | 2026-07-20 |
-| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 3 | 2026-08-17 |
+| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 4 | 2026-08-24 |
 | P4 | `make`/`let` + bare infinitive | "made me thinking" | 1 | 2026-07-20 |
 | P5 | Transitive verb given a preposition + dropped article | "paying to company" | 4 | 2026-08-11 |
-| P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 3 | 2026-08-11 |
+| P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits" | 4 | 2026-08-17 |
-| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 1 | 2026-07-20 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits" | 5 | 2026-08-24 |
+| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 2 | 2026-08-24 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
 | P12 | Embedded question keeps the direct-question inversion | "how did he do the vacuum on posing" (W79) | 1 | 2026-08-11 |
 | P13 | Modal + bare past participle where the perfect is needed | "u would never thought about" (W80) | 1 | 2026-08-17 |
+| P14 | Infinitive marker `to` followed by `-ing` (the two `to`s confused) | "starting to admitting" (W81) | 1 | 2026-08-24 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -167,3 +168,47 @@ The unclaimed gap, offered and not written for him: paragraph one announces the 
 **Craft note.** Paragraph two is the strongest structural work in this log so far, and it is built entirely out of ordering. Confident, finished in two minutes, looked around, helped friends, then the result on Sunday night. He never writes the word overconfident; the reader assembles it from the sequence, which is why the "wtf" lands as a turn rather than as a report. The job-interview callback in paragraph three then does the other half of the work: it grounds the new rule in a method he already trusts, so the resolution reads as something recovered rather than as self-punishment. Close is a decision for the second week running.
 
 A typo correction worth recording because the first call was wrong: "thoguht" was initially filed as voice alongside `u` and `tho`. It is a keyboard slip, not a marker, and the two are not the same category. Voice is a choice that survives being pointed out; a typo is not.
+
+---
+
+## 2026-08-24 — Week 81
+
+**1. P3 — calque misfire (hit 4, three of the last four weeks)**
+- Wrote: "till now, i will still get those tiny pinch feeling somehow"
+- Fix: "till now, i **still get** those tiny pinch **feelings** somehow"
+- Rule: 会 covers both the future and the habitual-present in Chinese, and English splits them across two forms. `will` can only carry the future, so a thing that is true right now takes the plain present. Test: if "these days" or "till now" sits in front of it, the `will` is wrong.
+- This is the highest-transfer P3 instance so far. The earlier three were single mixed constructions; this one is a whole tense being borrowed, so it will fire again in any sentence about something that still happens.
+
+**2. P14 — infinitive marker `to` followed by `-ing` (new row)**
+- Wrote: "slowly im starting to admitting the fact that"
+- Fix: "slowly im starting **to admit** the fact that"
+- Rule: `to` is two different words wearing the same spelling. As an infinitive marker (want to, start to, need to) it takes the bare verb; as a preposition (look forward to, get used to, commit to) it takes `-ing`. Test: put a noun after `to`. "look forward to the weekend" works, so that `to` is a preposition and `-ing` is right; "start to the weekend" does not, so it is an infinitive marker and the bare verb is right.
+- Distinct from P4, which is `make`/`let` + person + bare verb. Same surface symptom, different mechanism, so it gets its own row rather than being folded in.
+
+**3. P9 — tense drift inside one paragraph (hit 2)**
+- Wrote: "i've been so sick before, i did give a fuck, i continue gym, and do the things i love, they didn't stop me"
+- Fix: "i **continued** gym, and **did** the things i love"
+- Rule: the sentence opens in the past and closes in the past, so the middle has to sit in the same frame. Present tense there reads as a habit held now rather than as something done while sick.
+- `continue gym` stays exactly as written. "go gym" / "continue gym" is SG idiom, the same call made for "went back jb" in Week 77. The tense was the error; the missing preposition was never one.
+
+*Also observed, applied but swapped out to keep the 3-item cap honest:* P8 number agreement, hit 5, twice in the entry ("those tiny pinch feeling" → "feelings", "we are just soul living in a body" → "souls living in bodies that are counting down"); P6 dropped relative, hit 4, "a day people can be immortal" → "a day **when** people can be immortal"; and "breathe technique" → "breathing technique", the verb form standing where the gerund modifier belongs (same family as advise/advice).
+
+*Typo, fixed silently, not a pattern:* "enermy" for "enemy".
+
+*Left alone as voice:* lowercase throughout, "im"/"dont"/"thats", the ellipsis chains, "bruh" x2, "wtf", the six question marks, "my strength was like taken away" (approximation `like` is a marker, not a mistake), the comma-spliced run-on in the final paragraph, and "like someone is pinching my intestines" (present tense inside a simile is idiomatic in speech and it keeps the pain live).
+
+*Flagged, then resolved by him:* "i did give a fuck" contradicted the paragraph around it, which says the sickness never stopped him, so it read as a dropped `n't`. The emphatic reading ("i DID care, and trained anyway") was the other live option and was offered rather than assumed; he confirmed `didn't` and applied it himself. Worth keeping the shape of this: asking cost one line of chat, and guessing would have inverted the sentence in either direction. Same call as "not just in work and also at work" in Week 80.
+
+*Flagged and deliberately NOT resolved:* "woke up released, and repeats", where three readings were offered and none picked. It stays verbatim; the broken grammar may be the 02:38 fog doing its job.
+
+**Standing homework (P1), acted on this week for the first time:** `just` fired three times in the Highlights and he asked to minimise it, so "just cramping" and "just tried to ignore it" both lost it with nothing else changed. "we are just souls living in bodies" keeps it, because there `just` means *only*, which is the argument of the sentence rather than a cushion in front of it. That is the test worth carrying forward: if `just` can be deleted and the sentence means the same thing, it was filler; if deleting it changes the claim, it is load-bearing.
+
+*Resolved in review, 反复 with no English one-word carrier:* "woke up released, and repeats" turned out to mean 我起来反复的去拉肚子. English marks repetition on the verb (`kept` + `-ing`) rather than with an adverb sitting in front of it, so the fix is "kept getting up to go, over and over". Also worth recording: "repeats" had no subject, because Chinese drops it freely and English needs "and it repeats".
+
+*Word repetition, his call to change:* "i had to admit" in paragraph two and "im starting to admit" in paragraph three used the same verb for a small concession and the entry's largest one. He asked to change the small one, which is the right half to move; it became "no joke". English concession markers run light to heavy (gotta say / no joke / i'll be honest / i have to admit / i'm starting to accept), and spending a heavy one on the small thing flattens the ladder before the big admission arrives.
+
+**Craft note.** The entry is built on one jump, from a stomach bug to mortality, and it holds because he puts a bridge under it that most writers would skip: the body failing at a set. Paragraph two is not about being ill, it is about being weak in the one place where he measures himself, which is what makes paragraph three's leap feel earned instead of dramatic. The `02:38` opening is the other half of the credibility, a real number where a lesser draft would have written "woke up in the middle of the night", and `wtf is diarrhea??????` is a genuine tonal turn: the entry deflates itself before it gets grand, so the grand part is allowed to arrive.
+
+The close was a **belief** in the draft, breaking a two-week run: "i dont believe there's gonna be a day when people can be immortal" observed the countdown and stopped there. The gap was named and left unwritten, and he closed it himself in review with two paragraphs that turn the countdown into the reason rather than the problem ("because that is why we are living right now, to experience the world, to live a life you want, to appreciate and love the people you love, be grateful for everything you got. yeah, im grateful that im alive!"). Three weeks running on a decision, and this is the first time the missing line was found by him rather than supplied by the pass.
+
+Two craft observations on the added close, offered in chat and not applied. The series breaks parallel on its last item: three `to` infinitives and then a bare "be grateful", which can be read either as a slip or as the list accelerating into an instruction he is giving himself, and the second reading is good enough that it is his call rather than a fix. And the pronoun walks from "we are living" to "you want" mid-sentence, which is drift on paper but reads as the entry turning outward to address someone, arriving one line before "im grateful that im alive". Both stay as written.
