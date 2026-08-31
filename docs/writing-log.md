@@ -18,17 +18,18 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 | P1 | Intensifier does the verb's job (`just` / `so` + generic adjective) | `just` 29x, `so` 28x, ~1 every 43 words | 1 | 2026-07-20 |
 | P2 | One overworked verb covering many meanings (`got` = acquired/attracted/received/possessed/scored/was able to) | `got` 13x, 8 distinct senses | 1 | 2026-07-20 |
 | P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 4 | 2026-08-24 |
-| P4 | `make`/`let` + bare infinitive | "made me thinking" | 1 | 2026-07-20 |
+| P4 | `make`/`let` + bare infinitive | "made me thinking" | 2 | 2026-08-30 |
 | P5 | Transitive verb given a preposition + dropped article | "paying to company" | 4 | 2026-08-11 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
 | P8 | Countable/uncountable agreement | "give token", "took all credits" | 5 | 2026-08-24 |
-| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 2 | 2026-08-24 |
+| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 3 | 2026-08-30 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
 | P12 | Embedded question keeps the direct-question inversion | "how did he do the vacuum on posing" (W79) | 1 | 2026-08-11 |
 | P13 | Modal + bare past participle where the perfect is needed | "u would never thought about" (W80) | 1 | 2026-08-17 |
 | P14 | Infinitive marker `to` followed by `-ing` (the two `to`s confused) | "starting to admitting" (W81) | 1 | 2026-08-24 |
+| P15 | Auxiliary `be` dropped from a progressive (「在用」 needs no verb in Chinese) | "users who actively using my product" (W82) | 1 | 2026-08-30 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -212,3 +213,32 @@ A typo correction worth recording because the first call was wrong: "thoguht" wa
 The close was a **belief** in the draft, breaking a two-week run: "i dont believe there's gonna be a day when people can be immortal" observed the countdown and stopped there. The gap was named and left unwritten, and he closed it himself in review with two paragraphs that turn the countdown into the reason rather than the problem ("because that is why we are living right now, to experience the world, to live a life you want, to appreciate and love the people you love, be grateful for everything you got. yeah, im grateful that im alive!"). Three weeks running on a decision, and this is the first time the missing line was found by him rather than supplied by the pass.
 
 Two craft observations on the added close, offered in chat and not applied. The series breaks parallel on its last item: three `to` infinitives and then a bare "be grateful", which can be read either as a slip or as the list accelerating into an instruction he is giving himself, and the second reading is good enough that it is his call rather than a fix. And the pronoun walks from "we are living" to "you want" mid-sentence, which is drift on paper but reads as the entry turning outward to address someone, arriving one line before "im grateful that im alive". Both stay as written.
+
+---
+
+## 2026-08-30 — Week 82
+
+**Two of three are repeats.** P9 has now fired two weeks running, which makes it the one worth drilling cold; P4 came back after six quiet weeks.
+
+**1. P9 — tense drift (hit 3, two weeks running)**
+- Wrote: "i contacted 20+ of my frens only 2 stays"
+- Fix: "i contacted 20+ of my frens, only 2 **stayed**"
+- Rule: once a sentence sets its time with a past verb, every clause reporting the same event stays past. 「只有两个留下来」 carries no tense on the verb, so nothing in the Chinese reminds you to mark it. The anchor verb is the one to check: find the first past verb in the sentence and make the rest agree with it.
+
+**2. P4 — `make` + bare infinitive (hit 2, back after six weeks)**
+- Wrote: "so it made in thinking about the direction of how i can add on more bonus features"
+- Fix: "so it **got me thinking** about the direction" (chosen), or "so it **made me think** about the direction"
+- Rule: `make` / `let` / `have` + person + **bare** verb. There is no version of "made me thinking". When the `-ing` is what you actually want, the verb is `got`, not `made`. The `in` here was a typo for `me`, but the sentence underneath it is the same shape logged in Week 76.
+
+**3. P15 — auxiliary `be` dropped from a progressive (new)**
+- Wrote: "i have 2 real users who actively using my product"
+- Fix: "who **are** actively using my product"
+- Rule: Chinese puts the progressive in 在, so 「在用」 is complete without a verb. English splits it into `be` + `-ing` and the `be` is not optional, including after `who` / `that`. Two more from the same paragraph belong to this row: "could be 10,000 **be** needing it" (the `be` migrated to the wrong slot) and "might be 1 out of 20 **to be actually having** this problem" → "who actually **have** this problem".
+
+*Observed, not drilled (keeping the 3-item cap honest):* "take gym **serious**" → `seriously`, since 认真 covers both the adjective and the adverb in Chinese while English splits them; "its not a small number **too**" → `either`, which is what `too` becomes after a negative; and two spellings, `defination` → definition and `along side` → alongside.
+
+**Not logged, voice.** `im`, `dont`, `ofc`, `frens`, `ngl`, `lets`, `its`, the `and....` ellipsis, and the run-on rhythm through the whole first paragraph. All deliberate and all staying.
+
+**P1 standing homework, flagged not edited.** "just find it so lucky to be in this era... im just so lucky" runs three intensifiers across four lines. Left exactly as written because it is the emotional close, but it is the same door P1 named at seeding: the next time a `just ... so ... [adjective]` frame shows up, try putting a verb where the adjective is.
+
+**Craft check.** The close is a target rather than a feeling, which is the first time in several weeks the last line commits to something: "more to go, hopefully get 100 DAU this EOY". The strongest passage is the one that reasons rather than reports, taking 2-of-30 and turning it into 1-in-20-of-a-million equals 10,000, so the paragraph ends somewhere different from where it started.
