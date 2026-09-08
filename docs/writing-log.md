@@ -22,14 +22,15 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 | P5 | Transitive verb given a preposition + dropped article | "paying to company" | 4 | 2026-08-11 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits" | 5 | 2026-08-24 |
-| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 3 | 2026-08-30 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition" | 6 | 2026-09-07 |
+| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 4 | 2026-09-07 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
 | P12 | Embedded question keeps the direct-question inversion | "how did he do the vacuum on posing" (W79) | 1 | 2026-08-11 |
 | P13 | Modal + bare past participle where the perfect is needed | "u would never thought about" (W80) | 1 | 2026-08-17 |
 | P14 | Infinitive marker `to` followed by `-ing` (the two `to`s confused) | "starting to admitting" (W81) | 1 | 2026-08-24 |
 | P15 | Auxiliary `be` dropped from a progressive (「在用」 needs no verb in Chinese) | "users who actively using my product" (W82) | 1 | 2026-08-30 |
+| P16 | Restating the thesis in the next clause instead of trusting it (repetition is 强调 in Chinese, reads as hedging in English) | "my goal next is to compete... and yes, thats my next goal" (W83) | 1 | 2026-09-07 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -242,3 +243,30 @@ Two craft observations on the added close, offered in chat and not applied. The 
 **P1 standing homework, flagged not edited.** "just find it so lucky to be in this era... im just so lucky" runs three intensifiers across four lines. Left exactly as written because it is the emotional close, but it is the same door P1 named at seeding: the next time a `just ... so ... [adjective]` frame shows up, try putting a verb where the adjective is.
 
 **Craft check.** The close is a target rather than a feeling, which is the first time in several weeks the last line commits to something: "more to go, hopefully get 100 DAU this EOY". The strongest passage is the one that reasons rather than reports, taking 2-of-30 and turning it into 1-in-20-of-a-million equals 10,000, so the paragraph ends somewhere different from where it started.
+
+## 2026-09-07 — Week 83
+
+**P9 is now three weeks running and P8 fired three times inside one entry.** Those two are the whole homework; the third item is new and structural rather than grammatical.
+
+**1. P9 — tense drift (hit 4, three weeks running)**
+- Wrote: "been trying for 3 days, got the concept but couldn't do it, it's rare... usually i got a sound in less than 6 hours"
+- Fix: "usually i **get** a sound in less than 6 hours"
+- Rule: `usually` / `normally` / `always` mark a habit, and a habit stays in present simple no matter what tense the surrounding story is in. 通常我六小时内就能出一个音 carries no tense at all, so the verb borrows one from whichever sentence sat next to it, here the past-tense `got the concept but couldn't do it`. The test is cheap: if the sentence contains a frequency word, it is present, and the story around it does not get a vote.
+
+**2. P8 — countable agreement (hit 6, three instances in one entry)**
+- Wrote: "one of the biggest asia beatbox competition", "ready 2 month before", "make sure it has 0 flaw"
+- Fix: "one of the biggest asia beatbox **competitions**", "ready 2 **months** before", "0 **flaws**"
+- Rule: three different triggers, one rule each, and all three are invisible from Chinese. After `one of the` the noun must be plural because you are naming one member of a set, while 之一 marks nothing at all in 最大的比赛之一. A counted unit above one takes the plural. And English treats **zero as plural**: 0 flaws, 0 degrees, no flaws. Only *one* is singular, which is the opposite of the intuition that zero means none so it should look singular.
+
+**3. P16 — restating the thesis instead of trusting it (new)**
+- Wrote: "my goal next is to compete in one of the biggest asia beatbox competitions, and yes, thats my next goal, this time, i learnt from..." and then "thats my goal now" opening the next paragraph
+- Fix (his pick, option 1): cut `and yes, thats my next goal`, so the goal is stated once and `thats my goal now` becomes the pivot into the sub-goals rather than a third statement
+- Rule: in Chinese, repeating a claim *is* the emphasis, and 强调 by restatement is normal and forceful. English reads the same move as hedging, as though the writer did not trust the first statement to land. When a sentence wants more weight in English, the weight goes on the verb or on a shorter sentence, not on saying it again. If a restatement stays, it has to do new work: "and yes, im saying it out loud this time" earns its place because it adds the commitment, whereas "thats my next goal" only repeats it.
+
+*Observed, not drilled (keeping the 3-item cap honest):* "complete in one of the biggest asia beatbox competition" → **compete**, a malapropism no spellcheck catches because both are real words, and it sat in the sentence carrying the headline goal; "aggresive bettler" → **aggressive battler**, where `bettler` is German for beggar and inverts the line; "yes it's 10th year now" → `my 10th year`, the possessive dropped before an ordinal; "the mistakes i made from last wildcard" → `on my last wildcard`.
+
+**Not logged, voice.** `thats`, `im`, `gotta`, `gonna`, `diff`, `uhhh`, the `..` and `........` ellipsis chains, `oMG` and `OMG!`, `man.` as a whole paragraph, and the run-on rhythm through the first three paragraphs. All deliberate and all staying. The fragment ladder at the end is the strongest craft in the entry and is the reason the run-ons work: three long paragraphs make the short lines land.
+
+**Resolved on ship, not left verbatim.** "grateful to be able to do what i want to do, and able to do what i WANT to do" had two clauses identical but for the capitals. It was raised twice and left verbatim through the draft, following the Week 82 rule that an unresolvable referent gets shown to him rather than filled in, and at ship time he asked for a suggestion and took the cut, so the sentence now reads "grateful to be able to do what i want to do, when i want to do something, i get things done." Rule: when a repetition is doing real work, the difference has to sit in the words, not the typography. Capitals ask the reader to guess which sense changed and most will read a stutter instead, and here his own next clause already carried the follow-through meaning, which made the second half a duplicate of his own tail rather than an escalation. Not drilled as a fourth rule, to keep the 3-item cap honest.
+
+**Craft check.** The close is a feeling this week, not a decision: "isn't beatboxing fun?" is warm and it lands, but it commits to nothing, and the entry does contain a real commitment. "ready 2 months before and recorded 1 month before, and make sure it has 0 flaws" sets terms he can be held to, and it is buried in paragraph one behind the failure list. Offered as an observation only. The strongest moment in the entry is not a decision at all but a discovery arriving mid-sentence, "i didn't even think about it until writing it down", which is the one thing the form can do that no other can.
