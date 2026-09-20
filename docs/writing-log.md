@@ -17,12 +17,12 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 |----|---------|---------------------|------|-----------|
 | P1 | Intensifier does the verb's job (`just` / `so` + generic adjective) | `just` 29x, `so` 28x, ~1 every 43 words | 1 | 2026-07-20 |
 | P2 | One overworked verb covering many meanings (`got` = acquired/attracted/received/possessed/scored/was able to) | `got` 13x, 8 distinct senses | 1 | 2026-07-20 |
-| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly" | 4 | 2026-08-24 |
+| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly", "there's no one and nothing can disturb you" | 5 | 2026-09-14 |
 | P4 | `make`/`let` + bare infinitive | "made me thinking" | 2 | 2026-08-30 |
-| P5 | Transitive verb given a preposition + dropped article | "paying to company" | 4 | 2026-08-11 |
+| P5 | Verb frame: wrong preposition, missing preposition, missing object + dropped article | "paying to company", "immerse at work", "reaching out friends", "it will reach there" | 5 | 2026-09-14 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition" | 6 | 2026-09-07 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition", "one of the week" | 7 | 2026-09-14 |
 | P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 4 | 2026-09-07 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
@@ -31,6 +31,7 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 | P14 | Infinitive marker `to` followed by `-ing` (the two `to`s confused) | "starting to admitting" (W81) | 1 | 2026-08-24 |
 | P15 | Auxiliary `be` dropped from a progressive (「在用」 needs no verb in Chinese) | "users who actively using my product" (W82) | 1 | 2026-08-30 |
 | P16 | Restating the thesis in the next clause instead of trusting it (repetition is 强调 in Chinese, reads as hedging in English) | "my goal next is to compete... and yes, thats my next goal" (W83) | 1 | 2026-09-07 |
+| P17 | `-ing` opener attaches to the following subject (Chinese topic-comment fronting carries no such rule) | "getting more and more mature on the product, i'm..." (W84) | 1 | 2026-09-14 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -270,3 +271,31 @@ Two craft observations on the added close, offered in chat and not applied. The 
 **Resolved on ship, not left verbatim.** "grateful to be able to do what i want to do, and able to do what i WANT to do" had two clauses identical but for the capitals. It was raised twice and left verbatim through the draft, following the Week 82 rule that an unresolvable referent gets shown to him rather than filled in, and at ship time he asked for a suggestion and took the cut, so the sentence now reads "grateful to be able to do what i want to do, when i want to do something, i get things done." Rule: when a repetition is doing real work, the difference has to sit in the words, not the typography. Capitals ask the reader to guess which sense changed and most will read a stutter instead, and here his own next clause already carried the follow-through meaning, which made the second half a duplicate of his own tail rather than an escalation. Not drilled as a fourth rule, to keep the 3-item cap honest.
 
 **Craft check.** The close is a feeling this week, not a decision: "isn't beatboxing fun?" is warm and it lands, but it commits to nothing, and the entry does contain a real commitment. "ready 2 months before and recorded 1 month before, and make sure it has 0 flaws" sets terms he can be held to, and it is buried in paragraph one behind the failure list. Offered as an observation only. The strongest moment in the entry is not a decision at all but a discovery arriving mid-sentence, "i didn't even think about it until writing it down", which is the one thing the form can do that no other can.
+
+## 2026-09-14 — Week 84
+
+**P5 is back after five weeks and fired five times in one entry, and P8 repeated the exact construction it was drilled on seven days ago.** Those two are the homework. The third is new, and it is the only error in the entry that changes what a sentence means rather than just reading wrong.
+
+**1. P8 — countable agreement (hit 7, two weeks running, identical trigger both weeks)**
+- Wrote: "i'd say it was one of the week that was so packed and hectic after such a long time tho"
+- Fix: "i'd say it's been a long time since i had one this packed and hectic tho"
+- Rule: `one of the` names one member of a set, so the noun after it is always plural. W83 was "one of the biggest asia beatbox competition", W84 is "one of the week", which is the same frame seven days apart. 之一 marks nothing in 最忙的一周之一, so the ear has no plural to copy and the English default wins. Cheap test: if "of them" can follow the noun, it is plural. One of the weeks, of them. The fix above sidesteps the frame instead of repairing it, which is the other move worth owning: when a construction keeps catching you, a different sentence shape beats a carefully built one.
+- Second fault, same sentence: "after such a long time" sat next to "packed and hectic", which says the week became packed after a wait. A time phrase lands on whatever it sits beside. Naming what the time measures, "it's been a long time since", fixes the attachment and the plural in one move.
+
+**2. P5 — verb frame: wrong preposition, missing preposition, missing object (hit 5, back after five weeks, five instances in one entry)**
+- Wrote: "u get to immerse at work" / "reaching out friends" / "disturb you from getting work done" / "i'm just so appreciate about it" / "and it will reach there"
+- Fix: "you get to immerse **yourself in** work" / "reaching out **to** friends" / "**distract** you from getting work done" / "i'm just so **appreciative of** it" / "and it will **get** there"
+- Rule: an English verb carries a fixed frame, which object it takes and which preposition rides with it, and that frame is part of the word rather than something reasoned out per sentence. 沉浸, 联系, 打扰, 感激 and 达到 all stand alone, so there is nothing in the source to copy and each frame has to be learned one verb at a time. Four shapes, one cause: `immerse` and `disturb` were handed a preposition they do not take, `reach out` lost the one it requires, `reach` was used where intransitive `get` belongs, and `appreciate` sat in an adjective's slot after "i'm so", where only `appreciative` fits. `disturb` was swapped for `distract` rather than just dropping the preposition, because "stop you from" would have collided with "nothing can stop me" two clauses later.
+- The tell that this is frame and not vocabulary: your own next paragraph has "reach 100 dau", which is correct. The verb was never the problem. `reach` needs a thing, and `there` is not one.
+
+**3. P17 — the `-ing` opener grabs the next subject (NEW)**
+- Wrote: "getting more and more mature on the product, i'm almost everyday reaching out friends to give it a try"
+- Fix: "the product is getting more and more mature, and i'm reaching out to friends almost every day, asking them to give it a try"
+- Rule: an `-ing` phrase opening a sentence attaches to whatever subject follows it. The subject here is `i`, so the sentence says you are the one maturing when you meant the product. Chinese lets a topic sit in front of a clause without claiming to be its subject, so 产品越来越成熟了，我几乎每天都在找朋友试用 is clean while the direct carry-over is not. If the thing doing the `-ing` is not the subject of the main clause, give it its own clause and say its name.
+- Two riders in the same sentence. `everyday` is the adjective, as in everyday clothes; the time phrase is two words, `every day`, and the test is whether `each day` fits. And the frequency phrase was wedged between `am` and the `-ing` verb, where it stalls the sentence: frequency goes at the front or the end, never the middle.
+
+*Observed, not drilled (keeping the 3-item cap honest):* "there's no one and nothing can disturb you" is **P3**, hit 5, a mixed construction where `there's X` wants a noun to finish it and `X can Y` wants a subject, so the sentence opens on one spine and closes on the other. Now "no one and nothing can distract you", which keeps the defiance sitting in `can`. Also "to give it a try then collect their valuable feedback" attached the trying to you rather than to the friends, fixed by naming them in "asking them to give it a try"; and `u` and `you` both appear inside one sentence, so one of the two reads as a typo rather than a choice, now both `you`.
+
+**Not logged, voice.** The comma chains through paragraphs two and three, four of them joining complete sentences. Left exactly as written, because that rhythm is the entry and de-splicing it would hand back someone else's paragraph. For the weeks when a different relationship between two clauses is wanted, the menu is: **full stop** for separate, **semicolon** for equal weight and related, **so** or **because** for cause, **but** or **though** for contrast, **and** for addition. P7 is the row for a splice that actually misfires; it has not fired since July and it did not fire here. Also staying: lowercase throughout, `tho`, `well...`, `asap by eoy`, the inline 心流, the one-line paragraphs at the close, and `just` as a modesty marker in "i'm just so appreciative of it".
+
+**Craft check.** The close commits to terms, "my goal is to reach 100 dau, and that's when i make it an app", which is the same shape as W83's "ready 2 months before, recorded 1 month before, 0 flaws". Two weeks running now, and it is the strongest habit in this log. The gap is the middle. The friends paragraph carries the most feeling in the entry, and everything it says about the feedback is that it is "valuable" and that they are "too nice to roast it". One concrete sentence a friend actually said would outweigh both adjectives, and it is the one thing the Recap cannot supply for you, because talking to friends leaves no commits.
