@@ -64,6 +64,8 @@ the shape shows up anywhere free things pile up faster than you can vet them. bo
 
 the discipline is small and unglamorous: when something free and good crosses your path, do not ask "is this good enough to keep?" almost everything is. ask "does this beat the thing it would replace, by enough to pay for the switch?" most of the time the honest answer is no, and the right move is to take the one idea worth taking and walk on. subtract before you add. the setup that serves you is not the one with the most in it. it is the one where everything still in it earned its place, and you can still remember why.
 
+the cheapest way to run that matchup, when the newcomer is a library rather than an agent, is to turn its feature list into one grep per feature against your own repo and count the hits: [the ultrastorage note]({{< ref "posts/should-i-use-ultrastorage" >}}) works a real case through, and the hit rate was close to zero for the same reason it was here.
+
 ## a personal note
 
 wip ...
