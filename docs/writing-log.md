@@ -22,8 +22,8 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 | P5 | Verb frame: wrong preposition, missing preposition, missing object + dropped article | "paying to company", "immerse at work", "reaching out friends", "it will reach there" | 5 | 2026-09-14 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition", "one of the week" | 7 | 2026-09-14 |
-| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took" | 4 | 2026-09-07 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition", "one of the week", "my personal assistance" | 8 | 2026-09-21 |
+| P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took", "it crosses my line" | 5 | 2026-09-21 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
 | P12 | Embedded question keeps the direct-question inversion | "how did he do the vacuum on posing" (W79) | 1 | 2026-08-11 |
@@ -32,6 +32,7 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 | P15 | Auxiliary `be` dropped from a progressive (「在用」 needs no verb in Chinese) | "users who actively using my product" (W82) | 1 | 2026-08-30 |
 | P16 | Restating the thesis in the next clause instead of trusting it (repetition is 强调 in Chinese, reads as hedging in English) | "my goal next is to compete... and yes, thats my next goal" (W83) | 1 | 2026-09-07 |
 | P17 | `-ing` opener attaches to the following subject (Chinese topic-comment fronting carries no such rule) | "getting more and more mature on the product, i'm..." (W84) | 1 | 2026-09-14 |
+| P18 | Adjective sitting in an adverb slot (Chinese intensifiers do not change shape between the two jobs) | "i just felt incredible like shit" (W85) | 1 | 2026-09-21 |
 
 **The calque test (P3):** does the Chinese-shaped phrase create an image, or just misfire grammatically? "other people's grass" creates an image, keep it. "how X performance is like" is a mixed construction, fix it. This test is what stops "improving my English" from sanding out my voice.
 
@@ -299,3 +300,30 @@ Two craft observations on the added close, offered in chat and not applied. The 
 **Not logged, voice.** The comma chains through paragraphs two and three, four of them joining complete sentences. Left exactly as written, because that rhythm is the entry and de-splicing it would hand back someone else's paragraph. For the weeks when a different relationship between two clauses is wanted, the menu is: **full stop** for separate, **semicolon** for equal weight and related, **so** or **because** for cause, **but** or **though** for contrast, **and** for addition. P7 is the row for a splice that actually misfires; it has not fired since July and it did not fire here. Also staying: lowercase throughout, `tho`, `well...`, `asap by eoy`, the inline 心流, the one-line paragraphs at the close, and `just` as a modesty marker in "i'm just so appreciative of it".
 
 **Craft check.** The close commits to terms, "my goal is to reach 100 dau, and that's when i make it an app", which is the same shape as W83's "ready 2 months before, recorded 1 month before, 0 flaws". Two weeks running now, and it is the strongest habit in this log. The gap is the middle. The friends paragraph carries the most feeling in the entry, and everything it says about the feedback is that it is "valuable" and that they are "too nice to roast it". One concrete sentence a friend actually said would outweigh both adjectives, and it is the one thing the Recap cannot supply for you, because talking to friends leaves no commits.
+
+## 2026-09-21 — Week 85
+
+**Caveat on this week's sample.** He asked for the Highlights to be expanded ("can we lengthen it", then "direct edit it"), so the published paragraphs are partly mine and are not a clean sample of his writing. Everything logged below comes from his raw typed dump, which is the real sample. The expansion itself is the thing to watch: if this becomes the habit, this log loses its input.
+
+**P8 is now three weeks running on three different shapes, which makes it the only pattern in this log that has earned standing homework.**
+
+**1. P8 — countable/uncountable (hit 8, W83 + W84 + W85, third consecutive week)**
+- Wrote: "claude/gemini/doubao as my personal assistance"
+- Fix: "claude, gemini, doubao as my personal **assistants**"
+- Rule: this is a new face of P8 and worth seeing as one. W83 and W84 were plural marking after `one of the`; this is choosing the **mass abstract noun over the countable agent noun**. `assistance` is the help itself and has no plural; `assistant` is the thing that gives it and needs one here because there are three of them. Chinese splits these with 协助 and 助理, so the distinction exists in the source and simply did not survive the crossing. Cheap test: can you put a number in front of it? Three assistants, yes. Three assistances, no. Same family: `advice` vs `adviser`, `support` vs `supporter`, `management` vs `manager`.
+- The three hits are the same underlying habit, which is trusting the ear on a noun's countability. The ear has nothing to copy, because Chinese nouns do not mark it at all. So this one is learned per word and not reasoned out per sentence, exactly like P5's verb frames.
+
+**2. P18 — adjective sitting in an adverb slot (NEW)**
+- Wrote: "i just felt incredible like shit"
+- Fix: "i just felt **incredibly** shit" (or, closer to the register, "i felt so fucking shit")
+- Rule: an intensifier modifying an adjective takes the `-ly` form. `incredible` can only describe a thing; `incredibly` describes how much. 非常, 难以置信地 and 超级 do not change shape between the two jobs, so there is no signal in the Chinese telling you an ending is owed. Test: if the word is answering "how much", it wants `-ly`. Same family: real/really, terrible/terribly, awful/awfully.
+- **Kept in the published entry anyway, deliberately.** It is the second of two hits on the same feeling and the escalation from "felt like shit" to "felt incredible like shit" is doing real work in the paragraph. Logged as a rule to know, not as a line to go back and repair. Flagged to him at push.
+
+**3. P9 — tense drift inside one paragraph (hit 5, back after two weeks)**
+- Wrote: "today i missed my quiz" ... "it crosses my line that agents are not really listening" ... "it really took me to a point"
+- Fix: "it **crossed** my line" (changed in the entry)
+- Rule: the paragraph narrates one finished evening, so every verb in it belongs to that evening. Dropping into the present mid-paragraph reads as a standing complaint rather than a thing that happened at 22:39. Chinese marks completion with 了 on the verbs that need it and leaves the rest unmarked, so a paragraph can sit in one time without every verb agreeing; English has no such option. Worth noticing that the present-tense slip landed on the sentence carrying the most feeling, which is where this pattern always lands.
+
+**Not logged, voice.** `ngl`, `my shit`, lowercase throughout, the `->` arrows in "everything -> gc -> all in there" (an image, keeps under the calque test), the doubled feeling, and "it's never been too late" with its perfect tense intact. `i beleive` corrected silently as a typo, not logged.
+
+**Craft check.** The close still defers. "i'll share more about how i improve my workflow with llm as i go" postpones the decision, and it is the third paragraph of ending where one would land harder. Two weeks running the close committed to terms (W83's "0 flaws", W84's "100 dau"), so this is a break in the strongest habit the log has recorded, and it broke on the week with the most to decide. The observation was offered and three close shapes were given; he took none and pushed. Left alone, which is correct, it is his ending. The entry earns "i learnt" this week in a way the short version did not, because the expansion gave it a turn: setup, break, wrong diagnosis, real diagnosis.
