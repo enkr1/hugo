@@ -1,9 +1,9 @@
 ---
-title: "Detection Is Not Generation: Why a Polling Loop Runs at the Speed of Its Most Expensive Call"
+title: "Jev, and Why Detection Is Not Generation"
 slug: "detection-is-not-generation"
 date: 2026-09-22T12:47:29+08:00
-subtitle: "A research note on typed-judgment models, and the cost of asking one call to both notice a thing and write about it"
-description: "A research note on System One models such as TypeSafe's Jev: what a typed-judgment primitive returns, why fusing detection and generation into one LLM call forces the cheap job to inherit the expensive job's cadence, and the trigger rate at which splitting them stops paying."
+subtitle: "A research note on TypeSafe's Jev, its open-weights rival Laya, and the cost of asking one call to both notice a thing and write about it"
+description: "A research note on System One models, TypeSafe's Jev and Convai's open-weights Laya: what a typed-judgment primitive returns, what Laya's benchmark claims do and do not show, why fusing detection and generation into one LLM call forces the cheap job to inherit the expensive job's cadence, and the trigger rate at which splitting them stops paying."
 tags:
   - research
   - llm
@@ -12,6 +12,8 @@ tags:
   - latency
   - cost
   - typesafe
+  - laya
+  - open-weights
 categories:
   - ["Technology", "AI"]
 keywords:
@@ -22,6 +24,7 @@ keywords:
   - inference cost
   - detection versus generation
   - calibrated confidence
+  - jev vs laya
 image: ""
 comments: true
 draft: false
@@ -31,7 +34,7 @@ draft: false
 
 ## tl;dr
 
-a "System One" model returns typed answers (one of these options, yes or no, a number on this scale) instead of prose, in about 100ms. the interesting part is not that it is cheap. it is that most real-time LLM loops fuse two jobs into one call: **noticing** something is there, and **writing** about it. the noticing is cheap and must run constantly; the writing is expensive and should run rarely. fuse them and the cheap job inherits the expensive job's cadence, which is why so many "real-time" features are secretly a thirty-second timer. split them and the saving is $1/(k+p)$, where $k$ is how cheap your detector is and $p$ is how often a tick actually has something worth saying. the punchline is that $p$ dominates: if your trigger rate is high, splitting buys you almost nothing.
+a "System One" model returns typed answers (one of these options, yes or no, a number on this scale) instead of prose, in about 100ms. the interesting part is not that it is cheap. it is that most real-time LLM loops fuse two jobs into one call: **noticing** something is there, and **writing** about it. the noticing is cheap and must run constantly; the writing is expensive and should run rarely. fuse them and the cheap job inherits the expensive job's cadence, which is why so many "real-time" features are secretly a thirty-second timer. split them and the saving is $1/(k+p)$, where $k$ is how cheap your detector is and $p$ is how often a tick actually has something worth saying. the punchline is that $p$ dominates: if your trigger rate is high, splitting buys you almost nothing. and Laya, the open-weights copy, is a useful test of that: free weights barely move the maths, so its real case is latency and privacy, and its benchmark wins need reading closely.
 
 ## the question
 
@@ -166,6 +169,38 @@ and there is a break-even, in the same way the [build-versus-buy crossover]({{< 
 
 **assuming calibration means correctness.** their docs are explicit that calibration is measured across groups of predictions, not guaranteed per answer. so thresholds have to be fitted against your own labelled data, and building that labelled set is the actual project. the integration is the part that merely looks like the work.
 
+## Laya, the open-weights answer
+
+Convai Innovations has since shipped **Laya**: the same idea, published as open weights under Apache 2.0. same three primitives (`choice`, `score`, `noul`), a Jev-compatible `POST /v1/systemone` endpoint so it drops in behind existing client code, and it even names the same training recipe, RLCD. underneath it is a bidirectional encoder, ModernBERT-large plus a small decision head, 421M parameters for the english checkpoint and 322M for the multilingual one. every option gets its own `[MASK]` token, scored in one forward pass and softmaxed over the question's options, so nothing is generated at any point.
+
+the headline table, from Laya's own model card:
+
+| | Jev 1.13 | Laya | who wins |
+|---|---|---|---|
+| typed-decisions accuracy (2,000 decisions) | 0.727 | 0.766 | Laya |
+| AG News (4 labels) | 0.910 | 0.950 | Laya |
+| DAIR Emotion (6 labels) | 0.480 | 0.595 | Laya |
+| Banking77 (77 labels) | 0.870 | 0.425 | **Jev, by a mile** |
+| calibration error, ECE (lower is better) | 0.246 | 0.081 | Laya |
+| p50 latency, one question | 236 to 276 ms | 32.8 ms | Laya |
+| price | 4.2 cents per million input tokens | free weights, your own GPU | depends |
+
+read as a scoreboard that is a rout. read the footnotes and most of it softens:
+
+- **it is not the same run.** Laya's numbers are self-measured; Jev's are third-party published figures, never run on the same data in the same harness. that is a claim, not a benchmark.
+- **the 0.766 is a fine-tuned checkpoint.** it comes from `laya-typed-decisions`, trained on that task. the base checkpoints score 0.362 and 0.342 zero-shot, near chance. Jev's 0.727 is zero-shot. that comparison is a specialist against a generalist on the specialist's home turf.
+- **the latency compares a model to a service.** 32.8ms is a local forward pass on a Tesla T4. 236ms is Jev's hosted API, network and queue included. "7.8x faster" is mostly "no round trip", which is true and useful, but it is a deployment fact, not a model fact.
+- **the ECE win needed a refit.** the card says the model ships over-confident, and the 0.081 is after per-question temperature scaling. raw it is 0.466.
+- **the context is tiny.** 512 tokens total on the english checkpoint, 1,024 on the others, against Jev's 64k. a transcript window, fine; a document, no.
+
+the Banking77 row is the one worth understanding, because it is architectural rather than a tuning gap. every option has to be spelled out inside a fixed budget of roughly 192 to 256 tokens, so 77 labels get about three tokens each and the model can barely read what it is choosing between. the card itself says choice questions degrade past about 20 options. Jev does not have that ceiling. **few options, Laya is competitive. many options, it falls over.**
+
+the card is also unusually honest about its own gaps, which i trust more than the table: `noul` can follow the wording of its options rather than the state, ordinal `score` questions are its weakest type, and the `act_probability` output "carries no usable signal yet", with an AUROC of 0.30, so the advice is to gate on confidence instead.
+
+run it back through the maths above and something falls out. Laya's pitch is that it is free, but $k$ was already noise: Jev priced $k$ at 0.008 to 0.042, and the curves were flat long before zero. **a free detector buys you almost nothing a cheap one did not.** what Laya actually changes is the other two things: the round trip disappears, so the tick can be even tighter, and the state never leaves your machine, which with Jev is an enterprise-plan feature. it is the cadence argument again, plus a privacy one. never the price one.
+
+i have not run Laya either. every number in this section is read off its model card and project page on 24 September 2026.
+
 ## when it applies, and when it does not
 
 it applies when the judgment is **closed** (you can enumerate the answers), **frequent** (you want it running constantly), and **mostly negative** (the honest answer is usually "nothing here"). routing, triage, screening, reranking a shortlist, verifying a claim against its evidence, deciding whether to wake something expensive.
@@ -183,6 +218,7 @@ two constraints worth knowing before anyone builds on it: the published rate lim
 - there is a break-even near a 96% trigger rate. needles in haystacks, not haystacks of needles.
 - lead with cadence, not cost. cost is the weaker half of a true argument.
 - the labelled set you need to fit the thresholds is the real project cost.
+- Laya is the open-weights Jev: competitive on few-option questions, collapses on many-option ones, and its benchmark wins lean on a fine-tuned checkpoint and a local-versus-hosted latency comparison. its real advantages are no round trip and no data leaving your machine, not the price.
 
 ## a personal note
 
@@ -192,6 +228,8 @@ wip ...
 
 - [TypeSafe documentation index](https://docs.typesafe.ai/llms.txt), and the pages under it for [System One](https://docs.typesafe.ai/concepts/system-one.md), [primitives](https://docs.typesafe.ai/primitives.md), [state](https://docs.typesafe.ai/concepts/state.md), [confidence](https://docs.typesafe.ai/confidence.md), [models and pricing](https://docs.typesafe.ai/models.md) and the [HTTP API](https://docs.typesafe.ai/api.md). all specification figures in this note (price, latency, context, rate limits, language support) are read off those pages on 22 September 2026, not measured by me.
 - [speculative fan-out](https://docs.typesafe.ai/patterns/fan-out.md) and [composite scoring](https://docs.typesafe.ai/patterns/composite-scoring.md), the two patterns that make the one-request-many-questions shape worth building around.
+- [Laya's model card on Hugging Face](https://huggingface.co/convaiinnovations/laya) and [project page](https://laya.convaiinnovations.com/), the source for every Laya figure above, read on 24 September 2026. the Jev comparison there is Convai's own, not an independent run.
+- [Flowtivity's write-up of Laya](https://flowtivity.ai/blog/laya-open-source-jev-alternative/), which is where the "never measured in the same run" caveat is spelled out most plainly.
 - [Anthropic model pricing](https://docs.claude.com/en/docs/about-claude/pricing), for the generation-side anchor used in $k$.
 - Daniel Kahneman, *Thinking, Fast and Slow* (2011), where the System 1 and System 2 framing comes from.
 - my earlier note on [what is actually inside an agent harness]({{< ref "agents-are-mostly-plumbing" >}}), which is the same instinct applied one layer up: most of the magic turns out to be plumbing.
