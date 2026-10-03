@@ -15,15 +15,11 @@ sheetCols: 2
 
 <div class="print-hide">
 
-**Mon 5 Oct 20:00-21:00 · MPSH1B · Closed book · paper & pen · ONE A4 SINGLE SIDE + calculator · this page IS the sheet**
-
-> **v1 draft.** Notation and typesetting follow her Canvas *Formulas & Facts* sheet, which is handed out in the final only, so everything on it has to live here. Scope is L01 to L05, settled by three sources. Still owed: cutting to one side.
->
-> Closed book inverts three of the open-book sheet rules: no keyword minimap (nothing to point at, memorise WHERE blocks sit instead), no discipline checklist (its premise was open-book), and confusable pairs carry the discriminating formula rather than a prose mnemonic.
+**Mon 5 Oct 20:00-21:00 · MPSH1B · closed book · paper and pen · one A4 side + calculator**
 
 </div>
 
-## 0. Symbols (her notation)
+## 0. Symbols
 
 | Symbol | Say | Means |
 |---|---|---|
@@ -40,7 +36,7 @@ sheetCols: 2
 | $\int \ldots dx$ | "integral … d x" | the continuous $\Sigma$: area under $f(x)$ between the limits |
 | $z$, $Z$ | "zed" | $z = \frac{x - \mu}{\sigma}$, steps from the mean. Sign = side: − below, + above. $Z \sim N(0, 1)$ |
 | $\Phi(z)$ | "fie of z" | $P(Z \le z)$, the area left of $z$. $\Phi(-z) = 1 - \Phi(z)$ |
-| $\lambda$ | "lambda" | a rate. Poisson: $E(X) = \lambda$. Her $\text{Exponential}\left(\frac{1}{\mu}\right)$: $\lambda = \frac{1}{\mu}$, so mean $\mu = \frac{1}{\lambda}$ |
+| $\lambda$ | "lambda" | a rate. Poisson: $E(X) = \lambda$. In $\text{Exponential}\left(\frac{1}{\mu}\right)$: $\lambda = \frac{1}{\mu}$, so the mean is $\mu = \frac{1}{\lambda}$ |
 | $e$, $\exp(t)$ | "e" | 2.71828…, and $\exp(t)$ is $e^t$ |
 | $p$, $q$ | "p", "q" | $p$ = P(success) on one trial, $q = 1 - p$ |
 | $k$ | "k" | Discrete Uniform$(k)$: how many values. Neg. Binomial$(k, p)$: successes waited for |
@@ -51,9 +47,7 @@ sheetCols: 2
 | $A \cup B$ | "A or B" | at least one happens |
 | $A'$ | "A prime", "not A" | A does not happen: $P(A') = 1 - P(A)$ |
 
-## 1. The four flippables
-
-Every one of these was a measured failure under retrieval, not recognition. Read the right column, infer the left.
+## 1. Don't mix these up
 
 | Pair | The discriminator |
 |---|---|
@@ -90,9 +84,9 @@ Every one of these was a measured failure under retrieval, not recognition. Read
 - **Linearity:** $E(aX + b) = aE(X) + b$. $V(aX + b) = a^2 V(X)$: the shift $b$ drops out, the scale is squared.
 - Independent $X$, $Y$: $E(XY) = E(X)E(Y)$ and $V(X \pm Y) = V(X) + V(Y)$ (both **plus**).
 
-## 5. Discrete distribution family map
+## 5. Discrete distributions
 
-Two axes decide everything: **what is fixed vs what is counted**, and **with vs without replacement**.
+Identify by **what is fixed vs what is counted**, and **with or without replacement**.
 
 | Distribution | $f(x)$ | $E(X)$ | $V(X)$ |
 |---|---|---|---|
@@ -104,13 +98,13 @@ Two axes decide everything: **what is fixed vs what is counted**, and **with vs 
 | **Hypergeometric$(N, K, n)$**<br>$n$ draws, **no replacement** | $\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$ | $n\frac{K}{N}$ | $n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}$ |
 | **Poisson$(\lambda)$**<br>fix an interval, count events | $\frac{e^{-\lambda}\lambda^x}{x!}$ | $\lambda$ | $\lambda$ |
 
-Who advances from whom:
+How they connect:
 
 - **Bernoulli → Binomial:** $n$ independent Bernoulli$(p)$ summed. Bernoulli is Binomial with $n = 1$.
 - **Geometric → Negative Binomial:** Geometric is NegBin with $k = 1$. Both count **trials**, not successes, so $X$ starts at $k$, not at 0.
 - **Binomial → Hypergeometric:** same question, replacement removed. Draws stop being independent, hence the factor $\frac{N-n}{N-1}$.
-- **Binomial → Poisson:** $n$ large, $p$ small, $\lambda = np$. **This paper accepts the approximation as the distribution** when no exact Binomial option is offered.
-- **Binomial vs Geometric is the one that flips:** Binomial fixes trials and counts successes; Geometric fixes one success and counts trials. Ask which number the question already gave you.
+- **Binomial → Poisson:** $n$ large, $p$ small, $\lambda = np$.
+- **Binomial vs Geometric:** Binomial fixes the trials and counts successes; Geometric fixes one success and counts the trials. Check which number the question gives you.
 
 ## 6. Continuous random variables
 
