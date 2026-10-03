@@ -2,7 +2,7 @@
 title: "TCX2102 | Probability & Statistics Midterm Helpsheet"
 slug: "nus-bit-tcx2102-midterm-helpsheet"
 date: 2026-09-13T03:10:00+08:00
-description: "One-A4 single-sided helpsheet for the TCX2102 midterm (Oct 5): counting, probability operators, discrete random variables, and the discrete distribution family map."
+description: "One-A4 single-sided helpsheet for the TCX2102 midterm (Oct 5): counting, probability operators, discrete and continuous random variables, and the distribution family map."
 tags: ["nus", "probability", "statistics", "helpsheet", "tcx2102", "midterm"]
 categories:
   - ["Education", "NUS BIT", "TCX2102"]
@@ -17,7 +17,7 @@ sheetCols: 2
 
 **Mon 5 Oct 20:00-21:00 · MPSH1B · Closed book · paper & pen · ONE A4 SINGLE SIDE + calculator — this page IS the sheet**
 
-> **v0 draft.** Written from domain knowledge, not yet reconciled to the decks. Two passes owed before this prints: a **notation pass** against L01-L03 renders (this prof's symbols win over mine), and a **scope pass** once the Canvas syllabus timetable says whether continuous RVs are in.
+> **v1 draft.** Notation follows her Canvas *Formulas & Facts* sheet, which is handed out in the final only, so everything on it has to live here. Scope is L01 to L05, settled by three sources. Still owed: cutting to one side.
 >
 > Closed book inverts three of the open-book sheet rules: no keyword minimap (nothing to point at, memorise WHERE blocks sit instead), no discipline checklist (its premise was open-book), and confusable pairs carry the discriminating formula rather than a prose mnemonic.
 
@@ -78,6 +78,7 @@ Every one of these was a measured failure under retrieval, not recognition. Read
 - **Total probability:** for a partition `B_1…B_k`, `P(A) = Σ P(A|B_i)P(B_i)`.
 - **Bayes:** `P(B_i|A) = P(A|B_i)P(B_i) / Σ_j P(A|B_j)P(B_j)`. The denominator is total probability; build the tree, then read it backwards.
 - **Complement:** `P(A') = 1 − P(A)`.
+- **De Morgan:** `(A∪B)′ = A′∩B′` and `(A∩B)′ = A′∪B′`.
 
 ## 4. Discrete random variables
 
@@ -95,6 +96,7 @@ Two axes decide everything: **what is fixed vs what is counted**, and **with vs 
 
 | Distribution | Fixed | Counted | PMF | `E(X)` | `V(X)` |
 |---|---|---|---|---|---|
+| **Discrete Uniform(k)** | `k` equally likely values `x_1…x_k` | which value comes up | `1/k` | `(1/k)Σx_i` | `(1/k)Σx_i² − μ²` |
 | **Bernoulli(p)** | one trial | success 0/1 | `p^x(1−p)^(1−x)` | `p` | `p(1−p)` |
 | **Binomial(n,p)** | **`n` trials** | **successes** | `C(n,x)p^x(1−p)^(n−x)` | `np` | `np(1−p)` |
 | **Geometric(p)** | **successes = 1** | **trials until it** | `(1−p)^(x−1)p` | `1/p` | `(1−p)/p²` |
@@ -112,4 +114,15 @@ Who advances from whom:
 
 ## 6. Continuous random variables
 
-**HELD pending scope.** Sized placeholder only: if L04 is examinable this block takes `f(x)`, `F(x)=∫f`, `P(a<X<b)=∫`, `E(X)=∫x f(x)dx`, the uniform and the normal with its `z = (x−μ)/σ` table lookup. If it is out of scope, this whole section is cut and §1-§5 breathe.
+- **Probability = area:** `P(a < X < b) = ∫ f(x) dx` from `a` to `b`, and the total area is 1. A single point has no area, so `<` and `≤` give the same answer.
+- **CDF** `F(x) = P(X ≤ x)`, the area from the left end up to `x`. Going back, `f(x) = F′(x)`.
+- **E and V by integration:** `E[g(X)] = ∫ g(x) f(x) dx`, so `E(X) = ∫ x f(x) dx` and `E(X²) = ∫ x² f(x) dx`. Then `V(X) = E(X²) − [E(X)]²`.
+
+| Distribution | `f(x)` | Tail or CDF | `E(X)` | `V(X)` |
+|---|---|---|---|---|
+| **Continuous Uniform(a, b)** | `1/(b − a)` for `a ≤ x ≤ b`, else 0 | `F(x) = (x − a)/(b − a)` | `(a + b)/2` | `(b − a)²/12` |
+| **Exponential(1/μ)** | `(1/μ)e^(−x/μ)` for `x > 0`, else 0 | `P(X > x) = e^(−x/μ)` | `μ` | `μ²` |
+| **Normal(μ, σ²)** | `(1/(σ√(2π))) exp(−½((x − μ)/σ)²)` | by `z` and `Φ` | `μ` | `σ²` |
+
+- **Exponential's rate:** `λ = 1/μ`, so `f(x) = λe^(−λx)`, mean `1/λ`, variance `1/λ²`. Memoryless: `P(X > s + t | X > s) = P(X > t)`.
+- **Normal in three steps:** (1) `σ = √` of the second number. (2) `z = (x − μ)/σ`: your number minus the mean, and the sign is the side. (3) `P(a < X < b) = Φ(z_b) − Φ(z_a)`, with `Φ(−z) = 1 − Φ(z)`. The z bounds keep the order of the x bounds.
