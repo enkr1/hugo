@@ -113,6 +113,7 @@ How they connect:
 - **Probability = area:** $P(a < X < b) = \int_a^b f(x)\\,dx$, and the total area is 1. A single point has no area, so $<$ and $\le$ give the same answer.
 - **CDF** $F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)\\,dt$. Going back, $f(x) = F'(x)$.
 - **E and V by integration:** $E[g(X)] = \int_{-\infty}^{\infty} g(x) f(x)\\,dx$, so $E(X) = \int x f(x)\\,dx$ and $E(X^2) = \int x^2 f(x)\\,dx$. Then $V(X) = E(X^2) - [E(X)]^2$.
+- **Integrals you need:** $\int k\\,dx = kx$, $\int x\\,dx = \frac{x^2}{2}$, $\int x^2\\,dx = \frac{x^3}{3}$, $\int e^{-\lambda x}\\,dx = -\frac{1}{\lambda}e^{-\lambda x}$. Limits: top minus bottom. $e^{-\infty} = 0$.
 
 | Distribution | $f(x)$ | Tail or CDF | $E(X)$ | $V(X)$ |
 |---|---|---|---|---|
@@ -120,7 +121,7 @@ How they connect:
 | **Exponential$\left(\frac{1}{\mu}\right)$** | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $P(X > x) = e^{-\frac{x}{\mu}}$ | $\mu$ | $\mu^2$ |
 | **Normal$(\mu, \sigma^2)$** | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | by $z$ and $\Phi$ | $\mu$ | $\sigma^2$ |
 
-- **Exponential's rate:** $\lambda = \frac{1}{\mu}$, so $f(x) = \lambda e^{-\lambda x}$, mean $\frac{1}{\lambda}$, variance $\frac{1}{\lambda^2}$. Memoryless: $P(X > s + t \mid X > s) = P(X > t)$.
+- **Exponential's rate:** $\lambda = \frac{1}{\mu}$, so $f(x) = \lambda e^{-\lambda x}$, mean $\frac{1}{\lambda}$, variance $\frac{1}{\lambda^2}$. Memoryless: $P(X > s + t \mid X > s) = P(X > t)$. **Units:** put x in the rate's unit first (15 min = $\frac{1}{4}$ h when the rate is per hour).
 
 **Normal in three steps.** Where each number comes from: $X \sim N(\underbrace{30}\_{\mu},\ \underbrace{16}\_{\sigma^2})$, $P(X < \underbrace{26}\_{x})$.
 
