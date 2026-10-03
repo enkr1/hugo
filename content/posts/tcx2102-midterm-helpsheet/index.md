@@ -51,6 +51,7 @@ sheetCols: 2
 
 | Pair | The discriminator |
 |---|---|
+| **Discrete** vs **continuous** | Discrete: you **count** it (number of students), and it can't be cut into parts, so there's no 2.5 students: use $\sum$. Continuous: you **measure** it (time, height, weight), and it can be cut as fine as you like: use $\int$, and $P(X = a) = 0$. |
 | **Independent** vs **mutually exclusive** | Independent: $P(A \cap B) = P(A)P(B)$. Mutually exclusive: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
 | **Complement** over a support | $P(X \ge 1) = 1 - P(X = 0)$. The complement runs over the RV's **whole support**, not over the events named in the question. List the support first, then subtract. |
 | **Joint** vs **conditional** vs **marginal** | Joint $P(A \cap B)$ = both happen. Conditional $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$ = the world has shrunk to B. Marginal $P(A)$ = sum the joint over every value of the other variable. |
