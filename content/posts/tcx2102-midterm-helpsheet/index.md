@@ -52,6 +52,7 @@ sheetCols: 2
 | Pair | The discriminator |
 |---|---|
 | **Discrete** vs **continuous** | Discrete: you **count** it (number of students), and it can't be cut into parts, so there's no 2.5 students: use $\sum$. Continuous: you **measure** it (time, height, weight), and it can be cut as fine as you like: use $\int$, and $P(X = a) = 0$. |
+| **Poisson** vs **exponential** | Same shop, two questions. Number of customers in 10 minutes: you **count** it, so Poisson. Time until the next customer: you **measure** it, so exponential. Name X first. |
 | **Independent** vs **mutually exclusive** | Independent: $P(A \cap B) = P(A)P(B)$. Mutually exclusive: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
 | **Complement** over a support | $P(X \ge 1) = 1 - P(X = 0)$. The complement runs over the RV's **whole support**, not over the events named in the question. List the support first, then subtract. |
 | **Joint** vs **conditional** vs **marginal** | Joint $P(A \cap B)$ = both happen. Conditional $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$ = the world has shrunk to B. Marginal $P(A)$ = sum the joint over every value of the other variable. |
@@ -120,4 +121,11 @@ How they connect:
 | **Normal$(\mu, \sigma^2)$** | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | by $z$ and $\Phi$ | $\mu$ | $\sigma^2$ |
 
 - **Exponential's rate:** $\lambda = \frac{1}{\mu}$, so $f(x) = \lambda e^{-\lambda x}$, mean $\frac{1}{\lambda}$, variance $\frac{1}{\lambda^2}$. Memoryless: $P(X > s + t \mid X > s) = P(X > t)$.
-- **Normal in three steps:** (1) $\sigma = \sqrt{\text{second number}}$. (2) $z = \frac{x - \mu}{\sigma}$: your number minus the mean, and the sign is the side. (3) $P(a < X < b) = \Phi(z_b) - \Phi(z_a)$, with $\Phi(-z) = 1 - \Phi(z)$. The z bounds keep the order of the x bounds.
+
+**Normal in three steps.** Where each number comes from: $X \sim N(\underbrace{30}\_{\mu},\ \underbrace{16}\_{\sigma^2})$, $P(X < \underbrace{26}\_{x})$.
+
+- **Step 1, SD from variance:** $\sigma = \sqrt{\text{var}}$, so $\sigma = \sqrt{16} = 4$. In words, read which one you are given: "standard deviation 4" is already $\sigma$, "variance 16" needs the square root.
+- **Step 2, z with your number first:** $z = \frac{x - \mu}{\sigma} = \frac{26 - 30}{4} = -1$. z says **which floor**, not how far: below the mean is the basement, so negative.
+- **Step 3, $\Phi(z)$ = area LEFT of z** $= P(Z \le z)$. $P(a < Z < b) = \Phi(b) - \Phi(a)$, $\Phi(0) = 0.5$, $\Phi(-z) = 1 - \Phi(z)$.
+
+**Check:** the lower x gives the lower z. If the left number comes out bigger, a sign is flipped.
