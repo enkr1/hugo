@@ -23,29 +23,29 @@ sheetCols: 2
 
 | Symbol | Say | Means |
 |---|---|---|
-| $X \sim \text{Binomial}(n, p)$ | "X follows binomial n, p" | X's distribution; its parameters sit in the brackets |
-| $X$ vs $x$ | "big X", "small x" | $X$ is the random quantity, $x$ one value it can land on: $P(X = 3)$ |
-| $f(x)$ | "f of x" | Discrete: pmf, $P(X = x)$. Continuous: pdf, a height, and only area is probability |
-| $F(x)$ | "big F of x" | CDF, $P(X \le x)$: everything left of $x$ |
-| $E(X)$ | "E of X" | expected value, the long-run mean, $= \mu$ |
-| $V(X)$ | "V of X" | variance, $= \sigma^2$ |
-| $\mu$ | "mew" | the mean |
-| $\sigma$ | "sigma" | standard deviation: one step, always $> 0$. $\sigma = 6$, never $\pm 6$ |
-| $\sigma^2$ | "sigma squared" | variance. $N(50, 16)$ means $\sigma^2 = 16$, so $\sigma = 4$ |
-| $\Sigma$ | "sum" (capital sigma) | add over every value: $\sum x f(x)$. Not the same symbol as $\sigma$ |
-| $\int \ldots dx$ | "integral … d x" | the continuous $\Sigma$: area under $f(x)$ between the limits |
-| $z$, $Z$ | "zed" | $z = \frac{x - \mu}{\sigma}$, steps from the mean. Sign = side: − below, + above. $Z \sim N(0, 1)$ |
-| $\Phi(z)$ | "fie of z" | $P(Z \le z)$, the area left of $z$. $\Phi(-z) = 1 - \Phi(z)$ |
-| $\lambda$ | "lambda" | a rate. Poisson: $E(X) = \lambda$. In $\text{Exponential}\left(\frac{1}{\mu}\right)$: $\lambda = \frac{1}{\mu}$, so the mean is $\mu = \frac{1}{\lambda}$ |
-| $e$, $\exp(t)$ | "e" | 2.71828…, and $\exp(t)$ is $e^t$ |
-| $p$, $q$ | "p", "q" | $p$ = P(success) on one trial, $q = 1 - p$ |
-| $k$ | "k" | Discrete Uniform$(k)$: how many values. Neg. Binomial$(k, p)$: successes waited for |
-| $n!$ | "n factorial" | $n \times (n-1) \times \cdots \times 1$, and $0! = 1$ |
-| $\binom{n}{x}$ | "n choose x" | ways to pick $x$ of $n$, order ignored: $\frac{n!}{x!(n-x)!}$ |
-| $P(A \mid B)$ | "P of A given B" | chance of A once B is known to have happened |
-| $A \cap B$ | "A and B" | both happen |
-| $A \cup B$ | "A or B" | at least one happens |
-| $A'$ | "A prime", "not A" | A does not happen: $P(A') = 1 - P(A)$ |
+| $X \sim \text{Binomial}(n, p)$ | X follows binomial | X's distribution; its parameters sit in the brackets |
+| $X$ vs $x$ | big X, small x | $X$ is the random quantity, $x$ one value it can land on: $P(X = 3)$ |
+| $f(x)$ | f of x | Discrete: pmf, $P(X = x)$. Continuous: pdf, a height, and only area is probability |
+| $F(x)$ | big F of x | CDF, $P(X \le x)$: everything left of $x$ |
+| $E(X)$ | E of X | expected value, the long-run mean, $= \mu$ |
+| $V(X)$ | V of X | variance, $= \sigma^2$ |
+| $\mu$ | mew | the mean |
+| $\sigma$ | sigma | standard deviation: one step, always $> 0$. $\sigma = 6$, never $\pm 6$ |
+| $\sigma^2$ | sigma squared | variance. $N(50, 16)$ means $\sigma^2 = 16$, so $\sigma = 4$ |
+| $\Sigma$ | sum (capital sigma) | add over every value: $\sum x f(x)$. Not the same symbol as $\sigma$ |
+| $\int \ldots dx$ | integral … d x | the continuous $\Sigma$: area under $f(x)$ between the limits |
+| $z$, $Z$ | zed | $z = \frac{x - \mu}{\sigma}$, steps from the mean. Sign = side: − below, + above. $Z \sim N(0, 1)$ |
+| $\Phi(z)$ | fie of z | $P(Z \le z)$, the area left of $z$. $\Phi(-z) = 1 - \Phi(z)$ |
+| $\lambda$ | lambda | a rate. Poisson: $E(X) = \lambda$. In $\text{Exponential}\left(\frac{1}{\mu}\right)$: $\lambda = \frac{1}{\mu}$, so the mean is $\mu = \frac{1}{\lambda}$ |
+| $e$, $\exp(t)$ | e | 2.71828…, and $\exp(t)$ is $e^t$ |
+| $p$, $q$ | p, q | $p$ = P(success) on one trial, $q = 1 - p$ |
+| $k$ | k | Discrete Uniform$(k)$: how many values. Neg. Binomial$(k, p)$: successes waited for |
+| $n!$ | n factorial | $n \times (n-1) \times \cdots \times 1$, and $0! = 1$ |
+| $\binom{n}{x}$ | n choose x | ways to pick $x$ of $n$, order ignored: $\frac{n!}{x!(n-x)!}$ |
+| $P(A \mid B)$ | P of A given B | chance of A once B is known to have happened |
+| $A \cap B$ | A and B | both happen |
+| $A \cup B$ | A or B | at least one happens |
+| $A'$ | A prime, not A | A does not happen: $P(A') = 1 - P(A)$ |
 
 ## 1. Don't mix these up
 
