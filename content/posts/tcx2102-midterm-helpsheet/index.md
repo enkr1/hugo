@@ -60,31 +60,31 @@ sheetCols: 2
 
 ## 2. Counting
 
-- **Product rule:** independent stages multiply: $n_1 \times n_2 \times \cdots \times n_k$.
-- **Permutation** ${}^{n}P_{r} = \frac{n!}{(n-r)!}$: arrangements, order matters.
-- **Combination** $\binom{n}{r} = \frac{n!}{r!(n-r)!}$: selections, order does not.
-- **Lattice paths:** $m$ East and $n$ North steps is a choice of **which of the $m+n$ steps are North**: $\binom{m+n}{n}$. Not the product rule.
-- $0! = 1$, $\binom{n}{0} = \binom{n}{n} = 1$, $\binom{n}{r} = \binom{n}{n-r}$.
+**Product rule** (stages multiply): $n_1 \times n_2 \times \cdots \times n_k$\
+**Permutation** (order matters): ${}^{n}P_{r} = \dfrac{n!}{(n-r)!}$\
+**Combination** (order doesn't): $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$\
+**Lattice paths** ($m$ East, $n$ North): $\dbinom{m+n}{n}$, choose which steps go North\
+**Facts:** $0! = 1$, $\binom{n}{0} = \binom{n}{n} = 1$, $\binom{n}{r} = \binom{n}{n-r}$
 
 ## 3. Probability operators
 
-- **Addition:** $P(A \cup B) = P(A) + P(B) - P(A \cap B)$. The subtraction vanishes only if mutually exclusive.
-- **Conditional:** $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$, needs $P(B) > 0$.
-- **Multiplication:** $P(A \cap B) = P(A)P(B \mid A) = P(B)P(A \mid B)$.
-- **Total probability:** $P(B) = P(A)P(B \mid A) + P(A')P(B \mid A')$. For a partition $A_1, \ldots, A_k$: $P(B) = \sum_i P(A_i)P(B \mid A_i)$.
-- **Bayes:** $P(A_i \mid B) = \dfrac{P(A_i)P(B \mid A_i)}{\sum_j P(A_j)P(B \mid A_j)}$. The denominator is total probability; build the tree, then read it backwards.
-- **Complement:** $P(A') = 1 - P(A)$.
-- **De Morgan:** $(A \cup B)' = A' \cap B'$ and $(A \cap B)' = A' \cup B'$.
+**Addition:** $P(A \cup B) = P(A) + P(B) - P(A \cap B)$\
+**Conditional:** $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$\
+**Multiplication:** $P(A \cap B) = P(A)P(B \mid A) = P(B)P(A \mid B)$\
+**Total probability:** $P(B) = P(A)P(B \mid A) + P(A')P(B \mid A')$\
+**Bayes:** $P(A_i \mid B) = \dfrac{P(A_i)P(B \mid A_i)}{\sum_j P(A_j)P(B \mid A_j)}$, build the tree, read it backwards\
+**Complement:** $P(A') = 1 - P(A)$\
+**De Morgan:** $(A \cup B)' = A' \cap B'$, $(A \cap B)' = A' \cup B'$
 
 ## 4. Discrete random variables
 
-- **PMF** $f(x) = P(X = x)$. Every $f(x) \ge 0$ and $\sum_x f(x) = 1$.
-- **CDF** $F(x) = P(X \le x)$, a **step** function. $P(a < X \le b) = F(b) - F(a)$.
-- Discrete traps: $P(X < x) = F(x) - f(x)$, and $P(X \ge x) = 1 - F(x - 1)$. The endpoint carries mass, so the inequality sign changes the answer.
-- **Expectation** $E[g(X)] = \sum_x g(x) f(x)$, so $E(X) = \sum_x x f(x)$. $E[g(X)]$ is not $g(E(X))$.
-- **Variance** $V(X) = E\left[(X - E(X))^2\right] = E(X^2) - [E(X)]^2$, and $\sigma = \sqrt{V(X)}$.
-- **Linearity:** $E(aX + b) = aE(X) + b$. $V(aX + b) = a^2 V(X)$: the shift $b$ drops out, the scale is squared.
-- Independent $X$, $Y$: $E(XY) = E(X)E(Y)$ and $V(X \pm Y) = V(X) + V(Y)$ (both **plus**).
+**PMF:** $f(x) = P(X = x)$, $f(x) \ge 0$, $\displaystyle\sum_x f(x) = 1$\
+**CDF** (steps): $F(x) = P(X \le x)$, $P(a < X \le b) = F(b) - F(a)$\
+**< vs ≤:** $P(X < x) = F(x) - f(x)$, $P(X \ge x) = 1 - F(x - 1)$\
+**Expectation:** $E[g(X)] = \displaystyle\sum_x g(x)f(x)$, so $E(X) = \displaystyle\sum_x x f(x)$\
+**Variance:** $V(X) = E[(X - \mu)^2] = E(X^2) - [E(X)]^2$, $\sigma = \sqrt{V(X)}$\
+**Linearity:** $E(aX + b) = aE(X) + b$, $V(aX + b) = a^2 V(X)$\
+**Independent $X, Y$:** $E(XY) = E(X)E(Y)$, $V(X \pm Y) = V(X) + V(Y)$ (both +)
 
 ## 5. Discrete distributions
 
@@ -100,20 +100,19 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | **Hypergeometric$(N, K, n)$**<br>$n$ draws, **no replacement** | $\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$ | $n\frac{K}{N}$ | $n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}$ |
 | **Poisson$(\lambda)$**<br>fix an interval, count events | $\frac{e^{-\lambda}\lambda^x}{x!}$ | $\lambda$ | $\lambda$ |
 
-How they connect:
-
-- **Bernoulli → Binomial:** $n$ independent Bernoulli$(p)$ summed. Bernoulli is Binomial with $n = 1$.
-- **Geometric → Negative Binomial:** Geometric is NegBin with $k = 1$. Both count **trials**, not successes, so $X$ starts at $k$, not at 0.
-- **Binomial → Hypergeometric:** same question, replacement removed. Draws stop being independent, hence the factor $\frac{N-n}{N-1}$.
-- **Binomial → Poisson:** $n$ large, $p$ small, $\lambda = np$.
-- **Binomial vs Geometric:** Binomial fixes the trials and counts successes; Geometric fixes one success and counts the trials. Check which number the question gives you.
+**How they connect:**\
+**Bernoulli → Binomial:** $n$ Bernoulli$(p)$ summed; Bernoulli is Binomial with $n = 1$\
+**Geometric → Neg. Binomial:** Geometric is NegBin with $k = 1$; both count **trials**, so $X$ starts at $k$\
+**Binomial → Hypergeometric:** no replacement, so draws depend on each other: factor $\dfrac{N-n}{N-1}$\
+**Binomial → Poisson:** $n$ large, $p$ small, $\lambda = np$\
+**Binomial vs Geometric:** Binomial fixes trials, counts successes; Geometric fixes 1 success, counts trials
 
 ## 6. Continuous random variables
 
-- **Probability = area:** $P(a < X < b) = \int_a^b f(x)\\,dx$, and the total area is 1. A single point has no area, so $<$ and $\le$ give the same answer.
-- **CDF** $F(x) = P(X \le x) = \int_{-\infty}^{x} f(t)\\,dt$. Going back, $f(x) = F'(x)$.
-- **E and V by integration:** $E[g(X)] = \int_{-\infty}^{\infty} g(x) f(x)\\,dx$, so $E(X) = \int x f(x)\\,dx$ and $E(X^2) = \int x^2 f(x)\\,dx$. Then $V(X) = E(X^2) - [E(X)]^2$.
-- **Integrals you need:** $\int k\\,dx = kx$, $\int x\\,dx = \frac{x^2}{2}$, $\int x^2\\,dx = \frac{x^3}{3}$, $\int e^{-\lambda x}\\,dx = -\frac{1}{\lambda}e^{-\lambda x}$. Limits: top minus bottom. $e^{-\infty} = 0$.
+**Probability = area:** $P(a < X < b) = \displaystyle\int_a^b f(x)\\,dx$, total area $= 1$, $P(X = a) = 0$ so $<$ and $\le$ agree\
+**CDF:** $F(x) = \displaystyle\int_{-\infty}^{x} f(t)\\,dt$, and $f(x) = F'(x)$\
+**E and V:** $E[g(X)] = \displaystyle\int g(x)f(x)\\,dx$, $V(X) = E(X^2) - [E(X)]^2$\
+**Integrals:** $\displaystyle\int k\\,dx = kx$, $\displaystyle\int x\\,dx = \dfrac{x^2}{2}$, $\displaystyle\int x^2\\,dx = \dfrac{x^3}{3}$, $\displaystyle\int e^{-\lambda x}dx = -\dfrac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$
 
 | Distribution | $f(x)$ | Tail or CDF | $E(X)$ | $V(X)$ |
 |---|---|---|---|---|
@@ -121,12 +120,12 @@ How they connect:
 | **Exponential$\left(\frac{1}{\mu}\right)$** | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $P(X > x) = e^{-\frac{x}{\mu}}$ | $\mu$ | $\mu^2$ |
 | **Normal$(\mu, \sigma^2)$** | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | by $z$ and $\Phi$ | $\mu$ | $\sigma^2$ |
 
-- **Exponential's rate:** $\lambda = \frac{1}{\mu}$, so $f(x) = \lambda e^{-\lambda x}$, mean $\frac{1}{\lambda}$, variance $\frac{1}{\lambda^2}$. Memoryless: $P(X > s + t \mid X > s) = P(X > t)$. **Units:** put x in the rate's unit first (15 min = $\frac{1}{4}$ h when the rate is per hour).
+**Exponential:** $\lambda = \dfrac{1}{\mu}$, $f(x) = \lambda e^{-\lambda x}$, $E = \dfrac{1}{\lambda}$, $V = \dfrac{1}{\lambda^2}$\
+**Memoryless:** $P(X > s + t \mid X > s) = P(X > t)$\
+**Units:** put $x$ in the rate's unit first (15 min $= \frac{1}{4}$ h when the rate is per hour)
 
-**Normal in three steps.** Where each number comes from: $X \sim N(\underbrace{30}\_{\mu},\ \underbrace{16}\_{\sigma^2})$, $P(X < \underbrace{26}\_{x})$.
-
-- **Step 1, SD from variance:** $\sigma = \sqrt{\text{var}}$, so $\sigma = \sqrt{16} = 4$. In words, read which one you are given: "standard deviation 4" is already $\sigma$, "variance 16" needs the square root.
-- **Step 2, z with your number first:** $z = \frac{x - \mu}{\sigma} = \frac{26 - 30}{4} = -1$. z says **which floor**, not how far: below the mean is the basement, so negative.
-- **Step 3, $\Phi(z)$ = area LEFT of z** $= P(Z \le z)$. $P(a < Z < b) = \Phi(b) - \Phi(a)$, $\Phi(0) = 0.5$, $\Phi(-z) = 1 - \Phi(z)$.
-
-**Check:** the lower x gives the lower z. If the left number comes out bigger, a sign is flipped.
+**Normal in three steps:** $X \sim N(\underbrace{30}\_{\mu},\ \underbrace{16}\_{\sigma^2})$, $P(X < \underbrace{26}\_{x})$\
+**Step 1, SD:** $\sigma = \sqrt{\text{var}} = \sqrt{16} = 4$ (*standard deviation 4* is already $\sigma$, *variance 16* needs the root)\
+**Step 2, z** (your number first): $z = \dfrac{x - \mu}{\sigma} = \dfrac{26 - 30}{4} = -1$, which floor, not how far: below the mean is negative\
+**Step 3, $\Phi$** (area LEFT): $\Phi(z) = P(Z \le z)$, $P(a < Z < b) = \Phi(b) - \Phi(a)$, $\Phi(0) = 0.5$, $\Phi(-z) = 1 - \Phi(z)$\
+**Check:** the lower $x$ gives the lower $z$; if the left number comes out bigger, a sign is flipped
