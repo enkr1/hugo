@@ -17,6 +17,17 @@ sheetCols: 2
 
 **Mon 5 Oct 20:00-21:00 · MPSH1B · closed book · paper and pen · one A4 side + calculator**
 
+## 1. Don't mix these up
+
+| Pair | The discriminator |
+|---|---|
+| **Discrete** vs **continuous** | Discrete: you **count** it (number of students), and it can't be cut into parts, so there's no 2.5 students: use $\sum$. Continuous: you **measure** it (time, height, weight), and it can be cut as fine as you like: use $\int$, and $P(X = a) = 0$. |
+| **Poisson** vs **exponential** | Same shop, two questions. Number of customers in 10 minutes: you **count** it, so Poisson. Time until the next customer: you **measure** it, so exponential. Name X first. |
+| **Independent** vs **mutually exclusive** | Independent: $P(A \cap B) = P(A)P(B)$. Mutually exclusive: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
+| **Complement** over a support | $P(X \ge 1) = 1 - P(X = 0)$. The complement runs over the RV's **whole support**, not over the events named in the question. List the support first, then subtract. |
+| **Joint** vs **conditional** vs **marginal** | Joint $P(A \cap B)$ = both happen. Conditional $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$ = the world has shrunk to B. Marginal $P(A)$ = sum the joint over every value of the other variable. |
+| **Order matters?** | ${}^{n}P_{r} = \frac{n!}{(n-r)!}$ keeps order. $\binom{n}{r} = \frac{n!}{r!(n-r)!}$ does not. $\binom{26}{2} = 325$: divide by $2!$ because AB and BA are the same pair. |
+
 </div>
 
 ## 0. Symbols
@@ -47,17 +58,6 @@ sheetCols: 2
 | $A \cup B$ | A or B | at least one happens |
 | $A'$ | A prime, not A | A does not happen: $P(A') = 1 - P(A)$ |
 
-## 1. Don't mix these up
-
-| Pair | The discriminator |
-|---|---|
-| **Discrete** vs **continuous** | Discrete: you **count** it (number of students), and it can't be cut into parts, so there's no 2.5 students: use $\sum$. Continuous: you **measure** it (time, height, weight), and it can be cut as fine as you like: use $\int$, and $P(X = a) = 0$. |
-| **Poisson** vs **exponential** | Same shop, two questions. Number of customers in 10 minutes: you **count** it, so Poisson. Time until the next customer: you **measure** it, so exponential. Name X first. |
-| **Independent** vs **mutually exclusive** | Independent: $P(A \cap B) = P(A)P(B)$. Mutually exclusive: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
-| **Complement** over a support | $P(X \ge 1) = 1 - P(X = 0)$. The complement runs over the RV's **whole support**, not over the events named in the question. List the support first, then subtract. |
-| **Joint** vs **conditional** vs **marginal** | Joint $P(A \cap B)$ = both happen. Conditional $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$ = the world has shrunk to B. Marginal $P(A)$ = sum the joint over every value of the other variable. |
-| **Order matters?** | ${}^{n}P_{r} = \frac{n!}{(n-r)!}$ keeps order. $\binom{n}{r} = \frac{n!}{r!(n-r)!}$ does not. $\binom{26}{2} = 325$: divide by $2!$ because AB and BA are the same pair. |
-
 ## 2. Counting
 
 **Product rule** (stages multiply): $n_1 \times n_2 \times \cdots \times n_k$\
@@ -75,6 +75,8 @@ sheetCols: 2
 **Total probability:** $P(B) = P(A)P(B \mid A) + P(A')P(B \mid A')$\
 **Bayes:** $P(A_i \mid B) = \dfrac{P(A_i)P(B \mid A_i)}{\sum_j P(A_j)P(B \mid A_j)}$, build the tree, read it backwards\
 **Complement:** $P(A') = 1 - P(A)$\
+**Independent:** $P(A \cap B) = P(A)P(B)$; **mutually exclusive:** $P(A \cap B) = 0$; non-zero events can't be both\
+**Complement over the support:** $P(X \ge 1) = 1 - P(X = 0)$: list the support first\
 **De Morgan:** $(A \cup B)' = A' \cap B'$, $(A \cap B)' = A' \cup B'$\
 **Sets:** disjoint = mutually exclusive; $A \cap B \subset A \subset A \cup B$; $P(A \cap B') = P(A) - P(A \cap B)$\
 **Careful:** $P(A \mid B) \ne P(B \mid A)$, but $P(A' \mid B) = 1 - P(A \mid B)$\
