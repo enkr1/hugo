@@ -117,10 +117,10 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | Distribution | $f(x)$ | Tail or CDF | $E(X)$ | $V(X)$ |
 |---|---|---|---|---|
 | **Continuous Uniform$(a, b)$** | $\begin{cases} \frac{1}{b-a}, & a \le x \le b \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = \frac{x-a}{b-a}$ | $\frac{a+b}{2}$ | $\frac{1}{12}(b-a)^2$ |
-| **Exponential$\left(\frac{1}{\mu}\right)$**<br>rate $\lambda = \frac{1}{\mu}$ | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $P(X > x) = e^{-\frac{x}{\mu}} = e^{-\lambda x}$ | $\mu = \frac{1}{\lambda}$ | $\mu^2 = \frac{1}{\lambda^2}$ |
+| **Exponential$\left(\frac{1}{\mu}\right)$**<br>rate $\lambda = \frac{1}{\mu}$ | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = 1 - e^{-\lambda x}$<br>$P(X > x) = e^{-\lambda x}$ | $\mu = \frac{1}{\lambda}$ | $\mu^2 = \frac{1}{\lambda^2}$ |
 | **Normal$(\mu, \sigma^2)$** | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | by $z$ and $\Phi$ | $\mu$ | $\sigma^2$ |
 
-**Exponential in $\lambda$:** $f(x) = \lambda e^{-\lambda x}$ for $x > 0$\
+**Exponential in $\lambda$:** $f(x) = \lambda e^{-\lambda x}$ for $x > 0$, and $P(a < X < b) = e^{-\lambda a} - e^{-\lambda b}$ (the 1s cancel)\
 **Memoryless:** $P(X > s + t \mid X > s) = P(X > t)$\
 **Units:** put $x$ in the rate's unit first (15 min $= \frac{1}{4}$ h when the rate is per hour)
 
