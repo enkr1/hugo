@@ -61,6 +61,7 @@ sheetCols: 2
 ## 2. Counting
 
 **Product rule** (stages multiply): $n_1 \times n_2 \times \cdots \times n_k$\
+**Addition rule** (either-or): $n_1 + n_2 + \cdots + n_k$; $n$ choices, $r$ times, with replacement: $n^r$\
 **Permutation** (order matters): ${}^{n}P_{r} = \dfrac{n!}{(n-r)!}$\
 **Combination** (order doesn't): $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$\
 **Lattice paths** ($m$ East, $n$ North): $\dbinom{m+n}{n}$, choose which steps go North\
@@ -74,17 +75,22 @@ sheetCols: 2
 **Total probability:** $P(B) = P(A)P(B \mid A) + P(A')P(B \mid A')$\
 **Bayes:** $P(A_i \mid B) = \dfrac{P(A_i)P(B \mid A_i)}{\sum_j P(A_j)P(B \mid A_j)}$, build the tree, read it backwards\
 **Complement:** $P(A') = 1 - P(A)$\
-**De Morgan:** $(A \cup B)' = A' \cap B'$, $(A \cap B)' = A' \cup B'$
+**De Morgan:** $(A \cup B)' = A' \cap B'$, $(A \cap B)' = A' \cup B'$\
+**Sets:** disjoint = mutually exclusive; $A \cap B \subset A \subset A \cup B$; $P(A \cap B') = P(A) - P(A \cap B)$\
+**Careful:** $P(A \mid B) \ne P(B \mid A)$, but $P(A' \mid B) = 1 - P(A \mid B)$\
+**Three events:** $P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)$
 
 ## 4. Discrete random variables
 
 **PMF:** $f(x) = P(X = x)$, $f(x) \ge 0$, $\displaystyle\sum_x f(x) = 1$\
 **CDF** (steps): $F(x) = P(X \le x)$, $P(a < X \le b) = F(b) - F(a)$\
-**< vs ≤:** $P(X < x) = F(x) - f(x)$, $P(X \ge x) = 1 - F(x - 1)$\
+**pmf from CDF:** $f(x) = F(x) - F(x^-)$, the jump at $x$\
+**< vs ≤** (integer $X$): $P(X < x) = F(x - 1)$, $P(X \ge x) = 1 - F(x - 1)$, $P(a \le X \le b) = F(b) - F(a - 1)$, $P(a < X < b) = F(b - 1) - F(a)$\
 **Expectation:** $E[g(X)] = \displaystyle\sum_x g(x)f(x)$, so $E(X) = \displaystyle\sum_x x f(x)$\
 **Variance:** $V(X) = E[(X - \mu)^2] = E(X^2) - [E(X)]^2$, $\sigma = \sqrt{V(X)}$\
-**Linearity:** $E(aX + b) = aE(X) + b$, $V(aX + b) = a^2 V(X)$\
-**Independent $X, Y$:** $E(XY) = E(X)E(Y)$, $V(X \pm Y) = V(X) + V(Y)$ (both +)
+**Linearity:** $E(aX + b) = aE(X) + b$, $V(aX + b) = a^2 V(X)$ (any $X$, continuous too)\
+**Independent $X, Y$:** $E(XY) = E(X)E(Y)$, $V(X \pm Y) = V(X) + V(Y)$ (both +)\
+**Chebyshev** (any $X$, $k > 1$): $P(|X - \mu| < k\sigma) \ge 1 - \frac{1}{k^2}$, so $P(|X - \mu| \ge k\sigma) \le \frac{1}{k^2}$; $k$ SDs from the mean $= \mu \pm k\sigma$
 
 ## 5. Discrete distributions
 
@@ -97,14 +103,16 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | **Binomial$(n, p)$**<br>fix **$n$ trials**, count successes | $\binom{n}{x} p^x q^{n-x}$ | $np$ | $npq$ |
 | **Geometric$(p)$**<br>fix **1 success**, count trials | $q^{x-1} p$ | $\frac{1}{p}$ | $\frac{q}{p^2}$ |
 | **Neg. Binomial$(k, p)$**<br>fix $k$ successes, count trials | $\binom{x-1}{k-1} p^k q^{x-k}$ | $k\left(\frac{1}{p}\right)$ | $k\left(\frac{q}{p^2}\right)$ |
-| **Hypergeometric$(N, K, n)$**<br>$n$ draws, **no replacement** | $\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$ | $n\frac{K}{N}$ | $n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}$ |
+| **Hypergeometric$(N, K, n)$**, deck $(S, F, n)$<br>$n$ draws, **no replacement** | $\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$ | $n\frac{K}{N}$ | $n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}$ |
 | **Poisson$(\lambda)$**<br>fix an interval, count events | $\frac{e^{-\lambda}\lambda^x}{x!}$ | $\lambda$ | $\lambda$ |
 
 **How they connect:**\
 **Bernoulli → Binomial:** $n$ Bernoulli$(p)$ summed; Bernoulli is Binomial with $n = 1$\
 **Geometric → Neg. Binomial:** Geometric is NegBin with $k = 1$; both count **trials**, so $X$ starts at $k$\
 **Binomial → Hypergeometric:** no replacement, so draws depend on each other: factor $\dfrac{N-n}{N-1}$\
-**Binomial → Poisson:** $n$ large, $p$ small, $\lambda = np$\
+**Binomial → Poisson:** $n \ge 20$, $p \le 0.05$: $\lambda = np$\
+**Poisson rate scales:** an interval $t$ times longer has $\lambda \to t\lambda$\
+**Geometric tail:** $P(X > x) = q^x$, $F(x) = 1 - q^x$\
 **Binomial vs Geometric:** Binomial fixes trials, counts successes; Geometric fixes 1 success, counts trials
 
 ## 6. Continuous random variables
@@ -114,7 +122,7 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | Area | $P(a < X < b) = \int_a^b f(x)\\,dx$; total area $= 1$; $P(X = a) = 0$, so $<$ and $\le$ agree |
 | CDF | $F(x) = \int_{-\infty}^{x} f(t)\\,dt$; $f(x) = F'(x)$ |
 | E, V | $E[g(X)] = \int g(x)f(x)\\,dx$; $V(X) = E(X^2) - [E(X)]^2$ |
-| Integrals | $\int k\\,dx = kx$, $\int x\\,dx = \frac{x^2}{2}$, $\int x^2\\,dx = \frac{x^3}{3}$, $\int e^{-\lambda x}dx = -\frac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$ |
+| Integrals | $\int k\\,dx = kx$, $\int x^n\\,dx = \frac{x^{n+1}}{n+1}$ ($n \ne -1$), $\int e^{-\lambda x}dx = -\frac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$ |
 
 | | **Uniform** $U(a, b)$ |
 |---|---|
@@ -144,3 +152,5 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | Step 3, $\Phi$ | $\Phi(z) = P(Z \le z)$, the area LEFT of $z$; $\Phi(0) = 0.5$; $\Phi(-z) = 1 - \Phi(z)$ |
 | Check | the lower $x$ gives the lower $z$; left number bigger means a sign is flipped |
 | Empirical | $P(-1 < Z < 1) = 0.6827$, $P(-2 < Z < 2) = 0.9545$, $P(-3 < Z < 3) = 0.9973$ |
+| Inverse | $x = \mu + z\sigma$; $P(Z > z_{\alpha}) = \alpha$, so the top-$\alpha$ cut-off is $\mu + z_{\alpha}\sigma$; $P(-a < Z < a) = 2\Phi(a) - 1$ |
+| Approx. Binomial | $npq \ge 5$: $X \approx N(np, npq)$; $P(X = k) \approx P(k - \frac12 < Y < k + \frac12)$, $P(X \le c) \approx P(Y < c + \frac12)$, $P(X \ge c) \approx P(Y > c - \frac12)$ |
