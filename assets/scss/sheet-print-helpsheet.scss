@@ -104,6 +104,8 @@
   }
   pre code, .highlight code { font-size: 1em !important; line-height: 1.05 !important; }
   code { font-size: var(--fs-code) !important; }
+  /* One-formula-per-line blocks are single paragraphs with hard breaks; splitting one across columns strands half a section. */
+  p { break-inside: avoid !important; }
   /* The theme's .table-wrapper scrolls (overflow-x: auto, which forces overflow-y to auto too), so a KaTeX overshoot of one pixel prints a scrollbar. */
   .table-wrapper { overflow: visible !important; }
   /* Tables — size to content, don't stretch to fill the column.
