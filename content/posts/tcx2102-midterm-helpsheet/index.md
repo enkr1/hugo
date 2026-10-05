@@ -114,12 +114,13 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 **E and V:** $E[g(X)] = \displaystyle\int g(x)f(x)\\,dx$, $V(X) = E(X^2) - [E(X)]^2$\
 **Integrals:** $\displaystyle\int k\\,dx = kx$, $\displaystyle\int x\\,dx = \dfrac{x^2}{2}$, $\displaystyle\int x^2\\,dx = \dfrac{x^3}{3}$, $\displaystyle\int e^{-\lambda x}dx = -\dfrac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$
 
-| Distribution | $f(x)$ | Tail or CDF | $E(X)$ | $V(X)$ |
+| Distribution | $f(x)$ | CDF and tail | $E(X)$ | $V(X)$ |
 |---|---|---|---|---|
-| **Continuous Uniform$(a, b)$** | $\begin{cases} \frac{1}{b-a}, & a \le x \le b \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = \frac{x-a}{b-a}$ | $\frac{a+b}{2}$ | $\frac{1}{12}(b-a)^2$ |
-| **Exponential$\left(\frac{1}{\mu}\right)$**<br>rate $\lambda = \frac{1}{\mu}$ | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = 1 - e^{-\lambda x}$<br>$P(X > x) = e^{-\lambda x}$ | $\mu = \frac{1}{\lambda}$ | $\mu^2 = \frac{1}{\lambda^2}$ |
-| **Normal$(\mu, \sigma^2)$** | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | by $z$ and $\Phi$ | $\mu$ | $\sigma^2$ |
+| **Continuous Uniform** $U(a, b)$ | $\begin{cases} \frac{1}{b-a}, & a \le x \le b \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = \frac{x-a}{b-a}$<br>$P(X > x) = \frac{b-x}{b-a}$ | $\frac{a+b}{2}$ | $\frac{1}{12}(b-a)^2$ |
+| **Exponential$\left(\frac{1}{\mu}\right)$**, $\text{Exp}(\lambda)$<br>rate $\lambda = \frac{1}{\mu}$ | $\begin{cases} \frac{1}{\mu}e^{-\frac{x}{\mu}}, & x > 0 \\\\ 0, & \text{otherwise} \end{cases}$ | $F(x) = 1 - e^{-\lambda x}$<br>$P(X > x) = e^{-\lambda x}$ | $\mu = \frac{1}{\lambda}$ | $\mu^2 = \frac{1}{\lambda^2}$ |
+| **Normal** $N(\mu, \sigma^2)$ | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ | $F(x) = \Phi(z)$<br>$P(X > x) = 1 - \Phi(z)$ | $\mu$ | $\sigma^2$ |
 
+**Uniform:** $P(c < X < d) = \dfrac{d-c}{b-a}$, width wanted ÷ total width\
 **Exponential in $\lambda$:** $f(x) = \lambda e^{-\lambda x}$ for $x > 0$, and $P(a < X < b) = e^{-\lambda a} - e^{-\lambda b}$ (the 1s cancel)\
 **Memoryless:** $P(X > s + t \mid X > s) = P(X > t)$\
 **Units:** put $x$ in the rate's unit first (15 min $= \frac{1}{4}$ h when the rate is per hour)
@@ -128,4 +129,5 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 **Step 1, SD:** $\sigma = \sqrt{\text{var}} = \sqrt{16} = 4$ (*standard deviation 4* is already $\sigma$, *variance 16* needs the root)\
 **Step 2, z** (your number first): $z = \dfrac{x - \mu}{\sigma} = \dfrac{26 - 30}{4} = -1$, which floor, not how far: below the mean is negative\
 **Step 3, $\Phi$** (area LEFT): $\Phi(z) = P(Z \le z)$, $P(a < Z < b) = \Phi(b) - \Phi(a)$, $\Phi(0) = 0.5$, $\Phi(-z) = 1 - \Phi(z)$\
-**Check:** the lower $x$ gives the lower $z$; if the left number comes out bigger, a sign is flipped
+**Check:** the lower $x$ gives the lower $z$; if the left number comes out bigger, a sign is flipped\
+**Empirical rule:** $P(-1 < Z < 1) = 0.6827$, $P(-2 < Z < 2) = 0.9545$, $P(-3 < Z < 3) = 0.9973$ (about 68/95/99.7%)
