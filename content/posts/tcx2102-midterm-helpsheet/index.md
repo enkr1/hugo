@@ -135,10 +135,12 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 
 | | **Normal** $N(\mu, \sigma^2)$ |
 |---|---|
-| $f(x)$, E, V | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$; $E = \mu$, $V = \sigma^2$ |
+| $f(x)$ | $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ |
+| CDF, tail | $F(x) = \Phi\left(\frac{x-\mu}{\sigma}\right)$, $P(X > x) = 1 - \Phi\left(\frac{x-\mu}{\sigma}\right)$ |
+| Range | $P(a < X < b) = \Phi\left(\frac{b-\mu}{\sigma}\right) - \Phi\left(\frac{a-\mu}{\sigma}\right)$ |
+| E, V | $\mu$, $\sigma^2$ |
 | Step 1, SD | $\sigma = \sqrt{\text{var}}$: $N(30, 16)$ gives $\sigma = 4$ (*standard deviation 4* is already $\sigma$) |
 | Step 2, z | $z = \dfrac{x - \mu}{\sigma}$, your number first: $\frac{26 - 30}{4} = -1$, below the mean is negative |
-| Step 3, $\Phi$ | $\Phi(z) = P(Z \le z)$, area LEFT; $P(a < Z < b) = \Phi(b) - \Phi(a)$; $\Phi(0) = 0.5$; $\Phi(-z) = 1 - \Phi(z)$ |
-| CDF, tail | $F(x) = \Phi(z)$, $P(X > x) = 1 - \Phi(z)$ |
+| Step 3, $\Phi$ | $\Phi(z) = P(Z \le z)$, the area LEFT of $z$; $\Phi(0) = 0.5$; $\Phi(-z) = 1 - \Phi(z)$ |
 | Check | the lower $x$ gives the lower $z$; left number bigger means a sign is flipped |
 | Empirical | $P(-1 < Z < 1) = 0.6827$, $P(-2 < Z < 2) = 0.9545$, $P(-3 < Z < 3) = 0.9973$ |
