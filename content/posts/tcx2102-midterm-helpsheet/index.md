@@ -17,7 +17,7 @@ sheetCols: 2
 
 **Mon 5 Oct 20:00-21:00 · MPSH1B · closed book · paper and pen · one A4 side + calculator**
 
-## 1. Don't mix these up
+## Don't mix these up
 
 | Pair | The discriminator |
 |---|---|
@@ -30,7 +30,7 @@ sheetCols: 2
 
 </div>
 
-## 0. Symbols
+## 1. Symbols
 
 | Symbol | Say | Means |
 |---|---|---|
