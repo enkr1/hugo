@@ -32,7 +32,7 @@
   body, .main-article {
     /* Single knobs: prose size + one shared code size (mono has a taller
        x-height, so equal pt reads bigger — drop the 0.95 if it still looms). */
-    --fs-prose: 6pt;
+    --fs-prose: var(--sheet-fs, 6pt);
     --fs-code: calc(var(--fs-prose) * 0.95);
     font-size: 7pt !important;
     line-height: 1.05 !important;
@@ -112,7 +112,7 @@
      width:100% + auto layout hands surplus width to the column with the
      widest unwrappable content (inline code), inflating the first col. */
   table {
-    font-size: 6.6pt !important;
+    font-size: var(--sheet-fs, 6.6pt) !important;
     margin: 0 0 0.2rem 0 !important;
     border-collapse: collapse !important;
     width: auto !important;
@@ -141,6 +141,7 @@
     code { white-space: nowrap !important; overflow-wrap: normal !important; }
   }
   th { background: #f4f4f4 !important; }
+  .katex { font-size: var(--sheet-math, 1.21em) !important; }
   p {
     font-size: var(--fs-prose) !important;
     line-height: 1.05 !important;
