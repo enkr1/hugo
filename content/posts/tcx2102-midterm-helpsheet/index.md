@@ -11,6 +11,8 @@ math: true
 draft: true
 sheet: helpsheet
 sheetCols: 2
+sheetFont: "6.2pt"
+sheetMath: "1.35em"
 ---
 
 <div class="print-hide">
@@ -23,7 +25,7 @@ sheetCols: 2
 |---|---|
 | **Discrete** vs **continuous** | Discrete: you **count** it (number of students), and it can't be cut into parts, so there's no 2.5 students: use $\sum$. Continuous: you **measure** it (time, height, weight), and it can be cut as fine as you like: use $\int$, and $P(X = a) = 0$. |
 | **Poisson** vs **exponential** | Same shop, two questions. Number of customers in 10 minutes: you **count** it, so Poisson. Time until the next customer: you **measure** it, so exponential. Name X first. |
-| **Independent** vs **mutually exclusive** | Independent: $P(A \cap B) = P(A)P(B)$. Mutually exclusive: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
+| **Independent** vs **ME** | Independent: $P(A \cap B) = P(A)P(B)$. ME: $P(A \cap B) = 0$. Two events with non-zero probability **cannot be both**: exclusivity forces $P(A \mid B) = 0 \ne P(A)$. |
 | **Complement** over a support | $P(X \ge 1) = 1 - P(X = 0)$. The complement runs over the RV's **whole support**, not over the events named in the question. List the support first, then subtract. |
 | **Joint** vs **conditional** vs **marginal** | Joint $P(A \cap B)$ = both happen. Conditional $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$ = the world has shrunk to B. Marginal $P(A)$ = sum the joint over every value of the other variable. |
 | **Order matters?** | ${}^{n}P_{r} = \frac{n!}{(n-r)!}$ keeps order. $\binom{n}{r} = \frac{n!}{r!(n-r)!}$ does not. $\binom{26}{2} = 325$: divide by $2!$ because AB and BA are the same pair. |
@@ -34,36 +36,26 @@ sheetCols: 2
 
 | Symbol | Say | Means |
 |---|---|---|
+| $\mu$, $E(X)$ | mew, E of X | the mean: the long-run average (expected value) |
+| $\sigma$ | sigma | sd: one step, always $> 0$. $\sigma = 6$, never $\pm 6$ |
+| $\sigma^2$, $V(X)$ | sigma squared, V of X | variance; its square root is $\sigma$ |
+| $p$, $q$ | p, q | $p$ = P(success) on one trial, $q = 1 - p$ |
+| $k$ | k | Discrete Uniform$(k)$: how many values. Neg. Binomial$(k, p)$: successes waited for |
+| $e$, $\exp(t)$ | e | 2.71828…, and $\exp(t)$ is $e^t$ |
 | $X \sim \text{Binomial}(n, p)$ | X follows binomial | X's distribution; its parameters sit in the brackets |
 | $X$ vs $x$ | big X, small x | $X$ is the random quantity, $x$ one value it can land on: $P(X = 3)$ |
 | $f(x)$ | f of x | Discrete: pmf, $P(X = x)$. Continuous: pdf, a height, and only area is probability |
 | $F(x)$ | big F of x | CDF, $P(X \le x)$: everything left of $x$ |
-| $E(X)$ | E of X | expected value, the long-run mean, $= \mu$ |
-| $V(X)$ | V of X | variance, $= \sigma^2$ |
-| $\mu$ | mew | the mean |
-| $\sigma$ | sigma | standard deviation: one step, always $> 0$. $\sigma = 6$, never $\pm 6$ |
-| $\sigma^2$ | sigma squared | variance. $N(50, 16)$ means $\sigma^2 = 16$, so $\sigma = 4$ |
-| $\Sigma$ | sum (capital sigma) | add over every value: $\sum x f(x)$. Not the same symbol as $\sigma$ |
-| $\int \ldots dx$ | integral … d x | the continuous $\Sigma$: area under $f(x)$ between the limits |
-| $z$, $Z$ | zed | $z = \frac{x - \mu}{\sigma}$, steps from the mean. Sign = side: − below, + above. $Z \sim N(0, 1)$ |
-| $\Phi(z)$ | fie of z | $P(Z \le z)$, the area left of $z$. $\Phi(-z) = 1 - \Phi(z)$ |
-| $\lambda$ | lambda | a rate. Poisson: $E(X) = \lambda$. In $\text{Exponential}\left(\frac{1}{\mu}\right)$: $\lambda = \frac{1}{\mu}$, so the mean is $\mu = \frac{1}{\lambda}$ |
-| $e$, $\exp(t)$ | e | 2.71828…, and $\exp(t)$ is $e^t$ |
-| $p$, $q$ | p, q | $p$ = P(success) on one trial, $q = 1 - p$ |
-| $k$ | k | Discrete Uniform$(k)$: how many values. Neg. Binomial$(k, p)$: successes waited for |
-| $n!$ | n factorial | $n \times (n-1) \times \cdots \times 1$, and $0! = 1$ |
-| $\binom{n}{x}$ | n choose x | ways to pick $x$ of $n$, order ignored: $\frac{n!}{x!(n-x)!}$ |
 | $P(A \mid B)$ | P of A given B | chance of A once B is known to have happened |
-| $A \cap B$ | A and B | both happen |
-| $A \cup B$ | A or B | at least one happens |
-| $A'$ | A prime, not A | A does not happen: $P(A') = 1 - P(A)$ |
+
+
 
 ## 2. Counting
 
 **Product rule** (stages multiply): $n_1 \times n_2 \times \cdots \times n_k$\
 **Addition rule** (either-or): $n_1 + n_2 + \cdots + n_k$; $n$ choices, $r$ times, with replacement: $n^r$\
-**Permutation** (order matters): ${}^{n}P_{r} = \dfrac{n!}{(n-r)!}$\
-**Combination** (order doesn't): $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$\
+**Permutation** (care about order): ${}^{n}P_{r} = \dfrac{n!}{(n-r)!}$\
+**Combination**, *n choose r* (don't care about order): $\dbinom{n}{r} = \dfrac{n!}{r!(n-r)!}$\
 **Lattice paths** ($m$ East, $n$ North): $\dbinom{m+n}{n}$, choose which steps go North\
 **Facts:** $0! = 1$, $\binom{n}{0} = \binom{n}{n} = 1$, $\binom{n}{r} = \binom{n}{n-r}$
 
@@ -82,7 +74,7 @@ sheetCols: 2
 **Careful:** $P(A \mid B) \ne P(B \mid A)$, but $P(A' \mid B) = 1 - P(A \mid B)$\
 **Three events:** $P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)$
 
-## 4. Discrete random variables
+## 4. Random variables
 
 **PMF:** $f(x) = P(X = x)$, $f(x) \ge 0$, $\displaystyle\sum_x f(x) = 1$\
 **CDF** (steps): $F(x) = P(X \le x)$, $P(a < X \le b) = F(b) - F(a)$\
@@ -93,6 +85,14 @@ sheetCols: 2
 **Linearity:** $E(aX + b) = aE(X) + b$, $V(aX + b) = a^2 V(X)$ (any $X$, continuous too)\
 **Independent $X, Y$:** $E(XY) = E(X)E(Y)$, $V(X \pm Y) = V(X) + V(Y)$ (both +)\
 **Chebyshev** (any $X$, $k > 1$): $P(|X - \mu| < k\sigma) \ge 1 - \frac{1}{k^2}$, so $P(|X - \mu| \ge k\sigma) \le \frac{1}{k^2}$; $k$ SDs from the mean $= \mu \pm k\sigma$
+
+| | **Any continuous** $X$ |
+|---|---|
+| Area | $P(a < X < b) = \int_a^b f(x)\\,dx$; total area $= 1$; $P(X = a) = 0$, so $<$ and $\le$ agree |
+| CDF | $F(x) = \int_{-\infty}^{x} f(t)\\,dt$; $f(x) = F'(x)$ |
+| E, V | $E[g(X)] = \int g(x)f(x)\\,dx$; $V(X) = E(X^2) - [E(X)]^2$ |
+| Integrals | $\int k\\,dx = kx$, $\int x^n\\,dx = \frac{x^{n+1}}{n+1}$ ($n \ne -1$), $\int e^{-\lambda x}dx = -\frac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$ |
+| Derivatives | $(x^n)' = nx^{n-1}$, $(e^{kx})' = ke^{kx}$, $(c)' = 0$; e.g. $F(x) = 1 - e^{-\lambda x}$ gives $f(x) = F'(x) = \lambda e^{-\lambda x}$ |
 
 ## 5. Discrete distributions
 
@@ -110,21 +110,13 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 
 **How they connect:**\
 **Bernoulli → Binomial:** $n$ Bernoulli$(p)$ summed; Bernoulli is Binomial with $n = 1$\
-**Geometric → Neg. Binomial:** Geometric is NegBin with $k = 1$; both count **trials**, so $X$ starts at $k$\
+**Geometric → Neg. Binomial:** G. is NegBin with $k = 1$; both count **trials**, so $X$ starts at $k$\
 **Binomial → Hypergeometric:** no replacement, so draws depend on each other: factor $\dfrac{N-n}{N-1}$\
 **Binomial → Poisson:** $n \ge 20$, $p \le 0.05$: $\lambda = np$\
 **Poisson rate scales:** an interval $t$ times longer has $\lambda \to t\lambda$\
-**Geometric tail:** $P(X > x) = q^x$, $F(x) = 1 - q^x$\
-**Binomial vs Geometric:** Binomial fixes trials, counts successes; Geometric fixes 1 success, counts trials
+**Geometric tail:** $P(X > x) = q^x$, $F(x) = 1 - q^x$
 
-## 6. Continuous random variables
-
-| | **Any continuous** $X$ |
-|---|---|
-| Area | $P(a < X < b) = \int_a^b f(x)\\,dx$; total area $= 1$; $P(X = a) = 0$, so $<$ and $\le$ agree |
-| CDF | $F(x) = \int_{-\infty}^{x} f(t)\\,dt$; $f(x) = F'(x)$ |
-| E, V | $E[g(X)] = \int g(x)f(x)\\,dx$; $V(X) = E(X^2) - [E(X)]^2$ |
-| Integrals | $\int k\\,dx = kx$, $\int x^n\\,dx = \frac{x^{n+1}}{n+1}$ ($n \ne -1$), $\int e^{-\lambda x}dx = -\frac{1}{\lambda}e^{-\lambda x}$; top minus bottom; $e^{-\infty} = 0$ |
+## 6. Continuous distributions
 
 | | **Uniform** $U(a, b)$ |
 |---|---|
@@ -151,7 +143,7 @@ Identify by **what is fixed vs what is counted**, and **with or without replacem
 | E, V | $\mu$, $\sigma^2$ |
 | Step 1, SD | $\sigma = \sqrt{\text{var}}$: $N(30, 16)$ gives $\sigma = 4$ (*standard deviation 4* is already $\sigma$) |
 | Step 2, z | $z = \dfrac{x - \mu}{\sigma}$, your number first: $\frac{26 - 30}{4} = -1$, below the mean is negative |
-| Step 3, $\Phi$ | $\Phi(z) = P(Z \le z)$, the area LEFT of $z$; $\Phi(0) = 0.5$; $\Phi(-z) = 1 - \Phi(z)$ |
+| Step 3, $\Phi$ | $\Phi(z) = P(Z \le z)$, the area LEFT of $z$; $\Phi(0) = 0.5$; $\Phi(-z) = 1 - \Phi(z)$; given $Z \sim N(0, 1)$, start here |
 | Check | the lower $x$ gives the lower $z$; left number bigger means a sign is flipped |
 | Empirical | $P(-1 < Z < 1) = 0.6827$, $P(-2 < Z < 2) = 0.9545$, $P(-3 < Z < 3) = 0.9973$ |
 | Inverse | $x = \mu + z\sigma$; $P(Z > z_{\alpha}) = \alpha$, so the top-$\alpha$ cut-off is $\mu + z_{\alpha}\sigma$; $P(-a < Z < a) = 2\Phi(a) - 1$ |
