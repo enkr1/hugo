@@ -19,6 +19,8 @@ keywords:
 
 Welcome to my JavaScript notebook! Here, I've compiled a variety of tips, tricks, and simple snippets that I've gathered over time. These notes come from various sources, including my professional work, problem-solving on LeetCode, and personal projects. My aim is to document these insights for my own reference and to share them with anyone who might find them useful or interesting. Whether you're a fellow developer or just curious about JavaScript, I hope you'll find something valuable in these pages.
 
+For why a promise callback always beats `setTimeout(0)` and the async traps that bite in real code, see [microtasks jump the queue]({{< ref "microtasks-jump-the-queue" >}}).
+
 
 
 ## Array
