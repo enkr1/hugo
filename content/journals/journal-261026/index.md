@@ -38,6 +38,8 @@ but the same experiment had a catch: the people who asked the ai to explain thin
 
 and that's how i learn now. i let my llm help me understand the deeper concepts and iterate until i know. it feels like a completely diff way of learning.
 
+am i just feeding the llm, or are we feeding each other?
+
 ## 📋 Recap
 
 ### 📚 NUS
