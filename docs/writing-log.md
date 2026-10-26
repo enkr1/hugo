@@ -17,12 +17,12 @@ Seeded 2026-07-20 from a frequency pass over ~10 weeks of Highlights (2,480 word
 |----|---------|---------------------|------|-----------|
 | P1 | Intensifier does the verb's job (`just` / `so` + generic adjective) | `just` 29x, `so` 28x, ~1 every 43 words | 1 | 2026-07-20 |
 | P2 | One overworked verb covering many meanings (`got` = acquired/attracted/received/possessed/scored/was able to) | `got` 13x, 8 distinct senses | 1 | 2026-07-20 |
-| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly", "there's no one and nothing can disturb you" | 5 | 2026-09-14 |
+| P3 | Calque **misfire** (vs. calque that makes an image, which stays) | "seeing how kimi k3 performance is like", "a direction slowly", "there's no one and nothing can disturb you" | 6 | 2026-10-26 |
 | P4 | `make`/`let` + bare infinitive | "made me thinking" | 2 | 2026-08-30 |
-| P5 | Verb frame: wrong preposition, missing preposition, missing object + dropped article | "paying to company", "immerse at work", "reaching out friends", "it will reach there" | 5 | 2026-09-14 |
+| P5 | Verb frame: wrong preposition, missing preposition, missing object + dropped article | "paying to company", "immerse at work", "reaching out friends", "it will reach there" | 6 | 2026-10-26 |
 | P6 | Relative pronoun dropped while it is the subject of its clause | "someone understands u the most" | 4 | 2026-08-24 |
 | P7 | Comma splice where a logical connector is needed | taught 2026-04-27, still recurring | 1 | 2026-07-20 |
-| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition", "one of the week", "my personal assistance" | 8 | 2026-09-21 |
+| P8 | Countable/uncountable agreement | "give token", "took all credits", "one of the biggest asia beatbox competition", "one of the week", "my personal assistance" | 9 | 2026-10-26 |
 | P9 | Tense drift inside one paragraph | "they are doing" → "how they did it" → "eventually took", "it crosses my line" | 5 | 2026-09-21 |
 | P10 | Announcing the metaphor instead of starting it (calque of 「你可以理解成 / 就好比」) | "u could understand it like u're paying to eat in a restaurant..." | 1 | 2026-07-20 |
 | P11 | Reflexive `myself` where plain `me` belongs (thing acts on me, not me on myself) | "got myself curious" (W77), "got myself wondering" (W78) | 2 | 2026-08-04 |
@@ -327,3 +327,26 @@ Two craft observations on the added close, offered in chat and not applied. The 
 **Not logged, voice.** `ngl`, `my shit`, lowercase throughout, the `->` arrows in "everything -> gc -> all in there" (an image, keeps under the calque test), the doubled feeling, and "it's never been too late" with its perfect tense intact. `i beleive` corrected silently as a typo, not logged.
 
 **Craft check.** The close still defers. "i'll share more about how i improve my workflow with llm as i go" postpones the decision, and it is the third paragraph of ending where one would land harder. Two weeks running the close committed to terms (W83's "0 flaws", W84's "100 dau"), so this is a break in the strongest habit the log has recorded, and it broke on the week with the most to decide. The observation was offered and three close shapes were given; he took none and pushed. Left alone, which is correct, it is his ending. The entry earns "i learnt" this week in a way the short version did not, because the expansion gave it a turn: setup, break, wrong diagnosis, real diagnosis.
+
+## 2026-10-26: Week 87
+
+**Caveat on this week's sample, second week running.** He asked for the Highlights to be optimised, so the published version is split, grammar-fixed and carries two research paragraphs that are mine. Everything below comes from his raw one-paragraph dump. Two weeks in a row of the published text being partly mine is the trend the W85 caveat warned about.
+
+**1. P8: countable/uncountable (hit 9, fourth logged week running)**
+- Wrote: "what is our values?"
+- Fix: "what is our **value**?"
+- Rule: English splits one word in two where Chinese uses two words. `value` (uncountable here) is 价值, what something is worth; `values` (countable) is 价值观, the principles you live by. The question was about worth once AI does the executing, so it wants the singular. Same test as W85: can you count it? Three values (principles), yes; three worths, no.
+
+**2. P5: verb frame, wrong preposition (hit 6)**
+- Wrote: "losing touch **of** real human interactions", "curious **into** this topic"
+- Fix: "losing touch **with**", "curious **about**"
+- Rule: the preposition belongs to the word, not to the meaning, so it is learned per word. `touch` takes `with` (in touch with, lose touch with); `curious` takes `about`. 对……好奇 and 和……失去联系 give no signal, which is why this keeps recurring. "curious into" is still in the entry, in his close, waiting on his go.
+
+**3. P3: calque misfire, headless topic-comment (hit 6)**
+- Wrote: "these experience aint llm can provide"
+- Fix options: "these experiences aint something an llm can provide" / "an llm can't give you these experiences" / "no llm can give you that"
+- Rule: 这些经验，llm 给不了 fronts the object as the topic and leaves the verb's object slot empty. English cannot leave it empty after `aint`: it needs a noun for the clause to hang on (`something`, `what`), or the object moved back behind the verb. Calque test: no image here, just a missing slot, so it gets fixed.
+
+**Not logged, voice.** lowercase, `shit`, `diff`, `aint`, the ellipsis chains, "i know it so deeply". Silent typo fixes: stagnent, becmoes. Also fixed in the published entry but not logged (max 3): subject-verb agreement in "the one who control", and the dropped possessive in "everyone experience level".
+
+**Craft check.** His own last line, "it got me curious into this topic ...", defers rather than decides, the same break as W85. The published close is a TODO(human) gap he has not filled yet. The argument also contradicts itself in a useful way: he fears stagnation, yet describes asking the llm to explain until he knows, which is the usage pattern the research found protective. Offered as the turn; his call.
