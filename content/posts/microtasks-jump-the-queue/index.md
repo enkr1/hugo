@@ -12,8 +12,11 @@ tags:
   - async-await
   - microtasks
   - nodejs
+  - nus
+  - tcx2004
 categories:
   - ["Software Engineering", "Programming Languages", "JavaScript"]
+  - ["Education", "NUS BIT", "TCX2004"]
 keywords:
   - javascript event loop
   - microtask vs macrotask
@@ -274,7 +277,7 @@ the rejection happens in a later microtask, long after the `try` block has exite
 - in node, `nextTick` beats promises in CommonJS but not in ES modules, and `setImmediate` versus `setTimeout(0)` is a coin toss from the main module.
 - in real code: do not `await` in a loop over independent work, do not hand async callbacks to `forEach`, and do not expect a `try` to catch what it did not `await`.
 
-i used `Promise.all` to wait on every image and API call before finishing the bar in [building a loading progress bar that tracks every resource]({{< ref "web-loading-progress-bar" >}}), which is a concrete case of "start everything, await the batch". the rest of my javascript scraps live in the [javascript notebook]({{< ref "pl-javascript" >}}).
+i used `Promise.all` to wait on every image and API call before finishing the bar in [building a loading progress bar that tracks every resource]({{< ref "web-loading-progress-bar" >}}), which is a concrete case of "start everything, await the batch". the rest of my javascript scraps live in the [javascript notebook]({{< ref "pl-javascript" >}}). for NUS, this is the async part of L09 (frontend JavaScript) in TCX2004, the software engineering module.
 
 ## a personal note
 
