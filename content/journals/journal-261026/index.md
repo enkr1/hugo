@@ -46,8 +46,8 @@ am i just feeding the llm, or are we feeding each other?
 
 - Containerised the individual project and deployed it on Postgres over HTTPS, then wired login, sign-up and the expense list to the API and finished on full client-side rendering with no page reloads
 - Built a tutorial app up through hashed passwords, JWT login, a Postgres container and a self-signed HTTPS certificate, with a pre-deadline review catching a question folder a move had deleted
-- Lost most of a practical's lab marks to one import that only my own environment could satisfy, so every practical now opens in a clean environment built from its requirements file
-- Got the stats midterm and a practical back and filed a per-question review of each, which showed the lost marks were knowledge gaps rather than the careless slips my notes had assumed, and left the answer key out so the redo comes cold first
+- Started every practical in a clean environment built from its requirements file, so a missing package fails on import instead of at grading
+- Reviewed the stats midterm question by question, keeping the answer key out so the redo of anything I missed comes cold first
 
 ### ✍️ Blog
 
