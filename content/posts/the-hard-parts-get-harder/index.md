@@ -131,7 +131,7 @@ what survives the scrutiny is a conditional claim. the risk is concentrated wher
 
 two notes of mine sit on the delegation side of this, so they are worth a look rather than a conclusion. [if you can't write it clearly you don't understand it]({{< ref "posts/book-how-to-take-smart-notes" >}}) is ahrens's argument for why writing your own notes is the learning, and [the capture-knowledge skill]({{< ref "posts/second-brain-claude-code" >}}) is a setup that drafts notes for me. they are two ends of the same dial.
 
-three follow-up notes are coming, each taking one strand of this further: desirable difficulties (why the struggle might be doing the teaching), tacit knowledge (what you know that you cannot write down), and the illusion of explanatory depth (why feeling that you understand is a poor instrument).
+three follow-up notes are coming, each taking one strand of this further: desirable difficulties (why the struggle might be doing the teaching), tacit knowledge (what you know that you cannot write down), and [the illusion of explanatory depth]({{< ref "posts/fluency-is-not-understanding" >}}) (why feeling that you understand is a poor instrument).
 
 ## key takeaways
 
