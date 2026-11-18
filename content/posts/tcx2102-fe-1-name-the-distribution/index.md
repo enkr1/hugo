@@ -50,6 +50,19 @@ flowchart LR
 
 The letters: $S$ successes and $F$ failures in the pool, $n$ drawn; $k$ successes waited for; $p$ is the chance of one success and $q = 1 - p$. The bracket of the exponential holds the RATE $\lambda = 1/\mu$, so a mean of 5 minutes is Exponential$(1/5)$. Geometric and negative binomial both count TRIALS, so $X$ includes the trial of the last success.
 
+## Words that name it
+
+Two questions name the four counting stories: is the chance the same on every try, and what is fixed, the number of tries or the number of successes? $X$ counts the other one. These words answer them:
+
+| The story says | Answer | Name |
+|---|---|---|
+| "at once", "take 3 from a drawer of 9", "without replacement" | Not put back, so the chance changes | Hypergeometric$(S, F, n)$ |
+| "until the first ..." | Same chance; the 1st success is fixed | Geometric$(p)$ |
+| "until the 3rd ..." | Same chance; the 3rd success is fixed | Negative binomial$(k, p)$ with $k = 3$ |
+| a set number of tries ("10 questions", "8 phones tested"), $X$ = how many | Same chance; the tries are fixed | Binomial$(n, p)$ |
+
+$n$ is always how many you take or try, never the pool: 3 socks taken from a drawer of 9 is $n = 3$, and the 9 is $S + F$.
+
 ## Reading the symbols
 
 One example all the way through: 5 picks from a box of 20 chips, 6 of them faulty, each chip put back before the next pick. $X$ is the number of faulty chips you get, so it can be 0, 1, 2, 3, 4 or 5. This is the chance of each, the whole of $\text{Binomial}(5, 0.3)$:
