@@ -63,6 +63,14 @@ Two questions name the four counting stories: is the chance the same on every tr
 
 $n$ is always how many you take or try, never the pool: 3 socks taken from a drawer of 9 is $n = 3$, and the 9 is $S + F$.
 
+### Three checks for the numbers
+
+The name is the easy half. The slips that cost marks are usually a right number in the wrong slot, and each of these takes ten seconds:
+
+1. **$p$ belongs to what $X$ counts or waits for.** Read it from the question's last words. "The shot of the first miss" makes a miss the success, so a shooter who hits 70% of the time gives $p = 0.3$.
+2. **Big numbers add to the pool, small numbers add to the hand.** In $\binom{S}{x}\binom{F}{n-x}$ the big numbers give $S + F = N$ and the small ones give $x + (n - x) = n$. The bottom is always $\binom{N}{n}$.
+3. **Read each C aloud as "this many of that kind".** $\binom{6}{3}$ is "3 of the 6 women". The $x$ from $P(X = x)$ goes with the kind $X$ counts, and so does $S$.
+
 ## Reading the symbols
 
 One example all the way through: 5 picks from a box of 20 chips, 6 of them faulty, each chip put back before the next pick. $X$ is the number of faulty chips you get, so it can be 0, 1, 2, 3, 4 or 5. This is the chance of each, the whole of $\text{Binomial}(5, 0.3)$:
