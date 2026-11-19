@@ -65,6 +65,13 @@ Two questions name the four stories with tries: is the chance the same on every 
 
 Same website at 30 visits an hour, two questions: visits in the next 5 minutes is Poisson$(2.5)$, minutes until the next visit is Exponential$(1/2)$. Not every time is exponential: a time equally likely anywhere in a range is uniform, and one given with a mean and an SD is normal (section 9).
 
+**The four as questions.** The row is what ticks by, tries or time; the column is what $X$ is, a count or a wait:
+
+| | Count: how many? | Wait: until when? |
+|---|---|---|
+| **Tries** | Binomial: how many successes in $n$ tries? | Geometric: which try brings the 1st success? (The $k$-th is the negative binomial.) |
+| **Time** | Poisson: how many arrivals in $t$ minutes? | Exponential: how long until the next arrival? |
+
 $n$ is always how many you take or try, never the pool: 3 socks taken from a drawer of 9 is $n = 3$, and the 9 is $S + F$.
 
 ### Three checks for the numbers
