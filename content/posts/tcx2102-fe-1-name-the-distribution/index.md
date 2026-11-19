@@ -52,14 +52,18 @@ The letters: $S$ successes and $F$ failures in the pool, $n$ drawn; $k$ successe
 
 ## Words that name it
 
-Two questions name the four counting stories: is the chance the same on every try, and what is fixed, the number of tries or the number of successes? $X$ counts the other one. These words answer them:
+Two questions name the four stories with tries: is the chance the same on every try, and what is fixed, the number of tries or the number of successes? $X$ counts the other one. A story with no tries, only an average rate ("30 an hour"), is named by what $X$ is: a count of arrivals, or a time.
 
-| The story says | Answer | Name |
-|---|---|---|
-| "at once", "take 3 from a drawer of 9", "without replacement" | Not put back, so the chance changes | Hypergeometric$(S, F, n)$ |
-| "until the first ..." | Same chance; the 1st success is fixed | Geometric$(p)$ |
-| "until the 3rd ..." | Same chance; the 3rd success is fixed | Negative binomial$(k, p)$ with $k = 3$ |
-| a set number of tries ("10 questions", "8 phones tested"), $X$ = how many | Same chance; the tries are fixed | Binomial$(n, p)$ |
+| The story says | $X$ is | Answer | Name |
+|---|---|---|---|
+| "at once", "take 3 from a drawer of 9", "without replacement" | how many of one kind in your hand | Not put back, so the chance changes | Hypergeometric$(S, F, n)$ |
+| "until the first ..." | which try | Same chance; the 1st success is fixed | Geometric$(p)$ |
+| "until the 3rd ..." | which try | Same chance; the 3rd success is fixed | Negative binomial$(k, p)$ with $k = 3$ |
+| a set number of tries ("10 questions", "8 phones tested"), $X$ = how many | how many successes | Same chance; the tries are fixed | Binomial$(n, p)$ |
+| "30 an hour on average", "how many in the next 5 minutes" | how many arrivals in a window | No tries; $\lambda$ = rate × window | Poisson$(\lambda)$ |
+| "how long until the next", "lifetime", "an average wait of 2 minutes" | a time | No tries; $\mu$ = the average wait = 1 / rate | Exponential$(1/\mu)$ |
+
+Same website at 30 visits an hour, two questions: visits in the next 5 minutes is Poisson$(2.5)$, minutes until the next visit is Exponential$(1/2)$. Not every time is exponential: a time equally likely anywhere in a range is uniform, and one given with a mean and an SD is normal (section 9).
 
 $n$ is always how many you take or try, never the pool: 3 socks taken from a drawer of 9 is $n = 3$, and the 9 is $S + F$.
 
