@@ -65,6 +65,13 @@
             </div>
         {{ end }}
 
+        {{ if and $isMainArticle (partial "helper/has-reading-mode" $page) }}
+            <button type="button" class="article-fullscreen-toggle" data-reading-toggle aria-pressed="false">
+                {{ partial "helper/icon" "maximize" }}
+                <span data-reading-label>Reading mode</span>
+            </button>
+        {{ end }}
+
         <div class="article-views">
             {{ partial "helper/icon" "eye" }}
             <span class="firestore-visitors-count" data-post-title="{{ $page.Title }}">...</span>

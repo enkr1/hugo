@@ -1,3 +1,7 @@
+{{ if partial "helper/has-reading-mode" . }}
+<script>if (localStorage.getItem('readingMode') === 'on') document.documentElement.dataset.reading = 'on';</script>
+{{ end }}
+
 {{/* JSON-LD Structured Data */}}
 {{ partial "head/schema.html" . }}
 
