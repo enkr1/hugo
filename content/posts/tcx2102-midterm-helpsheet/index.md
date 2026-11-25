@@ -2,13 +2,13 @@
 title: "TCX2102 | Probability & Statistics Midterm Helpsheet"
 slug: "nus-bit-tcx2102-midterm-helpsheet"
 date: 2026-09-13T03:10:00+08:00
-description: "One-A4 single-sided helpsheet for the TCX2102 midterm (Oct 5): counting, probability operators, discrete and continuous random variables, and the distribution family map."
+description: "One-A4 single-sided helpsheet for a probability and statistics midterm: counting, probability operators, discrete and continuous random variables, and the distribution family map."
 tags: ["nus", "probability", "statistics", "helpsheet", "tcx2102", "midterm"]
 categories:
   - ["Education", "NUS BIT", "TCX2102"]
 toc: true
 math: true
-draft: true
+draft: false
 sheet: helpsheet
 sheetCols: 2
 sheetFont: "6.2pt"
@@ -16,8 +16,6 @@ sheetMath: "1.35em"
 ---
 
 <div class="print-hide">
-
-**Mon 5 Oct 20:00-21:00 · MPSH1B · closed book · paper and pen · one A4 side + calculator**
 
 ## Don't mix these up
 
