@@ -4,7 +4,7 @@
    set `sheetCols: N` in front matter (default 2) — emitted as --sheet-cols
    by layouts/partials/head/custom.html.
    Activated via front matter: `sheet: helpsheet`. */
-@page { margin: 5mm; }
+@page { size: A4; margin: 5mm; }
 @media print {
   .left-sidebar, .right-sidebar, .sidebar,
   .toc-left-sidebar,
