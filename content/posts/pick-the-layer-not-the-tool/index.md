@@ -193,6 +193,7 @@ also worth correcting, because i said the opposite an hour earlier: lazygit does
 - when comparing applications, check whether the problem lives a layer below them. config-layer changes multiply across every tool you own.
 - verify tool config against the installed binary, not against a search result. renamed keys are invisible to consensus.
 - the same move turned up a week later in a completely different corner of the stack, deciding a javascript dependency: {{< ref "should-i-use-ultrastorage" >}}, where the useful thing again sat one layer below the thing being evaluated.
+- and again in a mobile stack choice, where "react native or swift" was one level too high and the useful question was how many copies of the code one person must keep in step: {{< ref "the-second-codebase-got-cheap" >}}.
 
 ## a personal note
 

@@ -137,3 +137,4 @@ wip ...
 - my [marginal cost and sunk cost note]({{< ref "marginal-cost-and-sunk-cost" >}}): where the fixed-versus-variable cost machinery under this crossover comes from.
 - my [network effects note]({{< ref "network-effects" >}}): the one case where the crossover stops mattering, because an existing network is the most expensive thing to rebuild.
 - [my NUS progress page]({{< ref "nus-progress" >}}): the module (TCX2005) this came out of.
+- my [mobile stack note]({{< ref "the-second-codebase-got-cheap" >}}): the crossover moving in 2026, when coding agents made the second copy of a UI cheap to write.
