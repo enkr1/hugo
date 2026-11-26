@@ -124,22 +124,20 @@
     border: 0.3px solid #ccc !important;
     vertical-align: top !important;
   }
-  /* Inline code in cells must be allowed to wrap, or it dictates column width.
-     break-word (not anywhere): keeps min-content = whole token, so the 1% trick
-     below can't crush label columns into per-character wrapping. */
+  /* A table's min-content width is its longest unbreakable token, and max-width does not clamp an auto-layout table below it, so cells must be able to break or the table spills into the next column.
+     Plain words and first-column chips break only when a lone token is wider than its cell (break-word keeps labels whole); other code chips break anywhere, which also lets them shrink the column. */
+  td, th { overflow-wrap: break-word !important; }
   td code, th code {
     white-space: normal !important;
-    overflow-wrap: break-word !important;
+    overflow-wrap: anywhere !important;
   }
-  /* First column: clamp to min-content (the 1% trick) — auto layout otherwise
-     awards width proportional to max-content, inflating label columns. */
+  /* First column wraps like the rest: nowrap plus width:1% pinned it at its longest label (a docker command, say), and the columns beside it were crushed. */
   td:first-child, th:first-child {
-    width: 1% !important;
-    white-space: nowrap !important; /* auto-fit: exactly as wide as longest label */
-    /* the td code break-word rule above would defeat nowrap inside code chips —
-       first column is labels, let them auto-fit too */
-    code { white-space: nowrap !important; overflow-wrap: normal !important; }
+    width: auto !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
   }
+  td:first-child code, th:first-child code { overflow-wrap: break-word !important; }
   th { background: #f4f4f4 !important; }
   .katex { font-size: var(--sheet-math, 1.21em) !important; }
   p {
