@@ -21,7 +21,7 @@ i love teaching people to train, so i've started dissecting the coaches i respec
 
 ## the part that surprised me
 
-rambod never competed as a pro. he was a natural amateur with a biology degree (UCSB, neurophysiology emphasis) who turned out to be better at *reading other people's bodies* than building his own. that matters to me personally — my credibility as a coach will come from client results and reasoning, not from my own physique. the greatest coach in bodybuilding history is proof that's a legitimate path.
+rambod never competed as a pro. he was a natural amateur with a biology degree (UCSB, neurophysiology emphasis) who turned out to be better at *reading other people's bodies* than building his own. that matters to me personally — my credibility as a coach will come from the results of the people i train and my reasoning, not from my own physique. the greatest coach in bodybuilding history is proof that's a legitimate path.
 
 ## what he actually does
 
@@ -55,10 +55,10 @@ the coaching voice is as interesting as the programming:
 
 ## what i'm not stealing
 
-peak week. rambod's true edge is extreme water/sodium/carb manipulation in the final days before a show, built on decades of in-person pattern recognition. that's exactly the kind of thing that goes wrong when you cargo-cult it from youtube. if i ever take a client to a stage, peak week will be conservative and evidence-based, not guru tricks.
+peak week. rambod's true edge is extreme water/sodium/carb manipulation in the final days before a show, built on decades of in-person pattern recognition. that's exactly the kind of thing that goes wrong when you cargo-cult it from youtube. if i ever take someone i train to a stage, peak week will be conservative and evidence-based, not guru tricks.
 
 ## why this matters for the AI coach
 
-in [my last post](/posts/workout-plan-parts-split-retrospective/) i said i'm building myself an AI coach. rambod is the personality spec: direct, mechanism-first, look-driven, individualised. the research file behind this post literally feeds the coaching protocol — the goal is that when i (or eventually a client) get feedback, it reads like a coach who's watched thousands of bodies, not like a chatbot reciting a textbook.
+in [my last post](/posts/workout-plan-parts-split-retrospective/) i said i'm building myself an AI coach. rambod is the personality spec: direct, mechanism-first, look-driven, individualised. the research file behind this post literally feeds the coaching protocol — the goal is that when i (or eventually someone i train) get feedback, it reads like a coach who's watched thousands of bodies, not like a chatbot reciting a textbook.
 
 *sources: [EssentiallySports](https://www.essentiallysports.com/bodybuilding-news-is-hany-rambod-the-most-successful-coach-in-mr-olympia-history/) (Olympia record), [BarBend](https://barbend.com/most-abrasive-coach-in-bodybuilding/) (coaching style, [FST-7 explainer](https://barbend.com/fst7/)), [hanyrambod.com](https://www.hanyrambod.com/) (Truth System), [FitnessVolt](https://fitnessvolt.com/hany-rambod-enhanced-vs-natural-athletes/), [Sportskeeda](https://www.sportskeeda.com/), [SimplyShredded](https://simplyshredded.com/fst-7-fascia-stretch-training-7-workout-routine-nutrition-guide.html) (full FST-7 program), and his podcast [The Truth](https://open.spotify.com/show/5xZEYZWNj2a0DAk9Qt0pbE) — full notes in my research repo.*
