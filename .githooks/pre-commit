@@ -9,12 +9,15 @@ New posts must have:
   - `tags` non-empty
   - `description` non-empty and 50-160 chars (Google SERP snippet sweet spot)
 
+Any staged add or modify is also blocked when it is a content .md with a `hide:` key (no template reads it, so the page still ships) or a media file carrying GPS (the repo is public, so raw files leak location even when the page does not show it).
+
 Exit 1 to block commit.
 
 Stdlib only. No PyYAML.
 """
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 import sys
@@ -27,6 +30,10 @@ DATETIME_VAL = re.compile(r"^['\"]?\d{4}-\d{2}-\d{2}T\d{2}:\d{2}")
 TAGS_INLINE = re.compile(r"^tags:\s*\[(.*?)\]\s*(?:#.*)?$", re.MULTILINE)
 TAGS_BLOCK = re.compile(r"^tags:\s*\n((?:[ \t]+-.*\n?)+)", re.MULTILINE)
 DESC_LINE = re.compile(r'^description:\s*"([^"]*)"', re.MULTILINE)
+
+HIDE_LINE = re.compile(r"^hide:", re.MULTILINE)
+MEDIA_EXT = (".jpg", ".jpeg", ".png", ".heic", ".webp", ".tif", ".tiff", ".mov", ".mp4", ".m4v")
+GPS_KEYS = ("GPSLatitude", "GPSCoordinates", "GPSPosition")
 
 DESC_MIN = 50
 DESC_MAX = 160
@@ -118,6 +125,30 @@ def future_date_error(fm: str) -> str | None:
     return None
 
 
+def gps_errors(files: list[str]) -> list[str]:
+    if not files:
+        return []
+    try:
+        result = subprocess.run(
+            ["exiftool", "-j", "-q", "-q", "-ee", *(f"-{k}" for k in GPS_KEYS), *files],
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:
+        return ["exiftool not installed, so staged media cannot be checked for GPS: brew install exiftool"]
+    try:
+        rows = json.loads(result.stdout) if result.stdout.strip() else None
+    except json.JSONDecodeError:
+        rows = None
+    if rows is None:
+        return [f"exiftool could not read staged media (exit {result.returncode}): {result.stderr.strip()}"]
+    return [
+        f"{row['SourceFile']}: carries GPS location. Strip it: exiftool -overwrite_original '-gps*=' '-*:GPSCoordinates=' '-*:Location*=' <file>"
+        for row in rows
+        if any(k in row for k in GPS_KEYS)
+    ]
+
+
 def check(path: Path) -> list[str]:
     fm = read_frontmatter(path)
     if fm is None:
@@ -162,9 +193,16 @@ def main() -> int:
         err = future_date_error(fm)
         if err is not None:
             failures.append(f"{file}: {err}")
+        if HIDE_LINE.search(fm):
+            failures.append(
+                f"{file}: `hide:` does nothing, no template reads it and the page ships. "
+                "Keep the file out of this public repo instead."
+            )
+
+    failures.extend(gps_errors([f for f in staged_files("AM") if f.lower().endswith(MEDIA_EXT)]))
 
     if failures:
-        print("\n✗ Hugo frontmatter validation failed:\n", file=sys.stderr)
+        print("\n✗ pre-commit checks failed:\n", file=sys.stderr)
         for line in failures:
             print(f"  - {line}", file=sys.stderr)
         print(
