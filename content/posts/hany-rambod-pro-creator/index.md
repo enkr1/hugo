@@ -7,7 +7,7 @@ tags:
   - "research"
 categories:
   - ["Personal Development", "Fitness"]
-subtitle: "notes from studying the pro creator — for my own coaching, and my clients'"
+subtitle: "notes from studying the pro creator — for my own training, and the people i train"
 description: "what i learned dissecting hany rambod's method — FST-7, look-based coaching, and why the guy who never turned pro built more champions than anyone"
 keywords:
   - "Hany Rambod"
@@ -17,7 +17,7 @@ keywords:
 comments: true
 ---
 
-i'm becoming a personal trainer, so i've started dissecting the coaches i respect most. first up: hany rambod, "the pro creator" — the coach behind ~25+ olympia titles (jay cutler, phil heath's 7, hadi choopan, chris bumstead in classic). this post is my study notes: what he does, what actually transfers to a normal person's training, and what i'm stealing for my own coaching.
+i love teaching people to train, so i've started dissecting the coaches i respect most. first up: hany rambod, "the pro creator" — the coach behind ~25+ olympia titles (jay cutler, phil heath's 7, hadi choopan, chris bumstead in classic). this post is my study notes: what he does, what actually transfers to a normal person's training, and what i'm stealing for my own coaching.
 
 ## the part that surprised me
 
@@ -50,7 +50,7 @@ the coaching voice is as interesting as the programming:
 | FST-7 finishers | metabolite finishers on lagging parts (side delts first) |
 | plan backwards from show date | my own blocks planned backwards from fixed dates |
 | weekly look-based check-ins | weekly photo audit next to the training log |
-| never copy-paste between athletes | every client gets audited, not templated |
+| never copy-paste between athletes | every plan i write gets audited, not templated |
 | verdict → reason → fix → encouragement | the feedback structure i'm training myself (and my AI coach) to use |
 
 ## what i'm not stealing

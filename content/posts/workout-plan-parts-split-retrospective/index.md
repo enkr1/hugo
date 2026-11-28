@@ -51,7 +51,7 @@ and the parts that were supposed to be the point of this split — **side delts*
 
 three months of near-perfect consistency, and my honest self-review is: i executed like a machine and evaluated like nobody was watching. because nobody was.
 
-the funny thing is, i coach PT clients now. i watch their form, i audit their week, i adjust their loads based on what i *see*, not just what the spreadsheet says. every one of them has something i don't have: **a coach.**
+the funny thing is, i help other people train now. i watch their form, i audit their week, i adjust their loads based on what i *see*, not just what the spreadsheet says. every one of them has something i don't have: **a coach.**
 
 a plan tells you what to do on day 1. a coach tells you what to change on week 6 — when the machine numbers lie, when the mirror matters more than the log, when "add 2.5kg" is the wrong call and "fix your elbow path" is the right one. that judgment layer is exactly what my last 12 weeks were missing.
 
