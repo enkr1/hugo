@@ -7,7 +7,6 @@ tags:
 categories:
   - ["About Me", "Journals"]
 comments: false
-hide: true
 ---
 
 
