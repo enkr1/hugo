@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 80"
 date: 2026-08-17T00:08:37+08:00
-description: "a public holiday i actually rested in, clients telling me i was patient and easy to understand, and finishing my first practical in two minutes only to lose half a mark to a beginner mistake"
+description: "a public holiday i actually rested in, people i trained telling me i was patient and easy to understand, and finishing my first practical in two minutes only to lose half a mark to a beginner mistake"
 tags:
   - journal
   - NUS
@@ -12,13 +12,13 @@ tags:
 categories:
   - "About Me"
   - "Journals"
-keywords: ["weekly journal", "TCX2004", "practical test", "careless mistake", "overconfidence", "writing test cases", "personal training", "client feedback", "NUS", "learning from mistakes"]
+keywords: ["weekly journal", "TCX2004", "practical test", "careless mistake", "overconfidence", "writing test cases", "training others", "feedback", "NUS", "learning from mistakes"]
 comments: false
 ---
 
 ## ✨ Highlights of the Week
 
-was a really long week, sg ph, got a chance to allow myself to get more rest in, but grind in gym never stop tho, still got my diet on track and hit the session i planned. 1 client down, getting more clients scheduled for the next few weeks, im doing so much better every time and the feedback i got in person was also very positive, they would say things like i went thru it very detailed, patient and easy to understand. yes, love that feeling.
+was a really long week, sg ph, got a chance to allow myself to get more rest in, but grind in gym never stop tho, still got my diet on track and hit the session i planned. one more person done, more coming up over the next few weeks, im doing so much better every time and the feedback i got in person was also very positive, they would say things like i went thru it very detailed, patient and easy to understand. yes, love that feeling.
 
 and got my first class in, first practical test, i was SOOO confident, i finished everything in like 2 mins, and thought i passed all test cases, then started looking around and talking to others, or even tried to help friends. thought it was such an easy start, but when i received the result on sunday night, i was like wtf i made a beginner mistake, and lost 0.5 marks T_T
 

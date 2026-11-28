@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 77"
 date: 2026-07-29T11:40:02+08:00
-description: "the more people i teach, the more sure i am that i love teaching. finished another package, spent the break back in jb with family, and kept noticing that the person teaching is always learning too"
+description: "the more people i teach, the more sure i am that i love teaching. finished another round with someone i train, spent the break back in jb with family, and kept noticing that the person teaching is always learning too"
 tags:
   - journal
   - teaching
@@ -21,7 +21,7 @@ comments: false
 
 ## ✨ Highlights of the Week
 
-finished another package with a client last week, the more people i teach, the more sure i am that i love teaching. it is something that makes time go so fast, like i still remember my first lesson with a client, i was talking so much + he was curious enough to ask a lot, i spent around 3 hours there...
+finished another round with someone i've been training last week, the more people i teach, the more sure i am that i love teaching. it is something that makes time go so fast, like i still remember my first session with someone, i was talking so much + he was curious enough to ask a lot, i spent around 3 hours there...
 
 also did a lot of research on the areas that got me curious while prepping for classes, made my hany rambod skill (built off [what i found dissecting a 25x olympia coach's method]({{< ref "posts/hany-rambod-pro-creator" >}})), and i believe there are always more than one thats learning when one is teaching, both learn. 
 

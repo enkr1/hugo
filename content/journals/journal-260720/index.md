@@ -67,6 +67,6 @@ it's got me thinking, is it really a win-win? while ur data is far more precious
 
 - Took a student through to graduation, and walked back my own first read on the way: the posture problem I had built their plan around was not actually there once I reassessed
 - Relaxed a blanket "never hold your breath" rule into breath timing, after assessing the person in front of me instead of defaulting to the safest possible instruction. The cue that finally landed: you are under the water on the way down, and you surface to swap air at the top
-- Held off putting them on the app at graduation. Building someone a profile before they commit is building ahead of need, so the plan stays a perk of paying rather than a parting gift
-- Wrote three coaching skills covering the first inquiry, the plan build and the session write-up, so the workflow repeats without sounding like AI house style
+- Held off putting them on the app at graduation. Building someone a profile before they commit is building ahead of need, so the plan stays a perk of training together rather than a parting gift
+- Wrote three skills covering the first chat, the plan build and the session write-up, so the workflow repeats without sounding like AI house style
 - Corrected the Day 6 pulldown to neutral-grip in my own Block 1 competition plan

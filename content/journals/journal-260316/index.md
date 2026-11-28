@@ -31,7 +31,7 @@ planning to try adding backoff sets next week — drop 50~70% for one last set t
 
 ### 小红书
 
-trying to get some clients through xhs posts... ain't going well. nobody actually interested for now. :( 目前也只是放着，好像广告一样，也没有特别去 promote。but yea maybe that's the problem.
+trying to find people to train with through xhs posts... ain't going well. nobody actually interested for now. :( 目前也只是放着，好像广告一样，也没有特别去 promote。but yea maybe that's the problem.
 
 
 

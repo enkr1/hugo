@@ -48,4 +48,4 @@ i am just so lucky.
 - Opened the Road to Stage (Oct/Nov 2027) competition journey: timeline, photo protocol and Week 0 baseline all logged
 - Wrote and activated the [Block 1 rebuild plan v2]({{< ref "posts/workout-plan-block-1" >}}), delt-led PPL x2, live from 12 Jul
 - Deep-dived Hany Rambod's FST-7 coaching protocol and seeded the competition nutrition doc with surplus maths
-- Coaching: a student graduated with his S3 finale and a handover programme; next week's sessions and August holds locked in for three others
+- Training others: saw someone through his S3 finale with a handover programme

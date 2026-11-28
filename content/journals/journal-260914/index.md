@@ -54,7 +54,7 @@ and it will get there!
 - Added a suggested working weight for every movement, drawn from everywhere you have trained rather than only from the last time in this gym
 - Wrote the session review twice over, so someone who says they are new gets a card written to welcome them rather than the one an experienced lifter gets
 - Made every credit point back at the thing that earned it, so the balance stops being a number you have to take on trust
-- Gave every package sold its own record, carrying the sessions it has delivered and a way to log one that was already run
+- Gave every block of sessions its own record, carrying the sessions it has delivered and a way to log one that was already run
 - Added a nudge toward a second workout that day, then took it back out three days later rather than leave a prompt that only nagged
 
 #### 🛠️ Tooling and site

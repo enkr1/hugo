@@ -1,7 +1,7 @@
 ---
 title: "Journal: Week 79"
 date: 2026-08-10T17:01:38+08:00
-description: "my first client telling me i was professional and sincere, a guy at the gym who wouldn't tell me anything useful, and remembering the people who taught me everything back when i had nothing to give them"
+description: "the first person i trained telling me i was professional and sincere, a guy at the gym who wouldn't tell me anything useful, and remembering the people who taught me everything back when i had nothing to give them"
 tags:
   - journal
   - coaching
@@ -13,12 +13,12 @@ tags:
 categories:
   - "About Me"
   - "Journals"
-keywords: ["weekly journal", "personal training", "client feedback", "coaching", "gratitude", "mentorship", "knowledge sharing", "gym buddy", "fitness journey", "TCX2004"]
+keywords: ["weekly journal", "training others", "feedback", "coaching", "gratitude", "mentorship", "knowledge sharing", "gym buddy", "fitness journey", "TCX2004"]
 comments: false
 ---
 
 ## ✨ Highlights of the Week
-highlight of the week was probably that i received my biggest compliment from a client. from the start of the session as i ran an evaluation on his physique with some warmups, i quickly identified that his right shoulder wasn't as mobile as it should be; so i flagged it out, and he got surprised and started to be very attentive haha. then this client was also one of the many who are the 一点就通 kind. so by sharing some practical tips and concepts, he was able to understand and apply them immediately. and then after the session, he sent me a message saying that he felt that i was very professional and sincere, and that he had more interest and motivation in fitness now. this is the first time a client has said this to me, and it really made me feel that my work is meaningful. it also reminded me that i should always be professional and sincere in my work, and that i should always strive to improve myself.
+highlight of the week was probably that i received my biggest compliment from someone i trained. from the start of the session as i ran an evaluation on his physique with some warmups, i quickly identified that his right shoulder wasn't as mobile as it should be; so i flagged it out, and he got surprised and started to be very attentive haha. then he was also one of the many who are the 一点就通 kind. so by sharing some practical tips and concepts, he was able to understand and apply them immediately. and then after the session, he sent me a message saying that he felt that i was very professional and sincere, and that he had more interest and motivation in fitness now. this is the first time a client has said this to me, and it really made me feel that my work is meaningful. it also reminded me that i should always be professional and sincere in my work, and that i should always strive to improve myself.
 
 and from this gratefulness, i went to different gym centres as i always do, i tried to seek hints from this one guy, he has a solid build, we talked, vibed, i thought everything was good, and then i started asking some genuine questions on certain exercises, how he does the vacuum in posing, the only thing i got was “哦 这个是有讲究的，嗯 很多讲究”，“这里的 machine 不好”，“这个要练很久”，等等, so i didnt really get any practical feedback on what i was asking...
 
